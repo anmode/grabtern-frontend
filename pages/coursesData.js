@@ -1,5 +1,4 @@
-export default courseArray
-const courseArray = [
+export default [
     {
         courseImage: "/assets/img/gallery/featured1.png",
         courseImageAlt: "",

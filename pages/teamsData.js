@@ -1,4 +1,5 @@
-export default [
+export default teamArray
+const teamArray = [
     {
         imageSrc: "/assets/img/gallery/team1.png",
         imageAlt: "",

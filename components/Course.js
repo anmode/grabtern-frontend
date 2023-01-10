@@ -14,9 +14,10 @@ function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, co
                     <div className="properties__footer d-flex justify-content-between align-items-center">
                         <div className="restaurant-name">
                             <div className="rating">
-                                {Array(Math.floor(courseRating)).fill("").map(() => (
-                                    <i className="fas fa-star"></i>
+                            {Array(Math.floor(courseRating)).fill("").map((_, i) => (
+                                    <i key={id} className="fas fa-star"></i>
                                 ))}
+
                                 {courseRating.toString().includes('.') ? (<i className="fas fa-star-half"></i>) : null}
                             </div>
                             <p><span>({courseRating})</span> based on {coursePayed}</p>

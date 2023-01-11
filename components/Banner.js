@@ -9,9 +9,9 @@ function Banner() {
                         <div className="row">
                             <div className="col-xl-6 col-lg-7 col-md-12">
                                 <div className="hero__caption">
-                                    <h1 data-animation="fadeInLeft" data-delay="0.2s" className="" style={{animationDelay: "0.2s"}}>Online learning<br /> platform</h1>
-                                    <p data-animation="fadeInLeft" data-delay="0.4s" className="" style={{animationDelay: "0.4s"}}>Build skills with courses, certificates, and degrees online from world-className universities and companies</p>
-                                    <a href="#" className="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s" tabIndex="0" style={{animationDelay: "0.7s"}}>Join for Free</a>
+                                    <h1 data-animation="fadeInLeft" data-delay="0.2s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "0.8s"}}>Online learning<br /> platform</h1>
+                                    <p data-animation="fadeInLeft" data-delay="0.4s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "1s"}}>Build skills with courses, certificates, and degrees online from world-className universities and companies</p>
+                                    <a href="#" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Join for Free</a>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, courseDescription, courseRating, coursePayed, coursePrice }) {
     return (
-        <div className="properties pb-20">
+        <div className="properties pb-20" style={{ minWidth: "360px" }}>
             <div className="properties__card">
                 <div className="properties__img overlay1">
                     <a href="#"><img src={courseImage} alt={courseImageAlt} /></a>
@@ -14,8 +14,8 @@ function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, co
                     <div className="properties__footer d-flex justify-content-between align-items-center">
                         <div className="restaurant-name">
                             <div className="rating">
-                            {Array(Math.floor(courseRating)).fill("").map((_, i) => (
-                                    <i key={id} className="fas fa-star"></i>
+                                {Array(Math.floor(courseRating)).fill("").map((_, index) => (
+                                    <i key={index} className="fas fa-star"></i>
                                 ))}
 
                                 {courseRating.toString().includes('.') ? (<i className="fas fa-star-half"></i>) : null}

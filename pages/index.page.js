@@ -12,16 +12,7 @@ import Banner from '../components/Banner'
 export default function Home() {
   return (
     <div>
-      {/* <div id="preloader-active">
-        <div className="preloader d-flex align-items-center justify-content-center">
-          <div className="preloader-inner position-relative">
-            <div className="preloader-circle"></div>
-            <div className="preloader-img pere-text">
-              <img src="/assets/img/logo/loder.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div> */}
+
       <Header />
 
       <main>
@@ -46,7 +37,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="courses-actives">
+            <div className="courses-actives" style={{ display: "flex" }}>
               {coursesData.map((course, index) => (
                 <Course key={index} courseImage={course.courseImage} courseImageAlt={course.courseImageAlt} courseCategories={course.courseCategories} courseTitle={course.courseTitle} courseDescription={course.courseDescription} courseRating={course.courseRating} coursePayed={course.coursePayed} coursePrice={course.coursePrice} />
               ))}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function login() {
+function Login() {
   return (
     <main class="login-body">
                     <video autoPlay loop muted style={{  position: "fixed", right: 0, bottom: 0, minWidth: "100%", minHeight: "100%", }}>
@@ -33,4 +33,4 @@ function login() {
   )
 }
 
-export default login
+export default Login

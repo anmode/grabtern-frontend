@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 
 
 
-function courses() {
+function Courses() {
   return (
     <>
         <Header />
@@ -163,4 +163,4 @@ function courses() {
   )
 }
 
-export default courses
+export default Courses

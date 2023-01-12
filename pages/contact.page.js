@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import SimpleBanner from '../components/SimpleBanner'
 
-function contact() {
+function Contact() {
   return (
     <>
         <Header />
@@ -1666,4 +1666,4 @@ function contact() {
   )
 }
 
-export default contact
+export default Contact

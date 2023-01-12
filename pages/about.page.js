@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import SimpleBanner from '../components/SimpleBanner'
 import servicesData from './ServicesData';
 import Service from '../components/Service';
-import About from '../components/About';
+import AboutComponent from '../components/About';
 import dynamic from 'next/dynamic';
 import teamsData from './teamsData';
 import TeamProfile from '../components/TeamProfile';
@@ -43,7 +43,7 @@ const teamsOptions = {
 }
 
 
-function about() {
+function About() {
     const [carousel, setCarousel] = useState(false);
 
     useEffect(() => {
@@ -63,7 +63,7 @@ function about() {
             </div>
           </div>
         </div>
-        <About />
+        <AboutComponent />
         <div className="topic-area section-padding40">
             <div className="container">
                 <div className="row justify-content-center">
@@ -254,4 +254,4 @@ function about() {
   )
 }
 
-export default about
+export default About;

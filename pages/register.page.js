@@ -1,6 +1,6 @@
 import React from 'react'
 
-function register() {
+function Register() {
     return (
             <main class="login-body">
             <video autoPlay loop muted style={{  position: "fixed", right: 0, bottom: 0, minWidth: "100%", minHeight: "100%", }}>
@@ -41,4 +41,4 @@ function register() {
     )
 }
 
-export default register;
+export default Register;

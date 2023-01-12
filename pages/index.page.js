@@ -8,8 +8,64 @@ import teamsData from './teamsData';
 import TeamProfile from '../components/TeamProfile';
 import Footer from '../components/Footer'
 import Banner from '../components/Banner'
+import dynamic from 'next/dynamic';
+var $ = require("jquery");
+if (typeof window !== "undefined") {
+  window.$ = window.jQuery = require("jquery");
+}
+const OwlCarousel = dynamic(import("react-owl-carousel"), {
+  ssr: false,
+});
+import "owl.carousel/dist/assets/owl.carousel.min.css";
+import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import { useState, useEffect } from 'react';
+
+const coursesOptions = {
+  items: 3,
+  nav: true,
+  loop: true,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    880: {
+      items: 2,
+    },
+    1170: {
+      items: 3,
+    }
+  },
+}
+
+const teamsOptions = {
+  margin: 40,
+  items: 4,
+  nav: true,
+  loop: true,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+
+    },
+    900: {
+      items: 3,
+
+    },
+    1170: {
+      items: 4,
+    }
+  },
+}
 
 export default function Home() {
+  const [carousel, setCarousel] = useState(false);
+
+  useEffect(() => {
+    setCarousel(true);
+  }, [carousel])
   return (
     <div>
 
@@ -37,10 +93,19 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="courses-actives" style={{ display: "flex" }}>
-              {coursesData.map((course, index) => (
-                <Course key={index} courseImage={course.courseImage} courseImageAlt={course.courseImageAlt} courseCategories={course.courseCategories} courseTitle={course.courseTitle} courseDescription={course.courseDescription} courseRating={course.courseRating} coursePayed={course.coursePayed} coursePrice={course.coursePrice} />
-              ))}
+            <div className="courses-actives">
+              {carousel === true ? (<OwlCarousel
+                {...coursesOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={2500}
+                className="owl-carousel owl-theme"
+              >
+                {coursesData.map((course, index) => (
+                  <Course key={index} courseImage={course.courseImage} courseImageAlt={course.courseImageAlt} courseCategories={course.courseCategories} courseTitle={course.courseTitle} courseDescription={course.courseDescription} courseRating={course.courseRating} coursePayed={course.coursePayed} coursePrice={course.coursePrice} />
+                ))}
+              </OwlCarousel>) : null}
             </div>
           </div>
         </div>
@@ -213,9 +278,18 @@ export default function Home() {
               </div>
             </div>
             <div className="team-active">
-              {teamsData.map((profile, index) => (
-                <TeamProfile key={index} imageSrc={profile.imageSrc} imageAlt={profile.imageAlt} profileName={profile.profileName} profileDescription={profile.profileDescription} />
-              ))}
+              {carousel === true ? (<OwlCarousel
+                {...teamsOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={2500}
+                className="owl-carousel owl-theme"
+              >
+                {teamsData.map((profile, index) => (
+                  <TeamProfile key={index} imageSrc={profile.imageSrc} imageAlt={profile.imageAlt} profileName={profile.profileName} profileDescription={profile.profileDescription} />
+                ))}
+              </OwlCarousel>) : null}
             </div>
           </div>
         </section>

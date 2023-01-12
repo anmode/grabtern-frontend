@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import { Breakpoint, BreakpointProvider } from 'react-socks';
+import $ from 'jquery'
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false)
@@ -15,9 +16,10 @@ function MyApp({ Component, pageProps }) {
     return null
   }
 
-  setTimeout(() => {
-    setLoadDone(false)
-  }, 3000)
+  setTimeout(function() {
+    $('#preloader-active').fadeOut('fast');
+    $('.loaderBackground').fadeOut('fast');
+}, 1400)
 
   return (
 

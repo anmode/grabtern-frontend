@@ -29,13 +29,13 @@ export default function Document() {
                     rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
                 />
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" async defer></script>  
             </Head>
             <body>
                 <Main />
                 <NextScript />
 
             </body>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" async />
         </Html>
     )
 }

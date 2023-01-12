@@ -10,7 +10,7 @@ function Header() {
                             <div className="row align-items-center">
                                 <div className="col-xl-2 col-lg-2">
                                     <div className="logo">
-                                        <a href="index.html"><img src="/assets/img/logo/logo.png" alt="" /></a>
+                                        <a href="index.html"><img src="/assets/img/logo/whitelogo.png" height={100} width={150} alt="" /></a>
                                     </div>
                                 </div>
                                 <div className="col-xl-10 col-lg-10">
@@ -21,16 +21,16 @@ function Header() {
                                                     <li className="active" ><a href="index.html">Home</a></li>
                                                     <li><a href="courses.html">Courses</a></li>
                                                     <li><a href="about.html">About</a></li>
-                                                    <li><a href="#">Blog</a>
+                                                    {/* <li><a href="#">Blog</a>
                                                         <ul className="submenu">
                                                             <li><a href="blog.html">Blog</a></li>
                                                             <li><a href="blog_details.html">Blog Details</a></li>
                                                             <li><a href="elements.html">Element</a></li>
                                                         </ul>
-                                                    </li>
+                                                    </li> */}
                                                     <li><a href="contact.html">Contact</a></li>
-                                                    <li className="button-header margin-left "><a href="#" className="btn">Join</a></li>
-                                                    <li className="button-header"><a href="login.html" className="btn btn3">Log in</a></li>
+                                                    {/* <li className="button-header margin-left "><a href="#" className="btn">Join</a></li>
+                                                    <li className="button-header"><a href="login.html" className="btn btn3">Log in</a></li> */}
                                                 </ul>
                                             </nav>
                                         </div>

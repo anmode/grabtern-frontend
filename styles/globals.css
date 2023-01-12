@@ -35,14 +35,52 @@ a {
 @keyframes loader {
   10% {
     opacity: 1;
-    display: 1;
   }
   50% {
     opacity: 0.5;
-    display: 0.5;
   }
   100% {
     opacity: 0;
-    display: 0;
+    /* display: none !important;
+    visibility: hidden !important; */
   }
+}
+.owl-nav button:first-child {
+  top: 45%;
+  position: absolute;
+  margin-right: 50px !important;
+  left: -30px;
+}
+
+.owl-nav button:last-child {
+  top: 45%;
+  position: absolute;
+  right: -30px;
+  margin-left: 50px !important;
+
+}
+
+.owl-nav button span {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 0;
+  color: gainsboro;
+  transition: all 0.2s ease-in !important;
+}
+
+.owl-nav button:hover {
+  background-color: transparent !important;
+  color: gray !important;
+}
+
+.owl-nav button span:hover {
+  color: gray !important;
+}
+
+.owl-dots {
+  display: none !important;
+}
+
+.owl-theme .owl-nav {
+  margin-top: 0 !important;
 }

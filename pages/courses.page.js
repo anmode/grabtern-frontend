@@ -1,69 +1,36 @@
 import React from 'react'
 import Header from '../components/Header'
 import SimpleBanner from '../components/SimpleBanner'
+import coursesData from './allCoursesData.js';
+import Course from '../components/Course';
 import servicesData from './ServicesData';
 import Service from '../components/Service';
-import AboutComponent from '../components/About';
-import dynamic from 'next/dynamic';
-import teamsData from './teamsData';
-import TeamProfile from '../components/TeamProfile';
-var $ = require("jquery");
-if (typeof window !== "undefined") {
-  window.$ = window.jQuery = require("jquery");
-}
-const OwlCarousel = dynamic(import("react-owl-carousel"), {
-  ssr: false,
-});
-import "owl.carousel/dist/assets/owl.carousel.min.css";
-import "owl.carousel/dist/assets/owl.theme.default.min.css";
-import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 
-const teamsOptions = {
-  margin: 40,
-  items: 4,
-  nav: true,
-  loop: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-
-    },
-    900: {
-      items: 3,
-
-    },
-    1170: {
-      items: 4,
-    }
-  },
-}
 
 
-function About() {
-    const [carousel, setCarousel] = useState(false);
-
-    useEffect(() => {
-      setCarousel(true);
-    }, [carousel])
+function Courses() {
   return (
     <>
-    <Header />
-    <SimpleBanner bannerTittle="About us" siteName="about" />
+        <Header />
+    <SimpleBanner bannerTittle="Our courses" siteName="Services" />
     <main>
-    <div className="services-area" style={{padding: "12.5em 0 10rem"}}>
+    <div className="courses-area section-padding40 fix">
           <div className="container">
-            <div className="row justify-content-sm-center">
-              {servicesData.map((service, index) => (
-                <Service key={index} imageSrc={service.imageSrc} imageAlt={service.imageAlt} serviceHeading={service.serviceHeading} serviceDescription={service.serviceDescription} />
-              ))}
+            <div className="row justify-content-center">
+              <div className="col-xl-7 col-lg-8">
+                <div className="section-tittle text-center mb-55">
+                  <h2>Our featured courses</h2>
+                </div>
+              </div>
+            </div>
+            <div className="courses-actives" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", columnGap: "35px", rowGap: "10px" }}>
+                {coursesData.map((course, index) => (
+                  <Course key={index} courseImage={course.courseImage} courseImageAlt={course.courseImageAlt} courseCategories={course.courseCategories} courseTitle={course.courseTitle} courseDescription={course.courseDescription} courseRating={course.courseRating} coursePayed={course.coursePayed} coursePrice={course.coursePrice} />
+                ))}
             </div>
           </div>
         </div>
-        <AboutComponent />
         <div className="topic-area section-padding40">
             <div className="container">
                 <div className="row justify-content-center">
@@ -180,78 +147,20 @@ function About() {
                 </div>
             </div>
         </div>
-        <section className="about-area3 fix">
-          <div className="support-wrapper align-items-center">
-            <div className="right-content3">
-              <div className="right-img">
-                <img src="/assets/img/gallery/about3.png" alt="" />
-              </div>
-            </div>
-            <div className="left-content3">
-              <div className="section-tittle section-tittle2 mb-20">
-                <div className="front-text">
-                  <h2 className="">Learner outcomes on courses you will take</h2>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="" />
-                </div>
-                <div className="features-caption">
-                  <p>Techniques to engage effectively with vulnerable children and young people.</p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="" />
-                </div>
-                <div className="features-caption">
-                  <p>Join millions of people from around the world
-                    learning together.</p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="" />
-                </div>
-                <div className="features-caption">
-                  <p>Join millions of people from around the world learning together.
-                    Online learning is as easy and natural.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="team-area section-padding40 fix">
+        <div className="services-area" style={{padding: "11rem 0"}}>
           <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Community experts</h2>
-                </div>
-              </div>
-            </div>
-            <div className="team-active">
-              {carousel === true ? (<OwlCarousel
-                {...teamsOptions}
-                autoplay={true}
-                lazyLoad={true}
-                smartSpeed={1000}
-                autoplayTimeout={2500}
-                className="owl-carousel owl-theme"
-              >
-                {teamsData.map((profile, index) => (
-                  <TeamProfile key={index} imageSrc={profile.imageSrc} imageAlt={profile.imageAlt} profileName={profile.profileName} profileDescription={profile.profileDescription} />
-                ))}
-              </OwlCarousel>) : null}
+            <div className="row justify-content-sm-center">
+              {servicesData.map((service, index) => (
+                <Service key={index} imageSrc={service.imageSrc} imageAlt={service.imageAlt} serviceHeading={service.serviceHeading} serviceDescription={service.serviceDescription} />
+              ))}
             </div>
           </div>
-        </section>
+        </div>
     </main>
     <Footer />
     </>
+    
   )
 }
 
-export default About
+export default Courses

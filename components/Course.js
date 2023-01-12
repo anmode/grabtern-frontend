@@ -2,7 +2,7 @@ import React from 'react'
 
 function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, courseDescription, courseRating, coursePayed, coursePrice }) {
     return (
-        <div className="properties pb-20" style={{ minWidth: "360px" }}>
+        <div className="properties pb-20 item">
             <div className="properties__card">
                 <div className="properties__img overlay1">
                     <a href="#"><img src={courseImage} alt={courseImageAlt} /></a>

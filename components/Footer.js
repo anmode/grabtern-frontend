@@ -77,7 +77,7 @@ function Footer() {
                             <div className="row d-flex align-items-center">
                                 <div className="col-xl-12 ">
                                     <div className="footer-copy-right text-center">
-                                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" rel="noreferrer noopener">Colorlib</a></p>
+                                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Grabtern.com</p>
                                     </div>
                                 </div>
                             </div>

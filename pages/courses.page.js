@@ -20,7 +20,7 @@ function Courses() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Our featured courses</h2>
+                  <h2>Our featured Internships</h2>
                 </div>
               </div>
             </div>
@@ -36,7 +36,7 @@ function Courses() {
                 <div className="row justify-content-center">
                     <div className="col-xl-7 col-lg-8">
                         <div className="section-tittle text-center mb-55">
-                            <h2>Explore top subjects</h2>
+                            <h2>Explore Top Hackathons</h2>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ function Courses() {
                 <div className="row justify-content-center">
                     <div className="col-xl-12">
                         <div className="section-tittle text-center mt-20">
-                            <a href="courses.html" className="border-btn">View More Subjects</a>
+                            <a href="courses.html" className="border-btn">View More Hackathons</a>
                         </div>
                     </div>
                 </div>

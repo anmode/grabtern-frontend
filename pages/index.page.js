@@ -89,7 +89,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Our featured courses</h2>
+                  <h2>Our featured Internships</h2>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Explore top subjects</h2>
+                  <h2>Explore Top Hackathons</h2>
                 </div>
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-12">
                 <div className="section-tittle text-center mt-20">
-                  <a href="courses.html" className="border-btn">View More Subjects</a>
+                  <a href="courses.html" className="border-btn">View More Hackathons</a>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
             <div className="left-content3">
               <div className="section-tittle section-tittle2 mb-20">
                 <div className="front-text">
-                  <h2 className="">Learner outcomes on courses you will take</h2>
+                  <h2 className="">Student Outcomes after taking an Internship preparation Course</h2>
                 </div>
               </div>
               <div className="single-features">
@@ -244,7 +244,7 @@ export default function Home() {
                   <img src="/assets/img/icon/right-icon.svg" alt="" />
                 </div>
                 <div className="features-caption">
-                  <p>Techniques to engage effectively with vulnerable children and young people.</p>
+                  <p>Time wasted on research and gathering content from google and other blogs saves.</p>
                 </div>
               </div>
               <div className="single-features">
@@ -261,8 +261,7 @@ export default function Home() {
                   <img src="/assets/img/icon/right-icon.svg" alt="" />
                 </div>
                 <div className="features-caption">
-                  <p>Join millions of people from around the world learning together.
-                    Online learning is as easy and natural.</p>
+                  <p>Focus builds and correct mentorship given to achieve the dream intern easily</p>
                 </div>
               </div>
             </div>
@@ -273,7 +272,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Community experts</h2>
+                  <h2>Community Mentors</h2>
                 </div>
               </div>
             </div>

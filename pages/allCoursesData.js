@@ -78,5 +78,36 @@ export default [
         courseRating: 4.8,
         coursePayed: 670,
         coursePrice: 135
+    },
+    {
+        courseImage: "/assets/img/gallery/hackerrank.png",
+        courseImageAlt: "",
+        courseCategories: "GrabTern",
+        courseTitle: "HackerRank Summer and Winter Internship",
+        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseRating: 4.8,
+        coursePayed: 800,
+        coursePrice: 135
+    },
+    {
+        courseImage: "/assets/img/gallery/isro.png",
+        courseImageAlt: "",
+        courseCategories: "GrabTern",
+        courseTitle: "ISRO Internship",
+        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseRating: 4.7,
+        coursePayed: 270,
+        coursePrice: 135
+    },
+    {
+        courseImage: "/assets/img/gallery/mlamazon.png",
+        courseImageAlt: "",
+        courseCategories: "GrabTern",
+        courseTitle: "Amazon ML Summer School",
+        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseRating: 4.8,
+        coursePayed: 170,
+        coursePrice: 135
     }
+    
 ]

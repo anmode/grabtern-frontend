@@ -9,8 +9,8 @@ function Banner() {
                         <div className="row">
                             <div className="col-xl-6 col-lg-7 col-md-12">
                                 <div className="hero__caption">
-                                    <h1 data-animation="fadeInLeft" data-delay="0.2s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "0.8s"}}>Grab your First Dream Intern with GrabTern</h1>
-                                    <p data-animation="fadeInLeft" data-delay="0.4s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "1s"}}>Get One to One mentorship and Increase your chances to achieve your Dream Intern at Dream Company.</p>
+                                    <h1 data-animation="fadeInLeft" data-delay="0.2s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "0.8s"}}>Grab your Intern with GrabTern</h1>
+                                    <p data-animation="fadeInLeft" data-delay="0.4s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "1s"}}>Our Mentors will guide through out the journey to achieve your Dream Intern</p>
                                     <a href="#" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Join for Free</a>
                                 </div>
                             </div>

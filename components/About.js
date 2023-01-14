@@ -56,7 +56,7 @@ function About() {
                 </div>
                 <div className="right-content1">
                     <div className="right-img">
-                        <video controls="controls" loop muted style={{ width: "570px", position: "relative", top: "50px" }}>
+                        <video controls="controls" muted style={{ width: "570px", position: "relative", top: "50px" }}>
                             <source src='/video.mp4' type='video/mp4' />
                         </video>
                         {/* <div className="video-icon" style={{ position: "relative", left: "-70px", top: "-110px" }}>

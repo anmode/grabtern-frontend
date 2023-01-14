@@ -127,8 +127,9 @@ a {
   }
 }
 
+
 .menuToggle {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 7px;
   position: absolute;
@@ -180,6 +181,9 @@ a {
 }}
 
 @media (max-width: 992px) {
+  .menuToggle {
+    display: flex;
+  }
   .header-bottom .container-fluid .row div:nth-child(2) {
     padding: 0;
     position: absolute;

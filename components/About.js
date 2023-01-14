@@ -22,10 +22,10 @@ function About() {
                     </div>
                     <div className="section-tittle section-tittle2 mb-55">
                         <div className="front-text">
-                            <h2 className="">Learn new skills online with top educators</h2>
-                            <p>The automated process all your website tasks. Discover tools and
-                                techniques to engage effectively with vulnerable children and young
-                                people.</p>
+                            <h2 className="">Mentor guide you through out the whole Journey.</h2>
+                            <p>We stay in touch with both the students and mentors throughout the 
+                               mentorship process to ensure that both parties are getting the support they need and
+                               to address any issues that may arise.</p>
                         </div>
                     </div>
                     <div className="single-features">
@@ -33,7 +33,7 @@ function About() {
                             <img src="/assets/img/icon/right-icon.svg" alt="" />
                         </div>
                         <div className="features-caption">
-                            <p>Techniques to engage effectively with vulnerable children and young people.</p>
+                            <p>One to One Interaction between mentors and students</p>
                         </div>
                     </div>
                     <div className="single-features">
@@ -41,7 +41,7 @@ function About() {
                             <img src="/assets/img/icon/right-icon.svg" alt="" />
                         </div>
                         <div className="features-caption">
-                            <p>Join millions of people from around the world  learning together.</p>
+                            <p>Online sesssions and workshop with doubt solving.</p>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@ function About() {
                             <img src="/assets/img/icon/right-icon.svg" alt="" />
                         </div>
                         <div className="features-caption">
-                            <p>Join millions of people from around the world learning together. Online learning is as easy and natural.</p>
+                            <p>Join the community and start your journey under guidance and have interaction</p>
                         </div>
                     </div>
                 </div>

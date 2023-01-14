@@ -89,18 +89,18 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Our featured Internships</h2>
+                  <h2>Our Featured Internships</h2>
                 </div>
               </div>
             </div>
             <div className="courses-actives">
               {carousel === true ? (<OwlCarousel
                 {...coursesOptions}
-                // autoplay={true}
-                // lazyLoad={true}
-                // smartSpeed={1000}
-                // autoplayTimeout={2500}
-                // autoplayHoverPause={true}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={2500}
+                autoplayHoverPause={true}
                 className="owl-carousel owl-theme"
               >
                 {coursesData.map((course, index) => (

@@ -57,7 +57,6 @@ a {
   position: absolute;
   right: -30px;
   margin-left: 50px !important;
-
 }
 
 .owl-nav button span {
@@ -85,7 +84,7 @@ a {
   margin-top: 0 !important;
 }
 
-@media screen and (max-width:992px) {
+@media screen and (max-width: 992px) {
   .courses-actives {
     display: block !important;
   }
@@ -94,21 +93,237 @@ a {
 .properties__card {
   position: relative;
   height: 640px !important;
+  position: relative;
 }
 
-.properties__caption {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.properties__footer {
+  margin-bottom: 0 !important;
 }
 
 .courseFooter {
   position: absolute;
- margin-top: auto;
- width: 320px;
-top: 260px;
+  bottom: 20px;
+  width: calc(100% - 40px);
 }
 
-.courseFooter .properties__footer {
-  margin-bottom: 0;
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  top: calc(125px / 2);
+  cursor: pointer;
+}
+
+.menuToggle span {
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.menuToggle.active span:first-child {
+  rotate: -45deg;
+  transform: translateY(10px) translateX(-10px);
+}
+
+
+.menuToggle.active span:nth-child(2) {
+  display: none;
+}
+
+.menuToggle.active span:last-child {
+  rotate: 45deg;
+  transform: translateY(2px) translateX(2px);
+}
+
+.slick-track {
+  width: 100% !important;
+}
+
+.single-slider {
+  width: 100% !important;
+}
+
+@media (max-width: 1199px) {
+  .services-area .single-services {
+    padding: 22px 18px !important;
+}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+.about-area1 .support-wrapper {
+    display: flex !important;
+}}
+
+@media (max-width: 992px) {
+  .header-bottom .container-fluid .row div:nth-child(2) {
+    padding: 0;
+    position: absolute;
+    top: 150px;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0;
+  }
+
+  .main-menu {
+    width: 100%;
+  }
+  .main-menu.active {
+    display: block !important;
+  }
+  .main-menu nav ul {
+    gap: 50px;
+    padding: 50px 35px;
+    width: 100%;
+    background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
+    display: flex;
+    flex-direction: column;
+  }
+  .main-menu nav ul li a {
+    padding: 0 !important;
+  }
+  .about-area1 .support-wrapper {
+    flex-direction: column;
+  }
+ .services-area {
+ margin-top: -120px;
+}
+  .container {
+    padding-top: 50px ;
+
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .cat-icon img {
+    width: 80% !important;
+  }
+  .owl-nav button:first-child {
+    left: -25px;
+  }
+  .owl-nav button:last-child {
+    right: -25px;
+  }
+  .services-area > .container > .row .col-lg-4 {
+    flex: unset;
+    max-width: 100% !important;
+  }
+  .container {
+    padding: 70px 30px;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+.about-area1 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.right-content1 {
+  margin-left: 0 !important;
+  margin-right: 0 !important; 
+  padding-left: 0 !important;
+}
+
+.about-area1 .support-wrapper {
+  gap: 30px;
+  flex-wrap: nowrap !important;
+}
+
+.right-img {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+
+  .video {
+    width: 540px !important;
+    max-width: unset !important;
+  }
+}
+
+.left-content1 {
+  width: 100% !important;
+  padding-left: 0 !important;
+}
+
+@media (max-width: 880px) {
+  .properties__card {
+    height: 770px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .owl-nav {
+    display: none;
+  }
+  .courses-area .container {
+    padding: 100px 10px 0 !important;
+  }
+  .single-slider .container {
+    padding: 70px 30px !important;
+  }
+  .properties__card {
+    height: 690px !important;
+  }
+  .properties__footer .restaurant-name {
+    font-size: 14px !important;
+  }
+  .properties__footer .price span {
+    font-size: 18px !important;
+    position: relative;
+    top: -36px;
+    margin-left: 20px;
+  }
+  .courseFooter a {
+    padding: 10px;
+  }
+  .about-area1 {
+    padding: 0 30px;
+  }
+  .services-area > .container > .row .col-lg-4 .single-services {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .services-area > .container > .row .col-lg-4 .single-services .features-caption {
+    padding-left: 0;
+  }
+  .services-area {
+    margin-top: -160px;
+   }
+  .container {
+    padding: 100px 30px 0;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }

@@ -11,9 +11,11 @@ function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, co
                     <a href="#"><img src={courseImage} alt={courseImageAlt} /></a>
                 </div>
                 <div className="properties__caption">
-                    <p>{courseCategories}</p>
+                    <div className='courseInfo'>
+                        <p>{courseCategories}</p>
                     <h3><a href="#">{courseTitle}</a></h3>
                     <p>{description}</p>
+                    </div>
                     <div className='courseFooter'>
                         <div className="properties__footer d-flex justify-content-between align-items-center">
                             <div className="restaurant-name">

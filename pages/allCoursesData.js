@@ -84,7 +84,7 @@ export default [
         courseImageAlt: "",
         courseCategories: "GrabTern",
         courseTitle: "HackerRank Summer and Winter Internship",
-        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseDescription: "HackerRank internships are online, remote internships where students work on real-world projects and contribute to the company's codebase, just like a regular on-site internship. It's a great way for students to gain practical experience and to improve their coding skills while they are pursuing their education",
         courseRating: 4.8,
         coursePayed: 800,
         coursePrice: 135
@@ -94,7 +94,7 @@ export default [
         courseImageAlt: "",
         courseCategories: "GrabTern",
         courseTitle: "ISRO Internship",
-        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseDescription: "ISRO provides internships for students who are interested in space technology and related fields. These internships are typically offered to undergraduate and graduate students, as well as postdoctoral researchers. The duration of the internship can vary depending on the program, but it can range from a few weeks to several months.",
         courseRating: 4.7,
         coursePayed: 270,
         coursePrice: 135
@@ -104,7 +104,7 @@ export default [
         courseImageAlt: "",
         courseCategories: "GrabTern",
         courseTitle: "Amazon ML Summer School",
-        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseDescription: "The Amazon ML Summer Internship program provides students with the opportunity to work on real-world projects with Amazon's Machine Learning experts. Interns will have the opportunity to gain hands-on experience with the latest machine learning technologies and tools, work on cutting-edge research and development projects, and collaborate with other interns and mentors from different teams.",
         courseRating: 4.8,
         coursePayed: 170,
         coursePrice: 135
@@ -114,7 +114,7 @@ export default [
         courseImageAlt: "",
         courseCategories: "GrabTern",
         courseTitle: "KDE - Season Of Docs",
-        courseDescription: "Amazon Web Services (AWS) Worldwide Operations (WWOps) Internship Program, also known as 'AWS WOW Internship Program' is a 12-week internship program that provides students with the opportunity to work with Amazon Web Services (AWS) Worldwide Operations (WWOps) team and gain hands-on experience in areas such as Data Center Operations, Network Engineering, IT Support, and more. The program is designed to give students an opportunity to work on real-world projects and gain valuable industry experience.",
+        courseDescription: "During the Season of Docs, technical writers work with open-source software development communities to improve documentation, create tutorials, and write user guides. Technical writers are paired with mentor developers from the participating open-source projects, who guide them through the process of contributing to the project's documentation.",
         courseRating: 4.8,
         coursePayed: 170,
         coursePrice: 135

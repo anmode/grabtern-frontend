@@ -15,7 +15,7 @@ function Footer() {
                                         </div>
                                         <div className="footer-tittle">
                                             <div className="footer-pera">
-                                                <p>The automated process starts as soon as your clothes go into the machine.</p>
+                                                <p>The Internship Journey started as soon as you enroll in any internship course</p>
                                             </div>
                                         </div>
                                         <div className="footer-social">
@@ -29,13 +29,12 @@ function Footer() {
                             <div className="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                                 <div className="single-footer-caption mb-50">
                                     <div className="footer-tittle">
-                                        <h4>Our solutions</h4>
+                                        <h4>Services to Student</h4>
                                         <ul>
-                                            <li><a href="#">Design & creatives</a></li>
-                                            <li><a href="#">Telecommunication</a></li>
-                                            <li><a href="#">Restaurant</a></li>
-                                            <li><a href="#">Programing</a></li>
-                                            <li><a href="#">Architecture</a></li>
+                                            <li><a href="#">One to One Mentorship</a></li>
+                                            <li><a href="#">Networking</a></li>
+                                            <li><a href="#">Live Sessions</a></li>
+                                            <li><a href="#">Resources</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -43,13 +42,12 @@ function Footer() {
                             <div className="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                                 <div className="single-footer-caption mb-50">
                                     <div className="footer-tittle">
-                                        <h4>Support</h4>
+                                        <h4>Services to Mentors</h4>
                                         <ul>
-                                            <li><a href="#">Design & creatives</a></li>
-                                            <li><a href="#">Telecommunication</a></li>
-                                            <li><a href="#">Restaurant</a></li>
-                                            <li><a href="#">Programing</a></li>
-                                            <li><a href="#">Architecture</a></li>
+                                            <li><a href="#">Community Base</a></li>
+                                            <li><a href="#">Self Satisfaction</a></li>
+                                            <li><a href="#">Build Leadership skills</a></li>
+                                            <li><a href="#">Get paid</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -57,13 +55,12 @@ function Footer() {
                             <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                                 <div className="single-footer-caption mb-50">
                                     <div className="footer-tittle">
-                                        <h4>Company</h4>
+                                        <h4>Grabtern</h4>
                                         <ul>
-                                            <li><a href="#">Design & creatives</a></li>
-                                            <li><a href="#">Telecommunication</a></li>
-                                            <li><a href="#">Restaurant</a></li>
-                                            <li><a href="#">Programing</a></li>
-                                            <li><a href="#">Architecture</a></li>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">Internship</a></li>
+                                            <li><a href="https://www.linkedin.com/company/grabtern/">Linkedin</a></li>
+                                            <li><a href="https://discord.gg/HdASBpTR">Discord</a></li>
                                         </ul>
                                     </div>
                                 </div>

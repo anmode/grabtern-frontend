@@ -1633,8 +1633,8 @@ function Contact() {
             <i className="ti-home" />
           </span>
           <div className="media-body">
-            <h3>Buttonwood, California.</h3>
-            <p>Rosemead, CA 91770</p>
+            <h3>AMU Campus</h3>
+            <p>Aligarh, Uttar Pradesh</p>
           </div>
         </div>
         <div className="media contact-info">
@@ -1642,7 +1642,7 @@ function Contact() {
             <i className="ti-tablet" />
           </span>
           <div className="media-body">
-            <h3>+1 253 565 2365</h3>
+            <h3>9368086395</h3>
             <p>Mon to Fri 9am to 6pm</p>
           </div>
         </div>
@@ -1651,7 +1651,7 @@ function Contact() {
             <i className="ti-email" />
           </span>
           <div className="media-body">
-            <h3>support@colorlib.com</h3>
+            <h3>contact.grabtern@gmail.com</h3>
             <p>Send us your query anytime!</p>
           </div>
         </div>

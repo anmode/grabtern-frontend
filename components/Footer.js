@@ -84,7 +84,6 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                {'<!--'} Footer End--{'>'}
             </div>
         </footer>
     )

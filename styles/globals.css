@@ -91,6 +91,24 @@ a {
   }
 }
 
-.scrolled {
-  position: fixed !important;
+.properties__card {
+  position: relative;
+  height: 640px !important;
+}
+
+.properties__caption {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.courseFooter {
+  position: absolute;
+ margin-top: auto;
+ width: 320px;
+top: 260px;
+}
+
+.courseFooter .properties__footer {
+  margin-bottom: 0;
 }

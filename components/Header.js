@@ -24,7 +24,7 @@ function Header() {
                             <div className="row align-items-center">
                                 <div className="col-xl-2 col-lg-2">
                                     <div className="logo">
-                                        <a href="/"><img src="/assets/img/logo/logo.png" alt="" /></a>
+                                        <a href="/"><img src="/whitelogo.png" style={{padding: "30px 0"}} width={100} alt="" /></a>
                                     </div>
                                 </div>
                                 <div className="col-xl-10 col-lg-10">

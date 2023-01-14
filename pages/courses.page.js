@@ -24,7 +24,7 @@ function Courses() {
                 </div>
               </div>
             </div>
-            <div className="courses-actives" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", columnGap: "35px", rowGap: "10px" }}>
+            <div className="courses-actives" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
                 {coursesData.map((course, index) => (
                   <Course key={index} courseImage={course.courseImage} courseImageAlt={course.courseImageAlt} courseCategories={course.courseCategories} courseTitle={course.courseTitle} courseDescription={course.courseDescription} courseRating={course.courseRating} coursePayed={course.coursePayed} coursePrice={course.coursePrice} />
                 ))}

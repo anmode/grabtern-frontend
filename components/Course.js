@@ -1,8 +1,11 @@
 import React from 'react'
 
 function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, courseDescription, courseRating, coursePayed, coursePrice }) {
+    const description = courseDescription.length > 120
+        ? `${courseDescription.substring(0, 120)}…`
+        : courseDescription
     return (
-        <div className="properties pb-20 item">
+        <div className="properties pb-20 item" style={{ minHeight: "469px !important" }}>
             <div className="properties__card">
                 <div className="properties__img overlay1">
                     <a href="#"><img src={courseImage} alt={courseImageAlt} /></a>
@@ -10,25 +13,27 @@ function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, co
                 <div className="properties__caption">
                     <p>{courseCategories}</p>
                     <h3><a href="#">{courseTitle}</a></h3>
-                    <p>{courseDescription}</p>
-                    <div className="properties__footer d-flex justify-content-between align-items-center">
-                        <div className="restaurant-name">
-                            <div className="rating">
-                                {Array(Math.floor(courseRating)).fill("").map((_, index) => (
-                                    <i key={index} className="fas fa-star"></i>
-                                ))}
+                    <p>{description}</p>
+                    <div className='courseFooter'>
+                        <div className="properties__footer d-flex justify-content-between align-items-center">
+                            <div className="restaurant-name">
+                                <div className="rating">
+                                    {Array(Math.floor(courseRating)).fill("").map((_, index) => (
+                                        <i key={index} className="fas fa-star"></i>
+                                    ))}
 
-                                {courseRating.toString().includes('.') ? (<i className="fas fa-star-half"></i>) : null}
+                                    {courseRating.toString().includes('.') ? (<i className="fas fa-star-half"></i>) : null}
+                                </div>
+                                <p><span>({courseRating})</span> based on {coursePayed}</p>
                             </div>
-                            <p><span>({courseRating})</span> based on {coursePayed}</p>
+                            <div className="price">
+                                <span>${coursePrice}</span>
+                            </div>
                         </div>
-                        <div className="price">
-                            <span>${coursePrice}</span>
-                        </div>
+                        <a href="https://forms.gle/oCVb19syGnKnwQJ7A" className="border-btn border-btn2">Fill Out Form</a>
                     </div>
-                    <a href="https://forms.gle/oCVb19syGnKnwQJ7A" className="border-btn border-btn2">Fill Out Form</a>
-                </div>
 
+                </div>
             </div>
         </div>
     )

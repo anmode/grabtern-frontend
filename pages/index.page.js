@@ -96,11 +96,11 @@ export default function Home() {
             <div className="courses-actives">
               {carousel === true ? (<OwlCarousel
                 {...coursesOptions}
-                // autoplay={true}
-                // lazyLoad={true}
-                // smartSpeed={1000}
-                // autoplayTimeout={2500}
-                // autoplayHoverPause={true}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={2500}
+                autoplayHoverPause={true}
                 className="owl-carousel owl-theme"
               >
                 {coursesData.map((course, index) => (

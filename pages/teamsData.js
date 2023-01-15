@@ -1,32 +1,32 @@
 export default [
     {
-        imageSrc: "/assets/img/gallery/team1.png",
+        imageSrc: "/assets/img/community_mentors/profile1.jpg",
         imageAlt: "",
-        profileName: "Mr. Urela",
-        profileDescription: "The automated process all your website tasks."
+        profileName: "Chirag Singhal",
+        profileDescription: "Amazon ML summer mentor"
     },
     {
-        imageSrc: "/assets/img/gallery/team2.png",
+        imageSrc: "/assets/img/community_mentors/profile2.jpg",
         imageAlt: "",
-        profileName: "Mr. Uttom",
-        profileDescription: "The automated process all your website tasks."
+        profileName: "Anmol Agrawal",
+        profileDescription: "Google Summer of Code Mentor"
     },
     {
-        imageSrc: "/assets/img/gallery/team3.png",
+        imageSrc: "/assets/img/community_mentors/profile3.jpg",
         imageAlt: "",
-        profileName: "Mr. Shakil",
-        profileDescription: "The automated process all your website tasks."
+        profileName: "Syed Mohd Abbas",
+        profileDescription: "ISRO Mentor"
     },
     {
-        imageSrc: "/assets/img/gallery/team4.png",
+        imageSrc: "/assets/img/community_mentors/profile4.jpg",
         imageAlt: "",
-        profileName: "Mr. Arafat",
-        profileDescription: "The automated process all your website tasks."
+        profileName: "Muhammad Jufry",
+        profileDescription: "Chief Technical officer"
     },
     {
-        imageSrc: "/assets/img/gallery/team3.png",
+        imageSrc: "/assets/img/community_mentors/profile5.jpg",
         imageAlt: "",
-        profileName: "Mr. saiful",
-        profileDescription: "The automated process all your website tasks."
+        profileName: "Shwetank Maheshwari",
+        profileDescription: "Amazon ML Summer Mentor"
     },
 ]

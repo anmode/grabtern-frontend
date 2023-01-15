@@ -124,10 +124,10 @@ export default function Home() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/gallery/topic1.png" alt="" />
+                    <img src="/assets/img/hackathons/tata Imagination.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
+                        <h3><a href="#">Tata Imagination</a></h3>
                       </div>
                     </div>
                   </div>
@@ -136,10 +136,10 @@ export default function Home() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/gallery/topic2.png" alt="" />
+                    <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
+                        <h3><a href="#">Apple Swift <br/> Challenge</a></h3>
                       </div>
                     </div>
                   </div>
@@ -148,10 +148,10 @@ export default function Home() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/gallery/topic3.png" alt="" />
+                    <img src="/assets/img/hackathons/Hackoctoberfest.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
+                        <h3><a href="#">Hackoctoberfest</a></h3>
                       </div>
                     </div>
                   </div>
@@ -160,10 +160,10 @@ export default function Home() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/gallery/topic4.png" alt="" />
+                    <img src="/assets/img/hackathons/Microsoft Image Cup.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
+                        <h3><a href="#">Microsoft Image Cup</a></h3>
                       </div>
                     </div>
                   </div>
@@ -172,46 +172,10 @@ export default function Home() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/gallery/topic5.png" alt="" />
+                    <img src="/assets/img/hackathons/SIH.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img src="/assets/img/gallery/topic6.png" alt="" />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img src="/assets/img/gallery/topic7.png" alt="" />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img src="/assets/img/gallery/topic8.png" alt="" />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3><a href="#">Programing</a></h3>
+                        <h3><a href="#">SIH</a></h3>
                       </div>
                     </div>
                   </div>

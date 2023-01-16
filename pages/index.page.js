@@ -1,14 +1,15 @@
 import About from '../components/About';
 import Header from '../components/Header';
-import servicesData from './ServicesData';
+import servicesData from './data/ServicesData';
 import Service from '../components/Service';
-import coursesData from './coursesData';
+import coursesData from './data/coursesData';
 import Course from '../components/Course';
-import teamsData from './teamsData';
+import teamsData from './data/teamsData';
 import TeamProfile from '../components/TeamProfile';
 import Footer from '../components/Footer'
 import Banner from '../components/Banner'
 import dynamic from 'next/dynamic';
+import Testimonial from '../components/Testimonial';
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -19,6 +20,7 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import { useState, useEffect } from 'react';
+import testiomialsData from './data/testiomialsData';
 
 const coursesOptions = {
   items: 3,
@@ -56,6 +58,20 @@ const teamsOptions = {
     },
     1170: {
       items: 4,
+    }
+  },
+}
+
+const testimonialOptions = {
+  responsive: {
+    0: {
+      items: 1,
+    },
+    880: {
+      items: 2,
+    },
+    1170: {
+      items: 3,
     }
   },
 }
@@ -99,7 +115,7 @@ export default function Home() {
                 autoplay={true}
                 lazyLoad={true}
                 smartSpeed={1000}
-                autoplayTimeout={2500}
+                autoplayTimeout={3500}
                 autoplayHoverPause={true}
                 className="owl-carousel owl-theme"
               >
@@ -139,7 +155,7 @@ export default function Home() {
                     <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Apple Swift <br/> Challenge</a></h3>
+                        <h3><a href="#">Apple Swift <br /> Challenge</a></h3>
                       </div>
                     </div>
                   </div>
@@ -232,6 +248,28 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className='testimonials'>
+          <h2>Testimonials</h2>
+          <p>Here is what client say to us!</p>
+          <ul className='testimonialsList'>
+            {carousel === true ? (<OwlCarousel
+            {...testimonialOptions}
+              autoplay={true}
+              lazyLoad={true}
+              smartSpeed={1000}
+              autoplayTimeout={3500}
+              nav={true}
+              loop={true}
+              autoplayHoverPause={true}
+              className="owl-carousel owl-theme"
+            >
+              {testiomialsData.map((testimonial, index) => (
+                <Testimonial key={index} testimonialUserName={testimonial.testimonialUserName} testimonialUserHeadline={testimonial.testimonialUserHeadline} testimonialUserImage={testimonial.testimonialUserImage} testimonialRate={testimonial.testimonialRate} testimonialDescription={testimonial.testimonialDescription} />
+              ))}
+
+            </OwlCarousel>) : null}
+          </ul>
+        </section>
         <section className="team-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">
@@ -247,7 +285,8 @@ export default function Home() {
                 autoplay={true}
                 lazyLoad={true}
                 smartSpeed={1000}
-                autoplayTimeout={2500}
+                autoplayTimeout={3500}
+                autoplayHoverPause={true}
                 className="owl-carousel owl-theme"
               >
                 {teamsData.map((profile, index) => (

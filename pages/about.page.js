@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
 import SimpleBanner from '../components/SimpleBanner'
-import servicesData from './ServicesData';
+import servicesData from './data/ServicesData';
 import Service from '../components/Service';
 import AboutComponent from '../components/About';
 import dynamic from 'next/dynamic';
-import teamsData from './teamsData';
+import teamsData from './data/teamsData';
 import TeamProfile from '../components/TeamProfile';
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -44,17 +44,17 @@ const teamsOptions = {
 
 
 function About() {
-    const [carousel, setCarousel] = useState(false);
+  const [carousel, setCarousel] = useState(false);
 
-    useEffect(() => {
-      setCarousel(true);
-    }, [carousel])
+  useEffect(() => {
+    setCarousel(true);
+  }, [carousel])
   return (
     <>
-    <Header />
-    <SimpleBanner bannerTittle="About us" siteName="about" />
-    <main>
-    <div className="services-area" style={{padding: "12.5em 0 10rem"}}>
+      <Header />
+      <SimpleBanner bannerTittle="About us" siteName="about" />
+      <main>
+        <div className="services-area" style={{ padding: "12.5em 0 10rem" }}>
           <div className="container">
             <div className="row justify-content-sm-center">
               {servicesData.map((service, index) => (
@@ -92,7 +92,7 @@ function About() {
                     <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Apple Swift <br/> Challenge</a></h3>
+                        <h3><a href="#">Apple Swift <br /> Challenge</a></h3>
                       </div>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ function About() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Community experts</h2>
+                  <h2>Community Mentors</h2>
                 </div>
               </div>
             </div>
@@ -201,7 +201,8 @@ function About() {
                 autoplay={true}
                 lazyLoad={true}
                 smartSpeed={1000}
-                autoplayTimeout={2500}
+                autoplayTimeout={3500}
+                autoplayHoverPause={true}
                 className="owl-carousel owl-theme"
               >
                 {teamsData.map((profile, index) => (
@@ -211,8 +212,8 @@ function About() {
             </div>
           </div>
         </section>
-    </main>
-    <Footer />
+      </main>
+      <Footer />
     </>
   )
 }

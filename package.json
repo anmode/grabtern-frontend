@@ -1,0 +1,22 @@
+{
+  "name": "grabtern.com",
+  "version": "1.0.0",
+  "description": "This is website for providing the mentorship program",
+  "main": "index.js",
+  "scripts": {
+    "build": "concurrently --kill-others \"cd frontend && yarn start\" \"cd backend && yarn start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anmode/Move-to-nextJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anmode/Move-to-nextJS/issues"
+  },
+  "homepage": "https://github.com/anmode/Move-to-nextJS#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

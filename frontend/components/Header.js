@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function Header() {
+function Header({isUserLoggedIn}) {
     const [scrollY, setScrollY] = useState(0);
     const [navbarAppear, setNavbarAppear] = useState(false)
 
@@ -26,6 +26,11 @@ function Header() {
             setNavbarAppear(true);
         }
     }
+    const logout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_name");
+		window.location.reload();
+    }
     return (
         <div className="header-area header-transparent">
             <div className="main-header ">
@@ -46,8 +51,12 @@ function Header() {
                                                 <li><a href="/internships">Internships</a></li>
                                                 <li><a href="/about">About</a></li>
                                                 <li><a href="/contact">Contact</a></li>
+                                                {isUserLoggedIn === true ? (
+                                                <li><button onClick={() => logout()} style={{ backgroundColor: "black", padding: "5px 15px", borderRadius: "50px", cursor: "pointer" }}>Logout</button></li>
+                                                ) : null}
                                             </ul>
                                         </nav>
+                                        
                                     </div>
 
                                 </div>

@@ -77,15 +77,21 @@ const testimonialOptions = {
 }
 
 export default function Home() {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [carousel, setCarousel] = useState(false);
-
   useEffect(() => {
+    if(localStorage.getItem("user_name") !== null || localStorage.getItem("token") !== null) {
+      setIsUserLoggedIn(true)
+    }
+    console.log(isUserLoggedIn)
     setCarousel(true);
   }, [carousel])
   return (
     <div>
-
-      <Header />
+      {localStorage.getItem("user_name") !== null ? (
+      <div className="welcomeAfterLoggedIn">Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern</div>
+      ) : null}
+      <Header isUserLoggedIn={isUserLoggedIn} />
 
       <main>
         <Banner />

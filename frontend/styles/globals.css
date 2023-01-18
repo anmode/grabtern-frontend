@@ -32,6 +32,26 @@ a {
   z-index: 100;
 }
 
+.welcomeAfterLoggedIn {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
+  animation: welcomeAfterLoggedIn 1s 0.8s;
+}
+
+@keyframes welcomeAfterLoggedIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @keyframes loader {
   10% {
     opacity: 1;

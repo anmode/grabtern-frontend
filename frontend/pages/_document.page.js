@@ -31,7 +31,7 @@ export default function Document() {
                 />
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js" async defer></script> 
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6172950963478417"
-     crossorigin="anonymous"></script> 
+     crossOrigin="anonymous"></script> 
             </Head>
             <body>
                 <Main />

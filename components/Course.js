@@ -29,7 +29,7 @@ function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, co
                                 <p><span>({courseRating})</span> based on {coursePayed}</p>
                             </div>
                             <div className="price">
-                                <span>${coursePrice}</span>
+                                <span>₹{coursePrice}</span>
                             </div>
                         </div>
                         <a href="https://forms.gle/oCVb19syGnKnwQJ7A" className="border-btn border-btn2">Fill Out Form</a>

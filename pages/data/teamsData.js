@@ -29,4 +29,10 @@ export default [
         profileName: "Shwetank Maheshwari",
         profileDescription: "Amazon ML Summer Mentor"
     },
+    {
+        imageSrc: "/assets/img/community_mentors/bhavy.jpeg",
+        imageAlt: "",
+        profileName: "Bhavy Airi",
+        profileDescription: "KDE Season of Docs Mentor"
+    },
 ]

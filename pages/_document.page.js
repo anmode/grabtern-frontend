@@ -29,7 +29,9 @@ export default function Document() {
                     rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
                 />
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js" async defer></script>  
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" async defer></script> 
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6172950963478417"
+     crossorigin="anonymous"></script> 
             </Head>
             <body>
                 <Main />

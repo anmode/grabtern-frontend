@@ -4,7 +4,7 @@
   "description": "This is website for providing the mentorship program",
   "main": "index.js",
   "scripts": {
-    "build": "concurrently --kill-others \"cd frontend && yarn start\" \"cd backend && yarn start\""
+    "build": "concurrently --kill-others \"cd frontend && npm i && npm run dev\" \"cd backend && npm i && npm run start\""
   },
   "repository": {
     "type": "git",

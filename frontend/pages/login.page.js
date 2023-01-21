@@ -17,7 +17,7 @@ function Login() {
         setError("")
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/auth";
+			const url = "https://grabtern-api.up.railway.app/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
             localStorage.setItem("user_name", res.fullName);

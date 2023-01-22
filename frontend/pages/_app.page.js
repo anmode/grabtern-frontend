@@ -58,6 +58,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="title" content="GrabTern" />
         <meta name="description" content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!" />
 
+        <meta name="robots" content="noindex"/>
+        <link rel="canonical" href="https://grabtern.com/" />
+        <link rel="alternate" type="application/rss+xml" title="Emupedia" href="https://grabtern.com/feed.xml" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://grabtern.com/" />
         <meta name="keywords" content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes" />

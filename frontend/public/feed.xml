@@ -1,0 +1,12 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+<title>GrabTern</title>
+<description/>
+<link>https://grabtern.com/</link>
+<atom:link href="https://grabtern.com/feed.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Welcome to GrabTern!</title>
+<description><p>With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!</p> </description>
+</item>
+</channel>
+</rss>

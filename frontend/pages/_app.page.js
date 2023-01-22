@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps }) {
 
         <meta name="robots" content="noindex"/>
         <link rel="canonical" href="https://grabtern.com/" />
-        <link rel="alternate" type="application/rss+xml" title="Emupedia" href="https://grabtern.com/feed.xml"></link>
+        <link rel="alternate" type="application/rss+xml" title="Emupedia" href="https://grabtern.com/feed.xml" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://grabtern.com/" />
         <meta name="keywords" content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes" />

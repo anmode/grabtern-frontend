@@ -77,7 +77,7 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/tata Imagination.png" alt="" />
+                    <img src="/assets/img/hackathons/tata Imagination.png" alt="tata Imagination" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Tata Imagination</a></h3>
@@ -89,7 +89,7 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="" />
+                    <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="Apple Swift Challenge" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Apple Swift <br /> Challenge</a></h3>
@@ -101,7 +101,7 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Hackoctoberfest.png" alt="" />
+                    <img src="/assets/img/hackathons/Hackoctoberfest.png" alt="Hackoctoberfest" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Hackoctoberfest</a></h3>
@@ -113,7 +113,7 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Microsoft Image Cup.png" alt="" />
+                    <img src="/assets/img/hackathons/Microsoft Image Cup.png" alt="Microsoft Image Cup" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Microsoft Image Cup</a></h3>
@@ -125,7 +125,7 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/SIH.png" alt="" />
+                    <img src="/assets/img/hackathons/SIH.png" alt="SIH" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">SIH</a></h3>
@@ -148,18 +148,18 @@ function About() {
           <div className="support-wrapper align-items-center">
             <div className="right-content3">
               <div className="right-img">
-                <img src="/assets/img/gallery/about3.png" alt="" />
+                <img src="/assets/img/gallery/about3.png" alt="about" />
               </div>
             </div>
             <div className="left-content3">
               <div className="section-tittle section-tittle2 mb-20">
                 <div className="front-text">
-                  <h2 className="">Student Outcomes after taking an Internship preparation Course</h2>
+                  <h2>Student Outcomes after taking an Internship preparation Course</h2>
                 </div>
               </div>
               <div className="single-features">
                 <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="" />
+                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
                   <p>Time wasted on research and gathering content from google and other blogs saves.</p>
@@ -167,7 +167,7 @@ function About() {
               </div>
               <div className="single-features">
                 <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="" />
+                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
                   <p>Join millions of people from around the world
@@ -176,7 +176,7 @@ function About() {
               </div>
               <div className="single-features">
                 <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="" />
+                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
                   <p>Focus builds and correct mentorship given to achieve the dream intern easily</p>

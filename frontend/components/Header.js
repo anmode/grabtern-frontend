@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
 
 function Header({isUserLoggedIn}) {
     const [scrollY, setScrollY] = useState(0);
@@ -39,7 +40,7 @@ function Header({isUserLoggedIn}) {
                         <div className="row align-items-center">
                             <div className="col-xl-2 col-lg-2">
                                 <div className="logo">
-                                    <a href="/"><img src="/whitelogo.png" style={{ padding: "30px 0" }} width={100} alt="" /></a>
+                                    <a href="/"><Image width={100} height={117} src="/whitelogo.png" style={{ padding: "30px 0" }} alt="grabtern_logo" /></a>
                                 </div>
                             </div>
                             <div className="col-xl-10 col-lg-10">

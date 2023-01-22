@@ -32,6 +32,26 @@ a {
   z-index: 100;
 }
 
+.welcomeAfterLoggedIn {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
+  animation: welcomeAfterLoggedIn 1s 0.8s;
+}
+
+@keyframes welcomeAfterLoggedIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @keyframes loader {
   10% {
     opacity: 1;
@@ -287,7 +307,40 @@ a {
   }
 }
 
+.team-area {
+padding-top: 100px;
+
+}
+
 @media (max-width: 576px) {
+  .team-area {
+    padding-top: 0 !important;
+  }
+  .testimonialsList .box .info .name {
+    font-size: 15px !important;
+  }
+    .testimonialsList .box .info .job {
+      font-size: 14px !important;
+    }
+
+    .testimonialsList .box .info .stars i {
+      font-size: 15px !important;
+    }
+
+    .testimonialsList .box p {
+      font-size: 15px !important;
+    }
+    
+  .testimonialsList .box .content .image {
+    width: 65px !important;
+    height: 65px !important;
+  }
+  .testimonialsList .owl-nav {
+    display: none !important;
+  }
+  .testimonials {
+    padding: 0 20px !important;
+  }
   .owl-nav {
     display: none;
   }
@@ -331,4 +384,87 @@ a {
     max-width: 100% !important;
     width: 100% !important;
   }
+}
+
+.testimonials {
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 0 40px;
+}
+
+.testimonials h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.testimonials > p {
+  text-align: center;
+
+}
+
+.testimonialsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonialsList .box {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 25px;
+  margin-left: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: calc(100% - 20px);
+}
+
+.testimonialsList .box i.quote {
+  font-size: 20px;
+  color: #17a2b8;
+}
+
+.testimonialsList .box .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+
+}
+
+.testimonialsList .box .info .name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.testimonialsList .box .info .job {
+  color: #17a2b8;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.testimonialsList .box .info .stars {
+  margin-top: 2px;
+}
+
+.box .info .stars i {
+  color: #17a2b8;
+}
+
+.testimonialsList .box .content .image {
+  width: 75px;
+  height: 75px;
+  border: 3px solid #17a2b8;
+  border-radius: 50%;
+}
+
+.box .content .image img {
+  object-fit: cover;
+  border-radius: 50%;
+
+  width: 100%;
+  height: 100%;
+}
+
+.testimonialsList .owl-nav {
+  display: block;
 }

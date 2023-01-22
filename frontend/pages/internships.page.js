@@ -1,9 +1,9 @@
 import React from 'react'
 import Header from '../components/Header'
 import SimpleBanner from '../components/SimpleBanner'
-import coursesData from './allCoursesData.js';
+import coursesData from './data/allCoursesData.js';
 import Course from '../components/Course';
-import servicesData from './ServicesData';
+import servicesData from './data/ServicesData';
 import Service from '../components/Service';
 import Footer from '../components/Footer';
 

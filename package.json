@@ -1,24 +1,22 @@
 {
-  "name": "grab-tern-nextjs",
-  "version": "0.1.0",
-  "private": true,
+  "name": "grabtern.com",
+  "version": "1.0.0",
+  "description": "This is website for providing the mentorship program",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "concurrently --kill-others \"cd frontend && npm i && npm run dev\" \"cd backend && npm i && npm run start\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anmode/Move-to-nextJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anmode/Move-to-nextJS/issues"
+  },
+  "homepage": "https://github.com/anmode/Move-to-nextJS#readme",
   "dependencies": {
-    "jquery": "^3.6.3",
-    "next": "^13.1.1",
-    "owl.carousel": "^2.3.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-owl-carousel": "^2.3.3",
-    "react-socks": "^2.2.0"
-  },
-  "devDependencies": {
-    "eslint": "7.32.0",
-    "eslint-config-next": "13.1.1"
+    "concurrently": "^7.6.0"
   }
 }

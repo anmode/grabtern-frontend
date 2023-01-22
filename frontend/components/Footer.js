@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Footer() {
@@ -11,7 +12,7 @@ function Footer() {
                                 <div className="single-footer-caption mb-50">
                                     <div className="single-footer-caption mb-30">
                                         <div className="footer-logo mb-25">
-                                            <a href="index.html"><img src="/whitelogo.png" style={{ width: "120px" }} alt="" /></a>
+                                            <a href="index.html"><Image src="/whitelogo.png" width={120} height={69} alt="" /></a>
                                         </div>
                                         <div className="footer-tittle">
                                             <div className="footer-pera">

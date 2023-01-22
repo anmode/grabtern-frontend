@@ -17,7 +17,7 @@ function Register() {
 	const [error, setError] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
+		setData({ ...data, [input.name]:  input.value });
 	};
 
 	const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ function Register() {
             return setError("Password do not match!")
         }
 		try {
-			const url = "https://grabtern-api.up.railway.app/api/users";
+			const url = "http://localhost:8080/api/users";
 			const { data: res } = await axios.post(url, data);
 			router.push("/login");
 			console.log(res.message);

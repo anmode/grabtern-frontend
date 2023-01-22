@@ -44,7 +44,7 @@ function Internships() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/tata Imagination.png" alt="" />
+                    <img src="/assets/img/hackathons/tata Imagination.png" alt="tata Imagination" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Tata Imagination</a></h3>
@@ -56,7 +56,7 @@ function Internships() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="" />
+                    <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="Apple Swift Challenge" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Apple Swift <br /> Challenge</a></h3>
@@ -68,7 +68,7 @@ function Internships() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Hackoctoberfest.png" alt="" />
+                    <img src="/assets/img/hackathons/Hackoctoberfest.png" alt="Hackoctoberfest" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Hackoctoberfest</a></h3>
@@ -80,7 +80,7 @@ function Internships() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Microsoft Image Cup.png" alt="" />
+                    <img src="/assets/img/hackathons/Microsoft Image Cup.png" alt="Microsoft Image Cup" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">Microsoft Image Cup</a></h3>
@@ -92,7 +92,7 @@ function Internships() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/SIH.png" alt="" />
+                    <img src="/assets/img/hackathons/SIH.png" alt="SIH" />
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3><a href="#">SIH</a></h3>

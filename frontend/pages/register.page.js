@@ -27,7 +27,7 @@ function Register() {
             return setError("Password do not match!")
         }
 		try {
-			const url = "http://localhost:8080/api/users";
+			const url = "https://grabtern-api.vercel.app/api/users";
 			const { data: res } = await axios.post(url, data);
 			router.push("/login");
 			console.log(res.message);

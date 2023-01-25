@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "axios": "^1.2.3",
     "jquery": "^3.6.3",
     "next": "^13.1.1",

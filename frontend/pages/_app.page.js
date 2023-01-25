@@ -93,6 +93,7 @@ function MyApp({ Component, pageProps }) {
       <BreakpointProvider>
         <Component {...pageProps} />
       </BreakpointProvider>
+      <script src="https://smtpjs.com/v3/smtp.js" defer async></script>
     </>
   )
 

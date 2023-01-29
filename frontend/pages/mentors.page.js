@@ -13,7 +13,7 @@ function Internships() {
   return (
     <>
       <Header />
-      <SimpleBanner bannerTittle="Our Internships" siteName="Services" />
+      <SimpleBanner bannerTittle="Our Mentors" siteName="Services" />
       <main>
         <div className="courses-area section-padding40 fix">
           <div className="container">

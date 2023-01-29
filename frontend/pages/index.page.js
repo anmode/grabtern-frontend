@@ -2,8 +2,8 @@ import About from '../components/About';
 import Header from '../components/Header';
 import servicesData from './data/ServicesData';
 import Service from '../components/Service';
-import coursesData from './data/coursesData';
-import Course from '../components/Course';
+import internshipsData from './data/coursesData';
+import internship from '../components/Course';
 import teamsData from './data/teamsData';
 import TeamProfile from '../components/TeamProfile';
 import Footer from '../components/Footer'
@@ -22,7 +22,7 @@ import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import { useState, useEffect } from 'react';
 import testiomialsData from './data/testiomialsData';
 
-const coursesOptions = {
+const internshipsOptions = {
   items: 3,
   nav: true,
   loop: true,
@@ -106,7 +106,7 @@ export default function Home() {
         </div>
 
 
-        <div className="courses-area section-padding40 fix">
+        <div className="internships-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
@@ -115,9 +115,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="courses-actives">
+            <div className="internships-actives">
               {carousel === true ? (<OwlCarousel
-                {...coursesOptions}
+                {...internshipsOptions}
                 autoplay={true}
                 lazyLoad={true}
                 smartSpeed={1000}
@@ -125,8 +125,8 @@ export default function Home() {
                 autoplayHoverPause={true}
                 className="owl-carousel owl-theme"
               >
-                {coursesData.map((course, index) => (
-                  <Course key={index} courseImage={course.courseImage} courseImageAlt={course.courseImageAlt} courseCategories={course.courseCategories} courseTitle={course.courseTitle} courseDescription={course.courseDescription} courseRating={course.courseRating} coursePayed={course.coursePayed} coursePrice={course.coursePrice} />
+                {internshipsData.map((internship, index) => (
+                  <internship key={index} internshipImage={internship.internshipImage} internshipImageAlt={internship.internshipImageAlt} internshipCategories={internship.internshipCategories} internshipTitle={internship.internshipTitle} internshipDescription={internship.internshipDescription} internshipRating={internship.internshipRating} internshipPayed={internship.internshipPayed} internshipPrice={internship.internshipPrice} />
                 ))}
               </OwlCarousel>) : null}
             </div>
@@ -207,7 +207,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-12">
                 <div className="section-tittle text-center mt-20">
-                  <a href="courses.html" className="border-btn">View More Hackathons</a>
+                  <a href="internships.html" className="border-btn">View More Hackathons</a>
                 </div>
               </div>
             </div>
@@ -217,13 +217,13 @@ export default function Home() {
           <div className="support-wrapper align-items-center">
             <div className="right-content3">
               <div className="right-img">
-                <img src="/assets/img/gallery/about3.png" alt="about" />
+                <img src="/assets/img/gallery/mentors.avif" alt="about" />
               </div>
             </div>
             <div className="left-content3">
               <div className="section-tittle section-tittle2 mb-20">
                 <div className="front-text">
-                  <h2>Student Outcomes after taking an Internship preparation Course</h2>
+                  <h2>Why to be Mentor at Grabtern?</h2>
                 </div>
               </div>
               <div className="single-features">
@@ -231,7 +231,7 @@ export default function Home() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>Time wasted on research and gathering content from google and other blogs saves.</p>
+                  <p><b>Professional networking:</b> Mentors can expand their professional network by connecting with students and other mentors in the community.</p>
                 </div>
               </div>
               <div className="single-features">
@@ -239,8 +239,7 @@ export default function Home() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>Join millions of people from around the world
-                    learning together.</p>
+                  <p><b>Giving back:</b> Mentors can feel a sense of fulfillment by giving back to the community and contributing to the development of future professionals.</p>
                 </div>
               </div>
               <div className="single-features">
@@ -248,7 +247,7 @@ export default function Home() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>Focus builds and correct mentorship given to achieve the dream intern easily</p>
+                  <p><b>Continued learning:</b> Mentors can continue to learn and grow by staying up-to-date on the latest industry trends and knowledge through mentoring students.</p>
                 </div>
               </div>
             </div>

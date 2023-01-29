@@ -16,24 +16,7 @@ function Course({ courseImage, courseImageAlt, courseCategories, courseTitle, co
                     <h3><a href="#">{courseTitle}</a></h3>
                     <p>{description}</p>
                     </div>
-                    <div className='courseFooter'>
-                        <div className="properties__footer d-flex justify-content-between align-items-center">
-                            <div className="restaurant-name">
-                                <div className="rating">
-                                    {Array(Math.floor(courseRating)).fill("").map((_, index) => (
-                                        <i key={index} className="fas fa-star"></i>
-                                    ))}
-
-                                    {courseRating.toString().includes('.') ? (<i className="fas fa-star-half"></i>) : null}
-                                </div>
-                                <p><span>({courseRating})</span> based on {coursePayed}</p>
-                            </div>
-                            <div className="price">
-                                <span>₹{coursePrice}</span>
-                            </div>
-                        </div>
-                        <a href="https://forms.gle/oCVb19syGnKnwQJ7A" className="border-btn border-btn2">Fill Out Form</a>
-                    </div>
+                   
 
                 </div>
             </div>

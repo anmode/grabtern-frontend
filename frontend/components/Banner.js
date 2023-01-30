@@ -11,7 +11,7 @@ function Banner() {
                                 <div className="hero__caption">
                                     <h1 data-animation="fadeInLeft" data-delay="0.2s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "0.8s"}}>Grab your Intern with GrabTern</h1>
                                     <p data-animation="fadeInLeft" data-delay="0.4s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "1s"}}>Our Mentors will guide through out the journey to achieve your Dream Intern</p>
-                                    <a href="https://discord.gg/CvY7MJNz" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Join Our Discord</a>
+                                    <a href="https://discord.gg/7caphx7Mhy" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Join Our Discord</a>
                                 </div>
                             </div>
                         </div>

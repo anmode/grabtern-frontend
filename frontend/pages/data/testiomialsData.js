@@ -11,14 +11,14 @@ export default [
         testimonialUserHeadline: "Youtuber | Blogger",
         testimonialUserImage: "testimonial-profile1.png",
         testimonialRate: 4.5,
-        testimonialDescription: "I have been using GrabTern for a few days ago a I love it! I can't imagine he guide me about Amazon ML Summer Internship easly and also they have customer and contact 24/7 it is so great. Thank you"
+        testimonialDescription: "I have been using GrabTern for a few days ago and I love it! I can't imagine he guide me about Amazon ML Summer Internship easly and also they have customer and contact 24/7 it is so great. Thank you"
     },
     {
         testimonialUserName: "Emma",
         testimonialUserHeadline: "Technical Content Writer",
         testimonialUserImage: "testimonial-profile1.png",
         testimonialRate: 3.5,
-        testimonialDescription: "Would definitely recommend GrabTern and will definitely sharing to all my friends to be ordering again"
+        testimonialDescription: "Would definitely recommend GrabTern and will definitely sharing to all my friends."
     },
     {
         testimonialUserName: "Ava",

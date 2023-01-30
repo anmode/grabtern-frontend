@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import servicesData from './data/ServicesData';
 import Service from '../components/Service';
 import internshipsData from './data/coursesData';
-import internship from '../components/Course';
+import Internship from '../components/Internship';
 import teamsData from './data/teamsData';
 import TeamProfile from '../components/TeamProfile';
 import Footer from '../components/Footer'
@@ -126,7 +126,7 @@ export default function Home() {
                 className="owl-carousel owl-theme"
               >
                 {internshipsData.map((internship, index) => (
-                  <internship key={index} internshipImage={internship.internshipImage} internshipImageAlt={internship.internshipImageAlt} internshipCategories={internship.internshipCategories} internshipTitle={internship.internshipTitle} internshipDescription={internship.internshipDescription} internshipRating={internship.internshipRating} internshipPayed={internship.internshipPayed} internshipPrice={internship.internshipPrice} />
+                  <Internship key={index} internshipImage={internship.internshipImage} internshipImageAlt={internship.internshipImageAlt} internshipCategories={internship.internshipCategories} internshipTitle={internship.internshipTitle} internshipDescription={internship.internshipDescription} internshipRating={internship.internshipRating} internshipPayed={internship.internshipPayed} internshipPrice={internship.internshipPrice} />
                 ))}
               </OwlCarousel>) : null}
             </div>

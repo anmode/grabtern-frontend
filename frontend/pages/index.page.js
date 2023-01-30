@@ -80,7 +80,7 @@ export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [carousel, setCarousel] = useState(false);
   useEffect(() => {
-    if(localStorage.getItem("user_name") !== null || localStorage.getItem("token") !== null) {
+    if (localStorage.getItem("user_name") !== null || localStorage.getItem("token") !== null) {
       setIsUserLoggedIn(true)
     }
     console.log(isUserLoggedIn)
@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <div>
       {localStorage.getItem("user_name") !== null ? (
-      <div className="welcomeAfterLoggedIn">Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern</div>
+        <div className="welcomeAfterLoggedIn">Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern</div>
       ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
 
@@ -106,7 +106,7 @@ export default function Home() {
         </div>
 
 
-        <div className="internships-area section-padding40 fix">
+        <div className="courses-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
@@ -115,7 +115,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="internships-actives">
+            <div className="courses-actives">
               {carousel === true ? (<OwlCarousel
                 {...internshipsOptions}
                 autoplay={true}
@@ -258,7 +258,7 @@ export default function Home() {
           <p>Here is what client say to us!</p>
           <ul className='testimonialsList'>
             {carousel === true ? (<OwlCarousel
-            {...testimonialOptions}
+              {...testimonialOptions}
               autoplay={true}
               lazyLoad={true}
               smartSpeed={1000}

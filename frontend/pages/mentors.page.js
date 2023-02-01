@@ -9,7 +9,7 @@ function Mentors() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const url = "http://localhost:8080/api/mentors/mentorLists";
+                const url = "http://localhost:9090/api/mentors/mentorLists";
                 const { data } = await axios.get(url);
                 setMentorsData(data);
                 console.log(data)

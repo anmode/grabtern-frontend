@@ -6,35 +6,6 @@ import SimpleBanner from '../components/SimpleBanner'
 
 function Contact() {
   const form = useRef();
-  // const [userEmail, setUserEmail] = useState("");
-  // const [userName, setUserName] = useState("");
-  // const [userMessage, setUserMessage] = useState("");
-  // const [userSubject, setUserSubject] = useState("");
-
-/*   const handleSubmit = (e) => {
-    const userEmail = document.querySelector("#message").value;
-    const userMessage = document.querySelector("#email").value;
-    const userSubject = document.querySelector("#subject").value;
-
-    e.preventDefault()
-    Email.send({
-      Host: "smtp.gmail.com",
-      // Username : process.env.GRABTERN_EMAIL,
-      Username: "sayyidmuhammad878@gmail.com",
-      Password: PASSWORD,
-      To: "sayyidmuhammad878@gmail.com",
-      // Password : process.env.GRABTERN_PASSWORD,
-      // To : process.env.GRABTERN_EMAIL,
-      From: userEmail,
-      Subject: userSubject,
-      Body: userMessage
-    }).then(
-      message => {
-        alert("Your message has been sent to GrabTern!");
-        console.log(message)
-      }
-    );
-  } */
   const sendEmail = (e) => {
     e.preventDefault();
     const templateParams = {

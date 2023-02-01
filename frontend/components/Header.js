@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 
-function Header({isUserLoggedIn}) {
+function Header({isUserLoggedIn, navbarBackground}) {
     const [scrollY, setScrollY] = useState(0);
     const [navbarAppear, setNavbarAppear] = useState(false)
 
@@ -35,7 +35,7 @@ function Header({isUserLoggedIn}) {
     return (
         <div className="header-area header-transparent">
             <div className="main-header ">
-                <div className={`header-bottom  header-sticky ${scrollY > 400 ? "sticky-bar" : ""}`} style={{ transition: "all 0.5s ease-in" }}>
+                <div className={`header-bottom  header-sticky ${scrollY > 400 ? "sticky-bar" : navbarBackground === true ? "sticky-bar" : ""}`} style={{ transition: "all 0.5s ease-in" }}>
                     <div className="container-fluid">
                         <div className="row align-items-center">
                             <div className="col-xl-2 col-lg-2">

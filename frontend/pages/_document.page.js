@@ -25,13 +25,13 @@ export default function Document() {
                 <link rel="stylesheet" href="/assets/css/slick.css" />
                 <link rel="stylesheet" href="/assets/css/nice-select.css" />
                 <link rel="stylesheet" href="/assets/css/style.css" />
-                <link
-                    rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-                />
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js" async defer></script> 
+
+                <script
+                    src="https://kit.fontawesome.com/c26b883059.js"
+                    crossorigin="anonymous"
+                ></script>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6172950963478417"
-     crossOrigin="anonymous"></script> 
+                    crossOrigin="anonymous"></script>
             </Head>
             <body>
                 <Main />

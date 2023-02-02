@@ -1,11 +1,14 @@
 import React from 'react'
-import BeMentor from "../components/beMentor";
+import BeMentor from "../pages/beMentor.page";
 import Header from '../components/Header'
 import Footer from "../components/Footer";
 
-export default function(){
+const Home = () => {
   return(  <>
-<BeMentor/>
-
-</>)
+    <BeMentor />
+  </>)
 }
+
+Home.displayName = "Home";
+
+export default Home;

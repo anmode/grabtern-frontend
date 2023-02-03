@@ -27,7 +27,7 @@ export default function Document() {
                 <link rel="stylesheet" href="/assets/css/style.css" />
 
                 <script
-                   async
+                    async
                     src="https://kit.fontawesome.com/c26b883059.js"
                     crossorigin="anonymous"
                 ></script>

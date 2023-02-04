@@ -8,6 +8,7 @@ const userAuthRoutes = require("./routes/user/auth");
 const mentorRegisterRoutes = require("./routes/mentor/mentor");
 const mentorAuthRoutes = require("./routes/mentor/auth");
 const mentorList = require("./routes/mentor/mentorCardList")
+
 // database connection
 connection();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 // routes
+
 app.use("/api/users/userRegister", userRegisterRoutes);
 app.use("/api/users/auth", userAuthRoutes);
 app.use("/api/mentors/mentorRegister", mentorRegisterRoutes);

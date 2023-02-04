@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
-import { useRouter } from 'next/router'
 export default function MentorForm() {
-  const router = useRouter();
+  const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: '',
@@ -43,9 +42,7 @@ export default function MentorForm() {
     try {
       const url = "http://localhost:8080/api/mentors/mentorRegister";
       const { data: res } = await axios.post(url, formData)
-      console.log(res.message);
-      alert("Your account has been registered successfully!")
-      router.push("/mentors");
+      setMsg(res.message)
     } catch (error) {
       console.log(error)
       if (
@@ -113,6 +110,7 @@ export default function MentorForm() {
             <input type="file" name="resume" className="mentorFormInput" />
           </div>
           {error && <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>}
+          {msg && <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>}
           <button type='submit' className='mentorFormButotn'>Register</button>
           <p>Already have mentor account? <a href="#">Login</a></p>
           <a href="#">Forgot password?</a>

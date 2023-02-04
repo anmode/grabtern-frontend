@@ -18,6 +18,7 @@ const mentorSchema = new mongoose.Schema({
     // resume: { type: String, required: true },
     password: { type: String, required: true },
     confirmPassword: { type: String, required: true },
+    verified: { type: Boolean, default: false }
 });
 
 mentorSchema.methods.generateAuthToken = function () {

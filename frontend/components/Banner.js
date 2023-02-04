@@ -12,7 +12,7 @@ function Banner() {
                                     <h1 data-animation="fadeInLeft" data-delay="0.2s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "0.8s"}}>Grab your Intern with GrabTern</h1>
                                     <p data-animation="fadeInLeft" data-delay="0.4s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "1s"}}>Book a meeting with a past intern to receive one-on-one mentoring and enhance your chances of landing your ideal intern.</p>
                                     <a href="/mentors" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Find Mentor</a>	&nbsp;	&nbsp;	&nbsp;	&nbsp;
-                                    <a href="/beMentor" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Be a Mentor</a>
+                                    <a href="/mentorRegister" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Be a Mentor</a>
                                 </div>
                             </div>
                         </div>

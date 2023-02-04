@@ -29,7 +29,7 @@ function Mentors() {
                 <section className="findMentors">
                     <div className='container'>
                         <h1>Find All mentors here's</h1>
-                        {mentorsData.length === 0 ? (<p>Loading...</p>) : (<div className='mentorLists'>
+                        {mentorsData.length === 0 ? (<p>There is not mentor right now...</p>) : (<div className='mentorLists'>
                             {mentorsData.map(mentor => (
                                 <div key={mentor._id} className="mentorCard">
                                     <img src='/exampleMentorPhoto.jpg' alt='exampleMentorPhoto' />

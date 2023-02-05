@@ -32,7 +32,7 @@ function Mentors() {
                         {mentorsData.length === 0 ? (<p>There is not mentor right now...</p>) : (<div className='mentorLists'>
                             {mentorsData.map(mentor => (
                                 <div key={mentor._id} className="mentorCard">
-                                    <img src='/exampleMentorPhoto.jpg' alt='exampleMentorPhoto' />
+                                    <img src={mentor.mentorImg} alt='exampleMentorPhoto' />
                                     <h2 className='mentorName'>{mentor.name}</h2>
                                     <div className='contactLinks'>
                                         <i class="fas fa-envelope" onClick={() => setMentorContactValue(mentor.email)}></i>

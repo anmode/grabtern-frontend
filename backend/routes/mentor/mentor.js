@@ -19,8 +19,8 @@ router.post("/", async (req, res) => {
 		const hashConfirmPassword = await bcrypt.hash(req.body.confirmPassword, salt);
 
 		console.log({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword })
-
-		await new Mentor({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword }).save();
+		
+		await new Mentor({ ...req.body, mentorImg: `${process.env.BASE_URL}mentors/images/${req.body.mentorImg}`, password: hashPassword, confirmPassword: hashConfirmPassword }).save();
 		res.status(201).send({ message: "Mentor created successfully" });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 export default function MentorForm() {
+  const [mentorImg, setMentorImg] = useState('')
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ export default function MentorForm() {
       twitter: '',
     },
     description: '',
+    mentorImg: '',
     sessionPrice: '',
     // resume: '',
     password: '',
@@ -33,6 +35,18 @@ export default function MentorForm() {
   //   setFormData({ ...formData, resume: e.target.files[0] });
   // };
 
+  const uploadFileToServer = async () => {
+    try {
+      const formDataFile = new FormData();
+      formDataFile.append('single_input', mentorImg)
+      const url = "http://localhost:8080/api/uploadfile";
+      const { data: res } = await axios.post(url, formDataFile, {})
+      console.log(res);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("")
@@ -40,6 +54,8 @@ export default function MentorForm() {
       return setError("Password do not match!")
     }
     try {
+      console.log(formData)
+      uploadFileToServer()
       const url = "http://localhost:8080/api/mentors/mentorRegister";
       const { data: res } = await axios.post(url, formData)
       console.log(res.message);
@@ -53,7 +69,6 @@ export default function MentorForm() {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
-
       }
     }
     // code for handling form submission
@@ -73,7 +88,7 @@ export default function MentorForm() {
           </div>
           <div>
             <label for="mobile">Mobile Number</label>
-            <input type="text" name="mobile" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="02334413XXX" required />
+            <input type="number" name="mobile" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="0123456789" required />
           </div>
           <div>
             <label for="internAt">Intern At</label>
@@ -89,9 +104,13 @@ export default function MentorForm() {
           </div>
           <div>
             <label for="twitter">Twitter</label>
-            <input type="text" name="twitter" className="mentorFormInput" onChange={(e) => handleSocialChange(e)} placeholder="e.g. https://www.twitter.com/peterparker" />
+            <input type="text" name="twitter" className="mentorFormInput" onChange={(e) => handleSocialChange(e)} placeholder="e.g. https://www.twitter.com/peterparker" required />
           </div>
           <div>
+            <label for="mentorProfile">Your Mentor Profile:</label>
+            <input type="file" name="mentorProfile" className="mentorFormInput" onChange={(e) => {setMentorImg(e.target.files[0]); setFormData({...formData, mentorImg: e.target.files[0].name})}} required />
+          </div>
+          <div style={{ gridColumn: "1/3" }}>
             <label for="description">Description</label>
             <textarea cols="10" rows="7" name="description" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="I've done myI have been working as SDE-I for past 1 years at microsoft..." required />
           </div>
@@ -103,14 +122,14 @@ export default function MentorForm() {
             <label for="password">Password</label>
             <input type="password" name="password" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. @abcd@321" required />
           </div>
-          <div>
+          <div style={{gridColumn:"1/3"}}>
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" name="confirmPassword" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. @abcd@321" required />
           </div>
-          <div>
+          {/* <div>
             <label for="resume">Resume/CV</label>
-            <input type="file" name="resume" className="mentorFormInput" />
-          </div>
+            <input type="file" name="resume" className="mentorFormInput" required />
+          </div> */}
           {error && <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>}
           {msg && <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>}
           <button type='submit' className='mentorFormButotn'>Register</button>

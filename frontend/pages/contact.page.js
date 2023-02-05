@@ -15,7 +15,7 @@ function Contact() {
       subject: document.querySelector("#subject").value
     }
     console.log(templateParams)
-    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
+    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
       alert("Sent!")
         console.log(result.text);
     }, (error) => {

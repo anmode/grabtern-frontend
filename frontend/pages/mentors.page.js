@@ -5,7 +5,8 @@ import SimpleBanner from '../components/SimpleBanner';
 
 function Mentors() {
     const [mentorsData, setMentorsData] = useState([]);
-    const [mentorContactValue, setMentorContactValue] = useState()
+    const [mentorContactValue, setMentorContactValue] = useState({})
+    const [mentorShowIndex, setMentorShowIndex] = useState();
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -30,17 +31,17 @@ function Mentors() {
                     <div className='container'>
                         <h1>Find All mentors here's</h1>
                         {mentorsData.length === 0 ? (<p>There is not mentor right now...</p>) : (<div className='mentorLists'>
-                            {mentorsData.map(mentor => (
+                            {mentorsData.map((mentor, index) => (
                                 <div key={mentor._id} className="mentorCard">
                                     <img src={mentor.mentorImg} alt='exampleMentorPhoto' />
                                     <h2 className='mentorName'>{mentor.name}</h2>
                                     <div className='contactLinks'>
-                                        <i class="fas fa-envelope" onClick={() => setMentorContactValue(mentor.email)}></i>
-                                        <i class="fas fa-phone" onClick={() => setMentorContactValue(mentor.mobile)}></i>
-                                        <i class="fab fa-linkedin" onClick={() => setMentorContactValue(mentor.social.linkedin)}></i>
-                                        <i class="fab fa-twitter" onClick={() => setMentorContactValue(mentor.social.twitter)}></i>
+                                        <i class="fas fa-envelope" onClick={() => {setMentorContactValue(`emailformentorindex${index}`)}}></i>
+                                        <i class="fas fa-phone" onClick={() => {setMentorContactValue(`mobileformentorindex${index}`)}}></i>
+                                        <i class="fab fa-linkedin" onClick={() => {setMentorContactValue(`sociallinkedinformentorindex${index}`)}}></i>
+                                        <i class="fab fa-twitter" onClick={() => {setMentorContactValue(`socialtwitterformentorindex${index}`)}}></i>
                                     </div>
-                                    <h3 style={{ marginTop: "10px" }}>{mentorContactValue}</h3>
+                                    <h3 style={{ marginTop: "10px" }}>{mentorContactValue === `emailformentorindex${index}` ? mentorsData[index].email : mentorContactValue === `mobileformentorindex${index}` ? mentorsData[index].mobile : mentorContactValue === `sociallinkedinformentorindex${index}` ? mentorsData[index].social.linkedin : mentorContactValue === `socialtwitterformentorindex${index}` ? mentorsData[index].social.twitter : null}</h3>
                                     <h3>Intern at: {mentor.internAt}</h3>
                                     <h3>{mentor.currentStatus}</h3>
                                     <p>{mentor.description}</p>

@@ -6,35 +6,6 @@ import SimpleBanner from '../components/SimpleBanner'
 
 function Contact() {
   const form = useRef();
-  // const [userEmail, setUserEmail] = useState("");
-  // const [userName, setUserName] = useState("");
-  // const [userMessage, setUserMessage] = useState("");
-  // const [userSubject, setUserSubject] = useState("");
-
-/*   const handleSubmit = (e) => {
-    const userEmail = document.querySelector("#message").value;
-    const userMessage = document.querySelector("#email").value;
-    const userSubject = document.querySelector("#subject").value;
-
-    e.preventDefault()
-    Email.send({
-      Host: "smtp.gmail.com",
-      // Username : process.env.GRABTERN_EMAIL,
-      Username: "sayyidmuhammad878@gmail.com",
-      Password: PASSWORD,
-      To: "sayyidmuhammad878@gmail.com",
-      // Password : process.env.GRABTERN_PASSWORD,
-      // To : process.env.GRABTERN_EMAIL,
-      From: userEmail,
-      Subject: userSubject,
-      Body: userMessage
-    }).then(
-      message => {
-        alert("Your message has been sent to GrabTern!");
-        console.log(message)
-      }
-    );
-  } */
   const sendEmail = (e) => {
     e.preventDefault();
     const templateParams = {
@@ -44,7 +15,7 @@ function Contact() {
       subject: document.querySelector("#subject").value
     }
     console.log(templateParams)
-    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
+    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
       alert("Sent!")
         console.log(result.text);
     }, (error) => {

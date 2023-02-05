@@ -154,7 +154,7 @@ function About() {
             <div className="left-content3">
               <div className="section-tittle section-tittle2 mb-20">
                 <div className="front-text">
-                  <h2>Student Outcomes after taking an Internship preparation Course</h2>
+                  <h2>What Grabtern Do for their Mentors</h2>
                 </div>
               </div>
               <div className="single-features">
@@ -162,7 +162,8 @@ function About() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>Time wasted on research and gathering content from google and other blogs saves.</p>
+                  <p>hello
+                  </p>
                 </div>
               </div>
               <div className="single-features">

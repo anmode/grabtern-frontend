@@ -13,8 +13,8 @@ export default [
     },
     {
         imageSrc: "/assets/img/icon/icon3.svg",
-        imageAlt: "Life time access",
-        serviceHeading: "Life time access",
-        serviceDescription: "Once you purchased the targetted intern your mentorship program begins"
+        imageAlt: "Book your Session",
+        serviceHeading: "Book your Session",
+        serviceDescription: "Session are at very minimal price, you can book multiple session to multiple interns"
     }
 ]

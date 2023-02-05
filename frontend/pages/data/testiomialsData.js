@@ -1,30 +1,34 @@
 export default [
-    {
-        testimonialUserName: "Amelia",
-        testimonialUserHeadline: "Youtuber | Software Engineer",
-        testimonialUserImage: "testimonial-profile1.png",
-        testimonialRate: 4,
-        testimonialDescription: "GrabTern is very best plaftorm to Guide Internships by mentor they easly teach me step by step and I got one intern from GSoc. I very preffered for you who are graduated from University and not yet get job / intern, because they help me a lot, Thanks to Grabtern"
-    },
-    {
-        testimonialUserName: "Any",
-        testimonialUserHeadline: "Youtuber | Blogger",
-        testimonialUserImage: "testimonial-profile1.png",
-        testimonialRate: 4.5,
-        testimonialDescription: "I have been using GrabTern for a few days ago and I love it! I can't imagine he guide me about Amazon ML Summer Internship easly and also they have customer and contact 24/7 it is so great. Thank you"
-    },
-    {
-        testimonialUserName: "Emma",
-        testimonialUserHeadline: "Technical Content Writer",
-        testimonialUserImage: "testimonial-profile1.png",
-        testimonialRate: 3.5,
-        testimonialDescription: "Would definitely recommend GrabTern and will definitely sharing to all my friends."
-    },
-    {
-        testimonialUserName: "Ava",
-        testimonialUserHeadline: "Youtuber | Web Developer",
-        testimonialUserImage: "testimonial-profile1.png",
-        testimonialRate: 4,
-        testimonialDescription: "If you want to get a new intern that paid around $3000, use GrabTern and don't look any further. Thank you to GrabTern"
-    },
-]
+  {
+    testimonialUserName: "Lubna Fatima",
+    testimonialUserHeadline: "B.Tech(2nd Year) | Amazon ML Intern",
+    testimonialUserImage: "testimonial-profile1.png",
+    testimonialRate: 4,
+    testimonialDescription:
+      "Grabtern made the daunting task of applying for the Amazon ML Summer Internship a breeze, guiding me every step of the way. I couldn't be more thankful for the difference GrabTern has made in my career journey I had the privilege of being a part of the GrabTern platform, and let me tell you, it exceeded all my expectations. It's the epitome of what an internship guide platform should be. ",
+  },
+  {
+    testimonialUserName: "Talib Hussain",
+    testimonialUserHeadline: "B.Tech(3rd year) | MITACS Intern",
+    testimonialUserImage: "testimonial-profile1.png",
+    testimonialRate: 4.5,
+    testimonialDescription:
+      "The level of guidance and support I've received has been unparalleled. They made the daunting task of applying for the MITACS Global-link Research Internship a breeze, guiding me every step of the way. And to top it off, the 24/7 customer and contact support is simply fantastic. I couldn't be more thankful for the difference GrabTern has made in my career journey. Thank you for providing such an outstanding service.",
+  },
+  {
+    testimonialUserName: "Sidhdhi Varshney",
+    testimonialUserHeadline: "B.Tech(2nd Year) | ISRO Intern",
+    testimonialUserImage: "testimonial-profile1.png",
+    testimonialRate: 3.5,
+    testimonialDescription:
+      "I have had an incredible experience using this platform and the results speak for themselves. I am beyond impressed with the guidance and support they provided, making the process of finding internships seamless and stress-free. Their commitment to helping individuals reach their career goals is unparalleled. If you want to take control of your career and reach new heights, GrabTern is the way to go.",
+  },
+  {
+    testimonialUserName: "Md Yusuf",
+    testimonialUserHeadline: "B.Tech(2nd Year) | GSOC 2022",
+    testimonialUserImage: "testimonial-profile1.png",
+    testimonialRate: 4,
+    testimonialDescription:
+      "I was able to secure an internship that paid $3000, all thanks to the guidance and support of the GrabTern team. The platform is designed to help individuals like me achieve their career aspirations. If you're looking for a paid internship that will boost your resume and give you valuable industry experience, don't waste another moment searching. Use GrabTern and watch your career take off.",
+  },
+];

@@ -8,10 +8,12 @@ const userAuthRoutes = require("./routes/user/auth");
 const mentorRegisterRoutes = require("./routes/mentor/mentor");
 const mentorAuthRoutes = require("./routes/mentor/auth");
 const mentorList = require("./routes/mentor/mentorCardList")
+const mentorVerify = require("./routes/mentor/mentorVerify")
+const mentorSetupPW = require("./routes/mentor/setupPW");
+const mentorCheckPW = require("./routes/mentor/checkPW");
 const multer = require("multer");
 // database connection
 connection();
-
 // middlewares
 app.use(express.json());
 app.use(cors());
@@ -55,6 +57,9 @@ app.use("/api/users/auth", userAuthRoutes);
 app.use("/api/mentors/mentorRegister", mentorRegisterRoutes);
 app.use("/api/mentors/auth", mentorAuthRoutes);
 app.use("/api/mentors/mentorLists", mentorList)
+app.use("/api/mentors/verifyWithToken", mentorVerify)
+app.use("/api/mentors/verify/setupPW", mentorSetupPW)
+app.use("/api/mentors/verify/checkPW", mentorCheckPW)
 
 app.get("/", (req, res) => {
     res.send("Welcome to GrabTern API")

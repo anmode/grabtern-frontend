@@ -12,8 +12,8 @@ function Mentors() {
             try {
                 const url = "http://localhost:8080/api/mentors/mentorLists";
                 const { data } = await axios.get(url);
-                setMentorsData(data);
-                console.log(data)
+                setMentorsData(data.filter(mentor => mentor.verified === true && mentor.token === "mentorIsVerified"));
+                console.log(mentorsData)
             } catch (error) {
                 console.log(error);
             }

@@ -19,7 +19,9 @@ const mentorSchema = new mongoose.Schema({
     // resume: { type: String, required: true },
     password: { type: String, required: true },
     confirmPassword: { type: String, required: true },
-    verified: { type: Boolean, default: false }
+    verified: { type: Boolean, default: false },
+    token: { type: String, required: true },
+    setupPWId: {type: String, required: true, default: "noSetupIdForPw"}
 });
 
 mentorSchema.methods.generateAuthToken = function () {
@@ -46,8 +48,11 @@ const validate = (data) => {
         sessionPrice: Joi.string().required().label("Session Price"),
         mentorImg: Joi.string().required().label("Mentor Image"),
         // resume: Joi.string().required().label("Resume"),
-        password: passwordComplexity().required().label("Password"),
-        confirmPassword: passwordComplexity().required().label("Confirm Password"),
+        password: Joi.string().required().label("Password"),
+        confirmPassword: Joi.string().required().label("Confirm Password"),
+        verified: Joi.boolean().label("Is Mentor Verified"),
+        token: Joi.string().label("Mentor Verify Token"),
+        setupPWId: Joi.string().label("Setup PW Id"),
     });
     return schema.validate(data);
 };

@@ -1,14 +1,18 @@
 import React from 'react'
-import BeMentor from "../pages/beMentor.page";
 import Header from '../components/Header'
-import Footer from "../components/Footer";
+import Footer from '../components/Footer';
+import MentorForm from '../components/MentorFormRegistration';
 
-const Home = () => {
-  return(  <>
-    <BeMentor />
-  </>)
+const MentorRegister = () => {
+  return(  
+    <>
+      <Header navbarBackground={true} />
+      <main>
+        <MentorForm />
+      </main>
+      <Footer />
+    </>
+  )
 }
 
-Home.displayName = "Home";
-
-export default Home;
+export default MentorRegister;

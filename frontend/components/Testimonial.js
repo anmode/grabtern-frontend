@@ -11,7 +11,7 @@ function Testimonial({
     <div className="box">
       <i className="fas fa-quote-left quote"></i>
       <p>
-        {testimonialDescription.length < 400
+        {testimonialDescription.split(" ").length < 400
           ? testimonialDescription
           : testimonialDescription.split(" ").slice(0, 400).join(" ") + "..."}
       </p>

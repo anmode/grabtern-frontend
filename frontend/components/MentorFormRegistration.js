@@ -1,50 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'
-import { useRouter } from 'next/router';
-import emailjs from '@emailjs/browser';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import emailjs from "@emailjs/browser";
 export default function MentorForm() {
-  const router = useRouter()
+  const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-  const [mentorImg, setMentorImg] = useState('')
+  const [mentorImg, setMentorImg] = useState("");
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    internAt: '',
-    currentStatus: '',
+    name: "",
+    email: "",
+    mobile: "",
+    internAt: "",
+    currentStatus: "",
     social: {
-      linkedin: '',
-      twitter: '',
+      linkedin: "",
+      twitter: "",
     },
-    description: '',
-    mentorImg: '',
-    sessionPrice: '',
+    description: "",
+    mentorImg: "",
+    sessionPrice: "",
     // resume: '',
-    password: '',
-    confirmPassword: '',
+    password: "",
+    confirmPassword: "",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSocialChange = e => {
-    setFormData({ ...formData, social: { ...formData.social, [e.target.name]: e.target.value } });
+  const handleSocialChange = (e) => {
+    setFormData({
+      ...formData,
+      social: { ...formData.social, [e.target.name]: e.target.value },
+    });
   };
 
   useEffect(() => {
     if (modalPopup === true && waitTime !== 0) {
       setTimeout(() => {
-        setWaitTime(value => value -= 1);
-      }, 1000)
+        setWaitTime((value) => (value -= 1));
+      }, 1000);
     }
     if (waitTime === 0) {
-      router.push('/')
+      router.push("/");
     }
-  })
+  });
 
   // const handleFileChange = e => {
 
@@ -80,15 +83,25 @@ export default function MentorForm() {
 \nSession Price for Each Intern: ${formData.sessionPrice}
 \n Thank you
 \n To Approve the mentor please click the link below: link...`,
-    }
-    console.log(templateParams)
-    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
-      alert("Sent!")
-      console.log(result.text);
-    }, (error) => {
-      alert("Cannot send your message sorry!")
-      console.log(error.text);
-    });
+    };
+    console.log(templateParams);
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          alert("Sent!");
+          console.log(result.text);
+        },
+        (error) => {
+          alert("Cannot send your message sorry!");
+          console.log(error.text);
+        }
+      );
     // setError("")
     // if (formData.password !== formData.confirmPassword) {
     //   return setError("Password do not match!")
@@ -114,75 +127,151 @@ export default function MentorForm() {
   };
 
   return (
-    <div className='mentorFormRegisration'>
-      {modalPopup === true ? (<div className='modalPopup'>
-        <div className='modalPopupAfterRegistrationDone'>
-          <p>Thank you for Registering you will be recevied an email 1-2 days if you got accepted</p>
-          <img src="/iconMentorRegistrationPopup.jpg" />
-          <p>Redirecting you to home in {waitTime} second</p>
+    <div className="mentorFormRegisration">
+      {modalPopup === true ? (
+        <div className="modalPopup">
+          <div className="modalPopupAfterRegistrationDone">
+            <p>
+              Thank you for Registering you will be recevied an email 1-2 days
+              if you got accepted
+            </p>
+            <img src="/iconMentorRegistrationPopup.jpg" />
+            <p>Redirecting you to home in {waitTime} second</p>
+          </div>
         </div>
-      </div>) : null}
-      <div className='container'>
+      ) : null}
+      <div className="container">
         <form className="mentorForm" onSubmit={handleSubmit}>
           <div>
-            <label for="name">Name</label>
-            <input type="text" name="name" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. Peter Parker" required />
+            <label for="name">NAME</label>
+            <input
+              type="text"
+              name="name"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. Peter Parker"
+              required
+            />
           </div>
           <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. peterparker4321#gmail.com" required />
+            <label for="email">EMAIL</label>
+            <input
+              type="text"
+              name="email"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. peterparker4321#gmail.com"
+              required
+            />
           </div>
           <div>
-            <label for="mobile">Mobile Number</label>
-            <input type="number" name="mobile" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="0123456789" required />
+            <label for="mobile">PHONE</label>
+            <input
+              type="number"
+              name="mobile"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="0123456789"
+              required
+            />
           </div>
           <div>
-            <label for="internAt">Intern At</label>
-            <input type="text" name="internAt" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. MITACS" required />
+            <label for="internAt">INTERN</label>
+            <input
+              type="text"
+              name="internAt"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. MITACS"
+              required
+            />
           </div>
           <div>
-            <label for="currentStatus">Current Status</label>
-            <input type="text" name="currentStatus" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. Amazon SDE-I" required />
+            <label for="currentStatus">CURRENT STATUS</label>
+            <input
+              type="text"
+              name="currentStatus"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. Amazon SDE-I"
+              required
+            />
           </div>
           <div>
-            <label for="linkedin">Linkedin</label>
-            <input type="text" name="linkedin" className="mentorFormInput" onChange={(e) => handleSocialChange(e)} placeholder="e.g. https://www.linkedin.com/peterparker" required />
+            <label for="linkedin">LINKEDIN</label>
+            <input
+              type="text"
+              name="linkedin"
+              className="mentorFormInput"
+              onChange={(e) => handleSocialChange(e)}
+              placeholder="e.g. https://www.linkedin.com/peterparker"
+              required
+            />
           </div>
           <div>
-            <label for="twitter">Twitter</label>
-            <input type="text" name="twitter" className="mentorFormInput" onChange={(e) => handleSocialChange(e)} placeholder="e.g. https://www.twitter.com/peterparker" required />
+            <label for="twitter">TWITTER</label>
+            <input
+              type="text"
+              name="twitter"
+              className="mentorFormInput"
+              onChange={(e) => handleSocialChange(e)}
+              placeholder="e.g. https://www.twitter.com/peterparker"
+              required
+            />
           </div>
           <div>
-            <label for="mentorProfile">Your Mentor Profile:</label>
-            <input type="file" name="mentorProfile" className="mentorFormInput" onChange={(e) => { setMentorImg(e.target.files[0]); setFormData({ ...formData, mentorImg: e.target.files[0].name }) }} required />
-          </div>
-          <div style={{ gridColumn: "1/3" }}>
-            <label for="description">Description</label>
-            <textarea cols="10" rows="7" name="description" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="I've done myI have been working as SDE-I for past 1 years at microsoft..." required />
-          </div>
-          <div style={{ gridColumn: "1/3" }}>
-            <label for="sessionPrice">Session Price</label>
-            <input type="text" name="sessionPrice" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. $27" required />
-          </div>
-          {/* <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. @abcd@321" required />
+            <label for="mentorProfile">RESUME/CV</label>
+            <input
+              type="file"
+              name="mentorProfile"
+              className="mentorFormInput"
+              onChange={(e) => {
+                setMentorImg(e.target.files[0]);
+                setFormData({ ...formData, mentorImg: e.target.files[0].name });
+              }}
+              required
+            />
           </div>
           <div>
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. @abcd@321" required />
-          </div> */}
-          {/* <div>
-            <label for="resume">Resume/CV</label>
-            <input type="file" name="resume" className="mentorFormInput" required />
-          </div> */}
-          {error && <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>}
-          {msg && <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>}
-          <button type='submit' className='mentorFormButotn'>Register</button>
-          <p>Already have mentor account? <a href="#">Login</a></p>
+            <label for="description">DESCRIPTION</label>
+            <textarea
+              cols="10"
+              rows="7"
+              name="description"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
+              required
+            />
+          </div>
+          <div>
+          <div>
+            <label for="sessionPrice">SESSION PRICE</label>
+            <input
+              type="text"
+              name="sessionPrice"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. $27"
+              required
+            />
+          </div>
+          {error && (
+            <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+          )}
+          {msg && (
+            <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+          )}
+          <button type="submit" className="mentorFormButotn">
+            Register
+          </button>
+          <p>
+            Already have mentor account? <a href="#">Login</a>
+          </p>
           <a href="#">Forgot password?</a>
+          </div>
         </form>
       </div>
     </div>
-  )
-} 
+  );
+}

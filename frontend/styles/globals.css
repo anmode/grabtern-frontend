@@ -475,7 +475,7 @@ a {
 }
 
 .mentorForm {
-  width: 100%;
+  width: 70%;
   max-width: 6;
   padding: 40px;
   margin: 10px auto;
@@ -509,7 +509,7 @@ a {
 }
 
 .mentorForm div label {
-  font-weight: bold;
+  font-weight: 600;
   font-size: small;
   width: auto;
 }
@@ -517,13 +517,15 @@ a {
 .mentorForm div input,
 textarea {
   width: 100%;
-  border: 1px solid black;
+  border: 2px solid rgb(220, 220, 220);
   padding: 6px 10px;
   border-radius: 3px;
+  
 }
 
 .mentorForm button {
-  max-width: 150px;
+  margin-top: 20px;
+  /* max-width: 150px; */
   background-color: black;
   border: none;
   padding: 15px;

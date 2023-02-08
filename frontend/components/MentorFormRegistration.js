@@ -6,9 +6,12 @@ export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-  const [mentorImg, setMentorImg] = useState("");
+  const [mentorImg, setMentorImg] = useState('')
+  // const [verifyMentorLink, setVerifyMentorLink] = useState();
+
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
+  let number = Math.random(0 * 100);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,8 +26,9 @@ export default function MentorForm() {
     mentorImg: "",
     sessionPrice: "",
     // resume: '',
-    password: "",
-    confirmPassword: "",
+    password: `GrabternMentorPW!${number}!`,
+    confirmPassword: `GrabternMentorPW!${number}!`,
+
   });
 
   const handleChange = (e) => {
@@ -50,25 +54,44 @@ export default function MentorForm() {
   });
 
   // const handleFileChange = e => {
-
   //   setFormData({ ...formData, resume: e.target.files[0] });
   // };
 
-  // const uploadFileToServer = async () => {
-  //   try {
-  //     const formDataFile = new FormData();
-  //     formDataFile.append('single_input', mentorImg)
-  //     const url = "http://localhost:8080/api/uploadfile";
-  //     const { data: res } = await axios.post(url, formDataFile, {})
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  const uploadFileToServer = async () => {
+    try {
+      const formDataFile = new FormData();
+      formDataFile.append('single_input', mentorImg)
+      const url = "http://localhost:8080/api/uploadfile";
+      const { data: res } = await axios.post(url, formDataFile, {})
+      console.log(res);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setModalPopup(true);
+    setError("")
+    try {
+      console.log(formData)
+      uploadFileToServer()
+      const url = "http://localhost:8080/api/mentors/mentorRegister";
+      const {data: res} = await axios.post(url, formData);
+      sendEmail(res.mentorVerifyLink)
+    } catch (error) {
+      console.log(error)
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        }
+      }
+
+  };
+
+  const sendEmail = (verifyMentorLink) => {
     const templateParams = {
       mentorName: formData.name,
       message: `Hi I am ${formData.name}
@@ -82,49 +105,19 @@ export default function MentorForm() {
 \nDescription: ${formData.description}
 \nSession Price for Each Intern: ${formData.sessionPrice}
 \n Thank you
-\n To Approve the mentor please click the link below: link...`,
-    };
-    console.log(templateParams);
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          alert("Sent!");
-          console.log(result.text);
-        },
-        (error) => {
-          alert("Cannot send your message sorry!");
-          console.log(error.text);
-        }
-      );
-    // setError("")
-    // if (formData.password !== formData.confirmPassword) {
-    //   return setError("Password do not match!")
-    // }
-    // try {
-    //   console.log(formData)
-    //   uploadFileToServer()
-    //   const url = "http://localhost:8080/api/mentors/mentorRegister";
-    //   await axios.post(url, formData)
-    //   setMsg("Your account has been registered successfully!");
-    //   router.push("/mentors");
-    // } catch (error) {
-    //   console.log(error)
-    //   if (
-    //     error.response &&
-    //     error.response.status >= 400 &&
-    //     error.response.status <= 500
-    //   ) {
-    //     setError(error.response.data.message);
-    //   }
-    // }
-    // code for handling form submission
-  };
+
+\n To Approve the mentor please click the link below: ${verifyMentorLink}`,
+    }
+    console.log(templateParams)
+    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
+      setModalPopup(true);
+      console.log(result.text);
+    }, (error) => {
+      alert("Cannot send your message sorry!")
+      console.log(error.text);
+    });
+  }
+
 
   return (
     <div className="mentorFormRegisration">

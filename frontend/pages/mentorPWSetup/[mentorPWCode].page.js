@@ -12,7 +12,7 @@ function Index() {
     const checkIfThePWCodeIsValid = async () => {
       if(mentorPWCode !== undefined) {
         console.log(mentorPWCode)
-        const url = `http://localhost:8080/api/mentors/verify/checkPW/${mentorPWCode}`;
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/checkPW/${mentorPWCode}`;
         const {data:res} = await axios.get(url);
         console.log(res.status)
         if(res.status == "BAD") {

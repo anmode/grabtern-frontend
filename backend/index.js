@@ -11,47 +11,19 @@ const mentorList = require("./routes/mentor/mentorCardList")
 const mentorVerify = require("./routes/mentor/mentorVerify")
 const mentorSetupPW = require("./routes/mentor/setupPW");
 const mentorCheckPW = require("./routes/mentor/checkPW");
-const multer = require("multer");
+const bodyParser = require("body-parser");
 // database connection
 connection();
 // middlewares
 app.use(express.json());
 app.use(cors());
 
-let storage = multer.diskStorage({
-    destination:'./database/mentors/images', //directory (folder) setting
-    filename:(req, file, cb)=>{
-        cb(null, file.originalname) // file name setting
-    }
-})
 
-//Upload Setting
-let upload = multer({
-   storage: storage,
-   fileFilter:(req, file, cb)=>{
-    if(
-        file.mimetype == 'image/jpeg' ||
-        file.mimetype == 'image/jpg' ||
-        file.mimetype == 'image/png' ||
-        file.mimetype == 'image/gif'
-
-    ){
-        cb(null, true)
-    }
-    else{
-        cb(null, false);
-        cb(new Error('Only jpeg,  jpg , png, and gif Image allow'))
-    }
-   }
-})
-
-app.use(express.static('database'))
-
-app.post('/api/uploadfile', upload.single('single_input'), (req, res)=>{
-    req.file
-    res.send("Image succesfully uploaded!!")
-})
-
+// app.use(bodyParser.json({ limit: '10mb' }));
+// app.use(express.json({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000})) not work we need more like line 26
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(express.json({ limit: '50mb' }));
 app.use("/api/users/userRegister", userRegisterRoutes);
 app.use("/api/users/auth", userAuthRoutes);
 app.use("/api/mentors/mentorRegister", mentorRegisterRoutes);
@@ -64,6 +36,5 @@ app.use("/api/mentors/verify/checkPW", mentorCheckPW)
 app.get("/", (req, res) => {
     res.send("Welcome to GrabTern API")
 })
-
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

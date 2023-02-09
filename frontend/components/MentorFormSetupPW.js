@@ -20,7 +20,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
             return alert("Please write match confirm password!");
         }
         try {
-            const url = `http://localhost:8080/api/mentors/verify/setupPW/${mentorPWCode}`;
+            const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/setupPW/${mentorPWCode}`;
             console.log(url)
             const { data: res } = await axios.post(url, formData);
             console.log(res.status)

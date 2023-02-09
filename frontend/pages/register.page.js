@@ -27,7 +27,7 @@ function Register() {
             return setError("Password do not match!")
         }
 		try {
-			const url = "http://localhost:8080/api/users/userRegister";
+			const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
 			const { data: res } = await axios.post(url, data);
 			router.push("/login");
 			console.log(res.message);

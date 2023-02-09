@@ -14,7 +14,7 @@ router.get('/:token', async (req, res) => {
         await Mentor.updateOne({ token: mentorVerifyToken }, { verified: true });
         await Mentor.updateOne({ token: mentorVerifyToken }, { token: "mentorIsVerified" });
         console.log(mentor[0]);
-        return res.send(`Mentor with email ${mentor[0].email} successfully verified! and please send this message to mentor to setup there password \nSetup for your password click this link: http://localhost:3000/mentorPWSetup/${mentorSetupPWCode}`)
+        return res.send(`Mentor with email ${mentor[0].email} successfully verified! and please send this message to mentor to setup there password \nSetup for your password click this link: ${process.env.FRONTEND_URL}/mentorPWSetup/${mentorSetupPWCode}`)
     } catch (err) {
         console.error(err)
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import axios, { formToJSON } from 'axios'
 import { useRouter } from 'next/router';
 import emailjs from '@emailjs/browser';
 export default function MentorForm() {
@@ -52,25 +52,34 @@ export default function MentorForm() {
   //   setFormData({ ...formData, resume: e.target.files[0] });
   // };
 
-  const uploadFileToServer = async () => {
-    try {
-      const formDataFile = new FormData();
-      formDataFile.append('single_input', mentorImg)
-      const url = "http://localhost:8080/api/uploadfile";
-      const { data: res } = await axios.post(url, formDataFile, {})
-      console.log(res);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
+
+const handleUploadImageChange = async (e) => {
+  const file = e.target.files[0];
+  const base64 = await convertBase64(file);
+  setFormData({...formData, mentorImg: base64});
+}
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("")
     try {
       console.log(formData)
-      uploadFileToServer()
-      const url = "http://localhost:8080/api/mentors/mentorRegister";
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
       const {data: res} = await axios.post(url, formData);
       sendEmail(res.mentorVerifyLink)
     } catch (error) {
@@ -153,7 +162,7 @@ export default function MentorForm() {
           </div>
           <div>
             <label for="mentorProfile">Your Mentor Profile:</label>
-            <input type="file" name="mentorProfile" className="mentorFormInput" onChange={(e) => { setMentorImg(e.target.files[0]); setFormData({ ...formData, mentorImg: e.target.files[0].name }) }} required />
+            <input type="file" name="mentorProfile" className="mentorFormInput" onChange={(e) => handleUploadImageChange(e)} required />
           </div>
           <div style={{ gridColumn: "1/3" }}>
             <label for="description">Description</label>

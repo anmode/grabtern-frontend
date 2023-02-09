@@ -10,7 +10,7 @@ function Mentors() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const url = "http://localhost:8080/api/mentors/mentorLists";
+                const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
                 const { data } = await axios.get(url);
                 setMentorsData(data.filter(mentor => mentor.verified === true && mentor.token === "mentorIsVerified"));
                 console.log(mentorsData)

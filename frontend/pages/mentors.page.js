@@ -44,7 +44,9 @@ function Mentors() {
                                     <h3 style={{ marginTop: "10px" }}>{mentorContactValue === `emailformentorindex${index}` ? mentorsData[index].email : mentorContactValue === `mobileformentorindex${index}` ? mentorsData[index].mobile : mentorContactValue === `sociallinkedinformentorindex${index}` ? mentorsData[index].social.linkedin : mentorContactValue === `socialtwitterformentorindex${index}` ? mentorsData[index].social.twitter : null}</h3>
                                     <h3>Intern at: {mentor.internAt}</h3>
                                     <h3>{mentor.currentStatus}</h3>
-                                    <p>{mentor.description}</p>
+                                    <p>{mentor.description?.length > 120
+        ? `${mentor.description.substring(0, 120)}…`
+        : mentor.description}</p>
                                     <h3>Price for each intern: {mentor.sessionPrice}</h3>
                                 </div>
                             ))}

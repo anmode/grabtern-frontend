@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios, { formToJSON } from "axios";
+
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
 export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
+
   const [mentorImg, setMentorImg] = useState("");
+
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
@@ -26,6 +29,7 @@ export default function MentorForm() {
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
+
   });
 
   const handleChange = (e) => {
@@ -109,6 +113,7 @@ export default function MentorForm() {
 \nDescription: ${formData.description}
 \nSession Price for Each Intern: ${formData.sessionPrice}
 \n Thank you
+
 \n To Approve the mentor please click the link below: ${verifyMentorLink}`,
     };
     console.log(templateParams);
@@ -130,6 +135,7 @@ export default function MentorForm() {
         }
       );
   };
+
 
   return (
     <div className="mentorFormRegisration">
@@ -168,7 +174,8 @@ export default function MentorForm() {
             </div>
           </div>
           <div>
-            <label for="name">Name</label>
+  <label for="name">NAME</label>
+
             <input
               type="text"
               name="name"
@@ -179,7 +186,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="email">Email</label>
+
+            <label for="email">EMAIL</label>
+
             <input
               type="text"
               name="email"
@@ -190,7 +199,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="mobile">Mobile Number</label>
+
+            <label for="mobile">PHONE</label>
+
             <input
               type="number"
               name="mobile"
@@ -201,7 +212,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="internAt">Intern At</label>
+
+            <label for="internAt">INTERN</label>
+
             <input
               type="text"
               name="internAt"
@@ -212,7 +225,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="currentStatus">Current Status</label>
+
+            <label for="currentStatus">CURRENT STATUS</label>
+
             <input
               type="text"
               name="currentStatus"
@@ -223,7 +238,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="linkedin">Linkedin</label>
+
+            <label for="linkedin">LINKEDIN</label>
+
             <input
               type="text"
               name="linkedin"
@@ -233,8 +250,10 @@ export default function MentorForm() {
               required
             />
           </div>
-          <div style={{gridColumn: "1/3"}}>
-            <label for="twitter">Twitter</label>
+
+          <div>
+            <label for="twitter">TWITTER</label>
+
             <input
               type="text"
               name="twitter"
@@ -243,21 +262,38 @@ export default function MentorForm() {
               placeholder="e.g. https://www.twitter.com/peterparker"
               required
             />
+
           </div>
-          <div style={{ gridColumn: "1/3" }}>
-            <label for="description">Description</label>
+          <div>
+            <label for="mentorProfile">RESUME/CV</label>
+            <input
+              type="file"
+              name="mentorProfile"
+              className="mentorFormInput"
+              onChange={(e) => {
+                setMentorImg(e.target.files[0]);
+                setFormData({ ...formData, mentorImg: e.target.files[0].name });
+              }}
+              required
+            />
+          </div>
+          <div>
+            <label for="description">DESCRIPTION</label>
+
             <textarea
               cols="10"
               rows="7"
               name="description"
               className="mentorFormInput"
               onChange={(e) => handleChange(e)}
-              placeholder="I've done myI have been working as SDE-I for past 1 years at microsoft..."
+
+              placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
               required
             />
           </div>
-          <div style={{ gridColumn: "1/3" }}>
-            <label for="sessionPrice">Session Price</label>
+          <div>
+          <div>
+            <label for="sessionPrice">SESSION PRICE</label>
             <input
               type="text"
               name="sessionPrice"
@@ -267,18 +303,7 @@ export default function MentorForm() {
               required
             />
           </div>
-          {/* <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. @abcd@321" required />
-          </div>
-          <div>
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. @abcd@321" required />
-          </div> */}
-          {/* <div>
-            <label for="resume">Resume/CV</label>
-            <input type="file" name="resume" className="mentorFormInput" required />
-          </div> */}
+
           {error && (
             <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
           )}
@@ -292,6 +317,7 @@ export default function MentorForm() {
             Already have mentor account? <a href="#">Login</a>
           </p>
           <a href="#">Forgot password?</a>
+          </div>
         </form>
       </div>
     </div>

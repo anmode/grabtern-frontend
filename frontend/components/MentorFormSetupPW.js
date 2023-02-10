@@ -39,7 +39,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
         <div className='mentorFormRegisration'>
             <div className='container'>
                 <h1>Setup new Password</h1><br />
-                <form className='mentorForm' onSubmit={handleSubmitNewPW}>
+                <form className='mentorForm mentorFormSetupPW'onSubmit={handleSubmitNewPW}>
                     <div>
                         <label for="newPW">New Password</label>
                         <input type="password" name="newPW" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. newPassword123!@" required />

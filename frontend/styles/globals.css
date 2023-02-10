@@ -492,6 +492,14 @@ a {
   padding: 70px 30px;
 }
 
+.mentorFormRegisration > .container > .mentorForm {
+  margin: 0 auto;
+}
+
+.mentorFormSetupPW {
+  margin: unset !important;
+}
+
 .mentorForm {
   width: fit-content;
   padding: 40px;

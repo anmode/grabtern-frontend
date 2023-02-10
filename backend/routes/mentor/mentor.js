@@ -19,10 +19,11 @@ router.post("/", async (req, res) => {
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
 		const hashConfirmPassword = await bcrypt.hash(req.body.confirmPassword, salt);
 		const token = crypto.randomBytes(64).toString('hex');
-		console.log({ ...req.body, mentorImg: `${process.env.BASE_URL}mentors/images/${req.body.mentorImg}`, password: hashPassword, confirmPassword: hashConfirmPassword, token: token })
+		console.log({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword, token: token })
 
-		await new Mentor({ ...req.body, mentorImg: `${process.env.BASE_URL}mentors/images/${req.body.mentorImg}`, password: hashPassword, confirmPassword: hashConfirmPassword, token: token }).save();
-		res.status(201).send({ message: "Mentor created successfully", mentorVerifyLink: `http://localhost:8080/api/mentors/verifyWithToken/${token}` });
+		await new Mentor({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword, token: token }).save();
+		console.log(process.env.BACKEND_URL)
+		res.status(201).send({ message: "Mentor created successfully", mentorVerifyLink: `${process.env.BACKEND_URL}/api/mentors/verifyWithToken/${token}` });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
 	}

@@ -17,7 +17,7 @@ function Login() {
         setError("")
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users/auth";
+			const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
             localStorage.setItem("user_name", res.fullName);

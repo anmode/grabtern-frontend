@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { formToJSON } from "axios";
+
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
 export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-  const [mentorImg, setMentorImg] = useState('')
-  // const [verifyMentorLink, setVerifyMentorLink] = useState();
+
+  const [mentorImg, setMentorImg] = useState("");
 
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
@@ -57,38 +58,45 @@ export default function MentorForm() {
   //   setFormData({ ...formData, resume: e.target.files[0] });
   // };
 
-  const uploadFileToServer = async () => {
-    try {
-      const formDataFile = new FormData();
-      formDataFile.append('single_input', mentorImg)
-      const url = "http://localhost:8080/api/uploadfile";
-      const { data: res } = await axios.post(url, formDataFile, {})
-      console.log(res);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleUploadImageChange = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setFormData({ ...formData, mentorImg: base64 });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("")
+    setError("");
     try {
-      console.log(formData)
-      uploadFileToServer()
-      const url = "http://localhost:8080/api/mentors/mentorRegister";
-      const {data: res} = await axios.post(url, formData);
-      sendEmail(res.mentorVerifyLink)
+      console.log(formData);
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
+      const { data: res } = await axios.post(url, formData);
+      sendEmail(res.mentorVerifyLink);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       if (
         error.response &&
         error.response.status >= 400 &&
         error.response.status <= 500
-        ) {
-          setError(error.response.data.message);
-        }
+      ) {
+        setError(error.response.data.message);
       }
-
+    }
   };
 
   const sendEmail = (verifyMentorLink) => {
@@ -107,16 +115,26 @@ export default function MentorForm() {
 \n Thank you
 
 \n To Approve the mentor please click the link below: ${verifyMentorLink}`,
-    }
-    console.log(templateParams)
-    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
-      setModalPopup(true);
-      console.log(result.text);
-    }, (error) => {
-      alert("Cannot send your message sorry!")
-      console.log(error.text);
-    });
-  }
+    };
+    console.log(templateParams);
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          setModalPopup(true);
+          console.log(result.text);
+        },
+        (error) => {
+          alert("Cannot send your message sorry!");
+          console.log(error.text);
+        }
+      );
+  };
 
 
   return (
@@ -135,8 +153,29 @@ export default function MentorForm() {
       ) : null}
       <div className="container">
         <form className="mentorForm" onSubmit={handleSubmit}>
+          <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
+            <img
+              src={
+                formData.mentorImg.length === 0
+                  ? "/blank-profile-photo.jpg"
+                  : formData.mentorImg
+              }
+              className="mentorPhoto"
+            />
+            <div>
+            <h3>Upload you profile photo here</h3>
+            <input
+              type="file"
+              name="mentorProfile"
+              className="mentorFormInput"
+              onChange={(e) => handleUploadImageChange(e)}
+              required
+            />
+            </div>
+          </div>
           <div>
-            <label for="name">NAME</label>
+  <label for="name">NAME</label>
+
             <input
               type="text"
               name="name"
@@ -147,7 +186,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
+
             <label for="email">EMAIL</label>
+
             <input
               type="text"
               name="email"
@@ -158,7 +199,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
+
             <label for="mobile">PHONE</label>
+
             <input
               type="number"
               name="mobile"
@@ -169,7 +212,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
+
             <label for="internAt">INTERN</label>
+
             <input
               type="text"
               name="internAt"
@@ -180,7 +225,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
+
             <label for="currentStatus">CURRENT STATUS</label>
+
             <input
               type="text"
               name="currentStatus"
@@ -191,7 +238,9 @@ export default function MentorForm() {
             />
           </div>
           <div>
+
             <label for="linkedin">LINKEDIN</label>
+
             <input
               type="text"
               name="linkedin"
@@ -201,8 +250,10 @@ export default function MentorForm() {
               required
             />
           </div>
+
           <div>
             <label for="twitter">TWITTER</label>
+
             <input
               type="text"
               name="twitter"
@@ -211,6 +262,7 @@ export default function MentorForm() {
               placeholder="e.g. https://www.twitter.com/peterparker"
               required
             />
+
           </div>
           <div>
             <label for="mentorProfile">RESUME/CV</label>
@@ -227,12 +279,14 @@ export default function MentorForm() {
           </div>
           <div>
             <label for="description">DESCRIPTION</label>
+
             <textarea
               cols="10"
               rows="7"
               name="description"
               className="mentorFormInput"
               onChange={(e) => handleChange(e)}
+
               placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
               required
             />
@@ -249,6 +303,7 @@ export default function MentorForm() {
               required
             />
           </div>
+
           {error && (
             <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
           )}

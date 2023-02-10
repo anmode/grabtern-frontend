@@ -20,7 +20,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
             return alert("Please write match confirm password!");
         }
         try {
-            const url = `http://localhost:8080/api/mentors/verify/setupPW/${mentorPWCode}`;
+            const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/setupPW/${mentorPWCode}`;
             console.log(url)
             const { data: res } = await axios.post(url, formData);
             console.log(res.status)
@@ -39,7 +39,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
         <div className='mentorFormRegisration'>
             <div className='container'>
                 <h1>Setup new Password</h1><br />
-                <form className='mentorForm' onSubmit={handleSubmitNewPW}>
+                <form className='mentorForm mentorFormSetupPW'onSubmit={handleSubmitNewPW}>
                     <div>
                         <label for="newPW">New Password</label>
                         <input type="password" name="newPW" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. newPassword123!@" required />

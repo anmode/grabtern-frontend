@@ -15,8 +15,7 @@ function Index() {
         const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/checkPW/${mentorPWCode}`;
         console.log(url)
         const { data: res } = await axios.get(url);
-        console.log(res.status);
-        if (res.status == "BAD") {
+        if (res.message == "Invalid link") {
           router.push("/");
         }
       }

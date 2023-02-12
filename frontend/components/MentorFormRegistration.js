@@ -33,6 +33,7 @@ export default function MentorForm() {
   });
 
   const handleChange = (e) => {
+    console.log(formData.mentorImg)
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -270,10 +271,10 @@ export default function MentorForm() {
               type="file"
               name="mentorProfile"
               className="mentorFormInput"
-              onChange={(e) => {
-                setMentorImg(e.target.files[0]);
-                setFormData({ ...formData, mentorImg: e.target.files[0].name });
-              }}
+              // onChange={(e) => {
+              //   setMentorImg(e.target.files[0]);
+              //   setFormData({ ...formData, mentorImg: e.target.files[0].name });
+              // }}
               required
             />
           </div>

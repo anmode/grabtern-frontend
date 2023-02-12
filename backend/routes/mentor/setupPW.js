@@ -16,7 +16,7 @@ router.post('/:mentorSetupPWId', async (req, res) => {
         const hashConfirmPassword = await bcrypt.hash(newConfirmPassword, salt);
         await Mentor.updateOne({ setupPWId: mentorSetupPWId }, { password: hashPassword, confirmPassword: hashConfirmPassword });
         await Mentor.updateOne({ setupPWId: mentorSetupPWId }, { setupPWId: "passwordHasBeenVerified" });
-        // res.send(200).send({message: "Your mentor password has been successfully updated!", status: "OK"}); due this because error
+        return res.status(200).send({message: "Your mentor password has been successfully updated!", status: "OK"}); 
     } catch (err) {
         console.error(err)
     }

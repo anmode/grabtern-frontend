@@ -618,7 +618,7 @@ width: 320px;
   text-align: center;
 }
 
-@media screen and (max-width:576px) {
+@media screen and (max-width: 576px) {
   .mentorCard{
     padding: 30px 0;
     max-width: 100%;

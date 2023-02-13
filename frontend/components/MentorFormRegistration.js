@@ -129,7 +129,7 @@ export default function MentorForm() {
       bookSession.sessionName === "" ||
       bookSession.sessionType === "" ||
       bookSession.sessionMeetingDuration === "" ||
-      bookSession.peopleAttend === "" ||
+      // bookSession.peopleAttend === "" ||
       bookSession.priceSession === ""
     ) {
       return setError("Please fill all input!");
@@ -157,11 +157,11 @@ export default function MentorForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if (formData.bookSession.length !== 2) {
-      return setError(
-        "The number of book sessions must be more than 2 or equal to 2!"
-      );
-    }
+    // if (formData.bookSession.length !== 2) {
+    //   return setError(
+    //     "The number of book sessions must be more than 2 or equal to 2!"
+    //   );
+    // }
     try {
       console.log(formData);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
@@ -230,8 +230,8 @@ export default function MentorForm() {
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">
             <p>
-              Thank you for Registering you will be recevied an email 1-2 days
-              if you got accepted and your card will be generated automatically
+            Thank you for registering. Within one to two days of verification,
+             you will receive an email with a link to instantly generate your card.
             </p>
             <img src="/iconMentorRegistrationPopup.jpg" />
             <p>Redirecting you to home in {waitTime} second</p>
@@ -525,10 +525,10 @@ export default function MentorForm() {
                 />
               </div>
               <div>
-                <label for="peopleAttend">
+                {/* <label for="peopleAttend">
                   peopleAttend many people will attend to meet
-                </label>
-                <input
+                </label> */}
+                {/* <input
                   type="number"
                   value={bookSession.peopleAttend}
                   name="peopleAttend"
@@ -539,7 +539,7 @@ export default function MentorForm() {
                       peopleAttend: e.target.value,
                     })
                   }
-                />
+                /> */}
               </div>
               <div style={{ gridColumn: "1/3" }}>
                 <label for="priceSession">Price for each book session</label>

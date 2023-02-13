@@ -37,12 +37,12 @@ function Mentors() {
             ) : (
               <div className="mentorLists">
                 {mentorsData.map((mentor) => (
-                  <a href={`/mentors/${mentor.name}`} key={mentor._id}>
+                  <a href={`/mentors/${mentor.username}`} key={mentor._id}>
                     <div className="mentorCard">
                       <img src={mentor.mentorImg} alt="exampleMentorPhoto" />
                       <h2 className="mentorName">{mentor.name}</h2>
                       <div className="contactLinks" style={{marginBottom: "10px"}}>
-                        <a href={`/mentors/${mentor.name}`} target="_blank"><i
+                        <a href={`/mentors/${mentor.username}`} target="_blank"><i
                           class="fas fa-envelope"
                         ></i></a>
                         <a href={`${mentor.social.linkedin}`} target="_blank"><i

@@ -10,10 +10,16 @@ router.post("/", async (req, res) => {
 			return res.status(400).send({ message: error.details[0].message });
 
 		const mentor = await Mentor.findOne({ email: req.body.email });
+		const mentorCheckUsername = await Mentor.findOne({ username: req.body.username });
 		if (mentor)
 			return res
 				.status(409)
 				.send({ message: "Mentor with given email already Exist!" });
+
+		if (mentorCheckUsername)
+			return res
+				.status(409)
+				.send({ message: "Mentor with given username already Exist!" });
 
 		const salt = await bcrypt.genSalt(Number(process.env.SALT));
 		const hashPassword = await bcrypt.hash(req.body.password, salt);

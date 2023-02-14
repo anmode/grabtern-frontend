@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from "react";
-import MentorFormSetupPW from "../../components/MentorFormSetupPW";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import { useRouter } from "next/router";
+import React from "react";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("../../components/Header"));
+const MentorFormSetupPW = dynamic(() =>
+  import("../../components/MentorFormSetupPW")
+);
+const Footer = dynamic(() => import("../../components/Footer"));
 import axios from "axios";
-function Index() {
-  const router = useRouter();
-  const { mentorPWCode } = router.query;
 
-  useEffect(() => {
-    const checkIfThePWCodeIsValid = async () => {
-      if (mentorPWCode !== undefined) {
-        console.log(mentorPWCode);
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/checkPW/${mentorPWCode}`;
-        console.log(url)
-        const { data: res } = await axios.get(url);
-        if (res.message == "Invalid link") {
-          router.push("/");
-        }
-      }
-    };
-
-    checkIfThePWCodeIsValid();
-  });
-
+function Index({ mentorPWCode }) {
   return (
     <>
       <Header navbarBackground={true} />
       <main>
-          <MentorFormSetupPW mentorPWCode={mentorPWCode} />
+        <MentorFormSetupPW mentorPWCode={mentorPWCode} />
       </main>
       <Footer />
     </>
@@ -36,3 +20,27 @@ function Index() {
 }
 
 export default Index;
+
+export const getServerSideProps = async (context) => {
+  const { mentorPWCode } = context.params;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/checkPW/${mentorPWCode}`;
+  const { data: res } = await axios.get(url);
+  if (res.message == "Invalid link") {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {
+        checkPW: "BAD",
+        mentorPWCode: null,
+      },
+    };
+  }
+  return {
+    props: {
+      checkPW: "OK",
+      mentorPWCode: mentorPWCode,
+    },
+  };
+};

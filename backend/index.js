@@ -19,6 +19,14 @@ connection();
 app.use(express.json());
 app.use(cors());
 
+// Allow requests from https://grabtern.com
+const corsOptions = {
+    origin: 'https://grabtern.com'
+  }
+  
+  app.use(cors(corsOptions));
+  app.use(express.json());
+  
 
 // app.use(bodyParser.json({ limit: '10mb' }));
 // app.use(express.json({limit: '50mb'}));

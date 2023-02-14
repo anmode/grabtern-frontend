@@ -105,6 +105,9 @@ a {
 }
 
 @media screen and (max-width: 992px) {
+  .mentorDetail {
+    margin: 200px 0 !important;
+  }
   .courses-actives {
     display: block !important;
   }
@@ -604,6 +607,8 @@ textarea {
   gap: 50px;
 }
 
+
+
 .mentorCard {
   background-color: white;
   display: flex;
@@ -627,6 +632,9 @@ width: 320px;
 }
 
 @media screen and (max-width: 576px) {
+  .mentorLists  a{
+    width: 100%;
+    }
   .mentorCard{
     padding: 30px 0;
     max-width: 100%;
@@ -748,7 +756,7 @@ width: 320px;
 }
 
 .mentorDetail {
-  margin: 200px 0;
+  margin: 200px 20px;
 }
 
 .mentorDetail .container {

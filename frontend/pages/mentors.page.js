@@ -1,29 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
-import Header from "../components/Header";
-import SimpleBanner from "../components/SimpleBanner";
+import dynamic from 'next/dynamic'
+const Header = dynamic(() => import('../components/Header'))
+const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
 
-function Mentors() {
-  const [mentorsData, setMentorsData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-        const { data } = await axios.get(url);
-        setMentorsData(
-          data.filter(
-            (mentor) =>
-              mentor.verified === true && mentor.token === "mentorIsVerified"
-          )
-        );
-        console.log(mentorsData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  });
-
+function Mentors({mentorsData}) {
   return (
     <>
       <Header />
@@ -73,3 +54,17 @@ function Mentors() {
 }
 
 export default Mentors;
+
+export const getServerSideProps = async (context) => {
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  const { data } = await axios.get(url);
+
+  return {
+    props: {
+      mentorsData: data.filter(
+        (mentor) =>
+          mentor.verified === true && mentor.token === "mentorIsVerified"
+      )
+    }
+  }
+}

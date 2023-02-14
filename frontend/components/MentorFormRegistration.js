@@ -16,7 +16,7 @@ export default function MentorForm() {
     sessionName: "",
     sessionType: "",
     sessionMeetingDuration: "",
-    peopleAttend: "",
+    // peopleAttend: "",
     priceSession: "",
   });
   const [formData, setFormData] = useState({

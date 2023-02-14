@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Header from "../../components/Header";
+import React, { useState } from "react";
+import dynamic from 'next/dynamic'
+const Header = dynamic(() => import('../../components/Header'))
 import axios from "axios";
+import Image from 'next/image'
 
-function Index() {
-  const router = useRouter();
-  const { mentorUsername } = router.query;
-  const [mentorDetail, setMentorDetail] = useState();
+function Index({mentorDetail}) {
   const [showModal, setShowModal] = useState(false);
-  useEffect(() => {
-    const getMentorDetail = async () => {
-      if (mentorUsername !== undefined) {
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
-        const { data: res } = await axios.get(url);
-        if (res.message === "Invalid link") {
-          router.push("/");
-        }
-        setMentorDetail(res.mentorDetail);
-        console.log(mentorDetail);
-      }
-    };
-    getMentorDetail();
-  });
+
   return (
     <>
       <Header navbarBackground={true} />
@@ -57,7 +42,7 @@ function Index() {
                           width: "100%",
                           padding: "15px",
                         }}
-                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mentors/${mentorUsername}`}</span>
+                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mentors/${mentorDetail.name}`}</span>
                     </p>
                     <button
                       onClick={() => setShowModal(false)}
@@ -159,10 +144,10 @@ function Index() {
                         gap: "20px",
                       }}
                     >
-                      <div>
+                      {/* <div>
                         <i className="fas fa-phone"></i>
                         {session.peopleAttend}:1 call
-                      </div>
+                      </div> */}
                       <div>
                         <i className="far fa-clock"></i>
                         {session.sessionMeetingDuration} min
@@ -188,3 +173,26 @@ function Index() {
 }
 
 export default Index;
+
+export const getServerSideProps = async (context) => {
+  const { mentorUsername } = context.params;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
+  const { data: res } = await axios.get(url);
+  if (res.message === "Invalid link") {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {
+        mentorDetail: null,
+      }
+    }
+    
+  }
+  return {
+    props: {
+      mentorDetail: res.mentorDetail
+    }
+  }
+}

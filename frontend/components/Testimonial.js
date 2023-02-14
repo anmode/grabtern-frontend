@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 function Testimonial({
   testimonialUserName,
@@ -32,7 +33,9 @@ function Testimonial({
           </div>
         </div>
         <div className="image">
-          <img
+          <Image
+            width={69}
+            height={69}
             src={`/assets/img/testimonials/${testimonialUserImage}`}
             alt="testimonial-profile"
           />

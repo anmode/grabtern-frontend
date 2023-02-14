@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import SimpleBanner from '../components/SimpleBanner'
+import dynamic from 'next/dynamic'
+const Footer = dynamic(() => import('../components/Footer'))
+const Header = dynamic(() => import('../components/Header'))
+const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
 
 function Contact() {
   const form = useRef();

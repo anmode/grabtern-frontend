@@ -1,12 +1,14 @@
 import React from 'react'
-import Header from '../components/Header'
-import SimpleBanner from '../components/SimpleBanner'
-import servicesData from './data/ServicesData';
-import Service from '../components/Service';
-import AboutComponent from '../components/About';
-import dynamic from 'next/dynamic';
-import teamsData from './data/teamsData';
+import dynamic from 'next/dynamic'
+const Footer = dynamic(() => import('../components/Footer'))
+const Header = dynamic(() => import('../components/Header'))
+const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
+const Service = dynamic(() => import('../components/Service'))
+const AboutComponent = dynamic(() => import('../components/About'))
 import TeamProfile from '../components/TeamProfile';
+
+import servicesData from './data/ServicesData';
+import teamsData from './data/teamsData';
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -17,7 +19,6 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
 
 const teamsOptions = {
   margin: 40,

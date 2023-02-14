@@ -196,7 +196,6 @@ export default function MentorForm() {
 <br>Book Session:
 <br> ${formData.bookSession.map((session, index) => {
         return `${index + 1}. ${session.sessionName} |
-                ${session.peopleAttend}:1 call
                 ${session.sessionMeetingDuration} min
                 ${session.priceSession}<br>`;
       })}
@@ -461,10 +460,10 @@ export default function MentorForm() {
                         gap: "20px",
                       }}
                     >
-                      <div>
+                      {/* <div>
                         <i className="fas fa-phone"></i>
                         {session.peopleAttend}:1 call
-                      </div>
+                      </div> */}
                       <div>
                         <i className="far fa-clock"></i>
                         {session.sessionMeetingDuration} min

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import dynamic from 'next/dynamic'
+const Header = dynamic(() => import('../components/Header'))
+const Footer = dynamic(() => import('../components/Footer'))
 import emailjs from "@emailjs/browser";
 import { useRouter } from "next/router";
 function mentorRegisterSendCV() {

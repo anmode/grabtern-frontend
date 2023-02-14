@@ -48,7 +48,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
                         <label for="newCPW">New Confirm Password</label>
                         <input type="password" name="newCPW" className="mentorFormInput" onChange={(e) => handleChange(e)} placeholder="e.g. newPassword123!@" required />
                     </div>
-                    <button type='submit' className='mentorFormButotn'>Submit</button>
+                    <button type='submit' style={{ width: "fit-content", padding: "15px 25px" }} className='mentorFormButotn'>Submit</button>
                     {error && <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>}
                 </form>
             </div>

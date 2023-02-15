@@ -43,9 +43,8 @@ export default function MentorForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-
   const nextStep = () => {
-    console.log(formData)
+    console.log(formData);
     setError("");
     if (formStep === 2) return;
     if (
@@ -164,8 +163,19 @@ export default function MentorForm() {
     // }
     try {
       console.log(formData);
+      let headers = new Headers();
+      headers.append(
+        "Access-Control-Allow-Origin",
+        process.env.NEXT_PUBLIC_FRONTEND_URL
+      );
+      headers.append("Access-Control-Allow-Credentials", "true");
+      headers.append("Content-Type", "application/json");
+      headers.append("Accept", "application/json");
+      headers.append("Origin", process.env.NEXT_PUBLIC_FRONTEND_URL);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-      const { data: res } = await axios.post(url, formData);
+      const { data: res } = await axios.post(url, formData, {
+        headers: headers,
+      });
       sendEmail(res.mentorVerifyLink);
     } catch (error) {
       console.log(error);
@@ -229,8 +239,9 @@ export default function MentorForm() {
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">
             <p>
-            Thank you for registering. Within one to two days of verification,
-             you will receive an email with a link to instantly generate your card.
+              Thank you for registering. Within one to two days of verification,
+              you will receive an email with a link to instantly generate your
+              card.
             </p>
             <img src="/iconMentorRegistrationPopup.jpg" />
             <p>Redirecting you to home in {waitTime} second</p>
@@ -239,376 +250,183 @@ export default function MentorForm() {
       ) : null}
       <div className="container">
         <form className="mentorForm" onSubmit={handleSubmit}>
-          {formStep === 1 ? (
-            <>
-              {/* Step 1 */}
-              <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
-                <img
-                  src={
-                    formData.mentorImg.length === 0
-                      ? "/blank-profile-photo.jpg"
-                      : formData.mentorImg
-                  }
-                  className="mentorPhoto"
-                />
-                <div>
-                  <h3>Upload you profile photo here</h3>
-                  <input
-                    type="file"
-                    name="mentorProfile"
-                    className="mentorFormInput"
-                    onChange={(e) => handleUploadImageChange(e)}
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <label for="name">NAME</label>
-
-                <input
-                  type="text"
-                  name="name"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. Peter Parker"
-                  required
-                  value={formData.name}
-                />
-              </div>
-              <div>
-                <label for="username">USERNAME</label>
-
-                <input
-                  type="text"
-                  name="username"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. peter-parker12"
-                  required
-                  value={formData.username}
-                />
-              </div>
-              <div>
-                <label for="email">EMAIL</label>
-
-                <input
-                  type="text"
-                  name="email"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. peterparker4321#gmail.com"
-                  required
-                  value={formData.email}
-                />
-              </div>
-              <div>
-                <label for="mobile">PHONE</label>
-
-                <input
-                  type="number"
-                  name="mobile"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="0123456789"
-                  required
-                  value={formData.mobile}
-                />
-              </div>
-              <div>
-                <label for="internAt">INTERN</label>
-
-                <input
-                  type="text"
-                  name="internAt"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. MITACS"
-                  required
-                  value={formData.internAt}
-                />
-              </div>
-              <div>
-                <label for="currentStatus">CURRENT STATUS</label>
-
-                <input
-                  type="text"
-                  name="currentStatus"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. Amazon SDE-I"
-                  required
-                  value={formData.currentStatus}
-                />
-              </div>
-              <div>
-                <label for="linkedin">LINKEDIN</label>
-
-                <input
-                  type="text"
-                  name="linkedin"
-                  className="mentorFormInput"
-                  onChange={(e) => handleSocialChange(e)}
-                  placeholder="e.g. https://www.linkedin.com/peterparker"
-                  required
-                  value={formData.social.linkedin}
-                />
-              </div>
-              <div>
-                <label for="twitter">TWITTER</label>
-
-                <input
-                  type="text"
-                  name="twitter"
-                  className="mentorFormInput"
-                  onChange={(e) => handleSocialChange(e)}
-                  placeholder="e.g. https://www.twitter.com/peterparker"
-                  required
-                  value={formData.social.twitter}
-                />
-              </div>
-              {/* <div>
-            <label for="mentorProfile">RESUME/CV</label>
-            <input
-              type="file"
-              name="mentorProfile"
-              className="mentorFormInput"
-              required
+          <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
+            <img
+              src={
+                formData.mentorImg.length === 0
+                  ? "/blank-profile-photo.jpg"
+                  : formData.mentorImg
+              }
+              className="mentorPhoto"
             />
-          </div> */}
-              <div style={{ gridColumn: "1/3" }}>
-                <label for="description">DESCRIPTION</label>
-
-                <textarea
-                  cols="10"
-                  rows="7"
-                  name="description"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
-                  required
-                  value={formData.description}
-                />
-              </div>
-              <div style={{ gridColumn: "1/3" }}>
-                <label for="sessionPrice">SESSION PRICE</label>
-                <input
-                  type="text"
-                  name="sessionPrice"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. $27"
-                  required
-                  value={formData.sessionPrice}
-                />
-              </div>
-              {error && (
-                <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
-              )}
-              <hr
-                style={{
-                  margin: "10px 0",
-                  borderColor: "grey",
-                  gridColumn: "1/3",
-                }}
+            <div>
+              <h3>Upload you profile photo here</h3>
+              <input
+                type="file"
+                name="mentorProfile"
+                className="mentorFormInput"
+                onChange={(e) => handleUploadImageChange(e)}
+                required
               />
-              {msg && (
-                <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
-              )}
-              <div
-                style={{ width: "fit-content", padding: "15px 25px" }}
-                onClick={() => nextStep()}
-                className="mentorFormButotn"
-              >
-                Next step
-              </div>
-              {/* End Step 1 */}
-            </>
-          ) : formStep === 2 ? (
-            <>
-              <h2>Setup your Book Sessions</h2>
-              <ul
-                className="bookSessions"
-                style={{ gridColumn: "1/3", marginTop: "0" }}
-              >
-                {formData.bookSession.map((session, sessionIndex) => (
-                  <li key={sessionIndex}>
-                    <div className="bookSessionHeader">
-                      <div>
-                        <h2>{session.sessionName}</h2>
-                        <p>
-                          {session.sessionType} |{" "}
-                          {session.sessionMeetingDuration}
-                        </p>
-                      </div>
-                      <div>
-                        <i
-                          style={{
-                            fontSize: "17px",
-                            color: "gray",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => removeSession(sessionIndex)}
-                          className="fas fa-trash-alt"
-                        ></i>
-                      </div>
-                    </div>
-                    <div
-                      className="bookSessionIcons"
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "20px",
-                      }}
-                    >
-                      {/* <div>
-                        <i className="fas fa-phone"></i>
-                        {session.peopleAttend}:1 call
-                      </div> */}
-                      <div>
-                        <i className="far fa-clock"></i>
-                        {session.sessionMeetingDuration} min
-                      </div>
-                      <div>
-                        <i className="fas fa-rupee-sign"></i>
-                        {session.priceSession}
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div>
-                <label for="sessionName">Book Session Name</label>
-                <input
-                  type="text"
-                  value={bookSession.sessionName}
-                  name="sessionName"
-                  placeholder="eg. Mock Interview"
-                  onChange={(e) =>
-                    setBookSession({
-                      ...bookSession,
-                      sessionName: e.target.value,
-                    })
-                  }
-                />
-              </div>
-              <div>
-                <label for="sessionType">Book Session Type</label>
-                <input
-                  type="text"
-                  value={bookSession.sessionType}
-                  name="sessionType"
-                  placeholder="eg. Video Meeting"
-                  onChange={(e) =>
-                    setBookSession({
-                      ...bookSession,
-                      sessionType: e.target.value,
-                    })
-                  }
-                />
-              </div>
-              <div>
-                <label for="sessionMeetingDuration">
-                  Book Session Meeting Duration (Minutes)
-                </label>
-                <input
-                  type="number"
-                  value={bookSession.sessionMeetingDuration}
-                  name="sessionMeetingDuration"
-                  placeholder="eg. 45 min"
-                  onChange={(e) =>
-                    setBookSession({
-                      ...bookSession,
-                      sessionMeetingDuration: e.target.value,
-                    })
-                  }
-                />
-              </div>
-              <div>
-                {/* <label for="peopleAttend">
-                  peopleAttend many people will attend to meet
-                </label> */}
-                {/* <input
-                  type="number"
-                  value={bookSession.peopleAttend}
-                  name="peopleAttend"
-                  placeholder="eg. 2"
-                  onChange={(e) =>
-                    setBookSession({
-                      ...bookSession,
-                      peopleAttend: e.target.value,
-                    })
-                  }
-                /> */}
-              </div>
-              <div style={{ gridColumn: "1/3" }}>
-                <label for="priceSession">Price for each book session</label>
-                <input
-                  type="number"
-                  value={bookSession.priceSession}
-                  name="priceSession"
-                  placeholder="eg. ₹500"
-                  onChange={(e) =>
-                    setBookSession({
-                      ...bookSession,
-                      priceSession: e.target.value,
-                    })
-                  }
-                />
-              </div>
+            </div>
+          </div>
+          <div>
+            <label for="name">NAME</label>
 
-              <div style={{ gridColumn: "1/3" }}>
-                <div
-                  style={{
-                    cursor: "pointer",
-                    border: "1px solid black",
-                    backgroundColor: "white",
-                    color: "black",
-                    width: "fit-content",
-                    padding: "10px",
-                    borderRadius: "5px",
-                  }}
-                  onClick={() => addBookSession()}
-                >
-                  Add book session +
-                </div>
-              </div>
-              {error && (
-                <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
-              )}
-              <hr
-                style={{
-                  margin: "10px 0",
-                  borderColor: "grey",
-                  gridColumn: "1/3",
-                }}
-              />
-              {msg && (
-                <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
-              )}
-<div style={{display: "flex", alignItems: "center", gap: "20px", flexDirection: "row", flexWrap: "wrap"}}>              <div
-                style={{ width: "fit-content", padding: "15px 25px" }}
-                onClick={() => previousStep()}
-                className="mentorFormButotn"
-              >
-                Previous step
-              </div>
-              <button
-                style={{ width: "fit-content", padding: "15px 25px" }}
-                type="submit"
-                className="mentorFormButotn"
-              >
-                Register
-              </button></div>
-            </>
-          ) : null}
+            <input
+              type="text"
+              name="name"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. Peter Parker"
+              required
+              value={formData.name}
+            />
+          </div>
+          <div>
+            <label for="username">USERNAME</label>
+
+            <input
+              type="text"
+              name="username"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. peter-parker12"
+              required
+              value={formData.username}
+            />
+          </div>
+          <div>
+            <label for="email">EMAIL</label>
+
+            <input
+              type="text"
+              name="email"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. peterparker4321#gmail.com"
+              required
+              value={formData.email}
+            />
+          </div>
+          <div>
+            <label for="mobile">PHONE</label>
+
+            <input
+              type="number"
+              name="mobile"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="0123456789"
+              required
+              value={formData.mobile}
+            />
+          </div>
+          <div>
+            <label for="internAt">INTERN</label>
+
+            <input
+              type="text"
+              name="internAt"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. MITACS"
+              required
+              value={formData.internAt}
+            />
+          </div>
+          <div>
+            <label for="currentStatus">CURRENT STATUS</label>
+
+            <input
+              type="text"
+              name="currentStatus"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. Amazon SDE-I"
+              required
+              value={formData.currentStatus}
+            />
+          </div>
+          <div>
+            <label for="linkedin">LINKEDIN</label>
+
+            <input
+              type="text"
+              name="linkedin"
+              className="mentorFormInput"
+              onChange={(e) => handleSocialChange(e)}
+              placeholder="e.g. https://www.linkedin.com/peterparker"
+              required
+              value={formData.social.linkedin}
+            />
+          </div>
+          <div>
+            <label for="twitter">TWITTER</label>
+
+            <input
+              type="text"
+              name="twitter"
+              className="mentorFormInput"
+              onChange={(e) => handleSocialChange(e)}
+              placeholder="e.g. https://www.twitter.com/peterparker"
+              required
+              value={formData.social.twitter}
+            />
+          </div>
+          <div style={{ gridColumn: "1/3" }}>
+            <label for="description">DESCRIPTION</label>
+
+            <textarea
+              cols="10"
+              rows="7"
+              name="description"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
+              required
+              value={formData.description}
+            />
+          </div>
+          <div style={{ gridColumn: "1/3" }}>
+            <label for="sessionPrice">SESSION PRICE</label>
+            <input
+              type="text"
+              name="sessionPrice"
+              className="mentorFormInput"
+              onChange={(e) => handleChange(e)}
+              placeholder="e.g. $27"
+              required
+              value={formData.sessionPrice}
+            />
+          </div>
+          {error && (
+            <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+          )}
+          <hr
+            style={{
+              margin: "10px 0",
+              borderColor: "grey",
+              gridColumn: "1/3",
+            }}
+          />
+          {msg && (
+            <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+          )}
+          <button
+            style={{ width: "fit-content", padding: "15px 25px" }}
+            type="submit"
+            className="mentorFormButotn"
+          >
+            Register
+          </button>
+
           <p>
-            Already have mentor account? <a href="#">Login</a>
+            Already have mentor account? <a href="/mentorLogin">Login</a>
           </p>
           <p>
-            Facing difficulties? <a href="/mentorRegisterSendCV">Send your CV/Resume to us!</a>
-          </p>
-          <p>
-          <a href="#">Forgot password?</a>
+            Facing difficulties?{" "}
+            <a href="/mentorRegisterSendCV">Send your CV/Resume to us!</a>
           </p>
         </form>
       </div>

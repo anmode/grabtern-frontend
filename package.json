@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/anmode/Move-to-nextJS#readme",
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "paytm-pg-node-sdk": "^1.0.4"
   }
 }

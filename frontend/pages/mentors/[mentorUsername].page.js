@@ -123,7 +123,7 @@ function Index({mentorDetail}) {
               <h2 style={{ fontSize: "24px" }}>About</h2>
               <p>{mentorDetail.description}</p>
               <br />
-              <h2 style={{ fontSize: "24px" }}>Book Sessions</h2>
+              <h2 style={{ fontSize: "24px" }}>Sessions</h2>
               <ul className="bookSessions">
                 {mentorDetail.bookSession.length !== 0 ? mentorDetail.bookSession.map((session) => (
                   <li>
@@ -161,7 +161,7 @@ function Index({mentorDetail}) {
                   </li>
                 )) : mentorDetail.bookSession.length === 0 ? (
                   <p>
-                    {mentorDetail.name} not have book sessions yet
+                    {mentorDetail.name} do not have sessions yet
                 </p>) : null}
               </ul>
             </div>

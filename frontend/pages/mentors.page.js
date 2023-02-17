@@ -40,7 +40,7 @@ function Mentors({mentorsData}) {
                           ? `${mentor.description.substring(0, 120)}…`
                           : mentor.description}
                       </p>
-                      <h3>Price for each intern: {mentor.sessionPrice}</h3>
+                      {/* <h3>Price for each intern: {mentor.sessionPrice}</h3> */}
                     </div>
                   </a>
                 ))}

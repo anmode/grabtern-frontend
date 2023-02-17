@@ -61,14 +61,11 @@ function Index({mentorDetail}) {
                   </div>
                 </div>
               ) : null}
+
               <div className="row1">
                 <img src={mentorDetail.mentorImg} />
-                <i
-                  class="fas fa-share-square"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setShowModal(true)}
-                ></i>
-              </div>
+
+              <div>
               <h1>{mentorDetail.name}</h1>
               <h3>
                 {mentorDetail.internAt} | {mentorDetail.currentStatus}
@@ -119,6 +116,13 @@ function Index({mentorDetail}) {
                   </a>
                 </li>
               </ul>
+              </div>
+              <i
+                  class="fas fa-share-square"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setShowModal(true)}
+                ></i>
+              </div>
               <br />
               <h2 style={{ fontSize: "24px" }}>About</h2>
               <p>{mentorDetail.description}</p>

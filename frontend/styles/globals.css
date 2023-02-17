@@ -356,10 +356,10 @@ a {
   .properties__card {
     height: 690px !important;
   }
-  .mentorUploudPhoto {
+  .mentorUploadPhoto {
     display: block !important;
   }
-  .mentorUploudPhoto img {
+  .mentorUploadPhoto img {
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
@@ -602,12 +602,11 @@ textarea {
 
 .mentorLists {
   display: flex;
+justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
   gap: 50px;
 }
-
-
 
 .mentorCard {
   background-color: white;
@@ -618,8 +617,9 @@ width: 320px;
   flex-direction: column;
   height: 100%;
   border-radius: 5px;
+  border: 2px solid rgba(223, 222, 222, 0.753);
   padding: 30px;
-  box-shadow: 2px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease-in-out;
 }
 
@@ -681,11 +681,11 @@ width: 320px;
 .contactLinks {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .contactLinks i {
-  font-size: 24px;
+  font-size: 20px;
   color: grey;
   cursor: pointer;
 }
@@ -733,24 +733,25 @@ width: 320px;
   border-radius: 50%;
 }
 
-.mentorUploudPhoto {
+.mentorUploadPhoto {
   display: flex;
   width: 100%;
   flex-direction: row !important;
-  gap: 30px !important;
+  gap: 10rem !important;
   border-bottom: 1px solid gray;
   padding-bottom: 30px !important;
 }
 
-.mentorUploudPhoto div  {
+.mentorUploadPhoto div  {
   position: relative;
-  top: 10px;
+justify-content: center;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.mentorUploudPhoto div input {
+.mentorUploadPhoto div input {
   border: unset !important;
   padding: 0 !important;
 }
@@ -761,20 +762,25 @@ width: 320px;
 
 .mentorDetail .container {
   max-width: 1600px;
+  padding: 20px 25%;
 }
 .mentorDetail .container .row1 {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   font-size: 24px;
   color: grey;
 }
 
-.mentorDetail .container > .contactLinks li a:hover {
+.mentorDetail .container .row1 ul{
+font-size: 13px;
+}
+
+.mentorDetail .container .contactLinks li a:hover {
   color: black;
 }
-.mentorDetail .container > .contactLinks li:hover {
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+.mentorDetail .container .contactLinks li:hover {
+  text-shadow: 2px 2px 2px rgb(0, 0, 0,0.1);
   cursor: pointer;
 }
 

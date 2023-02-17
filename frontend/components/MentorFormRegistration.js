@@ -250,7 +250,7 @@ export default function MentorForm() {
       ) : null}
       <div className="container">
         <form className="mentorForm" onSubmit={handleSubmit}>
-          <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
+          <div style={{ gridColumn: "1/3" }} className="mentorUploadPhoto">
             <img
               src={
                 formData.mentorImg.length === 0

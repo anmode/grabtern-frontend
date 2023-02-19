@@ -15,24 +15,24 @@ const getMentorDetail = require("./routes/mentor/getMentorDetail");
 const mentorDashboard = require("./routes/mentor/mentorDashboard")
 const updateMentor = require("./routes/mentor/updateMentor")
 const bodyParser = require("body-parser");
+
 // database connection
 connection();
+
 // middlewares
 app.use(express.json());
-const corsOptions = {
-  origin: "*",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });  
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
+
+// Allow cross-origin requests from your frontend domain
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
+// Define your API routes
 app.use("/api/users/userRegister", userRegisterRoutes);
 app.use("/api/users/auth", userAuthRoutes);
 app.use("/api/mentors/mentorRegister", mentorRegisterRoutes);
@@ -48,5 +48,6 @@ app.use("/api/mentors/updateMentor", updateMentor);
 app.get("/", (req, res) => {
   res.send("Welcome to GrabTern API");
 });
+
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import dynamic from 'next/dynamic'
 const Header = dynamic(() => import('../../components/Header'))
 import axios from "axios";
-import Image from 'next/image'
 
 function Index({mentorDetail}) {
   const [showModal, setShowModal] = useState(false);
@@ -123,7 +122,7 @@ function Index({mentorDetail}) {
               <h2 style={{ fontSize: "24px" }}>About</h2>
               <p>{mentorDetail.description}</p>
               <br />
-              <h2 style={{ fontSize: "24px" }}>Book Sessions</h2>
+              <h2 style={{ fontSize: "24px"   }}>Sessions</h2>
               <ul className="bookSessions">
         {mentorDetail.bookSession.length !== 0 ? (
           mentorDetail.bookSession.map((session) => (

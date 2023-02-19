@@ -324,15 +324,15 @@ export default function MentorForm() {
             />
           </div>
           <div style={{ gridColumn: "1/3" }}>
-            <label for="sessionPrice">SESSION PRICE</label>
+            <label for="sessionPrice">30min 1-1 SESSION PRICE</label>
             <input
               type="text"
               name="sessionPrice"
               className="mentorFormInput"
-              onChange={(e) => handleChange(e)}
-              placeholder="e.g. $27"
+              onChange={(e) => setFormData({...formData, bookSession: [{...formData.bookSession, priceSession: e.target.value}]})}
+              placeholder="e.g. ₹100"
               required
-              value={formData.sessionPrice}
+              value={formData.bookSession[0].sessionPrice}
             />
           </div>
           {error && (

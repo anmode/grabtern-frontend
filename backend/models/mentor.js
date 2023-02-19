@@ -60,7 +60,7 @@ const validate = (data) => {
             priceSession: Joi.string().required().label("Book Session price"),
         })),
         description: Joi.string().required().label("Description"),
-        sessionPrice: Joi.string().required().label("Session Price"),
+        sessionPrice: Joi.string().required().label("30min 1-1 Session Price"),
         mentorImg: Joi.string().required().label("Mentor Image"),
         password: Joi.string().required().label("Password"),
         confirmPassword: Joi.string().required().label("Confirm Password"),

@@ -125,45 +125,42 @@ function Index({mentorDetail}) {
               <br />
               <h2 style={{ fontSize: "24px" }}>Book Sessions</h2>
               <ul className="bookSessions">
-                {mentorDetail.bookSession.length !== 0 ? mentorDetail.bookSession.map((session) => (
-                  <li>
-                    <div className="bookSessionHeader">
-                      <div>
-                        <h2>{session.sessionName}</h2>
-                        <p>
-                          {session.sessionType} |{" "}
-                          {session.sessionMeetingDuration}
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      className="bookSessionIcons"
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "20px",
-                      }}
-                    >
-                      {/* <div>
-                        <i className="fas fa-phone"></i>
-                        {session.peopleAttend}:1 call
-                      </div> */}
-                      <div>
-                        <i className="far fa-clock"></i>
-                        {session.sessionMeetingDuration} min
-                      </div>
-                      <div>
-                        <i className="fas fa-rupee-sign"></i>
-                        {session.priceSession}
-                      </div>
-                    </div>
-                  <button style={{cursor:"pointer"}}>Book Session</button>
-                  </li>
-                )) : mentorDetail.bookSession.length === 0 ? (
+        {mentorDetail.bookSession.length !== 0 ? (
+          mentorDetail.bookSession.map((session) => (
+            <li>
+              <div className="bookSessionHeader" style={{alignItems: "center"}}>
+              <i class={session.sessionType === "video-meeting" ? "fas fa-video" : session.sessionType === "call-meeting" ? "fas fa-phone" : ""} style={{fontSize: "25px"}}></i>
+                <div>
+                  <h2>{session.sessionName}</h2>
                   <p>
-                    {mentorDetail.name} not have book sessions yet
-                </p>) : null}
-              </ul>
+                    {session.sessionDescription}
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bookSessionIcons"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "20px",
+                }}
+              >
+                <div>
+                  <i className="far fa-clock"></i>
+                  {session.sessionMeetingDuration} min
+                </div>
+                <div>
+                  <i className="fas fa-rupee-sign"></i>
+                  {session.priceSession}
+                </div>
+              </div>
+              <button style={{ cursor: "pointer" }}>Book Session</button>
+            </li>
+          ))
+        ) : mentorDetail.bookSession.length === 0 ? (
+          <p>You not have book sessions yet</p>
+        ) : null}
+      </ul>
             </div>
           </div>
         )}

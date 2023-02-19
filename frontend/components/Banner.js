@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Banner() {
+function Banner({isMentorLoggedIn}) {
     return (
 <section className="slider-area ">
             <div className="slider-active slick-initialized slick-slider">
@@ -12,7 +12,8 @@ function Banner() {
                                     <h1 data-animation="fadeInLeft" data-delay="0.2s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "0.8s"}}>Grab your Intern with GrabTern</h1>
                                     <p data-animation="fadeInLeft" data-delay="0.4s" className="animate__animated animate__fadeInLeft" style={{animationDelay: "1s"}}>Book a meeting with a past intern to receive one-on-one mentoring and enhance your chances of landing your ideal intern.</p>
                                     <a href="/mentors" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Find Mentor</a>	&nbsp;	&nbsp;	&nbsp;	&nbsp;
-                                    <a href="/mentorRegister" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Be a Mentor</a>
+                                    <a href="/mentorRegister" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Be a Mentor</a> 
+                                    {isMentorLoggedIn === true ? (<><br/><br/><a href="/dashboard" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Dashboard</a></>):null}
                                 </div>
                             </div>
                         </div>

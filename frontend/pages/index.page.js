@@ -78,10 +78,14 @@ const testimonialOptions = {
 
 export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isMentorLoggedIn, setIsMentorLoggedIn] = useState(false);
   const [carousel, setCarousel] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null || localStorage.getItem("token") !== null) {
       setIsUserLoggedIn(true)
+    }
+    if (localStorage.getItem("mentor_name") !== null && localStorage.getItem("mentorToken") !== null) {
+      setIsMentorLoggedIn(true)
     }
     console.log(isUserLoggedIn)
     setCarousel(true);
@@ -94,7 +98,7 @@ export default function Home() {
       <Header isUserLoggedIn={isUserLoggedIn} />
 
       <main>
-        <Banner />
+        <Banner isMentorLoggedIn={isMentorLoggedIn}/>
         <div className="services-area">
           <div className="container">
             <div className="row justify-content-sm-center">

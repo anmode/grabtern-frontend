@@ -25,9 +25,10 @@ router.post("/", async (req, res) => {
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
 		const hashConfirmPassword = await bcrypt.hash(req.body.confirmPassword, salt);
 		const token = crypto.randomBytes(64).toString('hex');
-		console.log({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword, token: token })
+		const loginToken = crypto.randomBytes(12).toString('hex');
+		console.log({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword, token: token, loginToken: loginToken })
 
-		await new Mentor({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword, token: token }).save();
+		await new Mentor({ ...req.body, password: hashPassword, confirmPassword: hashConfirmPassword, token: token, loginToken: loginToken }).save();
 		console.log(process.env.BACKEND_URL)
 		res.status(201).send({ message: "Mentor created successfully", mentorVerifyLink: `${process.env.BACKEND_URL}/api/mentors/verifyWithToken/${token}` });
 	} catch (error) {

@@ -12,6 +12,8 @@ const mentorVerify = require("./routes/mentor/mentorVerify");
 const mentorSetupPW = require("./routes/mentor/setupPW");
 const mentorCheckPW = require("./routes/mentor/checkPW");
 const getMentorDetail = require("./routes/mentor/getMentorDetail");
+const mentorDashboard = require("./routes/mentor/mentorDashboard")
+const updateMentor = require("./routes/mentor/updateMentor")
 const bodyParser = require("body-parser");
 // database connection
 connection();
@@ -40,6 +42,8 @@ app.use("/api/mentors/verifyWithToken", mentorVerify);
 app.use("/api/mentors/verify/setupPW", mentorSetupPW);
 app.use("/api/mentors/verify/checkPW", mentorCheckPW);
 app.use("/api/mentors/mentorDetail", getMentorDetail);
+app.use("/api/mentors/mentorDashboard", mentorDashboard);
+app.use("/api/mentors/updateMentor", updateMentor);
 
 app.get("/", (req, res) => {
   res.send("Welcome to GrabTern API");

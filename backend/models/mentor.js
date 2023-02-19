@@ -18,6 +18,7 @@ const mentorSchema = new mongoose.Schema({
         sessionName: {type: String, required: true},
         sessionType: {type: String, required: true},
         sessionMeetingDuration: {type: String, required: true},
+        sessionDescription: {type: String, required: true},
         // peopleAttend: {type: String, required: true},
         priceSession: {type: String, required: true},
     }],
@@ -28,6 +29,7 @@ const mentorSchema = new mongoose.Schema({
     confirmPassword: { type: String, required: true },
     verified: { type: Boolean, default: false },
     token: { type: String, required: true },
+    loginToken: { type: String, required: true },
     setupPWId: {type: String, required: true, default: "noSetupIdForPw"}
 });
 
@@ -54,6 +56,7 @@ const validate = (data) => {
         },
         bookSession: Joi.array().items(Joi.object().keys({
             sessionName: Joi.string().required().label("Book Session Name"),
+            sessionDescription: Joi.string().required().label("Book Session Description"),
             sessionType: Joi.string().required().label("Book Session type"),
             sessionMeetingDuration: Joi.string().required().label("Book session duration"),
             // peopleAttend: Joi.string().required().label("Book session people attend"),
@@ -66,6 +69,7 @@ const validate = (data) => {
         confirmPassword: Joi.string().required().label("Confirm Password"),
         verified: Joi.boolean().label("Is Mentor Verified"),
         token: Joi.string().label("Mentor Verify Token"),
+        loginToken: Joi.string().label("Mentor Login Token"),
         setupPWId: Joi.string().label("Setup PW Id"),
     });
     return schema.validate(data);

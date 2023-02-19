@@ -7,18 +7,10 @@ export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-  const [formStep, setFormStep] = useState(1);
 
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
-  const [bookSession, setBookSession] = useState({
-    sessionName: "",
-    sessionType: "",
-    sessionMeetingDuration: "",
-    // peopleAttend: "",
-    priceSession: "",
-  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,7 +22,16 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [],
+    bookSession: [
+      {
+        sessionName: "1 on 1 Mentorship",
+        sessionDescription: "Achieve your goals faster with customized road map",
+        sessionType: "video-meeting",
+        sessionMeetingDuration: "30",
+        // peopleAttend: "",
+        priceSession: "500",
+      }
+    ],
     description: "",
     mentorImg: "",
     sessionPrice: "",
@@ -43,41 +44,6 @@ export default function MentorForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const nextStep = () => {
-    console.log(formData);
-    setError("");
-    if (formStep === 2) return;
-    if (
-      formData.name === "" ||
-      formData.email === "" ||
-      formData.username === "" ||
-      formData.mobile === "" ||
-      formData.internAt === "" ||
-      formData.currentStatus === "" ||
-      formData.linkedin === "" ||
-      formData.twitter === "" ||
-      formData.description === "" ||
-      formData.mentorImg === "" ||
-      formData.sessionPrice === ""
-    ) {
-      return setError("Please fill all input!");
-    }
-    let format = /[ `!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/;
-    setError("");
-    if (/[A-Z]/.test(formData.username)) {
-      return setError("Username cannot include uppercase letter");
-    }
-    if (format.test(formData.username)) {
-      return setError("Username cannot include space and symbols");
-    }
-    setFormStep((val) => (val += 1));
-  };
-
-  const previousStep = () => {
-    setError("");
-    if (formStep === 1) return;
-    setFormStep((val) => (val -= 1));
-  };
 
   const handleSocialChange = (e) => {
     setFormData({
@@ -114,37 +80,6 @@ export default function MentorForm() {
         reject(error);
       };
     });
-  };
-
-  const removeSession = (sessionIndex) => {
-    let allBookSession = formData.bookSession;
-    allBookSession.splice(sessionIndex, 1);
-    setFormData({ ...formData, bookSession: allBookSession });
-  };
-
-  const addBookSession = () => {
-    setError("");
-    if (
-      bookSession.sessionName === "" ||
-      bookSession.sessionType === "" ||
-      bookSession.sessionMeetingDuration === "" ||
-      // bookSession.peopleAttend === "" ||
-      bookSession.priceSession === ""
-    ) {
-      return setError("Please fill all input!");
-    }
-    let allBookSession = formData.bookSession;
-    allBookSession.push(bookSession);
-    setFormData({ ...formData, bookSession: allBookSession });
-    console.log(formData, bookSession);
-    setBookSession({
-      sessionName: "",
-      sessionType: "",
-      sessionMeetingDuration: "",
-      peopleAttend: "",
-      priceSession: "",
-    });
-    setError("");
   };
 
   const handleUploadImageChange = async (e) => {
@@ -394,10 +329,10 @@ export default function MentorForm() {
               type="text"
               name="sessionPrice"
               className="mentorFormInput"
-              onChange={(e) => handleChange(e)}
+              onChange={(e) => setFormData({...formData, bookSession: [{...formData.bookSession, priceSession: e.target.value}]})}
               placeholder="e.g. ₹100"
               required
-              value={formData.sessionPrice}
+              value={formData.bookSession[0].sessionPrice}
             />
           </div>
           {error && (

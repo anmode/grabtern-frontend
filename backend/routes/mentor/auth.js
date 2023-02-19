@@ -10,18 +10,19 @@ router.post("/", async (req, res) => {
 			return res.status(400).send({ message: error.details[0].message });
 
 		const mentor = await Mentor.findOne({ email: req.body.email });
+		console.log(mentor)
 		if (!mentor)
-			return res.status(401).send({ message: "Invalid Email or Password" });
+			return res.status(401).send({ message: "Invalid Email" });
 
 		const validPassword = await bcrypt.compare(
 			req.body.password,
 			mentor.password
 		);
 		if (!validPassword)
-			return res.status(401).send({ message: "Invalid Email or Password" });
+			return res.status(401).send({ message: "Invalid Password" });
+		if(mentor.verified === false) return res.status(201).send({message: "Mentor not yet verified"})
 
-		const token = mentor.generateAuthToken();
-		res.status(200).send({ data: token, message: "logged in successfully", fullName: mentor.fullName });
+		res.status(200).send({ loginToken: mentor.loginToken, message: "logged in successfully", fullName: mentor.username });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
 	}
@@ -31,6 +32,7 @@ const validate = (data) => {
 	const schema = Joi.object({
 		email: Joi.string().email().required().label("Email"),
 		password: Joi.string().required().label("Password"),
+		confirmPassword: Joi.string().required().label("Confirm Password"),
 	});
 	return schema.validate(data);
 };

@@ -31,6 +31,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors());
 
 // Define your API routes
 app.use("/api/users/userRegister", userRegisterRoutes);

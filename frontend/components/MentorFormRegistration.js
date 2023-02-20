@@ -7,7 +7,14 @@ export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-
+  const [bookSession, setBookSession] = useState({
+    sessionName: "1 on 1 Mentorship",
+    sessionDescription: "Achieve your goals faster with customized road map",
+    sessionType: "video-meeting",
+    sessionMeetingDuration: "30",
+    // peopleAttend: "",
+    priceSession: "",
+  })
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
@@ -22,19 +29,9 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [
-      {
-        sessionName: "1 on 1 Mentorship",
-        sessionDescription: "Achieve your goals faster with customized road map",
-        sessionType: "video-meeting",
-        sessionMeetingDuration: "30",
-        // peopleAttend: "",
-        priceSession: "500",
-      }
-    ],
+    bookSession: [],
     description: "",
     mentorImg: "",
-    sessionPrice: "",
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
@@ -91,6 +88,7 @@ export default function MentorForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setFormData({...formData, bookSession: [bookSession]})
     // if (formData.bookSession.length !== 2) {
     //   return setError(
     //     "The number of book sessions must be more than 2 or equal to 2!"
@@ -324,15 +322,15 @@ export default function MentorForm() {
             />
           </div>
           <div style={{ gridColumn: "1/3" }}>
-            <label for="sessionPrice">30min 1-1 SESSION PRICE</label>
+            <label for="priceSession">30min 1-1 SESSION PRICE</label>
             <input
               type="text"
-              name="sessionPrice"
+              name="priceSession"
               className="mentorFormInput"
-              onChange={(e) => setFormData({...formData, bookSession: [{...formData.bookSession, priceSession: e.target.value}]})}
+              onChange={(e) => setBookSession({...bookSession, priceSession: e.target.value})}
               placeholder="e.g. ₹100"
               required
-              value={formData.bookSession[0].sessionPrice}
+              value={bookSession.priceSession}
             />
           </div>
           {error && (

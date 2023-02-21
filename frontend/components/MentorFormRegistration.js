@@ -96,19 +96,9 @@ export default function MentorForm() {
     // }
     try {
       console.log(formData);
-      let headers = new Headers();
-      headers.append(
-        "Access-Control-Allow-Origin",
-        process.env.NEXT_PUBLIC_FRONTEND_URL
-      );
-      headers.append("Access-Control-Allow-Credentials", "true");
-      headers.append("Content-Type", "application/json");
-      headers.append("Accept", "application/json");
-      headers.append("Origin", process.env.NEXT_PUBLIC_FRONTEND_URL);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-      const { data: res } = await axios.post(url, formData, {
-        headers: headers,
-      });
+      console.log(error);
+      const { data: res } = await axios.post(url, formData);
       sendEmail(res.mentorVerifyLink);
     } catch (error) {
       console.log(error);
@@ -204,7 +194,7 @@ export default function MentorForm() {
             </div>
           </div>
           <div>
-            <label for="name">NAME</label>
+            <label htmlFor="name">NAME</label>
 
             <input
               type="text"
@@ -217,7 +207,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="username">USERNAME</label>
+            <label htmlFor="username">USERNAME</label>
 
             <input
               type="text"
@@ -230,7 +220,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="email">EMAIL</label>
+            <label htmlFor="email">EMAIL</label>
 
             <input
               type="text"
@@ -243,7 +233,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="mobile">PHONE</label>
+            <label htmlFor="mobile">PHONE</label>
 
             <input
               type="number"
@@ -256,7 +246,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="internAt">INTERN</label>
+            <label htmlFor="internAt">INTERN</label>
 
             <input
               type="text"
@@ -269,7 +259,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="currentStatus">CURRENT STATUS</label>
+            <label htmlFor="currentStatus">CURRENT STATUS</label>
 
             <input
               type="text"
@@ -282,7 +272,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="linkedin">LINKEDIN</label>
+            <label htmlFor="linkedin">LINKEDIN</label>
 
             <input
               type="text"
@@ -295,7 +285,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label for="twitter">TWITTER</label>
+            <label htmlFor="twitter">TWITTER</label>
 
             <input
               type="text"
@@ -308,7 +298,7 @@ export default function MentorForm() {
             />
           </div>
           <div style={{ gridColumn: "1/3" }}>
-            <label for="description">DESCRIPTION</label>
+            <label htmlFor="description">DESCRIPTION</label>
 
             <textarea
               cols="10"
@@ -322,7 +312,7 @@ export default function MentorForm() {
             />
           </div>
           <div style={{ gridColumn: "1/3" }}>
-            <label for="priceSession">30min 1-1 SESSION PRICE</label>
+            <label htmlFor="priceSession">30min 1-1 SESSION PRICE</label>
             <input
               type="text"
               name="priceSession"

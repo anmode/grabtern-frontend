@@ -29,7 +29,14 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [],
+    bookSession: [{
+      sessionName: "1 on 1 Mentorship",
+      sessionDescription: "Achieve your goals faster with customized road map",
+      sessionType: "video-meeting",
+      sessionMeetingDuration: "30",
+      // peopleAttend: "",
+      priceSession: "",
+    }],
     description: "",
     mentorImg: "",
     // resume: '',
@@ -38,6 +45,7 @@ export default function MentorForm() {
   });
 
   const handleChange = (e) => {
+    console.log(formData)
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -85,10 +93,19 @@ export default function MentorForm() {
     setFormData({ ...formData, mentorImg: base64 });
   };
 
+  const handleSessionPriceChange = (e) => {
+    let bookSessionCopy = formData.bookSession[0]
+    bookSessionCopy.priceSession = e.target.value;
+    setFormData({
+      ...formData,
+      bookSession: [bookSessionCopy],
+    });
+    console.log(formData)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setFormData({...formData, bookSession: [bookSession]})
     // if (formData.bookSession.length !== 2) {
     //   return setError(
     //     "The number of book sessions must be more than 2 or equal to 2!"
@@ -317,10 +334,10 @@ export default function MentorForm() {
               type="text"
               name="priceSession"
               className="mentorFormInput"
-              onChange={(e) => setBookSession({...bookSession, priceSession: e.target.value})}
+              onChange={(e) => handleSessionPriceChange(e)}
               placeholder="e.g. ₹100"
               required
-              value={bookSession.priceSession}
+              value={formData.bookSession[0].priceSession}
             />
           </div>
           {error && (

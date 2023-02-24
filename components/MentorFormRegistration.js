@@ -15,6 +15,7 @@ export default function MentorForm() {
     // peopleAttend: "",
     priceSession: "",
   })
+  const [isLoading, setIsLoading]=useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
@@ -46,6 +47,7 @@ export default function MentorForm() {
 
   const handleChange = (e) => {
     console.log(formData)
+
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -113,10 +115,12 @@ export default function MentorForm() {
     // }
     try {
       console.log(formData);
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
       console.log(error);
       const { data: res } = await axios.post(url, formData);
       sendEmail(res.mentorVerifyLink);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
       if (
@@ -353,6 +357,8 @@ export default function MentorForm() {
           {msg && (
             <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
           )}
+          <div style={{display:"flex", flexDirection:"row", gap:"2rem"}}>
+            <div>
           <button
             style={{ width: "fit-content", padding: "15px 25px" }}
             type="submit"
@@ -360,6 +366,11 @@ export default function MentorForm() {
           >
             Register
           </button>
+            </div>
+            <div>
+              {isLoading&&<img style={{width:"50px", height:"50px"}} src="/assets/img/gif/Spinner.gif" alt="...jljk" />}
+            </div>
+          </div>
 
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>

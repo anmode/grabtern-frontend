@@ -41,4 +41,11 @@ export default [
     profileName: "Bhavy Airi",
     profileDescription: "KDE Season of Docs Mentor",
   },
+  {
+  imageSrc: "/assets/img/community_mentors/MyImage.jpg",
+  imageAlt: "Md Riyazul Islam",
+  profileName: "Md Riyazul Islam",
+  profileDescription: "Front-End Developer",
+},
+
 ];

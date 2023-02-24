@@ -122,6 +122,7 @@ export default function MentorForm() {
       sendEmail(res.mentorVerifyLink);
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
       if (
         error.response &&

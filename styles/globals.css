@@ -539,9 +539,14 @@ a {
 
 .mentorForm {
   width: fit-content;
-  padding: 40px;
+  padding: 40px ;
   background-color: white;
   border-radius: 10px;
+  position: relative;
+  left: 250px;
+  top: 200px;
+  padding-bottom: 50px;
+  
   display: grid;
   grid-template-columns: repeat(2, 400px);
   gap: 20px;
@@ -961,6 +966,14 @@ width: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #8468DE;
+  background-color: white;
 }
+.vectorImage{
+  position: relative;
+  margin-bottom: 900px;
+  right: 500px;
+  padding-bottom: 30px;
+}
+
+
 

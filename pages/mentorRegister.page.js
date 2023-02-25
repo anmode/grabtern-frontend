@@ -12,7 +12,7 @@ const MentorRegister = () => {
           <MentorForm />
         </div>
         <div className="right-mentorRegister">
-          <img style={{width:"100%"}}
+          <img className="vectorImage" style={{width:"100%"}}
             src="\assets\img\vector_images\image_1-removebg-preview.png"
             alt="img not showing"
           />

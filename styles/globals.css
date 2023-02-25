@@ -954,3 +954,13 @@ width: 320px;
 .bookSessionIconsEdit div {
   width: fit-content;
 }
+
+
+/* Mentor registration page styling */
+.mentor-register-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8468DE;
+}
+

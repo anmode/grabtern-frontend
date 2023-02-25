@@ -74,7 +74,23 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         </li>
                         <li>
                           <a href="/contact">Contact</a>
+                          
                         </li>
+                        {isUserLoggedIn === false ? (
+                          <li>
+                            <button
+                              onClick={() => logout()}
+                              style={{
+                                backgroundColor: "#5274ff",
+                                padding: "5px 15px",
+                                borderRadius: "50px",
+                                cursor: "pointer",
+                              }}
+                            >
+                              Login
+                            </button>
+                          </li>
+                        ) : null}
                         {isUserLoggedIn === true ? (
                           <li>
                             <button

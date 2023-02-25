@@ -13,7 +13,7 @@ const MentorRegister = () => {
         </div>
         <div className="right-mentorRegister">
           <img style={{width:"100%"}}
-            src="/assets/img/vector_images/vector-registration.png"
+            src="\assets\img\vector_images\image_1-removebg-preview.png"
             alt="img not showing"
           />
         </div>

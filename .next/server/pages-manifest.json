@@ -2,7 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/mentors": "pages/mentors.js",
-  "/": "pages/index.js",
-  "/mentorRegister": "pages/mentorRegister.js"
+  "/": "pages/index.js"
 }

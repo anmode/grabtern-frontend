@@ -968,6 +968,7 @@ width: 320px;
   justify-content: center;
   align-items: center;
   background-color: white;
+  overflow: hidden;
 }
 .vectorImage{
   position: relative;

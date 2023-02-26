@@ -530,7 +530,7 @@ a {
 }
 
 .mentorFormRegisration > .container > .mentorForm {
-  margin: 0 auto;
+  margin-top: 400px;
 }
 
 .mentorFormSetupPW {
@@ -538,19 +538,20 @@ a {
 }
 
 .mentorForm {
-  width: fit-content;
-  padding: 40px ;
+  width: -moz-fit-content;
+  padding: 80px ;
+ 
   background-color: white;
   border-radius: 10px;
   position: relative;
   left: 250px;
-  top: 200px;
+  top: 30px;
   padding-bottom: 50px;
-  
   display: grid;
   grid-template-columns: repeat(2, 400px);
   gap: 20px;
   column-gap: 40px;
+  z-index: 1;
   border: 1px solid gray;
 }
 
@@ -970,9 +971,11 @@ width: 320px;
 }
 .vectorImage{
   position: relative;
-  margin-bottom: 900px;
-  right: 500px;
-  padding-bottom: 30px;
+  margin-bottom: 1000px;
+  right: 860px;
+  top: -50px;
+  z-index: 2;
+  width: 250%;
 }
 
 

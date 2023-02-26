@@ -16,5 +16,23 @@
     "files": [
       "static/chunks/node_modules_react-owl-carousel_umd_OwlCarousel_js.js"
     ]
+  },
+  "mentors.page.js -> ../components/Header": {
+    "id": "mentors.page.js -> ../components/Header",
+    "files": [
+      "static/chunks/components_Header_js.js"
+    ]
+  },
+  "mentors.page.js -> ../components/SimpleBanner": {
+    "id": "mentors.page.js -> ../components/SimpleBanner",
+    "files": [
+      "static/chunks/components_SimpleBanner_js.js"
+    ]
+  },
+  "mentors/[mentorUsername].page.js -> ../../components/Header": {
+    "id": "mentors/[mentorUsername].page.js -> ../../components/Header",
+    "files": [
+      "static/chunks/components_Header_js.js"
+    ]
   }
 }

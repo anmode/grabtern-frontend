@@ -29,6 +29,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
+    ],
+    "/mentorRegister": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/mentorRegister.js"
+    ],
+    "/mentors": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/mentors.js"
+    ],
+    "/mentors/[mentorUsername]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/mentors/[mentorUsername].js"
     ]
   },
   "ampFirstPages": []

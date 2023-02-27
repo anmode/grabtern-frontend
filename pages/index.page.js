@@ -257,7 +257,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className='testimonials'>
+        {/* <section className='testimonials'>
           <h2>Testimonials</h2>
           <p>Here is what client say to us!</p>
           <ul className='testimonialsList'>
@@ -278,7 +278,7 @@ export default function Home() {
 
             </OwlCarousel>) : null}
           </ul>
-        </section>
+        </section> */}
         <section className="team-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">

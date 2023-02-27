@@ -319,7 +319,6 @@ export default function MentorForm() {
               className="mentorFormInput"
               onChange={(e) => handleSocialChange(e)}
               placeholder="e.g. https://www.twitter.com/peterparker"
-              required
               value={formData.social.twitter}
             />
           </div>

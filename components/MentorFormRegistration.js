@@ -203,7 +203,7 @@ export default function MentorForm() {
             <img
               src={
                 formData.mentorImg.length === 0
-                  ? "/blank-profile-photo.jpg"
+                  ? "/assets/img/icon/no-profile-picture.png"
                   : formData.mentorImg
               }
               className="mentorPhoto"

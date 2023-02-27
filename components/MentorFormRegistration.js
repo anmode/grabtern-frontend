@@ -194,12 +194,16 @@ export default function MentorForm() {
         </div>
       ) : null}
       <div className="container">
+      <img
+          src="/assets/img/vector_images/vector-registration.svg"
+          alt="vector image"
+        />
         <form className="mentorForm" onSubmit={handleSubmit}>
           <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
             <img
               src={
                 formData.mentorImg.length === 0
-                  ? "/blank-profile-photo.jpg"
+                  ? "/assets/img/icon/no-profile-picture.png"
                   : formData.mentorImg
               }
               className="mentorPhoto"

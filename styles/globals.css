@@ -399,7 +399,6 @@ a {
     margin-bottom: 20px;
   }
   .mentorForm {
-    padding: 0 !important;
     border: none !important;
   }
   .mentorFormRegisration > .container {
@@ -525,7 +524,7 @@ a {
 }
 
 .mentorFormRegisration {
-  margin-top: 120px;
+  margin-top: 118px;
   padding: 70px 30px;
 }
 
@@ -963,8 +962,15 @@ textarea {
 }
 
 /* Mentor registration page styling */
-.mentor-register-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+
+.mentor-register-page .container > img {
+  max-width: 992px;
+  width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+.mentor-register-page .container > img {
+  margin: 0 70px;
+}
 }

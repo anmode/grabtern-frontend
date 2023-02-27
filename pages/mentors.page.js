@@ -14,7 +14,7 @@ function Mentors({mentorsData}) {
           <div className="container">
             <h1>Find All mentors here's</h1>
             {mentorsData.length === 0 ? (
-              <p>There is not mentor right now...</p>
+              <p>There is no mentor right now...</p>
             ) : (
               <div className="mentorLists">
                 {mentorsData.map((mentor) => (

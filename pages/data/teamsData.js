@@ -47,6 +47,13 @@ export default [
   imageAlt: "Md Riyazul Islam",
   profileName: "Md Riyazul Islam",
   profileDescription: "Front-End Developer",
+},
+{
+
+  imageSrc: "/assets/img/community_mentors/rafey_ahmad.jpg",
+  imageAlt: "Rafey Ahmad",
+  profileName: "Rafey Ahmad",
+  profileDescription: "Back-End Developer",
 }
 
 ];

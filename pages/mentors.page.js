@@ -1,10 +1,24 @@
-import React from "react";
+import React,{useState} from "react";
 import axios from "axios";
 import dynamic from 'next/dynamic'
+import FilterMentor from "../components/FilterMentor";
 const Header = dynamic(() => import('../components/Header'))
 const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
 
 function Mentors({mentorsData}) {
+
+const [filterTextValue, updateFilterText]=useState("All");
+
+const filterMentorList = filterTextValue==="All"?mentorsData:mentorsData.filter((data)=>{
+  return data.internAt===filterTextValue;
+});
+
+console.log("hello",filterMentorList);
+
+const onFilterValueSelected=(filterValue)=>{
+updateFilterText(filterValue);
+}
+
   return (
     <>
       <Header />
@@ -13,11 +27,12 @@ function Mentors({mentorsData}) {
         <section className="findMentors">
           <div className="container">
             <h1>Find All mentors here's</h1>
-            {mentorsData.length === 0 ? (
+            <FilterMentor filterValueSelected={onFilterValueSelected}/>
+            {filterMentorList.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (
               <div className="mentorLists">
-                {mentorsData.map((mentor) => (
+                {filterMentorList.map((mentor) => (
                   <a href={`/mentors/${mentor.username}`} key={mentor._id}>
                     <div className="mentorCard">
                       <img src={mentor.mentorImg} alt="exampleMentorPhoto" />

@@ -572,7 +572,7 @@ a {
 }
 
 .mentorForm div label::after {
-  content: ' :';
+  content: " :";
 }
 
 .mentorForm div input,
@@ -581,7 +581,6 @@ textarea {
   border: 2px solid rgb(220, 220, 220);
   padding: 6px 10px;
   border-radius: 3px;
-  
 }
 
 .bookSessionHeader {
@@ -620,7 +619,7 @@ textarea {
     rgb(187, 85, 255) 95%,
     rgb(192, 84, 255) 100%
   );
-  box-shadow: 6px 4px 13px -2px rgba(0,0,0,0.2);
+  box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
 }
 
 .mentorForm button:active {
@@ -653,13 +652,11 @@ textarea {
   gap: 50px;
 }
 
-
-
 .mentorCard {
   background-color: white;
   display: flex;
   align-items: center;
-width: 320px;
+  width: 320px;
   gap: 5px;
   flex-direction: column;
   height: 100%;
@@ -669,7 +666,6 @@ width: 320px;
   transition: all 0.5s ease-in-out;
 }
 
-
 .mentorCard h2,
 .mentorCard .contactLinks i,
 .mentorCard h3,
@@ -678,10 +674,10 @@ width: 320px;
 }
 
 @media screen and (max-width: 576px) {
-  .mentorLists  a{
+  .mentorLists a {
     width: 100%;
-    }
-  .mentorCard{
+  }
+  .mentorCard {
     padding: 30px 0;
     max-width: 100%;
     width: 100%;
@@ -702,10 +698,10 @@ width: 320px;
     padding: 100px 0 !important;
   }
 
-  .mentorCard p, .mentorCard h3 {
+  .mentorCard p,
+  .mentorCard h3 {
     padding: 0 10px;
   }
-
 }
 
 .mentorCard:hover {
@@ -739,7 +735,7 @@ width: 320px;
 .modalPopup {
   transition: all 0.5s ease-in-out;
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 999; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -750,6 +746,32 @@ width: 320px;
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.iconHeader {
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.iconHeader button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+}
+
+.iconHeader button img {
+  width: 20px;
+  height: 20px;
+}
+
+.iconHeader button.cross {
+  margin-left: auto;
 }
 
 .modalPopupAfterRegistrationDone {
@@ -817,18 +839,18 @@ width: 320px;
 }
 
 .mentorFormEdit div label::after {
-  content: ':'
+  content: ":";
 }
 
 .mentorFormEdit input[type="email"] {
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   border: none;
 }
 
 .bookSessionHeaderIcons {
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   gap: 20px;
   flex-direction: row !important;
 }
@@ -854,7 +876,7 @@ width: 320px;
   padding-bottom: 30px !important;
 }
 
-.mentorUploudPhoto div  {
+.mentorUploudPhoto div {
   position: relative;
   top: 10px;
   display: flex;
@@ -931,13 +953,12 @@ width: 320px;
   padding: 0 10px;
 }
 
-
 .bookSessions li button {
   background-color: #037b80;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   font-size: 19px;
   color: white;
-  border: none; 
+  border: none;
   margin-top: 25px;
   border-radius: 5px;
 }
@@ -954,7 +975,6 @@ width: 320px;
   width: fit-content;
 }
 
-
 /* Mentor registration page styling */
 
 .mentor-register-page .container > img {
@@ -963,7 +983,7 @@ width: 320px;
 }
 
 @media screen and (min-width: 1200px) {
-.mentor-register-page .container > img {
-  margin: 0 70px;
-}
+  .mentor-register-page .container > img {
+    margin: 0 70px;
+  }
 }

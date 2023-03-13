@@ -13,6 +13,11 @@ function Banner({ isMentorLoggedIn }) {
           >
             {modalStep === "1" ? (
               <>
+                <div className="iconHeader">
+                  <button onClick={() => setModal(false)} className="cross">
+                    <img src="/close-icon.svg" />
+                  </button>
+                </div>
                 <h2 style={{ maxWidth: "300px", lineHeight: "32px" }}>
                   Choose which option for you to register as mentor
                 </h2>
@@ -40,6 +45,14 @@ function Banner({ isMentorLoggedIn }) {
               </>
             ) : (
               <>
+                <div className="iconHeader">
+                  <button onClick={() => setModalStep("1")}>
+                    <img src="/left-arrow.svg" />
+                  </button>
+                  <button onClick={() => setModal(false)} className="cross">
+                    <img src="/close-icon.svg" />
+                  </button>
+                </div>
                 <h2 style={{ maxWidth: "300px", lineHeight: "32px" }}>
                   Please fill below input if you want to signup with linkedin
                 </h2>

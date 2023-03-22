@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import styles from "../styles/LoginDropdown.module.css";
 
 function Header({ isUserLoggedIn, navbarBackground }) {
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
+  const [loginOption, setLoginOption] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,14 @@ function Header({ isUserLoggedIn, navbarBackground }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLoginClick = () => {
+    setLoginOption(true);
+    setTimeout(()=>{
+      setLoginOption(false);
+    },5000)
+  };
+
   const menuToggle = () => {
     if (navbarAppear === true) {
       setNavbarAppear(false);
@@ -24,6 +34,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
       setNavbarAppear(true);
     }
   };
+
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_name");
@@ -75,6 +86,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         <li>
                           <a href="/contact">Contact</a>
                         </li>
+
                         {isUserLoggedIn === true ? (
                           <li>
                             <button
@@ -89,7 +101,23 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               Logout
                             </button>
                           </li>
-                        ) : null}
+                        ) : (
+                          <li>
+                            <div className={styles.loginOption}>
+                              <button onClick={handleLoginClick}>Login</button>
+                              {loginOption && (
+                                <>
+                                  <button onClick={handleLoginClick}>
+                                    <a href="/login">User</a>
+                                  </button>
+                                  <button onClick={handleLoginClick}>
+                                    <a href="/mentorLogin">Mentor</a>
+                                  </button>
+                                </>
+                              )}
+                            </div>
+                          </li>
+                        )}
                       </ul>
                     </nav>
                   </div>

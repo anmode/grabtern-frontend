@@ -19,6 +19,7 @@
     "react-dom": "18.2.0",
     "react-google-login": "^5.2.2",
     "react-owl-carousel": "^2.3.3",
+    "react-router-dom": "^6.8.1",
     "react-socks": "^2.2.0"
   },
   "devDependencies": {

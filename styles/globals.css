@@ -549,9 +549,21 @@ a {
 }
 
 @media screen and (max-width: 992px) {
+  .mentor-register-page {
+    margin: 145px auto 0 auto;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  .right-mentorRegister img {
+    display: none;
+  }
+
   .mentorFormRegisration {
     padding: 70px 0;
+    margin-top: 0px;
   }
+
   .mentorForm {
     display: flex;
     flex-direction: column;
@@ -977,6 +989,7 @@ textarea {
 
 /* Mentor registration page styling */
 
+
 .mentor-register-page .container > img {
   max-width: 992px;
   width: 100%;
@@ -987,7 +1000,6 @@ textarea {
     margin: 0 70px;
   }
 }
-
 
 /* google sign in */
 #google-signin-button {

@@ -4,6 +4,8 @@ import { BreakpointProvider } from 'react-socks';
 import $ from 'jquery'
 import Head from 'next/head';
 
+
+
 function addProductJsonLd() {
   return {
     __html: `{
@@ -35,7 +37,7 @@ function addProductJsonLd() {
 }
 
 function MyApp({ Component, pageProps }) {
-  const [showChild, setShowChild] = useState(false)
+  const [showChild, setShowChild] = useState(false);
 
   useEffect(() => {
     setShowChild(true)

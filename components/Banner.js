@@ -1,8 +1,19 @@
 import React, { useState } from "react";
+import GoogleSignInButton from './googleSign';
 
 function Banner({ isMentorLoggedIn }) {
   const [modal, setModal] = useState(false);
   const [modalStep, setModalStep] = useState("1");
+
+
+  function handleSignInSuccess(response) {
+
+  }
+
+  function handleSignInFailure(error) {
+   
+  }
+
   return (
     <section className="slider-area ">
       {modal === true ? (
@@ -31,17 +42,10 @@ function Banner({ isMentorLoggedIn }) {
                 >
                   Fill Form
                 </a>
-                <a
-                  href="/#"
-                  className="btn hero-btn animate__animated animate__fadeInLeft"
-                  data-animation="fadeInLeft"
-                  data-delay="1s"
-                  onClick={() => setModalStep("2")}
-                  tabIndex="0"
-                  style={{ animationDelay: "1s", background: "#2e64c0" }}
-                >
-                  Sign up with LinkedIn
-                </a>
+                <GoogleSignInButton
+                    onSignInSuccess={handleSignInSuccess}
+                    onSignInFailure={handleSignInFailure}
+                />
               </>
             ) : (
               <>

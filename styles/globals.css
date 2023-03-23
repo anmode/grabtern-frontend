@@ -987,3 +987,24 @@ textarea {
     margin: 0 70px;
   }
 }
+
+
+/* google sign in */
+#google-signin-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  background-color: #4285F4;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#google-signin-button:hover {
+  background-color: #3367D6;
+}
+

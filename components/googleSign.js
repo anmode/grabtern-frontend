@@ -1,9 +1,14 @@
 import { useEffect } from 'react';
 
 function GoogleSignInButton({ onSignInSuccess, onSignInFailure }) {
+  const handleCallBackResponse = (response)=>{
+    console.log(response);
+  }
+  
   useEffect(() => {
     google.accounts.id.initialize({
       client_id: '1094459761-q1vtukt1ka03dgualp9cetajd938ab96.apps.googleusercontent.com',
+    callback:handleCallBackResponse
     });
 
     google.accounts.id.renderButton(
@@ -15,15 +20,15 @@ function GoogleSignInButton({ onSignInSuccess, onSignInFailure }) {
       });
 
     // Set up sign-in listeners
-    google.accounts.id.listen({
-      onGoogleIdTokenChanged: response => {
-        if (response.error) {
-          onSignInFailure(response.error);
-        } else {
-          onSignInSuccess(response);
-        }
-      }
-    });
+    // google.accounts.id.listen({
+    //   onGoogleIdTokenChanged: response => {
+    //     if (response.error) {
+    //       onSignInFailure(response.error);
+    //     } else {
+    //       onSignInSuccess(response);
+    //     }
+    //   }
+    // });
   }, [onSignInSuccess, onSignInFailure]);
 
   return (

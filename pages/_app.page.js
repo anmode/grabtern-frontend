@@ -1,10 +1,9 @@
-import '../styles/globals.css';
-import { useEffect, useState } from 'react'
-import { BreakpointProvider } from 'react-socks';
-import $ from 'jquery'
-import Head from 'next/head';
-
-
+import "../styles/globals.css";
+import { useEffect, useState } from "react";
+import { BreakpointProvider } from "react-socks";
+import $ from "jquery";
+import Head from "next/head";
+import Script from "next/script";
 
 function addProductJsonLd() {
   return {
@@ -40,47 +39,71 @@ function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
 
   useEffect(() => {
-    setShowChild(true)
-  }, [])
+    setShowChild(true);
+  }, []);
 
   if (!showChild) {
-    return null
+    return null;
   }
 
   setTimeout(function () {
-    $('#preloader-active').fadeOut('fast');
-    $('.loaderBackground').fadeOut('fast');
-  }, 1400)
+    $("#preloader-active").fadeOut("fast");
+    $(".loaderBackground").fadeOut("fast");
+  }, 1400);
 
   return (
-
     <>
       <Head>
         <title>Internships | Education</title>
         <meta name="title" content="GrabTern" />
-        <meta name="description" content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!" />
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="robots" content="noindex"/>
+        <meta
+          name="description"
+          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+        <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
-        <link rel="alternate" type="application/rss+xml" title="Emupedia" href="https://grabtern.com/feed.xml" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Emupedia"
+          href="https://grabtern.com/feed.xml"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://grabtern.com/" />
-        <meta name="keywords" content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes" />
+        <meta
+          name="keywords"
+          content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes"
+        />
         <meta property="og:title" content="GrabTern" />
-        <meta property="og:description" content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!" />
-        <meta property="og:image" content="https://grabtern.com/grabtern_meta_img.png" />
+        <meta
+          property="og:description"
+          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+        <meta
+          property="og:image"
+          content="https://grabtern.com/grabtern_meta_img.png"
+        />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://grabtern.com/" />
         <meta property="twitter:title" content="GrabTern" />
-        <meta property="twitter:description" content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!" />
-        <meta property="twitter:image" content="https://grabtern.com/grabtern_meta_img.png" />
+        <meta
+          property="twitter:description"
+          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+        <meta
+          property="twitter:image"
+          content="https://grabtern.com/grabtern_meta_img.png"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addProductJsonLd()}
           key="product-jsonld"
         />
       </Head>
+      {/* <Script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></Script> */}
+
       <div className="loaderBackground"></div>
       <div id="preloader-active" style={{ transition: "all 0.5s" }}>
         <div className="preloader d-flex align-items-center justify-content-center">
@@ -96,9 +119,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </BreakpointProvider>
     </>
-  )
-
-
+  );
 }
 
-export default MyApp
+export default MyApp;

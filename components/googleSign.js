@@ -1,8 +1,13 @@
-import { useEffect } from 'react';
+import { useState,useEffect } from 'react';
+import jwt_decode from "jwt-decode"
+
 
 function GoogleSignInButton({ onSignInSuccess, onSignInFailure }) {
+
   const handleCallBackResponse = (response)=>{
     console.log(response);
+    const userObject = jwt_decode(response.credential);
+console.log(userObject);
   }
   
   useEffect(() => {

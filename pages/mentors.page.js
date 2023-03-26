@@ -63,7 +63,7 @@ export const getServerSideProps = async (context) => {
     props: {
       mentorsData: data.filter(
         (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified"
+          mentor.verified === true
       )
     }
   }

@@ -7,11 +7,11 @@ function Banner({ isMentorLoggedIn }) {
 
 
   function handleSignInSuccess(response) {
-
+    console.log(response)
   }
 
   function handleSignInFailure(error) {
-   
+   console.log(error)
   }
 
   return (

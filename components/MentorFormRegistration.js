@@ -36,13 +36,14 @@ export default function MentorForm() {
       sessionType: "video-meeting",
       sessionMeetingDuration: "30",
       // peopleAttend: "",
-      priceSession: "",
+      priceSession: "N/A",
     }],
     description: "",
     mentorImg: "",
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
+    verified: false,
   });
 
   const handleChange = (e) => {

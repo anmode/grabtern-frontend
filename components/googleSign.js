@@ -9,6 +9,7 @@ function GoogleSignInButton({ onSignInSuccess, onSignInFailure }) {
     const userData = {
       name: userObject.name,
       email: userObject.email,
+      birthDay:userObject.birthday,
       username:
         userObject.name.replaceAll(" ", "-").toLowerCase() + Math.floor(number),
       mobile: "N/A",

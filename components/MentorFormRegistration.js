@@ -30,22 +30,20 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [
-      {
-        sessionName: "1 on 1 Mentorship",
-        sessionDescription:
-          "Achieve your goals faster with customized road map",
-        sessionType: "video-meeting",
-        sessionMeetingDuration: "30",
-        // peopleAttend: "",
-        priceSession: "",
-      },
-    ],
+    bookSession: [{
+      sessionName: "1 on 1 Mentorship",
+      sessionDescription: "Achieve your goals faster with customized road map",
+      sessionType: "video-meeting",
+      sessionMeetingDuration: "30",
+      // peopleAttend: "",
+      priceSession: "N/A",
+    }],
     description: "",
     mentorImg: "",
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
+    verified: false,
   });
 
   const handleChange = (e) => {

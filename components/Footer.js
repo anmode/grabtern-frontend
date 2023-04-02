@@ -125,7 +125,9 @@ function Footer() {
                   <div className="footer-copy-right text-center">
                     <p>
                       Copyright &copy;
-                      <script>document.write(new Date().getFullYear());</script>{" "}
+                      <script>
+                        document.write(new Date().getFullYear());
+                      </script>{" "}
                       All rights reserved | Grabtern.com
                     </p>
                   </div>

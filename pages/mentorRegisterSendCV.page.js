@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import dynamic from 'next/dynamic'
-const Header = dynamic(() => import('../components/Header'))
-const Footer = dynamic(() => import('../components/Footer'))
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 import emailjs from "@emailjs/browser";
 import { useRouter } from "next/router";
 function mentorRegisterSendCV() {
@@ -69,8 +69,9 @@ function mentorRegisterSendCV() {
             <div className="modalPopup">
               <div className="modalPopupAfterRegistrationDone">
                 <p>
-                  Thank you for Send your CV/Resume you will be recevied an email 1-2
-                  days if you got accepted and your card will be generated automatically
+                  Thank you for Send your CV/Resume you will be recevied an
+                  email 1-2 days if you got accepted and your card will be
+                  generated automatically
                 </p>
                 <img src="/iconMentorRegistrationPopup.jpg" />
                 <p>Redirecting you to home in {waitTime} second</p>

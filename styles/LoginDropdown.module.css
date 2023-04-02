@@ -1,11 +1,11 @@
-.loginOption{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transform: translateZ(-50px);
+.loginOption {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translateZ(-50px);
 }
-.loginOption a{
-    padding: 0 !important;
+.loginOption a {
+  padding: 0 !important;
 }
 .loginOption button {
   background: none;

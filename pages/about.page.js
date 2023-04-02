@@ -1,14 +1,14 @@
-import React from 'react'
-import dynamic from 'next/dynamic'
-const Footer = dynamic(() => import('../components/Footer'))
-const Header = dynamic(() => import('../components/Header'))
-const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
-const Service = dynamic(() => import('../components/Service'))
-const AboutComponent = dynamic(() => import('../components/About'))
-import TeamProfile from '../components/TeamProfile';
+import React from "react";
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("../components/Footer"));
+const Header = dynamic(() => import("../components/Header"));
+const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+const Service = dynamic(() => import("../components/Service"));
+const AboutComponent = dynamic(() => import("../components/About"));
+import TeamProfile from "../components/TeamProfile";
 
-import servicesData from './data/ServicesData';
-import teamsData from './data/teamsData';
+import servicesData from "./data/ServicesData";
+import teamsData from "./data/teamsData";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -18,7 +18,7 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 });
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const teamsOptions = {
   margin: 40,
@@ -31,25 +31,22 @@ const teamsOptions = {
     },
     600: {
       items: 2,
-
     },
     900: {
       items: 3,
-
     },
     1170: {
       items: 4,
-    }
+    },
   },
-}
-
+};
 
 function About() {
   const [carousel, setCarousel] = useState(false);
 
   useEffect(() => {
     setCarousel(true);
-  }, [carousel])
+  }, [carousel]);
   return (
     <>
       <Header />
@@ -59,7 +56,13 @@ function About() {
           <div className="container">
             <div className="row justify-content-sm-center">
               {servicesData.map((service, index) => (
-                <Service key={index} imageSrc={service.imageSrc} imageAlt={service.imageAlt} serviceHeading={service.serviceHeading} serviceDescription={service.serviceDescription} />
+                <Service
+                  key={index}
+                  imageSrc={service.imageSrc}
+                  imageAlt={service.imageAlt}
+                  serviceHeading={service.serviceHeading}
+                  serviceDescription={service.serviceDescription}
+                />
               ))}
             </div>
           </div>
@@ -78,10 +81,15 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/tata Imagination.png" alt="tata Imagination" />
+                    <img
+                      src="/assets/img/hackathons/tata Imagination.png"
+                      alt="tata Imagination"
+                    />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Tata Imagination</a></h3>
+                        <h3>
+                          <a href="#">Tata Imagination</a>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -90,10 +98,17 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Apple Swift Challenge.png" alt="Apple Swift Challenge" />
+                    <img
+                      src="/assets/img/hackathons/Apple Swift Challenge.png"
+                      alt="Apple Swift Challenge"
+                    />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Apple Swift <br /> Challenge</a></h3>
+                        <h3>
+                          <a href="#">
+                            Apple Swift <br /> Challenge
+                          </a>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -102,10 +117,15 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Hackoctoberfest.png" alt="Hackoctoberfest" />
+                    <img
+                      src="/assets/img/hackathons/Hackoctoberfest.png"
+                      alt="Hackoctoberfest"
+                    />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Hackoctoberfest</a></h3>
+                        <h3>
+                          <a href="#">Hackoctoberfest</a>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -114,10 +134,15 @@ function About() {
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
-                    <img src="/assets/img/hackathons/Microsoft Image Cup.png" alt="Microsoft Image Cup" />
+                    <img
+                      src="/assets/img/hackathons/Microsoft Image Cup.png"
+                      alt="Microsoft Image Cup"
+                    />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">Microsoft Image Cup</a></h3>
+                        <h3>
+                          <a href="#">Microsoft Image Cup</a>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -129,7 +154,9 @@ function About() {
                     <img src="/assets/img/hackathons/SIH.png" alt="SIH" />
                     <div className="topic-content-box">
                       <div className="topic-content">
-                        <h3><a href="#">SIH</a></h3>
+                        <h3>
+                          <a href="#">SIH</a>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -139,7 +166,9 @@ function About() {
             <div className="row justify-content-center">
               <div className="col-xl-12">
                 <div className="section-tittle text-center mt-20">
-                  <a href="courses.html" className="border-btn">View More Hackathons</a>
+                  <a href="courses.html" className="border-btn">
+                    View More Hackathons
+                  </a>
                 </div>
               </div>
             </div>
@@ -163,7 +192,17 @@ function About() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>hello
+                  <p>hello</p>
+                </div>
+              </div>
+              <div className="single-features">
+                <div className="features-icon">
+                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
+                </div>
+                <div className="features-caption">
+                  <p>
+                    Join millions of people from around the world learning
+                    together.
                   </p>
                 </div>
               </div>
@@ -172,16 +211,10 @@ function About() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>Join millions of people from around the world
-                    learning together.</p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
-                  <p>Focus builds and correct mentorship given to achieve the dream intern easily</p>
+                  <p>
+                    Focus builds and correct mentorship given to achieve the
+                    dream intern easily
+                  </p>
                 </div>
               </div>
             </div>
@@ -198,26 +231,34 @@ function About() {
               </div>
             </div>
             <div className="team-active">
-              {carousel === true ? (<OwlCarousel
-                {...teamsOptions}
-                autoplay={true}
-                lazyLoad={true}
-                smartSpeed={1000}
-                autoplayTimeout={3500}
-                autoplayHoverPause={true}
-                className="owl-carousel owl-theme"
-              >
-                {teamsData.map((profile, index) => (
-                  <TeamProfile key={index} imageSrc={profile.imageSrc} imageAlt={profile.imageAlt} profileName={profile.profileName} profileDescription={profile.profileDescription} />
-                ))}
-              </OwlCarousel>) : null}
+              {carousel === true ? (
+                <OwlCarousel
+                  {...teamsOptions}
+                  autoplay={true}
+                  lazyLoad={true}
+                  smartSpeed={1000}
+                  autoplayTimeout={3500}
+                  autoplayHoverPause={true}
+                  className="owl-carousel owl-theme"
+                >
+                  {teamsData.map((profile, index) => (
+                    <TeamProfile
+                      key={index}
+                      imageSrc={profile.imageSrc}
+                      imageAlt={profile.imageAlt}
+                      profileName={profile.profileName}
+                      profileDescription={profile.profileDescription}
+                    />
+                  ))}
+                </OwlCarousel>
+              ) : null}
             </div>
           </div>
         </section>
       </main>
       <Footer />
     </>
-  )
+  );
 }
 
-export default About
+export default About;

@@ -1,17 +1,28 @@
-import React from 'react'
+import React from "react";
 
-function TeamProfile({imageSrc, imageAlt, profileName, profileDescription}) {
+function TeamProfile({ imageSrc, imageAlt, profileName, profileDescription }) {
   return (
     <div className="single-cat text-center">
-    <div className="cat-icon">
-        <img style={{    width: "200px", borderRadius: "50%", height: "200px", objectFit: "cover",}} src={imageSrc} alt={imageAlt} />
-    </div>
-    <div className="cat-cap">
-        <h5><a href="services.html">{profileName}</a></h5>
+      <div className="cat-icon">
+        <img
+          style={{
+            width: "200px",
+            borderRadius: "50%",
+            height: "200px",
+            objectFit: "cover",
+          }}
+          src={imageSrc}
+          alt={imageAlt}
+        />
+      </div>
+      <div className="cat-cap">
+        <h5>
+          <a href="services.html">{profileName}</a>
+        </h5>
         <p>{profileDescription}</p>
+      </div>
     </div>
-</div>
-  )
+  );
 }
 
-export default TeamProfile
+export default TeamProfile;

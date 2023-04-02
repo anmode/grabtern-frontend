@@ -14,8 +14,8 @@ export default function MentorForm() {
     sessionMeetingDuration: "30",
     // peopleAttend: "",
     priceSession: "",
-  })
-  const [isLoading, setIsLoading]=useState(false);
+  });
+  const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
@@ -30,14 +30,17 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [{
-      sessionName: "1 on 1 Mentorship",
-      sessionDescription: "Achieve your goals faster with customized road map",
-      sessionType: "video-meeting",
-      sessionMeetingDuration: "30",
-      // peopleAttend: "",
-      priceSession: "",
-    }],
+    bookSession: [
+      {
+        sessionName: "1 on 1 Mentorship",
+        sessionDescription:
+          "Achieve your goals faster with customized road map",
+        sessionType: "video-meeting",
+        sessionMeetingDuration: "30",
+        // peopleAttend: "",
+        priceSession: "",
+      },
+    ],
     description: "",
     mentorImg: "",
     // resume: '',
@@ -46,11 +49,10 @@ export default function MentorForm() {
   });
 
   const handleChange = (e) => {
-    console.log(formData)
+    console.log(formData);
 
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
 
   const handleSocialChange = (e) => {
     setFormData({
@@ -96,14 +98,14 @@ export default function MentorForm() {
   };
 
   const handleSessionPriceChange = (e) => {
-    let bookSessionCopy = formData.bookSession[0]
+    let bookSessionCopy = formData.bookSession[0];
     bookSessionCopy.priceSession = e.target.value;
     setFormData({
       ...formData,
       bookSession: [bookSessionCopy],
     });
-    console.log(formData)
-  }
+    console.log(formData);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -194,7 +196,7 @@ export default function MentorForm() {
         </div>
       ) : null}
       <div className="container">
-      <img
+        <img
           src="/assets/img/vector_images/vector-registration.svg"
           alt="vector image"
         />
@@ -361,18 +363,24 @@ export default function MentorForm() {
           {msg && (
             <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
           )}
-          <div style={{display:"flex", flexDirection:"row", gap:"2rem"}}>
+          <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
             <div>
-          <button
-            style={{ width: "fit-content", padding: "15px 25px" }}
-            type="submit"
-            className="mentorFormButotn"
-          >
-            Register
-          </button>
+              <button
+                style={{ width: "fit-content", padding: "15px 25px" }}
+                type="submit"
+                className="mentorFormButotn"
+              >
+                Register
+              </button>
             </div>
             <div>
-              {isLoading&&<img style={{width:"50px", height:"50px"}} src="/assets/img/gif/Spinner.gif" alt="...jljk" />}
+              {isLoading && (
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src="/assets/img/gif/Spinner.gif"
+                  alt="...jljk"
+                />
+              )}
             </div>
           </div>
 

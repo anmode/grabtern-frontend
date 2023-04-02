@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import dynamic from 'next/dynamic'
-const Footer = dynamic(() => import('../components/Footer'))
-const Header = dynamic(() => import('../components/Header'))
-const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("../components/Footer"));
+const Header = dynamic(() => import("../components/Header"));
+const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
 function Contact() {
   const form = useRef();
@@ -13,18 +13,26 @@ function Contact() {
       from_name: document.querySelector("#name").value,
       to_name: document.querySelector("#email").value,
       message: document.querySelector("#message").value,
-      subject: document.querySelector("#subject").value
-    }
-    console.log(templateParams)
-    emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY, templateParams, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY).then((result) => {
-      alert("Sent!")
-        console.log(result.text);
-    }, (error) => {
-      alert("Cannot send your message sorry!")
-        console.log(error.text);
-    });
-
-
+      subject: document.querySelector("#subject").value,
+    };
+    console.log(templateParams);
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          alert("Sent!");
+          console.log(result.text);
+        },
+        (error) => {
+          alert("Cannot send your message sorry!");
+          console.log(error.text);
+        }
+      );
   };
   return (
     <>
@@ -36,7 +44,11 @@ function Contact() {
             <div className="d-none d-sm-block mb-5 pb-4">
               <div
                 id="map"
-                style={{ height: 480, position: "relative", overflow: "hidden" }}
+                style={{
+                  height: 480,
+                  position: "relative",
+                  overflow: "hidden",
+                }}
               >
                 <div
                   style={{
@@ -45,7 +57,7 @@ function Contact() {
                     position: "absolute",
                     top: 0,
                     left: 0,
-                    backgroundColor: "rgb(229, 227, 223)"
+                    backgroundColor: "rgb(229, 227, 223)",
                   }}
                 >
                   <div
@@ -59,7 +71,7 @@ function Contact() {
                       width: "100%",
                       padding: 0,
                       borderWidth: 0,
-                      margin: 0
+                      margin: 0,
                     }}
                   >
                     <div
@@ -76,7 +88,7 @@ function Contact() {
                         margin: 0,
                         cursor:
                           'url("https://maps.gstatic.com/mapfiles/openhand_8_8.cur"), default',
-                        touchAction: "pan-x pan-y"
+                        touchAction: "pan-x pan-y",
                       }}
                     >
                       <div
@@ -86,7 +98,7 @@ function Contact() {
                           left: "50%",
                           top: "50%",
                           width: "100%",
-                          transform: "translate(0px, 0px)"
+                          transform: "translate(0px, 0px)",
                         }}
                       >
                         <div
@@ -95,17 +107,22 @@ function Contact() {
                             left: 0,
                             top: 0,
                             zIndex: 100,
-                            width: "100%"
+                            width: "100%",
                           }}
                         >
                           <div
-                            style={{ position: "absolute", left: 0, top: 0, zIndex: 0 }}
+                            style={{
+                              position: "absolute",
+                              left: 0,
+                              top: 0,
+                              zIndex: 0,
+                            }}
                           >
                             <div
                               style={{
                                 position: "absolute",
                                 zIndex: 991,
-                                transform: "matrix(1, 0, 0, 1, -100, -189)"
+                                transform: "matrix(1, 0, 0, 1, -100, -189)",
                               }}
                             >
                               <div
@@ -114,7 +131,7 @@ function Contact() {
                                   left: 0,
                                   top: 0,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -125,7 +142,7 @@ function Contact() {
                                   left: "-256px",
                                   top: 0,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -136,7 +153,7 @@ function Contact() {
                                   left: "-256px",
                                   top: "-256px",
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -147,7 +164,7 @@ function Contact() {
                                   left: 0,
                                   top: "-256px",
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -158,7 +175,7 @@ function Contact() {
                                   left: 256,
                                   top: "-256px",
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -169,7 +186,7 @@ function Contact() {
                                   left: 256,
                                   top: 0,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -180,7 +197,7 @@ function Contact() {
                                   left: 256,
                                   top: 256,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -191,7 +208,7 @@ function Contact() {
                                   left: 0,
                                   top: 256,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -202,7 +219,7 @@ function Contact() {
                                   left: "-256px",
                                   top: 256,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -213,7 +230,7 @@ function Contact() {
                                   left: "-512px",
                                   top: 256,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -224,7 +241,7 @@ function Contact() {
                                   left: "-512px",
                                   top: 0,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -235,7 +252,7 @@ function Contact() {
                                   left: "-512px",
                                   top: "-256px",
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -246,7 +263,7 @@ function Contact() {
                                   left: 512,
                                   top: "-256px",
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -257,7 +274,7 @@ function Contact() {
                                   left: 512,
                                   top: 0,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -268,7 +285,7 @@ function Contact() {
                                   left: 512,
                                   top: 256,
                                   width: 256,
-                                  height: 256
+                                  height: 256,
                                 }}
                               >
                                 <div style={{ width: 256, height: 256 }} />
@@ -282,7 +299,7 @@ function Contact() {
                             left: 0,
                             top: 0,
                             zIndex: 101,
-                            width: "100%"
+                            width: "100%",
                           }}
                         />
                         <div
@@ -291,7 +308,7 @@ function Contact() {
                             left: 0,
                             top: 0,
                             zIndex: 102,
-                            width: "100%"
+                            width: "100%",
                           }}
                         />
                         <div
@@ -300,7 +317,7 @@ function Contact() {
                             left: 0,
                             top: 0,
                             zIndex: 103,
-                            width: "100%"
+                            width: "100%",
                           }}
                         >
                           <div
@@ -308,14 +325,14 @@ function Contact() {
                               position: "absolute",
                               left: 0,
                               top: 0,
-                              zIndex: -1
+                              zIndex: -1,
                             }}
                           >
                             <div
                               style={{
                                 position: "absolute",
                                 zIndex: 991,
-                                transform: "matrix(1, 0, 0, 1, -100, -189)"
+                                transform: "matrix(1, 0, 0, 1, -100, -189)",
                               }}
                             >
                               <div
@@ -325,7 +342,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 0,
-                                  top: 0
+                                  top: 0,
                                 }}
                               />
                               <div
@@ -335,7 +352,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: "-256px",
-                                  top: 0
+                                  top: 0,
                                 }}
                               />
                               <div
@@ -345,7 +362,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: "-256px",
-                                  top: "-256px"
+                                  top: "-256px",
                                 }}
                               />
                               <div
@@ -355,7 +372,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 0,
-                                  top: "-256px"
+                                  top: "-256px",
                                 }}
                               />
                               <div
@@ -365,7 +382,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 256,
-                                  top: "-256px"
+                                  top: "-256px",
                                 }}
                               />
                               <div
@@ -375,7 +392,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 256,
-                                  top: 0
+                                  top: 0,
                                 }}
                               />
                               <div
@@ -385,7 +402,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 256,
-                                  top: 256
+                                  top: 256,
                                 }}
                               />
                               <div
@@ -395,7 +412,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 0,
-                                  top: 256
+                                  top: 256,
                                 }}
                               />
                               <div
@@ -405,7 +422,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: "-256px",
-                                  top: 256
+                                  top: 256,
                                 }}
                               />
                               <div
@@ -415,7 +432,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: "-512px",
-                                  top: 256
+                                  top: 256,
                                 }}
                               />
                               <div
@@ -425,7 +442,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: "-512px",
-                                  top: 0
+                                  top: 0,
                                 }}
                               />
                               <div
@@ -435,7 +452,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: "-512px",
-                                  top: "-256px"
+                                  top: "-256px",
                                 }}
                               />
                               <div
@@ -445,7 +462,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 512,
-                                  top: "-256px"
+                                  top: "-256px",
                                 }}
                               />
                               <div
@@ -455,7 +472,7 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 512,
-                                  top: 0
+                                  top: 0,
                                 }}
                               />
                               <div
@@ -465,20 +482,25 @@ function Contact() {
                                   overflow: "hidden",
                                   position: "absolute",
                                   left: 512,
-                                  top: 256
+                                  top: 256,
                                 }}
                               />
                             </div>
                           </div>
                         </div>
                         <div
-                          style={{ position: "absolute", left: 0, top: 0, zIndex: 0 }}
+                          style={{
+                            position: "absolute",
+                            left: 0,
+                            top: 0,
+                            zIndex: 0,
+                          }}
                         >
                           <div
                             style={{
                               position: "absolute",
                               zIndex: 991,
-                              transform: "matrix(1, 0, 0, 1, -100, -189)"
+                              transform: "matrix(1, 0, 0, 1, -100, -189)",
                             }}
                           >
                             <div
@@ -488,7 +510,7 @@ function Contact() {
                                 top: 0,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -503,7 +525,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -514,7 +536,7 @@ function Contact() {
                                 top: 0,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -529,7 +551,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -540,7 +562,7 @@ function Contact() {
                                 top: 256,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -555,7 +577,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -566,7 +588,7 @@ function Contact() {
                                 top: 256,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -581,7 +603,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -592,7 +614,7 @@ function Contact() {
                                 top: 256,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -607,7 +629,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -618,7 +640,7 @@ function Contact() {
                                 top: 256,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -633,7 +655,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -644,7 +666,7 @@ function Contact() {
                                 top: 0,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -659,7 +681,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -670,7 +692,7 @@ function Contact() {
                                 top: "-256px",
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -685,7 +707,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -696,7 +718,7 @@ function Contact() {
                                 top: "-256px",
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -711,7 +733,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -722,7 +744,7 @@ function Contact() {
                                 top: 0,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -737,7 +759,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -748,7 +770,7 @@ function Contact() {
                                 top: 256,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -763,7 +785,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -774,7 +796,7 @@ function Contact() {
                                 top: 0,
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -789,7 +811,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -800,7 +822,7 @@ function Contact() {
                                 top: "-256px",
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -815,7 +837,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -826,7 +848,7 @@ function Contact() {
                                 top: "-256px",
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -841,7 +863,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -852,7 +874,7 @@ function Contact() {
                                 top: "-256px",
                                 width: 256,
                                 height: 256,
-                                transition: "opacity 200ms linear 0s"
+                                transition: "opacity 200ms linear 0s",
                               }}
                             >
                               <img
@@ -867,7 +889,7 @@ function Contact() {
                                   border: 0,
                                   padding: 0,
                                   margin: 0,
-                                  maxWidth: "none"
+                                  maxWidth: "none",
                                 }}
                               />
                             </div>
@@ -886,7 +908,7 @@ function Contact() {
                           margin: 0,
                           left: 0,
                           top: 0,
-                          opacity: 0
+                          opacity: 0,
                         }}
                       >
                         <p className="gm-style-pbt" />
@@ -902,7 +924,7 @@ function Contact() {
                           margin: 0,
                           left: 0,
                           top: 0,
-                          touchAction: "pan-x pan-y"
+                          touchAction: "pan-x pan-y",
                         }}
                       >
                         <div
@@ -912,7 +934,7 @@ function Contact() {
                             left: "50%",
                             top: "50%",
                             width: "100%",
-                            transform: "translate(0px, 0px)"
+                            transform: "translate(0px, 0px)",
                           }}
                         >
                           <div
@@ -921,7 +943,7 @@ function Contact() {
                               left: 0,
                               top: 0,
                               zIndex: 104,
-                              width: "100%"
+                              width: "100%",
                             }}
                           />
                           <div
@@ -930,7 +952,7 @@ function Contact() {
                               left: 0,
                               top: 0,
                               zIndex: 105,
-                              width: "100%"
+                              width: "100%",
                             }}
                           />
                           <div
@@ -939,7 +961,7 @@ function Contact() {
                               left: 0,
                               top: 0,
                               zIndex: 106,
-                              width: "100%"
+                              width: "100%",
                             }}
                           />
                           <div
@@ -948,7 +970,7 @@ function Contact() {
                               left: 0,
                               top: 0,
                               zIndex: 107,
-                              width: "100%"
+                              width: "100%",
                             }}
                           />
                         </div>
@@ -964,7 +986,7 @@ function Contact() {
                         height: "100%",
                         top: 0,
                         left: 0,
-                        border: "none"
+                        border: "none",
                       }}
                       src="about:blank"
                     />
@@ -975,7 +997,7 @@ function Contact() {
                         zIndex: 1000000,
                         position: "absolute",
                         left: 0,
-                        bottom: 0
+                        bottom: 0,
                       }}
                     >
                       <a
@@ -987,10 +1009,12 @@ function Contact() {
                           position: "static",
                           overflow: "visible",
                           float: "none",
-                          display: "inline"
+                          display: "inline",
                         }}
                       >
-                        <div style={{ width: 66, height: 26, cursor: "pointer" }}>
+                        <div
+                          style={{ width: 66, height: 26, cursor: "pointer" }}
+                        >
                           <img
                             alt=""
                             src="https://maps.gstatic.com/mapfiles/api-3/images/google_white5.png"
@@ -1004,7 +1028,7 @@ function Contact() {
                               userSelect: "none",
                               border: 0,
                               padding: 0,
-                              margin: 0
+                              margin: 0,
                             }}
                           />
                         </div>
@@ -1025,14 +1049,14 @@ function Contact() {
                         height: 180,
                         position: "absolute",
                         left: 315,
-                        top: 150
+                        top: 150,
                       }}
                     >
                       <div
                         style={{
                           padding: "0px 0px 10px",
                           fontSize: 16,
-                          boxSizing: "border-box"
+                          boxSizing: "border-box",
                         }}
                       >
                         Map Data
@@ -1056,7 +1080,7 @@ function Contact() {
                           top: 0,
                           right: 0,
                           width: 37,
-                          height: 37
+                          height: 37,
                         }}
                       >
                         <img
@@ -1066,7 +1090,7 @@ function Contact() {
                             display: "block",
                             width: 13,
                             height: 13,
-                            margin: 12
+                            margin: 12,
                           }}
                         />
                       </button>
@@ -1078,20 +1102,24 @@ function Contact() {
                         position: "absolute",
                         right: 166,
                         bottom: 0,
-                        width: 121
+                        width: 121,
                       }}
                     >
                       <div
                         draggable="false"
                         className="gm-style-cc"
-                        style={{ userSelect: "none", height: 14, lineHeight: 14 }}
+                        style={{
+                          userSelect: "none",
+                          height: 14,
+                          lineHeight: 14,
+                        }}
                       >
                         <div
                           style={{
                             opacity: "0.7",
                             width: "100%",
                             height: "100%",
-                            position: "absolute"
+                            position: "absolute",
                           }}
                         >
                           <div style={{ width: 1 }} />
@@ -1100,7 +1128,7 @@ function Contact() {
                               backgroundColor: "rgb(245, 245, 245)",
                               width: "auto",
                               height: "100%",
-                              marginLeft: 1
+                              marginLeft: 1,
                             }}
                           />
                         </div>
@@ -1117,14 +1145,14 @@ function Contact() {
                             direction: "ltr",
                             textAlign: "right",
                             verticalAlign: "middle",
-                            display: "inline-block"
+                            display: "inline-block",
                           }}
                         >
                           <a
                             style={{
                               textDecoration: "none",
                               cursor: "pointer",
-                              display: "none"
+                              display: "none",
                             }}
                           >
                             Map Data
@@ -1144,7 +1172,7 @@ function Contact() {
                           color: "rgb(68, 68, 68)",
                           direction: "ltr",
                           textAlign: "right",
-                          backgroundColor: "rgb(245, 245, 245)"
+                          backgroundColor: "rgb(245, 245, 245)",
                         }}
                       >
                         Map data ©2019 Google
@@ -1160,7 +1188,7 @@ function Contact() {
                         lineHeight: 14,
                         position: "absolute",
                         right: 95,
-                        bottom: 0
+                        bottom: 0,
                       }}
                     >
                       <div
@@ -1168,7 +1196,7 @@ function Contact() {
                           opacity: "0.7",
                           width: "100%",
                           height: "100%",
-                          position: "absolute"
+                          position: "absolute",
                         }}
                       >
                         <div style={{ width: 1 }} />
@@ -1177,7 +1205,7 @@ function Contact() {
                             backgroundColor: "rgb(245, 245, 245)",
                             width: "auto",
                             height: "100%",
-                            marginLeft: 1
+                            marginLeft: 1,
                           }}
                         />
                       </div>
@@ -1194,7 +1222,7 @@ function Contact() {
                           direction: "ltr",
                           textAlign: "right",
                           verticalAlign: "middle",
-                          display: "inline-block"
+                          display: "inline-block",
                         }}
                       >
                         <a
@@ -1204,7 +1232,7 @@ function Contact() {
                           style={{
                             textDecoration: "none",
                             cursor: "pointer",
-                            color: "rgb(68, 68, 68)"
+                            color: "rgb(68, 68, 68)",
                           }}
                         >
                           Terms of Use
@@ -1231,7 +1259,7 @@ function Contact() {
                         boxShadow: "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px",
                         overflow: "hidden",
                         top: 0,
-                        right: 0
+                        right: 0,
                       }}
                     >
                       <img
@@ -1256,7 +1284,7 @@ function Contact() {
                         lineHeight: 14,
                         position: "absolute",
                         right: 0,
-                        bottom: 0
+                        bottom: 0,
                       }}
                     >
                       <div
@@ -1264,7 +1292,7 @@ function Contact() {
                           opacity: "0.7",
                           width: "100%",
                           height: "100%",
-                          position: "absolute"
+                          position: "absolute",
                         }}
                       >
                         <div style={{ width: 1 }} />
@@ -1273,7 +1301,7 @@ function Contact() {
                             backgroundColor: "rgb(245, 245, 245)",
                             width: "auto",
                             height: "100%",
-                            marginLeft: 1
+                            marginLeft: 1,
                           }}
                         />
                       </div>
@@ -1290,7 +1318,7 @@ function Contact() {
                           direction: "ltr",
                           textAlign: "right",
                           verticalAlign: "middle",
-                          display: "inline-block"
+                          display: "inline-block",
                         }}
                       >
                         <a
@@ -1303,7 +1331,7 @@ function Contact() {
                             fontSize: 10,
                             color: "rgb(68, 68, 68)",
                             textDecoration: "none",
-                            position: "relative"
+                            position: "relative",
                           }}
                         >
                           Report a map error
@@ -1320,7 +1348,7 @@ function Contact() {
                         userSelect: "none",
                         position: "absolute",
                         bottom: 95,
-                        right: 40
+                        right: 40,
                       }}
                     >
                       <div
@@ -1338,7 +1366,7 @@ function Contact() {
                             cursor: "pointer",
                             backgroundColor: "rgb(255, 255, 255)",
                             width: 40,
-                            height: 81
+                            height: 81,
                           }}
                         >
                           <button
@@ -1360,7 +1388,7 @@ function Contact() {
                               width: 40,
                               height: 40,
                               top: 0,
-                              left: 0
+                              left: 0,
                             }}
                           >
                             <img
@@ -1384,7 +1412,7 @@ function Contact() {
                               height: 1,
                               margin: "0px 5px",
                               backgroundColor: "rgb(230, 230, 230)",
-                              top: 0
+                              top: 0,
                             }}
                           />
                           <button
@@ -1406,7 +1434,7 @@ function Contact() {
                               width: 40,
                               height: 40,
                               top: 0,
-                              left: 0
+                              left: 0,
                             }}
                           >
                             <img
@@ -1452,7 +1480,7 @@ function Contact() {
                               left: 0,
                               overflow: "hidden",
                               boxShadow: "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px",
-                              borderRadius: 2
+                              borderRadius: 2,
                             }}
                           >
                             <img
@@ -1489,7 +1517,7 @@ function Contact() {
                               left: 0,
                               overflow: "hidden",
                               boxShadow: "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px",
-                              borderRadius: 2
+                              borderRadius: 2,
                             }}
                           >
                             <img
@@ -1525,7 +1553,7 @@ function Contact() {
                     position: "absolute",
                     transform: "translateX(-50%)",
                     width: "calc(100% - 10px)",
-                    zIndex: 1
+                    zIndex: 1,
                   }}
                 >
                   <div>
@@ -1540,12 +1568,14 @@ function Contact() {
                         height: 17,
                         verticalAlign: "middle",
                         width: 52,
-                        userSelect: "none"
+                        userSelect: "none",
                       }}
                     />
                   </div>
                   <div style={{ lineHeight: 20, margin: "15px 0px" }}>
-                    <span style={{ color: "rgba(0, 0, 0, 0.87)", fontSize: 14 }}>
+                    <span
+                      style={{ color: "rgba(0, 0, 0, 0.87)", fontSize: 14 }}
+                    >
                       This page can't load Google Maps correctly.
                     </span>
                   </div>
@@ -1557,7 +1587,10 @@ function Contact() {
                             href="https://developers.google.com/maps/documentation/javascript/error-messages?utm_source=maps_js&utm_medium=degraded&utm_campaign=billing#api-key-and-billing-errors"
                             target="_blank"
                             rel="noopener"
-                            style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: 12 }}
+                            style={{
+                              color: "rgba(0, 0, 0, 0.54)",
+                              fontSize: 12,
+                            }}
                           >
                             Do you own this website?
                           </a>
@@ -1579,7 +1612,8 @@ function Contact() {
                 <form
                   className="form-contact contact_form"
                   id="contactForm"
-                  ref={form} onSubmit={sendEmail}
+                  ref={form}
+                  onSubmit={sendEmail}
                 >
                   <div className="row">
                     <div className="col-12">
@@ -1593,8 +1627,8 @@ function Contact() {
                           onfocus="this.placeholder = ''"
                           onblur="this.placeholder = 'Enter Message'"
                           placeholder=" Enter Message"
-                        // value={userMessage}
-                        // onChange={(e) => setUserMessage(e.value)}
+                          // value={userMessage}
+                          // onChange={(e) => setUserMessage(e.value)}
                         />
                       </div>
                     </div>
@@ -1608,8 +1642,8 @@ function Contact() {
                           onfocus="this.placeholder = ''"
                           onblur="this.placeholder = 'Enter your name'"
                           placeholder="Enter your name"
-                        // value={userName}
-                        // onChange={(e) => setUserName(e.value)}
+                          // value={userName}
+                          // onChange={(e) => setUserName(e.value)}
                         />
                       </div>
                     </div>
@@ -1623,8 +1657,8 @@ function Contact() {
                           onfocus="this.placeholder = ''"
                           onblur="this.placeholder = 'Enter email address'"
                           placeholder="Email"
-                        // value={userEmail}
-                        // onChange={(e) => setUserEmail(e.value)}
+                          // value={userEmail}
+                          // onChange={(e) => setUserEmail(e.value)}
                         />
                       </div>
                     </div>
@@ -1638,8 +1672,8 @@ function Contact() {
                           onfocus="this.placeholder = ''"
                           onblur="this.placeholder = 'Enter Subject'"
                           placeholder="Enter Subject"
-                        // value={userSubject}
-                        // onChange={(e) => setUserSubject(e.value)}
+                          // value={userSubject}
+                          // onChange={(e) => setUserSubject(e.value)}
                         />
                       </div>
                     </div>
@@ -1686,13 +1720,12 @@ function Contact() {
             </div>
           </div>
         </section>
-
       </main>
       <Footer />
     </>
-  )
+  );
 }
 
-const PASSWORD = "!@SayyidMuhammad878@!"
+const PASSWORD = "!@SayyidMuhammad878@!";
 
-export default Contact
+export default Contact;

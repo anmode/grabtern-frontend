@@ -163,8 +163,6 @@ function About() {
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
                 <div className="features-caption">
-                  <p>hello
-                  </p>
                 </div>
               </div>
               <div className="single-features">

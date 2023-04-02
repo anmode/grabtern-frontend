@@ -348,6 +348,9 @@ export default function MentorForm() {
               required
               value={formData.bookSession[0].priceSession}
             />
+            <div>
+              <h3 className="description">Hello here we will have the description for our MENTORS</h3>
+            </div>
           </div>
           {error && (
             <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>

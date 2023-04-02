@@ -89,7 +89,9 @@ function Index({mentorDetail}) {
                   }}
                 >
                   <i class="fas fa-envelope"></i>
+                  <a target="_blank" href={`mailto:${mentorDetail.email}`}>
                   {mentorDetail.email}
+                  </a>
                 </li>
                 <li
                   style={{

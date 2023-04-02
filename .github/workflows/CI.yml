@@ -1,7 +1,10 @@
-name: Build and Deploy
+name: Build
 
 on:
   push:
+    branches:
+      - develop
+  pull_request:
     branches:
       - develop
 

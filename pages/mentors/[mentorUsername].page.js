@@ -163,9 +163,7 @@ function Index({ mentorDetail }) {
                           {session.priceSession}
                         </div>
                       </div>
-                      <button
-                        style={{ cursor: "pointer" }}
-                      >
+                      <button style={{ cursor: "pointer" }}>
                         Book Session
                       </button>
                     </li>

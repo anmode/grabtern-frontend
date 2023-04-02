@@ -963,14 +963,13 @@ textarea {
 
 /* Mentor registration page styling */
 
-
 .mentor-register-page .container > img {
   max-width: 992px;
   width: 100%;
 }
 
 @media screen and (min-width: 1200px) {
-.mentor-register-page .container > img {
-  margin: 0 70px;
-}
+  .mentor-register-page .container > img {
+    margin: 0 70px;
+  }
 }

@@ -22,9 +22,9 @@ function Header({ isUserLoggedIn, navbarBackground }) {
 
   const handleLoginClick = () => {
     setLoginOption(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoginOption(false);
-    },5000)
+    }, 5000);
   };
 
   const menuToggle = () => {

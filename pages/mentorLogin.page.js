@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import dynamic from 'next/dynamic'
-const Header = dynamic(() => import('../components/Header'))
-const Footer = dynamic(() => import('../components/Footer'))
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 import { useRouter } from "next/router";
-import axios from "axios"
+import axios from "axios";
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,10 +20,10 @@ function mentorLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if(formData.password !== formData.confirmPassword) {
-      return setError("Password not match!")
+    if (formData.password !== formData.confirmPassword) {
+      return setError("Password not match!");
     }
-    console.log(formData);    
+    console.log(formData);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/auth`;
       const { data: res } = await axios.post(url, formData);
@@ -49,7 +48,7 @@ function mentorLogin() {
         <div className="mentorFormRegisration">
           <div className="container">
             <form className="mentorForm" onSubmit={handleSubmit}>
-            <h2 style={{gridColumn: "1/3"}}>Mentor Login</h2>
+              <h2 style={{ gridColumn: "1/3" }}>Mentor Login</h2>
               <div>
                 <label for="email">EMAIL</label>
 
@@ -75,7 +74,7 @@ function mentorLogin() {
                   placeholder="e.g. 12!HelloWorld"
                 />
               </div>
-              <div style={{gridColumn: "1/3"}}>
+              <div style={{ gridColumn: "1/3" }}>
                 <label for="confirmPassword">Confirm Password</label>
 
                 <input
@@ -88,8 +87,8 @@ function mentorLogin() {
                 />
               </div>
               {error && (
-            <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
-          )}
+                <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+              )}
               <button
                 type="submit"
                 className="mentorFormButotn"
@@ -98,11 +97,12 @@ function mentorLogin() {
                 Login
               </button>
               <p>
-            Do not have mentor account? <a href="/mentorRegister">Sign Up</a>
-          </p>
-          <p>
-            <a href="#">Forgot password?</a>
-            </p>
+                Do not have mentor account?{" "}
+                <a href="/mentorRegister">Sign Up</a>
+              </p>
+              <p>
+                <a href="#">Forgot password?</a>
+              </p>
             </form>
           </div>
         </div>

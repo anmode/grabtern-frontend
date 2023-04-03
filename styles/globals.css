@@ -973,3 +973,30 @@ textarea {
     margin: 0 70px;
   }
 }
+.description {
+  color: black;
+  font-weight: 600;
+  font-size: small;
+  width: auto;
+}
+.login-card {
+  background: white;
+  padding: 5px;
+  border-radius: 14px;
+  opacity: 0.5;
+}
+.menu-text {
+  color: black;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+.menu-text a:hover {
+  background: blue;
+}
+.login-optionslist {
+  position: absolute;
+  top: 30px !important;
+  display: flex;
+  flex-direction: column !important;
+}

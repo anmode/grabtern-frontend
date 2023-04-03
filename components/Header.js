@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 
@@ -40,6 +40,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("user_name");
     window.location.reload();
   };
+
   return (
     <div className="header-area header-transparent">
       <div className="main-header ">
@@ -104,16 +105,27 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         ) : (
                           <li>
                             <div className={styles.loginOption}>
-                              <button onClick={handleLoginClick}>Login</button>
+                              <button
+                                className={styles.loginbutton}
+                                onClick={handleLoginClick}
+                              >
+                                Login
+                              </button>
                               {loginOption && (
-                                <>
-                                  <button onClick={handleLoginClick}>
+                                <div className="login-optionslist">
+                                  <button
+                                    className="login-buttons"
+                                    onClick={handleLoginClick}
+                                  >
                                     <a href="/login">User</a>
                                   </button>
-                                  <button onClick={handleLoginClick}>
+                                  <button
+                                    className="login-buttons"
+                                    onClick={handleLoginClick}
+                                  >
                                     <a href="/mentorLogin">Mentor</a>
                                   </button>
-                                </>
+                                </div>
                               )}
                             </div>
                           </li>

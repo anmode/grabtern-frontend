@@ -73,8 +73,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                 <div className="menu-wrapper d-flex align-items-center justify-content-end">
                   <div
                     className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
-                    }`}
+                      navbarAppear === true ? "active" : "" }`}
                   >
                     <nav>
                       <ul id="navigation">
@@ -105,16 +104,16 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         ) : (
                           <li>
                             <div className={styles.loginOption}>
-                              <button onClick={handleLoginClick}>Login</button>
+                              <button className={styles.loginbutton} onClick={handleLoginClick}>Login</button>
                               {loginOption && (
-                                <>
-                                  <button onClick={handleLoginClick}>
+                                <div className="login-optionslist">
+                                  <button className="login-buttons" onClick={handleLoginClick}>
                                     <a href="/login">User</a>
                                   </button>
-                                  <button onClick={handleLoginClick}>
+                                  <button  className="login-buttons" onClick={handleLoginClick}>
                                     <a href="/mentorLogin">Mentor</a>
                                   </button>
-                                </>
+                                </div>
                               )}
                             </div>
                           </li>

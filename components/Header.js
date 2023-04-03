@@ -41,7 +41,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     window.location.reload();
   };
 
-  
   return (
     <div className="header-area header-transparent">
       <div className="main-header ">
@@ -74,7 +73,8 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                 <div className="menu-wrapper d-flex align-items-center justify-content-end">
                   <div
                     className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : "" }`}
+                      navbarAppear === true ? "active" : ""
+                    }`}
                   >
                     <nav>
                       <ul id="navigation">

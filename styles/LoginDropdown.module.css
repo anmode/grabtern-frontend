@@ -1,14 +1,14 @@
-.loginOption{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    gap: 1rem;
-    border-radius: 4px;
-    transform: translateZ(-50px);
-    margin-bottom: 70px;
+.loginOption {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  border-radius: 4px;
+  transform: translateZ(-50px);
+  margin-bottom: 70px;
 }
-.loginOption a{
-    padding: 0 !important;
+.loginOption a {
+  padding: 0 !important;
 }
 .loginOption button {
   background: none;
@@ -19,9 +19,9 @@
   font-weight: 600;
 }
 .loginOption button:hover {
-  background-color:  #6f42c1;
+  background-color: #6f42c1;
 }
-.loginbutton{
+.loginbutton {
   width: fit-content;
 }
 

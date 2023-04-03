@@ -350,7 +350,9 @@ export default function MentorForm() {
               value={formData.bookSession[0].priceSession}
             />
             <div>
-              <h3 className="description">Hello here we will have the description for our MENTORS</h3>
+              <h3 className="description">
+                Hello here we will have the description for our MENTORS
+              </h3>
             </div>
           </div>
           {error && (

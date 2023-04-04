@@ -968,11 +968,13 @@ width: 320px;
 }
 }
 .description{
-  color: black;
+  color: red;
   font-weight: 600;
   font-size: small;
   width: auto;
-  
+}
+.marked{
+  color: red;
 }
 .login-card{
   background:white;

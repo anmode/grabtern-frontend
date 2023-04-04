@@ -209,7 +209,7 @@ export default function MentorForm() {
               className="mentorPhoto"
             />
             <div>
-              <h3>Upload you profile photo here</h3>
+              <h3><span className="marked">*</span>Upload you profile photo here</h3>
               <input
                 type="file"
                 name="mentorProfile"
@@ -220,7 +220,7 @@ export default function MentorForm() {
             </div>
           </div>
           <div>
-            <label htmlFor="name">NAME</label>
+            <label htmlFor="name"><span className="marked">*</span>NAME</label>
 
             <input
               type="text"
@@ -233,7 +233,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label htmlFor="username">USERNAME</label>
+            <label htmlFor="username"><span className="marked">*</span>USERNAME</label>
 
             <input
               type="text"
@@ -246,7 +246,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label htmlFor="email">EMAIL</label>
+            <label htmlFor="email"><span className="marked">*</span>EMAIL</label>
 
             <input
               type="text"
@@ -259,7 +259,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label htmlFor="mobile">PHONE</label>
+            <label htmlFor="mobile"><span className="marked">*</span>PHONE</label>
 
             <input
               type="number"
@@ -272,7 +272,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label htmlFor="internAt">INTERN</label>
+            <label htmlFor="internAt"><span className="marked">*</span>INTERN</label>
 
             <input
               type="text"
@@ -285,7 +285,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label htmlFor="currentStatus">CURRENT STATUS</label>
+            <label htmlFor="currentStatus"><span className="marked">*</span>CURRENT STATUS</label>
 
             <input
               type="text"
@@ -298,7 +298,7 @@ export default function MentorForm() {
             />
           </div>
           <div>
-            <label htmlFor="linkedin">LINKEDIN</label>
+            <label htmlFor="linkedin"><span className="marked">*</span>LINKEDIN</label>
 
             <input
               type="text"
@@ -319,7 +319,6 @@ export default function MentorForm() {
               className="mentorFormInput"
               onChange={(e) => handleSocialChange(e)}
               placeholder="e.g. https://www.twitter.com/peterparker"
-              required
               value={formData.social.twitter}
             />
           </div>
@@ -333,12 +332,11 @@ export default function MentorForm() {
               className="mentorFormInput"
               onChange={(e) => handleChange(e)}
               placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
-              required
               value={formData.description}
             />
           </div>
           <div style={{ gridColumn: "1/3" }}>
-            <label htmlFor="priceSession">30min 1-1 SESSION PRICE</label>
+            <label htmlFor="priceSession"><span className="marked">*</span>30min 1-1 SESSION PRICE</label>
             <input
               type="text"
               name="priceSession"
@@ -349,7 +347,7 @@ export default function MentorForm() {
               value={formData.bookSession[0].priceSession}
             />
             <div>
-              <h3 className="description">Hello here we will have the description for our MENTORS</h3>
+              <h3 className="description">* marked fields are required</h3>
             </div>
           </div>
           {error && (

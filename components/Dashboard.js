@@ -33,11 +33,11 @@ function Dashboard({ mentorDetail }) {
     });
   };
   const nextStep = () => {
-    setError("")
+    setError("");
     setStep((val) => val + 1);
   };
   const previousStep = () => {
-    setError("")
+    setError("");
     setStep((val) => val - 1);
   };
   const handleSocialChange = (e) => {
@@ -54,10 +54,10 @@ function Dashboard({ mentorDetail }) {
   };
 
   const addBookSession = () => {
-    console.log(bookSession)
+    console.log(bookSession);
     setError("");
-    if(bookSession.sessionType === "") {
-      setBookSession({...bookSession, sessionType: "video-meeting"})
+    if (bookSession.sessionType === "") {
+      setBookSession({ ...bookSession, sessionType: "video-meeting" });
     }
     if (
       bookSession.sessionName === "" ||
@@ -84,12 +84,12 @@ function Dashboard({ mentorDetail }) {
 
   const removeSessionId = () => {
     let allSession = formData.bookSession;
-    allSession.forEach(session => {
+    allSession.forEach((session) => {
       delete session._id;
-    })
+    });
     console.log(allSession);
-    setFormData({...formData, bookSession: allSession})
-  }
+    setFormData({ ...formData, bookSession: allSession });
+  };
 
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
@@ -98,7 +98,7 @@ function Dashboard({ mentorDetail }) {
   };
 
   const handleBookSessionChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setBookSession({ ...bookSession, [e.target.name]: e.target.value });
   };
 
@@ -344,19 +344,33 @@ function Dashboard({ mentorDetail }) {
                     <ul className="bookSessions">
                       {formData.bookSession.length !== 0 ? (
                         formData.bookSession.map((session, indexSession) => (
-                          <li style={{ width: "270px", height: "340px", textAlign: "start", position: "relative", padding: "10px 20px" }}>
+                          <li
+                            style={{
+                              width: "270px",
+                              height: "340px",
+                              textAlign: "start",
+                              position: "relative",
+                              padding: "10px 20px",
+                            }}
+                          >
                             <div className="bookSessionHeader bookSessionColumn">
-                              <div className="bookSessionHeaderIcons"><i
-                                class={
-                                  session.sessionType === "video-meeting"
-                                    ? "fas fa-video"
-                                    : session.sessionType === "call-meeting"
-                                    ? "fas fa-phone"
-                                    : ""
-                                }
-                                style={{ fontSize: "25px" }}
-                              ></i>
-                              <i class="fas fa-trash-alt" onClick={() => removeSession(indexSession)} style={{ fontSize: "25px" }}></i></div>
+                              <div className="bookSessionHeaderIcons">
+                                <i
+                                  class={
+                                    session.sessionType === "video-meeting"
+                                      ? "fas fa-video"
+                                      : session.sessionType === "call-meeting"
+                                      ? "fas fa-phone"
+                                      : ""
+                                  }
+                                  style={{ fontSize: "25px" }}
+                                ></i>
+                                <i
+                                  class="fas fa-trash-alt"
+                                  onClick={() => removeSession(indexSession)}
+                                  style={{ fontSize: "25px" }}
+                                ></i>
+                              </div>
                               <div style={{ marginTop: "10px" }}>
                                 <h2>{session.sessionName}</h2>
                                 <p style={{ textAlign: "start" }}>
@@ -370,7 +384,8 @@ function Dashboard({ mentorDetail }) {
                                 display: "flex",
                                 flexDirection: "row",
                                 gap: "20px",
-                                position: "absolute", bottom: "90px"
+                                position: "absolute",
+                                bottom: "90px",
                               }}
                             >
                               <div>
@@ -382,7 +397,13 @@ function Dashboard({ mentorDetail }) {
                                 {session.priceSession}
                               </div>
                             </div>
-                            <button style={{ cursor: "pointer", position: "absolute", bottom: "25px" }}>
+                            <button
+                              style={{
+                                cursor: "pointer",
+                                position: "absolute",
+                                bottom: "25px",
+                              }}
+                            >
                               Book Session
                             </button>
                           </li>
@@ -451,7 +472,12 @@ function Dashboard({ mentorDetail }) {
                     <label for="sessionType">Session Type</label>
                     <select
                       className="mentorFormInput"
-                      onChange={(e) => setBookSession({...bookSession, sessionType: e.target.value})}
+                      onChange={(e) =>
+                        setBookSession({
+                          ...bookSession,
+                          sessionType: e.target.value,
+                        })
+                      }
                     >
                       <option value="video-meeting" selected="selected">
                         Video Meeting
@@ -464,7 +490,7 @@ function Dashboard({ mentorDetail }) {
                       Session Meeting Duration (Minutes)
                     </label>
                     <input
-                    style={{backgroundColor: "none"}}
+                      style={{ backgroundColor: "none" }}
                       type="number"
                       name="sessionMeetingDuration"
                       className="mentorFormInput"
@@ -484,24 +510,19 @@ function Dashboard({ mentorDetail }) {
                       value={bookSession.priceSession}
                     />
                   </div>
-                  {error && (
-                    <div style={{ color: "red"}}>
-                      {error}
-                    </div>
-                  )}
+                  {error && <div style={{ color: "red" }}>{error}</div>}
                   <div
-                        style={{
-                          backgroundColor: "black",
-                          color: "white",
-                          padding: "5px 10px",
-                          cursor: "pointer",
-                          width: "fit-content",
-                        }}
-                        onClick={() => addBookSession()}
-                      >
-                        Add book session
-                      </div>
-                      
+                    style={{
+                      backgroundColor: "black",
+                      color: "white",
+                      padding: "5px 10px",
+                      cursor: "pointer",
+                      width: "fit-content",
+                    }}
+                    onClick={() => addBookSession()}
+                  >
+                    Add book session
+                  </div>
                 </>
               )}
             </form>

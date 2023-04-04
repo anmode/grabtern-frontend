@@ -28,32 +28,29 @@
 */
 
 // Default
-	@import 'variables';
-	@import 'mixins';
-	@import 'overlay';
-	@import 'common';
-	@import 'color';
+@import "variables";
+@import "mixins";
+@import "overlay";
+@import "common";
+@import "color";
 
-	
 // Homepage1
-	@import 'headerMenu';
-	@import 'h1-hero';
-	@import 'about';
-	@import 'team';
-	@import 'courses';
-	@import 'load-balnceing';
-	@import 'top-sub';
-	@import 'services_section';
-	@import 'footer';
+@import "headerMenu";
+@import "h1-hero";
+@import "about";
+@import "team";
+@import "courses";
+@import "load-balnceing";
+@import "top-sub";
+@import "services_section";
+@import "footer";
 
-	
 // inner Page
-	@import 'login';
-
+@import "login";
 
 // Default Element Page
-	@import 'blog_page';
-	@import 'contact';
-	@import 'bradcam';
-	@import 'extend';
-	@import 'elements';
+@import "blog_page";
+@import "contact";
+@import "bradcam";
+@import "extend";
+@import "elements";

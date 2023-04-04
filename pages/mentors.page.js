@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
-import dynamic from 'next/dynamic'
-const Header = dynamic(() => import('../components/Header'))
-const SimpleBanner = dynamic(() => import('../components/SimpleBanner'))
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("../components/Header"));
+const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
-function Mentors({mentorsData}) {
+function Mentors({ mentorsData }) {
   return (
     <>
       <Header />
@@ -22,16 +22,19 @@ function Mentors({mentorsData}) {
                     <div className="mentorCard">
                       <img src={mentor.mentorImg} alt="exampleMentorPhoto" />
                       <h2 className="mentorName">{mentor.name}</h2>
-                      <div className="contactLinks" style={{marginBottom: "10px"}}>
-                        <a href={`/mentors/${mentor.username}`} target="_blank"><i
-                          class="fas fa-envelope"
-                        ></i></a>
-                        <a href={`${mentor.social.linkedin}`} target="_blank"><i
-                          class="fab fa-linkedin"
-                        ></i></a>
-                        <a href={`${mentor.social.twitter}`} target="_blank"><i
-                          class="fab fa-twitter"
-                        ></i></a>
+                      <div
+                        className="contactLinks"
+                        style={{ marginBottom: "10px" }}
+                      >
+                        <a href={`/mentors/${mentor.username}`} target="_blank">
+                          <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href={`${mentor.social.linkedin}`} target="_blank">
+                          <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href={`${mentor.social.twitter}`} target="_blank">
+                          <i class="fab fa-twitter"></i>
+                        </a>
                       </div>
                       <h3>Intern at: {mentor.internAt}</h3>
                       <h3>{mentor.currentStatus}</h3>
@@ -64,7 +67,7 @@ export const getServerSideProps = async (context) => {
       mentorsData: data.filter(
         (mentor) =>
           mentor.verified === true && mentor.token === "mentorIsVerified"
-      )
-    }
-  }
-}
+      ),
+    },
+  };
+};

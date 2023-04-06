@@ -4,26 +4,25 @@ const Header = dynamic(() => import("../../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 
-
 function Index({ mentorDetail }) {
-
-  const router =useRouter();
-  localStorage.setItem('redirectUrl', window.location.href);
+  const router = useRouter();
+  localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
-const [isLoggedIn, setLoggedIn]=useState(false);
-console.log(localStorage.getItem("user_name"));
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  console.log(localStorage.getItem("user_name"));
 
-useEffect(()=>{
-  if(localStorage.getItem("user_name")!==null){
-    setLoggedIn(true);
-  }
+  useEffect(() => {
+    if (localStorage.getItem("user_name") !== null) {
+      setLoggedIn(true);
+    }
+  }, []);
 
-},[])
-
-const handleBookSession=(e)=>{
-  console.log("I am here");
-{isLoggedIn?console.log("hurray session booked"):router.push("/login")}
-}
+  const handleBookSession = (e) => {
+    console.log("I am here");
+    {
+      isLoggedIn ? console.log("hurray session booked") : router.push("/login");
+    }
+  };
   return (
     <>
       <Header navbarBackground={true} />
@@ -183,8 +182,10 @@ const handleBookSession=(e)=>{
                           {session.priceSession}
                         </div>
                       </div>
-                      <button style={{ cursor: "pointer" }}
-                      onClick={(e)=>handleBookSession(e)}>
+                      <button
+                        style={{ cursor: "pointer" }}
+                        onClick={(e) => handleBookSession(e)}
+                      >
                         Book Session
                       </button>
                     </li>

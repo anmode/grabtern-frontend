@@ -3,21 +3,20 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import jwt_decode from "jwt-decode"
+import jwt_decode from "jwt-decode";
 import Head from "next/head";
 
 function Login() {
-
   const [userDetail, setUserDetail] = useState({});
   const router = useRouter();
 
   if (
     localStorage.getItem("user_name") !== null ||
     localStorage.getItem("token") !== null
-  ) {localStorage.getItem("redirectUrl")?
-
-  router.push(localStorage.getItem("redirectUrl")):router.push("/")
-
+  ) {
+    localStorage.getItem("redirectUrl")
+      ? router.push(localStorage.getItem("redirectUrl"))
+      : router.push("/");
   }
 
   const [data, setData] = useState({ email: "", password: "" });
@@ -36,8 +35,8 @@ function Login() {
     console.log("Encoded JWT ID token " + response.credential);
     const userObject = jwt_decode(response.credential);
     console.log(userObject);
-    localStorage.setItem('user_name',userObject.name)
-    localStorage.setItem('user_picture', userObject.picture)
+    localStorage.setItem("user_name", userObject.name);
+    localStorage.setItem("user_picture", userObject.picture);
     setUserDetail(userObject);
   };
 
@@ -45,7 +44,7 @@ function Login() {
     // global google
     google.accounts.id.initialize({
       client_id:
-      "587921623953-23fr6m7muhh45pf3j36rvi0lvmfse4aj.apps.googleusercontent.com",
+        "587921623953-23fr6m7muhh45pf3j36rvi0lvmfse4aj.apps.googleusercontent.com",
       callback: handleCallBackResponse,
     });
 
@@ -65,7 +64,7 @@ function Login() {
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
       localStorage.setItem("user_name", res.fullName);
-    router.push(localStorage.getItem("redirectUrl"));
+      router.push(localStorage.getItem("redirectUrl"));
     } catch (error) {
       if (
         error.response &&
@@ -136,7 +135,7 @@ function Login() {
             <Link href="/register" className="registration">
               Registration
             </Link>
-        <h3>Or</h3>
+            <h3>Or</h3>
             <div id="signInDiv"></div>
           </div>
         </form>

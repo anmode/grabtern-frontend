@@ -4,13 +4,12 @@ import styles from "../styles/LoginDropdown.module.css";
 
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
-  const [isLoggedIn, setLoggedIn]=useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
 
   useEffect(() => {
-
     const userName = localStorage.getItem("user_name");
     if (userName) {
       setLoggedIn(true);
@@ -96,41 +95,41 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                           <a href="/contact">Contact</a>
                         </li>
 
-                        {isLoggedIn||isUserLoggedIn? (
+                        {isLoggedIn || isUserLoggedIn ? (
                           <li>
                             <div className={styles.loginOption}>
-                              <button 
+                              <button
                                 onClick={handleLoginClick}
                                 className={styles.userName}
                               >
-<img 
-  style={{
-    width: "35px", 
-    height: "auto", 
-    borderRadius: "50%", 
-  }} 
-  src={localStorage.getItem("user_picture")} 
-  alt="not found" 
-/>
-
+                                <img
+                                  style={{
+                                    width: "35px",
+                                    height: "auto",
+                                    borderRadius: "50%",
+                                  }}
+                                  src={localStorage.getItem("user_picture")}
+                                  alt="not found"
+                                />
                               </button>
-                              {isLoggedIn||isUserLoggedIn && (
-                                <div className="login-optionslist">
-                                  <button
-                                    className="login-buttons"
-                                    style={{marginTop:"20px"}}
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/login">Dashboard</a>
-                                  </button>
-                                  <button
-                                    className="login-buttons"
-                                    onClick={logout}
-                                  >
-                                    <a href="#">Logout</a>
-                                  </button>
-                                </div>
-                              )}
+                              {isLoggedIn ||
+                                (isUserLoggedIn && (
+                                  <div className="login-optionslist">
+                                    <button
+                                      className="login-buttons"
+                                      style={{ marginTop: "20px" }}
+                                      onClick={handleLoginClick}
+                                    >
+                                      <a href="/login">Dashboard</a>
+                                    </button>
+                                    <button
+                                      className="login-buttons"
+                                      onClick={logout}
+                                    >
+                                      <a href="#">Logout</a>
+                                    </button>
+                                  </div>
+                                ))}
                             </div>
                           </li>
                         ) : (

@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../../components/Header"));
 import axios from "axios";
+import { useRouter } from "next/router";
+
 
 function Index({ mentorDetail }) {
-  const [showModal, setShowModal] = useState(false);
 
+  const router =useRouter();
+  localStorage.setItem('redirectUrl', window.location.href);
+  const [showModal, setShowModal] = useState(false);
+const [isLoggedIn, setLoggedIn]=useState(false);
+console.log(localStorage.getItem("user_name"));
+
+useEffect(()=>{
+  if(localStorage.getItem("user_name")!==null){
+    setLoggedIn(true);
+  }
+
+},[])
+
+const handleBookSession=(e)=>{
+  console.log("I am here");
+{isLoggedIn?console.log("hurray session booked"):router.push("/login")}
+}
   return (
     <>
       <Header navbarBackground={true} />
@@ -165,7 +183,8 @@ function Index({ mentorDetail }) {
                           {session.priceSession}
                         </div>
                       </div>
-                      <button style={{ cursor: "pointer" }}>
+                      <button style={{ cursor: "pointer" }}
+                      onClick={(e)=>handleBookSession(e)}>
                         Book Session
                       </button>
                     </li>

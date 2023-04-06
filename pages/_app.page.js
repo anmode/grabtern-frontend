@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
 import $ from "jquery";
 import Head from "next/head";
-import Script from "next/script"
+import Script from "next/script";
 function addProductJsonLd() {
   return {
     __html: `{
@@ -100,8 +100,7 @@ function MyApp({ Component, pageProps }) {
           dangerouslySetInnerHTML={addProductJsonLd()}
           key="product-jsonld"
         />
-              {/* <script src="https://accounts.google.com/gsi/client" async defer ></script> */}
-
+        {/* <script src="https://accounts.google.com/gsi/client" async defer ></script> */}
       </Head>
 
       <div className="loaderBackground"></div>

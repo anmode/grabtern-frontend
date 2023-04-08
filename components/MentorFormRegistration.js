@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
@@ -46,6 +47,7 @@ export default function MentorForm() {
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
+    verified: false,
   });
 
   const handleChange = (e) => {
@@ -61,7 +63,29 @@ export default function MentorForm() {
     });
   };
 
+  function handleCallbackResponse(response) {
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject);
+    setFormData({
+      name: userObject.name,
+      email: userObject,
+      mentorImg: userObject.picture,
+      verified: true,
+    });
+  }
+
   useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-4es8e1vfh6uo7kf908s85b266f1t40bs.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleSignInButton"),
+      { theme: "outline", size: "large" }
+    );
+    google.accounts.id.prompt();
     if (modalPopup === true && waitTime !== 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
@@ -200,6 +224,7 @@ export default function MentorForm() {
           src="/assets/img/vector_images/vector-registration.svg"
           alt="vector image"
         />
+        <button id="googleSignInButton"></button>
         <form className="mentorForm" onSubmit={handleSubmit}>
           <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
             <img

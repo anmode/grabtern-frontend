@@ -847,8 +847,8 @@ textarea {
 }
 
 .mentorPhoto {
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   border-radius: 50%;
 }
@@ -857,7 +857,7 @@ textarea {
   display: flex;
   width: 100%;
   flex-direction: row !important;
-  gap: 30px !important;
+  gap: 20px !important;
   border-bottom: 1px solid gray;
   padding-bottom: 30px !important;
 }

@@ -68,16 +68,40 @@ export default function MentorForm() {
     console.log(userObject);
     setFormData({
       name: userObject.name,
-      email: userObject,
+      email: userObject.email,
+      username: "",
+      mobile: "",
+      internAt: "",
+      currentStatus: "",
+      social: {
+        linkedin: "",
+        twitter: "",
+      },
+      bookSession: [
+        {
+          sessionName: "1 on 1 Mentorship",
+          sessionDescription:
+            "Achieve your goals faster with customized road map",
+          sessionType: "video-meeting",
+          sessionMeetingDuration: "30",
+          // peopleAttend: "",
+          priceSession: "",
+        },
+      ],
+      description: "",
       mentorImg: userObject.picture,
+      // resume: '',
+      password: `GrabternMentorPW!${number}!`,
+      confirmPassword: `GrabternMentorPW!${number}!`,
       verified: true,
     });
+    console.log(formData);
   }
 
   useEffect(() => {
     google.accounts.id.initialize({
       client_id:
-        "1094459761-4es8e1vfh6uo7kf908s85b266f1t40bs.apps.googleusercontent.com",
+        "1094459761-3oj6qj42mv7oults81d3qje4jol8r5nk.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 
@@ -224,8 +248,10 @@ export default function MentorForm() {
           src="/assets/img/vector_images/vector-registration.svg"
           alt="vector image"
         />
-        <button id="googleSignInButton"></button>
         <form className="mentorForm" onSubmit={handleSubmit}>
+          <div style={{ gridColumn: "1/3" }}>
+            <div id="googleSignInButton"></div>
+          </div>
           <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
             <img
               src={
@@ -236,14 +262,27 @@ export default function MentorForm() {
               className="mentorPhoto"
             />
             <div>
-              <h3>Upload you profile photo here</h3>
-              <input
-                type="file"
-                name="mentorProfile"
-                className="mentorFormInput"
-                onChange={(e) => handleUploadImageChange(e)}
-                required
-              />
+              <h3>
+                {formData.mentorImg.length > 0
+                  ? "Change your profile image"
+                  : "Upload you profile photo here"}
+              </h3>
+              {formData.mentorImg.length > 0 ? (
+                <input
+                  type="file"
+                  name="mentorProfile"
+                  className="mentorFormInput"
+                  onChange={(e) => handleUploadImageChange(e)}
+                />
+              ) : (
+                <input
+                  type="file"
+                  name="mentorProfile"
+                  className="mentorFormInput"
+                  onChange={(e) => handleUploadImageChange(e)}
+                  required
+                />
+              )}
             </div>
           </div>
           <div>

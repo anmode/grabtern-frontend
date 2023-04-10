@@ -7,9 +7,9 @@ export default [
   },
   {
     imageSrc: "https://avatars.githubusercontent.com/u/88267951?v=4",
-    imageAlt: "",
+    imageAlt: "Sayyid Ali Aljufri",
     profileName: "𝗦𝗮𝘆𝘆𝗶𝗱 𝗔𝗹𝗶 𝗔𝗹𝗷𝘂𝗳𝗿𝗶",
-    profileDescription: "Front-End Developer!",
+    profileDescription: "𝗙𝗿𝗼𝗻𝘁-𝗘𝗻𝗱 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿",
   },
   {
     imageSrc: "/assets/img/community_mentors/profile2.jpg",

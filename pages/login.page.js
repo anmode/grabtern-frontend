@@ -37,6 +37,7 @@ function Login() {
     console.log(userObject);
     localStorage.setItem("user_name", userObject.name);
     localStorage.setItem("user_picture", userObject.picture);
+    localStorage.setItem("user_email", userObject.email);
     setUserDetail(userObject);
   };
 
@@ -64,6 +65,7 @@ function Login() {
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
       localStorage.setItem("user_name", res.fullName);
+
       router.push(localStorage.getItem("redirectUrl"));
     } catch (error) {
       if (

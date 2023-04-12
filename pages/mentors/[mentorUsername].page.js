@@ -17,11 +17,21 @@ function Index({ mentorDetail }) {
     }
   }, []);
 
-  const handleBookSession = (e) => {
-    console.log("I am here");
+  const sendMail= async (data)=>{
+    console.log("data ", data);
+const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`, data);
+console.log("res of book session ", res);
+  }
+
+  const handleBookSession = (sessionName, mentorEmail) => {
+
     {
-      isLoggedIn ? console.log("hurray session booked") : router.push("/login");
+      isLoggedIn ? console.log("wait here") : router.push("/login");
     }
+    const userEmail=localStorage.getItem("user_email");
+    console.log(sessionName, mentorEmail, userEmail);
+const data = {sessionName, mentorEmail, userEmail}
+    sendMail(data)
   };
   return (
     <>
@@ -184,7 +194,7 @@ function Index({ mentorDetail }) {
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={(e) => handleBookSession(e)}
+                        onClick={(e) => handleBookSession(session.sessionName,mentorDetail.email)}
                       >
                         Book Session
                       </button>

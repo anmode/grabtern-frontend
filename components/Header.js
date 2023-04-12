@@ -45,6 +45,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("token");
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
+    setLoggedIn(false);
     // window.location.reload();
   };
 
@@ -112,8 +113,8 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                   alt="not found"
                                 />
                               </button>
-                              {isLoggedIn ||
-                                (isUserLoggedIn && (
+                        
+                                {loginOption && (
                                   <div className="login-optionslist">
                                     <button
                                       className="login-buttons"
@@ -129,7 +130,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                       <a href="#">Logout</a>
                                     </button>
                                   </div>
-                                ))}
+                                )}
                             </div>
                           </li>
                         ) : (

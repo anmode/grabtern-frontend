@@ -4,7 +4,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import jwt_decode from "jwt-decode";
-import Head from "next/head";
 
 function Login() {
   const [userDetail, setUserDetail] = useState({});
@@ -25,16 +24,13 @@ function Login() {
     setData({ ...data, [input.name]: input.value });
   };
 
-  console.log("inside popup");
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   const handleCallBackResponse = (response) => {
-    console.log("Encoded JWT ID token " + response.credential);
     const userObject = jwt_decode(response.credential);
-    console.log(userObject);
     localStorage.setItem("user_name", userObject.name);
     localStorage.setItem("user_picture", userObject.picture);
     localStorage.setItem("user_email", userObject.email);
@@ -81,20 +77,6 @@ function Login() {
     <>
       <Header navbarBackground={true} />
       <main className="login-body">
-        {/* <video
-        autoPlay
-        loop
-        muted
-        style={{
-          position: "fixed",
-          right: 0,
-          bottom: 0,
-          minWidth: "100%",
-          minHeight: "100%",
-        }}
-      >
-        <source src="/assets/img/login-bg.mp4" type="video/mp4" />
-      </video> */}
         <form
           className="form-default"
           action="login-bg.mp4"

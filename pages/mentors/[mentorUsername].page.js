@@ -9,7 +9,6 @@ function Index({ mentorDetail }) {
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
-  console.log(localStorage.getItem("user_name"));
 
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null) {
@@ -17,21 +16,21 @@ function Index({ mentorDetail }) {
     }
   }, []);
 
-  const sendMail= async (data)=>{
-    console.log("data ", data);
-const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`, data);
-console.log("res of book session ", res);
-  }
+  const sendMail = async (data) => {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
+      data
+    );
+  };
 
   const handleBookSession = (sessionName, mentorEmail) => {
-
     {
-      isLoggedIn ? console.log("wait here") : router.push("/login");
+      isLoggedIn ? console.log("mail will be sent") : router.push("/login");
     }
-    const userEmail=localStorage.getItem("user_email");
+    const userEmail = localStorage.getItem("user_email");
     console.log(sessionName, mentorEmail, userEmail);
-const data = {sessionName, mentorEmail, userEmail}
-    sendMail(data)
+    const data = { sessionName, mentorEmail, userEmail };
+    sendMail(data);
   };
   return (
     <>
@@ -194,7 +193,12 @@ const data = {sessionName, mentorEmail, userEmail}
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={(e) => handleBookSession(session.sessionName,mentorDetail.email)}
+                        onClick={(e) =>
+                          handleBookSession(
+                            session.sessionName,
+                            mentorDetail.email
+                          )
+                        }
                       >
                         Book Session
                       </button>

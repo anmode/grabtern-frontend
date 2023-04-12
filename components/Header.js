@@ -113,24 +113,24 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                   alt="not found"
                                 />
                               </button>
-                        
-                                {loginOption && (
-                                  <div className="login-optionslist">
-                                    <button
-                                      className="login-buttons"
-                                      style={{ marginTop: "20px" }}
-                                      onClick={handleLoginClick}
-                                    >
-                                      <a href="/login">Dashboard</a>
-                                    </button>
-                                    <button
-                                      className="login-buttons"
-                                      onClick={logout}
-                                    >
-                                      <a href="#">Logout</a>
-                                    </button>
-                                  </div>
-                                )}
+
+                              {loginOption && (
+                                <div className="login-optionslist">
+                                  <button
+                                    className="login-buttons"
+                                    style={{ marginTop: "20px" }}
+                                    onClick={handleLoginClick}
+                                  >
+                                    <a href="/login">Dashboard</a>
+                                  </button>
+                                  <button
+                                    className="login-buttons"
+                                    onClick={logout}
+                                  >
+                                    <a href="#">Logout</a>
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           </li>
                         ) : (

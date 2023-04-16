@@ -23,7 +23,7 @@ cursor: pointer;
   left: 0;
   padding: 10px;
   background: #000;
-  box-shadow: 3px 3px 10px 6px rgba(0, 0,0, 0.06);
+  box-shadow: 3px 3px 10px 6px rgba(0, 0,0, 0.2);
   border-radius: 15px;
   font-weight: 500;
   color: #333;
@@ -35,7 +35,7 @@ border-bottom:2px solid white;
   padding: 0;
   cursor: pointer;
   transition: all 0.2s;
-  color: #000;
+  color: black;
   
 }
 .dropdownItem ul{
@@ -43,4 +43,5 @@ border-bottom:2px solid white;
 }
  .dropdownContent .dropdownItem:hover{
   background: #f4f4f4;
+  color: #000;
 }

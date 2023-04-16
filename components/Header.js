@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
-
+import Card from './Card'
 function Header({ isUserLoggedIn, navbarBackground }) {
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
@@ -87,8 +87,8 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         <li>
                           <a href="/contact">Contact</a>
                         </li>
-
-                        {isUserLoggedIn === true ? (
+<li><Card/></li>
+                        {/* {isUserLoggedIn === true ? (
                           <li>
                             <button
                               onClick={() => logout()}
@@ -101,8 +101,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                             >
                               Logout
                             </button>
+                            
                           </li>
-                        ) : (
+                         
+                        ) 
+                        : (
                           <li>
                             <div className={styles.loginOption}>
                               <button
@@ -126,10 +129,12 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     <a href="/mentorLogin">Mentor</a>
                                   </button>
                                 </div>
+                                
                               )}
+                              <Card/>
                             </div>
                           </li>
-                        )}
+                        )} */}
                       </ul>
                     </nav>
                   </div>

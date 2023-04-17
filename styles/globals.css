@@ -528,6 +528,18 @@ a {
   padding: 70px 30px;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
 .mentorFormRegisration > .container > .mentorForm {
   margin: 0 auto;
 }
@@ -847,8 +859,8 @@ textarea {
 }
 
 .mentorPhoto {
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   border-radius: 50%;
 }
@@ -857,7 +869,7 @@ textarea {
   display: flex;
   width: 100%;
   flex-direction: row !important;
-  gap: 30px !important;
+  gap: 20px !important;
   border-bottom: 1px solid gray;
   padding-bottom: 30px !important;
 }

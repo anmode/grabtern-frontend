@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
@@ -46,6 +47,7 @@ export default function MentorForm() {
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
+    verified: false,
   });
 
   const handleChange = (e) => {
@@ -60,7 +62,60 @@ export default function MentorForm() {
     });
   };
 
+  function handleCallbackResponse(response) {
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject);
+    setFormData({
+      name: userObject.name,
+      email: userObject.email,
+      username: "",
+      mobile: "",
+      internAt: "",
+      currentStatus: "",
+      social: {
+        linkedin: "",
+        twitter: "",
+      },
+      bookSession: [
+        {
+          sessionName: "1 on 1 Mentorship",
+          sessionDescription:
+            "Achieve your goals faster with customized road map",
+          sessionType: "video-meeting",
+          sessionMeetingDuration: "30",
+          // peopleAttend: "",
+          priceSession: "",
+        },
+      ],
+      description: "",
+      mentorImg: userObject.picture,
+      // resume: '',
+      password: `GrabternMentorPW!${number}!`,
+      confirmPassword: `GrabternMentorPW!${number}!`,
+      verified: true,
+    });
+    console.log(formData);
+  }
+
   useEffect(() => {
+    setInterval(() => {
+      if (typeof window !== "undefined") {
+        if (document.querySelector("#credential_picker_container") !== null) {
+          document.querySelector(".overlay").classList.add("show");
+        }
+      }
+    }, 1300);
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleSignInButton"),
+      { theme: "outline", size: "large" }
+    );
+    google.accounts.id.prompt();
     if (modalPopup === true && waitTime !== 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
@@ -69,7 +124,7 @@ export default function MentorForm() {
     if (waitTime === 0) {
       router.push("/");
     }
-  });
+  }, []);
 
   // const handleFileChange = e => {
   //   setFormData({ ...formData, resume: e.target.files[0] });
@@ -179,8 +234,13 @@ export default function MentorForm() {
       );
   };
 
+  function hideitems(className) {
+    document.querySelector(className).style.display = "none";
+  }
+
   return (
     <div className="mentorFormRegisration">
+      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {modalPopup === true ? (
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">
@@ -200,6 +260,9 @@ export default function MentorForm() {
           alt="vector image"
         />
         <form className="mentorForm" onSubmit={handleSubmit}>
+          <div style={{ gridColumn: "1/3" }}>
+            <div id="googleSignInButton"></div>
+          </div>
           <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
             <img
               src={
@@ -210,14 +273,27 @@ export default function MentorForm() {
               className="mentorPhoto"
             />
             <div>
-              <h3>Upload you profile photo here</h3>
-              <input
-                type="file"
-                name="mentorProfile"
-                className="mentorFormInput"
-                onChange={(e) => handleUploadImageChange(e)}
-                required
-              />
+              <h3>
+                {formData.mentorImg.length > 0
+                  ? "Change your profile image"
+                  : "Upload you profile photo here"}
+              </h3>
+              {formData.mentorImg.length > 0 ? (
+                <input
+                  type="file"
+                  name="mentorProfile"
+                  className="mentorFormInput"
+                  onChange={(e) => handleUploadImageChange(e)}
+                />
+              ) : (
+                <input
+                  type="file"
+                  name="mentorProfile"
+                  className="mentorFormInput"
+                  onChange={(e) => handleUploadImageChange(e)}
+                  required
+                />
+              )}
             </div>
           </div>
           <div>

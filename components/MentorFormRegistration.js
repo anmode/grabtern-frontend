@@ -262,7 +262,7 @@ export default function MentorForm() {
         />
         <form className="mentorForm" onSubmit={handleSubmit}>
           <div style={{ gridColumn: "1/3" }}>
-            {/* <div id="googleSignInButton"></div> */}
+            <div id="googleSignInButton"></div>
           </div>
           <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
             <img

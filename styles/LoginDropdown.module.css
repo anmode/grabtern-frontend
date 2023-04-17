@@ -18,9 +18,6 @@
   border-radius: 5px;
   font-weight: 600;
 }
-.loginOption button:hover {
-  background-color: #6f42c1;
-}
 .loginbutton {
   width: fit-content;
 }
@@ -43,4 +40,8 @@
 }
 .loginOption button:hover {
   background-color: #6f42c1;
+}
+
+.loginOption .userPicture:hover {
+  background-color: transparent;
 }

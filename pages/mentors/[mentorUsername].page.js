@@ -1,11 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../../components/Header"));
 import axios from "axios";
+import { useRouter } from "next/router";
 
 function Index({ mentorDetail }) {
+  const router = useRouter();
+  localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    if (localStorage.getItem("user_name") !== null) {
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const sendMail = async (data) => {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
+      data
+    );
+  };
+
+  const handleBookSession = (sessionName, mentorEmail) => {
+    {
+      isLoggedIn ? console.log("mail will be sent") : router.push("/login");
+    }
+    const userEmail = localStorage.getItem("user_email");
+    console.log(sessionName, mentorEmail, userEmail);
+    const data = { sessionName, mentorEmail, userEmail };
+    sendMail(data);
+  };
   return (
     <>
       <Header navbarBackground={true} />
@@ -165,7 +191,15 @@ function Index({ mentorDetail }) {
                           {session.priceSession}
                         </div>
                       </div>
-                      <button style={{ cursor: "pointer" }}>
+                      <button
+                        style={{ cursor: "pointer" }}
+                        onClick={(e) =>
+                          handleBookSession(
+                            session.sessionName,
+                            mentorDetail.email
+                          )
+                        }
+                      >
                         Book Session
                       </button>
                     </li>

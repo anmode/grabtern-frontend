@@ -20,7 +20,8 @@ function Mentors({ mentorsData }) {
               <div className="mentorLists">
                 {mentorsData.map((mentor) => (
                   <a href={`/mentors/${mentor.username}`} key={mentor._id}>
-                    {/* <div className="mentorCard">
+                    {
+                      /* <div className="mentorCard">
                       <img src={mentor.mentorImg} alt="exampleMentorPhoto" />
                       <h2 className="mentorName">{mentor.name}</h2>
                       <div
@@ -46,7 +47,7 @@ function Mentors({ mentorsData }) {
                       </p>
                       { <h3>Price for each intern: {mentor.sessionPrice}</h3> }
                     </div> */
-                    <MentorCard mentor = {mentor} />
+                      <MentorCard mentor={mentor} />
                     }
                   </a>
                 ))}

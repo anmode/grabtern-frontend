@@ -16,12 +16,12 @@ const MentorCard = ({ mentor }) => {
         </p>
         {/* <p className="mentor-card__description">{mentor.description}</p> */}
         <div className="mentor-card__social">
-        <a href={`${mentor.social.linkedin}`} target="_blank">
-                          <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href={`${mentor.social.twitter}`} target="_blank">
-                          <i class="fab fa-twitter"></i>
-                        </a>
+          <a href={`${mentor.social.linkedin}`} target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href={`${mentor.social.twitter}`} target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
           <a
             href={mentor.bookedSession}
             className="mentor-card__booked-session"

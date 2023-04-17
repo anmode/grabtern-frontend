@@ -1,11 +1,10 @@
 import React from "react";
-import "./MentorCard.css";
 
 const MentorCard = ({ mentor }) => {
   return (
     <div className="mentor-card">
       <img
-        src={mentor.photo}
+        src={mentor.mentorImg}
         alt={mentor.name}
         className="mentor-card__photo"
       />
@@ -15,14 +14,14 @@ const MentorCard = ({ mentor }) => {
         <p className="mentor-card__status">
           Current Status: {mentor.currentStatus}
         </p>
-        <p className="mentor-card__description">{mentor.description}</p>
+        {/* <p className="mentor-card__description">{mentor.description}</p> */}
         <div className="mentor-card__social">
-          <a href={mentor.linkedin} className="mentor-card__linkedin">
-            LinkedIn
-          </a>
-          <a href={mentor.rating} className="mentor-card__rating">
-            Rating: {mentor.rating}
-          </a>
+        <a href={`${mentor.social.linkedin}`} target="_blank">
+                          <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href={`${mentor.social.twitter}`} target="_blank">
+                          <i class="fab fa-twitter"></i>
+                        </a>
           <a
             href={mentor.bookedSession}
             className="mentor-card__booked-session"

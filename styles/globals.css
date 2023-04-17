@@ -1000,3 +1000,85 @@ textarea {
   display: flex;
   flex-direction: column !important;
 }
+
+
+/*Mentor CSS*/
+.mentor-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 350px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.mentor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mentor-card__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.mentor-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.mentor-card__name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mentor-card__intern,
+.mentor-card__status,
+.mentor-card__description {
+  margin: 0;
+  font-size: 14px;
+}
+
+.mentor-card__description {
+  font-style: italic;
+}
+
+.mentor-card__social {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.mentor-card__linkedin,
+.mentor-card__rating,
+.mentor-card__booked-session {
+  font-size: 12px;
+  color: #666;
+}
+
+.mentor-card__book-session {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mentor-card__book-session:hover {
+  background-color: #005fa3;
+}

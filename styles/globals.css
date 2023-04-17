@@ -674,17 +674,24 @@ textarea {
   flex-wrap: wrap;
   margin-top: 30px;
   gap: 50px;
+	justify-content: center;
 }
 
 .mentorCard {
-  background-color: white;
+  background: linear-gradient(
+		to bottom right,
+    /* rgb(241, 221, 255),
+		rgb(232, 227, 255) */
+		rgb(218, 218, 218), 
+		rgb(241, 241, 241)
+	); 
   display: flex;
   align-items: center;
-  width: 320px;
+  width: 30vw;
   gap: 5px;
   flex-direction: column;
   height: 100%;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 30px;
   box-shadow: 2px 1px 4px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease-in-out;
@@ -733,15 +740,16 @@ textarea {
 }
 
 .mentorCard img {
-  border-radius: 50%;
+  border-radius: 100%;
   margin: 20px;
-  width: 150px;
-  height: 150px;
+  width: 15vw;
+  height: 15vw;
   object-fit: contain;
 }
 
 .mentorCard .mentorName {
   text-align: center;
+	font-weight: bold;
 }
 
 .contactLinks {

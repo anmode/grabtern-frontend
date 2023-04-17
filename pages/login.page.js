@@ -60,10 +60,10 @@ function Login() {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const { data: res } = await axios.post(url, data);
 
-      console.log("res data",res);
+      console.log("res data", res);
       localStorage.setItem("token", res.data);
       localStorage.setItem("user_name", res.fullName);
-      localStorage.setItem("user_email", res.email)
+      localStorage.setItem("user_email", res.email);
       router.push(localStorage.getItem("redirectUrl"));
     } catch (error) {
       if (

@@ -18,7 +18,7 @@ function Index({ mentorDetail }) {
   }, []);
 
   const sendMail = async (data) => {
-    console.log("I am in sendMail client side")
+    console.log("I am in sendMail client side");
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
       data
@@ -205,15 +205,18 @@ function Index({ mentorDetail }) {
                       >
                         Book Session
                       </button>
-              {isLoading && (
-                <img
-                  style={{ width: "50px", height: "50px", border:"none" }}
-                  src="/assets/img/gif/Spinner.gif"
-                  alt="...jljk"
-                />
-              )}
-                      <div>
-            </div>
+                      {isLoading && (
+                        <img
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            border: "none",
+                          }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="...jljk"
+                        />
+                      )}
+                      <div></div>
                     </li>
                   ))
                 ) : mentorDetail.bookSession.length === 0 ? (

@@ -528,6 +528,18 @@ a {
   padding: 70px 30px;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
 .mentorFormRegisration > .container > .mentorForm {
   margin: 0 auto;
 }

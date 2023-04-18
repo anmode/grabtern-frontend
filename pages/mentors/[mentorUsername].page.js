@@ -216,25 +216,26 @@ function Index({ mentorDetail }) {
                       >
                         Book Session
                       </button>
-                   
-              {isLoading && (
-                <img
-                  style={{ width: "50px", height: "50px" }}
-                  src="/assets/img/gif/Spinner.gif"
-                  alt="...jljk"
-                />
-              )}
-                {modalPopup === true ? (
-        <div className="modalPopup">
-          <div className="modalPopupAfterRegistrationDone">
-            <p>
-              Thank you Our team Will contacting you for payment and final booking your sessions.
-            </p>
-            <img src="/iconMentorRegistrationPopup.jpg" />
-          </div>
-        </div>
-      ) : null}
-          <div></div>
+
+                      {isLoading && (
+                        <img
+                          style={{ width: "50px", height: "50px" }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="...jljk"
+                        />
+                      )}
+                      {modalPopup === true ? (
+                        <div className="modalPopup">
+                          <div className="modalPopupAfterRegistrationDone">
+                            <p>
+                              Thank you Our team Will contacting you for payment
+                              and final booking your sessions.
+                            </p>
+                            <img src="/iconMentorRegistrationPopup.jpg" />
+                          </div>
+                        </div>
+                      ) : null}
+                      <div></div>
                     </li>
                   ))
                 ) : mentorDetail.bookSession.length === 0 ? (

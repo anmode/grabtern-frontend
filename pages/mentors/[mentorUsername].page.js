@@ -232,9 +232,13 @@ function Index({ mentorDetail }) {
 
                       {isLoading && (
                         <img
-                          style={{ width: "50px", height: "50px" }}
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            border: "none",
+                          }}
                           src="/assets/img/gif/Spinner.gif"
-                          alt="...jljk"
+                          alt="loading..."
                         />
                       )}
                       {modalPopup === true ? (

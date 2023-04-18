@@ -7,7 +7,7 @@ body {
 }
 
 a {
-  color: inherit;
+   color: inherit; 
   text-decoration: none;
 }
 
@@ -243,10 +243,10 @@ a {
   .header-bottom .container-fluid .row div:nth-child(2) {
     padding: 0;
     position: absolute;
-    top: 150px;
+    top: 18%;
     width: 100% !important;
     max-width: 100% !important;
-    left: 0;
+    /* left: 0; */
   }
 
   .main-menu {
@@ -981,7 +981,7 @@ textarea {
 }
 .login-card {
   background: white;
-  padding: 5px;
+  /* padding: 5px; */
   border-radius: 14px;
   opacity: 0.5;
 }
@@ -1000,3 +1000,84 @@ textarea {
   display: flex;
   flex-direction: column !important;
 }
+/* body{
+  background: #fcfcfc;
+} */
+.dropdown{
+  width: 100px;
+  margin: 3 auto;
+  position: relative;
+ 
+}
+ .dropdownBtn{
+  padding: 10px 20px;
+cursor: pointer;
+  
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ .dropdownContent{
+  position: absolute;
+  padding: 12px;
+ 
+  background: rgb(164, 56, 164);
+  box-shadow: 3px 3px 10px 6px rgba(0, 0,0, 0.2);
+  border-radius: 15px;
+  font-weight: 500;
+  color: #fff;
+  width: 150%;
+  /* left: 94%; */
+}
+/*
+ .dropdownItem{
+  margin: -10px;
+  border-bottom: 2px solid white; 
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: purple;
+  
+}
+
+ .dropdownContent .dropdownItem:hover{
+  background: #f4f4f4;
+  color: #000;
+  padding: 20px;
+  margin:0;
+} */
+
+.dropdownItem {
+ width:80%;
+ height: 100%;
+ border-bottom:2px solid white;
+
+transition: all 0.2s;
+padding: 13px;
+
+}
+.dropdownItem:hover{
+  background: #c054ff;
+  padding: 15px;
+}
+.active{
+  color: #fff;
+}
+#navigation{
+  color: #fff;
+}
+@media screen and(max-width:390px){
+.dropdownContent{
+  top: 27%;
+  left: 105%;
+  margin-left:95px;
+  padding-left: 15px;
+}
+.dropdownItem{
+  margin-left: 12px;
+}
+}
+

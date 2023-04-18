@@ -43,5 +43,11 @@ border-bottom:2px solid white;
 }
  .dropdownContent .dropdownItem:hover{
   background: #f4f4f4;
-  color: #000;
+color: #000;
+}
+/* .dropDownCOntent li{
+  border-bottom: 2px solid white;
+} */
+.dropadownItem li a{
+  padding: 20px;
 }

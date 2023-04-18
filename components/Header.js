@@ -87,7 +87,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         <li>
                           <a href="/contact">Contact</a>
                         </li>
-<li><Card/></li>
+<li><Card option1="User" option2="Mentor"/></li>
                         {/* {isUserLoggedIn === true ? (
                           <li>
                             <button

@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
-  const [waitTime, setWaitTime] = useState(20);
+  const [waitTime, setWaitTime] = useState(6);
   const router = useRouter();
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
@@ -17,34 +17,49 @@ function Index({ mentorDetail }) {
     if (localStorage.getItem("user_name") !== null) {
       setLoggedIn(true);
     }
-    if (modalPopup === true && waitTime !== 0) {
+    if (modalPopup === true && waitTime > 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
       }, 1000);
     }
-    if (waitTime === 0) {
+  }, [modalPopup, waitTime]);
+
+  useEffect(() => {
+    if (modalPopup === true) {
       router.push("/mentors");
     }
-  }, []);
+  }, [modalPopup]);
 
   const sendMail = async (data) => {
-    console.log("I am in sendMail client side");
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-      data
-    );
-    setIsLoading(true);
+    try {
+      console.log("I am in sendMail client side");
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
+        data
+      );
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error sending mail:", error);
+      // Handle the error here, such as showing an error message to the user
+    }
   };
+  
 
-  const handleBookSession = (sessionName, mentorEmail) => {
+  const handleBookSession = async (sessionName, mentorEmail) => {
     {
       isLoggedIn ? console.log("mail will be sent") : router.push("/login");
     }
     const userEmail = localStorage.getItem("user_email");
     const data = { sessionName, mentorEmail, userEmail };
-    sendMail(data);
-    setModalPopup(true);
-    setIsLoading(false);
+
+    try {
+      setIsLoading(true);
+      await sendMail(data);
+      setModalPopup(true);
+    } catch (error) {
+      console.error(error);
+    }
+
   };
   return (
     <>
@@ -228,10 +243,10 @@ function Index({ mentorDetail }) {
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">
                             <p>
-                              Thank you Our team Will contacting you for payment
-                              and final booking your sessions.
+                              Thank you Our team Will contacting you, check your inbox.
                             </p>
                             <img src="/iconMentorRegistrationPopup.jpg" />
+                            <p>Redirecting you to home in {waitTime} second</p>
                           </div>
                         </div>
                       ) : null}

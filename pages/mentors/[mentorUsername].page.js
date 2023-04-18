@@ -43,7 +43,6 @@ function Index({ mentorDetail }) {
       // Handle the error here, such as showing an error message to the user
     }
   };
-  
 
   const handleBookSession = async (sessionName, mentorEmail) => {
     {
@@ -59,7 +58,6 @@ function Index({ mentorDetail }) {
     } catch (error) {
       console.error(error);
     }
-
   };
   return (
     <>
@@ -243,7 +241,8 @@ function Index({ mentorDetail }) {
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">
                             <p>
-                              Thank you Our team Will contacting you, check your inbox.
+                              Thank you Our team Will contacting you, check your
+                              inbox.
                             </p>
                             <img src="/iconMentorRegistrationPopup.jpg" />
                             <p>Redirecting you to home in {waitTime} second</p>

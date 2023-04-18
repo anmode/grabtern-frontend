@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 function Index({ mentorDetail }) {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
@@ -17,6 +18,7 @@ function Index({ mentorDetail }) {
   }, []);
 
   const sendMail = async (data) => {
+    console.log("I am in sendMail client side");
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
       data
@@ -24,13 +26,14 @@ function Index({ mentorDetail }) {
   };
 
   const handleBookSession = (sessionName, mentorEmail) => {
+    setIsLoading(true);
     {
       isLoggedIn ? console.log("mail will be sent") : router.push("/login");
     }
     const userEmail = localStorage.getItem("user_email");
-    console.log(sessionName, mentorEmail, userEmail);
     const data = { sessionName, mentorEmail, userEmail };
     sendMail(data);
+    setIsLoading(false);
   };
   return (
     <>
@@ -193,7 +196,7 @@ function Index({ mentorDetail }) {
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={(e) =>
+                        onClick={() =>
                           handleBookSession(
                             session.sessionName,
                             mentorDetail.email
@@ -202,6 +205,18 @@ function Index({ mentorDetail }) {
                       >
                         Book Session
                       </button>
+                      {isLoading && (
+                        <img
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            border: "none",
+                          }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="...jljk"
+                        />
+                      )}
+                      <div></div>
                     </li>
                   ))
                 ) : mentorDetail.bookSession.length === 0 ? (

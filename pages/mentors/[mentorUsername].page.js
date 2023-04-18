@@ -1,11 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../../components/Header"));
 import axios from "axios";
+import { useRouter } from "next/router";
 
 function Index({ mentorDetail }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [modalPopup, setModalPopup] = useState(false);
+  const [waitTime, setWaitTime] = useState(6);
+  const router = useRouter();
+  localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    if (localStorage.getItem("user_name") !== null) {
+      setLoggedIn(true);
+    }
+    if (modalPopup === true && waitTime > 0) {
+      setTimeout(() => {
+        setWaitTime((value) => (value -= 1));
+      }, 1000);
+    }
+  }, [modalPopup, waitTime]);
+
+  useEffect(() => {
+    if (modalPopup === true) {
+      router.push("/mentors");
+    }
+  }, [modalPopup]);
+
+  const sendMail = async (data) => {
+    try {
+      console.log("I am in sendMail client side");
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
+        data
+      );
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error sending mail:", error);
+      // Handle the error here, such as showing an error message to the user
+    }
+  };
+
+  const handleBookSession = async (sessionName, mentorEmail) => {
+    {
+      isLoggedIn ? console.log("mail will be sent") : router.push("/login");
+    }
+    const userEmail = localStorage.getItem("user_email");
+    const data = { sessionName, mentorEmail, userEmail };
+
+    try {
+      setIsLoading(true);
+      await sendMail(data);
+      setModalPopup(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <Header navbarBackground={true} />
@@ -41,7 +94,7 @@ function Index({ mentorDetail }) {
                           width: "100%",
                           padding: "15px",
                         }}
-                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mentors/${mentorDetail.name}`}</span>
+                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mentors/${mentorDetail.username}`}</span>
                     </p>
                     <button
                       onClick={() => setShowModal(false)}
@@ -165,9 +218,42 @@ function Index({ mentorDetail }) {
                           {session.priceSession}
                         </div>
                       </div>
-                      <button style={{ cursor: "pointer" }}>
+                      <button
+                        style={{ cursor: "pointer" }}
+                        onClick={() =>
+                          handleBookSession(
+                            session.sessionName,
+                            mentorDetail.email
+                          )
+                        }
+                      >
                         Book Session
                       </button>
+
+                      {isLoading && (
+                        <img
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            border: "none",
+                          }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="loading..."
+                        />
+                      )}
+                      {modalPopup === true ? (
+                        <div className="modalPopup">
+                          <div className="modalPopupAfterRegistrationDone">
+                            <p>
+                              Thank you Our team Will contacting you, check your
+                              inbox.
+                            </p>
+                            <img src="/iconMentorRegistrationPopup.jpg" />
+                            <p>Redirecting you to home in {waitTime} second</p>
+                          </div>
+                        </div>
+                      ) : null}
+                      <div></div>
                     </li>
                   ))
                 ) : mentorDetail.bookSession.length === 0 ? (

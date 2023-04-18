@@ -1,13 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
-import Card from './Card'
+import LoginCard from "./loginCard";
 function Header({ isUserLoggedIn, navbarBackground }) {
+  // localStorage.setItem('redirectUrl', window.location.href);
+  const [showCard, setShowCard] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
 
   useEffect(() => {
+    const userName = localStorage.getItem("user_name");
+    if (userName) {
+      setLoggedIn(true);
+    }
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -20,11 +27,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     };
   }, []);
 
-  const handleLoginClick = () => {
-    setLoginOption(true);
-    setTimeout(() => {
-      setLoginOption(false);
-    }, 5000);
+  const handleClick = () => {
+    setShowCard(true);
+  };
+  const hideCard = () => {
+    setShowCard(false);
   };
 
   const menuToggle = () => {
@@ -38,7 +45,9 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_name");
-    window.location.reload();
+    localStorage.removeItem("user_picture");
+    setLoggedIn(false);
+    // window.location.reload();
   };
 
   return (
@@ -87,8 +96,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         <li>
                           <a href="/contact">Contact</a>
                         </li>
-<li><Card option1="User" option2="Mentor"/></li>
-                        {/* {isUserLoggedIn === true ? (
+                        <li>
+                          <a href="#" onClick={handleClick}>
+                            Login
+                          </a>
+                          {showCard && <LoginCard hideCard={hideCard} />}
+                        </li>
+                      </ul>
+                      {/* <li><Card option1="User" option2="Mentor"/></li> */}
+                      {/* {isUserLoggedIn === true ? (
                           <li>
                             <button
                               onClick={() => logout()}
@@ -135,7 +151,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                             </div>
                           </li>
                         )} */}
-                      </ul>
                     </nav>
                   </div>
                 </div>

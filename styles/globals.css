@@ -7,7 +7,7 @@ body {
 }
 
 a {
-   color: inherit; 
+  color: inherit;
   text-decoration: none;
 }
 
@@ -528,6 +528,18 @@ a {
   padding: 70px 30px;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
 .mentorFormRegisration > .container > .mentorForm {
   margin: 0 auto;
 }
@@ -1003,16 +1015,15 @@ textarea {
 /* body{
   background: #fcfcfc;
 } */
-.dropdown{
+.dropdown {
   width: 100px;
   margin: 3 auto;
   position: relative;
- 
 }
- .dropdownBtn{
+.dropdownBtn {
   padding: 10px 20px;
-cursor: pointer;
-  
+  cursor: pointer;
+
   font-weight: bold;
   color: #fff;
   display: flex;
@@ -1020,12 +1031,12 @@ cursor: pointer;
   justify-content: space-between;
 }
 
- .dropdownContent{
+.dropdownContent {
   position: absolute;
   padding: 12px;
- 
+
   background: rgb(164, 56, 164);
-  box-shadow: 3px 3px 10px 6px rgba(0, 0,0, 0.2);
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   font-weight: 500;
   color: #fff;
@@ -1051,33 +1062,106 @@ cursor: pointer;
 } */
 
 .dropdownItem {
- width:80%;
- height: 100%;
- border-bottom:2px solid white;
+  width: 80%;
+  height: 100%;
+  border-bottom: 2px solid white;
 
-transition: all 0.2s;
-padding: 13px;
-
+  transition: all 0.2s;
+  padding: 13px;
 }
-.dropdownItem:hover{
+.dropdownItem:hover {
   background: #c054ff;
   padding: 15px;
 }
-.active{
+.active {
   color: #fff;
 }
-#navigation{
+#navigation {
   color: #fff;
 }
-@media screen and(max-width:390px){
-.dropdownContent{
-  top: 27%;
-  left: 105%;
-  margin-left:95px;
-  padding-left: 15px;
-}
-.dropdownItem{
-  margin-left: 12px;
-}
+@media screen and(max-width:390px) {
+  .dropdownContent {
+    top: 27%;
+    left: 105%;
+    margin-left: 95px;
+    padding-left: 15px;
+  }
+  .dropdownItem {
+    margin-left: 12px;
+  }
 }
 
+/*card css */
+.card {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 10px;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.user-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.mentor-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background-color: white;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+}

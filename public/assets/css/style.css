@@ -171,7 +171,7 @@ a {
   color: #635c5c;
 }
 a:hover {
-   color: #fff; 
+  color: #fff;
 }
 a:focus,
 a:hover,
@@ -3742,9 +3742,10 @@ hr {
   height: 100vh;
 }
 .login-form {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  left: 50%;
+  left: 50%; */
+  margin: 35% 50%;
   width: 480px;
   padding: 90px 45px 60px 45px;
   transform: translate(-50%, -50%);

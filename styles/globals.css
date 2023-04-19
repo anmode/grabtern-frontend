@@ -1020,6 +1020,7 @@ textarea {
 .mentor-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	color: black;
 }
 
 .mentor-card__photo {
@@ -1088,7 +1089,7 @@ textarea {
 	.mentor-card {
 		flex-direction: column;
 		width: 80vw;
-		height: 70vh;
+		height: 50vh;
 		padding: 2rem 5rem;
 		text-align: center;
 		margin: auto;

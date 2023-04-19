@@ -46,7 +46,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
     setLoggedIn(false);
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (

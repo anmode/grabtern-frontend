@@ -29,13 +29,22 @@ function Login() {
     password: "",
   });
 
-  const handleCallBackResponse = (response) => {
+  const handleCallBackResponse = async (response) => {
     const userObject = jwt_decode(response.credential);
     localStorage.setItem("user_name", userObject.name);
     localStorage.setItem("user_picture", userObject.picture);
     localStorage.setItem("user_email", userObject.email);
     setUserDetail(userObject);
+  
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
+      const response = await axios.post(url, data);
+      console.log("Backend response:", response.data);
+    } catch (error) {
+      console.error("Error sending data to backend:", error);
+    }
   };
+  
 
   useEffect(() => {
     // global google
@@ -115,7 +124,7 @@ function Login() {
               <input type="submit" name="submit" value="login" />
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
-            <Link href="#" className="forget">
+            <Link href="/forgotpass" className="forget">
               Forget Password
             </Link>
             <Link href="/register" className="registration">

@@ -1061,6 +1061,10 @@ textarea {
   margin-top: 1rem;
 }
 
+.mentor-card__social a:hover {
+	color: grey;
+}
+
 .mentor-card__linkedin,
 .mentor-card__rating,
 .mentor-card__booked-session {

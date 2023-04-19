@@ -674,7 +674,7 @@ textarea {
   flex-wrap: wrap;
   margin-top: 30px;
   gap: 50px;
-	justify-content: center;
+  justify-content: center;
 }
 
 .mentorCard {
@@ -1016,7 +1016,7 @@ textarea {
 
 /*Mentor CSS*/
 .mentor-card {
-	padding: 1.5rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1032,7 +1032,7 @@ textarea {
 .mentor-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-	color: black;
+  color: black;
 }
 
 .mentor-card__photo {
@@ -1074,7 +1074,7 @@ textarea {
 }
 
 .mentor-card__social a:hover {
-	color: grey;
+  color: grey;
 }
 
 .mentor-card__linkedin,
@@ -1102,41 +1102,41 @@ textarea {
 }
 
 @media only screen and (max-width: 800px) {
-	.mentor-card {
-		flex-direction: column;
-		width: 80vw;
-		height: 50vh;
-		padding: 2rem 5rem;
-		text-align: center;
-		margin: auto;
-	}
+  .mentor-card {
+    flex-direction: column;
+    width: 80vw;
+    height: 50vh;
+    padding: 2rem 5rem;
+    text-align: center;
+    margin: auto;
+  }
 
-	.mentor-card__book-session {
-		width: 50vw;
-		margin: auto;
-	}
+  .mentor-card__book-session {
+    width: 50vw;
+    margin: auto;
+  }
 
-	.mentor-card__photo {
-		width: 15vw;
-		height: 15vw;
-		margin: auto;
-	}
+  .mentor-card__photo {
+    width: 15vw;
+    height: 15vw;
+    margin: auto;
+  }
 
-	.mentor-card__info {
-		margin: auto;
-	}
+  .mentor-card__info {
+    margin: auto;
+  }
 }
 
 @media only screen and (min-width: 1080px) and (max-width: 1200px) {
-	.mentor-card {
-		width: 30vw;
-		height: 60vh;
-	}
+  .mentor-card {
+    width: 30vw;
+    height: 60vh;
+  }
 }
 
 @media only screen and (max-width: 1080px) and (min-width: 800px) {
-	.mentor-card {
-		width: 40vw;
-		height: 60vh;
-	}
+  .mentor-card {
+    width: 40vw;
+    height: 60vh;
+  }
 }

@@ -971,7 +971,7 @@ textarea {
   color: red;
 }
 .login-card {
-  background: white;
+  background:white;
   padding: 5px;
   border-radius: 14px;
   opacity: 0.5;
@@ -991,3 +991,61 @@ textarea {
   display: flex;
   flex-direction: column !important;
 }
+.section{
+  overflow-x: hidden;
+}
+
+.hero_content h1{
+  font-size: 50px;
+   font-weight: 600;
+   line-height: 55px;
+}
+.vector1{
+  width: 90%;
+  left: 150px;
+  margin-left: 150px;
+}
+.our1 h1{
+  font-weight: 600;
+  font-size: 50px;
+  margin-left: 500px;
+}
+.vector2 {
+  font-size: 40px;
+}
+.vector3{
+  margin-left: 100px;
+}
+.about_content h1{
+  font-weight: 500;
+  font-size: 40px ;
+  
+}
+
+.about_img{
+  margin-right: 80px;
+}
+.vector4{
+  width: 90%;
+  padding-right: 20px;
+}
+.heading1{
+  font-weight: 500;
+  font-size: 40px;
+  padding-left: 40px;
+}
+.para1{
+  padding-left: 40px;
+}
+.vector5{
+  width: 90%;
+  padding-left: 180px;
+}
+.heading2{
+  padding-right: 80px;
+}
+.vector6{
+  width: 80%;
+ 
+}
+

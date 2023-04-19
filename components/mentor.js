@@ -10,9 +10,11 @@ const MentorCard = ({ mentor }) => {
       />
       <div className="mentor-card__info">
         <h2 className="mentor-card__name">{mentor.name}</h2>
-        <p className="mentor-card__intern">Intern at: {mentor.internAt}</p>
+        <p className="mentor-card__intern">
+          <b>Intern at:</b> {mentor.internAt}
+        </p>
         <p className="mentor-card__status">
-          Current Status: {mentor.currentStatus}
+          <b>Current Status:</b> {mentor.currentStatus}
         </p>
         {/* <p className="mentor-card__description">{mentor.description}</p> */}
         <div className="mentor-card__social">

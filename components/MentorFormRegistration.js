@@ -52,7 +52,6 @@ export default function MentorForm() {
 
   const handleChange = (e) => {
     console.log(formData);
-
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -99,6 +98,13 @@ export default function MentorForm() {
   }
 
   useEffect(() => {
+    setInterval(() => {
+      if (typeof window !== "undefined") {
+        if (document.querySelector("#credential_picker_container") !== null) {
+          document.querySelector(".overlay").classList.add("show");
+        }
+      }
+    }, 1300);
     google.accounts.id.initialize({
       client_id:
         "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
@@ -118,7 +124,7 @@ export default function MentorForm() {
     if (waitTime === 0) {
       router.push("/");
     }
-  });
+  }, []);
 
   // const handleFileChange = e => {
   //   setFormData({ ...formData, resume: e.target.files[0] });
@@ -228,8 +234,13 @@ export default function MentorForm() {
       );
   };
 
+  function hideitems(className) {
+    document.querySelector(className).style.display = "none";
+  }
+
   return (
     <div className="mentorFormRegisration">
+      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {modalPopup === true ? (
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">

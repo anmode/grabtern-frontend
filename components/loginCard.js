@@ -10,13 +10,13 @@ function LoginCard(props) {
             className="user-button"
             onClick={() => console.log("User Login")}
           >
-            Login as User
+                  <a href="/login"> Login as User </a>
           </button>
           <button
             className="mentor-button"
             onClick={() => console.log("Mentor Login")}
           >
-            Login as Mentor
+          <a href="/mentorLogin">Login as Mentor</a>  
           </button>
         </div>
       </div>

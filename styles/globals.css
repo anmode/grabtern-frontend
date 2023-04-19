@@ -244,7 +244,7 @@ a {
     padding: 0;
     position: absolute;
     top: 18%;
-    width: 100% !important;
+    /* width: 100% !important; */
     max-width: 100% !important;
     /* left: 0; */
   }
@@ -1094,7 +1094,7 @@ textarea {
 /*card css */
 .card {
   position: absolute;
-  top: 50px;
+  top: 42px;
   right: 0;
   width: 200px;
   height: 150px;
@@ -1123,7 +1123,7 @@ textarea {
 
 .content {
   position: absolute;
-  top: 50%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -1145,7 +1145,7 @@ p {
 
 .user-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 1px 18px;
   margin-right: 10px;
   border: none;
   border-radius: 5px;
@@ -1153,15 +1153,38 @@ p {
   color: white;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 12px;
+  width: 138px;
+  height: 35px;
+  left: 10px;
+  margin-right: 2px;
 }
 
 .mentor-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 3px 3px;
   border: 1px solid #007bff;
   border-radius: 5px;
   background-color: white;
   color: #007bff;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
+  
+}
+.user-button a{
+  width: 100px;
+  left: 5px;
+  pointer-events: none;
+}
+.mentor-button a{
+  pointer-events: none;
+  width: 130px;
+}
+@media screen and (max-width:320px){
+  .card{
+    width: 167px;
+    height: 100px;
+    left: 55px;
+  }
 }

@@ -170,9 +170,9 @@ a:focus,
 a {
   color: #635c5c;
 }
-a:hover {
-  color: #fff;
-}
+/* a:hover {
+  /* color: #fff; */
+} */
 a:focus,
 a:hover,
 .portfolio-cat a:hover,
@@ -181,7 +181,7 @@ a:hover,
 }
 a,
 button {
-  color: #fff;
+  /* color: #fff; */
   outline: medium none;
 }
 button:focus,
@@ -2256,8 +2256,8 @@ hr {
   }
 }
 .main-header .main-menu ul li a {
-  color: #fff;
-  font-weight: 600;
+  /* color: #fff;
+  font-weight: 600; */
   /* padding: 39px 2px; */
   display: block;
   font-size: 16px;
@@ -2268,7 +2268,7 @@ hr {
   text-transform: capitalize;
 }
 .main-header .main-menu ul li:hover > a {
-  color: #fff;
+  /* color: #fff; */
 }
 .main-header .main-menu ul ul.submenu {
   position: absolute;
@@ -6134,4 +6134,7 @@ del {
 }
 .switch-wrap {
   margin-bottom: 10px;
+}
+@media screen and (max-width:390px){
+  
 }

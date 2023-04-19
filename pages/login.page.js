@@ -35,7 +35,7 @@ function Login() {
     localStorage.setItem("user_picture", userObject.picture);
     localStorage.setItem("user_email", userObject.email);
     setUserDetail(userObject);
-  
+
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const response = await axios.post(url, data);
@@ -44,7 +44,6 @@ function Login() {
       console.error("Error sending data to backend:", error);
     }
   };
-  
 
   useEffect(() => {
     // global google

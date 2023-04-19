@@ -15,7 +15,7 @@ function ForgotPassword() {
     e.preventDefault();
     setError("");
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/forgot-password`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/forgotPassword`;
       const { data } = await axios.post(url, { email });
       setSuccess(true);
     } catch (error) {

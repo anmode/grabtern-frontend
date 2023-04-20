@@ -1096,8 +1096,8 @@ textarea {
   position: absolute;
   top: 50px;
   right: 0;
-  width: 200px;
-  height: 150px;
+  width: 170px;
+  height: 145px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -1106,19 +1106,6 @@ textarea {
 
 .card:hover {
   transform: scale(1.1);
-}
-
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  opacity: 0.8;
-  border-radius: 10px;
-  filter: blur(10px);
-  z-index: -1;
 }
 
 .content {
@@ -1141,27 +1128,68 @@ p {
 
 .buttons {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
-
 .user-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: -2px 20px;
   margin-right: 10px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;
+  margin-bottom: 10px; /* add margin bottom */
   color: white;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-button:hover {
+  background-color: #0062cc;
 }
 
 .mentor-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: -2px 20px;
   border: 1px solid #007bff;
   border-radius: 5px;
   background-color: white;
   color: #007bff;
   font-size: 16px;
+  margin-bottom: 10px; /* add margin bottom */
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mentor-button:hover {
+  background-color: #0062cc;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .card {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+  
+  .background {
+    border-radius: 0;
+  }
+  
+  .buttons {
+    margin-top: 10px;
+  }
+  
+  .user-button,
+  .mentor-button {
+    min-width: 60px;
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-right: 5px;
+  }
 }

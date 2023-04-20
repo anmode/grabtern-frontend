@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
-
+import LoginCard from "./loginCard";
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
+  const [showCard, setShowCard] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
@@ -26,11 +27,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     };
   }, []);
 
-  const handleLoginClick = () => {
-    setLoginOption(true);
-    setTimeout(() => {
-      setLoginOption(false);
-    }, 5000);
+  const handleClick = () => {
+    setShowCard(true);
+  };
+  const hideCard = () => {
+    setShowCard(false);
   };
 
   const menuToggle = () => {
@@ -95,45 +96,32 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         <li>
                           <a href="/contact">Contact</a>
                         </li>
-
-                        {isLoggedIn || isUserLoggedIn ? (
+                        <li>
+                          <a href="#" onClick={handleClick}>
+                            Login
+                          </a>
+                          {showCard && <LoginCard hideCard={hideCard} />}
+                        </li>
+                      </ul>
+                      {/* <li><Card option1="User" option2="Mentor"/></li> */}
+                      {/* {isUserLoggedIn === true ? (
                           <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                onClick={handleLoginClick}
-                                className={styles.userName}
-                              >
-                                <img
-                                  style={{
-                                    width: "35px",
-                                    height: "auto",
-                                    borderRadius: "50%",
-                                  }}
-                                  src={localStorage.getItem("user_picture")}
-                                  alt="not found"
-                                />
-                              </button>
-
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    className="login-buttons"
-                                    style={{ marginTop: "20px" }}
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/login">Dashboard</a>
-                                  </button>
-                                  <button
-                                    className="login-buttons"
-                                    onClick={logout}
-                                  >
-                                    <a href="#">Logout</a>
-                                  </button>
-                                </div>
-                              )}
-                            </div>
+                            <button
+                              onClick={() => logout()}
+                              style={{
+                                backgroundColor: "black",
+                                padding: "5px 15px",
+                                borderRadius: "50px",
+                                cursor: "pointer",
+                              }}
+                            >
+                              Logout
+                            </button>
+                            
                           </li>
-                        ) : (
+                         
+                        ) 
+                        : (
                           <li>
                             <div className={styles.loginOption}>
                               <button
@@ -157,11 +145,12 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     <a href="/mentorLogin">Mentor</a>
                                   </button>
                                 </div>
+                                
                               )}
+                              <Card/>
                             </div>
                           </li>
-                        )}
-                      </ul>
+                        )} */}
                     </nav>
                   </div>
                 </div>

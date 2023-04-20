@@ -181,7 +181,7 @@ a:hover,
 }
 a,
 button {
-  color: #fff;
+  /* color: #fff; */
   outline: medium none;
 }
 button:focus,
@@ -2257,8 +2257,8 @@ hr {
 }
 .main-header .main-menu ul li a {
   color: #fff;
-  font-weight: 600;
-  /* padding: 39px 2px; */
+  font-weight: 600; 
+   padding: 39px 2px;
   display: block;
   font-size: 16px;
   -webkit-transition: 0.3s;
@@ -6134,4 +6134,7 @@ del {
 }
 .switch-wrap {
   margin-bottom: 10px;
+}
+@media screen and (max-width:390px){
+  
 }

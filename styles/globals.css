@@ -1094,7 +1094,7 @@ textarea {
 /*card css */
 .card {
   position: absolute;
-  top: 42px;
+  top: 70px;
   right: 0;
   width: 200px;
   height: 150px;
@@ -1102,6 +1102,7 @@ textarea {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   cursor: default;
+  color: BLUE;
 }
 
 .card:hover {
@@ -1115,7 +1116,7 @@ textarea {
   width: 100%;
   height: 100%;
   background-color: white;
-  opacity: 0.8;
+  opacity: 0.2;
   border-radius: 10px;
   filter: blur(10px);
   z-index: -1;
@@ -1145,7 +1146,7 @@ p {
 
 .user-button {
   display: inline-block;
-  padding: 1px 18px;
+  padding: 1px 11px;
   margin-right: 10px;
   border: none;
   border-radius: 5px;
@@ -1154,7 +1155,7 @@ p {
   font-size: 16px;
   cursor: pointer;
   margin-top: 12px;
-  width: 138px;
+  width: 124px;
   height: 35px;
   left: 10px;
   margin-right: 2px;
@@ -1175,10 +1176,10 @@ p {
 .user-button a{
   width: 100px;
   left: 5px;
-  pointer-events: none;
+  
 }
 .mentor-button a{
-  pointer-events: none;
+  
   width: 130px;
 }
 @media screen and (max-width:320px){

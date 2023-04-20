@@ -170,9 +170,9 @@ a:focus,
 a {
   color: #635c5c;
 }
-/* a:hover {
-  /* color: #fff; */
-} */
+a:hover {
+  color: #fff;
+}
 a:focus,
 a:hover,
 .portfolio-cat a:hover,
@@ -2256,9 +2256,9 @@ hr {
   }
 }
 .main-header .main-menu ul li a {
-  /* color: #fff;
-  font-weight: 600; */
-  /* padding: 39px 2px; */
+  color: #fff;
+  font-weight: 600; 
+   padding: 39px 2px;
   display: block;
   font-size: 16px;
   -webkit-transition: 0.3s;
@@ -2268,7 +2268,7 @@ hr {
   text-transform: capitalize;
 }
 .main-header .main-menu ul li:hover > a {
-  /* color: #fff; */
+  color: #fff;
 }
 .main-header .main-menu ul ul.submenu {
   position: absolute;

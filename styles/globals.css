@@ -1168,7 +1168,6 @@ p {
   color: white;
 }
 
-
 @media (max-width: 768px) {
   .card {
     top: 0;
@@ -1177,15 +1176,15 @@ p {
     height: auto;
     border-radius: 0;
   }
-  
+
   .background {
     border-radius: 0;
   }
-  
+
   .buttons {
     margin-top: 10px;
   }
-  
+
   .user-button,
   .mentor-button {
     min-width: 60px;

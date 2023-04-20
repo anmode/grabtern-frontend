@@ -18,7 +18,7 @@ function Login() {
       : router.push("/");
   }
 
-  const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({ type: "", email: "", password: "" });
   const [error, setError] = useState("");
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -29,12 +29,15 @@ function Login() {
     password: "",
   });
 
-  const handleCallBackResponse = (response) => {
+  const handleCallBackResponse = async (response) => {
     const userObject = jwt_decode(response.credential);
+    setUserDetail(userObject);
+
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
+    const res = await axios.post(url, { email: userObject.email });
     localStorage.setItem("user_name", userObject.name);
     localStorage.setItem("user_picture", userObject.picture);
     localStorage.setItem("user_email", userObject.email);
-    setUserDetail(userObject);
   };
 
   useEffect(() => {
@@ -57,6 +60,7 @@ function Login() {
     setError("");
     e.preventDefault();
     try {
+      setData({ ...data, type: "manual" });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const { data: res } = await axios.post(url, data);
 

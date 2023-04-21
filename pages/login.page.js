@@ -11,7 +11,6 @@ function Login() {
   const router = useRouter();
 
   useEffect(() => {
-
     if (
       localStorage.getItem("user_name") !== null ||
       localStorage.getItem("token") !== null
@@ -20,7 +19,7 @@ function Login() {
         ? router.push(localStorage.getItem("redirectUrl"))
         : router.push("/");
     }
-    
+
     // Initialize Google sign-in button
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
@@ -115,8 +114,8 @@ function Login() {
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
             {localStorage.getItem("new_user") && (
-  <div style={{ color: "green" }}>Please register first.</div>
-)}
+              <div style={{ color: "green" }}>Please register first.</div>
+            )}
             <Link href="#" className="forget">
               Forget Password
             </Link>

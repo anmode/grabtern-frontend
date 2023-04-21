@@ -109,7 +109,10 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     height: "auto",
                                     borderRadius: "50%",
                                   }}
-                                  src={localStorage.getItem("user_picture")|| "assets/img/icon/no-profile-picture.png"}
+                                  src={
+                                    localStorage.getItem("user_picture") ||
+                                    "assets/img/icon/no-profile-picture.png"
+                                  }
                                   alt="not found"
                                 />
                               </button>

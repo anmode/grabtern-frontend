@@ -46,7 +46,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
     setLoggedIn(false);
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
@@ -109,7 +109,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     height: "auto",
                                     borderRadius: "50%",
                                   }}
-                                  src={localStorage.getItem("user_picture")}
+                                  src={localStorage.getItem("user_picture")|| "assets/img/icon/no-profile-picture.png"}
                                   alt="not found"
                                 />
                               </button>

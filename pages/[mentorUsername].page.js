@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 

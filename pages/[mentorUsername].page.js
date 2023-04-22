@@ -45,13 +45,28 @@ function Index({ mentorDetail }) {
     }
   };
 
-  const handleBookSession = async (sessionName, mentorEmail, mentorName, sessionTime, sessionPrice) => {
+  const handleBookSession = async (
+    sessionName,
+    mentorEmail,
+    mentorName,
+    sessionTime,
+    sessionPrice
+  ) => {
     {
       isLoggedIn ? console.log("mail will be sent") : router.push("/login");
     }
     const userEmail = localStorage.getItem("user_email");
     const userName = localStorage.getItem("user_name");
-    const data = { sessionName, mentorEmail, userEmail, mentorEmail, userName , mentorName, sessionTime, sessionPrice };
+    const data = {
+      sessionName,
+      mentorEmail,
+      userEmail,
+      mentorEmail,
+      userName,
+      mentorName,
+      sessionTime,
+      sessionPrice,
+    };
 
     try {
       setIsLoading(true);
@@ -228,7 +243,7 @@ function Index({ mentorDetail }) {
                             mentorDetail.email,
                             mentorDetail.name,
                             session.sessionMeetingDuration,
-                            session.priceSession,
+                            session.priceSession
                           )
                         }
                       >

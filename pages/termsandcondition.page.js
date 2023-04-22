@@ -1,9 +1,10 @@
 import React from "react";
-import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../components/Header"));
+import Header from "../components/Header";
 function scrap() {
   return (
     <>
+    <div class="TNCcontainer">
+     <Header navbarBackground={true} />
   <style
     dangerouslySetInnerHTML={{
       __html:
@@ -20,6 +21,14 @@ function scrap() {
         <bdt className="block-component">
           <span style={{ fontSize: 19 }} />
         </bdt>
+        <br>
+            </br>
+            <br>
+            </br>
+            <br>
+            </br>
+            <br>
+            </br>
         <bdt className="question">
           <strong>TERMS AND CONDITIONS</strong>
         </bdt>
@@ -6401,6 +6410,7 @@ function scrap() {
       paddingTop: 16
     }}
   >
+  </div>
   </div>
 </>
   );

@@ -38,16 +38,16 @@ function Login() {
       }
     };
 
-      google.accounts.id.initialize({
-        client_id:
-          "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-        callback: handleCallBackResponse,
-      });
-      google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-        theme: "outline",
-        size: "large",
-      });
-      google.accounts.id.prompt();
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      callback: handleCallBackResponse,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+    google.accounts.id.prompt();
   }, []);
 
   const handleChange = ({ currentTarget: input }) => {
@@ -115,7 +115,7 @@ function Login() {
             {localStorage.getItem("new_user") && (
               <div style={{ color: "green" }}>Please register first.</div>
             )}
-            <Link href="#" className="forget">
+            <Link href="/forgotpass" className="forget">
               Forget Password
             </Link>
             <Link href="/register" className="registration">

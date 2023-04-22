@@ -1150,3 +1150,130 @@ textarea {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+/* form container */
+.forgot-password-body {
+  background-color: #f2f2f2;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* form itself */
+.form-default {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* form title */
+.forgot-password-form h2 {
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* form input label */
+.forgot-password-form label {
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* form input field */
+.forgot-password-form input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* submit button */
+.forgot-password-form input[type="submit"] {
+  background-color: #0275d8;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* error message */
+.forgot-password-form div[style="color:red"] {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* success message */
+.forgot-password-form div[style="color:green"] {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Reset Password css */
+.reset-password-container {
+  max-width: 400px;
+  margin: 200px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.reset-password-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.reset-password-container label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.reset-password-container input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.reset-password-container button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reset-password-container button:hover {
+  background-color: #0069d9;
+}
+
+.reset-password-container .error {
+  color: #ff0000;
+  margin-top: 10px;
+}
+
+.reset-password-container .message {
+  color: #00ff00;
+  margin-top: 10px;
+}

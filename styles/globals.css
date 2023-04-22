@@ -1141,9 +1141,8 @@ textarea {
   }
 }
 
-
 /* Terms and condition */
-.TNCcontainer{
+.TNCcontainer {
   display: flex;
   flex-direction: column;
   align-items: center;

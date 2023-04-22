@@ -103,9 +103,7 @@ function Footer() {
                         <a href="/termsandcondition">Terms and Condition</a>
                       </li>
                       <li>
-                        <a href="/privacy">
-                          Privacy Policy
-                        </a>
+                        <a href="/privacy">Privacy Policy</a>
                       </li>
                       <li>
                         <a href="https://discord.gg/HdASBpTR">Contact Us</a>

@@ -7,7 +7,8 @@ import emailjs from "@emailjs/browser";
 export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
-  const [waitTime, setWaitTime] = useState(5);
+  const [waitTime, setWaitTime] = useState(10);
+  const [isChecked, setIsChecked] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
     sessionDescription: "Achieve your goals faster with customized road map",
@@ -92,7 +93,7 @@ export default function MentorForm() {
       // resume: '',
       password: `GrabternMentorPW!${number}!`,
       confirmPassword: `GrabternMentorPW!${number}!`,
-      verified: true,
+      verified: false,
     });
     console.log(formData);
   }
@@ -116,15 +117,24 @@ export default function MentorForm() {
       { theme: "outline", size: "large" }
     );
     google.accounts.id.prompt();
-    if (modalPopup === true && waitTime !== 0) {
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("user_name") !== null) {
+      setLoggedIn(true);
+    }
+    if (modalPopup === true && waitTime > 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
       }, 1000);
     }
-    if (waitTime === 0) {
+  }, [modalPopup, waitTime]);
+
+  useEffect(() => {
+    if (modalPopup === true) {
       router.push("/");
     }
-  }, []);
+  }, [modalPopup]);
 
   // const handleFileChange = e => {
   //   setFormData({ ...formData, resume: e.target.files[0] });
@@ -169,24 +179,29 @@ export default function MentorForm() {
     //     "The number of book sessions must be more than 2 or equal to 2!"
     //   );
     // }
-    try {
-      console.log(formData);
-      setIsLoading(true);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-      console.log(error);
-      const { data: res } = await axios.post(url, formData);
-      sendEmail(res.mentorVerifyLink);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
+    if (isChecked) {
+      // Register mentor
+      try {
+        console.log(formData);
+        setIsLoading(true);
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
+        console.log(error);
+        const { data: res } = await axios.post(url, formData);
+        sendEmail(res.mentorVerifyLink);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        }
       }
+    } else {
+      alert("Please agree to the terms before submitting");
     }
   };
 
@@ -424,11 +439,6 @@ export default function MentorForm() {
               required
               value={formData.bookSession[0].priceSession}
             />
-            <div>
-              <h3 className="description">
-                Hello here we will have the description for our MENTORS
-              </h3>
-            </div>
           </div>
           {error && (
             <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
@@ -463,7 +473,14 @@ export default function MentorForm() {
               )}
             </div>
           </div>
-
+          <label>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
+            &nbsp;We will take 11% of your session price
+          </label>
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>
           </p>

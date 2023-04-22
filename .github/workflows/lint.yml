@@ -3,8 +3,12 @@ name: Prettier Code Formatting
 on:
   push:
     branches:
-      - master
+      - main
+      - develop
   pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   prettier-lint:

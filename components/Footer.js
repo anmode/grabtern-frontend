@@ -100,15 +100,15 @@ function Footer() {
                         <a href="#">Home</a>
                       </li>
                       <li>
-                        <a href="#">Internship</a>
+                        <a href="#">Terms and Condition</a>
                       </li>
                       <li>
                         <a href="https://www.linkedin.com/company/grabtern/">
-                          Linkedin
+                          Privacy Policy
                         </a>
                       </li>
                       <li>
-                        <a href="https://discord.gg/HdASBpTR">Discord</a>
+                        <a href="https://discord.gg/HdASBpTR">Contact Us</a>
                       </li>
                     </ul>
                   </div>

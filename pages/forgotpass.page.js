@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 
 function ForgotPassword() {
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -15,9 +16,11 @@ function ForgotPassword() {
     e.preventDefault();
     setError("");
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/forgotPassword`;
       const { data } = await axios.post(url, { email });
       setSuccess(true);
+      setIsLoading(false);
     } catch (error) {
       if (
         error.response &&
@@ -25,6 +28,7 @@ function ForgotPassword() {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
+        setIsLoading(false);
       }
     }
   };
@@ -54,6 +58,17 @@ function ForgotPassword() {
             <div className="form-input pt-30">
               <input type="submit" name="submit" value="Reset Password" />
             </div>
+            {isLoading && (
+                        <img
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            border: "none",
+                          }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="loading..."
+                        />
+                      )}
             {error && <div style={{ color: "red" }}>{error}</div>}
             {success && (
               <div style={{ color: "green" }}>

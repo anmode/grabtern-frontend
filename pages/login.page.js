@@ -115,7 +115,7 @@ function Login() {
             {localStorage.getItem("new_user") && (
               <div style={{ color: "green" }}>Please register first.</div>
             )}
-            <Link href="#" className="forget">
+             <Link href="/forgotpass" className="forget">
               Forget Password
             </Link>
             <Link href="/register" className="registration">

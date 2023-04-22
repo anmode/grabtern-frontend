@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import router from "next/router";
 
 const ResetPassword = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -17,14 +19,18 @@ const ResetPassword = (props) => {
     }
 
     try {
+      setIsLoading(true);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/resetPassword`,
         {
           resetToken: props.resetToken,
           newPassword: newPassword,
+          confirmPassword: confirmPassword,
         }
       );
+      setIsLoading(false);
       setMessage(response.data.message);
+      router.push("/");
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);
@@ -57,6 +63,17 @@ const ResetPassword = (props) => {
       </div>
       <div>
         <button onClick={handleResetPassword}>Reset Password</button>
+        {isLoading && (
+                        <img
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            border: "none",
+                          }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="loading..."
+                        />
+                      )}
       </div>
       {error && <div className="error">{error}</div>}
       {message && <div className="message">{message}</div>}

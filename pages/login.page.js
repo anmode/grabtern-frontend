@@ -27,7 +27,6 @@ function Login() {
       console.log(userObject);
       try {
         const res = await axios.post(url, userObject);
-        // console.log(res);
         localStorage.setItem("user_name", userObject.name);
         localStorage.setItem("user_picture", userObject.picture);
         localStorage.setItem("user_email", userObject.email);

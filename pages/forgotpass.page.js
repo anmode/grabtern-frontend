@@ -59,16 +59,16 @@ function ForgotPassword() {
               <input type="submit" name="submit" value="Reset Password" />
             </div>
             {isLoading && (
-                        <img
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            border: "none",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="loading..."
-                        />
-                      )}
+              <img
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  border: "none",
+                }}
+                src="/assets/img/gif/Spinner.gif"
+                alt="loading..."
+              />
+            )}
             {error && <div style={{ color: "red" }}>{error}</div>}
             {success && (
               <div style={{ color: "green" }}>

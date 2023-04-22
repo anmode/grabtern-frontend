@@ -1223,8 +1223,6 @@ textarea {
   margin-bottom: 20px;
 }
 
-
-
 /* Reset Password css */
 .reset-password-container {
   max-width: 400px;
@@ -1232,19 +1230,19 @@ textarea {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  }
+}
 
-  .reset-password-container h2 {
+.reset-password-container h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  }
+}
 
-  .reset-password-container label {
+.reset-password-container label {
   display: block;
   margin-bottom: 10px;
-  }
+}
 
-  .reset-password-container input[type="password"] {
+.reset-password-container input[type="password"] {
   display: block;
   width: 100%;
   padding: 10px;
@@ -1252,9 +1250,9 @@ textarea {
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  }
+}
 
-  .reset-password-container button {
+.reset-password-container button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -1264,18 +1262,18 @@ textarea {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-  }
+}
 
-  .reset-password-container button:hover {
+.reset-password-container button:hover {
   background-color: #0069d9;
-  }
+}
 
-  .reset-password-container .error {
+.reset-password-container .error {
   color: #ff0000;
   margin-top: 10px;
-  }
+}
 
-  .reset-password-container .message {
+.reset-password-container .message {
   color: #00ff00;
   margin-top: 10px;
-  }
+}

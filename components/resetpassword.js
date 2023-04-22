@@ -64,16 +64,16 @@ const ResetPassword = (props) => {
       <div>
         <button onClick={handleResetPassword}>Reset Password</button>
         {isLoading && (
-                        <img
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            border: "none",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="loading..."
-                        />
-                      )}
+          <img
+            style={{
+              width: "50px",
+              height: "50px",
+              border: "none",
+            }}
+            src="/assets/img/gif/Spinner.gif"
+            alt="loading..."
+          />
+        )}
       </div>
       {error && <div className="error">{error}</div>}
       {message && <div className="message">{message}</div>}

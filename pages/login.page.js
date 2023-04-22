@@ -26,18 +26,18 @@ function Login() {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
       console.log(userObject);
       try {
-        const res = await axios.post(url, { email: userObject.email });
-        console.log(res);
+        const res = await axios.post(url, userObject);
+        // console.log(res);
         localStorage.setItem("user_name", userObject.name);
         localStorage.setItem("user_picture", userObject.picture);
         localStorage.setItem("user_email", userObject.email);
         router.push(localStorage.getItem("redirectUrl") || "/");
       } catch (error) {
         setError("New user? Register first.");
+        console.log(error);
       }
     };
 
-    if (typeof google !== "undefined") {
       google.accounts.id.initialize({
         client_id:
           "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
@@ -48,7 +48,6 @@ function Login() {
         size: "large",
       });
       google.accounts.id.prompt();
-    }
   }, []);
 
   const handleChange = ({ currentTarget: input }) => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
+import router from "next/router"
 
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
@@ -46,6 +47,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
     setLoggedIn(false);
+    router.push("/");
     window.location.reload();
   };
 

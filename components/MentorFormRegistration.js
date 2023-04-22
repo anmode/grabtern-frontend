@@ -8,6 +8,7 @@ export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(10);
+  const [isChecked, setIsChecked] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
     sessionDescription: "Achieve your goals faster with customized road map",
@@ -131,7 +132,7 @@ export default function MentorForm() {
 
   useEffect(() => {
     if (modalPopup === true) {
-      router.push("/mentors");
+      router.push("/");
     }
   }, [modalPopup]);
 
@@ -178,24 +179,29 @@ export default function MentorForm() {
     //     "The number of book sessions must be more than 2 or equal to 2!"
     //   );
     // }
-    try {
-      console.log(formData);
-      setIsLoading(true);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-      console.log(error);
-      const { data: res } = await axios.post(url, formData);
-      sendEmail(res.mentorVerifyLink);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
+    if (isChecked) {
+      // Register mentor
+      try {
+        console.log(formData);
+        setIsLoading(true);
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
+        console.log(error);
+        const { data: res } = await axios.post(url, formData);
+        sendEmail(res.mentorVerifyLink);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        }
       }
+    } else {
+      alert("Please agree to the terms before submitting");
     }
   };
 
@@ -467,7 +473,14 @@ export default function MentorForm() {
               )}
             </div>
           </div>
-
+          <label>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
+            &nbsp;We will take 11% of your session price
+          </label>
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>
           </p>

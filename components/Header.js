@@ -47,7 +47,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
     setLoggedIn(false);
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
@@ -106,18 +106,43 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                       {/* <li><Card option1="User" option2="Mentor"/></li> */}
                       {/* {isUserLoggedIn === true ? (
                           <li>
-                            <button
-                              onClick={() => logout()}
-                              style={{
-                                backgroundColor: "black",
-                                padding: "5px 15px",
-                                borderRadius: "50px",
-                                cursor: "pointer",
-                              }}
-                            >
-                              Logout
-                            </button>
-                            
+                            <div className={styles.loginOption}>
+                              <button
+                                onClick={handleLoginClick}
+                                className={styles.userName}
+                              >
+                                <img
+                                  style={{
+                                    width: "35px",
+                                    height: "auto",
+                                    borderRadius: "50%",
+                                  }}
+                                  src={
+                                    localStorage.getItem("user_picture") ||
+                                    "assets/img/icon/no-profile-picture.png"
+                                  }
+                                  alt="not found"
+                                />
+                              </button>
+
+                              {loginOption && (
+                                <div className="login-optionslist">
+                                  <button
+                                    className="login-buttons"
+                                    style={{ marginTop: "20px" }}
+                                    onClick={handleLoginClick}
+                                  >
+                                    <a href="/login">Dashboard</a>
+                                  </button>
+                                  <button
+                                    className="login-buttons"
+                                    onClick={logout}
+                                  >
+                                    <a href="#">Logout</a>
+                                  </button>
+                                </div>
+                              )}
+                            </div>
                           </li>
                          
                         ) 

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
@@ -18,8 +19,9 @@ function Mentors({ mentorsData }) {
             ) : (
               <div className="mentorLists">
                 {mentorsData.map((mentor) => (
-                  <a href={`/mentors/${mentor.username}`} key={mentor._id}>
-                    <div className="mentorCard">
+                  <a href={`/${mentor.username}`} key={mentor._id}>
+                    {
+                      /* <div className="mentorCard">
                       <img src={mentor.mentorImg} alt="exampleMentorPhoto" />
                       <h2 className="mentorName">{mentor.name}</h2>
                       <div
@@ -43,8 +45,10 @@ function Mentors({ mentorsData }) {
                           ? `${mentor.description.substring(0, 120)}…`
                           : mentor.description}
                       </p>
-                      {/* <h3>Price for each intern: {mentor.sessionPrice}</h3> */}
-                    </div>
+                      { <h3>Price for each intern: {mentor.sessionPrice}</h3> }
+                    </div> */
+                      <MentorCard mentor={mentor} />
+                    }
                   </a>
                 ))}
               </div>

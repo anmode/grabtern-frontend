@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -37,6 +37,7 @@ function Index({ mentorDetail }) {
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
         data
       );
+      console.log(data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error sending mail:", error);
@@ -44,12 +45,28 @@ function Index({ mentorDetail }) {
     }
   };
 
-  const handleBookSession = async (sessionName, mentorEmail) => {
+  const handleBookSession = async (
+    sessionName,
+    mentorEmail,
+    mentorName,
+    sessionTime,
+    sessionPrice
+  ) => {
     {
       isLoggedIn ? console.log("mail will be sent") : router.push("/login");
     }
     const userEmail = localStorage.getItem("user_email");
-    const data = { sessionName, mentorEmail, userEmail };
+    const userName = localStorage.getItem("user_name");
+    const data = {
+      sessionName,
+      mentorEmail,
+      userEmail,
+      mentorEmail,
+      userName,
+      mentorName,
+      sessionTime,
+      sessionPrice,
+    };
 
     try {
       setIsLoading(true);
@@ -223,7 +240,10 @@ function Index({ mentorDetail }) {
                         onClick={() =>
                           handleBookSession(
                             session.sessionName,
-                            mentorDetail.email
+                            mentorDetail.email,
+                            mentorDetail.name,
+                            session.sessionMeetingDuration,
+                            session.priceSession
                           )
                         }
                       >

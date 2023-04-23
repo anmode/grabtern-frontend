@@ -59,12 +59,21 @@ function Login() {
       // setData({ ...data, type: "manual" });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const res = await axios.post(url, data);
+      if (!res.verified) {
+        setError(
+          "Email not verified, verification link has been sent to your email"
+        );
+      }
       localStorage.setItem("token", res.data);
       localStorage.setItem("user_name", res.data.fullName);
       localStorage.setItem("user_email", res.data.email);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 405) {
+        setError(
+          "Email not verified, verification link has been sent to your email"
+        );
+      } else if (error.response && error.response.status === 401) {
         setError("Invalid email or password.");
       } else {
         setError("login failed. please contact us.");

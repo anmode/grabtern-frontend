@@ -53,8 +53,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     setLoggedIn(false);
     router.push("#");
     window.location.reload();
-};
-
+  };
 
   const mentorlogout = () => {
     localStorage.clear();

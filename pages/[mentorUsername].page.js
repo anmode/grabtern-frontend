@@ -32,16 +32,16 @@ function Index({ mentorDetail }) {
   const handleClick = (Mentordata) => () => {
     if (isLoggedIn) {
       handleBookSession(
-                            Mentordata.sessionName,
-                            mentorDetail.email,
-                            mentorDetail.name,
-                            Mentordata.sessionMeetingDuration,
-                            Mentordata.priceSession
+        Mentordata.sessionName,
+        mentorDetail.email,
+        mentorDetail.name,
+        Mentordata.sessionMeetingDuration,
+        Mentordata.priceSession
       );
     } else {
-      router.push('/login');
+      router.push("/login");
     }
-  }
+  };
 
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null) {

@@ -1,13 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
+import router from "next/router";
 
 function Header({ isUserLoggedIn, navbarBackground }) {
+  // localStorage.setItem('redirectUrl', window.location.href);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
 
   useEffect(() => {
+    const userName = localStorage.getItem("user_name");
+    if (userName) {
+      setLoggedIn(true);
+    }
+    const mentorName = localStorage.getItem("mentor_name");
+    if (mentorName) {
+      setMentorLoggedIn(true);
+    }
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -22,9 +35,9 @@ function Header({ isUserLoggedIn, navbarBackground }) {
 
   const handleLoginClick = () => {
     setLoginOption(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoginOption(false);
-    },5000)
+    }, 5000);
   };
 
   const menuToggle = () => {
@@ -35,11 +48,28 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     }
   };
 
-  const logout = () => {
+  const userlogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_name");
+    localStorage.removeItem("user_picture");
+    localStorage.removeItem("has_played_greeting");
+
+    setLoggedIn(false);
+    router.push("/");
     window.location.reload();
   };
+
+  const mentorlogout = () => {
+    localStorage.removeItem("mentor_picture");
+    localStorage.removeItem("mentor_name");
+    localStorage.removeItem("mentorToken");
+    localStorage.removeItem("has_played_greeting");
+
+    setMentorLoggedIn(false);
+    router.push("/");
+    window.location.reload();
+  };
+
   return (
     <div className="header-area header-transparent">
       <div className="main-header ">
@@ -87,33 +117,83 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                           <a href="/contact">Contact</a>
                         </li>
 
-                        {isUserLoggedIn === true ? (
+                        {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
                           <li>
-                            <button
-                              onClick={() => logout()}
-                              style={{
-                                backgroundColor: "black",
-                                padding: "5px 15px",
-                                borderRadius: "50px",
-                                cursor: "pointer",
-                              }}
-                            >
-                              Logout
-                            </button>
+                            <div className={styles.loginOption}>
+                              <button
+                                onClick={handleLoginClick}
+                                className={styles.userName}
+                              >
+                                <img
+                                  style={{
+                                    width: "35px",
+                                    height: "auto",
+                                    borderRadius: "50%",
+                                  }}
+                                  src={
+                                    localStorage.getItem("user_picture") ||
+                                    localStorage.getItem("mentor_picture") ||
+                                    "assets/img/icon/no-profile-picture.png"
+                                  }
+                                  alt="not found"
+                                />
+                              </button>
+
+                              {loginOption && (
+                                <div className="login-optionslist">
+                                  <button
+                                    className="login-buttons"
+                                    style={{ marginTop: "20px" }}
+                                    onClick={() => {
+                                      if (isMentorLoggedIn) {
+                                        window.location.href = `/dashboard`;
+                                      } else {
+                                        window.location.href = `/`;
+                                      }
+                                    }}
+                                  >
+                                    Dashboard
+                                  </button>
+                                  <button
+                                    className="login-buttons"
+                                    onClick={() => {
+                                      if (isMentorLoggedIn) {
+                                        mentorlogout();
+                                      } else {
+                                        userlogout();
+                                      }
+                                    }}
+                                  >
+                                    <a href="#">Logout</a>
+                                  </button>
+                                </div>
+                              )}
+                            </div>
                           </li>
                         ) : (
                           <li>
                             <div className={styles.loginOption}>
-                              <button onClick={handleLoginClick}>Login</button>
+                              <button
+                                className={styles.loginbutton}
+                                onClick={handleLoginClick}
+                              >
+                                Login
+                              </button>
                               {loginOption && (
-                                <>
-                                  <button onClick={handleLoginClick}>
+                                <div className="login-optionslist">
+                                  <button
+                                    className="login-buttons"
+                                    onClick={handleLoginClick}
+                                  >
                                     <a href="/login">User</a>
                                   </button>
-                                  <button onClick={handleLoginClick}>
+                                  <button
+                                    className="login-buttons"
+                                    onClick={handleLoginClick}
+                                  >
                                     <a href="/mentorLogin">Mentor</a>
                                   </button>
-                                </>
+                                </div>
                               )}
                             </div>
                           </li>

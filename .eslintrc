@@ -1,5 +1,7 @@
 {
-    "extends": ["next/babel","next/core-web-vitals"],
-    "rules": { "react/no-unescaped-entities": "off", "react/jsx-no-target-blank": "off" }
+  "extends": ["next/babel", "next/core-web-vitals", "prettier"],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "react/jsx-no-target-blank": "off"
   }
-  
+}

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 import { useRouter } from "next/router";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -41,6 +42,43 @@ function mentorLogin() {
       }
     }
   };
+  async function handleCallbackResponse(response) {
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject);
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/gloginauth`;
+      const { data: res } = await axios.post(url, userObject);
+      console.log(res);
+      localStorage.setItem("mentorToken", res.loginToken);
+      localStorage.setItem("mentor_name", res.fullName);
+      localStorage.setItem("mentor_picture", res.mentorImg);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
+    }
+  }
+
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleSignInButton"),
+      { theme: "outline", size: "large" }
+    );
+    google.accounts.id.prompt();
+  }, []);
+
   return (
     <>
       <Header navbarBackground={true} />
@@ -96,6 +134,9 @@ function mentorLogin() {
               >
                 Login
               </button>
+              <div style={{ gridColumn: "1/3" }}>
+                <div id="googleSignInButton"></div>
+              </div>
               <p>
                 Do not have mentor account?{" "}
                 <a href="/mentorRegister">Sign Up</a>

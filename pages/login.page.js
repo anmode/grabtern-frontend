@@ -26,29 +26,27 @@ function Login() {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
       console.log(userObject);
       try {
-        const res = await axios.post(url, { email: userObject.email });
-        console.log(res);
+        const res = await axios.post(url, userObject);
         localStorage.setItem("user_name", userObject.name);
         localStorage.setItem("user_picture", userObject.picture);
         localStorage.setItem("user_email", userObject.email);
         router.push(localStorage.getItem("redirectUrl") || "/");
       } catch (error) {
         setError("New user? Register first.");
+        console.log(error);
       }
     };
 
-    if (typeof google !== "undefined") {
-      google.accounts.id.initialize({
-        client_id:
-          "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-        callback: handleCallBackResponse,
-      });
-      google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-        theme: "outline",
-        size: "large",
-      });
-      google.accounts.id.prompt();
-    }
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      callback: handleCallBackResponse,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+    google.accounts.id.prompt();
   }, []);
 
   const handleChange = ({ currentTarget: input }) => {
@@ -61,12 +59,21 @@ function Login() {
       // setData({ ...data, type: "manual" });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const res = await axios.post(url, data);
+      if (!res.verified) {
+        setError(
+          "Email not verified, verification link has been sent to your email"
+        );
+      }
       localStorage.setItem("token", res.data);
       localStorage.setItem("user_name", res.data.fullName);
       localStorage.setItem("user_email", res.data.email);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 405) {
+        setError(
+          "Email not verified, verification link has been sent to your email"
+        );
+      } else if (error.response && error.response.status === 401) {
         setError("Invalid email or password.");
       } else {
         setError("login failed. please contact us.");
@@ -116,7 +123,7 @@ function Login() {
             {localStorage.getItem("new_user") && (
               <div style={{ color: "green" }}>Please register first.</div>
             )}
-            <Link href="#" className="forget">
+            <Link href="/forgotpass" className="forget">
               Forget Password
             </Link>
             <Link href="/register" className="registration">

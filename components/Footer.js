@@ -36,9 +36,7 @@ function Footer() {
                       <a href="https://bit.ly/sai4ull">
                         <i className="fab fa-facebook-f"></i>
                       </a>
-                      <a href="#">
-                        <i className="fab fa-pinterest-p"></i>
-                      </a>
+                      
                       <a href="https://www.instagram.com/grabtern.guide/">
                         <i className="fab fa-instagram"></i>
                       </a>

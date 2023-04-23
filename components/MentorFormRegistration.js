@@ -7,7 +7,7 @@ import emailjs from "@emailjs/browser";
 export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
-  const [waitTime, setWaitTime] = useState(10);
+  const [waitTime, setWaitTime] = useState(5);
   const [isChecked, setIsChecked] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
@@ -120,21 +120,15 @@ export default function MentorForm() {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("user_name") !== null) {
-      setLoggedIn(true);
-    }
-    if (modalPopup === true && waitTime > 0) {
+    if (modalPopup === true && waitTime !== 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
       }, 1000);
     }
-  }, [modalPopup, waitTime]);
-
-  useEffect(() => {
-    if (modalPopup === true) {
+    if (waitTime === 0) {
       router.push("/");
     }
-  }, [modalPopup]);
+  });
 
   // const handleFileChange = e => {
   //   setFormData({ ...formData, resume: e.target.files[0] });

@@ -99,13 +99,19 @@ export default function Home() {
 
   return (
     <div>
-  {
-  localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
-    <div className="welcomeAfterLoggedIn">
-        Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
-        <audio src="/assets/sound/greet.wav" autoplay onLoadedData={e => { e.target.play(); localStorage.setItem("has_played_greeting", true); }} />
-    </div>
-) : null}
+      {localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
+        <div className="welcomeAfterLoggedIn">
+          Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
+          <audio
+            src="/assets/sound/greet.wav"
+            autoplay
+            onLoadedData={(e) => {
+              e.target.play();
+              localStorage.setItem("has_played_greeting", true);
+            }}
+          />
+        </div>
+      ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
 
       <main>

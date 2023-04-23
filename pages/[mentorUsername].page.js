@@ -111,7 +111,7 @@ function Index({ mentorDetail }) {
                           width: "100%",
                           padding: "15px",
                         }}
-                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mentors/${mentorDetail.username}`}</span>
+                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${mentorDetail.username}`}</span>
                     </p>
                     <button
                       onClick={() => setShowModal(false)}

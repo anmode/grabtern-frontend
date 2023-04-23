@@ -263,20 +263,22 @@ function Index({ mentorDetail }) {
                         style={{ cursor: "pointer" }}
                         onClick={handleClick(session)}
                       >
-                        Book Session
+                        {isLoading ? (
+                          <img
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              border: "none",
+                              margin: "0 60px",
+                            }}
+                            src="/assets/img/gif/Spinner.gif"
+                            alt="loading..."
+                          />
+                        ):(
+                          <span>Book Session</span>
+                        ) }
                       </button>
 
-                      {isLoading && (
-                        <img
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            border: "none",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="loading..."
-                        />
-                      )}
                       {modalPopup === true ? (
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">

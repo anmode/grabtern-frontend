@@ -29,6 +29,19 @@ function Index({ mentorDetail }) {
   //     router.push("/mentors");
   //   }
   // }, [modalPopup]);
+  const handleClick = (Mentordata) => () => {
+    if (isLoggedIn) {
+      handleBookSession(
+        Mentordata.sessionName,
+        mentorDetail.email,
+        mentorDetail.name,
+        Mentordata.sessionMeetingDuration,
+        Mentordata.priceSession
+      );
+    } else {
+      router.push("/login");
+    }
+  };
 
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null) {
@@ -66,9 +79,6 @@ function Index({ mentorDetail }) {
     sessionTime,
     sessionPrice
   ) => {
-    {
-      isLoggedIn ? console.log("mail will be sent") : router.push("/login");
-    }
     const userEmail = localStorage.getItem("user_email");
     const userName = localStorage.getItem("user_name");
     const data = {
@@ -251,15 +261,7 @@ function Index({ mentorDetail }) {
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          handleBookSession(
-                            session.sessionName,
-                            mentorDetail.email,
-                            mentorDetail.name,
-                            session.sessionMeetingDuration,
-                            session.priceSession
-                          )
-                        }
+                        onClick={handleClick(session)}
                       >
                         Book Session
                       </button>

@@ -49,22 +49,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   };
 
   const userlogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_name");
-    localStorage.removeItem("user_picture");
-    localStorage.removeItem("has_played_greeting");
-
+    localStorage.clear();
     setLoggedIn(false);
-    router.push("/");
+    router.push("#");
     window.location.reload();
-  };
+};
+
 
   const mentorlogout = () => {
-    localStorage.removeItem("mentor_picture");
-    localStorage.removeItem("mentor_name");
-    localStorage.removeItem("mentorToken");
-    localStorage.removeItem("has_played_greeting");
-
+    localStorage.clear();
     setMentorLoggedIn(false);
     router.push("/");
     window.location.reload();

@@ -1161,7 +1161,7 @@ textarea {
 }
 
 /* form itself */
-.forgot-form-default {
+.form-default-forgot-pass {
   background-color: #fff;
   padding: 30px;
   border-radius: 5px;

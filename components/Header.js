@@ -6,6 +6,7 @@ import router from "next/router";
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
@@ -15,6 +16,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     if (userName) {
       setLoggedIn(true);
     }
+    const mentorName = localStorage.getItem("mentor_name");
+    if (mentorName) {
+      setMentorLoggedIn(true);
+    }
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -42,11 +48,22 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     }
   };
 
-  const logout = () => {
+  const userlogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
+
     setLoggedIn(false);
+    router.push("/");
+    window.location.reload();
+  };
+
+  const mentorlogout = () => {
+    localStorage.removeItem("mentor_picture");
+    localStorage.removeItem("mentor_name");
+    localStorage.removeItem("mentorToken");
+
+    setMentorLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
@@ -98,7 +115,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                           <a href="/contact">Contact</a>
                         </li>
 
-                        {isLoggedIn || isUserLoggedIn ? (
+                        {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
                           <li>
                             <div className={styles.loginOption}>
                               <button
@@ -113,6 +130,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                   }}
                                   src={
                                     localStorage.getItem("user_picture") ||
+                                    localStorage.getItem("mentor_picture") ||
                                     "assets/img/icon/no-profile-picture.png"
                                   }
                                   alt="not found"
@@ -124,13 +142,25 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                   <button
                                     className="login-buttons"
                                     style={{ marginTop: "20px" }}
-                                    onClick={handleLoginClick}
+                                    onClick={() => {
+                                      if (isMentorLoggedIn) {
+                                        window.location.href = `/dashboard`;
+                                      } else {
+                                        window.location.href = `/`;
+                                      }
+                                    }}
                                   >
-                                    <a href="/login">Dashboard</a>
+                                    Dashboard
                                   </button>
                                   <button
                                     className="login-buttons"
-                                    onClick={logout}
+                                    onClick={() => {
+                                      if (isMentorLoggedIn) {
+                                        mentorlogout();
+                                      } else {
+                                        userlogout();
+                                      }
+                                    }}
                                   >
                                     <a href="#">Logout</a>
                                   </button>

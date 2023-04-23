@@ -13,22 +13,36 @@ function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 
+  // useEffect(() => {
+  //   if (localStorage.getItem("user_name") !== null) {
+  //     setLoggedIn(true);
+  //   }
+  //   if (modalPopup === true && waitTime > 0) {
+  //     setTimeout(() => {
+  //       setWaitTime((value) => (value -= 1));
+  //     }, 1000);
+  //   }
+  // }, [modalPopup, waitTime]);
+
+  // useEffect(() => {
+  //   if (modalPopup === true) {
+  //     router.push("/mentors");
+  //   }
+  // }, [modalPopup]);
+
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null) {
       setLoggedIn(true);
     }
-    if (modalPopup === true && waitTime > 0) {
+    if (modalPopup === true && waitTime !== 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
       }, 1000);
     }
-  }, [modalPopup, waitTime]);
-
-  useEffect(() => {
-    if (modalPopup === true) {
-      router.push("/mentors");
+    if (waitTime === 0) {
+      router.push("/");
     }
-  }, [modalPopup]);
+  });
 
   const sendMail = async (data) => {
     try {

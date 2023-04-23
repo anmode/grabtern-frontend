@@ -17,6 +17,7 @@ if (typeof window !== "undefined") {
 const OwlCarousel = dynamic(import("react-owl-carousel"), {
   ssr: false,
 });
+
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import { useState, useEffect } from "react";
@@ -78,6 +79,7 @@ export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [isMentorLoggedIn, setIsMentorLoggedIn] = useState(false);
   const [carousel, setCarousel] = useState(false);
+  const hasPlayedGreeting = localStorage.getItem("has_played_greeting");
   useEffect(() => {
     if (
       localStorage.getItem("user_name") !== null ||
@@ -94,13 +96,16 @@ export default function Home() {
     console.log(isUserLoggedIn);
     setCarousel(true);
   }, [carousel]);
+
   return (
     <div>
-      {localStorage.getItem("user_name") !== null ? (
-        <div className="welcomeAfterLoggedIn">
-          Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
-        </div>
-      ) : null}
+  {
+  localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
+    <div className="welcomeAfterLoggedIn">
+        Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
+        <audio src="/assets/sound/greet.wav" autoplay onLoadedData={e => { e.target.play(); localStorage.setItem("has_played_greeting", true); }} />
+    </div>
+) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
 
       <main>

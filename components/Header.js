@@ -52,6 +52,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("token");
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_picture");
+    localStorage.removeItem("has_played_greeting");
 
     setLoggedIn(false);
     router.push("/");
@@ -62,6 +63,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     localStorage.removeItem("mentor_picture");
     localStorage.removeItem("mentor_name");
     localStorage.removeItem("mentorToken");
+    localStorage.removeItem("has_played_greeting");
 
     setMentorLoggedIn(false);
     router.push("/");

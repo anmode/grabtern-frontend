@@ -50,22 +50,17 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   };
 
   const userlogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_name");
-    localStorage.removeItem("user_picture");
-    localStorage.removeItem("has_played_greeting");
 
+    localStorage.clear();
     setLoggedIn(false);
-    router.push("/");
+    router.push("#");
+
     window.location.reload();
   };
 
   const mentorlogout = () => {
-    localStorage.removeItem("mentor_picture");
-    localStorage.removeItem("mentor_name");
-    localStorage.removeItem("mentorToken");
-    localStorage.removeItem("has_played_greeting");
 
+    localStorage.clear();
     setMentorLoggedIn(false);
     router.push("/");
     window.location.reload();
@@ -117,20 +112,9 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         <li>
                           <a href="/contact">Contact</a>
                         </li>
-<<<<<<< HEAD
-                        <li>
-                          <a href="#" onClick={handleClick}>
-                            Login
-                          </a>
-                          {showCard && <LoginCard hideCard={hideCard} />}
-                        </li>
-                      </ul>
-                      {/* <li><Card option1="User" option2="Mentor"/></li> */}
-                      {/* {isUserLoggedIn === true ? (
-=======
 
                         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
->>>>>>> upstream/develop
+
                           <li>
                             <div className={styles.loginOption}>
                               <button

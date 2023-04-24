@@ -30,6 +30,22 @@ function Index({ mentorDetail }) {
   //   }
   // }, [modalPopup]);
 
+
+  const handleClick = (Mentordata) => () => {
+    if (isLoggedIn) {
+      handleBookSession(
+        Mentordata.sessionName,
+        mentorDetail.email,
+        mentorDetail.name,
+        Mentordata.sessionMeetingDuration,
+        Mentordata.priceSession
+      );
+    } else {
+      router.push("/login");
+    }
+  };
+
+
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null) {
       setLoggedIn(true);
@@ -66,9 +82,6 @@ function Index({ mentorDetail }) {
     sessionTime,
     sessionPrice
   ) => {
-    {
-      isLoggedIn ? console.log("mail will be sent") : router.push("/login");
-    }
     const userEmail = localStorage.getItem("user_email");
     const userName = localStorage.getItem("user_name");
     const data = {
@@ -251,30 +264,24 @@ function Index({ mentorDetail }) {
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          handleBookSession(
-                            session.sessionName,
-                            mentorDetail.email,
-                            mentorDetail.name,
-                            session.sessionMeetingDuration,
-                            session.priceSession
-                          )
-                        }
+                        onClick={handleClick(session)}
                       >
-                        Book Session
+                        {isLoading ? (
+                          <img
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              border: "none",
+                              margin: "0 60px",
+                            }}
+                            src="/assets/img/gif/Spinner.gif"
+                            alt="loading..."
+                          />
+                        ):(
+                          <span>Book Session</span>
+                        ) }
                       </button>
 
-                      {isLoading && (
-                        <img
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            border: "none",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="loading..."
-                        />
-                      )}
                       {modalPopup === true ? (
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">

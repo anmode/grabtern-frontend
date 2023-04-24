@@ -3756,7 +3756,8 @@ hr {
 @media (max-width: 575px) {
   .login-form {
     width: 282px;
-    padding: 90px 15px 15px 15px;
+    padding: 53px 15px 15px 15px;
+    margin-top: 491px;
   }
 }
 .login-form .logo-login img {

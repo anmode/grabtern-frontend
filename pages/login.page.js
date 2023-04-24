@@ -9,6 +9,7 @@ function Login() {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const router = useRouter();
+  const google = window.google;
 
   useEffect(() => {
     if (

@@ -274,9 +274,9 @@ function Index({ mentorDetail }) {
                             src="/assets/img/gif/Spinner.gif"
                             alt="loading..."
                           />
-                        ):(
+                        ) : (
                           <span>Book Session</span>
-                        ) }
+                        )}
                       </button>
 
                       {modalPopup === true ? (

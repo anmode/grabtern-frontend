@@ -51,7 +51,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   const userlogout = () => {
     localStorage.clear();
     setLoggedIn(false);
-    router.push("#");
+    router.push("/");
     window.location.reload();
   };
 
@@ -156,7 +156,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                       }
                                     }}
                                   >
-                                    <a href="#">Logout</a>
+                                    Logout
                                   </button>
                                 </div>
                               )}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
+import Card from "./Card";
 
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
@@ -40,6 +41,12 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   const hideCard = () => {
     setShowCard(false);
   };
+
+  const handleLoginClick = () => {
+    setLoginOption(true);
+    setTimeout(() => {
+      setLoginOption(false);
+    }, 5000);}
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -198,7 +205,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               <Card/>
                             </div>
                           </li>
-                        )} */}
+                        )}</ul>
                     </nav>
                   </div>
                 </div>

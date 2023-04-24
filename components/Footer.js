@@ -31,19 +31,20 @@ function Footer() {
                     </div>
                     <div className="footer-social">
                       <a href="#">
-                        <i className="fab fa-twitter"></i>
+                      <i className="fab fa-twitter"></i>
                       </a>
                       <a href="https://bit.ly/sai4ull">
                         <i className="fab fa-facebook-f"></i>
                       </a>
-                      <a href="#">
-                        <i className="fab fa-pinterest-p"></i>
-                      </a>
+                      
                       <a href="https://www.instagram.com/grabtern.guide/">
                         <i className="fab fa-instagram"></i>
                       </a>
                       <a href="https://www.linkedin.com/company/grabtern/">
                         <i className="fab fa-linkedin"></i>
+                      </a>
+                      <a href="https://discord.gg/7caphx7Mhy">
+                      <i className="fab fa-discord"></i>
                       </a>
                     </div>
                   </div>

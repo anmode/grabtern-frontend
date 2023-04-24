@@ -243,10 +243,10 @@ a {
   .header-bottom .container-fluid .row div:nth-child(2) {
     padding: 0;
     position: absolute;
-    top: 150px;
-    width: 100% !important;
+    top: 18%;
+    /* width: 100% !important; */
     max-width: 100% !important;
-    left: 0;
+    /* left: 0; */
   }
 
   .main-menu {
@@ -994,7 +994,7 @@ textarea {
 }
 .login-card {
   background: white;
-  padding: 5px;
+  /* padding: 5px; */
   border-radius: 14px;
   opacity: 0.5;
 }

@@ -29,6 +29,8 @@ function Index({ mentorDetail }) {
   //     router.push("/mentors");
   //   }
   // }, [modalPopup]);
+
+
   const handleClick = (Mentordata) => () => {
     if (isLoggedIn) {
       handleBookSession(
@@ -42,6 +44,7 @@ function Index({ mentorDetail }) {
       router.push("/login");
     }
   };
+
 
   useEffect(() => {
     if (localStorage.getItem("user_name") !== null) {

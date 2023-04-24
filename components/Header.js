@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
+import Card from "./Card";
 
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
+  const [showCard, setShowCard] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -33,12 +35,18 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     };
   }, []);
 
+  const handleClick = () => {
+    setShowCard(true);
+  };
+  const hideCard = () => {
+    setShowCard(false);
+  };
+
   const handleLoginClick = () => {
     setLoginOption(true);
     setTimeout(() => {
       setLoginOption(false);
-    }, 5000);
-  };
+    }, 5000);}
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -49,13 +57,16 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   };
 
   const userlogout = () => {
+
     localStorage.clear();
     setLoggedIn(false);
     router.push("#");
+
     window.location.reload();
   };
 
   const mentorlogout = () => {
+
     localStorage.clear();
     setMentorLoggedIn(false);
     router.push("/");
@@ -110,6 +121,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                         </li>
 
                         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+
                           <li>
                             <div className={styles.loginOption}>
                               <button
@@ -162,7 +174,9 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               )}
                             </div>
                           </li>
-                        ) : (
+                         
+                        ) 
+                        : (
                           <li>
                             <div className={styles.loginOption}>
                               <button
@@ -186,11 +200,12 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     <a href="/mentorLogin">Mentor</a>
                                   </button>
                                 </div>
+                                
                               )}
+                              <Card/>
                             </div>
                           </li>
-                        )}
-                      </ul>
+                        )}</ul>
                     </nav>
                   </div>
                 </div>

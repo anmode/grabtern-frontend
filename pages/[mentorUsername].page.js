@@ -8,6 +8,7 @@ function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
+  const [error, setError] = useState("");
   const router = useRouter();
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
@@ -59,16 +60,29 @@ function Index({ mentorDetail }) {
 
   const sendMail = async (data) => {
     try {
-      console.log("I am in sendMail client side");
+      setIsLoading(true);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
         data
       );
-      console.log(data);
       setIsLoading(false);
+      setModalPopup(true);
     } catch (error) {
-      console.error("Error sending mail:", error);
-      // Handle the error here, such as showing an error message to the user
+      setIsLoading(false);
+      if (error.response && error.response.status === 400) {
+        setError("You have already booked this session");
+        setTimeout(() => {
+          setError("");
+        }, 3000); // remove the error after 5 seconds
+      } else if (error.response && error.response.status === 405) {
+        setError("You are not allowed to book your own session");
+        setTimeout(() => {
+          setError("");
+        }, 3000); // remove the error after 5 seconds
+      } else {
+        console.error("Error sending mail:", error);
+        setError("Facing any problem? Email Us");
+      }
     }
   };
 
@@ -93,9 +107,7 @@ function Index({ mentorDetail }) {
     };
 
     try {
-      setIsLoading(true);
       await sendMail(data);
-      setModalPopup(true);
     } catch (error) {
       console.error(error);
     }
@@ -263,20 +275,23 @@ function Index({ mentorDetail }) {
                         style={{ cursor: "pointer" }}
                         onClick={handleClick(session)}
                       >
-                        Book Session
+                        {isLoading ? (
+                          <img
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              border: "none",
+                              margin: "0 60px",
+                            }}
+                            src="/assets/img/gif/Spinner.gif"
+                            alt="loading..."
+                          />
+                        ) : (
+                          <span>Book Session</span>
+                        )}
                       </button>
+                      {error && <div style={{ color: "red" }}>{error}</div>}
 
-                      {isLoading && (
-                        <img
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            border: "none",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="loading..."
-                        />
-                      )}
                       {modalPopup === true ? (
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">

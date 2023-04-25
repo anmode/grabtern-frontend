@@ -97,7 +97,7 @@ function Footer() {
                     <h4>Grabtern</h4>
                     <ul>
                       <li>
-                        <a href="#">Home</a>
+                        <a href="/refundandcancellation">Refund policy</a>
                       </li>
                       <li>
                         <a href="/termsandcondition">Terms and Condition</a>

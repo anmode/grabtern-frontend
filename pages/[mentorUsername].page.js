@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);

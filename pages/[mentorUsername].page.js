@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -67,6 +67,7 @@ function Index({ mentorDetail }) {
         data
       );
       setIsLoading(false);
+      setModalPopup(true);
     } catch (error) {
       setIsLoading(false);
       if (error.response && error.response.status === 400) {
@@ -74,7 +75,13 @@ function Index({ mentorDetail }) {
         setTimeout(() => {
           setError("");
         }, 3000); // remove the error after 5 seconds
-      } else {
+      } else if(error.response && error.response.status === 405){
+        setError("You are not allowed to book your own session");
+        setTimeout(() => {
+          setError("");
+        }, 3000); // remove the error after 5 seconds
+      }
+      else {
         console.error("Error sending mail:", error);
         setError("Facing any problem? Email Us");
       }

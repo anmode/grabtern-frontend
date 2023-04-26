@@ -10,8 +10,11 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
     "@emailjs/browser": "^3.10.0",
+    "apollo-boost": "^0.4.9",
     "axios": "^1.2.3",
+    "graphql": "^15.8.0",
     "jquery": "^3.6.3",
     "jwt-decode": "^3.1.2",
     "next": "^13.1.1",

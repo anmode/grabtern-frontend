@@ -1,11 +1,29 @@
-import React from "react";
-import axios from "axios";
-import dynamic from "next/dynamic";
-import MentorCard from "../components/mentor";
-const Header = dynamic(() => import("../components/Header"));
-const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { Mentor } from "../../grabtern-backend/models/mentor";
 
-function Mentors({ mentorsData }) {
+const MENTORS_QUERY = gql`
+  query Mentors {
+    mentors {
+      name
+      internAt
+      currentStatus
+    }
+  }
+`;
+
+function Mentors() {
+  const { loading, error, data } = useQuery(MENTORS_QUERY, {
+    fetchPolicy: "cache-and-network", // cache-first, cache-and-network, network-only, etc.
+  });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
+
+  const mentorsData = data.mentors.filter(
+    (mentor) => mentor.verified === true && mentor.token === "mentorIsVerified"
+  );
+
   return (
     <>
       <Header />
@@ -20,9 +38,7 @@ function Mentors({ mentorsData }) {
               <div className="mentorLists">
                 {mentorsData.map((mentor) => (
                   <a href={`/${mentor.username}`} key={mentor._id}>
-                    {
-                      <MentorCard mentor={mentor} />
-                    }
+                    {<MentorCard mentor={mentor} />}
                   </a>
                 ))}
               </div>
@@ -35,17 +51,3 @@ function Mentors({ mentorsData }) {
 }
 
 export default Mentors;
-
-export const getServerSideProps = async (context) => {
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  const { data } = await axios.get(url);
-
-  return {
-    props: {
-      mentorsData: data.filter(
-        (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified"
-      ),
-    },
-  };
-};

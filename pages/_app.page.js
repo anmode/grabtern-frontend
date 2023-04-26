@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import { useEffect, useState } from "react";
-import { BreakpointProvider } from "react-socks";
+// import { BreakpointProvider } from "react-socks";
+import { ApolloProvider } from "@apollo/react-hooks";
+import client from "./api/apolloClient";
 import $ from "jquery";
 import Head from "next/head";
 import Script from "next/script";
@@ -114,9 +116,9 @@ function MyApp({ Component, pageProps }) {
           </div>
         </div>
       </div>
-      <BreakpointProvider>
+      <ApolloProvider client={client}>
         <Component {...pageProps} />
-      </BreakpointProvider>
+      </ApolloProvider>
     </>
   );
 }

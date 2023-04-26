@@ -23,7 +23,9 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.8.1",
     "react-socks": "^2.2.0",
-    "styled-components": "^5.3.10"
+    "redis": "^4.6.5",
+    "styled-components": "^5.3.10",
+    "swr": "^2.1.5"
   },
   "devDependencies": {
     "eslint": "7.32.0",

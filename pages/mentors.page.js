@@ -20,7 +20,13 @@ function Mentors({ initialMentorsData }) {
         const fetchData = async () => {
           const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists?page=${page + 1}&limit=2`;
           const { data } = await axios.get(url);
-          setMentorsData((prevMentorsData) => [...prevMentorsData, ...data]);
+        
+          const filteredData = data.filter(
+            (mentor) =>
+              mentor.verified === true && mentor.token === "mentorIsVerified"
+          );
+        
+          setMentorsData((prevMentorsData) => [...prevMentorsData, ...filteredData]);
           setPage((prevPage) => prevPage + 1);
           setLoading(false);
         };
@@ -51,6 +57,7 @@ function Mentors({ initialMentorsData }) {
                   </a>
                 ))}
                 {loading && <p>Loading...</p>}
+                <div style={{ height: 50 }} />
               </div>
             )}
           </div>

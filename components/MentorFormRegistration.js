@@ -181,6 +181,7 @@ export default function MentorForm() {
         console.log(error);
         const { data: res } = await axios.post(url, formData);
         setIsLoading(false);
+        setModalPopup(true);
       } catch (error) {
         setIsLoading(false);
         console.log(error);

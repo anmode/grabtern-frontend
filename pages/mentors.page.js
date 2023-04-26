@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
-function Mentors({ mentorsData }) {
+function Mentors({ initialMentorsData }) {
+  const [mentorsData, setMentorsData] = useState(initialMentorsData);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      if (scrollTop + clientHeight >= scrollHeight - 50 && !loading) {
+        setLoading(true);
+        const fetchData = async () => {
+          const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists?page=${page + 1}&limit=2`;
+          const { data } = await axios.get(url);
+          setMentorsData((prevMentorsData) => [...prevMentorsData, ...data]);
+          setPage((prevPage) => prevPage + 1);
+          setLoading(false);
+        };
+        fetchData();
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, page]);
+
   return (
     <>
       <Header />
@@ -25,6 +50,7 @@ function Mentors({ mentorsData }) {
                     }
                   </a>
                 ))}
+                {loading && <p>Loading...</p>}
               </div>
             )}
           </div>
@@ -37,12 +63,12 @@ function Mentors({ mentorsData }) {
 export default Mentors;
 
 export const getServerSideProps = async (context) => {
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists?page=1&limit=2`;
   const { data } = await axios.get(url);
 
   return {
     props: {
-      mentorsData: data.filter(
+      initialMentorsData: data.filter(
         (mentor) =>
           mentor.verified === true && mentor.token === "mentorIsVerified"
       ),

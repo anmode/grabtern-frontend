@@ -18,15 +18,20 @@ function Mentors({ initialMentorsData }) {
       if (scrollTop + clientHeight >= scrollHeight - 50 && !loading) {
         setLoading(true);
         const fetchData = async () => {
-          const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists?page=${page + 1}&limit=2`;
+          const url = `${
+            process.env.NEXT_PUBLIC_BACKEND_URL
+          }/api/mentors/mentorLists?page=${page + 1}&limit=2`;
           const { data } = await axios.get(url);
-        
+
           const filteredData = data.filter(
             (mentor) =>
               mentor.verified === true && mentor.token === "mentorIsVerified"
           );
-        
-          setMentorsData((prevMentorsData) => [...prevMentorsData, ...filteredData]);
+
+          setMentorsData((prevMentorsData) => [
+            ...prevMentorsData,
+            ...filteredData,
+          ]);
           setPage((prevPage) => prevPage + 1);
           setLoading(false);
         };
@@ -51,9 +56,7 @@ function Mentors({ initialMentorsData }) {
               <div className="mentorLists">
                 {mentorsData.map((mentor) => (
                   <a href={`/${mentor.username}`} key={mentor._id}>
-                    {
-                      <MentorCard mentor={mentor} />
-                    }
+                    {<MentorCard mentor={mentor} />}
                   </a>
                 ))}
                 {loading && <p>Loading...</p>}

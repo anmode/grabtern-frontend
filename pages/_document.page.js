@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-      <script
+        <script
           src="https://accounts.google.com/gsi/client"
           async
           defer

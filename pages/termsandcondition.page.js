@@ -391,6 +391,39 @@ function scrap() {
               data-custom-class="body_text"
               style={{ lineHeight: "1.5" }}
             >
+              <bdt className="question">
+                Alright, to clarify, there is no fixed price for the
+                bookSession. Each mentor can set the price as per their own
+                wish. However, we have set a minimum price of Rs. 51 for each
+                session..
+              </bdt>
+            </div>
+            <div
+              className="MsoNormal"
+              data-custom-class="body_text"
+              style={{ lineHeight: "1.5" }}
+            >
+              <span
+                style={{
+                  fontSize: "11.0pt",
+                  lineHeight: "115%",
+                  fontFamily: "Arial",
+                  color: "#595959",
+                  msoThemecolor: "text1",
+                  msoThemetint: 166,
+                }}
+              >
+                <bdt className="statement-end-if-in-editor" />
+              </span>
+            </div>
+            <div className="MsoNormal" style={{ lineHeight: 1 }}>
+              <br />
+            </div>
+            <div
+              className="MsoNormal"
+              data-custom-class="body_text"
+              style={{ lineHeight: "1.5" }}
+            >
               <span
                 style={{
                   fontSize: "11.0pt",

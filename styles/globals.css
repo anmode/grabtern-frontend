@@ -676,6 +676,7 @@ textarea {
   margin-top: 30px;
   gap: 50px;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .mentorCard {
@@ -697,6 +698,24 @@ textarea {
 .mentorCard h3,
 .mentorCard p {
   text-align: center;
+}
+.mentorListsWrapper {
+  position: relative;
+}
+
+.mentorListsWrapper:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, white);
+}
+@media (max-width: 768px) {
+  .mentorListsWrapper {
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 576px) {

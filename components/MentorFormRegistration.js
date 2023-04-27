@@ -3,7 +3,6 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 import { useRouter } from "next/router";
-import emailjs from "@emailjs/browser";
 export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
@@ -176,13 +175,13 @@ export default function MentorForm() {
     if (isChecked) {
       // Register mentor
       try {
-        console.log(formData);
+        // console.log(formData);
         setIsLoading(true);
         const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
         console.log(error);
         const { data: res } = await axios.post(url, formData);
-        sendEmail(res.mentorVerifyLink);
         setIsLoading(false);
+        setModalPopup(true);
       } catch (error) {
         setIsLoading(false);
         console.log(error);
@@ -197,50 +196,6 @@ export default function MentorForm() {
     } else {
       alert("Please agree to the terms before submitting");
     }
-  };
-
-  const sendEmail = (verifyMentorLink) => {
-    const templateParams = {
-      mentorName: formData.name,
-      message: `Hi I am ${formData.name}
-      <br>I want to register my account as mentor at Grabtern and here is my info:
-                <br>Email: ${formData.email}
-<br>My Phone Number: ${formData.mobile}
-<br>Intern At: ${formData.internAt}
-<br>Current Status: ${formData.currentStatus}
-<br>My linkedin profile: ${formData.social.linkedin}
-<br>My twitter profile: ${formData.social.twitter}
-<br>Description: ${formData.description}
-<br>Session Price for Each Intern: ${formData.sessionPrice}
-<br>
-<br>Book Session:
-<br> ${formData.bookSession.map((session, index) => {
-        return `${index + 1}. ${session.sessionName} |
-                ${session.sessionMeetingDuration} min
-                ${session.priceSession}<br>`;
-      })}
-<br> Thank you
-
-<br> To Approve the mentor please click the link below: ${verifyMentorLink}`,
-    };
-    console.log(templateParams);
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_MENTOR_REGISTRATION_KEY,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          setModalPopup(true);
-          console.log(result.text);
-        },
-        (error) => {
-          alert("Cannot send your message sorry!");
-          console.log(error.text);
-        }
-      );
   };
 
   function hideitems(className) {
@@ -429,7 +384,7 @@ export default function MentorForm() {
               name="priceSession"
               className="mentorFormInput"
               onChange={(e) => handleSessionPriceChange(e)}
-              placeholder="e.g. ₹100"
+              placeholder="e.g. ₹51"
               required
               value={formData.bookSession[0].priceSession}
             />
@@ -473,7 +428,8 @@ export default function MentorForm() {
               checked={isChecked}
               onChange={() => setIsChecked(!isChecked)}
             />
-            &nbsp;We will take 11% of your session price
+            &nbsp;We will take 11% of your session price as platform fee. So
+            according to it keep your session price. Thank you!
           </label>
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>

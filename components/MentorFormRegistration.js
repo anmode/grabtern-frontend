@@ -105,6 +105,7 @@ export default function MentorForm() {
         }
       }
     }, 1300);
+
     google.accounts.id.initialize({
       client_id:
         "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
@@ -175,7 +176,7 @@ export default function MentorForm() {
     if (isChecked) {
       // Register mentor
       try {
-        console.log(formData);
+        // console.log(formData);
         setIsLoading(true);
         const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
         console.log(error);
@@ -384,7 +385,7 @@ export default function MentorForm() {
               name="priceSession"
               className="mentorFormInput"
               onChange={(e) => handleSessionPriceChange(e)}
-              placeholder="e.g. ₹100"
+              placeholder="e.g. ₹51"
               required
               value={formData.bookSession[0].priceSession}
             />
@@ -428,7 +429,8 @@ export default function MentorForm() {
               checked={isChecked}
               onChange={() => setIsChecked(!isChecked)}
             />
-            &nbsp;We will take 11% of your session price
+            &nbsp;We will take 11% of your session price as platform fee. So
+            according to it keep your session price. Thank you!
           </label>
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>

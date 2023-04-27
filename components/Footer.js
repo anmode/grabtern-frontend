@@ -106,7 +106,7 @@ function Footer() {
                         <a href="/privacy">Privacy Policy</a>
                       </li>
                       <li>
-                        <a href="/contact">Contact Us</a>
+                        <a href="https://discord.gg/HdASBpTR">Contact Us</a>
                       </li>
                     </ul>
                   </div>

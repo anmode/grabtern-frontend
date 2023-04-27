@@ -175,7 +175,7 @@ export default function MentorForm() {
     if (isChecked) {
       // Register mentor
       try {
-        // console.log(formData);
+        console.log(formData);
         setIsLoading(true);
         const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
         console.log(error);
@@ -384,7 +384,7 @@ export default function MentorForm() {
               name="priceSession"
               className="mentorFormInput"
               onChange={(e) => handleSessionPriceChange(e)}
-              placeholder="e.g. ₹51"
+              placeholder="e.g. ₹100"
               required
               value={formData.bookSession[0].priceSession}
             />
@@ -428,8 +428,7 @@ export default function MentorForm() {
               checked={isChecked}
               onChange={() => setIsChecked(!isChecked)}
             />
-            &nbsp;We will take 11% of your session price as platform fee. So
-            according to it keep your session price. Thank you!
+            &nbsp;We will take 11% of your session price
           </label>
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>

@@ -15,6 +15,7 @@
     "axios": "^1.2.3",
     "jquery": "^3.6.3",
     "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
     "next": "^13.1.1",
     "owl.carousel": "^2.3.4",
     "react": "18.2.0",

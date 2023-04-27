@@ -12,7 +12,11 @@ const queryClient = new QueryClient();
 function Mentors() {
   const [isLoading, setIsLoading] = useState(true);
 
-  const { data: mentorsData, isError, error } = useQuery(
+  const {
+    data: mentorsData,
+    isError,
+    error,
+  } = useQuery(
     "mentors",
     async () => {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;

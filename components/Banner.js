@@ -6,7 +6,10 @@ function Banner({ isMentorLoggedIn }) {
     <section className="slider-area ">
       <div className="slider-active slick-initialized slick-slider">
         <div className="slick-list draggable">
-          <div className={styles["slick-track"]} style={{ opacity: 1, width: "1423px" }}>
+          <div
+            className={styles["slick-track"]}
+            style={{ opacity: 1, width: "1423px" }}
+          >
             <div
               className="single-slider slider-height d-flex align-items-center slick-slide slick-current slick-active"
               data-slick-index="0"

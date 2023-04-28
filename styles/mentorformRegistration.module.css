@@ -1,90 +1,90 @@
 .mentorFormRegisration {
-    margin-top: 118px;
-    padding: 70px 30px;
-  }
-  .mentorForm {
-    width: fit-content;
-    padding: 40px;
-    background-color: white;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 400px);
-    gap: 20px;
-    column-gap: 40px;
-    border: 1px solid gray;
-  }
-  .modalPopup {
-    transition: all 0.5s ease-in-out;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  }
-  .modalPopupAfterRegistrationDone {
-    background-color: white;
-    margin: 30px auto;
-    padding: 30px;
-    display: flex;
-    top: 50%;
-    gap: 30px;
-    max-width: 500px;
-    text-align: center;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    align-items: center;
-  }
-  .mentor-register-page .container > img {
-    max-width: 992px;
-    width: 100%;
-  }
-  .mentorForm {
-    width: fit-content;
-    padding: 40px;
-    background-color: white;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 400px);
-    gap: 20px;
-    column-gap: 40px;
-    border: 1px solid gray;
-  }
-  .mentorForm div {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .mentorPhoto {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 50%;
-  }
-  .mentorUploudPhoto div input {
-    border: unset !important;
-    padding: 0 !important;
-  }
-  .mentorForm .mentorFormButotn {
-    /* max-width: 150px; */
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    background: linear-gradient(
-      to top,
-      rgb(83, 116, 255) 0%,
-      rgb(127, 102, 255) 40%,
-      rgb(187, 85, 255) 95%,
-      rgb(192, 84, 255) 100%
-    );
-    box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
-  }
+  margin-top: 118px;
+  padding: 70px 30px;
+}
+.mentorForm {
+  width: fit-content;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 400px);
+  gap: 20px;
+  column-gap: 40px;
+  border: 1px solid gray;
+}
+.modalPopup {
+  transition: all 0.5s ease-in-out;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.modalPopupAfterRegistrationDone {
+  background-color: white;
+  margin: 30px auto;
+  padding: 30px;
+  display: flex;
+  top: 50%;
+  gap: 30px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+}
+.mentor-register-page .container > img {
+  max-width: 992px;
+  width: 100%;
+}
+.mentorForm {
+  width: fit-content;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 400px);
+  gap: 20px;
+  column-gap: 40px;
+  border: 1px solid gray;
+}
+.mentorForm div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.mentorPhoto {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.mentorUploudPhoto div input {
+  border: unset !important;
+  padding: 0 !important;
+}
+.mentorForm .mentorFormButotn {
+  /* max-width: 150px; */
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  background: linear-gradient(
+    to top,
+    rgb(83, 116, 255) 0%,
+    rgb(127, 102, 255) 40%,
+    rgb(187, 85, 255) 95%,
+    rgb(192, 84, 255) 100%
+  );
+  box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
+}

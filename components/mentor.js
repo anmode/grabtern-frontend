@@ -31,7 +31,9 @@ const MentorCard = ({ mentor }) => {
             Booked Sessions: {mentor.bookedSession}
           </a>
         </div>
-        <button className={styles["mentor-card__book-session"]}>Book Session</button>
+        <button className={styles["mentor-card__book-session"]}>
+          Book Session
+        </button>
       </div>
     </div>
   );

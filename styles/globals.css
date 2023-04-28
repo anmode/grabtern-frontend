@@ -113,8 +113,6 @@ a {
   }
 }
 
-
-
 .properties__footer {
   margin-bottom: 0 !important;
 }
@@ -212,8 +210,6 @@ a {
   transform: translateY(2px) translateX(2px);
 }
 
-
-
 .single-slider {
   width: 100% !important;
 }
@@ -301,14 +297,10 @@ a {
   padding: 0 60px;
 }
 
-
-
 .about-area1 .support-wrapper {
   gap: 80px;
   flex-wrap: nowrap !important;
 }
-
-
 
 @media (min-width: 992px) {
   .video {
@@ -763,10 +755,6 @@ textarea {
   cursor: pointer;
 }
 
-
-
-
-
 .modalPopupAfterRegistrationDone img {
   width: 100px;
 }
@@ -838,8 +826,6 @@ textarea {
   cursor: pointer;
   color: grey;
 }
-
-
 
 .mentorUploudPhoto {
   display: flex;
@@ -1072,4 +1058,3 @@ textarea {
   font-weight: 500;
   margin-bottom: 20px;
 }
-

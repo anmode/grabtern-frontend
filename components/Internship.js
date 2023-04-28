@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import styles from "../styles/internship.module.css";
 
 function Internship({
   internshipImage,
@@ -20,7 +21,7 @@ function Internship({
       className="properties pb-20 item"
       style={{ minHeight: "469px !important" }}
     >
-      <div className="properties__card">
+      <div className={styles["properties__card"]}>
         <div className="properties__img overlay1">
           <a href="#">
             <Image

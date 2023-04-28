@@ -113,11 +113,7 @@ a {
   }
 }
 
-.properties__card {
-  position: relative;
-  height: 500px !important;
-  position: relative;
-}
+
 
 .properties__footer {
   margin-bottom: 0 !important;
@@ -216,9 +212,7 @@ a {
   transform: translateY(2px) translateX(2px);
 }
 
-.slick-track {
-  width: 100% !important;
-}
+
 
 .single-slider {
   width: 100% !important;
@@ -307,22 +301,14 @@ a {
   padding: 0 60px;
 }
 
-.right-content1 {
-  padding-top: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 0 !important;
-}
+
 
 .about-area1 .support-wrapper {
   gap: 80px;
   flex-wrap: nowrap !important;
 }
 
-.right-img {
-  display: flex;
-  justify-content: center;
-}
+
 
 @media (min-width: 992px) {
   .video {
@@ -676,6 +662,7 @@ textarea {
   margin-top: 30px;
   gap: 50px;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .mentorCard {
@@ -697,6 +684,24 @@ textarea {
 .mentorCard h3,
 .mentorCard p {
   text-align: center;
+}
+.mentorListsWrapper {
+  position: relative;
+}
+
+.mentorListsWrapper:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, white);
+}
+@media (max-width: 768px) {
+  .mentorListsWrapper {
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -758,35 +763,9 @@ textarea {
   cursor: pointer;
 }
 
-.modalPopup {
-  transition: all 0.5s ease-in-out;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
 
-.modalPopupAfterRegistrationDone {
-  background-color: white;
-  margin: 30px auto;
-  padding: 30px;
-  display: flex;
-  top: 50%;
-  gap: 30px;
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  align-items: center;
-}
+
+
 
 .modalPopupAfterRegistrationDone img {
   width: 100px;
@@ -860,12 +839,7 @@ textarea {
   color: grey;
 }
 
-.mentorPhoto {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 50%;
-}
+
 
 .mentorUploudPhoto {
   display: flex;
@@ -1016,131 +990,6 @@ textarea {
 }
 
 /*Mentor CSS*/
-.mentor-card {
-  padding: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  width: 30vw;
-  height: 50vh;
-  background-color: #fff;
-  border-radius: 5%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-  transition: all 0.3s ease;
-}
-
-.mentor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  color: black;
-}
-
-.mentor-card__photo {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 2rem;
-}
-
-.mentor-card__info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-}
-
-.mentor-card__name {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.mentor-card__intern,
-.mentor-card__status,
-.mentor-card__description {
-  margin: 0;
-  font-size: 1.3rem;
-}
-
-.mentor-card__description {
-  font-style: italic;
-}
-
-.mentor-card__social {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-}
-
-.mentor-card__social a:hover {
-  color: grey;
-}
-
-.mentor-card__linkedin,
-.mentor-card__rating,
-.mentor-card__booked-session {
-  font-size: 1.2rem;
-  color: #666;
-}
-
-.mentor-card__book-session {
-  margin-top: 1rem;
-  padding: 0.8rem 1.6rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  border-radius: 4px;
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.mentor-card__book-session:hover {
-  background-color: #005fa3;
-}
-
-@media only screen and (max-width: 800px) {
-  .mentor-card {
-    flex-direction: column;
-    width: 80vw;
-    height: 50vh;
-    padding: 2rem 5rem;
-    text-align: center;
-    margin: auto;
-  }
-
-  .mentor-card__book-session {
-    width: 50vw;
-    margin: auto;
-  }
-
-  .mentor-card__photo {
-    width: 15vw;
-    height: 15vw;
-    margin: auto;
-  }
-
-  .mentor-card__info {
-    margin: auto;
-  }
-}
-
-@media only screen and (min-width: 1080px) and (max-width: 1200px) {
-  .mentor-card {
-    width: 30vw;
-    height: 60vh;
-  }
-}
-
-@media only screen and (max-width: 1080px) and (min-width: 800px) {
-  .mentor-card {
-    width: 40vw;
-    height: 60vh;
-  }
-}
 
 /* Terms and condition */
 .TNCcontainer {
@@ -1224,57 +1073,3 @@ textarea {
   margin-bottom: 20px;
 }
 
-/* Reset Password css */
-.reset-password-container {
-  max-width: 400px;
-  margin: 200px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.reset-password-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.reset-password-container label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.reset-password-container input[type="password"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-.reset-password-container button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.reset-password-container button:hover {
-  background-color: #0069d9;
-}
-
-.reset-password-container .error {
-  color: #ff0000;
-  margin-top: 10px;
-}
-
-.reset-password-container .message {
-  color: #00ff00;
-  margin-top: 10px;
-}

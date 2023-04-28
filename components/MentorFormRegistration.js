@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import styles from "../styles/mentorformRegistration.module.css";
 
 import { useRouter } from "next/router";
 export default function MentorForm() {
@@ -206,8 +207,8 @@ export default function MentorForm() {
     <div className="mentorFormRegisration">
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {modalPopup === true ? (
-        <div className="modalPopup">
-          <div className="modalPopupAfterRegistrationDone">
+        <div className={styles["modalPopup"]}>
+          <div className={styles["modalPopupAfterRegistrationDone"]}>
             <p>
               Thank you for registering. Within one to two days of verification,
               you will receive an email with a link to instantly generate your
@@ -234,7 +235,7 @@ export default function MentorForm() {
                   ? "/assets/img/icon/no-profile-picture.png"
                   : formData.mentorImg
               }
-              className="mentorPhoto"
+              className={styles["mentorPhoto"]}
             />
             <div>
               <h3>

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/TeamProfile.module.css";
 
 function TeamProfile({ imageSrc, imageAlt, profileName, profileDescription }) {
   return (

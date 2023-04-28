@@ -1,0 +1,107 @@
+.properties__card {
+    position: relative;
+    height: 500px !important;
+    position: relative;
+  }
+  @media (max-width: 880px) {
+    .properties__card {
+      height: 770px !important;
+    }
+  }
+  @media (max-width: 576px) {
+    .team-area {
+      padding-top: 0 !important;
+    }
+    .testimonialsList .box .info .name {
+      font-size: 15px !important;
+    }
+    .testimonialsList .box .info .job {
+      font-size: 14px !important;
+    }
+  
+    .testimonialsList .box .info .stars i {
+      font-size: 15px !important;
+    }
+  
+    .testimonialsList .box p {
+      font-size: 15px !important;
+    }
+  
+    .testimonialsList .box .content .image {
+      width: 65px !important;
+      height: 65px !important;
+    }
+    .testimonialsList .owl-nav {
+      display: none !important;
+    }
+    .testimonials {
+      padding: 0 20px !important;
+    }
+    .owl-nav {
+      display: none;
+    }
+    .courses-area .container {
+      padding: 100px 10px 0 !important;
+    }
+    .single-slider .container {
+      padding: 270px 30px 200px !important;
+    }
+    .hero__caption .btn {
+      margin-bottom: 20px;
+    }
+    .properties__card {
+      height: 690px !important;
+    }
+    .mentorUploudPhoto {
+      display: block !important;
+    }
+    .mentorUploudPhoto img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      margin-left: 130px;
+    }
+    .mentorForm {
+      border: none !important;
+    }
+    .mentorFormRegisration > .container {
+      padding-top: 0 !important;
+    }
+    .properties__footer .restaurant-name {
+      font-size: 14px !important;
+    }
+    .properties__footer .price span {
+      font-size: 18px !important;
+      position: relative;
+      top: -36px;
+      margin-left: 20px;
+    }
+    .courseFooter a {
+      padding: 10px;
+    }
+    .about-area1 {
+      padding: 0 30px;
+    }
+    .services-area > .container > .row .col-lg-4 .single-services {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .services-area
+      > .container
+      > .row
+      .col-lg-4
+      .single-services
+      .features-caption {
+      padding-left: 0;
+    }
+    .services-area {
+      margin-top: -220px;
+    }
+    .container {
+      padding: 100px 30px 0;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
+  

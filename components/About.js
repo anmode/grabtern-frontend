@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../styles/about.module.css";
 
 function About() {
   const [isVideoPlayed, setIsVideoPlayed] = useState(false);
@@ -60,11 +61,11 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="right-content1">
-          <div className="right-img">
+        <div className={styles["right-content1"]}>
+          <div className={styles["right-img"]}>
             <video
               controls="controls"
-              className="video"
+              className={styles["video"]}
               muted
               style={{ width: "100%", maxWidth: "100%", height: "auto" }}
             >

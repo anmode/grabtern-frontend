@@ -1,0 +1,22 @@
+
+  
+  @media (min-width: 992px) {
+    .video {
+      width: 540px !important;
+      max-width: unset !important;
+    }
+  }
+  .left-content1 {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+  .right-img {
+    display: flex;
+    justify-content: center;
+  }
+  .right-content1 {
+    padding-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+  }

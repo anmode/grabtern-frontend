@@ -32,6 +32,7 @@ function Index({ mentorDetail }) {
   // }, [modalPopup]);
   const handleClick = (Mentordata) => () => {
     if (isLoggedIn) {
+      setModalPopup(true);
       handleBookSession(
         Mentordata.sessionName,
         mentorDetail.email,
@@ -273,26 +274,76 @@ function Index({ mentorDetail }) {
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={handleClick(session)}
+                        onClick={() => setModalPopup(true)}
                       >
-                        {isLoading ? (
-                          <img
-                            style={{
-                              width: "50px",
-                              height: "50px",
-                              border: "none",
-                              margin: "0 60px",
-                            }}
-                            src="/assets/img/gif/Spinner.gif"
-                            alt="loading..."
-                          />
-                        ) : (
-                          <span>Book Session</span>
-                        )}
+                        <span>Book Session</span>
                       </button>
                       {error && <div style={{ color: "red" }}>{error}</div>}
-
-                      {modalPopup === true ? (
+                      {error == "" && modalPopup === true ? (
+                        <div className="modalPopup">
+                          <div className="modalPopupAfterRegistrationDone">
+                            <i
+                              onClick={() => setModalPopup(false)}
+                              style={{
+                                cursor: "pointer",
+                                marginLeft: "auto",
+                                fontSize: "25px",
+                              }}
+                              className="fas fa-times"
+                            ></i>
+                            <p style={{ marginBottom: "0" }}>
+                              Hurrah! Just one step left to get your session
+                              booked <br /> Our team will contact you for
+                              payment, soon !!
+                              <br />
+                            </p>
+                            <div style={{ display: "flex", gap: "2rem" }}>
+                              <button
+                                onClick={() => setModalPopup(false)}
+                                style={{
+                                  marginRight: "auto",
+                                  cursor: "pointer",
+                                  border: "none",
+                                  backgroundColor: "red",
+                                  color: "white",
+                                  padding: "10px 20px",
+                                  borderRadius: "10px",
+                                }}
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                onClick={handleClick(session)}
+                                style={{
+                                  marginRight: "auto",
+                                  cursor: "pointer",
+                                  border: "none",
+                                  backgroundColor: "green",
+                                  color: "white",
+                                  padding: "10px 20px",
+                                  borderRadius: "10px",
+                                }}
+                              >
+                                {isLoading == true ? (
+                                  <img
+                                    style={{
+                                      width: "25px",
+                                      height: "25px",
+                                      border: "none",
+                                      margin: "0 22px",
+                                    }}
+                                    src="/assets/img/gif/Spinner.gif"
+                                    alt="loading..."
+                                  />
+                                ) : (
+                                  <span>Confirm</span>
+                                )}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+                      {/* {modalPopup === true ? (
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">
                             <p>
@@ -303,7 +354,7 @@ function Index({ mentorDetail }) {
                             <p>Redirecting you to home in {waitTime} second</p>
                           </div>
                         </div>
-                      ) : null}
+                      ) : null} */}
                       <div></div>
                     </li>
                   ))

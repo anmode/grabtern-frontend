@@ -62,7 +62,7 @@ function Mentors({ mentorsData }) {
 
 export default Mentors;
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
   const { data } = await axios.get(url);
 

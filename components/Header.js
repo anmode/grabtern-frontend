@@ -61,159 +61,333 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     router.push("/");
     window.location.reload();
   };
+  if (window.matchMedia("(min-width: 400px)").matches) {
+    return (
 
-  return (
-    <div className="header-area header-transparent">
-      <div className="main-header ">
-        <div
-          className={`header-bottom  header-sticky ${
-            scrollY > 400
-              ? "sticky-bar"
-              : navbarBackground === true
-              ? "sticky-bar"
-              : ""
-          }`}
-          style={{ transition: "all 0.5s ease-in" }}
-        >
-          <div className="container-fluid">
-            <div className="row align-items-center">
-              <div className="col-xl-2 col-lg-2">
-                <div className="logo">
-                  <a href="/">
-                    <Image
-                      width={100}
-                      height={117}
-                      src="/whitelogo.png"
-                      style={{ padding: "30px 0" }}
-                      alt="grabtern_logo"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div className="col-xl-10 col-lg-10">
-                <div className="menu-wrapper d-flex align-items-center justify-content-end">
-                  <div
-                    className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
-                    }`}
-                  >
-                    <nav>
-                      <ul id="navigation">
-                        <li className="active">
-                          <a href="/">Home</a>
-                        </li>
-                        <li>
-                          <a href="/mentors">Mentors</a>
-                        </li>
-                        <li>
-                          <a href="/contact">Contact</a>
-                        </li>
-
-                        {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
-                          <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                onClick={handleLoginClick}
-                                className={styles.userName}
-                              >
-                                <img
-                                  style={{
-                                    width: "35px",
-                                    height: "auto",
-                                    borderRadius: "50%",
-                                  }}
-                                  src={
-                                    localStorage.getItem("user_picture") ||
-                                    localStorage.getItem("mentor_picture") ||
-                                    "assets/img/icon/no-profile-picture.png"
-                                  }
-                                  alt="not found"
-                                />
-                              </button>
-
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    className="login-buttons"
-                                    style={{ marginTop: "20px" }}
-                                    onClick={() => {
-                                      if (isMentorLoggedIn) {
-                                        window.location.href = `/dashboard`;
-                                      } else {
-                                        window.location.href = `/`;
-                                      }
-                                    }}
-                                  >
-                                    Dashboard
-                                  </button>
-                                  <button
-                                    className="login-buttons"
-                                    onClick={() => {
-                                      if (isMentorLoggedIn) {
-                                        mentorlogout();
-                                      } else {
-                                        userlogout();
-                                      }
-                                    }}
-                                  >
-                                    Logout
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        ) : (
-                          <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                className={styles.loginbutton}
-                                onClick={handleLoginClick}
-                              >
-                                Login
-                              </button>
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    className="login-buttons"
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/login">User</a>
-                                  </button>
-                                  <button
-                                    className="login-buttons"
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/mentorLogin">Mentor</a>
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        )}
-                      </ul>
-                    </nav>
+      <div className="header-area header-transparent">
+        <div className="main-header ">
+          <div
+            className={`header-bottom  header-sticky ${scrollY > 400
+                ? "sticky-bar"
+                : navbarBackground === true
+                  ? "sticky-bar"
+                  : ""
+              }`}
+            style={{ transition: "all 0.5s ease-in" }}
+          >
+            <div className="container-fluid">
+              <div className="row align-items-center">
+                <div className="col-xl-2 col-lg-2">
+                  <div className="logo">
+                    <a href="/">
+                      <Image
+                        width={100}
+                        height={117}
+                        src="/whitelogo.png"
+                        style={{ padding: "30px 0" }}
+                        alt="grabtern_logo"
+                      />
+                    </a>
                   </div>
                 </div>
-              </div>
-              <div
-                className={`menuToggle ${
-                  navbarAppear === true ? "active" : ""
-                }`}
-                onClick={() => menuToggle()}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div className="col-12">
-                <div className="mobile_menu d-block d-lg-none"></div>
+
+                <div className="col-xl-10 col-lg-10">
+                  <div className="menu-wrapper d-flex align-items-center justify-content-end">
+                    <div
+                      className={`main-menu d-none d-lg-block ${navbarAppear === true ? "active" : ""
+                        }`}
+                    >
+
+                      <nav>
+                        <ul id="navigation">
+                          <li className="active">
+                            <a href="/">Home</a>
+                          </li>
+                          <li>
+                            <a href="/mentors">Mentors</a>
+                          </li>
+                          <li>
+                            <a href="/contact">Contact</a>
+                          </li>
+
+                          {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+                            <li>
+                              <div className={styles.loginOption}>
+                                <button
+                                  onClick={handleLoginClick}
+                                  className={styles.userName}
+                                >
+                                  <img
+                                    style={{
+                                      width: "35px",
+                                      height: "auto",
+                                      borderRadius: "50%",
+                                    }}
+                                    src={
+                                      localStorage.getItem("user_picture") ||
+                                      localStorage.getItem("mentor_picture") ||
+                                      "assets/img/icon/no-profile-picture.png"
+                                    }
+                                    alt="not found"
+                                  />
+                                </button>
+
+                                {loginOption && (
+                                  <div className="login-optionslist">
+                                    <button
+                                      className="login-buttons"
+                                      style={{ marginTop: "20px" }}
+                                      onClick={() => {
+                                        if (isMentorLoggedIn) {
+                                          window.location.href = `/dashboard`;
+                                        } else {
+                                          window.location.href = `/`;
+                                        }
+                                      }}
+                                    >
+                                      Dashboard
+                                    </button>
+                                    <button
+                                      className="login-buttons"
+                                      onClick={() => {
+                                        if (isMentorLoggedIn) {
+                                          mentorlogout();
+                                        } else {
+                                          userlogout();
+                                        }
+                                      }}
+                                    >
+                                      Logout
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            </li>
+                          ) : (
+                            <li>
+                              <div className={styles.loginOption}>
+                                <button
+                                  className={styles.loginbutton}
+                                  onClick={handleLoginClick}
+                                >
+                                  Login
+                                </button>
+                                {loginOption && (
+                                  <div className="login-optionslist">
+                                    <button
+                                      className="login-buttons"
+                                      onClick={handleLoginClick}
+                                    >
+                                      <a href="/login">User</a>
+                                    </button>
+                                    <button
+                                      className="login-buttons"
+                                      onClick={handleLoginClick}
+                                    >
+                                      <a href="/mentorLogin">Mentor</a>
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            </li>
+                          )}
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+                {/* <div
+                  className={`menuToggle ${navbarAppear === true ? "active" : ""
+                    }`}
+                  onClick={() => menuToggle()}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div> */}
+                <div className="col-12">
+                  <div className="mobile_menu d-block d-lg-none"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    )
+  }
+  else {
+    return (
+
+      <div className="header-area header-transparent">
+        <div className="main-header ">
+          <div
+            className={`header-bottom  header-sticky ${scrollY > 400
+                ? "sticky-bar"
+                : navbarBackground === true
+                  ? "sticky-bar"
+                  : ""
+              }`}
+            style={{ transition: "all 0.5s ease-in" }}
+          >
+            <div className="container-fluid">
+              <div className="row align-items-center">
+                <div className="col-xl-2 col-lg-2">
+                  <div className="logo">
+                    <a href="/">
+                      <Image
+                        width={100}
+                        height={117}
+                        src="/whitelogo.png"
+                        style={{ padding: "30px 0" }}
+                        alt="grabtern_logo"
+                      />
+                    </a>
+                  </div>
+                  
+                </div>
+
+                <div className="col-xl-10 col-lg-10">
+                  <div className="menu-wrapper d-flex align-items-center justify-content-end">
+                    <div
+                      className={`main-menu d-none d-lg-block ${navbarAppear === true ? "active" : ""
+                        }`}
+                    >
+
+                      <nav>
+                        <ul id="navigation">
+                          <li className="active">
+                            <a href="/">Home</a>
+                          </li>
+                          <li>
+                            <a href="/mentors">Mentors</a>
+                          </li>
+                          <li>
+                            <a href="/contact">Contact</a>
+                          </li>
+
+                          {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+                            <li>
+                              <div className={styles.loginOption}>
+                                {/* <button
+                                  onClick={handleLoginClick}
+                                  className={styles.userName}
+                                >
+                                  <img
+                                    style={{
+                                      width: "35px",
+                                      height: "auto",
+                                      borderRadius: "50%",
+                                    }}
+                                    src={
+                                      localStorage.getItem("user_picture") ||
+                                      localStorage.getItem("mentor_picture") ||
+                                      "assets/img/icon/no-profile-picture.png"
+                                    }
+                                    alt="not found"
+                                  />
+                                </button> */}
+
+                                {loginOption && (
+                                  <div className="login-optionslist">
+                                    <button
+                                      className="login-buttons"
+                                      style={{ marginTop: "20px" }}
+                                      onClick={() => {
+                                        if (isMentorLoggedIn) {
+                                          window.location.href = `/dashboard`;
+                                        } else {
+                                          window.location.href = `/`;
+                                        }
+                                      }}
+                                    >
+                                      Dashboard
+                                    </button>
+                                    <button
+                                      className="login-buttons"
+                                      onClick={() => {
+                                        if (isMentorLoggedIn) {
+                                          mentorlogout();
+                                        } else {
+                                          userlogout();
+                                        }
+                                      }}
+                                    >
+                                      Logout
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            </li>
+                          ) : (
+                            <li>
+                              <div className={styles.loginOption}>
+                                <button
+                                  className={styles.loginbutton}
+                                  onClick={handleLoginClick}
+                                >
+                                  Login
+                                </button>
+                                {loginOption && (
+                                  <div className="login-optionslist">
+                                    <button
+                                      className="login-buttons"
+                                      onClick={handleLoginClick}
+                                    >
+                                      <a href="/login">User</a>
+                                    </button>
+                                    <button
+                                      className="login-buttons"
+                                      onClick={handleLoginClick}
+                                    >
+                                      <a href="/mentorLogin">Mentor</a>
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            </li>
+                          )}
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={`menuToggle ${navbarAppear === true ? "active" : ""
+                    }`}
+                  onClick={() => menuToggle()}
+                >
+                  {/* <span></span>
+                  <span></span>
+                  <span></span> */}
+                  <div
+                                  onClick={handleLoginClick}
+                                  className={styles.userName}
+                                >
+                                  <img
+                                    style={{
+                                      width: "35px",
+                                      height: "auto",
+                                      borderRadius: "50%",
+                                    }}
+                                    src={
+                                      localStorage.getItem("user_picture") ||
+                                      localStorage.getItem("mentor_picture") ||
+                                      "assets/img/icon/no-profile-picture.png"
+                                    }
+                                    alt="not found"
+                                  />
+                                </div>
+                </div>
+                <div className="col-12">
+                  <div className="mobile_menu d-block d-lg-none"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  };
 }
 
 export default Header;

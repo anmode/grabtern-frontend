@@ -48,4 +48,3 @@ export const getStaticProps = async (context) => {
     revalidate: 20, // revalidate the data every 20 seconds
   };
 };
-

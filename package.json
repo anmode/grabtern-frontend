@@ -25,6 +25,7 @@
     "react-router-dom": "^6.8.1",
     "react-socks": "^2.2.0",
     "redis": "^4.6.5",
+    "sharp": "^0.32.1",
     "styled-components": "^5.3.10",
     "swr": "^2.1.5"
   },

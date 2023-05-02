@@ -45,5 +45,7 @@ export const getStaticProps = async (context) => {
           mentor.verified === true && mentor.token === "mentorIsVerified"
       ),
     },
+    revalidate: 20, // revalidate the data every 20 seconds
   };
 };
+

@@ -78,6 +78,40 @@ function About() {
               </div>
             </div>
             <div className="row">
+            <div className="col-lg-3 col-md-4 col-sm-6">
+                <div className="single-topic text-center mb-30">
+                  <div className="topic-img">
+                    <img
+                      src="/assets/img/hackathons/samsung.png"
+                      alt="Solve for Tommorow"
+                    />
+                    <div className="topic-content-box">
+                      <div className="topic-content">
+                        <h3>
+                          <a href="https://www.samsung.com/in/solvefortomorrow/" target="_blank">Solve for Tommorow</a>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-4 col-sm-6">
+                <div className="single-topic text-center mb-30">
+                  <div className="topic-img">
+                    <img
+                      src="/assets/img/hackathons/Google Girl Hackathon.png"
+                      alt="Google Girls Hackathon"
+                    />
+                    <div className="topic-content-box">
+                      <div className="topic-content">
+                        <h3>
+                          <a href="https://unstop.com/hackathons/girl-hackathon-2023-google-681413" target="_blank">Google Girl's Hackathon</a>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="col-lg-3 col-md-4 col-sm-6">
                 <div className="single-topic text-center mb-30">
                   <div className="topic-img">
@@ -88,7 +122,7 @@ function About() {
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3>
-                          <a href="#">Tata Imagination</a>
+                          <a href="https://www.tata.com/careers/programs/tata-imagination-challenge" target="_blank">Tata Imagination</a>
                         </h3>
                       </div>
                     </div>
@@ -105,7 +139,7 @@ function About() {
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3>
-                          <a href="#">
+                          <a href="https://developer.apple.com/wwdc23/swift-student-challenge/" target="_blank">
                             Apple Swift <br /> Challenge
                           </a>
                         </h3>
@@ -124,7 +158,7 @@ function About() {
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3>
-                          <a href="#">Hackoctoberfest</a>
+                          <a href="https://hacktoberfest.com/" target="_blank">Hackoctoberfest</a>
                         </h3>
                       </div>
                     </div>
@@ -141,7 +175,24 @@ function About() {
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3>
-                          <a href="#">Microsoft Image Cup</a>
+                          <a href="https://imaginecup.microsoft.com/en-us/Events" target="_blank">Microsoft Image Cup</a>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-4 col-sm-6">
+                <div className="single-topic text-center mb-30">
+                  <div className="topic-img">
+                    <img
+                      src="/assets/img/hackathons/Facebook Hacker Cup.png"
+                      alt="Facebook Hacker Cup"
+                    />
+                    <div className="topic-content-box">
+                      <div className="topic-content">
+                        <h3>
+                          <a href="https://www.facebook.com/codingcompetitions/hacker-cup" target="_blank">Facebook Hacker Cup</a>
                         </h3>
                       </div>
                     </div>
@@ -155,7 +206,7 @@ function About() {
                     <div className="topic-content-box">
                       <div className="topic-content">
                         <h3>
-                          <a href="#">SIH</a>
+                          <a href="https://www.sih.gov.in/" target="_blank">SIH</a>
                         </h3>
                       </div>
                     </div>

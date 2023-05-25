@@ -183,15 +183,15 @@ export default function Home() {
               </div>
             </div>
             <div className="row">
-            {hackathonsData.map((hackathon, index) => (
-                    <Hackathon
-                      key={index}
-                      hackathonImage={hackathon.hackathonImage}
-                      hackathonImageAlt={hackathon.hackathonImageAlt}
-                      hackathonLink={hackathon.hackathonLink}
-                      hackathonTitle={hackathon.hackathonTitle}
-                    />
-                  ))}
+              {hackathonsData.map((hackathon, index) => (
+                <Hackathon
+                  key={index}
+                  hackathonImage={hackathon.hackathonImage}
+                  hackathonImageAlt={hackathon.hackathonImageAlt}
+                  hackathonLink={hackathon.hackathonLink}
+                  hackathonTitle={hackathon.hackathonTitle}
+                />
+              ))}
             </div>
             <div className="row justify-content-center">
               <div className="col-xl-12">

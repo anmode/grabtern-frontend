@@ -7,6 +7,9 @@ const Service = dynamic(() => import("../components/Service"));
 const AboutComponent = dynamic(() => import("../components/About"));
 import TeamProfile from "../components/TeamProfile";
 
+
+import Hackathon from "../components/Hackathons";
+import hackathonsData from "./data/hackathonsData";
 import servicesData from "./data/ServicesData";
 import teamsData from "./data/teamsData";
 var $ = require("jquery");
@@ -78,90 +81,15 @@ function About() {
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/tata Imagination.png"
-                      alt="tata Imagination"
+            {hackathonsData.map((hackathon, index) => (
+                    <Hackathon
+                      key={index}
+                      hackathonImage={hackathon.hackathonImage}
+                      hackathonImageAlt={hackathon.hackathonImageAlt}
+                      hackathonLink={hackathon.hackathonLink}
+                      hackathonTitle={hackathon.hackathonTitle}
                     />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">Tata Imagination</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Apple Swift Challenge.png"
-                      alt="Apple Swift Challenge"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">
-                            Apple Swift <br /> Challenge
-                          </a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Hackoctoberfest.png"
-                      alt="Hackoctoberfest"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">Hackoctoberfest</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Microsoft Image Cup.png"
-                      alt="Microsoft Image Cup"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">Microsoft Image Cup</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img src="/assets/img/hackathons/SIH.png" alt="SIH" />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">SIH</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  ))}
             </div>
             <div className="row justify-content-center">
               <div className="col-xl-12">

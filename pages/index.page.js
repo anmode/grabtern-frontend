@@ -4,6 +4,8 @@ import servicesData from "./data/ServicesData";
 import Service from "../components/Service";
 import internshipsData from "./data/coursesData";
 import Internship from "../components/Internship";
+import hackathonsData from "./data/hackathonsData";
+import Hackathon from "../components/Hackathons";
 import teamsData from "./data/teamsData";
 import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/Footer";
@@ -181,141 +183,15 @@ export default function Home() {
               </div>
             </div>
             <div className="row">
-            <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Solve for Tomorrow.png"
-                      alt="Solve for Tommorow"
+            {hackathonsData.map((hackathon, index) => (
+                    <Hackathon
+                      key={index}
+                      hackathonImage={hackathon.hackathonImage}
+                      hackathonImageAlt={hackathon.hackathonImageAlt}
+                      hackathonLink={hackathon.hackathonLink}
+                      hackathonTitle={hackathon.hackathonTitle}
                     />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://www.samsung.com/in/solvefortomorrow/" target="_blank">Solve for Tommorow</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Google Girl Hackathon.png"
-                      alt="Google Girls Hackathon"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://unstop.com/hackathons/girl-hackathon-2023-google-681413" target="_blank">Google Girl's Hackathon</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/tata Imagination.png"
-                      alt="tata Imagination"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://www.tata.com/careers/programs/tata-imagination-challenge" target="_blank">Tata Imagination</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Apple Swift Challenge.png"
-                      alt="Apple Swift Challenge"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://developer.apple.com/wwdc23/swift-student-challenge/" target="_blank">
-                            Apple Swift <br /> Challenge
-                          </a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Hackoctoberfest.png"
-                      alt="Hackoctoberfest"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://hacktoberfest.com/" target="_blank">Hackoctoberfest</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Microsoft Image Cup.png"
-                      alt="Microsoft Image Cup"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://imaginecup.microsoft.com/en-us/Events" target="_blank">Microsoft Image Cup</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Facebook Hacker Cup.png"
-                      alt="Facebook Hacker Cup"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://www.facebook.com/codingcompetitions/hacker-cup" target="_blank">Facebook Hacker Cup</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img src="/assets/img/hackathons/SIH.png" alt="SIH" />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="https://www.sih.gov.in/" target="_blank">SIH</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  ))}
             </div>
             <div className="row justify-content-center">
               <div className="col-xl-12">

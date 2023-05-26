@@ -48,10 +48,9 @@ function mentorLogin() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/gloginauth`;
       const { data: res } = await axios.post(url, userObject);
-      console.log(res);
       localStorage.setItem("mentorToken", res.loginToken);
-      localStorage.setItem("mentor_name", res.fullName);
-      localStorage.setItem("mentor_picture", res.mentorImg);
+      localStorage.setItem("mentor_name", userObject.name);
+      localStorage.setItem("mentor_picture", userObject.picture);
       router.push("/");
     } catch (error) {
       console.log(error);

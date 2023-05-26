@@ -1318,3 +1318,13 @@ textarea {
   text-transform: normal;
   text-align: center;
 }
+
+.tnc{
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+}

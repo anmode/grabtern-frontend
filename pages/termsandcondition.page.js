@@ -1,5 +1,7 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Header from "../components/Header";
+const Footer = dynamic(() => import("../components/Footer"));
 function scrap() {
   return (
     <>
@@ -11,15 +13,15 @@ function scrap() {
               "\n  [data-custom-class='body'], [data-custom-class='body'] * {\n          background: transparent !important;\n        }\n[data-custom-class='title'], [data-custom-class='title'] * {\n          font-family: Arial !important;\nfont-size: 26px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class='subtitle'], [data-custom-class='subtitle'] * {\n          font-family: Arial !important;\ncolor: #595959 !important;\nfont-size: 14px !important;\n        }\n[data-custom-class='heading_1'], [data-custom-class='heading_1'] * {\n          font-family: Arial !important;\nfont-size: 19px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class='heading_2'], [data-custom-class='heading_2'] * {\n          font-family: Arial !important;\nfont-size: 17px !important;\ncolor: #000000 !important;\n        }\n[data-custom-class='body_text'], [data-custom-class='body_text'] * {\n          color: #595959 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\n        }\n[data-custom-class='link'], [data-custom-class='link'] * {\n          color: #3030F1 !important;\nfont-size: 14px !important;\nfont-family: Arial !important;\nword-break: break-word !important;\n        }\n",
           }}
         />
-        <div data-custom-class="body">
-          <div align="center" style={{ textAlign: "left" }}>
+        <div>
+          <div align="center" style={{ textAlign: "center", fontSize: 36, }}>
             <div
-              className="MsoNormal"
-              data-custom-class="title"
-              style={{ lineHeight: "1.5" }}
+              className="MsoNormal tnc"
+              // data-custom-class="title"
+              style={{ lineHeight: "1.0" }}
             >
               <bdt className="block-component">
-                <span style={{ fontSize: 19 }} />
+                <span style={{ fontSize: 36, textAlign:"center", marginTop:"0%", marginBottom:"0px", }} />
               </bdt>
               <br></br>
               <br></br>
@@ -30,10 +32,7 @@ function scrap() {
               </bdt>
               <bdt className="statement-end-if-in-editor" />
             </div>
-            <div className="MsoNormal" style={{ lineHeight: "1.5" }}>
-              <br />
-            </div>
-            <div
+            {/* <div
               className="MsoNormal"
               data-custom-class="subtitle"
               style={{ lineHeight: "1.5" }}
@@ -42,25 +41,16 @@ function scrap() {
               <bdt className="question">
                 <strong>April 21, 2023</strong>
               </bdt>
-            </div>
-            <div className="MsoNormal" style={{ lineHeight: "1.1" }}>
-              <br />
-            </div>
-            <div className="MsoNormal" style={{ lineHeight: "115%" }}>
-              <br />
-            </div>
-            <div className="MsoNormal" style={{ lineHeight: "115%" }}>
-              <br />
-            </div>
-            <div style={{ lineHeight: "1.5" }}>
+        </div> */}
+            <div className="ret_pol" style={{ lineHeight: "1.5", fontSize:29, textAlign:"left", marginTop: "70px",  marginLeft: "30px", }}>
               <strong>
-                <span data-custom-class="heading_1">
+                <span >
                   AGREEMENT TO OUR LEGAL TERMS
                 </span>
               </strong>
             </div>
           </div>
-          <div align="center" style={{ textAlign: "left" }}>
+          <div align="center" style={{ textAlign: "left", marginLeft: "30px", }}>
             <div
               className="MsoNormal"
               id="agreement"
@@ -72,15 +62,14 @@ function scrap() {
           <div align="center" style={{ lineHeight: 1 }}>
             <br />
           </div>
-          <div align="center" style={{ textAlign: "left" }}>
+          <div align="center" style={{ textAlign: "left", fontSize: "30px", marginLeft: "30px", }}>
             <div
               className="MsoNormal"
-              data-custom-class="body_text"
-              style={{ lineHeight: "1.5" }}
+              style={{ lineHeight: "1.5"  }}
             >
               <span
                 style={{
-                  fontSize: "11.0pt",
+                  fontSize: "15px",
                   lineHeight: "115%",
                   fontFamily: "Arial",
                   color: "#595959",
@@ -6651,6 +6640,7 @@ function scrap() {
           }}
         ></div>
       </div>
+      <Footer />
     </>
   );
 }

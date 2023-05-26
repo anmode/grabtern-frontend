@@ -1278,3 +1278,43 @@ textarea {
   color: #00ff00;
   margin-top: 10px;
 }
+
+.ret_pol{
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+}
+
+.ret_pol2{
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  max-width: 60%;
+  margin:auto;
+}
+
+.refund{
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+  text-align: center;
+}
+
+.questions{
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+  text-align: center;
+}

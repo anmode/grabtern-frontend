@@ -3552,8 +3552,15 @@ hr {
   text-align: center;
 }
 .topic-area .single-topic .topic-content-box .topic-content h3 a {
-  color: #ffffff;
-  font-weight: 700;
+  opacity: 0;
+  z-index: 1;
+}
+.topic-area .single-topic .topic-content-box .topic-content h3 a:hover {
+  opacity: 1;
+  visibility: visible;
+  color: #fff;
+  z-index: 0;
+  text-decoration: underline;
   font-size: 20px;
   margin-bottom: 0px;
   text-transform: uppercase;
@@ -3562,9 +3569,6 @@ hr {
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
-}
-.topic-area .single-topic .topic-content-box .topic-content h3 a:hover {
-  text-decoration: underline;
 }
 .topic-area .single-topic .topic-content-box .topic-content p {
   font-size: 16px;

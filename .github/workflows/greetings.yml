@@ -1,21 +1,64 @@
 name: Greetings
 
 on:
-  fork:
-  push:
-    branches: [main]
   issues:
     types: [opened]
-  pull_request_target:
+  pull_request:
     types: [opened]
 
 jobs:
-  welcome:
+  greet:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: EddieHubCommunity/gh-action-community/src/welcome@main
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: "Hello ${{ github.actor }}, thanks for opening a issue, your contribution is valuable to us. The maintainers will review this issue and provide feedback as soon as possible."
-          pr-message: "Hello ${{ github.actor }}, thanks for rising a Pull request, your contribution is valuable to us. The maintainers will review this Pull Request and provide feedback as soon as possible. Keep the great work up!"
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Greet Contributor
+        id: greet
+        run: |
+          echo "::set-output name=greeting::$(node -e '
+          // Greetings mapping
+          const greetings = {
+            collaborator: "Hello, collaborator! Thank you for your contribution. We appreciate your help!",
+            owner: "Welcome, owner! We're glad to have you on board. Your expertise is valuable to us!",
+            firstTimeContributor: "Hello, first-time contributor! Thank you for opening your first issue or pull request. We're excited to collaborate with you!",
+            returningContributor: "Welcome back, returning contributor! Your continued contributions are greatly appreciated!",
+            mentor: "Hi there, mentor! Thank you for offering your guidance and support. Your expertise helps us build a strong community!",
+          };
+
+          // Get event and actor information
+          const event = process.env.GITHUB_EVENT_NAME;
+          const actor = process.env.GITHUB_ACTOR;
+
+          // Determine the appropriate greeting based on the event and actor
+          let greeting;
+          if (actor === "collaborator") {
+            greeting = greetings.collaborator;
+          } else if (actor === "owner") {
+            greeting = greetings.owner;
+          } else if (actor === "mentor") {
+            greeting = greetings.mentor;
+          } else {
+            const issueCount = Number(process.env.GITHUB_ISSUE_COUNT || 0);
+            if (issueCount === 0) {
+              greeting = greetings.firstTimeContributor;
+            } else {
+              greeting = greetings.returningContributor;
+            }
+          }
+
+          // Output the greeting
+          console.log(`\n\n====================\n${greeting}\n====================\n\n`);
+          ')"
+
+      - name: Display Greeting
+        run: echo "${{ steps.greet.outputs.greeting }}"

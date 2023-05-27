@@ -89,4 +89,37 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
   },
+  {
+    internshipImage: "/assets/img/gallery/outreachy.png",
+    internshipImageAlt: "OutReachy - Women Only",
+    internshipCategories: "GrabTern",
+    internshipTitle: "OutReachy - Women Only",
+    internshipDescription:
+      "Outreachy provides internships in open source and open science. Outreachy provides internships to people subject to systemic bias and impacted by underrepresentation in the technical industry where they are living.",
+    internshipRating: 4.8,
+    internshipPayed: 670,
+    internshipPrice: 1,
+  },
+  {
+    internshipImage: "/assets/img/gallery/sob.png",
+    internshipImageAlt: "Summer of Bitcoin- Summer Internship Program",
+    internshipCategories: "GrabTern",
+    internshipTitle: "Summer of Bitcoin- Summer Internship Program",
+    internshipDescription:
+      "Summer of Bitcoin is a global summer internship program for university students interested in working on Bitcoin.",
+    internshipRating: 4.8,
+    internshipPayed: 670,
+    internshipPrice: 1,
+  },
+  {
+    internshipImage: "/assets/img/gallery/sn-bose.png",
+    internshipImageAlt: "S.N Bose Scholars Program- Scholars Program",
+    internshipCategories: "GrabTern",
+    internshipTitle: "S.N Bose Scholars Program- Scholars Program",
+    internshipDescription:
+      "The SN Bose Scholar Program is a research internship program for Indian undergraduate and postgraduate students in science and engineering. It offers opportunities to work at top institutions in the United States, fostering talent and exposing students to advanced research facilities.",
+    internshipRating: 4.8,
+    internshipPayed: 670,
+    internshipPrice: 1,
+  },
 ];

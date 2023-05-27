@@ -51,6 +51,8 @@ function About() {
   }, [carousel]);
   return (
     <>
+        <button onClick={toggleDarkMode} style={{position : "absolute",top : "15rem"}}>Toggle Dark Mode</button>
+
       <Header />
       <SimpleBanner bannerTittle="About us" siteName="about" />
       <main>

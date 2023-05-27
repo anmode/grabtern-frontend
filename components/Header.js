@@ -62,6 +62,18 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     window.location.reload();
   };
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
   return (
     <div className="header-area header-transparent">
       <div className="main-header ">
@@ -99,6 +111,9 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                   >
                     <nav>
                       <ul id="navigation">
+                      <li>
+                        <a onClick={toggleDarkMode} >Dark Mode</a>
+                        </li>
                         <li className="active">
                           <a href="/">Home</a>
                         </li>

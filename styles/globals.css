@@ -1278,3 +1278,113 @@ textarea {
   color: #00ff00;
   margin-top: 10px;
 }
+
+/* Dark Mode Styles */
+
+
+.dark-mode {
+  background-color: #222222;
+  color: #ffffff;
+}
+.dark-mode .courses-area .properties__caption P{
+  color:#FDF5E6;
+  ;
+
+}
+.dark-mode section-title{
+  color : #607cf0
+}
+
+.dark-mode .courses-area .properties__caption h3 a{
+  color:#7FFFD4;
+}
+.dark-mode .mentor-card{
+  color:#333
+}
+.dark-mode .front-text h2{
+  color:#607cf0;
+}
+
+.dark-mode .front-text p{
+  color:#607cf0;
+}
+
+.dark-mode .features-caption p{
+  color:#607cf0 ;
+}
+
+.dark-mode .features-caption b{
+  color: #fff;
+}
+
+.dark-mode .cat-cap h5{
+  color: #007bff;
+}
+
+.dark-mode .mentor-card{
+  background-color: #333;
+}
+
+.dark-mode .mentor-card__name{
+  color:#607cf0 ;
+}
+
+.dark-mode .mentor-card__intern b{
+  color: #007bff;
+}
+
+.dark-mode .mentor-card__intern {
+  color: #FDF5E6;
+}
+
+.dark-mode .mentor-card__status b{
+  color: #007bff;
+}
+
+.dark-mode .mentor-card__status {
+  color: #FDF5E6;
+}
+
+.dark-mode .mentor-card__book-session{
+  background-color: #007bff;
+}
+
+.dark-mode  h1,h2,h3,h4,h5,h6{
+  color: #607cf0;
+}
+
+.dark-mode p{
+  color: #FDF5E6;
+}
+
+.dark-mode .bookSessions li{
+  background-color: #333;
+}
+
+.dark-mode .bookSessionIcons div{
+  background-color: #333;
+}
+
+.dark-mode .contact-info .media-body h3{
+  color: #FDF5E6;
+}
+
+.dark-mode .contact-info .media-body p{
+  color: #fdf5e6ad;
+}
+
+.dark-mode .form-contact .form-control{
+  color: #fff;
+}
+
+.dark-mode .boxed-btn{
+  background: #333;
+  color: #FDF5E6;
+
+}
+
+.dark-mode .boxed-btn:hover {
+  background: #c86fff;
+  color: #fff !important;
+  border: 1px solid #c86fff;
+}

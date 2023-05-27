@@ -1,7 +1,27 @@
+
+/* LoginDropdown.module.css */
+
+ .navLink {
+  text-shadow: 0 0 10px rgba(239, 230, 230);
+} 
 .navLink:hover {
-  color:rgb(234, 185, 239) !important;
-  transform: scale(1.1); 
+  color: rgb(80, 30, 166) !important;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(237, 230, 230);
 }
+@media (max-width: 768px) {
+  .navLink {
+    padding: 6px 10px;
+    margin: 6px 8px;
+    font-size: 14px;
+  }
+}
+.footLink:hover{
+  color: rgb(29, 11, 60) !important;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgb(153, 138, 176);
+}
+
 .loginOption {
   display: flex;
   flex-direction: column;

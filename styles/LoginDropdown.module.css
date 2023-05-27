@@ -1,3 +1,7 @@
+.navLink:hover {
+  color:rgb(234, 185, 239) !important;
+  transform: scale(1.1); 
+}
 .loginOption {
   display: flex;
   flex-direction: column;
@@ -6,6 +10,10 @@
   border-radius: 4px;
   transform: translateZ(-50px);
   margin-bottom: 70px;
+}
+
+.loginOption:hover{
+  transform: scale(1.1);
 }
 .loginOption a {
   padding: 0 !important;

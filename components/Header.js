@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
+import DarkModeToggle from "react-dark-mode-toggle";
+
 
 function Header({ isUserLoggedIn, navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
@@ -10,6 +12,8 @@ function Header({ isUserLoggedIn, navbarBackground }) {
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
+
 
   useEffect(() => {
     const userName = localStorage.getItem("user_name");
@@ -20,7 +24,10 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     if (mentorName) {
       setMentorLoggedIn(true);
     }
-
+    const storedDarkMode = localStorage.getItem("darkMode");
+    if (storedDarkMode !== null) {
+      setIsDarkMode(JSON.parse(storedDarkMode));
+    }
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -32,6 +39,13 @@ function Header({ isUserLoggedIn, navbarBackground }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [isDarkMode]);
 
   const handleLoginClick = () => {
     setLoginOption(true);
@@ -61,30 +75,21 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     router.push("/");
     window.location.reload();
   };
-
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+  const handleToggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
   };
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [isDarkMode]);
-
   return (
     <div className="header-area header-transparent">
       <div className="main-header ">
         <div
-          className={`header-bottom  header-sticky ${
-            scrollY > 400
+          className={`header-bottom  header-sticky ${scrollY > 400
               ? "sticky-bar"
               : navbarBackground === true
-              ? "sticky-bar"
-              : ""
-          }`}
+                ? "sticky-bar"
+                : ""
+            }`}
           style={{ transition: "all 0.5s ease-in" }}
         >
           <div className="container-fluid">
@@ -105,18 +110,17 @@ function Header({ isUserLoggedIn, navbarBackground }) {
               <div className="col-xl-10 col-lg-10">
                 <div className="menu-wrapper d-flex align-items-center justify-content-end">
                   <div
-                    className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
-                    }`}
+                    className={`main-menu d-none d-lg-block ${navbarAppear === true ? "active" : ""
+                      }`}
                   >
                     <nav>
                       <ul id="navigation">
-                      <li>
-                        <a onClick={toggleDarkMode} >Dark Mode</a>
-                        </li>
+
+                        
                         <li className="active">
                           <a href="/">Home</a>
                         </li>
+
                         <li>
                           <a href="/mentors">Mentors</a>
                         </li>
@@ -204,16 +208,24 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               )}
                             </div>
                           </li>
+
+                          
                         )}
+                        <li>
+                          <DarkModeToggle
+                            onChange={handleToggleDarkMode}
+                            checked={isDarkMode}
+                            size={80}
+                          />
+                        </li>
                       </ul>
                     </nav>
                   </div>
                 </div>
               </div>
               <div
-                className={`menuToggle ${
-                  navbarAppear === true ? "active" : ""
-                }`}
+                className={`menuToggle ${navbarAppear === true ? "active" : ""
+                  }`}
                 onClick={() => menuToggle()}
               >
                 <span></span>
@@ -227,7 +239,13 @@ function Header({ isUserLoggedIn, navbarBackground }) {
           </div>
         </div>
       </div>
+      <style jsx global>
+        {`
+  
+  `}
+      </style>
     </div>
+
   );
 }
 

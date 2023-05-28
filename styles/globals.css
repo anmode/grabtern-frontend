@@ -234,6 +234,7 @@ a {
   .about-area1 .support-wrapper {
     display: flex !important;
   }
+
 }
 
 @media (max-width: 992px) {
@@ -273,11 +274,20 @@ a {
     margin-top: -120px;
   }
   .container {
-    padding-top: 50px;
-
+    padding: 20px;
     max-width: 100% !important;
     width: 100% !important;
   }
+}
+
+@media (min-width: 992px){
+  .container {
+    padding: 20px;
+    /* margin: 10px; */
+    max-width: 100% !important;
+    width: 100% !important; 
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -290,6 +300,10 @@ a {
   .owl-nav button:last-child {
     right: -25px;
   }
+  .services-area > .container {
+     margin-top: 120px;
+  }
+
   .services-area > .container > .row .col-lg-4 {
     flex: unset;
     max-width: 100% !important;
@@ -329,6 +343,7 @@ a {
     width: 540px !important;
     max-width: unset !important;
   }
+
 }
 
 .left-content1 {
@@ -381,9 +396,9 @@ a {
   .courses-area .container {
     padding: 100px 10px 0 !important;
   }
-  .single-slider .container {
+  /* .single-slider .container {
     padding: 270px 30px 200px !important;
-  }
+  } */
   .hero__caption .btn {
     margin-bottom: 20px;
   }
@@ -666,9 +681,9 @@ textarea {
   color: unset;
 }
 
-.findMentors {
+/* .findMentors {
   padding: 100px 30px;
-}
+} */
 
 .mentorLists {
   display: flex;
@@ -720,9 +735,9 @@ textarea {
     font-size: 90%;
   }
 
-  .findMentors {
+  /* .findMentors {
     padding: 100px 0 !important;
-  }
+  } */
 
   .mentorCard p,
   .mentorCard h3 {
@@ -1105,9 +1120,10 @@ textarea {
 @media only screen and (max-width: 800px) {
   .mentor-card {
     flex-direction: column;
-    width: 80vw;
-    height: 50vh;
-    padding: 2rem 5rem;
+    width:100%;
+    height: 100%;
+    gap: 25px;
+    padding: 20px;
     text-align: center;
     margin: auto;
   }

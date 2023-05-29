@@ -544,7 +544,11 @@ a {
 .mentorFormRegisration > .container > .mentorForm {
   margin: 0 auto;
 }
-
+@media screen and (max-width: 600px) {
+  .mentorFormRegisration > .container > .mentorForm {
+    margin: 67px auto;
+  }
+}
 .mentorFormSetupPW {
   margin: unset !important;
 }

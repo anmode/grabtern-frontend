@@ -686,7 +686,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
-  gap: 50px;
+  gap: 20px;
   justify-content: center;
 }
 
@@ -1031,6 +1031,7 @@ textarea {
 .mentor-card {
   padding: 1.5rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
@@ -1040,6 +1041,7 @@ textarea {
   border-radius: 5%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .mentor-card:hover {
@@ -1053,18 +1055,33 @@ textarea {
   height: 10rem;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
 }
 
 .mentor-card__info {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+  scrollbar-width: thin; /* Specify the width of the scrollbar */
+  scrollbar-color: transparent transparent; 
+  /* justify-content: space-around; */
+  /* height: 100%; */
+}
+.mentor-card__info::-webkit-scrollbar {
+  width: 6px; /* Specify the width of the scrollbar */
+}
+
+.mentor-card__info::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set the color of the scrollbar thumb */
+}
+
+.mentor-card__info::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the color of the scrollbar track */
 }
 
 .mentor-card__name {
-  margin: 0;
+  margin: auto;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -1117,10 +1134,10 @@ textarea {
 @media only screen and (max-width: 800px) {
   .mentor-card {
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     height: 100%;
     gap: 25px;
-    /* padding: 20px; */
+    padding: 20px;
     text-align: center;
     margin: auto;
   }
@@ -1148,12 +1165,18 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 1080px) and (min-width: 800px) {
+@media only screen and (max-width: 1080px) and (min-width: 820px) {
   .mentor-card {
-    width: 40vw;
-    height: 60vh;
+    width: 45vw;
+    height: 55vh;
   }
 }
+/* @media only screen and (max-width: 1080px) and (min-width: 820px) {
+  .mentor-card {
+    width: 45vw;
+    height: 55vh;
+  }
+} */
 
 /* Terms and condition */
 .TNCcontainer {

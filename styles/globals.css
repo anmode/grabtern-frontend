@@ -1136,7 +1136,7 @@ textarea {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    gap: 25px;
+    /* gap: 25px; */
     padding: 20px;
     text-align: center;
     margin: auto;

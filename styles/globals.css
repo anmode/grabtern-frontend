@@ -234,7 +234,6 @@ a {
   .about-area1 .support-wrapper {
     display: flex !important;
   }
-
 }
 
 @media (max-width: 992px) {
@@ -280,14 +279,13 @@ a {
   }
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .container {
     padding: 20px;
     /* margin: 10px; */
     max-width: 100% !important;
-    width: 100% !important; 
+    width: 100% !important;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -301,7 +299,7 @@ a {
     right: -25px;
   }
   .services-area > .container {
-     margin-top: 120px;
+    margin-top: 120px;
   }
 
   .services-area > .container > .row .col-lg-4 {
@@ -343,7 +341,6 @@ a {
     width: 540px !important;
     max-width: unset !important;
   }
-
 }
 
 .left-content1 {
@@ -1120,10 +1117,10 @@ textarea {
 @media only screen and (max-width: 800px) {
   .mentor-card {
     flex-direction: column;
-    width:100%;
+    width: 90%;
     height: 100%;
     gap: 25px;
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
     margin: auto;
   }

@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <script
           src="https://accounts.google.com/gsi/client"
-          async
+        async
           defer
         ></script>
         <meta charSet="utf-8" />

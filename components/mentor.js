@@ -11,7 +11,7 @@ const MentorCard = ({ mentor }) => {
       <div className="mentor-card__info">
         <h2 className="mentor-card__name">{mentor.name}</h2>
         <p className="mentor-card__intern">
-          <b>Intern at:</b> 
+          <b>Intern at:</b>
           {mentor.internAt}
         </p>
         <p className="mentor-card__status">

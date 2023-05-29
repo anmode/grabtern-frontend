@@ -1064,7 +1064,7 @@ textarea {
   padding: 20px;
   overflow-y: scroll;
   scrollbar-width: thin; /* Specify the width of the scrollbar */
-  scrollbar-color: transparent transparent; 
+  scrollbar-color: transparent transparent;
   /* justify-content: space-around; */
   /* height: 100%; */
 }

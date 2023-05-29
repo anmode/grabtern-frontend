@@ -22,6 +22,10 @@ npm run dev
 
 This will start the development server on http://localhost:3000/.
 
+## 🧰 Tech Stack Used 
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
+
+
 ## Contributing
 
 If you'd like to contribute to Grabtern Frontend, you can fork this repository and create a feature or bug fix branch. Once you've made your changes, submit a pull request to the main repository.

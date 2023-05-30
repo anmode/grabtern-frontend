@@ -1,16 +1,18 @@
 name: General Feature Request 💡
-description: Have a new idea/feature for 
-grabtern-frontend? Please suggest!
+about: Have a new idea/feature for Grabtern? Please suggest!
+
 title: "[FEATURE] <description>"
 labels: ["⭐ goal: addition", "🚦 status: awaiting triage"]
+
 body:
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: A brief description of the enhancement you propose, also include what you tried and what worked.
+      description: A brief description of the enhancement you propose, including what you tried and what worked.
     validations:
       required: true
+
   - type: textarea
     id: screenshots
     attributes:
@@ -18,6 +20,7 @@ body:
       description: Please add screenshots if applicable
     validations:
       required: false
+
   - type: textarea
     id: extrainfo
     attributes:

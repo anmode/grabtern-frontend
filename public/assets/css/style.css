@@ -2202,17 +2202,17 @@ hr {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header-area .header-bottom {
-    padding: 15px 50px;
+    padding: 5px 50px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header-area .header-bottom {
-    padding: 15px 20px;
+    padding: 5px 20px;
   }
 }
 @media (max-width: 575px) {
   .header-area .header-bottom {
-    padding: 15px 20px;
+    padding: 5px 20px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2258,7 +2258,7 @@ hr {
 .main-header .main-menu ul li a {
   color: #fff;
   font-weight: 600;
-  padding: 39px 2px;
+  padding: 15px 2px;
   display: block;
   font-size: 16px;
   -webkit-transition: 0.3s;
@@ -3812,7 +3812,7 @@ hr {
   color: gray;
 }
 .login-form .form-input input[type="submit"] {
-  background: #656eff;
+  background: linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% );;
   color: #fff;
   border: none;
   cursor: pointer;

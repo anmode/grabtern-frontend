@@ -188,10 +188,10 @@ a {
   display: none;
   flex-direction: column;
   gap: 7px;
-  position: absolute;
-  top: 0;
+
+
   right: 50px;
-  top: calc(125px / 2);
+
   cursor: pointer;
 }
 

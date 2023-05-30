@@ -76,15 +76,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
           style={{ transition: "all 0.5s ease-in" }}
         >
           <div className="container-fluid">
-            <div className="row align-items-center">
-              <div className="col-xl-2 col-lg-2">
+            <div className="row align-items-center justify-content-between">
+              <div>
                 <div className="logo">
                   <a href="/">
                     <Image
-                      width={100}
-                      height={117}
+                      width={80}
+                      height={80}
                       src="/whitelogo.png"
-                      style={{ padding: "30px 0" }}
+                      style={{ padding: "15px 0" }}
                       alt="grabtern_logo"
                     />
                   </a>
@@ -94,11 +94,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                 <div className="menu-wrapper d-flex align-items-center justify-content-end">
                   <div
                     className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
+                      navbarAppear === true ? "active" : "" 
                     }`}
                   >
                     <nav>
-                      <ul id="navigation">
+                      <ul id="navigation" style={{height:"50px"}}>
                         <li className="active">
                           <a href="/" className={styles.navLink}>Home</a>
                         </li>

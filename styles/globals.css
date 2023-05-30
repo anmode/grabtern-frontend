@@ -627,7 +627,7 @@ textarea {
 .bookSessionHeader {
   display: flex;
   flex-direction: row !important;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-bottom: 1px solid grey;
   padding-bottom: 20px;
   gap: 20px;
@@ -950,7 +950,11 @@ textarea {
   border: 1px solid gray;
   padding: 20px 30px;
   border-radius: 10px;
-  max-width: 500px;
+  height: 290px;
+  width: 500px;
+}
+.bookSessions li:hover{
+  box-shadow: 2px 4px 1px rgb(157, 157, 157);
 }
 .bookSessionIcons {
   display: flex;
@@ -978,7 +982,11 @@ textarea {
   margin-top: 25px;
   border-radius: 5px;
 }
-
+.bookSessions li button:hover{
+  color: #037b80;
+  background-color: white;
+  border:2px solid #037b80;
+} 
 .bookSessionColumn {
   flex-direction: column !important;
 }

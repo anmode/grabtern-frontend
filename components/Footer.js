@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-
+import styles from "../styles/LoginDropdown.module.css";
 function Footer() {
   return (
     <footer>
@@ -55,16 +55,16 @@ function Footer() {
                     <h4>Services to Student</h4>
                     <ul>
                       <li>
-                        <a href="#">One to One Mentorship</a>
+                        <a href="#" className={styles.footLink}>One to One Mentorship</a>
                       </li>
                       <li>
-                        <a href="#">Networking</a>
+                        <a href="#" className={styles.footLink}>Networking</a>
                       </li>
                       <li>
-                        <a href="#">Live Sessions</a>
+                        <a href="#" className={styles.footLink}>Live Sessions</a>
                       </li>
                       <li>
-                        <a href="#">Resources</a>
+                        <a href="#" className={styles.footLink}>Resources</a>
                       </li>
                     </ul>
                   </div>
@@ -73,19 +73,19 @@ function Footer() {
               <div className="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                 <div className="single-footer-caption mb-50">
                   <div className="footer-tittle">
-                    <h4>Services to Mentors</h4>
+                    <h4 >Services to Mentors</h4>
                     <ul>
                       <li>
-                        <a href="#">Community Base</a>
+                        <a href="#" className={styles.footLink}>Community Base</a>
                       </li>
                       <li>
-                        <a href="#">Self Satisfaction</a>
+                        <a href="#" className={styles.footLink}>Self Satisfaction</a>
                       </li>
                       <li>
-                        <a href="#">Build Leadership skills</a>
+                        <a href="#" className={styles.footLink}>Build Leadership skills</a>
                       </li>
                       <li>
-                        <a href="#">Get paid</a>
+                        <a href="#" className={styles.footLink}>Get paid</a>
                       </li>
                     </ul>
                   </div>
@@ -97,16 +97,16 @@ function Footer() {
                     <h4>Grabtern</h4>
                     <ul>
                       <li>
-                        <a href="/refundandcancellation">Refund policy</a>
+                        <a href="/refundandcancellation" className={styles.footLink}>Refund policy</a>
                       </li>
                       <li>
-                        <a href="/termsandcondition">Terms and Condition</a>
+                        <a href="/termsandcondition" className={styles.footLink}>Terms and Condition</a>
                       </li>
                       <li>
-                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/privacy" className={styles.footLink}>Privacy Policy</a>
                       </li>
                       <li>
-                        <a href="/contact">Contact Us</a>
+                        <a href="/contact" className={styles.footLink}>Contact Us</a>
                       </li>
                     </ul>
                   </div>

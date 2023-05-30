@@ -21,7 +21,7 @@ function About() {
           </div>
           <div className="section-tittle section-tittle2 mb-55">
             <div className="front-text">
-              <h2 className="">What Grabtern Do for their Students</h2>
+              <h2 className="">What Grabtern Does For It's Students?</h2>
               <p>
                 We stay in touch with both the students and mentors throughout
                 the mentorship process to ensure that both parties are getting

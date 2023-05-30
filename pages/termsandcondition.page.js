@@ -42,7 +42,7 @@ function scrap() {
                 <strong>April 21, 2023</strong>
               </bdt>
         </div> */}
-            <div className="ret_pol" style={{ lineHeight: "1.5", fontSize:29, textAlign:"left", marginTop: "70px",  marginLeft: "30px", }}>
+            <div className="ret_pol" style={{ lineHeight: "1.5", fontSize:18, textAlign:"left", marginTop: "70px",  marginLeft: "30px", }}>
               <strong>
                 <span >
                   AGREEMENT TO OUR LEGAL TERMS

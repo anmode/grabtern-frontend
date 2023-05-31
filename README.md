@@ -63,9 +63,11 @@ npm run dev
 
 This will start the development server on http://localhost:3000/.
 
-
+---
 ## 🧰 Tech Stack Used 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">   <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+
+---
 
 ## 🧪 Prettier lint test and How to fix it?
 Prettier is a code formatter that helps maintain consistent code style and formatting in your projects. It automatically analyzes your code and applies predefined formatting rules to ensure a standardized appearance.
@@ -74,35 +76,16 @@ Linting is the process of analyzing code for potential errors, bugs, and code st
 
 <b>"Prettier lint test" </b> refers to running a linter (such as ESLint) with the Prettier plugin or rules enabled. It means checking your code for both linting errors and code formatting inconsistencies according to Prettier's rules.
 
-To fix Prettier linting issues, you can follow these steps:
+To enable automatic code formatting upon saving in Visual Studio Code, you can install the Prettier extension. This extension ensures that your code is consistently formatted and adheres to the defined style guidelines. Once installed, Prettier will format your code automatically whenever you save a file.
 
-1) Install necessary tools: Ensure that you have the required tools installed in your project. You'll need ESLint and Prettier, along with any additional plugins or configurations specific to your project or coding environment.
-```bash
-npm install eslint prettier --save-dev
-```
-2) Configure ESLint: Set up your ESLint configuration file (.eslintrc.js or .eslintrc.json) to include Prettier rules and the Prettier plugin. This allows ESLint to use Prettier's formatting rules for linting.
-```bash
-module.exports = {
-  // Other ESLint rules and configurations
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
-};
-```
-Make sure the Prettier plugin is included in the extends array.
+In case you prefer not to install the Prettier extension, there are two helpful commands you can use:
 
-3) Configure Prettier: Create a Prettier configuration file (.prettierrc or prettier.config.js) in the root of your project. Define your preferred formatting rules and options for Prettier.
-``` bash
-module.exports = {
-  // Prettier options
-};
-```
-Customize the Prettier options according to your desired code formatting style.
+1) ```npx prettier --check ```.: This command checks your codebase for any formatting issues without making any changes. It identifies areas where the formatting may not align with the defined rules.
+2) ```npx prettier --write ``` .: This command automatically fixes the formatting issues in your codebase. It applies the appropriate formatting changes to ensure consistency and adherence to the defined style guidelines.
+By utilizing these commands, you can easily verify the formatting of your codebase and address any inconsistencies or style violations, even without having the Prettier extension installed.
 
-<br>
-4)  Run ESLint with Prettier: Execute the ESLint command to lint your code and fix any issues related to code formatting according to Prettier's rules.
-```bash
-npx eslint --fix .
-```
-The --fix flag automatically fixes fixable issues, including formatting inconsistencies
+
+---
 
 
 ## Contributing 
@@ -114,6 +97,9 @@ If you'd like to contribute to Grabtern Frontend:-
 * Create individual PR for each suggestion.
 * Please also read through the [Code Of Conduct](https://github.com//anmode/grabtern-frontend/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
+---
+
+
 ### Creating A Pull Request
 
 1. Fork the Project
@@ -122,11 +108,14 @@ If you'd like to contribute to Grabtern Frontend:-
 4. Push to the Branch (`git pull origin <branch_name>`)
 5. Open a Pull Request
 
+---
 
 ## ✨ Thank You for Your Contribution!
 <a href="https://github.com/anmode/grabtern-frontend/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=anmode/grabtern-frontend" />
 </a>
+
+---
 
 
 ## License

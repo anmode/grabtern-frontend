@@ -25,7 +25,7 @@ function Footer() {
                       <div className="footer-pera">
                         <p>
                           The Internship Journey started as soon as you enroll
-                          in any internship course
+                          in any internship course.
                         </p>
                       </div>
                     </div>

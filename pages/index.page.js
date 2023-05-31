@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Testimonial from "../components/Testimonial";
+import ScrollToTop from "../components/ScrollToTop";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -115,6 +116,7 @@ export default function Home() {
         </div>
       ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
+      
 
       <main>
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
@@ -313,6 +315,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <ScrollToTop/>
       <Footer />
     </div>
   );

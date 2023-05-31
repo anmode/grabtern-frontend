@@ -948,10 +948,10 @@ textarea {
 .bookSessions li {
   background-color: white;
   border: 1px solid gray;
-  padding: 20px 30px;
+  padding: 25px 25px;
   border-radius: 10px;
-  height: 290px;
-  width: 500px;
+  height: 270px;
+  width: 540px;
 }
 .bookSessions li:hover {
   box-shadow: 2px 4px 1px rgb(157, 157, 157);
@@ -979,7 +979,7 @@ textarea {
   font-size: 19px;
   color: white;
   border: none;
-  margin-top: 25px;
+  margin-top: 35px;
   border-radius: 5px;
 }
 .bookSessions li button:hover {

@@ -59,6 +59,7 @@ npm install
 - Start LocalHost Server
 ```
 npm run dev
+```
 
 This will start the development server on http://localhost:3000/.
 

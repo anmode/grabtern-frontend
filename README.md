@@ -2,6 +2,27 @@
 
 This is the frontend repository for Grabtern, a web application built with Next.js.
 
+
+ <div align="center">
+ <p>
+
+[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=anmode/grabtern-frontend&countColor=%23263759&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/anmode/grabtern-frontend?style=flat&logo=github)
+![GitHub Repo stars](https://img.shields.io/github/stars/anmode/grabtern-frontend?style=flat&logo=github)
+![GitHub contributors](https://img.shields.io/github/contributors/anmode/grabtern-frontend)
+![GitHub last commit](https://img.shields.io/github/last-commit/anmode/grabtern-frontend)
+![GitHub repo size](https://img.shields.io/github/repo-size/anmode/grabtern-frontend)
+![Github](https://img.shields.io/github/license/anmode/grabtern-frontend)
+![GitHub issues](https://img.shields.io/github/issues/anmode/grabtern-frontend)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/anmode/grabtern-frontend)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/anmode/grabtern-frontend)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/anmode/grabtern-frontende)
+ </p>
+ </div>
+ <br>
+
 ## Getting Started
 
 To get started with Grabtern Frontend, you'll need to install Node.js and npm on your machine. Then, you can clone this repository and install the dependencies:

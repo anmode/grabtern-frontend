@@ -3747,27 +3747,26 @@ hr {
   height: 100vh;
 }
 .login-form {
-  margin: 130px auto;
+  margin: 130px auto 5px auto;
   width: 480px;
-  padding: 90px 45px 60px 45px;
+  padding: 90px 45px 12px 45px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
 @media (max-width: 575px) {
   .login-form {
-    width: 282px;
-    padding: 53px 15px 15px 15px;
-    margin-top: 160px;
+    width: 380px;
+    padding: 110px 40px 15px 40px;
+    margin: 100px auto;
   }
 }
 
 .login-form .logout-login img {
-  width: 99px;
+  width: 100px;
   height: 95px;
   position: absolute;
   top: 100px;
-  left: 0;
-  right: 0;
+  left:calc(50% - 50px);
   margin: 0 auto;
   border: 15px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
@@ -3779,11 +3778,11 @@ hr {
   margin: 0;
   text-align: center;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 .login-form .form-input {
   position: relative;
-  margin: 20px 0;
+  margin: 2vh 0;
 }
 .login-form .form-input label {
   font-size: 18px;

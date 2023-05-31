@@ -116,9 +116,9 @@ function Login() {
                 value={data.password}
               />
             </div>
-            <div className="form-input pt-30">
+            <div className="form-input">
               <input type="submit" name="submit" value="login" style={{
-                background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% );"
+                background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )"
                   }}/>
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}

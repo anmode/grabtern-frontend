@@ -48,4 +48,5 @@ To maintain a safe and inclusive space for everyone to learn and grow, contribut
 ## Author
 [Anmol Agrawal](https://github.com/anmode)
 
-Show some ❤️ by starring this awesome repository!
+<h3 align="center">Show some ❤️ by 🌟 this awesome repository!</h3>
+

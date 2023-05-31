@@ -2,7 +2,7 @@
 This is the frontend repository for Grabtern, a web application built with Next.js.
 
 <br>
- <div align="center">
+<div align="center">
  <p>
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)

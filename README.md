@@ -26,7 +26,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Tech Stack Used](#tech-stack-used)
+- [Tech Stack Used](#-tech-stack-used)
 - [Prettier lint Test](#-prettier-lint-test-and-how-to-fix-it)
 - [Contributing](#contributing)
 - [Author](#author)

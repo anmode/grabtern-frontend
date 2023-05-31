@@ -1391,7 +1391,8 @@ textarea {
 }
 
 .maincontent {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
   margin-left: 20px;
   float: left;
   width: 45%;
@@ -1443,7 +1444,8 @@ textarea {
 }
 
 .terms-and-cond-sub {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
   margin-left: 25px;
   font-size: 18px;
   margin-top: 40px;

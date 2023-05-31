@@ -14,7 +14,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
 ![GitHub contributors](https://img.shields.io/github/contributors/anmode/grabtern-frontend)
 ![GitHub last commit](https://img.shields.io/github/last-commit/anmode/grabtern-frontend)
 ![GitHub repo size](https://img.shields.io/github/repo-size/anmode/grabtern-frontend)
-![Github](https://img.shields.io/github/license/anmode/grabtern-frontend)
+[![License](https://img.shields.io/badge/License-MIT-green)](#license)
 ![GitHub issues](https://img.shields.io/github/issues/anmode/grabtern-frontend)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/anmode/grabtern-frontend)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/anmode/grabtern-frontend)

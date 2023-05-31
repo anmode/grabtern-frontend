@@ -3747,8 +3747,9 @@ hr {
   height: 100vh;
 }
 .login-form {
-   position: absolute;
-  
+  /* position: absolute;
+  top: 50%;
+  left: 50%; */
   margin: 35% 50%;
   width: 480px;
   padding: 90px 45px 60px 45px;
@@ -3756,13 +3757,6 @@ hr {
   /* background: rgba(0, 0, 0, 0.4); */
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-}
-@media (max-width:1513px) {
-  .login-form {
-    width: 480px;
-    padding: 53px 15px 15px 15px;
-    margin-top: 491px;
-  }
 }
 @media (max-width: 575px) {
   .login-form {

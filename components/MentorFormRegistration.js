@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
@@ -7,6 +8,7 @@ export default function MentorForm() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
+  const [isChecked, setIsChecked] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
     sessionDescription: "Achieve your goals faster with customized road map",
@@ -14,8 +16,8 @@ export default function MentorForm() {
     sessionMeetingDuration: "30",
     // peopleAttend: "",
     priceSession: "",
-  })
-  const [isLoading, setIsLoading]=useState(false);
+  });
+  const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
@@ -30,27 +32,29 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [{
-      sessionName: "1 on 1 Mentorship",
-      sessionDescription: "Achieve your goals faster with customized road map",
-      sessionType: "video-meeting",
-      sessionMeetingDuration: "30",
-      // peopleAttend: "",
-      priceSession: "",
-    }],
+    bookSession: [
+      {
+        sessionName: "1 on 1 Mentorship",
+        sessionDescription:
+          "Achieve your goals faster with customized road map",
+        sessionType: "video-meeting",
+        sessionMeetingDuration: "30",
+        // peopleAttend: "",
+        priceSession: "",
+      },
+    ],
     description: "",
     mentorImg: "",
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
+    verified: false,
   });
 
   const handleChange = (e) => {
-    console.log(formData)
-
+    console.log(formData);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
 
   const handleSocialChange = (e) => {
     setFormData({
@@ -58,6 +62,62 @@ export default function MentorForm() {
       social: { ...formData.social, [e.target.name]: e.target.value },
     });
   };
+
+  function handleCallbackResponse(response) {
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject);
+    setFormData({
+      name: userObject.name,
+      email: userObject.email,
+      username: "",
+      mobile: "",
+      internAt: "",
+      currentStatus: "",
+      social: {
+        linkedin: "",
+        twitter: "",
+      },
+      bookSession: [
+        {
+          sessionName: "1 on 1 Mentorship",
+          sessionDescription:
+            "Achieve your goals faster with customized road map",
+          sessionType: "video-meeting",
+          sessionMeetingDuration: "30",
+          // peopleAttend: "",
+          priceSession: "",
+        },
+      ],
+      description: "",
+      mentorImg: userObject.picture,
+      // resume: '',
+      password: `GrabternMentorPW!${number}!`,
+      confirmPassword: `GrabternMentorPW!${number}!`,
+      verified: false,
+    });
+    console.log(formData);
+  }
+
+  useEffect(() => {
+    setInterval(() => {
+      if (typeof window !== "undefined") {
+        if (document.querySelector("#credential_picker_container") !== null) {
+          document.querySelector(".overlay").classList.add("show");
+        }
+      }
+    }, 1300);
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleSignInButton"),
+      { theme: "outline", size: "large" }
+    );
+    google.accounts.id.prompt();
+  }, []);
 
   useEffect(() => {
     if (modalPopup === true && waitTime !== 0) {
@@ -96,14 +156,14 @@ export default function MentorForm() {
   };
 
   const handleSessionPriceChange = (e) => {
-    let bookSessionCopy = formData.bookSession[0]
+    let bookSessionCopy = formData.bookSession[0];
     bookSessionCopy.priceSession = e.target.value;
     setFormData({
       ...formData,
       bookSession: [bookSessionCopy],
     });
-    console.log(formData)
-  }
+    console.log(formData);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -113,24 +173,29 @@ export default function MentorForm() {
     //     "The number of book sessions must be more than 2 or equal to 2!"
     //   );
     // }
-    try {
-      console.log(formData);
-      setIsLoading(true);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-      console.log(error);
-      const { data: res } = await axios.post(url, formData);
-      sendEmail(res.mentorVerifyLink);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
+    if (isChecked) {
+      // Register mentor
+      try {
+        console.log(formData);
+        setIsLoading(true);
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
+        console.log(error);
+        const { data: res } = await axios.post(url, formData);
+        sendEmail(res.mentorVerifyLink);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        }
       }
+    } else {
+      alert("Please agree to the terms before submitting");
     }
   };
 
@@ -178,8 +243,13 @@ export default function MentorForm() {
       );
   };
 
+  function hideitems(className) {
+    document.querySelector(className).style.display = "none";
+  }
+
   return (
     <div className="mentorFormRegisration">
+      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {modalPopup === true ? (
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">
@@ -194,25 +264,45 @@ export default function MentorForm() {
         </div>
       ) : null}
       <div className="container">
+        <img
+          src="/assets/img/vector_images/vector-registration.svg"
+          alt="vector image"
+        />
         <form className="mentorForm" onSubmit={handleSubmit}>
+          <div style={{ gridColumn: "1/3" }}>
+            <div id="googleSignInButton"></div>
+          </div>
           <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
             <img
               src={
                 formData.mentorImg.length === 0
-                  ? "/blank-profile-photo.jpg"
+                  ? "/assets/img/icon/no-profile-picture.png"
                   : formData.mentorImg
               }
               className="mentorPhoto"
             />
             <div>
-              <h3>Upload you profile photo here</h3>
-              <input
-                type="file"
-                name="mentorProfile"
-                className="mentorFormInput"
-                onChange={(e) => handleUploadImageChange(e)}
-                required
-              />
+              <h3>
+                {formData.mentorImg.length > 0
+                  ? "Change your profile image"
+                  : "Upload you profile photo here"}
+              </h3>
+              {formData.mentorImg.length > 0 ? (
+                <input
+                  type="file"
+                  name="mentorProfile"
+                  className="mentorFormInput"
+                  onChange={(e) => handleUploadImageChange(e)}
+                />
+              ) : (
+                <input
+                  type="file"
+                  name="mentorProfile"
+                  className="mentorFormInput"
+                  onChange={(e) => handleUploadImageChange(e)}
+                  required
+                />
+              )}
             </div>
           </div>
           <div>
@@ -315,7 +405,6 @@ export default function MentorForm() {
               className="mentorFormInput"
               onChange={(e) => handleSocialChange(e)}
               placeholder="e.g. https://www.twitter.com/peterparker"
-              required
               value={formData.social.twitter}
             />
           </div>
@@ -358,21 +447,34 @@ export default function MentorForm() {
           {msg && (
             <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
           )}
-          <div style={{display:"flex", flexDirection:"row", gap:"2rem"}}>
+          <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
             <div>
-          <button
-            style={{ width: "fit-content", padding: "15px 25px" }}
-            type="submit"
-            className="mentorFormButotn"
-          >
-            Register
-          </button>
+              <button
+                style={{ width: "fit-content", padding: "15px 25px" }}
+                type="submit"
+                className="mentorFormButotn"
+              >
+                Register
+              </button>
             </div>
             <div>
-              {isLoading&&<img style={{width:"50px", height:"50px"}} src="/assets/img/gif/Spinner.gif" alt="...jljk" />}
+              {isLoading && (
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src="/assets/img/gif/Spinner.gif"
+                  alt="...jljk"
+                />
+              )}
             </div>
           </div>
-
+          <label>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
+            &nbsp;We will take 11% of your session price
+          </label>
           <p>
             Already have mentor account? <a href="/mentorLogin">Login</a>
           </p>

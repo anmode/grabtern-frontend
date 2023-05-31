@@ -1,20 +1,18 @@
-
-
 /* Custom Code skills */
-.single-skill{
+.single-skill {
   display: flex;
 }
 
 .single-skill span {
-	color: #79838b;
-	font-size: 13px;
-	font-weight: 300;
-	letter-spacing: 0;
-	margin-bottom: 14px;
-	display: block;
+  color: #79838b;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0;
+  margin-bottom: 14px;
+  display: block;
 }
 .single-skill .bar-progress {
-	width: 100%;
+  width: 100%;
 }
 .single-skill .bar-title {
   width: 20%;
@@ -48,13 +46,11 @@
   border-right: 0;
 }
 
-
-
 /* Default */
 .barfiller {
-	width: 100%;
-	height: 10px;
-	background: #f6f9fc;
+  width: 100%;
+  height: 10px;
+  background: #f6f9fc;
   position: relative;
   border-radius: 5px;
 }
@@ -69,7 +65,9 @@
   border-radius: 5px;
 }
 
-.barfiller .tipWrap { display: none; }
+.barfiller .tipWrap {
+  display: none;
+}
 
 .barfiller .tip {
   margin-top: -28px;
@@ -85,7 +83,7 @@
 
 .barfiller .tip:after {
   border: solid;
-  border-color: rgba(0,0,0,.8) transparent;
+  border-color: rgba(0, 0, 0, 0.8) transparent;
   border-width: 6px 6px 0 6px;
   content: "";
   display: block;
@@ -94,5 +92,4 @@
   top: 100%;
   z-index: 9;
   display: none;
-  
 }

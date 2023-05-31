@@ -31,7 +31,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
 - [Contributing](#contributing)
 - [Author](#author)
 - [License](#license)
-- [Our Contributors](#our-contributors!)
+- [Our Contributors](#-thank-you-for-your-contribution)
 ---
 
 

@@ -1,4 +1,5 @@
-# Grabtern Frontend
+<h1 align="center"> #Grabtern Frontend</h1>
+<br>
 
 This is the frontend repository for Grabtern, a web application built with Next.js.
 

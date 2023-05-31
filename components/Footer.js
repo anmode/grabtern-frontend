@@ -30,19 +30,19 @@ function Footer() {
                       </div>
                     </div>
                     <div className="footer-social">
-                      <a href="#">
+                      <a href="#" aria-label="Visit us on Twitter" title="Twitter (External link)">
                         <i className="fab fa-twitter"></i>
                       </a>
-                      <a href="https://bit.ly/sai4ull">
+                      <a href="https://bit.ly/sai4ull" aria-label="Visit us on Facebook" title="Facebook (External link)">
                         <i className="fab fa-facebook-f"></i>
                       </a>
-                      <a href="#">
+                      <a href="#" aria-label="Visit us on Pinterest" title="Pinterest (External link)">
                         <i className="fab fa-pinterest-p"></i>
                       </a>
-                      <a href="https://www.instagram.com/grabtern.guide/">
+                      <a href="https://www.instagram.com/grabtern.guide/" aria-label="Visit us on Instagram" title="Instagram (External link)">
                         <i className="fab fa-instagram"></i>
                       </a>
-                      <a href="https://www.linkedin.com/company/grabtern/">
+                      <a href="https://www.linkedin.com/company/grabtern/" aria-label="Visit us on Linkedin" title="Linkedin (External link)">
                         <i className="fab fa-linkedin"></i>
                       </a>
                     </div>

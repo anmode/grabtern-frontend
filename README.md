@@ -8,7 +8,6 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)
-![Visitors](https://api.visitorbadge.io/api/visitors?path=anmode/grabtern-frontend&countColor=%23263759&style=flat)
 ![GitHub forks](https://img.shields.io/github/forks/anmode/grabtern-frontend?style=flat&logo=github)
 ![GitHub Repo stars](https://img.shields.io/github/stars/anmode/grabtern-frontend?style=flat&logo=github)
 ![GitHub contributors](https://img.shields.io/github/contributors/anmode/grabtern-frontend)

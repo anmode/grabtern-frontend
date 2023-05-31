@@ -34,7 +34,7 @@ If you'd like to contribute to Grabtern Frontend, you can fork this repository a
 <a href="https://github.com/anmode/grabtern-frontend/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=anmode/grabtern-frontend" />
 </a>
-Made with [contrib.rocks](https://contrib.rocks).
+
 
 ## License
 

@@ -96,9 +96,23 @@ npx eslint --fix .
 The --fix flag automatically fixes fixable issues, including formatting inconsistencies
 
 
-## Contributing
+## Contributing 
 
-If you'd like to contribute to Grabtern Frontend, you can fork this repository and create a feature or bug fix branch. Once you've made your changes, submit a pull request to the main repository.
+If you'd like to contribute to Grabtern Frontend:- 
+
+* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/anmode/grabtern-frontend/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
+* Please make sure you check your spelling and grammar.
+* Create individual PR for each suggestion.
+* Please also read through the [Code Of Conduct](https://github.com//anmode/grabtern-frontend/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+
+### Creating A Pull Request
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b <new_branch_name>`)
+3. Commit your Changes (`git commit -m 'Added some AmazingFeature'`)
+4. Push to the Branch (`git pull origin <branch_name>`)
+5. Open a Pull Request
+
 
 ## ✨ Thank You for Your Contribution!
 <a href="https://github.com/anmode/grabtern-frontend/graphs/contributors">

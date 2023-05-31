@@ -100,13 +100,19 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                     <nav>
                       <ul id="navigation">
                         <li className="active">
-                          <a href="/">Home</a>
+                          <a href="/" className={styles.navLink}>
+                            Home
+                          </a>
                         </li>
                         <li>
-                          <a href="/mentors">Mentors</a>
+                          <a href="/mentors" className={styles.navLink}>
+                            Mentors
+                          </a>
                         </li>
                         <li>
-                          <a href="/contact">Contact</a>
+                          <a href="/contact" className={styles.navLink}>
+                            Contact
+                          </a>
                         </li>
 
                         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (

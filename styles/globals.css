@@ -947,14 +947,22 @@ textarea {
 
 .bookSessions li {
   background-color: white;
-  border: 1px solid gray;
+  border: 2px solid gray;
   padding: 25px 25px;
   border-radius: 10px;
-  height: 270px;
-  width: 540px;
+  height: 240px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(179, 177, 177, 0.8), 0 0 19px rgb(213, 211, 211);
+  transition: transform 0.4s ease;
 }
 .bookSessions li:hover {
-  box-shadow: 2px 4px 1px rgb(157, 157, 157);
+  transform: scale(1.02);
+ 
+}
+
+.bookSessions li p {
+  display: none;
 }
 .bookSessionIcons {
   display: flex;
@@ -969,24 +977,25 @@ textarea {
   font-size: 19px;
   font-weight: bold;
   align-items: center;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 0 10px;
 }
 
 .bookSessions li button {
-  background-color: #037b80;
-  padding: 10px 20px;
+  background: linear-gradient(#c054ff, #5274ff);
+  padding: 8px 15px;
   font-size: 19px;
   color: white;
   border: none;
   margin-top: 35px;
   border-radius: 5px;
+  transition: transform 0.2s ease;
 }
 .bookSessions li button:hover {
-  color: #037b80;
-  background-color: white;
-  border: 2px solid #037b80;
+  transform: scale(1.05);
+  background: linear-gradient(#b12cfe, #305aff);
 }
+
 .bookSessionColumn {
   flex-direction: column !important;
 }

@@ -56,4 +56,3 @@ Effective communication is essential for maintaining a collaborative and inclusi
 By following these guidelines, we aim to create a welcoming community where everyone feels comfortable and empowered to contribute.
 
 Thank you for your interest and support!
-

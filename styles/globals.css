@@ -953,7 +953,7 @@ textarea {
   height: 290px;
   width: 500px;
 }
-.bookSessions li:hover{
+.bookSessions li:hover {
   box-shadow: 2px 4px 1px rgb(157, 157, 157);
 }
 .bookSessionIcons {
@@ -982,11 +982,11 @@ textarea {
   margin-top: 25px;
   border-radius: 5px;
 }
-.bookSessions li button:hover{
+.bookSessions li button:hover {
   color: #037b80;
   background-color: white;
-  border:2px solid #037b80;
-} 
+  border: 2px solid #037b80;
+}
 .bookSessionColumn {
   flex-direction: column !important;
 }

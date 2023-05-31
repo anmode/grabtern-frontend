@@ -85,7 +85,7 @@ function privacy() {
             geographically, the applicable privacy law may mean you have certain
             rights regarding your personal information.{" "}
             <a href="#8">Learn more about your privacy rights.</a>
-            <br></br>
+            <br  id="1"></br>
             How do you exercise your rights? The easiest way to exercise your
             rights is by submitting a{" "}
             <a href="https://app.termly.io/notify/c64101d9-760d-43fe-89df-0884d72c12d9">
@@ -156,7 +156,7 @@ function privacy() {
         </div>
         <div className="terms-and-cond" style={{ marginTop: 45 }}>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="1">
+            <div className="tnc-sub-head">
               1. WHAT INFORMATION DO WE COLLECT?
             </div>
             Personal information you disclose to us
@@ -184,7 +184,7 @@ function privacy() {
             10. Upi address if mentor<br></br>
             <b>Sensitive Information: </b> We do not process sensitive
             information.
-            <br></br>
+            <br  id="2"></br>
             <b>Social Media Login Data: </b> We may provide you with the option
             to register with us using your existing social media account
             details, like your Facebook, Twitter, or other social media account.
@@ -197,7 +197,7 @@ function privacy() {
             such personal information.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="2">
+            <div className="tnc-sub-head">
               2. HOW DO WE PROCESS YOUR INFORMATION?
             </div>
             <b>In Short:</b> We process your information to provide, improve,
@@ -221,7 +221,7 @@ function privacy() {
             your information to send you details about our products and
             services, changes to our terms and policies, and other similar
             information.
-            <br></br>
+            <br id="3"></br>
             <b>To enable user-to-user communications.</b> We may process your
             information if you choose to use any of our offerings that allow for
             communication with another user.
@@ -236,10 +236,10 @@ function privacy() {
             You can opt out of our marketing emails at any time. For more
             information, see "<a href="#8">WHAT ARE YOUR PRIVACY RIGHTS?</a>"
             below.
-            <br></br>
+            <br ></br>
             <b>To post testimonials.</b> We post testimonials on our Services
             that may contain personal information.
-            <br></br>
+            <br id="4"></br>
             <b>
               To evaluate and improve our Services, products, marketing, and
               your experience.
@@ -250,12 +250,12 @@ function privacy() {
             products, marketing, and your experience.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="3">
+            <div className="tnc-sub-head">
               3. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
             </div>
             <b>In Short: </b>We may share information in specific situations
             described in this section and/or with the following third parties.
-            <br></br>
+            <br id="5"></br>
             We may need to share your personal information in the following
             situations:<br></br>
             <b>Business Transfers. </b>We may share or transfer your information
@@ -264,7 +264,7 @@ function privacy() {
             business to another company.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="4">
+            <div className="tnc-sub-head">
               4. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
             </div>
             <b>In Short: </b>We may use cookies and other tracking technologies
@@ -276,13 +276,13 @@ function privacy() {
             refuse certain cookies is set out in our Cookie Notice.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="5">
+            <div className="tnc-sub-head">
               5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?
             </div>
             <b>In Short: </b>If you choose to register or log in to our Services
             using a social media account, we may have access to certain
             information about you.
-            <br></br>
+            <br id="6"></br>
             Our Services offer you the ability to register and log in using your
             third-party social media account details (like your Facebook or
             Twitter logins). Where you choose to do this, we will receive
@@ -303,10 +303,10 @@ function privacy() {
             privacy preferences on their sites and apps.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="6">
+            <div className="tnc-sub-head">
               6. HOW LONG DO WE KEEP YOUR INFORMATION?
             </div>
-            <b>In Short: </b>We keep your information for as long as necessary
+            <b id="7">In Short: </b>We keep your information for as long as necessary
             to fulfill the purposes outlined in this privacy notice unless
             otherwise required by law.
             <br></br>
@@ -325,10 +325,10 @@ function privacy() {
             any further processing until deletion is possible.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="7">
+            <div className="tnc-sub-head" >
               7. HOW DO WE KEEP YOUR INFORMATION SAFE?
             </div>
-            <b>In Short: </b>We aim to protect your personal information through
+            <b id="8">In Short: </b>We aim to protect your personal information through
             a system of organizational and technical security measures.
             <br></br>
             We have implemented appropriate and reasonable technical and
@@ -345,7 +345,7 @@ function privacy() {
             only access the Services within a secure environment.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="8">
+            <div className="tnc-sub-head" >
               8. WHAT ARE YOUR PRIVACY RIGHTS?
             </div>
             <b>In Short: </b>You may review, change, or terminate your account
@@ -381,7 +381,7 @@ function privacy() {
             <br></br>1. Log in to your account settings and update your user
             account.
             <br></br>2. Contact us using the contact information provided.
-            <br></br>3. Upon your request to terminate your account, we will
+            <br  id="9"></br>3. Upon your request to terminate your account, we will
             deactivate or delete your account and information from our active
             databases. However, we may retain some information in our files to
             prevent fraud, troubleshoot problems, assist with any
@@ -397,12 +397,12 @@ function privacy() {
               opt out of interest-based advertising
             </a>{" "}
             by advertisers on our Services.
-            <br></br>
+            <br  id="10"></br>
             If you have questions or comments about your privacy rights, you may
             email us at contact.grabtern@gmail.com.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="9">
+            <div className="tnc-sub-head">
               9. CONTROLS FOR DO-NOT-TRACK FEATURES
             </div>
             Most web browsers and some mobile operating systems and mobile
@@ -418,13 +418,13 @@ function privacy() {
             of this privacy notice.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="10">
+            <div className="tnc-sub-head">
               10. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
             </div>
             <b>In Short: </b>Yes, if you are a resident of California, you are
             granted specific rights regarding access to your personal
             information.
-            <br></br>
+            <br  id="11"></br>
             California Civil Code Section 1798.83, also known as the "Shine The
             Light" law, permits our users who are California residents to
             request and obtain from us, once a year and free of charge,
@@ -447,7 +447,7 @@ function privacy() {
             comprehensively removed from all our systems (e.g., backups, etc.).
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="11">
+            <div className="tnc-sub-head" id="12">
               11. DO WE MAKE UPDATES TO THIS NOTICE?
             </div>
             <b>In Short: </b>Yes, we will update this notice as necessary to
@@ -460,8 +460,8 @@ function privacy() {
             encourage you to review this privacy notice frequently to be
             informed of how we are protecting your information.
           </div>
-          <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="12">
+          <div className="terms-and-cond-sub"  id="13">
+            <div className="tnc-sub-head">
               12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
             </div>
             If you have questions or comments about this notice, you may email
@@ -472,7 +472,7 @@ function privacy() {
             India<br></br>
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" id="13">
+            <div className="tnc-sub-head">
               13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM
               YOU?
             </div>

@@ -45,6 +45,41 @@ This will start the development server on http://localhost:3000/.
 ## 🧰 Tech Stack Used 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">   <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
 
+## 🧪 Prettier lint test and How to fix it?
+Prettier is a code formatter that helps maintain consistent code style and formatting in your projects. It automatically analyzes your code and applies predefined formatting rules to ensure a standardized appearance.
+
+Linting is the process of analyzing code for potential errors, bugs, and code style violations. It helps identify and highlight problematic code patterns, potential bugs, and adherence to coding standards.
+
+<b>"Prettier lint test" </b> refers to running a linter (such as ESLint) with the Prettier plugin or rules enabled. It means checking your code for both linting errors and code formatting inconsistencies according to Prettier's rules.
+
+To fix Prettier linting issues, you can follow these steps:
+
+1) Install necessary tools: Ensure that you have the required tools installed in your project. You'll need ESLint and Prettier, along with any additional plugins or configurations specific to your project or coding environment.
+```bash
+npm install eslint prettier --save-dev
+```
+2) Configure ESLint: Set up your ESLint configuration file (.eslintrc.js or .eslintrc.json) to include Prettier rules and the Prettier plugin. This allows ESLint to use Prettier's formatting rules for linting.
+```bash
+module.exports = {
+  // Other ESLint rules and configurations
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+};
+```
+Make sure the Prettier plugin is included in the extends array.
+
+3) Configure Prettier: Create a Prettier configuration file (.prettierrc or prettier.config.js) in the root of your project. Define your preferred formatting rules and options for Prettier.
+``` bash
+module.exports = {
+  // Prettier options
+};
+```
+Customize the Prettier options according to your desired code formatting style.
+4) Run ESLint with Prettier: Execute the ESLint command to lint your code and fix any issues related to code formatting according to Prettier's rules.
+```bash
+npx eslint --fix .
+```
+The --fix flag automatically fixes fixable issues, including formatting inconsistencies
+
 
 ## Contributing
 

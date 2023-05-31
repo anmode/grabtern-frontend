@@ -37,23 +37,31 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Getting Started
 
+### How To SetUp
 To get started with Grabtern Frontend, you'll need to install Node.js and npm on your machine. Then, you can clone this repository and install the dependencies:
 
-```bash
-git clone https://github.com/your-username/grabtern-frontend.git
-cd grabtern-frontend
-npm install
-
+- Fork The Repo
 ```
-
-Once you've installed the dependencies, you can start the development server with:
-
-```bash
+you can do this by clicking on the green coloured fork button
+```
+- Clone your forked repo
+```
+$ git clone https://github.com/your-username/grabtern-frontend.git
+```
+- Go to directory
+```
+cd grabtern-frontend
+```
+- Install Dependencies
+```
+npm install
+```
+- Start LocalHost Server
+```
 npm run dev
 
-```
-
 This will start the development server on http://localhost:3000/.
+
 
 ## 🧰 Tech Stack Used 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">   <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">

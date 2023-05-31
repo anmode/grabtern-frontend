@@ -81,7 +81,6 @@ function scrap() {
                 lineHeight: "115%",
                 // fontFamily: "Arial",
                 // color: "rgb(89, 89, 89)",
-
               }}
             >
               <bdt className="block-component" />
@@ -148,7 +147,6 @@ function scrap() {
                 fontSize: 18,
 
                 lineHeight: "115%",
-
               }}
             >
               After receiving cancellation of the session , we will process your{" "}
@@ -256,7 +254,6 @@ function scrap() {
             <span style={{ fontSize: 18 }}>
               If you have any questions concerning our return policy, please
               contact us at: contact.grabtern@gmail.com
-
             </span>
           </div>
 

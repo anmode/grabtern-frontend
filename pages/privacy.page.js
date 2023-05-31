@@ -85,7 +85,7 @@ function privacy() {
             geographically, the applicable privacy law may mean you have certain
             rights regarding your personal information.{" "}
             <a href="#8">Learn more about your privacy rights.</a>
-            <br  id="1"></br>
+            <br id="1"></br>
             How do you exercise your rights? The easiest way to exercise your
             rights is by submitting a{" "}
             <a href="https://app.termly.io/notify/c64101d9-760d-43fe-89df-0884d72c12d9">
@@ -184,7 +184,7 @@ function privacy() {
             10. Upi address if mentor<br></br>
             <b>Sensitive Information: </b> We do not process sensitive
             information.
-            <br  id="2"></br>
+            <br id="2"></br>
             <b>Social Media Login Data: </b> We may provide you with the option
             to register with us using your existing social media account
             details, like your Facebook, Twitter, or other social media account.
@@ -236,7 +236,7 @@ function privacy() {
             You can opt out of our marketing emails at any time. For more
             information, see "<a href="#8">WHAT ARE YOUR PRIVACY RIGHTS?</a>"
             below.
-            <br ></br>
+            <br></br>
             <b>To post testimonials.</b> We post testimonials on our Services
             that may contain personal information.
             <br id="4"></br>
@@ -306,9 +306,9 @@ function privacy() {
             <div className="tnc-sub-head">
               6. HOW LONG DO WE KEEP YOUR INFORMATION?
             </div>
-            <b id="7">In Short: </b>We keep your information for as long as necessary
-            to fulfill the purposes outlined in this privacy notice unless
-            otherwise required by law.
+            <b id="7">In Short: </b>We keep your information for as long as
+            necessary to fulfill the purposes outlined in this privacy notice
+            unless otherwise required by law.
             <br></br>
             We will only keep your personal information for as long as it is
             necessary for the purposes set out in this privacy notice, unless a
@@ -325,11 +325,11 @@ function privacy() {
             any further processing until deletion is possible.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" >
+            <div className="tnc-sub-head">
               7. HOW DO WE KEEP YOUR INFORMATION SAFE?
             </div>
-            <b id="8">In Short: </b>We aim to protect your personal information through
-            a system of organizational and technical security measures.
+            <b id="8">In Short: </b>We aim to protect your personal information
+            through a system of organizational and technical security measures.
             <br></br>
             We have implemented appropriate and reasonable technical and
             organizational security measures designed to protect the security of
@@ -345,9 +345,7 @@ function privacy() {
             only access the Services within a secure environment.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" >
-              8. WHAT ARE YOUR PRIVACY RIGHTS?
-            </div>
+            <div className="tnc-sub-head">8. WHAT ARE YOUR PRIVACY RIGHTS?</div>
             <b>In Short: </b>You may review, change, or terminate your account
             at any time.
             <br></br>
@@ -381,10 +379,10 @@ function privacy() {
             <br></br>1. Log in to your account settings and update your user
             account.
             <br></br>2. Contact us using the contact information provided.
-            <br  id="9"></br>3. Upon your request to terminate your account, we will
-            deactivate or delete your account and information from our active
-            databases. However, we may retain some information in our files to
-            prevent fraud, troubleshoot problems, assist with any
+            <br id="9"></br>3. Upon your request to terminate your account, we
+            will deactivate or delete your account and information from our
+            active databases. However, we may retain some information in our
+            files to prevent fraud, troubleshoot problems, assist with any
             investigations, enforce our legal terms and/or comply with
             applicable legal requirements.
             <br></br>
@@ -397,7 +395,7 @@ function privacy() {
               opt out of interest-based advertising
             </a>{" "}
             by advertisers on our Services.
-            <br  id="10"></br>
+            <br id="10"></br>
             If you have questions or comments about your privacy rights, you may
             email us at contact.grabtern@gmail.com.
           </div>
@@ -424,7 +422,7 @@ function privacy() {
             <b>In Short: </b>Yes, if you are a resident of California, you are
             granted specific rights regarding access to your personal
             information.
-            <br  id="11"></br>
+            <br id="11"></br>
             California Civil Code Section 1798.83, also known as the "Shine The
             Light" law, permits our users who are California residents to
             request and obtain from us, once a year and free of charge,
@@ -460,7 +458,7 @@ function privacy() {
             encourage you to review this privacy notice frequently to be
             informed of how we are protecting your information.
           </div>
-          <div className="terms-and-cond-sub"  id="13">
+          <div className="terms-and-cond-sub" id="13">
             <div className="tnc-sub-head">
               12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
             </div>

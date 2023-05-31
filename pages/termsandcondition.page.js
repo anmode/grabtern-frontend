@@ -123,7 +123,7 @@ function scrap() {
                 <a href="#20">20. USER DATA</a>
               </div>
               <div>
-                <a href="#21"  id="1">
+                <a href="#21" id="1">
                   21. ELECTRONIC COMMUNICATIONS, <br></br>TRANSACTIONS, AND
                   SIGNATURES
                 </a>
@@ -137,11 +137,9 @@ function scrap() {
             </div>
           </div>
         </div>
-        <div className="terms-and-cond"  id="2" style={{ marginTop: 45 }}>
+        <div className="terms-and-cond" id="2" style={{ marginTop: 45 }}>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              1. OUR SERVICES
-            </div>
+            <div className="tnc-sub-head">1. OUR SERVICES</div>
             The information provided when using the Services is not intended for
             distribution to or use by any person or entity in any jurisdiction
             or country where such distribution or use would be contrary to law
@@ -152,9 +150,7 @@ function scrap() {
             with local laws, if and to the extent local laws are applicable.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              2. INTELLECTUAL PROPERTY RIGHTS
-            </div>
+            <div className="tnc-sub-head">2. INTELLECTUAL PROPERTY RIGHTS</div>
             <strong>Our intellectual property</strong>
             <br></br>
             We are the owner or the licensee of all intellectual property rights
@@ -265,7 +261,7 @@ function scrap() {
             reimburse us for any and all losses that we may suffer because of
             your breach of (a) this section, (b) any third party’s intellectual
             property rights, or (c) applicable law.
-            <br  id="3"></br>
+            <br id="3"></br>
             <strong>We may remove or edit your Content: </strong>Although we
             have no obligation to monitor any Contributions, we shall have the
             right to remove or edit any Contributions at any time without notice
@@ -280,10 +276,8 @@ function scrap() {
             infringes upon any copyright you own or control, please immediately
             refer to the "COPYRIGHT INFRINGEMENTS" section below.
           </div>
-          <div className="terms-and-cond-sub"  id="4">
-            <div className="tnc-sub-head">
-              3. USER REPRESENTATIONS
-            </div>
+          <div className="terms-and-cond-sub" id="4">
+            <div className="tnc-sub-head">3. USER REPRESENTATIONS</div>
             By using the Services, you represent and warrant that: (1) all
             registration information you submit will be true, accurate, current,
             and complete; (2) you will maintain the accuracy of such information
@@ -302,7 +296,7 @@ function scrap() {
             Services (or any portion thereof).
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="5">
+            <div className="tnc-sub-head" id="5">
               4. USER REGISTRATION
             </div>
             You may be required to register to use the Services. You agree to
@@ -313,9 +307,7 @@ function scrap() {
             otherwise objectionable.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              5. PROHIBITED ACTIVITIES
-            </div>
+            <div className="tnc-sub-head">5. PROHIBITED ACTIVITIES</div>
             You may not access or use the Services for any purpose other than
             that for which we make the Services available. The Services may not
             be used in connection with any commercial endeavors except those
@@ -383,7 +375,7 @@ function scrap() {
             cheat utility, scraper, or offline reader that accesses the
             Services, or use or launch any unauthorized script or other
             software.
-            <br  id="6"></br>20. Use a buying agent or purchasing agent to make
+            <br id="6"></br>20. Use a buying agent or purchasing agent to make
             purchases on the Services.
             <br></br>21. Make any unauthorized use of the Services, including
             collecting usernames and/or email addresses of users by electronic
@@ -403,9 +395,7 @@ function scrap() {
             session
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              6. USER GENERATED CONTRIBUTIONS
-            </div>
+            <div className="tnc-sub-head">6. USER GENERATED CONTRIBUTIONS</div>
             The Services may invite you to chat, contribute to, or participate
             in blogs, message boards, online forums, and other functionality,
             and may provide you with the opportunity to create, submit, post,
@@ -445,9 +435,9 @@ function scrap() {
             objectionable (as determined by us).
             <br></br>7. Your Contributions do not ridicule, mock, disparage,
             intimidate, or abuse anyone.
-            <br  id="7"></br>8. Your Contributions are not used to harass or threaten
-            (in the legal sense of those terms) any other person and to promote
-            violence against a specific person or class of people.
+            <br id="7"></br>8. Your Contributions are not used to harass or
+            threaten (in the legal sense of those terms) any other person and to
+            promote violence against a specific person or class of people.
             <br></br>9. Your Contributions do not violate any applicable law,
             regulation, or rule.
             <br></br>10. Your Contributions do not violate the privacy or
@@ -466,9 +456,7 @@ function scrap() {
             termination or suspension of your rights to use the Services.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              7. CONTRIBUTION LICENSE
-            </div>
+            <div className="tnc-sub-head">7. CONTRIBUTION LICENSE</div>
             By posting your Contributions to any part of the Services or making
             Contributions accessible to the Services by linking your account
             from the Services to any of your social networking accounts, you
@@ -493,7 +481,7 @@ function scrap() {
             images you provide. You waive all moral rights in your
             Contributions, and you warrant that moral rights have not otherwise
             been asserted in your Contributions.
-            <br  id="8"></br>
+            <br id="8"></br>
             We do not assert any ownership over your Contributions. You retain
             full ownership of all of your Contributions and any intellectual
             property rights or other proprietary rights associated with your
@@ -512,9 +500,7 @@ function scrap() {
             monitor your Contributions.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              8. SOCIAL MEDIA
-            </div>
+            <div className="tnc-sub-head">8. SOCIAL MEDIA</div>
             As part of the functionality of the Services, you may link your
             account with online accounts you have with third-party service
             providers (each such account, a "Third-Party Account") by either:
@@ -546,13 +532,13 @@ function scrap() {
             provider, then Social Network Content may no longer be available on
             and through the Services. You will have the ability to disable the
             connection between your account on the Services and your Third-Party
-            Accounts at any time.<br   id="9"></br> PLEASE NOTE THAT YOUR RELATIONSHIP WITH THE
-            THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY
-            ACCOUNTS IS GOVERNED SOLELY BY YOUR AGREEMENT(S) WITH SUCH
-            THIRD-PARTY SERVICE PROVIDERS. We make no effort to review any
-            Social Network Content for any purpose, including but not limited
-            to, for accuracy, legality, or non-infringement, and we are not
-            responsible for any Social Network Content. You acknowledge and
+            Accounts at any time.<br id="9"></br> PLEASE NOTE THAT YOUR
+            RELATIONSHIP WITH THE THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH
+            YOUR THIRD-PARTY ACCOUNTS IS GOVERNED SOLELY BY YOUR AGREEMENT(S)
+            WITH SUCH THIRD-PARTY SERVICE PROVIDERS. We make no effort to review
+            any Social Network Content for any purpose, including but not
+            limited to, for accuracy, legality, or non-infringement, and we are
+            not responsible for any Social Network Content. You acknowledge and
             agree that we may access your email address book associated with a
             Third-Party Account and your contacts list stored on your mobile
             device or tablet computer solely for purposes of identifying and
@@ -565,7 +551,7 @@ function scrap() {
             and profile picture that become associated with your account.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="10">
+            <div className="tnc-sub-head" id="10">
               9. SERVICES MANAGEMENT
             </div>
             We reserve the right, but not the obligation, to: (1) monitor the
@@ -584,7 +570,7 @@ function scrap() {
             functioning of the Services.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="11">
+            <div className="tnc-sub-head" id="11">
               10. PRIVACY POLICY
             </div>
             We care about data privacy and security. Please review our Privacy
@@ -599,7 +585,7 @@ function scrap() {
             transferred to and processed in India.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="12">
+            <div className="tnc-sub-head" id="12">
               11. COPYRIGHT INFRINGEMENTS
             </div>
             We respect the intellectual property rights of others. If you
@@ -615,9 +601,7 @@ function scrap() {
             copyright, you should consider first contacting an attorney
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              12. TERM AND TERMINATION
-            </div>
+            <div className="tnc-sub-head">12. TERM AND TERMINATION</div>
             These Legal Terms shall remain in full force and effect while you
             use the Services. WITHOUT LIMITING ANY OTHER PROVISION OF THESE
             LEGAL TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND
@@ -629,7 +613,7 @@ function scrap() {
             USE OR PARTICIPATION IN THE SERVICES OR DELETE YOUR ACCOUNT AND ANY
             CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING,
             IN OUR SOLE DISCRETION.
-            <br  id="13"></br>
+            <br id="13"></br>
             If we terminate or suspend your account for any reason, you are
             prohibited from registering and creating a new account under your
             name, a fake or borrowed name, or the name of any third party, even
@@ -648,7 +632,7 @@ function scrap() {
             information on our Services. We will not be liable to you or any
             third party for any modification, price change, suspension, or
             discontinuance of the Services.
-            <br  id="14"></br>
+            <br id="14"></br>
             We cannot guarantee the Services will be available at all times. We
             may experience hardware, software, or other problems or need to
             perform maintenance related to the Services, resulting in
@@ -663,7 +647,7 @@ function scrap() {
             releases in connection therewith.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="15">
+            <div className="tnc-sub-head" id="15">
               14. GOVERNING LAW
             </div>
             These Legal Terms shall be governed by and defined following the
@@ -672,9 +656,7 @@ function scrap() {
             dispute which may arise in connection with these Legal Terms.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head">
-              15. DISPUTE RESOLUTION
-            </div>
+            <div className="tnc-sub-head">15. DISPUTE RESOLUTION</div>
             <br></br>
             <strong>Informal Negotiations</strong>
             <br></br>
@@ -730,7 +712,7 @@ function scrap() {
             jurisdiction of that court.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="17">
+            <div className="tnc-sub-head" id="17">
               16. CORRECTIONS
             </div>
             There may be information on the Services that contains typographical
@@ -741,7 +723,7 @@ function scrap() {
             notice.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="18">
+            <div className="tnc-sub-head" id="18">
               17. DISCLAIMER
             </div>
             THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU
@@ -777,7 +759,7 @@ function scrap() {
             APPROPRIATE.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="19">
+            <div className="tnc-sub-head" id="19">
               18. LIMITATIONS OF LIABILITY
             </div>
             IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE
@@ -810,7 +792,7 @@ function scrap() {
             is subject to this indemnification upon becoming aware of it.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head"  id="21">
+            <div className="tnc-sub-head" id="21">
               20. USER DATA
             </div>
             We will maintain certain data that you transmit to the Services for
@@ -868,9 +850,7 @@ function scrap() {
             of signing by the parties hereto to execute these Legal Terms.
           </div>
           <div className="terms-and-cond-sub">
-            <div className="tnc-sub-head" >
-              23. CONTACT US
-            </div>
+            <div className="tnc-sub-head">23. CONTACT US</div>
             In order to resolve a complaint regarding the Services or to receive
             further information regarding use of the Services, please contact us
             at:

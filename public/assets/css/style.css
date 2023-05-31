@@ -3756,7 +3756,7 @@ hr {
   .login-form {
     width: 380px;
     padding: 110px 40px 15px 40px;
-    margin: 100px auto;
+    margin: 100px auto 0 auto;
   }
 }
 

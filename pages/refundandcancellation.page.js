@@ -81,6 +81,7 @@ function scrap() {
                 lineHeight: "115%",
                 // fontFamily: "Arial",
                 // color: "rgb(89, 89, 89)",
+
               }}
             >
               <bdt className="block-component" />
@@ -116,7 +117,10 @@ function scrap() {
           <br />
         </div>
         <div>
-          <div className="MsoNormal" style={{ lineHeight: "1.5" }}>
+          <div
+            className="MsoNormal"
+            style={{ lineHeight: "1.5", textAlign: "center" }}
+          >
             <br />
           </div>
           <div
@@ -144,11 +148,14 @@ function scrap() {
           <div
             className="MsoNormal ret_pol2"
             style={{ lineHeight: "1.5" }}
+
           >
             <span
               style={{
                 fontSize: 18,
+
                 lineHeight: "115%",
+
               }}
             >
               After receiving cancellation of the session , we will process your{" "}
@@ -241,6 +248,7 @@ function scrap() {
           <div style={{ lineHeight: "1.5" }}>
             <br />
           </div>
+
           <div className="MsoNormal questions"style={{ lineHeight: "1.5" }}>
             <span style={{ fontSize: 29, }}>
               <strong>QUESTIONS</strong>
@@ -253,8 +261,10 @@ function scrap() {
             <span style={{ fontSize: 18,}}>
               If you have any questions concerning our return policy, please
               contact us at: contact.grabtern@gmail.com
+
             </span>
           </div>
+
           <div data-custom-class="body_text" style={{ lineHeight: "1.1" }}>
             {/* <br /> */}
           </div>

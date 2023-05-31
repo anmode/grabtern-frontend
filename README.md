@@ -30,7 +30,7 @@ This will start the development server on http://localhost:3000/.
 
 If you'd like to contribute to Grabtern Frontend, you can fork this repository and create a feature or bug fix branch. Once you've made your changes, submit a pull request to the main repository.
 
-## Contributors List
+## ✨ Thank You for Your Contribution!
 <a href="https://github.com/anmode/grabtern-frontend/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=anmode/grabtern-frontend" />
 </a>

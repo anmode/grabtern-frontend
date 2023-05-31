@@ -981,7 +981,7 @@ textarea {
   padding: 0 10px;
 }
 
-.bookSessions li button {
+.bookSessions > li > button {
   background: linear-gradient(#c054ff, #5274ff);
   padding: 8px 15px;
   font-size: 19px;
@@ -991,7 +991,7 @@ textarea {
   border-radius: 5px;
   transition: transform 0.2s ease;
 }
-.bookSessions li button:hover {
+.bookSessions > li > button:hover {
   transform: scale(1.05);
   background: linear-gradient(#b12cfe, #305aff);
 }

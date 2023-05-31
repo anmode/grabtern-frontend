@@ -40,3 +40,12 @@ If you'd like to contribute to Grabtern Frontend, you can fork this repository a
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Code of Conduct
+
+To maintain a safe and inclusive space for everyone to learn and grow, contributors are advised to follow the Code of Conduct.
+
+## Author
+[Anmol Agrawal](https://github.com/anmode)
+
+Show some ❤️ by starring this awesome repository!

@@ -953,12 +953,13 @@ textarea {
   height: 240px;
   width: 400px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 10px rgba(179, 177, 177, 0.8), 0 0 19px rgb(213, 211, 211);
+    0 0 8px rgba(205, 205, 205, 0.8), 0 0 15px rgb(213, 211, 211);
   transition: transform 0.4s ease;
 }
 .bookSessions li:hover {
   transform: scale(1.02);
- 
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(185, 185, 185, 0.8), 0 0 18px rgb(199, 195, 195);
 }
 
 .bookSessions li p {

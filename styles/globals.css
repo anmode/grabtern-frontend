@@ -1279,7 +1279,7 @@ textarea {
   margin-top: 10px;
 }
 
-.ret_pol{
+.ret_pol {
   font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
   margin-top: 10px;
@@ -1288,7 +1288,7 @@ textarea {
   text-transform: normal;
 }
 
-.ret_pol2{
+.ret_pol2 {
   font-family: "Mulish", sans-serif;
   color: #10285d;
   font-size: 25px;
@@ -1296,10 +1296,10 @@ textarea {
   margin-bottom: 15px;
   font-weight: normal;
   max-width: 60%;
-  margin:auto;
+  margin: auto;
 }
 
-.refund{
+.refund {
   font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
   margin-top: 10px;
@@ -1309,7 +1309,7 @@ textarea {
   text-align: center;
 }
 
-.questions{
+.questions {
   font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
   margin-top: 10px;
@@ -1319,7 +1319,7 @@ textarea {
   text-align: center;
 }
 
-.tnc{
+.tnc {
   font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
   margin-top: 0px;
@@ -1329,7 +1329,7 @@ textarea {
   text-transform: normal;
 }
 
-#tncheading{
+#tncheading {
   font-family: "Josefin Sans", sans-serif;
   font-style: normal;
   font-weight: 800;
@@ -1340,7 +1340,7 @@ textarea {
   color: #4255a4;
 }
 
-#tncheading2{
+#tncheading2 {
   font-family: "Josefin Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -1354,7 +1354,7 @@ textarea {
   margin-top: 8px;
 }
 
-.maincontent{
+.maincontent {
   font-family: "Josefin Sans", sans-serif;
   margin-left: 20px;
   float: left;
@@ -1363,7 +1363,7 @@ textarea {
   font-size: 18px;
 }
 
-.tableofcontents{
+.tableofcontents {
   font-family: "Josefin Sans", sans-serif;
   margin-top: 0px;
   float: left;
@@ -1379,7 +1379,7 @@ textarea {
   font-size: 20px;
 }
 
-#toc{
+#toc {
   font-family: "Josefin Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -1394,7 +1394,7 @@ textarea {
   padding-top: 10px;
 }
 
-.tnc-sub-head{
+.tnc-sub-head {
   font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
   margin-top: 10px;
@@ -1406,7 +1406,7 @@ textarea {
   margin-left: 18px;
 }
 
-.terms-and-cond-sub{
+.terms-and-cond-sub {
   font-family: "Josefin Sans", sans-serif;
   margin-left: 25px;
   font-size: 18px;
@@ -1416,22 +1416,22 @@ textarea {
 
 @media only screen and (max-width: 600px) {
   .front {
-    display : block;
+    display: block;
   }
-  .tnc{
+  .tnc {
     margin-top: 350px;
   }
-  #tncheading2{
+  #tncheading2 {
     font-size: 27px;
   }
-  .maincontent{
+  .maincontent {
     margin-left: 5px;
     margin-right: 5px;
     text-align: center;
-    width:89%;
+    width: 89%;
   }
-  .tableofcontents{
-    margin:auto;
+  .tableofcontents {
+    margin: auto;
     width: 94%;
     margin-top: 10px;
   }

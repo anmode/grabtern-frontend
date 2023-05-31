@@ -17,7 +17,7 @@ function scrap() {
           <div
             align="center"
             className="MsoNormal"
-            style={{ textAlign: "center", lineHeight: "115%", }}
+            style={{ textAlign: "center", lineHeight: "115%" }}
           >
             <a name="_2cipo4yr3w5d" />
             <br></br>
@@ -35,7 +35,7 @@ function scrap() {
             >
               <strong>
                 <span style={{ fontSize: 36 }}>
-                  <span >RETURN POLICY</span>
+                  <span>RETURN POLICY</span>
                 </span>
               </strong>
             </div>
@@ -119,10 +119,7 @@ function scrap() {
           <div className="MsoNormal" style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div
-            className="MsoNormal refund"
-            style={{ lineHeight: "1.5" }}
-          >
+          <div className="MsoNormal refund" style={{ lineHeight: "1.5" }}>
             <a name="_qxq7t4ufn5pr" />
             <strong>
               <span
@@ -141,10 +138,7 @@ function scrap() {
           <div className="MsoNormal" style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div
-            className="MsoNormal ret_pol2"
-            style={{ lineHeight: "1.5" }}
-          >
+          <div className="MsoNormal ret_pol2" style={{ lineHeight: "1.5" }}>
             <span
               style={{
                 fontSize: 18,
@@ -241,16 +235,19 @@ function scrap() {
           <div style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div className="MsoNormal questions"style={{ lineHeight: "1.5" }}>
-            <span style={{ fontSize: 29, }}>
+          <div className="MsoNormal questions" style={{ lineHeight: "1.5" }}>
+            <span style={{ fontSize: 29 }}>
               <strong>QUESTIONS</strong>
             </span>
           </div>
           <div style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div className="MsoNormal ret_pol2" style={{ lineHeight: "1.5", marginBottom : "30px" }}>
-            <span style={{ fontSize: 18,}}>
+          <div
+            className="MsoNormal ret_pol2"
+            style={{ lineHeight: "1.5", marginBottom: "30px" }}
+          >
+            <span style={{ fontSize: 18 }}>
               If you have any questions concerning our return policy, please
               contact us at: contact.grabtern@gmail.com
             </span>
@@ -258,8 +255,8 @@ function scrap() {
           <div data-custom-class="body_text" style={{ lineHeight: "1.1" }}>
             {/* <br /> */}
           </div>
-          <div className="MsoNormal ret_pol2" style={{ lineHeight: "1.5", }}>
-            <span style={{ fontSize: 18,}}>
+          <div className="MsoNormal ret_pol2" style={{ lineHeight: "1.5" }}>
+            <span style={{ fontSize: 18 }}>
               <bdt className="block-component" />
             </span>
           </div>

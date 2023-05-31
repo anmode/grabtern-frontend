@@ -36,7 +36,9 @@ function Internship({
           <div className="courseInfo">
             <p>{internshipCategories}</p>
             <h3>
-              <a href={internshipLink} target="_blank">{internshipTitle}</a>
+              <a href={internshipLink} target="_blank">
+                {internshipTitle}
+              </a>
             </h3>
             <p>{description}</p>
           </div>

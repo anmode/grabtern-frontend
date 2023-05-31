@@ -75,7 +75,7 @@ module.exports = {
 ```
 Customize the Prettier options according to your desired code formatting style.
 
-<br><br>
+<br>
 4)  Run ESLint with Prettier: Execute the ESLint command to lint your code and fix any issues related to code formatting according to Prettier's rules.
 ```bash
 npx eslint --fix .

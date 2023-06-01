@@ -42,9 +42,9 @@ function Contact() {
         <section className="contact-section">
           <div className="container">
             <div className="d-none d-sm-block mb-5 pb-4"></div>
-            <div className="row">
+            <div className="row ">
               <div className="col-12">
-                <h2 className="contact-title">Get in Touch</h2>
+          
               </div>
               <div className="col-lg-8">
                 <form
@@ -53,7 +53,9 @@ function Contact() {
                   ref={form}
                   onSubmit={sendEmail}
                 >
-                  <div className="row">
+                    <h2 className="contact-title">Get in Touch</h2>
+                  <div className="row contactf">
+                
                     <div className="col-12">
                       <div className="form-group">
                         <textarea
@@ -115,8 +117,7 @@ function Contact() {
                         />
                       </div>
                     </div>
-                  </div>
-                  <div className="form-group mt-3">
+                    <div className="form-group mt-3">
                     <button
                       type="submit"
                       className="button button-contactForm boxed-btn"
@@ -124,6 +125,8 @@ function Contact() {
                       Send
                     </button>
                   </div>
+                  </div>
+                 
                 </form>
               </div>
               <div className="col-lg-3 offset-lg-1">

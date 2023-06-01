@@ -37,7 +37,7 @@
   color: #c86fff !important;
   display: inline-block;
   padding: 18px 44px;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -101,7 +101,7 @@
   opacity: 0.9;
 }
 body {
-  font-family: "Verdana", sans-serif;
+  font-family: "Mulish", sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 16px;
@@ -112,7 +112,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
   margin-top: 0px;
   font-style: normal;
@@ -120,7 +120,7 @@ h6 {
   text-transform: normal;
 }
 p {
-  font-family: "Verdana", sans-serif;
+  font-family: "Mulish", sans-serif;
   color: #10285d;
   font-size: 18px;
   line-height: 30px;
@@ -302,7 +302,7 @@ hr {
 }
 .btn {
   background: #ff9f67;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   text-transform: capitalize;
   padding: 25px 38px !important;
   color: #fff;
@@ -456,7 +456,7 @@ hr {
 .border-btn {
   border: 1px solid #ff9f67;
   color: #ff9f67;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   background: none;
   border-radius: 5px;
   text-transform: capitalize;
@@ -3999,7 +3999,7 @@ hr {
   color: #3a3a3a;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   color: #3a3a3a;
 }
 .home-blog-area .home-blog-single .blog-img-cap .blog-cap .more-btn:hover {

@@ -37,7 +37,7 @@
   color: #c6a16e !important;
   display: inline-block;
   padding: 18px 44px;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   border: 0;
@@ -101,7 +101,7 @@
   opacity: 0.9;
 }
 body {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Great Vibes", cursive;
   font-weight: normal;
   font-style: normal;
 }
@@ -111,7 +111,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   color: #0b1c39;
   margin-top: 0px;
   font-style: normal;
@@ -119,7 +119,7 @@ h6 {
   text-transform: normal;
 }
 p {
-  font-family: "Verdana", sans-serif;
+  font-family: "Great Vibes", cursive;
   color: #506172;
   font-size: 18px;
   line-height: 30px;
@@ -2115,7 +2115,7 @@ hr {
   margin-right: 33px;
   padding-right: 33px;
   border-right: 1px solid #fff;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
 }
 .header-area .header-top .header-info-left ul li:last-child {
@@ -2310,27 +2310,24 @@ hr {
   font-weight: 900;
   margin-bottom: 14px;
   color: #ffffff;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Barlow", sans-serif;
   line-height: 1.2;
   text-transform: uppercase;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .slider-area .hero__caption h1 {
-    font-family: "Helvetica", sans-serif;
     font-size: 70px;
     line-height: 1.2;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider-area .hero__caption h1 {
-    font-family: "Helvetica", sans-serif;
     font-size: 50px;
     line-height: 1.2;
   }
 }
 @media (max-width: 767px) {
   .slider-area .hero__caption h1 {
-    font-family: "Helvetica", sans-serif;
     font-size: 35px;
     line-height: 1.2;
   }
@@ -2747,7 +2744,7 @@ hr {
   color: #fff;
   font-size: 25px;
   font-weight: 500;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   display: block;
 }
 .single-team .team-caption p {
@@ -3095,7 +3092,7 @@ hr {
 .blog-area .single-blog .blog-caption .blog-cap-top ul li {
   color: #c7c7c7;
   font-size: 14px;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 .blog-area .single-blog .blog-caption .blog-cap-top ul li a {
   color: #c6a16e;
@@ -3104,7 +3101,7 @@ hr {
 .blog-area .single-blog .blog-caption .blog-cap-mid p a {
   color: #444444;
   font-size: 18px;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 28px;
   margin-bottom: 30px;
 }
@@ -4413,7 +4410,7 @@ hr {
   color: #fff;
   font-weight: 900;
   margin-bottom: 0;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   text-transform: capitalize;
 }
 @media (max-width: 767px) {
@@ -4464,7 +4461,7 @@ hr {
   cursor: pointer;
   display: block;
   float: left;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Great Vibes", cursive;
   font-weight: normal;
   width: 100% !important;
   line-height: 50px;

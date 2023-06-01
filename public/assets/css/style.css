@@ -3505,6 +3505,11 @@ hr {
 .topic-area .single-topic {
   position: relative;
 }
+.topic-area .single-topic:hover{
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border-radius: 12px;
+}
 .topic-area .single-topic::before {
   position: absolute;
   top: 0;
@@ -3532,6 +3537,9 @@ hr {
 .topic-area .single-topic .topic-img img {
   width: 100%;
 }
+.topic-area .single-topic:hover > .topic-img img{
+  border-radius: 12px;
+}
 .topic-area .single-topic .topic-content-box {
   position: absolute;
   top: 50%;
@@ -3556,7 +3564,7 @@ hr {
   opacity: 0;
   z-index: 1;
 }
-.topic-area .single-topic .topic-content-box .topic-content h3 a:hover {
+.topic-area .single-topic:hover > .topic-img .topic-content a {
   opacity: 1;
   visibility: visible;
   color: #fff;

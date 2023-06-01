@@ -37,8 +37,8 @@
   color: #c6a16e !important;
   display: inline-block;
   padding: 18px 44px;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 14px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 18px;
   font-weight: 400;
   border: 0;
   border: 1px solid #c6a16e;
@@ -101,7 +101,7 @@
   opacity: 0.9;
 }
 body {
-  font-family: "Great Vibes", cursive;
+  font-family: "Helvetica", sans-serif;
   font-weight: normal;
   font-style: normal;
 }
@@ -111,7 +111,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
   color: #0b1c39;
   margin-top: 0px;
   font-style: normal;
@@ -119,9 +119,9 @@ h6 {
   text-transform: normal;
 }
 p {
-  font-family: "Great Vibes", cursive;
+  font-family: "Verdana", sans-serif;
   color: #506172;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
@@ -331,7 +331,7 @@ hr {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 1px;
   line-height: 0;
@@ -388,7 +388,7 @@ hr {
   text-transform: uppercase;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 0;
@@ -423,7 +423,7 @@ hr {
 .send-btn {
   background: #c6a16e;
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
   width: 100%;
   height: 55px;
   border: none;
@@ -2115,8 +2115,8 @@ hr {
   margin-right: 33px;
   padding-right: 33px;
   border-right: 1px solid #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 18px;
 }
 .header-area .header-top .header-info-left ul li:last-child {
   border-right: 0;
@@ -2125,7 +2125,7 @@ hr {
 }
 .header-area .header-top .header-info-right ul li {
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
 }
 .main-header {
   position: relative;
@@ -2156,7 +2156,7 @@ hr {
   font-weight: 500;
   padding: 28px 19px;
   display: block;
-  font-size: 16px;
+  font-size: 18px;
   position: relative;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
@@ -2190,7 +2190,7 @@ hr {
 }
 .main-header .main-menu ul ul.submenu > li > a {
   padding: 6px 10px !important;
-  font-size: 14px;
+  font-size: 18px;
   color: #0b1c39;
 }
 .main-header .main-menu ul ul.submenu > li > a:hover {
@@ -2306,28 +2306,31 @@ hr {
   }
 }
 .slider-area .hero__caption h1 {
-  font-size: 70px;
+  font-size: 80px;
   font-weight: 900;
   margin-bottom: 14px;
   color: #ffffff;
-  font-family: "Barlow", sans-serif;
+  font-family: "Helvetica", sans-serif;
   line-height: 1.2;
   text-transform: uppercase;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .slider-area .hero__caption h1 {
-    font-size: 60px;
+    font-family: "Helvetica", sans-serif;
+    font-size: 70px;
     line-height: 1.2;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider-area .hero__caption h1 {
+    font-family: "Helvetica", sans-serif;
     font-size: 50px;
     line-height: 1.2;
   }
 }
 @media (max-width: 767px) {
   .slider-area .hero__caption h1 {
+    font-family: "Helvetica", sans-serif;
     font-size: 35px;
     line-height: 1.2;
   }
@@ -2459,7 +2462,7 @@ hr {
 }
 .services-area .single-services .services-caption p {
   color: #021a47;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 25px;
 }
 .safe-industery-area .safe-caption h2 {
@@ -2744,7 +2747,7 @@ hr {
   color: #fff;
   font-size: 25px;
   font-weight: 500;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
   display: block;
 }
 .single-team .team-caption p {
@@ -2825,7 +2828,7 @@ hr {
 }
 .david-droga-area .single-david .david-captoin a {
   color: #282828;
-  font-size: 16px;
+  font-size: 18px;
 }
 .david-droga-area .single-david .david-captoin a:hover {
   color: #c6a16e;
@@ -2943,12 +2946,12 @@ hr {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .testimonial-area .testimonial-caption .testimonial-top-cap p {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .testimonial-area .testimonial-caption .testimonial-top-cap p {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -3092,7 +3095,7 @@ hr {
 .blog-area .single-blog .blog-caption .blog-cap-top ul li {
   color: #c7c7c7;
   font-size: 14px;
-  font-family: "Lato", sans-serif;
+  font-family: "Helvetica", sans-serif;
 }
 .blog-area .single-blog .blog-caption .blog-cap-top ul li a {
   color: #c6a16e;
@@ -3101,7 +3104,7 @@ hr {
 .blog-area .single-blog .blog-caption .blog-cap-mid p a {
   color: #444444;
   font-size: 18px;
-  font-family: "Lato", sans-serif;
+  font-family: "Helvetica", sans-serif;
   line-height: 28px;
   margin-bottom: 30px;
 }
@@ -3135,7 +3138,7 @@ hr {
 .footer-area .footer-pera p {
   color: #868c98;
   padding-right: 52px;
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 50px;
   line-height: 1.8;
 }
@@ -3149,7 +3152,7 @@ hr {
 }
 .footer-area .footer-tittle h4 {
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 29px;
   font-weight: 400;
   text-transform: uppercase;
@@ -3202,7 +3205,7 @@ hr {
 .footer-bottom-area .footer-copy-right p {
   color: #888888;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 2;
   margin-bottom: 12px;
 }
@@ -3240,7 +3243,7 @@ hr {
 }
 .hero-caption span {
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   display: block;
   margin-bottom: 24px;
   font-weight: 600;
@@ -3833,7 +3836,7 @@ hr {
   padding-left: 20px;
 }
 .blog_right_sidebar .popular_post_widget .post_item .media-body h3 {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 20px;
   margin-bottom: 6px;
   transition: all 0.3s linear;
@@ -3989,7 +3992,7 @@ hr {
 }
 .single-post-area .navigation-top .like-info i,
 .single-post-area .navigation-top .like-info span {
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 5px;
 }
 .single-post-area .navigation-top .comment-count {
@@ -3997,7 +4000,7 @@ hr {
 }
 .single-post-area .navigation-top .comment-count i,
 .single-post-area .navigation-top .comment-count span {
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 5px;
 }
 .single-post-area .navigation-top .social-icons li {
@@ -4046,7 +4049,7 @@ hr {
   font-size: 15px;
 }
 .single-post-area .blog-author h4 {
-  font-size: 16px;
+  font-size: 20px;
 }
 .single-post-area .navigation-area {
   border-bottom: 1px solid #eee;
@@ -4144,7 +4147,7 @@ hr {
   font-size: 18px;
 }
 .comments-area h5 {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 0px;
 }
 .comments-area .comment-list {
@@ -4283,9 +4286,8 @@ hr {
   font-size: 27px;
 }
 .contact-info .media-body h3 {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 0;
-  font-size: 16px;
   color: #2a2a2a;
 }
 .contact-info .media-body h3 a:hover {
@@ -4411,7 +4413,7 @@ hr {
   color: #fff;
   font-weight: 900;
   margin-bottom: 0;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
   text-transform: capitalize;
 }
 @media (max-width: 767px) {
@@ -4462,7 +4464,7 @@ hr {
   cursor: pointer;
   display: block;
   float: left;
-  font-family: "Great Vibes", cursive;
+  font-family: "Helvetica", sans-serif;
   font-weight: normal;
   width: 100% !important;
   line-height: 50px;
@@ -4482,7 +4484,7 @@ hr {
   border-radius: 0;
   margin-bottom: 30px;
   height: 50px !important;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: #919191;
 }

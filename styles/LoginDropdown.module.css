@@ -13,7 +13,7 @@
   .navLink {
     padding: 6px 10px;
     margin: 6px 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -44,7 +44,8 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .loginbutton {
@@ -60,14 +61,6 @@
 
 .loginOption a {
   padding: 0 !important;
-}
-
-.loginOption button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: 600;
 }
 
 .loginOption button:hover {

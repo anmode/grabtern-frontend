@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
+import taskStyles from '../styles/mentors.module.css'
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
@@ -11,13 +12,13 @@ function Mentors({ mentorsData }) {
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
-        <section className="findMentors">
-          <div className="container">
+        <section className={taskStyles.findMentors}>
+          <div className={taskStyles.container}>
             <h1>Find All mentors here's</h1>
             {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (
-              <div className="mentorLists">
+              <div className={taskStyles.mentorLists}>
                 {mentorsData.map((mentor) => (
                   <a href={`/${mentor.username}`} key={mentor._id}>
                     {<MentorCard mentor={mentor} />}

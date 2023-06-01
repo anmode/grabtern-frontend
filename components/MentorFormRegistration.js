@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import taskStyles from '../styles/mentors.module.css'
 
 import { useRouter } from "next/router";
 export default function MentorForm() {
@@ -204,11 +205,11 @@ export default function MentorForm() {
   }
 
   return (
-    <div className="mentorFormRegisration">
+    <div className={taskStyles.mentorFormRegisration}>
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {modalPopup === true ? (
-        <div className="modalPopup">
-          <div className="modalPopupAfterRegistrationDone">
+        <div className={taskStyles.modalPopup}>
+          <div className={taskStyles.modalPopupAfterRegistrationDone}>
             <p>
               Thank you for registering. Within one to two days of verification,
               you will receive an email with a link to instantly generate your
@@ -219,23 +220,23 @@ export default function MentorForm() {
           </div>
         </div>
       ) : null}
-      <div className="container">
+      <div className={taskStyles.container}>
         <img
           src="/assets/img/vector_images/vector-registration.svg"
           alt="vector image"
         />
-        <form className="mentorForm" onSubmit={handleSubmit}>
+        <form className={taskStyles.mentorForm} onSubmit={handleSubmit}>
           <div style={{ gridColumn: "1/3" }}>
             <div id="googleSignInButton"></div>
           </div>
-          <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
+          <div style={{ gridColumn: "1/3" }} className={taskStyles.mentorUploudPhoto}>
             <img
               src={
                 formData.mentorImg.length === 0
                   ? "/assets/img/icon/no-profile-picture.png"
                   : formData.mentorImg
               }
-              className="mentorPhoto"
+              className={taskStyles.mentorPhoto}
             />
             <div>
               <h3>
@@ -247,14 +248,14 @@ export default function MentorForm() {
                 <input
                   type="file"
                   name="mentorProfile"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleUploadImageChange(e)}
                 />
               ) : (
                 <input
                   type="file"
                   name="mentorProfile"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleUploadImageChange(e)}
                   required
                 />
@@ -267,7 +268,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="name"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. Peter Parker"
               required
@@ -280,7 +281,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="username"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. peter-parker12"
               required
@@ -293,7 +294,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="email"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. peterparker4321#gmail.com"
               required
@@ -306,7 +307,7 @@ export default function MentorForm() {
             <input
               type="number"
               name="mobile"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="0123456789"
               required
@@ -319,7 +320,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="internAt"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. MITACS"
               required
@@ -332,7 +333,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="currentStatus"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. Amazon SDE-I"
               required
@@ -345,7 +346,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="linkedin"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleSocialChange(e)}
               placeholder="e.g. https://www.linkedin.com/peterparker"
               required
@@ -358,7 +359,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="twitter"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleSocialChange(e)}
               placeholder="e.g. https://www.twitter.com/peterparker"
               value={formData.social.twitter}
@@ -371,7 +372,7 @@ export default function MentorForm() {
               cols="10"
               rows="7"
               name="description"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
               required
@@ -383,7 +384,7 @@ export default function MentorForm() {
             <input
               type="text"
               name="priceSession"
-              className="mentorFormInput"
+              className={taskStyles.mentorFormInput}
               onChange={(e) => handleSessionPriceChange(e)}
               placeholder="e.g. ₹51"
               required
@@ -408,7 +409,7 @@ export default function MentorForm() {
               <button
                 style={{ width: "fit-content", padding: "15px 25px" }}
                 type="submit"
-                className="mentorFormButotn"
+                className={taskStyles.mentorFormButotn}
               >
                 Register
               </button>

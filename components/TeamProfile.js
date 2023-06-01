@@ -1,9 +1,10 @@
 import React from "react";
+import styles from '../styles/Properties.module.css'
 
 function TeamProfile({ imageSrc, imageAlt, profileName, profileDescription }) {
   return (
     <div className="single-cat text-center">
-      <div className="cat-icon">
+      <div className={styles.catIcon}>
         <img
           style={{
             width: "200px",

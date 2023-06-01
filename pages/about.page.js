@@ -11,6 +11,8 @@ import Hackathon from "../components/Hackathons";
 import hackathonsData from "./data/hackathonsData";
 import servicesData from "./data/ServicesData";
 import teamsData from "./data/teamsData";
+import styles from '../styles/testimonials.module.css'
+
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -54,7 +56,7 @@ function About() {
       <Header />
       <SimpleBanner bannerTittle="About us" siteName="about" />
       <main>
-        <div className="services-area" style={{ padding: "12.5em 0 10rem" }}>
+        <div className={styles.servicesArea} style={{ padding: "12.5em 0 10rem" }}>
           <div className="container">
             <div className="row justify-content-sm-center">
               {servicesData.map((service, index) => (

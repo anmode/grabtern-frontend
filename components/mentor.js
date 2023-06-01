@@ -1,23 +1,24 @@
 import React from "react";
+import taskStyles from '../styles/mentors.module.css'
 
 const MentorCard = ({ mentor }) => {
   return (
-    <div className="mentor-card">
+    <div className={taskStyles.mentorCard}>
       <img
         src={mentor.mentorImg}
         alt={mentor.name}
-        className="mentor-card__photo"
+        className={taskStyles.mentorCard__photo}
       />
-      <div className="mentor-card__info">
-        <h2 className="mentor-card__name">{mentor.name}</h2>
-        <p className="mentor-card__intern">
+      <div className={taskStyles.mentorCard__info}>
+        <h2 className={taskStyles.mentorCard__name}>{mentor.name}</h2>
+        <p className={taskStyles.mentorCard__intern}>
           <b>Intern at:</b> {mentor.internAt}
         </p>
-        <p className="mentor-card__status">
+        <p className={taskStyles.mentorCard__name}>
           <b>Current Status:</b> {mentor.currentStatus}
         </p>
         {/* <p className="mentor-card__description">{mentor.description}</p> */}
-        <div className="mentor-card__social">
+        <div className={taskStyles.mentorCard__status}>
           <a href={`${mentor.social.linkedin}`} target="_blank">
             <i class="fab fa-linkedin"></i>
           </a>
@@ -26,12 +27,12 @@ const MentorCard = ({ mentor }) => {
           </a>
           <a
             href={mentor.bookedSession}
-            className="mentor-card__booked-session"
+            className={taskStyles.mentorCard__bookedSession}
           >
             Booked Sessions: {mentor.bookedSession}
           </a>
         </div>
-        <button className="mentor-card__book-session">Book Session</button>
+        <button className={taskStyles.mentorCard__bookSession}>Book Session</button>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import styles from '../styles/forgotPassword.module.css'
 
 function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,9 +37,9 @@ function ForgotPassword() {
   return (
     <>
       <Header navbarBackground={true} />
-      <main className="forgot-password-body">
-        <form className="form-default-forgot-pass" onSubmit={handleSubmit}>
-          <div className="forgot-password-form">
+      <main className={styles.forgotPasswordBody}>
+        <form className={styles.formDefaultForgotPass} onSubmit={handleSubmit}>
+          <div className={styles.forgotPasswordForm}>
             <div className="logout-login">
               <a href="index.html">
                 <img src="assets/img/logo/loder.png" alt="" />

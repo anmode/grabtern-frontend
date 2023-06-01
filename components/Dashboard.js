@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import taskStyles from '../styles/mentors.module.css'
+import book from '../styles/book.module.css'
 
 function Dashboard({ mentorDetail }) {
   const [formData, setFormData] = useState(mentorDetail);
@@ -137,11 +139,11 @@ function Dashboard({ mentorDetail }) {
     console.log(formData);
   };
   return (
-    <div className="mentorDetail">
+    <div className={taskStyles.mentorDetail}>
       {modalOpen === true ? (
-        <div className="modalPopup">
+        <div className={taskStyles.modalPopup}>
           <div
-            className="modalPopupAfterRegistrationDone"
+            className={taskStyles.modalPopupAfterRegistrationDone}
             style={{
               alignItems: "flex-start",
               maxWidth: "800px",
@@ -190,12 +192,12 @@ function Dashboard({ mentorDetail }) {
                 </>
               )}
             </div>
-            <form className="mentorFormEdit" onSubmit={handleSubmit}>
+            <form className={taskStyles.mentorFormEdit} onSubmit={handleSubmit}>
               {step === 1 ? (
                 <>
                   <div
                     style={{ gridColumn: "1/3" }}
-                    className="mentorUploudPhotoEdit"
+                    className={taskStyles.mentorUploudPhotoEdit}
                   >
                     <img src={formData.mentorImg} className="mentorPhoto" />
                     <div>
@@ -212,7 +214,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="name"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="e.g. Peter Parker"
                       value={formData.name}
@@ -224,7 +226,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="username"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="e.g. peter-parker12"
                       value={formData.username}
@@ -236,7 +238,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="email"
                       name="email"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="e.g. peterparker4321#gmail.com"
                       readOnly
@@ -249,7 +251,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="number"
                       name="mobile"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="0123456789"
                       value={formData.mobile}
@@ -261,7 +263,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="internAt"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="e.g. MITACS"
                       value={formData.internAt}
@@ -273,7 +275,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="currentStatus"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="e.g. Amazon SDE-I"
                       value={formData.currentStatus}
@@ -285,7 +287,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="linkedin"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleSocialChange(e)}
                       placeholder="e.g. https://www.linkedin.com/peterparker"
                       value={formData.social.linkedin}
@@ -297,7 +299,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="twitter"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleSocialChange(e)}
                       placeholder="e.g. https://www.twitter.com/peterparker"
                       value={formData.social.twitter}
@@ -311,7 +313,7 @@ function Dashboard({ mentorDetail }) {
                       rows="7"
                       name="description"
                       style={{ border: "1px solid grey" }}
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleChange(e)}
                       placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
                       value={formData.description}
@@ -341,7 +343,7 @@ function Dashboard({ mentorDetail }) {
                         Add new
                       </div>
                     </div>
-                    <ul className="bookSessions">
+                    <ul className={book.bookSessions}>
                       {formData.bookSession.length !== 0 ? (
                         formData.bookSession.map((session, indexSession) => (
                           <li

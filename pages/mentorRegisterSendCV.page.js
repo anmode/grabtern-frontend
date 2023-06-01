@@ -4,6 +4,7 @@ const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 import emailjs from "@emailjs/browser";
 import { useRouter } from "next/router";
+import taskStyles from '../styles/mentors.module.css'
 function mentorRegisterSendCV() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
@@ -64,10 +65,10 @@ function mentorRegisterSendCV() {
     <>
       <Header navbarBackground={true} />
       <main>
-        <div className="mentorFormRegisration">
+        <div className={taskStyles.mentorFormRegisration}>
           {modalPopup === true ? (
-            <div className="modalPopup">
-              <div className="modalPopupAfterRegistrationDone">
+            <div className={taskStyles.modalPopup}>
+              <div className={taskStyles.modalPopupAfterRegistrationDone}>
                 <p>
                   Thank you for Send your CV/Resume you will be recevied an
                   email 1-2 days if you got accepted and your card will be
@@ -78,15 +79,15 @@ function mentorRegisterSendCV() {
               </div>
             </div>
           ) : null}
-          <div className="container">
-            <form className="mentorForm" onSubmit={handleSubmit}>
+          <div className={taskStyles.container}>
+            <form className={taskStyles.mentorForm} onSubmit={handleSubmit}>
               <div>
                 <label for="email">EMAIL</label>
 
                 <input
                   type="email"
                   name="email"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleChange(e)}
                   placeholder="e.g. peterparker@gmail.com"
                   required
@@ -99,7 +100,7 @@ function mentorRegisterSendCV() {
                 <input
                   type="text"
                   name="cvResume"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleChange(e)}
                   value={formData.cvResume}
                   placeholder="e.g. https://drive.google.com/file/d/1rAC5M.../view?usp=sharing"
@@ -107,7 +108,7 @@ function mentorRegisterSendCV() {
               </div>
               <button
                 type="submit"
-                className="mentorFormButotn"
+                className={taskStyles.mentorFormButotn}
                 style={{ width: "fit-content", padding: "15px 25px" }}
               >
                 Send

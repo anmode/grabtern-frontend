@@ -1,0 +1,341 @@
+.loaderBackground {
+    animation: loader 1s 0.8s forwards;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 99;
+  }
+  
+  #preloader-active {
+    position: relative;
+    animation: loader 1s 0.8s forwards;
+    z-index: 100;
+  }
+  
+  .welcomeAfterLoggedIn {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
+    animation: welcomeAfterLoggedIn 1s 0.8s;
+  }
+  
+  @keyframes welcomeAfterLoggedIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes loader {
+    10% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      /* display: none !important;
+      visibility: hidden !important; */
+    }
+  }
+  .owl-nav button:first-child {
+    top: 45%;
+    position: absolute;
+    margin-right: 50px !important;
+    left: -30px;
+  }
+  
+  .owl-nav button:last-child {
+    top: 45%;
+    position: absolute;
+    right: -30px;
+    margin-left: 50px !important;
+  }
+  
+  .owl-nav button span {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 0;
+    color: gainsboro;
+    transition: all 0.2s ease-in !important;
+  }
+  
+  .owl-nav button:hover {
+    background-color: transparent !important;
+    color: gray !important;
+  }
+  
+  .owl-nav button span:hover {
+    color: gray !important;
+  }
+  
+  .owl-dots {
+    display: none !important;
+  }
+  
+  .owl-theme .owl-nav {
+    margin-top: 0 !important;
+  }
+  
+  .properties__card {
+    position: relative;
+    height: 500px !important;
+    position: relative;
+  }
+  
+  .properties__footer {
+    margin-bottom: 0 !important;
+  }
+  
+  .courseFooter {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
+  }
+  
+  .dashboardEdit {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .dashboardEdit i {
+    font-size: 22px;
+    color: grey;
+    position: relative;
+    align-items: center;
+  }
+  
+  .dashboardEdit:first-child i {
+    top: 10px;
+    cursor: pointer;
+    height: 20px;
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .container {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+  
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    .container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  
+  .menuToggle {
+    display: none;
+    flex-direction: column;
+    gap: 7px;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    top: calc(125px / 2);
+    cursor: pointer;
+  }
+  
+  .menuToggle span {
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: white;
+  }
+  
+  .menuToggle.active span:first-child {
+    rotate: -45deg;
+    transform: translateY(10px) translateX(-10px);
+  }
+  
+  .menuToggle.active span:nth-child(2) {
+    display: none;
+  }
+  
+  .menuToggle.active span:last-child {
+    rotate: 45deg;
+    transform: translateY(2px) translateX(2px);
+  }
+  
+  .slick-track {
+    width: 100% !important;
+  }
+  
+  .single-slider {
+    width: 100% !important;
+  }
+  
+  @media (max-width: 1199px) {
+    .servicesArea .single-services {
+      padding: 22px 18px !important;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .about-area1 .support-wrapper {
+      display: flex !important;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .menuToggle {
+      display: flex;
+    }
+    .header-bottom .container-fluid .row div:nth-child(2) {
+      padding: 0;
+      position: absolute;
+      top: 150px;
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0;
+    }
+  
+    .main-menu {
+      width: 100%;
+    }
+    .main-menu.active {
+      display: block !important;
+    }
+    .main-menu nav ul {
+      gap: 50px;
+      padding: 50px 35px;
+      width: 100%;
+      background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
+      display: flex;
+      flex-direction: column;
+    }
+    .main-menu nav ul li a {
+      padding: 0 !important;
+    }
+    .about-area1 .support-wrapper {
+      flex-direction: column;
+    }
+    .servicesArea {
+      margin-top: -120px;
+    }
+    .container {
+      padding-top: 50px;
+  
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .catIcon img {
+      width: 80% !important;
+    }
+    .owl-nav button:first-child {
+      left: -25px;
+    }
+    .owl-nav button:last-child {
+      right: -25px;
+    }
+    .servicesArea > .container > .row .col-lg-4 {
+      flex: unset;
+      max-width: 100% !important;
+    }
+    .container {
+      padding: 70px 30px;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
+  
+  .about-area1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+  
+  .right-content1 {
+    padding-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  .about-area1 .support-wrapper {
+    gap: 80px;
+    flex-wrap: nowrap !important;
+  }
+  
+  .right-img {
+    display: flex;
+    justify-content: center;
+  }
+  
+  @media (min-width: 992px) {
+    .video {
+      width: 540px !important;
+      max-width: unset !important;
+    }
+  }
+  
+  .left-content1 {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+  
+  @media (max-width: 880px) {
+    .properties__card {
+      height: 770px !important;
+    }
+  }
+  
+  .team-area {
+    padding-top: 100px;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000a;
+    z-index: 999;
+  }
+  
+  .overlay.show {
+    display: block;
+  }
+  
+  .contactLinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .contactLinks i {
+    font-size: 24px;
+    color: grey;
+    cursor: pointer;
+  }
+  
+  /* Terms and condition */
+  .TNCcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }

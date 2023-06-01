@@ -125,7 +125,7 @@ function Login() {
             )}
             <div className="link-div">
               <Link href="/forgotpass" className="forget">
-                Forget Password?
+                Forgot Password?
               </Link>
               <Link href="/register" className="registration">
                 Registration

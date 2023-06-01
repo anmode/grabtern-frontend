@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
+import taskStyles from '../styles/mentors.module.css'
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -120,11 +121,11 @@ function Index({ mentorDetail }) {
         {!mentorDetail ? (
           <p>Loading...</p>
         ) : (
-          <div className="mentorDetail">
-            <div className="container">
+          <div className={taskStyles.mentorDetail}>
+            <div className={taskStyles.container}>
               {showModal === true ? (
-                <div className="modalPopup">
-                  <div className="modalPopupAfterRegistrationDone">
+                <div className={taskStyles.modalPopup}>
+                  <div className={taskStyles.modalPopupAfterRegistrationDone}>
                     <i
                       onClick={() => setShowModal(false)}
                       style={{
@@ -280,8 +281,8 @@ function Index({ mentorDetail }) {
                       </button>
                       {error && <div style={{ color: "red" }}>{error}</div>}
                       {error == "" && modalPopup === true ? (
-                        <div className="modalPopup">
-                          <div className="modalPopupAfterRegistrationDone">
+                        <div className={taskStyles.modalPopup}>
+                          <div className={taskStyles.modalPopupAfterRegistrationDone}>
                             <i
                               onClick={() => setModalPopup(false)}
                               style={{

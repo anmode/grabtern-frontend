@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import styles from '../styles/mentors.module.css'
 
 function MentorFormSetupPW({ mentorPWCode }) {
   const router = useRouter();
@@ -36,8 +37,8 @@ function MentorFormSetupPW({ mentorPWCode }) {
     }
   };
   return (
-    <div className="mentorFormRegisration">
-      <div className="container">
+    <div className={styles.mentorFormRegisration}>
+      <div className={styles.container}>
         <h1>Setup new Password</h1>
         <br />
         <form
@@ -49,7 +50,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
             <input
               type="password"
               name="newPassword"
-              className="mentorFormInput"
+              className={styles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. newPassword123!@"
               required
@@ -60,7 +61,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
             <input
               type="password"
               name="newConfirmPassword"
-              className="mentorFormInput"
+              className={styles.mentorFormInput}
               onChange={(e) => handleChange(e)}
               placeholder="e.g. newPassword123!@"
               required
@@ -69,7 +70,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
           <button
             type="submit"
             style={{ width: "fit-content", padding: "15px 25px" }}
-            className="mentorFormButotn"
+            className={styles.mentorFormButotn}
           >
             Submit
           </button>

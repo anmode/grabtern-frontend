@@ -5,6 +5,7 @@ const Footer = dynamic(() => import("../components/Footer"));
 import { useRouter } from "next/router";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import taskStyles from '../styles/mentors.module.css'
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -82,9 +83,9 @@ function mentorLogin() {
     <>
       <Header navbarBackground={true} />
       <main>
-        <div className="mentorFormRegisration">
-          <div className="container">
-            <form className="mentorForm" onSubmit={handleSubmit}>
+        <div className={taskStyles.mentorFormRegisration}>
+          <div className={taskStyles.container}>
+            <form className={taskStyles.mentorForm} onSubmit={handleSubmit}>
               <h2 style={{ gridColumn: "1/3" }}>Mentor Login</h2>
               <div>
                 <label for="email">EMAIL</label>
@@ -92,7 +93,7 @@ function mentorLogin() {
                 <input
                   type="email"
                   name="email"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleChange(e)}
                   placeholder="e.g. peterparker@gmail.com"
                   required
@@ -105,7 +106,7 @@ function mentorLogin() {
                 <input
                   type="password"
                   name="password"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleChange(e)}
                   value={formData.password}
                   placeholder="e.g. 12!HelloWorld"
@@ -117,7 +118,7 @@ function mentorLogin() {
                 <input
                   type="password"
                   name="confirmPassword"
-                  className="mentorFormInput"
+                  className={taskStyles.mentorFormInput}
                   onChange={(e) => handleChange(e)}
                   value={formData.confirmPassword}
                   placeholder="e.g. 12!HelloWorld"
@@ -128,7 +129,7 @@ function mentorLogin() {
               )}
               <button
                 type="submit"
-                className="mentorFormButotn"
+                className={taskStyles.mentorFormButotn}
                 style={{ width: "fit-content", padding: "15px 25px" }}
               >
                 Login

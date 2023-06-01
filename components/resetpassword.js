@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import router from "next/router";
+import styles from '../styles/resetPassword.module.css'
 
 const ResetPassword = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +42,7 @@ const ResetPassword = (props) => {
   };
 
   return (
-    <div className="reset-password-container">
+    <div className={styles.resetPasswordContainer}>
       <h2>Reset Password</h2>
       <div>
         <label htmlFor="newPassword">New Password:</label>

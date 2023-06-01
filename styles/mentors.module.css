@@ -1,0 +1,538 @@
+.mentorForm div {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  
+  .mentorForm div label {
+    font-weight: 600;
+    font-size: small;
+    width: auto;
+  }
+  
+  .mentorForm div label::after {
+    content: " :";
+  }
+  
+  .mentorForm div input  {
+    width: 100%;
+    border: 2px solid rgb(220, 220, 220);
+    padding: 6px 10px;
+    border-radius: 3px;
+  }  
+  .mentorForm textarea{
+    width: 100%;
+    border: 2px solid rgb(220, 220, 220);
+    padding: 6px 10px;
+    border-radius: 3px;
+  }
+  .mentorFormEdit div .mentorFormInput {
+    appearance: none;
+    border: 1px solid grey;
+    padding: 10px;
+    width: 100%;
+  }
+  .mentorForm .mentorFormButotn {
+    /* max-width: 150px; */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(
+      to top,
+      rgb(83, 116, 255) 0%,
+      rgb(127, 102, 255) 40%,
+      rgb(187, 85, 255) 95%,
+      rgb(192, 84, 255) 100%
+    );
+    box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
+  }
+  
+.mentor-register-page .container > img {
+    max-width: 992px;
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    .mentor-register-page .container > img {
+      margin: 0 70px;
+    }
+  }
+  .mentorFormRegisration {
+    margin-top: 118px;
+    padding: 70px 30px;
+  }
+  .mentorFormRegisration > .container {
+    padding-top: 0 !important;
+  }
+  .mentorFormRegisration {
+    padding: 70px 0;
+    margin-top: 0px;
+  }
+  .mentorFormRegisration > .container > .mentorForm {
+    margin: 0 auto;
+  }
+  .mentorDetail {
+    margin: 200px 20px;
+  }
+  
+  .mentorDetail .container {
+    max-width: 1600px;
+  }
+  .mentorDetail .container .row1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 24px;
+    color: grey;
+  }
+  
+  .mentorDetail .container > .contactLinks li a:hover {
+    color: black;
+  }
+  .mentorDetail .container > .contactLinks li:hover {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .mentorDetail .container img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 5px solid grey;
+    margin-bottom: 20px;
+  }
+  
+  .mentorDetail img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+  }
+  
+  .mentorDetail h1 {
+    font-size: 30px;
+  }
+  
+  .mentorDetail h2 {
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 992px) {
+    .mentorDetail {
+      margin: 200px 0 !important;
+    }
+    .courses-actives {
+      display: block !important;
+    }
+  }
+  .mentorUploudPhoto {
+    display: block !important;
+  }
+  .mentorUploudPhoto img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    /* margin-left: 130px; */
+  }
+  /* .mentorForm {
+    border: none !important;
+  } */
+  .mentorFormSetupPW {
+    margin: unset !important;
+  }
+  
+  .mentorForm {
+    width: fit-content;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    gap: 20px;
+    column-gap: 40px;
+    border: 1px solid gray;
+  }
+  @media screen and (max-width: 992px) {
+    .mentor-register-page {
+      margin: 145px auto 0 auto;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+    }
+  
+    .right-mentorRegister img {
+      display: none;
+    }
+  
+    .mentorForm {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+  
+  
+  .mentorForm button:active {
+    box-shadow: unset !important;
+  }
+  
+  .mentorForm a,
+  .mentorForm p {
+    grid-column: 1/3;
+    margin-bottom: 0;
+  }
+  
+  .mentorForm > a:last-child {
+    position: relative;
+    top: -20px;
+  }
+  
+  .mentorForm a:hover {
+    color: unset;
+  }
+  
+  .findMentors {
+    padding: 100px 30px;
+  }
+  
+  .mentorLists {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 50px;
+    justify-content: center;
+  }
+  
+  .mentorCard {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 320px;
+    gap: 5px;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 2px 1px 4px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .mentorCard h2,
+  .mentorCard .contactLinks i,
+  .mentorCard h3,
+  .mentorCard p {
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .mentorLists a {
+      width: 100%;
+    }
+    .mentorCard {
+      padding: 30px 0;
+      max-width: 100%;
+      width: 100%;
+    }
+    .mentorCard img {
+      width: 150px !important;
+    }
+  
+    .mentorCard h2,
+    .mentorCard .contactLinks i,
+    .mentorCard h3,
+    .mentorCard p {
+      text-align: center;
+      font-size: 90%;
+    }
+  
+    .findMentors {
+      padding: 100px 0 !important;
+    }
+  
+    .mentorCard p,
+    .mentorCard h3 {
+      padding: 0 10px;
+    }
+  }
+  
+  .mentorCard:hover {
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mentorCard img {
+    border-radius: 50%;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+  
+  .mentorCard .mentorName {
+    text-align: center;
+  }
+  .mentorFormEdit {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .mentorUploudPhotoEdit {
+    display: flex;
+    gap: 20px !important;
+    align-items: flex-start;
+    flex-direction: row !important;
+    margin-bottom: 10px;
+  }
+  
+  .mentorUploudPhotoEdit input {
+    margin-top: 10px;
+  }
+  
+  .mentorUploudPhotoEdit img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  
+  .mentorFormEdit div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .mentorFormEdit div label {
+    font-weight: bold;
+  }
+  
+  .mentorFormEdit div label::after {
+    content: ":";
+  }
+  
+  .mentorFormEdit input[type="email"] {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none;
+  }
+
+  .mentorPhoto {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  
+  .mentorUploudPhoto {
+    display: flex;
+    width: 100%;
+    flex-direction: row !important;
+    gap: 20px !important;
+    border-bottom: 1px solid gray;
+    padding-bottom: 30px !important;
+  }
+  
+  .mentorUploudPhoto div {
+    position: relative;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .mentorUploudPhoto div input {
+    border: unset !important;
+    padding: 0 !important;
+  }
+
+  /* Mentor registration page styling */
+.description {
+    color: black;
+    font-weight: 600;
+    font-size: small;
+    width: auto;
+  }
+  .login-card {
+    background: white;
+    padding: 5px;
+    border-radius: 14px;
+    opacity: 0.5;
+  }
+  .menu-text {
+    color: black;
+    padding-right: 10px;
+    padding-bottom: 8px;
+    cursor: pointer;
+  }
+  .menu-text a:hover {
+    background: blue;
+  }
+  .login-optionslist {
+    position: absolute;
+    top: 30px !important;
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  /*Mentor CSS*/
+.mentorCard {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 30vw;
+    height: 50vh;
+    background-color: #fff;
+    border-radius: 5%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+  }
+  
+  .mentorCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: black;
+  }
+  
+  .mentorCard__photo {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 2rem;
+  }
+  
+  .mentorCard__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+  
+  .mentorCard__name {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .mentorCard__intern,
+  .mentorCard__status,
+  .mentorCard__description {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .mentorCard__description {
+    font-style: italic;
+  }
+  
+  .mentorCard__social {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+  }
+  
+  .mentorCard__social a:hover {
+    color: grey;
+  }
+  
+  .mentorCard__linkedin,
+  .mentorCard__rating,
+  .mentorCard__bookedSession {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .mentorCard__bookSession {
+    margin-top: 1rem;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 4px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .mentorCard__bookSession:hover {
+    background-color: #005fa3;
+  }
+  
+  @media only screen and (max-width: 800px) {
+    .mentorCard {
+      flex-direction: column;
+      width: 80vw;
+      height: 50vh;
+      padding: 2rem 5rem;
+      text-align: center;
+      margin: auto;
+    }
+  
+    .mentorCard__bookSession {
+      width: 50vw;
+      margin: auto;
+    }
+  
+    .mentorCard__photo {
+      width: 15vw;
+      height: 15vw;
+      margin: auto;
+    }
+  
+    .mentorCard__info {
+      margin: auto;
+    }
+  }
+  
+  @media only screen and (min-width: 1080px) and (max-width: 1200px) {
+    .mentorCard {
+      width: 30vw;
+      height: 60vh;
+    }
+  }
+  
+  @media only screen and (max-width: 1080px) and (min-width: 800px) {
+    .mentorCard {
+      width: 40vw;
+      height: 60vh;
+    }
+  }
+  .modalPopup {
+    transition: all 0.5s ease-in-out;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  .modalPopupAfterRegistrationDone {
+    background-color: white;
+    margin: 30px auto;
+    padding: 30px;
+    display: flex;
+    top: 50%;
+    gap: 30px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modalPopupAfterRegistrationDone img {
+    width: 100px;
+  }

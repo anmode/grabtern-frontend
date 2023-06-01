@@ -12,6 +12,9 @@ import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Testimonial from "../components/Testimonial";
+import styles from '../styles/testimonials.module.css'
+import loginStyles from '../styles/Properties.module.css'
+
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -102,7 +105,7 @@ export default function Home() {
   return (
     <div>
       {localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
-        <div className="welcomeAfterLoggedIn">
+        <div className={loginStyles.welcomeAfterLoggedIn}>
           Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
           <audio
             src="/assets/sound/greet.wav"
@@ -118,7 +121,7 @@ export default function Home() {
 
       <main>
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
-        <div className="services-area">
+        <div className={styles.servicesArea}>
           <div className="container">
             <div className="row justify-content-sm-center">
               {servicesData.map((service, index) => (
@@ -221,7 +224,7 @@ export default function Home() {
                 <div className="features-icon">
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
-                <div className="features-caption">
+                <div className={styles.featuresCaption}>
                   <p>
                     <b>Professional networking:</b> Mentors can expand their
                     professional network by connecting with students and other
@@ -233,7 +236,7 @@ export default function Home() {
                 <div className="features-icon">
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
-                <div className="features-caption">
+                <div className={styles.featuresCaption}>
                   <p>
                     <b>Giving back:</b> Mentors can feel a sense of fulfillment
                     by giving back to the community and contributing to the
@@ -245,7 +248,7 @@ export default function Home() {
                 <div className="features-icon">
                   <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
                 </div>
-                <div className="features-caption">
+                <div className={styles.featuresCaption}>
                   <p>
                     <b>Continued learning:</b> Mentors can continue to learn and
                     grow by staying up-to-date on the latest industry trends and

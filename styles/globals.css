@@ -1313,3 +1313,163 @@ textarea {
   color: #00ff00;
   margin-top: 10px;
 }
+
+.ret_pol {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+}
+
+.ret_pol2 {
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  max-width: 60%;
+  margin: auto;
+}
+
+.refund {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+  text-align: center;
+}
+
+.questions {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+  text-align: center;
+}
+
+.tnc {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+}
+
+#tncheading {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: normal;
+  margin-top: 100px;
+  font-size: 60px;
+  text-align: center;
+  color: #4255a4;
+}
+
+#tncheading2 {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: normal;
+  margin-top: 100px;
+  font-size: 35px;
+  text-align: center;
+  color: #4255a4;
+  text-align: left;
+  margin-left: 40px;
+  margin-top: 8px;
+}
+
+.maincontent {
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  margin-left: 20px;
+  float: left;
+  width: 45%;
+  margin-right: 10%;
+  font-size: 18px;
+}
+
+.tableofcontents {
+  font-family: "Josefin Sans", sans-serif;
+  margin-top: 0px;
+  float: left;
+  margin-left: 40px;
+  width: 29%;
+  border: 1px solid #10285d;
+  border-radius: 19px;
+  margin-right: 10px;
+  padding-right: 0px;
+  padding-left: 20px;
+  background-color: #d2d8f0;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+#toc {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: normal;
+  margin-top: 100px;
+  font-size: 3rem;
+  text-align: center;
+  color: #2e4fd5;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.tnc-sub-head {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 550;
+  text-transform: normal;
+  text-align: left;
+  font-size: 32px;
+  margin-left: 18px;
+}
+
+.terms-and-cond-sub {
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  margin-left: 25px;
+  font-size: 18px;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .front {
+    display: block;
+  }
+  .tnc {
+    margin-top: 350px;
+  }
+  #tncheading2 {
+    font-size: 27px;
+  }
+  .maincontent {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    width: 89%;
+  }
+  .tableofcontents {
+    margin: auto;
+    width: 94%;
+    margin-top: 10px;
+  }
+}

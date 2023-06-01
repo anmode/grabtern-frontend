@@ -214,7 +214,7 @@ export default function Home() {
             <div className="left-content3">
               <div className="section-tittle section-tittle2 mb-20">
                 <div className="front-text">
-                  <h2>Why Mentor At Grabtern?</h2>
+                  <h2>Why to be Mentor at Grabtern?</h2>
                 </div>
               </div>
               <div className="single-features">

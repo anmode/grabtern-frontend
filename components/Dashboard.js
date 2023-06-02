@@ -355,8 +355,8 @@ function Dashboard({ mentorDetail }) {
                               padding: "10px 20px",
                             }}
                           >
-                            <div className="bookSessionHeader bookSessionColumn">
-                              <div className="bookSessionHeaderIcons">
+                            <div className={`${taskStyles.bookSessionHeader} ${taskStyles.bookSessionColumn}`}>
+                              <div className={taskStyles.bookSessionHeaderIcons}>
                                 <i
                                   class={
                                     session.sessionType === "video-meeting"
@@ -381,7 +381,7 @@ function Dashboard({ mentorDetail }) {
                               </div>
                             </div>
                             <div
-                              className="bookSessionIcons bookSessionIconsEdit"
+                              className={`${bookSessionIcons} ${bookSessionIconsEdit}`}
                               style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -440,7 +440,7 @@ function Dashboard({ mentorDetail }) {
                       cursor: "pointer",
                     }}
                     type="submit"
-                    className="mentorFormButotn"
+                    className={taskStyles.mentorFormButotn}
                   >
                     Save changes
                   </button>
@@ -452,7 +452,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="text"
                       name="sessionName"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleBookSessionChange(e)}
                       placeholder="e.g. Mock Interview"
                       value={bookSession.sessionName}
@@ -464,7 +464,7 @@ function Dashboard({ mentorDetail }) {
                       type="text"
                       maxLength={50}
                       name="sessionDescription"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleBookSessionChange(e)}
                       placeholder="e.g. Achieve your goals faster with customized road map"
                       value={bookSession.sessionDescription}
@@ -473,7 +473,7 @@ function Dashboard({ mentorDetail }) {
                   <div>
                     <label for="sessionType">Session Type</label>
                     <select
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) =>
                         setBookSession({
                           ...bookSession,
@@ -495,7 +495,7 @@ function Dashboard({ mentorDetail }) {
                       style={{ backgroundColor: "none" }}
                       type="number"
                       name="sessionMeetingDuration"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleBookSessionChange(e)}
                       placeholder="e.g. 30"
                       value={bookSession.sessionMeetingDuration}
@@ -506,7 +506,7 @@ function Dashboard({ mentorDetail }) {
                     <input
                       type="number"
                       name="priceSession"
-                      className="mentorFormInput"
+                      className={taskStyles.mentorFormInput}
                       onChange={(e) => handleBookSessionChange(e)}
                       placeholder="e.g. 500"
                       value={bookSession.priceSession}
@@ -596,7 +596,7 @@ function Dashboard({ mentorDetail }) {
           mentorDetail.bookSession.map((session) => (
             <li>
               <div
-                className="bookSessionHeader"
+                className={taskStyles.bookSessionHeader}
                 style={{ alignItems: "center" }}
               >
                 <i
@@ -615,7 +615,7 @@ function Dashboard({ mentorDetail }) {
                 </div>
               </div>
               <div
-                className="bookSessionIcons"
+                className={taskStyles.bookSessionIcons}
                 style={{
                   display: "flex",
                   flexDirection: "row",

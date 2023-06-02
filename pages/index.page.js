@@ -19,7 +19,7 @@ var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
 }
-const OwlCarousel = dynamic(import("react-owl-carousel"), {
+const OwlCarousel = dynamic(import("react-owlCarousel"), {
   ssr: false,
 });
 
@@ -122,7 +122,7 @@ export default function Home() {
       <main>
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
         <div className={styles.servicesArea}>
-          <div className="container">
+          <div className={styles.container}>
             <div className="row justify-content-sm-center">
               {servicesData.map((service, index) => (
                 <Service
@@ -138,7 +138,7 @@ export default function Home() {
         </div>
 
         <div className="courses-area section-padding40 fix">
-          <div className="container">
+          <div className={styles.container}>
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
@@ -155,7 +155,7 @@ export default function Home() {
                   smartSpeed={1000}
                   autoplayTimeout={3500}
                   autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
+                  className="owlCarousel owlTheme"
                 >
                   {internshipsData.map((internship, index) => (
                     <Internship
@@ -177,7 +177,7 @@ export default function Home() {
         </div>
         <About />
         <div className="topic-area section-padding40">
-          <div className="container">
+          <div className={styles.container}>
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
@@ -272,7 +272,7 @@ export default function Home() {
               nav={true}
               loop={true}
               autoplayHoverPause={true}
-              className="owl-carousel owl-theme"
+              className="owlCarousel owlTheme"
             >
               {testiomialsData.map((testimonial, index) => (
                 <Testimonial key={index} testimonialUserName={testimonial.testimonialUserName} testimonialUserHeadline={testimonial.testimonialUserHeadline} testimonialUserImage={testimonial.testimonialUserImage} testimonialRate={testimonial.testimonialRate} testimonialDescription={testimonial.testimonialDescription} />
@@ -299,7 +299,7 @@ export default function Home() {
                   smartSpeed={1000}
                   autoplayTimeout={3500}
                   autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
+                  className={`${styles.owlCarousel} ${styles.owlTheme}`}
                 >
                   {teamsData.map((profile, index) => (
                     <TeamProfile

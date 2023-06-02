@@ -1,9 +1,11 @@
 import React from "react";
 import Header from "../components/Header";
+import styles from '../styles/Properties.module.css'
+
 function scrap() {
   return (
     <>
-      <div class="TNCcontainer">
+      <div class={styles.TNCcontainer}>
         <Header navbarBackground={true} />
         <style
           dangerouslySetInnerHTML={{

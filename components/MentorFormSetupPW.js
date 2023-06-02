@@ -42,7 +42,7 @@ function MentorFormSetupPW({ mentorPWCode }) {
         <h1>Setup new Password</h1>
         <br />
         <form
-          className="mentorForm mentorFormSetupPW"
+          className={`${styles.mentorForm} ${styles.mentorFormSetupPW}`}
           onSubmit={handleSubmitNewPW}
         >
           <div>

@@ -1,9 +1,3 @@
-.mentorForm div {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  
   .mentorForm div label {
     font-weight: 600;
     font-size: small;
@@ -32,7 +26,7 @@
     padding: 10px;
     width: 100%;
   }
-  .mentorForm .mentorFormButotn {
+  .mentorFormButotn {
     /* max-width: 150px; */
     color: white;
     border: none;
@@ -535,4 +529,8 @@
   
   .modalPopupAfterRegistrationDone img {
     width: 100px;
+  }
+
+  .mentorForm a{
+    color: #10285d;
   }

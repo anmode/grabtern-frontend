@@ -3,6 +3,7 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
 function Mentors({ mentorsData }) {
@@ -28,6 +29,7 @@ function Mentors({ mentorsData }) {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

@@ -32,8 +32,6 @@
   }
   .hackathonArea .singleHackathon .hackathonImg img {
     width: 100%;
-  }
-  .hackathonArea .singleHackathon:hover > .hackathonImg img{
     border-radius: 12px;
   }
   .hackathonArea .singleHackathon .hackathonContentBox {

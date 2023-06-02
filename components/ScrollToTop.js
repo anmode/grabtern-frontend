@@ -40,7 +40,7 @@ const ScrollToTop = () => {
     border-radius: 50%;
     outline: none;
     display: flex;
-    justify-content: center;
+    justify-content: justify-between;
     align-items: center;
     cursor: pointer;
     transition: opacity 0.3s;

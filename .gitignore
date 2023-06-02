@@ -35,3 +35,5 @@ yarn-error.log*
 
 package-lock.json
 yarn.lock
+
+sitemap-0.xml

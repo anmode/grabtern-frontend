@@ -19,12 +19,13 @@ var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
 }
-const OwlCarousel = dynamic(import("react-owlCarousel"), {
+const OwlCarousel = dynamic(import("react-owl-carousel"), {
   ssr: false,
 });
 
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import hackathonStyle from '../styles/hackathon.module.css';
 import { useState, useEffect } from "react";
 import testiomialsData from "./data/testiomialsData";
 
@@ -168,6 +169,7 @@ export default function Home() {
                       internshipRating={internship.internshipRating}
                       internshipPayed={internship.internshipPayed}
                       internshipPrice={internship.internshipPrice}
+                      internshipLink={internship.internshipLink}
                     />
                   ))}
                 </OwlCarousel>
@@ -176,8 +178,8 @@ export default function Home() {
           </div>
         </div>
         <About />
-        <div className="topic-area section-padding40">
-          <div className={styles.container}>
+        <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
+          <div className="container">
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">

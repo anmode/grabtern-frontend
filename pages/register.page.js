@@ -55,9 +55,9 @@ function Register() {
           onSubmit={handleSubmit}
         >
           <div className="login-form">
-            <div className="logo-login">
+            <div className="logout-login">
               <a href="index.html">
-                <img src="/assets/img/logo/loder.png" alt="" />
+                <img src="assets/img/logo/loder.png" alt="" />
               </a>
             </div>
             <h2>Registration Here</h2>
@@ -106,7 +106,8 @@ function Register() {
             <div className="form-input pt-30">
               <input type="submit" name="submit" value="Registration" />
             </div>
-            <Link href="/login" className="registration">
+            Already have a account?
+            <Link href="/login" className="registration m-1 d-inline" style={{ textDecoration: "none" }}>
               login
             </Link>
           </div>

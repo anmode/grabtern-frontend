@@ -11,6 +11,7 @@ function Internship({
   internshipRating,
   internshipPayed,
   internshipPrice,
+  internshipLink,
 }) {
   const description =
     internshipDescription?.length > 120
@@ -36,7 +37,9 @@ function Internship({
           <div className="courseInfo">
             <p>{internshipCategories}</p>
             <h3>
-              <a href="#">{internshipTitle}</a>
+              <a href={internshipLink} target="_blank">
+                {internshipTitle}
+              </a>
             </h3>
             <p>{description}</p>
           </div>

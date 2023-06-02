@@ -89,13 +89,13 @@ function Login() {
           action="login-bg.mp4"
           onSubmit={handleSubmit}
         >
-          <div className="login-form">
+          <div className="login-form d-flex flex-column">
             <div className="logout-login">
               <a href="index.html">
                 <img src="assets/img/logo/loder.png" alt="" />
               </a>
             </div>
-            <h2>Login Here</h2>
+            <h2>login Here</h2>
             <div className="form-input">
               <label for="name">Email</label>
               <input
@@ -116,23 +116,26 @@ function Login() {
                 value={data.password}
               />
             </div>
-            <div className="form-input pt-30">
-              <input type="submit" name="submit" value="login" />
+            <div className="form-input">
+              <input type="submit" name="submit" value="login" style={{
+                background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )"
+                  }}/>
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
             {localStorage.getItem("new_user") && (
               <div style={{ color: "green" }}>Please register first.</div>
             )}
-            <div className="link-div">
-              <Link href="/forgotpass" className="forget">
-                Forgot Password?
+              <Link href="/forgotpass" className="forget align-self-end" style={{margin:0}} >
+                Forget Password?
               </Link>
-              <Link href="/register" className="registration">
-                Registration
+            <div className="link-div m-3">
+              Don't have an account? 
+              <Link href="/register" className="registration d-inline m-2" style={{textDecoration:"none"}}>
+                 Register here
               </Link>
             </div>
-            <h3>Or</h3>
-            <div id="signInDiv"></div>
+            <h3 style={{color:"black",alignSelf:"center",margin:"5px"}}>Or</h3>
+            <div id="signInDiv" style={{alignSelf:"center"}}></div>
           </div>
         </form>
       </main>

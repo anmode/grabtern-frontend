@@ -1,0 +1,105 @@
+.single-slider{
+    height: 280px;
+  }
+  .slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
+    padding-top: 100px;
+  }
+  .contactf{
+    display: -ms-flexbox;
+    display: flex;
+    padding: 30px 0 30px 0;
+    
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 15px;
+    padding-right: 50px;
+    padding-left: 10px;
+    margin-left: 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+  .form-group{
+    box-shadow: rgb(225, 204, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+  .contact-section {
+    padding: 10px 0 50px;
+  }
+  .contactLinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .contactLinks i {
+    font-size: 24px;
+    color: whitesmoke;
+    cursor: pointer;
+  }
+  .contact-title {
+    font-size: 30px;
+    margin-left: 18px;
+  color: linear-gradient(
+      to top,
+      rgb(83, 116, 255) 0%,
+      
+      rgb(187, 85, 255) 95%,
+      rgb(192, 84, 255) 100%
+    );
+    font-weight: bold;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .contact-info{
+    color: whitesmoke;
+    padding-top: 30px;
+  }
+  .contact-info__icon{
+    color: whitesmoke;
+  
+  }
+  .contact-info__icon i, .contact-info__icon span {
+    color: #f4f5f7;
+    font-size: 27px;
+  }
+  .contact-info .media-body h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: whitesmoke;
+  }
+  .contact-info .media-body p {
+    color: #f6f2f2;
+  }
+  
+  
+  .button-contactForm{
+    margin-left: 15px;
+    font-weight: bolder;
+    transition: all 2s ease;
+  } 
+  .button-contactForm:hover{
+  /* transform:translateY(10px); */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  
+  }
+  .offset-lg-1{
+    margin-top: 120px;
+   height: 400px;
+   padding: 25px;
+    margin-right: 15px;
+    margin-left: -59px;
+    
+    color: whitesmoke;
+    /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+    /* background: linear-gradient(
+      to top,
+      rgb(83, 116, 255) 0%,
+      
+      rgb(187, 85, 255) 95%,
+      rgb(192, 84, 255) 100%
+    ); */
+    background-color:  rgb(192, 84, 255) ;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  }

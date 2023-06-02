@@ -9,7 +9,7 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
-    steps:
+ steps:
        - name: Checkout repository
         uses: actions/checkout@v2
 

@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import dynamic from "next/dynamic";
-
-
+// import style from "../styles/contact.css"
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));

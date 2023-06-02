@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import style from "../styles/contactus.css";
+import style from "../styles/contact.css";
 import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
 import $ from "jquery";

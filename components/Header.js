@@ -76,15 +76,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
           style={{ transition: "all 0.5s ease-in" }}
         >
           <div className="container-fluid">
-            <div className="row align-items-center">
-              <div className="col-xl-2 col-lg-2">
+            <div className="row align-items-center justify-content-between">
+              <div>
                 <div className="logo">
                   <a href="/">
                     <Image
-                      width={100}
-                      height={117}
+                      width={80}
+                      height={80}
                       src="/whitelogo.png"
-                      style={{ padding: "30px 0" }}
+                      style={{ padding: "15px 0" }}
                       alt="grabtern_logo"
                     />
                   </a>
@@ -94,19 +94,25 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                 <div className="menu-wrapper d-flex align-items-center justify-content-end">
                   <div
                     className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
+                      navbarAppear === true ? "active" : "" 
                     }`}
                   >
                     <nav>
-                      <ul id="navigation">
+                      <ul id="navigation" className="navigation">
                         <li className="active">
-                          <a href="/">Home</a>
+                          <a href="/" className={styles.navLink}>
+                            Home
+                          </a>
                         </li>
                         <li>
-                          <a href="/mentors">Mentors</a>
+                          <a href="/mentors" className={styles.navLink}>
+                            Mentors
+                          </a>
                         </li>
                         <li>
-                          <a href="/contact">Contact</a>
+                          <a href="/contact" className={styles.navLink}>
+                            Contact
+                          </a>
                         </li>
 
                         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
@@ -131,11 +137,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                 />
                               </button>
 
-                              {loginOption && (
+                              { loginOption && (
                                 <div className="login-optionslist">
                                   <button
-                                    className="login-buttons"
-                                    style={{ marginTop: "20px" }}
+                                    id="login-buttons"
+                                    style={{ marginTop: "20px"}}
                                     onClick={() => {
                                       if (isMentorLoggedIn) {
                                         window.location.href = `/dashboard`;
@@ -147,7 +153,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     Dashboard
                                   </button>
                                   <button
-                                    className="login-buttons"
+                                    id="login-buttons"
                                     onClick={() => {
                                       if (isMentorLoggedIn) {
                                         mentorlogout();
@@ -174,13 +180,13 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               {loginOption && (
                                 <div className="login-optionslist">
                                   <button
-                                    className="login-buttons"
-                                    onClick={handleLoginClick}
+                                    id="login-buttons"                                    
+                                    onClick={handleLoginClick}                                    
                                   >
-                                    <a href="/login">User</a>
+                                    <a href="/login" id="loginbtn">User</a>
                                   </button>
                                   <button
-                                    className="login-buttons"
+                                    id="login-buttons"
                                     onClick={handleLoginClick}
                                   >
                                     <a href="/mentorLogin">Mentor</a>

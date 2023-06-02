@@ -1,6 +1,8 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Header from "../components/Header";
 import ScrollToTop from "../components/ScrollToTop";
+const Footer = dynamic(() => import("../components/Footer"));
 function scrap() {
   return (
     <>
@@ -29,16 +31,16 @@ function scrap() {
             <br></br>
             <div
               align="center"
-              className="MsoNormal"
-              style={{ textAlign: "left", lineHeight: "150%" }}
+              className="MsoNormal ret_pol"
+              style={{ textAlign: "center", lineHeight: "150%" }}
             >
               <strong>
-                <span style={{ fontSize: 26 }}>
-                  <span data-custom-class="title">RETURN POLICY</span>
+                <span style={{ fontSize: 36 }}>
+                  <span>RETURN POLICY</span>
                 </span>
               </strong>
             </div>
-            <div
+            {/* <div
               align="center"
               className="MsoNormal"
               style={{ textAlign: "left", lineHeight: "150%" }}
@@ -60,26 +62,26 @@ function scrap() {
                   </strong>
                 </span>
               </span>
-            </div>
+            </div> */}
             <div
               align="center"
               className="MsoNormal"
-              style={{ textAlign: "left", lineHeight: "150%" }}
+              style={{ textAlign: "center", lineHeight: "150%" }}
             >
               <br />
             </div>
           </div>
           <div
-            className="MsoNormal"
-            data-custom-class="body_text"
+            className="MsoNormal ret_pol2"
+            // data-custom-class="body_text"
             style={{ lineHeight: "1.5" }}
           >
             <span
               style={{
-                fontSize: 15,
+                fontSize: 18,
                 lineHeight: "115%",
-                fontFamily: "Arial",
-                color: "rgb(89, 89, 89)",
+                // fontFamily: "Arial",
+                // color: "rgb(89, 89, 89)",
               }}
             >
               <bdt className="block-component" />
@@ -111,27 +113,23 @@ function scrap() {
             </span>
           </div>
         </div>
-        <div></div>
-        <div></div>
         <div style={{ lineHeight: "1.1" }}>
           <br />
         </div>
         <div>
-          <div className="MsoNormal" style={{ lineHeight: "1.5" }}>
-            <br />
-          </div>
           <div
             className="MsoNormal"
-            data-custom-class="heading_1"
-            style={{ lineHeight: "1.5" }}
+            style={{ lineHeight: "1.5", textAlign: "center" }}
           >
+            <br />
+          </div>
+          <div className="MsoNormal refund" style={{ lineHeight: "1.5" }}>
             <a name="_qxq7t4ufn5pr" />
             <strong>
               <span
                 style={{
                   lineHeight: "115%",
-                  fontFamily: "Arial",
-                  fontSize: 19,
+                  fontSize: 29,
                 }}
               >
                 REFUNDS
@@ -144,17 +142,12 @@ function scrap() {
           <div className="MsoNormal" style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div
-            className="MsoNormal"
-            data-custom-class="body_text"
-            style={{ lineHeight: "1.5" }}
-          >
+          <div className="MsoNormal ret_pol2" style={{ lineHeight: "1.5" }}>
             <span
               style={{
-                fontSize: 15,
+                fontSize: 18,
+
                 lineHeight: "115%",
-                fontFamily: "Arial",
-                color: "rgb(89, 89, 89)",
               }}
             >
               After receiving cancellation of the session , we will process your{" "}
@@ -186,7 +179,7 @@ function scrap() {
                 className="block-container if"
                 data-type="if"
                 id="4c11860e-4346-687b-5cb3-3727f319e194"
-                style={{ fontSize: "14.6667px" }}
+                style={{ fontSize: "18px" }}
               >
                 <bdt data-type="conditional-block">
                   <bdt
@@ -247,31 +240,30 @@ function scrap() {
           <div style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div data-custom-class="heading_1" style={{ lineHeight: "1.5" }}>
-            <span style={{ fontSize: 19, color: "rgb(0, 0, 0)" }}>
+          <div className="MsoNormal questions" style={{ lineHeight: "1.5" }}>
+            <span style={{ fontSize: 29 }}>
               <strong>QUESTIONS</strong>
             </span>
           </div>
           <div style={{ lineHeight: "1.5" }}>
             <br />
           </div>
-          <div data-custom-class="body_text" style={{ lineHeight: "1.5" }}>
-            <span style={{ fontSize: 15, color: "rgb(89, 89, 89)" }}>
+          <div
+            className="MsoNormal ret_pol2"
+            style={{ lineHeight: "1.5", marginBottom: "30px" }}
+          >
+            <span style={{ fontSize: 18 }}>
               If you have any questions concerning our return policy, please
-              contact us at:
+              contact us at: contact.grabtern@gmail.com
             </span>
           </div>
+
           <div data-custom-class="body_text" style={{ lineHeight: "1.1" }}>
-            <br />
+            {/* <br /> */}
           </div>
-          <div data-custom-class="body_text" style={{ lineHeight: "1.5" }}>
-            <span style={{ fontSize: 15 }}>
+          <div className="MsoNormal ret_pol2" style={{ lineHeight: "1.5" }}>
+            <span style={{ fontSize: 18 }}>
               <bdt className="block-component" />
-            </span>
-          </div>
-          <div data-custom-class="body_text" style={{ lineHeight: "1.5" }}>
-            <span style={{ fontSize: 15, color: "rgb(89, 89, 89)" }}>
-              <bdt className="question">contact.grabtern@gmail.com</bdt>
             </span>
           </div>
           <style
@@ -283,6 +275,7 @@ function scrap() {
         </div>
       </div>
       <ScrollToTop/>
+      <Footer />
     </>
   );
 }

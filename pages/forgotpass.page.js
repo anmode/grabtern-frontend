@@ -38,7 +38,7 @@ function ForgotPassword() {
     <>
       <Header navbarBackground={true} />
       <main className="forgot-password-body">
-        <form className="form-default-forgot-pass" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="forgot-password-form">
             <div className="logout-login">
               <a href="index.html">

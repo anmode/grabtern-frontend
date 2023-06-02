@@ -121,6 +121,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     width: "35px",
                                     height: "auto",
                                     borderRadius: "50%",
+                                    backgroundColor: "ActiveBorder",
                                   }}
                                   src={
                                     localStorage.getItem("user_picture") ||
@@ -135,7 +136,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                 <div className="login-optionslist">
                                   <button
                                     className="login-buttons"
-                                    style={{ marginTop: "20px" }}
+                                    // style={{ marginTop: "20px" }}
                                     onClick={() => {
                                       if (isMentorLoggedIn) {
                                         window.location.href = `/dashboard`;
@@ -175,15 +176,19 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                 <div className="login-optionslist">
                                   <button
                                     className="login-buttons"
-                                    onClick={handleLoginClick}
+                                    onClick={() => {
+                                      window.location.href = `/login`;
+                                    }}
                                   >
-                                    <a href="/login">User</a>
+                                    User
                                   </button>
                                   <button
                                     className="login-buttons"
-                                    onClick={handleLoginClick}
+                                    onClick={() => {
+                                      window.location.href = `/mentorLogin`;
+                                    }}
                                   >
-                                    <a href="/mentorLogin">Mentor</a>
+                                    Mentor
                                   </button>
                                 </div>
                               )}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import ScrollToTop from "../components/ScrollToTop";
 
 function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -78,6 +79,7 @@ function ForgotPassword() {
           </div>
         </form>
       </main>
+      <ScrollToTop/>
     </>
   );
 }

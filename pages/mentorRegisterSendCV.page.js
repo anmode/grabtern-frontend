@@ -4,6 +4,7 @@ const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 import emailjs from "@emailjs/browser";
 import { useRouter } from "next/router";
+import ScrollToTop from "../components/ScrollToTop";
 function mentorRegisterSendCV() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
@@ -116,6 +117,7 @@ function mentorRegisterSendCV() {
           </div>
         </div>
       </main>
+      <ScrollToTop/>
       <Footer />
     </>
   );

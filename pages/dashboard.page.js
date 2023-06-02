@@ -5,6 +5,7 @@ const Footer = dynamic(() => import("../components/Footer"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Dashboard from "../components/Dashboard";
+import ScrollToTop from "../components/ScrollToTop";
 
 function Index() {
   const [mentorDetail, setMentorDetail] = useState();
@@ -39,6 +40,7 @@ function Index() {
           )}
         </div>
       </main>
+      <ScrollToTop/>
       <Footer />
     </>
   );

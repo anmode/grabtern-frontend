@@ -48,7 +48,7 @@ const ScrollToTop = () => {
 
     &:hover {
       transition : 0.5s;
-      background-color: #9376E0;
+      background-color: #6f42c1;
     }
   `;
 

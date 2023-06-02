@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Header from "../components/Header";
+import ScrollToTop from "../components/ScrollToTop";
 
 function Register() {
   const router = useRouter();
@@ -112,6 +113,7 @@ function Register() {
           </div>
         </form>
       </main>
+      <ScrollToTop/>
     </>
   );
 }

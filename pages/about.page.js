@@ -11,6 +11,7 @@ import Hackathon from "../components/Hackathons";
 import hackathonsData from "./data/hackathonsData";
 import servicesData from "./data/ServicesData";
 import teamsData from "./data/teamsData";
+import ScrollToTop from "../components/ScrollToTop";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -183,6 +184,7 @@ function About() {
           </div>
         </section>
       </main>
+      <ScrollToTop/>
       <Footer />
     </>
   );

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import jwt_decode from "jwt-decode";
+import ScrollToTop from "../components/ScrollToTop";
 
 function Login() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -134,6 +135,7 @@ function Login() {
           </div>
         </form>
       </main>
+      <ScrollToTop/>
     </>
   );
 }

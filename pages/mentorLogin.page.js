@@ -5,6 +5,7 @@ const Footer = dynamic(() => import("../components/Footer"));
 import { useRouter } from "next/router";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import ScrollToTop from "../components/ScrollToTop";
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -148,6 +149,7 @@ function mentorLogin() {
           </div>
         </div>
       </main>
+      <ScrollToTop/>
       <Footer />
     </>
   );

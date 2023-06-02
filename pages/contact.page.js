@@ -1,9 +1,11 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import dynamic from "next/dynamic";
+import ScrollToTop from "../components/ScrollToTop";
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+
 
 function Contact() {
   const form = useRef();
@@ -159,6 +161,7 @@ function Contact() {
           </div>
         </section>
       </main>
+      <ScrollToTop></ScrollToTop>
       <Footer />
     </>
   );

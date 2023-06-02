@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
+import ScrollToTop from "../components/ScrollToTop";
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
@@ -28,6 +29,7 @@ function Mentors({ mentorsData }) {
           </div>
         </section>
       </main>
+      <ScrollToTop/>
     </>
   );
 }

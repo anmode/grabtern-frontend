@@ -165,6 +165,7 @@ export default function Home() {
                       internshipRating={internship.internshipRating}
                       internshipPayed={internship.internshipPayed}
                       internshipPrice={internship.internshipPrice}
+                      internshipLink={internship.internshipLink}
                     />
                   ))}
                 </OwlCarousel>

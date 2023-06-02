@@ -2202,17 +2202,17 @@ hr {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header-area .header-bottom {
-    padding: 15px 50px;
+    padding: 5px 50px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header-area .header-bottom {
-    padding: 15px 20px;
+    padding: 5px 20px;
   }
 }
 @media (max-width: 575px) {
   .header-area .header-bottom {
-    padding: 15px 20px;
+    padding: 5px 20px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2258,7 +2258,7 @@ hr {
 .main-header .main-menu ul li a {
   color: #fff;
   font-weight: 600;
-  padding: 39px 2px;
+  padding: 15px 2px;
   display: block;
   font-size: 16px;
   -webkit-transition: 0.3s;
@@ -3744,35 +3744,29 @@ hr {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
 }
 .login-form {
-  /* position: absolute;
-  top: 50%;
-  left: 50%; */
-  margin: 35% 50%;
+  margin: 130px auto 5px auto;
   width: 480px;
-  padding: 90px 45px 60px 45px;
-  transform: translate(-50%, -50%);
-  /* background: rgba(0, 0, 0, 0.4); */
+  padding: 90px 45px 12px 45px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  height: min-content;
 }
 @media (max-width: 575px) {
   .login-form {
-    width: 282px;
-    padding: 53px 15px 15px 15px;
-    margin-top: 491px;
+    width: 380px;
+    padding: 110px 40px 15px 40px;
+    margin: 100px auto 0 auto;
   }
 }
 
 .login-form .logout-login img {
-  width: 99px;
+  width: 100px;
   height: 95px;
   position: absolute;
-  top: -57px;
-  left: 0;
-  right: 0;
+  top: 100px;
+  left:calc(50% - 50px);
   margin: 0 auto;
   border: 15px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
@@ -3784,11 +3778,11 @@ hr {
   margin: 0;
   text-align: center;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 .login-form .form-input {
   position: relative;
-  margin: 20px 0;
+  margin: 2vh 0;
 }
 .login-form .form-input label {
   font-size: 18px;
@@ -3812,7 +3806,7 @@ hr {
   color: gray;
 }
 .login-form .form-input input[type="submit"] {
-  background: #656eff;
+  background: linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% );;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -3886,6 +3880,20 @@ hr {
   -o-transition: 0.4s;
   transition: 0.4s;
 }
+
+.navigation{
+  height: 50px;
+}
+
+#login-buttons{
+  background-color:#5373FF;
+  margin:1px
+}
+
+#login-buttons:hover{
+  background-color:#c853ff;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .home-blog-area .home-blog-single .blog-img-cap .blog-img .blog-date {
     padding: 8px 20px;

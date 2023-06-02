@@ -189,7 +189,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                   >
                                     User
                                   </button>
-                                  <button
+                                  {/* <button
                                     className="login-buttons"
                                     onClick={() => {
                                       window.location.href = `/mentorLogin`;
@@ -198,7 +198,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     onClick={handleLoginClick}                                    
                                   >
                                     <a href="/login" id="loginbtn">User</a>
-                                  </button>
+                                  </button> */}
                                   <button
                                     id="login-buttons"
                                     onClick={handleLoginClick}

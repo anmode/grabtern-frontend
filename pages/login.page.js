@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import jwt_decode from "jwt-decode";
+import logimg from "../public/assets/img/gallery/loginimg.jpg"
 
 function Login() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -83,20 +84,20 @@ function Login() {
   return (
     <>
       <Header navbarBackground={true} />
-      <main className="login-body">
+      <main className="login-body d-flex flex-row justify-content-between ">
         <form
-          className="form-default"
+          className="form-default mx-5"
           action="login-bg.mp4"
           onSubmit={handleSubmit}
         >
-          <div className="login-form d-flex flex-column">
-            <div className="logout-login">
-              <a href="index.html">
-                <img src="assets/img/logo/loder.png" alt="" />
-              </a>
+          <div className="login-form d-flex flex-column justify-content-start">
+            <div style={{marginBottom:"20px"}}>
+            <h2 className="text-left" >Login Here</h2>
+            <p className="">Enter your credentials to acess your account</p>
             </div>
-            <h2>login Here</h2>
-            <div className="form-input">
+            <div id="signInDiv" style={{alignSelf:"center"}}></div>
+            <h3 style={{color:"black",alignSelf:"center",margin:"20px"}}>Or</h3>
+            <div className="form-input font-sans">
               <label for="name">Email</label>
               <input
                 type="email"
@@ -114,6 +115,7 @@ function Login() {
                 placeholder="Password"
                 onChange={handleChange}
                 value={data.password}
+                className="border-secondary"
               />
             </div>
             <div className="form-input">
@@ -130,14 +132,13 @@ function Login() {
               </Link>
             <div className="link-div m-3">
               Don't have an account? 
-              <Link href="/register" className="registration d-inline m-2" style={{textDecoration:"none"}}>
+              <Link href="/register" className="registration font-sans  d-inline m-2" style={{textDecoration:"none"}}>
                  Register here
               </Link>
             </div>
-            <h3 style={{color:"black",alignSelf:"center",margin:"5px"}}>Or</h3>
-            <div id="signInDiv" style={{alignSelf:"center"}}></div>
           </div>
         </form>
+        <img src="assets/img/gallery/loginimg.jpg" alt="" height="800px" width="800px" />
       </main>
     </>
   );

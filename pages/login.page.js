@@ -138,7 +138,7 @@ function Login() {
             </div>
           </div>
         </form>
-        <img src="assets/img/gallery/loginimg.jpg" alt="" height="800px" width="800px" />
+        <img src="assets/img/gallery/20944201.jpg" alt="" height="800px" width="800px" />
       </main>
     </>
   );

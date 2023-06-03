@@ -9,6 +9,7 @@ export default [
     internshipRating: 4.9,
     internshipPayed: 450,
     internshipPrice: 1,
+    internshipLink: "https://summerofcode.withgoogle.com/",
   },
   {
     internshipImage: "/assets/img/gallery/mlhprep.png",
@@ -20,6 +21,7 @@ export default [
     internshipRating: 4.5,
     internshipPayed: 250,
     internshipPrice: 1,
+    internshipLink: "https://fellowship.mlh.io/programs/prep",
   },
   {
     internshipImage: "/assets/img/gallery/mlhfellowship.png",
@@ -31,6 +33,7 @@ export default [
     internshipRating: 4.9,
     internshipPayed: 1200,
     internshipPrice: 1,
+    internshipLink: "https://fellowship.mlh.io/",
   },
   {
     internshipImage: "/assets/img/gallery/adobeshe.png",
@@ -42,6 +45,8 @@ export default [
     internshipRating: 4.5,
     internshipPayed: 120,
     internshipPrice: 1,
+    internshipLink:
+      "https://careers.adobe.com/us/en/job/R129181/Project-Manager-SheSparks-Intern",
   },
   {
     internshipImage: "/assets/img/gallery/mitacs.png",
@@ -53,6 +58,8 @@ export default [
     internshipRating: 4.5,
     internshipPayed: 120,
     internshipPrice: 1,
+    internshipLink:
+      "https://www.mitacs.ca/en/programs/globalink/globalink-research-internship",
   },
   {
     internshipImage: "/assets/img/gallery/grid.png",
@@ -66,6 +73,8 @@ export default [
     internshipRating: 4.8,
     internshipPayed: 670,
     internshipPrice: 1,
+    internshipLink:
+      "https://unstop.com/hackathons/flipkart-grid-40-software-development-challenge-flipkart-grid-40-flipkart-348170",
   },
   {
     internshipImage: "/assets/img/gallery/step.png",
@@ -77,6 +86,7 @@ export default [
     internshipRating: 4.8,
     internshipPayed: 670,
     internshipPrice: 1,
+    internshipLink: "https://buildyourfuture.withgoogle.com/programs/step",
   },
   {
     internshipImage: "/assets/img/gallery/wow.png",
@@ -88,6 +98,7 @@ export default [
     internshipRating: 4.8,
     internshipPayed: 670,
     internshipPrice: 1,
+    internshipLink: "https://amazonwowindia.splashthat.com/",
   },
   {
     internshipImage: "/assets/img/gallery/outreachy.png",
@@ -99,6 +110,7 @@ export default [
     internshipRating: 4.8,
     internshipPayed: 670,
     internshipPrice: 1,
+    internshipLink: "https://www.outreachy.org/",
   },
   {
     internshipImage: "/assets/img/gallery/sob.png",
@@ -110,6 +122,7 @@ export default [
     internshipRating: 4.8,
     internshipPayed: 670,
     internshipPrice: 1,
+    internshipLink: "https://www.summerofbitcoin.org/",
   },
   {
     internshipImage: "/assets/img/gallery/sn-bose.png",
@@ -121,5 +134,6 @@ export default [
     internshipRating: 4.8,
     internshipPayed: 670,
     internshipPrice: 1,
+    internshipLink: "https://iusstf.org/s-n-bose-scholars-program",
   },
 ];

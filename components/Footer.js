@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-
+import styles from "../styles/LoginDropdown.module.css";
 function Footer() {
   return (
     <footer>
@@ -30,19 +30,39 @@ function Footer() {
                       </div>
                     </div>
                     <div className="footer-social">
-                      <a href="#">
+                      <a
+                        href="#"
+                        aria-label="Visit us on Twitter"
+                        title="Twitter (External link)"
+                      >
                         <i className="fab fa-twitter"></i>
                       </a>
-                      <a href="https://bit.ly/sai4ull">
+                      <a
+                        href="https://bit.ly/sai4ull"
+                        aria-label="Visit us on Facebook"
+                        title="Facebook (External link)"
+                      >
                         <i className="fab fa-facebook-f"></i>
                       </a>
-                      <a href="#">
+                      <a
+                        href="#"
+                        aria-label="Visit us on Pinterest"
+                        title="Pinterest (External link)"
+                      >
                         <i className="fab fa-pinterest-p"></i>
                       </a>
-                      <a href="https://www.instagram.com/grabtern.guide/">
+                      <a
+                        href="https://www.instagram.com/grabtern.guide/"
+                        aria-label="Visit us on Instagram"
+                        title="Instagram (External link)"
+                      >
                         <i className="fab fa-instagram"></i>
                       </a>
-                      <a href="https://www.linkedin.com/company/grabtern/">
+                      <a
+                        href="https://www.linkedin.com/company/grabtern/"
+                        aria-label="Visit us on Linkedin"
+                        title="Linkedin (External link)"
+                      >
                         <i className="fab fa-linkedin"></i>
                       </a>
                     </div>
@@ -55,16 +75,24 @@ function Footer() {
                     <h4>Services to Student</h4>
                     <ul>
                       <li>
-                        <a href="#">One to One Mentorship</a>
+                        <a href="#" className={styles.footLink}>
+                          One to One Mentorship
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Networking</a>
+                        <a href="#" className={styles.footLink}>
+                          Networking
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Live Sessions</a>
+                        <a href="#" className={styles.footLink}>
+                          Live Sessions
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Resources</a>
+                        <a href="#" className={styles.footLink}>
+                          Resources
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -76,16 +104,24 @@ function Footer() {
                     <h4>Services to Mentors</h4>
                     <ul>
                       <li>
-                        <a href="#">Community Base</a>
+                        <a href="#" className={styles.footLink}>
+                          Community Base
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Self Satisfaction</a>
+                        <a href="#" className={styles.footLink}>
+                          Self Satisfaction
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Build Leadership skills</a>
+                        <a href="#" className={styles.footLink}>
+                          Build Leadership skills
+                        </a>
                       </li>
                       <li>
-                        <a href="#">Get paid</a>
+                        <a href="#" className={styles.footLink}>
+                          Get paid
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -97,16 +133,30 @@ function Footer() {
                     <h4>Grabtern</h4>
                     <ul>
                       <li>
-                        <a href="/refundandcancellation">Refund policy</a>
+                        <a
+                          href="/refundandcancellation"
+                          className={styles.footLink}
+                        >
+                          Refund policy
+                        </a>
                       </li>
                       <li>
-                        <a href="/termsandcondition">Terms and Condition</a>
+                        <a
+                          href="/termsandcondition"
+                          className={styles.footLink}
+                        >
+                          Terms and Condition
+                        </a>
                       </li>
                       <li>
-                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/privacy" className={styles.footLink}>
+                          Privacy Policy
+                        </a>
                       </li>
                       <li>
-                        <a href="/contact">Contact Us</a>
+                        <a href="/contact" className={styles.footLink}>
+                          Contact Us
+                        </a>
                       </li>
                     </ul>
                   </div>

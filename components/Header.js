@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import styles from "../styles/LoginDropdown.module.css";
 import DropdownCard from "./LoginDropdown";
 
 function Header({ isUserLoggedIn, navbarBackground }) {

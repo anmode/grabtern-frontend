@@ -1,6 +1,7 @@
 .loginOption {
   display: flex;
   flex-direction: column;
+  width: auto;
   position: relative;
   gap: 1rem;
   border-radius: 4px;
@@ -20,7 +21,7 @@
   font-weight: 600;
 }
 .loginbutton {
-  width: fit-content;
+  /* width: fit-content; */
 }
 
 .loginOption {

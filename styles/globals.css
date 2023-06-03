@@ -241,7 +241,7 @@ a {
     display: flex;
   }
   .header-bottom .container-fluid .row div:nth-child(2) {
-    padding: 0;
+    /* padding: 0; */
     position: absolute;
     top: 150px;
     width: 100% !important;
@@ -1136,6 +1136,18 @@ textarea {
 }
 
 @media only screen and (max-width: 800px) {
+  .login-optionslist {
+    position: absolute;
+    top: 40px !important;
+    display: flex;
+    flex-direction: column !important;
+    gap: 5px;
+    background-color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+  }
+  
   .mentor-card {
     flex-direction: column;
     width: 100%;

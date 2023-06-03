@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import taskStyles from '../styles/mentors.module.css'
-import book from '../styles/book.module.css'
+import book from '../styles/bookSession.module.css'
 
 function Dashboard({ mentorDetail }) {
   const [formData, setFormData] = useState(mentorDetail);

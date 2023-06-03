@@ -11,6 +11,9 @@ import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
+
+import ScrollToTop from "../components/scrolltotop";
+
 import Testimonial from "../components/Testimonial";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -314,6 +317,7 @@ export default function Home() {
         </section>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

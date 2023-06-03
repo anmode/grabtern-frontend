@@ -12,7 +12,6 @@
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "antd": "^5.4.5",
-    "antd": "^5.4.5",
     "axios": "^1.2.3",
     "jquery": "^3.6.3",
     "jwt-decode": "^3.1.2",
@@ -21,16 +20,14 @@
     "owl.carousel": "^2.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
     "react-owl-carousel": "^2.3.3",
-    "react-query": "^3.39.3",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.8.1",
     "react-socks": "^2.2.0",
     "redis": "^4.6.5",
     "sharp": "^0.32.1",
-    "redis": "^4.6.5",
     "styled-components": "^5.3.10",
-    "swr": "^2.1.5",
     "swr": "^2.1.5"
   },
   "devDependencies": {

@@ -15,9 +15,7 @@ a {
   box-sizing: border-box;
 }
 /*  */
-.single-slider{
-  height: 280px;
-}
+
 .slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
   padding-top: 100px;
 }

@@ -30,41 +30,55 @@ function Footer() {
                       </div>
                     </div>
                     <div className="footer-social">
-                      <a
-                        href="#"
-                        aria-label="Visit us on Twitter"
-                        title="Twitter (External link)"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </a>
+                      
+                      <ul>
+                        <li>
+
+                          <a className="twitter"
+                            href="#" 
+                            aria-label="Visit us on Twitter"
+                            title="Twitter (External link)"
+                          >
+                            <i className="fab fa-twitter"></i>
+                          </a>
+                      </li>
+                      <li>
                       <a
                         href="https://bit.ly/sai4ull"
                         aria-label="Visit us on Facebook"
                         title="Facebook (External link)"
                       >
                         <i className="fab fa-facebook-f"></i>
-                      </a>
+                      </a></li><li>
                       <a
                         href="#"
                         aria-label="Visit us on Pinterest"
                         title="Pinterest (External link)"
                       >
                         <i className="fab fa-pinterest-p"></i>
-                      </a>
+                      </a></li><li>
                       <a
                         href="https://www.instagram.com/grabtern.guide/"
                         aria-label="Visit us on Instagram"
                         title="Instagram (External link)"
                       >
                         <i className="fab fa-instagram"></i>
-                      </a>
+                      </a></li><li>
                       <a
                         href="https://www.linkedin.com/company/grabtern/"
                         aria-label="Visit us on Linkedin"
                         title="Linkedin (External link)"
                       >
                         <i className="fab fa-linkedin"></i>
-                      </a>
+                      </a></li><li>
+                      <a
+                        href=""
+                        aria-label="Visit us on Discord"
+                        title="Discord (External link)"
+                      >
+                        <i className="fab fa-discord"></i>
+                      </a></li>
+                      </ul>
                     </div>
                   </div>
                 </div>

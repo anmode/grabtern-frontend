@@ -35,6 +35,9 @@ export default function Document() {
         <link rel="stylesheet" href="/assets/css/nice-select.css" />
         <link rel="stylesheet" href="/assets/css/style.css" />
 
+        <link rel="stylesheet" href="/assets/css/footer.css" />
+
+
         <script
           async
           src="https://kit.fontawesome.com/c26b883059.js"

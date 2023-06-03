@@ -14,7 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+/*  */
 
+.slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
+  padding-top: 100px;
+}
+/*  */
 .loaderBackground {
   animation: loader 1s 0.8s forwards;
   position: absolute;
@@ -761,18 +766,6 @@ textarea {
   text-align: center;
 }
 
-.contactLinks {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.contactLinks i {
-  font-size: 24px;
-  color: grey;
-  cursor: pointer;
-}
-
 .modalPopup {
   transition: all 0.5s ease-in-out;
   position: fixed; /* Stay in place */
@@ -1470,3 +1463,4 @@ textarea {
     margin-top: 10px;
   }
 }
+

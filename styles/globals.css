@@ -1468,14 +1468,4 @@ textarea {
     margin-top: 10px;
   }
 }
-.contactLinks {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 
-.contactLinks i {
-  font-size: 24px;
-  color: whitesmoke;
-  cursor: pointer;
-}

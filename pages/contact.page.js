@@ -159,7 +159,7 @@ function Contact() {
                         />
                       </div>
                     </div>
-                    <div className={`${style.fgroup} mt-3`}>
+                    <div >
                     <button
                       type="submit"
                       className={style.boxedbtn}
@@ -170,43 +170,6 @@ function Contact() {
                   </div>
                  
                 </form>
-                {/* <div className={`${style.offsetlg} col-lg-3`}>
-                <div className={`${style.contactinfo} media`}>
-                 
-                  <div className={style.media_head}>
-                    <h3>Contact Information</h3>
-                  </div>
-                </div>
-                  <div class={style.centerr}>
-                <div className={`${style.contactinfo} media`}>
-                  <span className={style.contactinfo__icon}>
-                    <i className="ti-home" />
-                  </span>
-                  <div className={style.media_body}>
-                    <h3>Kishanpur</h3>
-                    <p>Aligarh, Uttar Pradesh</p>
-                  </div>
-                </div>
-                <div className={`${style.contactinfo} media`}>
-                  <span className={style.contactinfo__icon}>
-                    <i className="ti-tablet" />
-                  </span>
-                  <div className={style.media_body}>
-                    <h3>9368086395</h3>
-                    <p>Mon to Fri 9am to 6pm</p>
-                  </div>
-                </div>
-                <div className={`${style.contactinfo} media`}>
-                  <span className={style.contactinfo__icon}>
-                     <i className="ti-email" />
-                  </span>
-                  <div className={style.media_body}>
-                    <h3>contact.grabtern@gmail.com</h3>
-                    <p>Send us your query anytime!</p>
-                  </div>
-                </div>
-                </div>
-              </div> */}
               </div>
            
             </div>

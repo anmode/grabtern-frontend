@@ -14,7 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+/*  */
 
+.slider-area .hero__caption.hero__caption2,
+.slider-area2 .hero__caption.hero__caption2 {
+  padding-top: 100px;
+}
+/*  */
 .loaderBackground {
   animation: loader 1s 0.8s forwards;
   position: absolute;
@@ -188,10 +194,9 @@ a {
   display: none;
   flex-direction: column;
   gap: 7px;
-  position: absolute;
-  top: 0;
+
   right: 50px;
-  top: calc(125px / 2);
+
   cursor: pointer;
 }
 
@@ -243,7 +248,7 @@ a {
   .header-bottom .container-fluid .row div:nth-child(2) {
     padding: 0;
     position: absolute;
-    top: 150px;
+    top: 90px;
     width: 100% !important;
     max-width: 100% !important;
     left: 0;
@@ -259,6 +264,7 @@ a {
     gap: 50px;
     padding: 50px 35px;
     width: 100%;
+    height: 380px;
     background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
     display: flex;
     flex-direction: column;
@@ -273,7 +279,7 @@ a {
     margin-top: -120px;
   }
   .container {
-    padding: 20px;
+    padding: 50px;
     max-width: 100% !important;
     width: 100% !important;
   }
@@ -282,9 +288,6 @@ a {
 @media (min-width: 992px) {
   .container {
     padding: 20px;
-    /* margin: 10px; */
-    max-width: 100% !important;
-    width: 100% !important;
   }
 }
 
@@ -556,7 +559,11 @@ a {
 .mentorFormRegisration > .container > .mentorForm {
   margin: 0 auto;
 }
-
+@media screen and (max-width: 600px) {
+  .mentorFormRegisration > .container > .mentorForm {
+    margin: 67px auto;
+  }
+}
 .mentorFormSetupPW {
   margin: unset !important;
 }
@@ -623,7 +630,7 @@ textarea {
 .bookSessionHeader {
   display: flex;
   flex-direction: row !important;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-bottom: 1px solid grey;
   padding-bottom: 20px;
   gap: 20px;
@@ -637,7 +644,8 @@ textarea {
 }
 
 .bookSessionHeader div p {
-  font-size: 18px;
+  font-size: 8px;
+  font-weight: 900;
   margin-bottom: 0;
 }
 
@@ -756,18 +764,6 @@ textarea {
 
 .mentorCard .mentorName {
   text-align: center;
-}
-
-.contactLinks {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.contactLinks i {
-  font-size: 24px;
-  color: grey;
-  cursor: pointer;
 }
 
 .modalPopup {
@@ -943,11 +939,22 @@ textarea {
 
 .bookSessions li {
   background-color: white;
-  border: 1px solid gray;
-  padding: 20px 30px;
+  border: 2px solid gray;
+  padding: 25px 25px;
   border-radius: 10px;
-  max-width: 500px;
+  height: 270px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 8px rgba(205, 205, 205, 0.8), 0 0 15px rgb(213, 211, 211);
+  transform: all;
+  transition-duration: 0.2s;
 }
+.bookSessions li:hover {
+  width: 402px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 15px rgba(185, 185, 185, 0.8), 0 0 18px rgb(199, 195, 195);
+}
+
 .bookSessionIcons {
   display: flex;
   gap: 20px;
@@ -961,18 +968,23 @@ textarea {
   font-size: 19px;
   font-weight: bold;
   align-items: center;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 0 10px;
 }
 
-.bookSessions li button {
-  background-color: #037b80;
-  padding: 10px 20px;
+.bookSessions > li > button {
+  background: linear-gradient(#c054ff, #5274ff);
+  padding: 8px 15px;
   font-size: 19px;
   color: white;
   border: none;
-  margin-top: 25px;
+  margin-top: 35px;
   border-radius: 5px;
+  transition: transform 0.2s ease;
+}
+.bookSessions > li > button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(#b12cfe, #305aff);
 }
 
 .bookSessionColumn {
@@ -1190,11 +1202,9 @@ textarea {
 
 /* form container */
 .forgot-password-body {
-  background-color: #f2f2f2;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 /* form itself */
@@ -1221,29 +1231,6 @@ textarea {
   font-weight: 500;
   display: block;
   margin-bottom: 10px;
-}
-
-/* form input field */
-.forgot-password-form input[type="email"] {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-/* submit button */
-.forgot-password-form input[type="submit"] {
-  background-color: #0275d8;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
-  width: 100%;
-  cursor: pointer;
 }
 
 /* error message */
@@ -1313,4 +1300,164 @@ textarea {
 .reset-password-container .message {
   color: #00ff00;
   margin-top: 10px;
+}
+
+.ret_pol {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+}
+
+.ret_pol2 {
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  max-width: 60%;
+  margin: auto;
+}
+
+.refund {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+  text-align: center;
+}
+
+.questions {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+  text-align: center;
+}
+
+.tnc {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-style: normal;
+  font-weight: 350;
+  text-transform: normal;
+}
+
+#tncheading {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: normal;
+  margin-top: 100px;
+  font-size: 60px;
+  text-align: center;
+  color: #4255a4;
+}
+
+#tncheading2 {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: normal;
+  margin-top: 100px;
+  font-size: 35px;
+  text-align: center;
+  color: #4255a4;
+  text-align: left;
+  margin-left: 40px;
+  margin-top: 8px;
+}
+
+.maincontent {
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  margin-left: 20px;
+  float: left;
+  width: 45%;
+  margin-right: 10%;
+  font-size: 18px;
+}
+
+.tableofcontents {
+  font-family: "Josefin Sans", sans-serif;
+  margin-top: 0px;
+  float: left;
+  margin-left: 40px;
+  width: 29%;
+  border: 1px solid #10285d;
+  border-radius: 19px;
+  margin-right: 10px;
+  padding-right: 0px;
+  padding-left: 20px;
+  background-color: #d2d8f0;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+#toc {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: normal;
+  margin-top: 100px;
+  font-size: 3rem;
+  text-align: center;
+  color: #2e4fd5;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.tnc-sub-head {
+  font-family: "Josefin Sans", sans-serif;
+  color: #4255a4;
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: 550;
+  text-transform: normal;
+  text-align: left;
+  font-size: 32px;
+  margin-left: 18px;
+}
+
+.terms-and-cond-sub {
+  font-family: "Mulish", sans-serif;
+  color: #10285d;
+  margin-left: 25px;
+  font-size: 18px;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .front {
+    display: block;
+  }
+  .tnc {
+    margin-top: 350px;
+  }
+  #tncheading2 {
+    font-size: 27px;
+  }
+  .maincontent {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    width: 89%;
+  }
+  .tableofcontents {
+    margin: auto;
+    width: 94%;
+    margin-top: 10px;
+  }
 }

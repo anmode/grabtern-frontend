@@ -76,15 +76,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
           style={{ transition: "all 0.5s ease-in" }}
         >
           <div className="container-fluid">
-            <div className="row align-items-center">
-              <div className="col-xl-2 col-lg-2">
+            <div className="row align-items-center justify-content-between">
+              <div>
                 <div className="logo">
                   <a href="/">
                     <Image
-                      width={100}
-                      height={117}
+                      width={80}
+                      height={80}
                       src="/whitelogo.png"
-                      style={{ padding: "30px 0" }}
+                      style={{ padding: "15px 0" }}
                       alt="grabtern_logo"
                     />
                   </a>
@@ -98,7 +98,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                     }`}
                   >
                     <nav>
-                      <ul id="navigation">
+                      <ul id="navigation" className="navigation">
                         <li className="active">
                           <a href="/" className={styles.navLink}>
                             Home
@@ -140,7 +140,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               {loginOption && (
                                 <div className="login-optionslist">
                                   <button
-                                    className="login-buttons"
+                                    id="login-buttons"
                                     style={{ marginTop: "20px" }}
                                     onClick={() => {
                                       if (isMentorLoggedIn) {
@@ -153,7 +153,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     Dashboard
                                   </button>
                                   <button
-                                    className="login-buttons"
+                                    id="login-buttons"
                                     onClick={() => {
                                       if (isMentorLoggedIn) {
                                         mentorlogout();
@@ -180,13 +180,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                               {loginOption && (
                                 <div className="login-optionslist">
                                   <button
-                                    className="login-buttons"
+                                    id="login-buttons"
                                     onClick={handleLoginClick}
                                   >
-                                    <a href="/login">User</a>
+                                    <a href="/login" id="loginbtn">
+                                      User
+                                    </a>
                                   </button>
                                   <button
-                                    className="login-buttons"
+                                    id="login-buttons"
                                     onClick={handleLoginClick}
                                   >
                                     <a href="/mentorLogin">Mentor</a>

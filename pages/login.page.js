@@ -105,7 +105,7 @@ function Login() {
           onSubmit={handleSubmit}
           style={{marginTop:"120px"}}
         >
-          <div className=" d-flex flex-column justify-content-start tw-border-[2px] tw-rounded-lg tw-border-black tw-py-[50px] tw-px-[70px]">
+          <div className=" d-flex flex-column justify-content-start tw-py-[50px] tw-px-[70px] tw-shadow-2xl" >
             <div style={{marginBottom:"20px"}}>
             <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold" >Login Here</h2>
             <p className=" tw-text-gray-500 tw-mb-5">Enter your credentials to acess your account</p>
@@ -120,7 +120,7 @@ function Login() {
                 placeholder="Email"
                 onChange={handleChange}
                 value={data.email}
-                className="tw-border-[2px] tw-px-8 tw-py-3 tw-rounded-lg"
+                className=" tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
               />
             </div>
             <div className="tw-flex tw-flex-col  tw-mb-10">
@@ -131,33 +131,33 @@ function Login() {
                 placeholder="Password"
                 onChange={handleChange}
                 value={data.password}
-                className="tw-border-[2px] tw-px-8 tw-py-3 tw-rounded-lg"
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
               />
             </div>
             <div >
-              <input type="submit" name="submit" value="login" style={{
+              <input type="submit" name="submit" value="Login" style={{
                 background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )"
-                  }} className="tw-px-10 tw-py-[10px] tw-rounded-lg tw-cursor-pointer"/>
+                  }} className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"/>
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
             {localStorage.getItem("new_user") && (
               <div style={{ color: "green" }}>Please register first.</div>
             )}
-              <Link href="/forgotpass" className="tw-font-medium tw-text-right hover:tw-text-gray-400">
+              <Link href="/forgotpass" className="tw-font-medium tw-mt-8 tw-text-right hover:tw-text-gray-400 tw-text-blue-700">
                 Forget Password?
               </Link>
             <div className="link-div tw-font-medium tw-mt-10">
               Don't have an account? 
-              <button  className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400" style={{textDecoration:"none"}} onClick={()=>handlelog()}>
+              <button  className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700" style={{textDecoration:"none" }} onClick={()=>handlelog()}>
                  Register here
               </button>
             </div>
           </div>
         </form>):(<Register/>)}
-        
+        <div className="hidden md:tw-flex">    
         <img src="assets/img/gallery/20944201.jpg
         
-        " alt="" height="800px" width="800px" />
+        " alt="" height="800px" width="800px" /></div>   
       </main>
     </>
   );

@@ -66,18 +66,18 @@ function Register() {
           onSubmit={handleSubmit}
           style={{marginTop:"120px"}}
         >
-          <div className="d-flex flex-column justify-content-start tw-border-[2px] tw-rounded-lg tw-border-black tw-py-[50px] tw-px-[90px]">
-            <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">Registration Here</h2>
-            <p className=" tw-text-gray-500 tw-mb-5">Please fill the below fields</p>
+          <div className="d-flex flex-column justify-content-start tw-w-full  tw-py-[50px] tw-px-[90px] tw-shadow-2xl">
+            <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">Registration</h2>
+            <p className=" tw-text-gray-500 tw-mb-5">The faster you fill up, the faster you get a internship</p>
             <div className="tw-flex tw-flex-col  tw-mb-10">
-              <label for="name" className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10">Full name</label>
+              <label for="name" className="tw-text-3xl tw-text-left tw-font-medium ">Full name</label>
               <input
                 type="text"
                 placeholder="Full name"
                 name="fullName"
                 onChange={handleChange}
                 value={data.fullName}
-                className="tw-border-[2px] tw-px-8 tw-py-3 tw-rounded-lg"
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
               />
             </div>
             <div className="tw-flex tw-flex-col  tw-mb-10">
@@ -88,7 +88,7 @@ function Register() {
                 placeholder="Email Address"
                 onChange={handleChange}
                 value={data.email}
-                className="tw-border-[2px] tw-px-8 tw-py-3 tw-rounded-lg"
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
               />
             </div>
             <div className="tw-flex tw-flex-col  tw-mb-10">
@@ -99,7 +99,7 @@ function Register() {
                 placeholder="Password"
                 onChange={handleChange}
                 value={data.password}
-                className="tw-border-[2px] tw-px-8 tw-py-3 tw-rounded-lg"
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
               />
             </div>
             <div className="tw-flex tw-flex-col  tw-mb-10">
@@ -110,18 +110,18 @@ function Register() {
                 placeholder="Confirm Password"
                 onChange={handleChange}
                 value={data.confirmPassword}
-                className="tw-border-[2px] tw-px-8 tw-py-3 tw-rounded-lg"
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
               />
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
-            <div >
+            <div>
               <input type="submit" name="submit" value="Registration" style={{
                 background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )"
-                  }} className="tw-px-10 tw-py-[10px] tw-rounded-lg tw-cursor-pointer"/>
+                  }} className="tw-px-10 tw-font-semibold tw-py-[6px] tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"/>
             </div>
             <div className="link-div tw-font-medium tw-mt-10">
               Already have an account? 
-              <button  className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400" style={{textDecoration:"none"}} onClick={()=>handleregister()}>
+              <button  className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700" style={{textDecoration:"none"}} onClick={()=>handleregister()}>
                  Login              </button>
             </div>
           </div>

@@ -16,7 +16,8 @@ a {
 }
 /*  */
 
-.slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
+.slider-area .hero__caption.hero__caption2,
+.slider-area2 .hero__caption.hero__caption2 {
   padding-top: 100px;
 }
 /*  */
@@ -193,7 +194,6 @@ a {
   display: none;
   flex-direction: column;
   gap: 7px;
-
 
   right: 50px;
 
@@ -1233,8 +1233,6 @@ textarea {
   margin-bottom: 10px;
 }
 
-
-
 /* error message */
 .forgot-password-form div[style="color:red"] {
   font-size: 16px;
@@ -1463,4 +1461,3 @@ textarea {
     margin-top: 10px;
   }
 }
-

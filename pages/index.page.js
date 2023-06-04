@@ -21,7 +21,7 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
-import hackathonStyle from '../styles/hackathon.module.css';
+import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
 
 const internshipsOptions = {
@@ -61,7 +61,6 @@ const teamsOptions = {
     },
   },
 };
-
 
 export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);

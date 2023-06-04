@@ -2,7 +2,6 @@
 This is the frontend repository for Grabtern, a web application built with Next.js.
 <br>
 
-
 <div align="center">
  <p>
 
@@ -18,6 +17,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/anmode/grabtern-frontend)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/anmode/grabtern-frontend)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/anmode/grabtern-frontend)
+
  </p>
  </div>
  <br>
@@ -32,31 +32,41 @@ This is the frontend repository for Grabtern, a web application built with Next.
 - [Author](#author)
 - [License](#license)
 - [Our Contributors](#-thank-you-for-your-contribution)
----
 
+---
 
 ## Getting Started
 
 ### How To SetUp
+
 To get started with Grabtern Frontend, you'll need to install Node.js and npm on your machine. Then, you can clone this repository and install the dependencies:
 
 - Fork The Repo
+
 ```
 you can do this by clicking on the green coloured fork button
 ```
+
 - Clone your forked repo
+
 ```
 $ git clone https://github.com/your-username/grabtern-frontend.git
 ```
+
 - Go to directory
+
 ```
 cd grabtern-frontend
 ```
+
 - Install Dependencies
+
 ```
 npm install
 ```
+
 - Start LocalHost Server
+
 ```
 npm run dev
 ```
@@ -64,12 +74,15 @@ npm run dev
 This will start the development server on http://localhost:3000/.
 
 ---
-## 🧰 Tech Stack Used 
-<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">   <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+
+## 🧰 Tech Stack Used
+
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
 
 ---
 
 ## 🧪 Prettier lint test and How to fix it?
+
 Prettier is a code formatter that helps maintain consistent code style and formatting in your projects. It automatically analyzes your code and applies predefined formatting rules to ensure a standardized appearance.
 
 Linting is the process of analyzing code for potential errors, bugs, and code style violations. It helps identify and highlight problematic code patterns, potential bugs, and adherence to coding standards.
@@ -80,25 +93,22 @@ To enable automatic code formatting upon saving in Visual Studio Code, you can i
 
 In case you prefer not to install the Prettier extension, there are two helpful commands you can use:
 
-1) ```npx prettier --check ```.: This command checks your codebase for any formatting issues without making any changes. It identifies areas where the formatting may not align with the defined rules.
-2) ```npx prettier --write ``` .: This command automatically fixes the formatting issues in your codebase. It applies the appropriate formatting changes to ensure consistency and adherence to the defined style guidelines.
-By utilizing these commands, you can easily verify the formatting of your codebase and address any inconsistencies or style violations, even without having the Prettier extension installed.
-
-
----
-
-
-## Contributing 
-
-If you'd like to contribute to Grabtern Frontend:- 
-
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/anmode/grabtern-frontend/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com//anmode/grabtern-frontend/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+1. `npx prettier --check `.: This command checks your codebase for any formatting issues without making any changes. It identifies areas where the formatting may not align with the defined rules.
+2. `npx prettier --write ` .: This command automatically fixes the formatting issues in your codebase. It applies the appropriate formatting changes to ensure consistency and adherence to the defined style guidelines.
+   By utilizing these commands, you can easily verify the formatting of your codebase and address any inconsistencies or style violations, even without having the Prettier extension installed.
 
 ---
 
+## Contributing
+
+If you'd like to contribute to Grabtern Frontend:-
+
+- If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/anmode/grabtern-frontend/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
+- Please make sure you check your spelling and grammar.
+- Create individual PR for each suggestion.
+- Please also read through the [Code Of Conduct](https://github.com//anmode/grabtern-frontend/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+
+---
 
 ### Creating A Pull Request
 
@@ -111,21 +121,20 @@ If you'd like to contribute to Grabtern Frontend:-
 ---
 
 ## ✨ Thank You for Your Contribution!
+
 <a href="https://github.com/anmode/grabtern-frontend/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=anmode/grabtern-frontend" />
 </a>
 
 ---
 
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 [MIT](https://choosealicense.com/licenses/mit/)
 
-
 ## Author
+
 [Anmol Agrawal](https://github.com/anmode)
 
 <h3 align="center">Show some ❤️ by 🌟 this awesome repository!</h3>
-

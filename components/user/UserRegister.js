@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import LogContext from "../../context/LogContext";
 
-function Register() {
+function Register({handleLogPageToggle}) {
   const router = useRouter();
   if (
     localStorage.getItem("user_name") !== null ||
@@ -47,21 +47,13 @@ function Register() {
       }
     }
   };
-
-  const handleregister = () => {
-    if (logpagestate) {
-      setlogpagestate(false);
-    } else {
-      setlogpagestate(true);
-    }
-  };
   return (
     <>
       <form
         className="form-default mx-5"
         action="login-bg.mp4"
         onSubmit={handleSubmit}
-        style={{ marginTop: "120px" }}
+        style={{ marginTop: "50px" }}
       >
         <div className="d-flex flex-column justify-content-start tw-w-full  tw-py-[50px] tw-px-[90px] tw-shadow-2xl">
           <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">
@@ -152,7 +144,7 @@ function Register() {
             <button
               className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
-              onClick={() => handleregister()}
+              onClick={() =>handleLogPageToggle()}
             >
               Login{" "}
             </button>

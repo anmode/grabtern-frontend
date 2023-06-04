@@ -14,7 +14,7 @@ function UserAuthPage() {
   const { logpagestate, setlogpagestate } = useContext(LogContext);
 
   const handleLogPageToggle = () => {
-    setLogPageState(!logpagestate);
+    setlogpagestate(!logpagestate);
   };
 
   return (
@@ -26,12 +26,10 @@ function UserAuthPage() {
         ) : (
           <Register handleLogPageToggle={handleLogPageToggle} />
         )}
-        <div className="hidden md:tw-flex">
+        <div className="tw-hidden md:tw-flex tw-h-[700px]">
           <img
             src="assets/img/gallery/20944201.jpg"
             alt=""
-            height="800px"
-            width="800px"
           />
         </div>
       </main>

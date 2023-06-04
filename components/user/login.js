@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 import { useContext } from "react";
 import LogContext from "../../context/LogContext";
 
-function Login() {
+function Login({handleLogPageToggle}) {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const router = useRouter();
@@ -50,7 +50,7 @@ function Login() {
       size: "large",
     });
     google.accounts.id.prompt();
-  }, [logpagestate]);
+  }, []);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -83,24 +83,13 @@ function Login() {
       }
     }
   };
-
-  const handlelog = () => {
-    if (logpagestate) {
-      setlogpagestate(false);
-    } else {
-      setlogpagestate(true);
-    }
-  };
-
   return (
     <>
-      <Header navbarBackground={true} />
-      <main className="login-body d-flex flex-row justify-content-between">
         <form
-          className="form-default mx-5"
+          className="form-default mx-5 "
           action="login-bg.mp4"
           onSubmit={handleSubmit}
-          style={{ marginTop: "120px" }}
+          style={{ marginTop: "90px" }}
         >
           <div className=" d-flex flex-column justify-content-start tw-py-[50px] tw-px-[70px] tw-shadow-2xl">
             <div style={{ marginBottom: "20px" }}>
@@ -175,14 +164,13 @@ function Login() {
               <button
                 className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700"
                 style={{ textDecoration: "none" }}
-                onClick={() => handlelog()}
+                onClick={() => handleLogPageToggle()}
               >
                 Register here
               </button>
             </div>
           </div>
         </form>
-      </main>
     </>
   );
 }

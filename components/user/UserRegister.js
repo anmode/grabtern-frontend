@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useContext } from "react";
-import LogContext from "../context/LogContext";
+import LogContext from "../../context/LogContext";
 
 function Register() {
   const router = useRouter();
@@ -34,7 +35,7 @@ function Register() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       const { data: res } = await axios.post(url, data);
-      router.push("/login");
+      router.push("/");
       console.log(res.message);
     } catch (error) {
       if (

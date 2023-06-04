@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Header from "../components/Header";
+import Header from "../Header";
 import jwt_decode from "jwt-decode";
-import Register from "../components/UserRegister";
 import { useContext } from "react";
-import LogContext from "../context/LogContext";
+import LogContext from "../../context/LogContext";
 
 function Login() {
   const [data, setData] = useState({ email: "", password: "" });
@@ -97,7 +96,6 @@ function Login() {
     <>
       <Header navbarBackground={true} />
       <main className="login-body d-flex flex-row justify-content-between">
-        {logpagestate ? (
           <form
             className="form-default mx-5"
             action="login-bg.mp4"
@@ -186,19 +184,6 @@ function Login() {
               </div>
             </div>
           </form>
-        ) : (
-          <Register />
-        )}
-        <div className="hidden md:tw-flex">
-          <img
-            src="assets/img/gallery/20944201.jpg
-        
-        "
-            alt=""
-            height="800px"
-            width="800px"
-          />
-        </div>
       </main>
     </>
   );

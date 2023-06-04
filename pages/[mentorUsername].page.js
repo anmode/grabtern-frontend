@@ -8,6 +8,7 @@ function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
+  const [error, setError] = useState("");
   const router = useRouter();
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
@@ -31,6 +32,7 @@ function Index({ mentorDetail }) {
   // }, [modalPopup]);
   const handleClick = (Mentordata) => () => {
     if (isLoggedIn) {
+      setModalPopup(true);
       handleBookSession(
         Mentordata.sessionName,
         mentorDetail.email,
@@ -59,16 +61,29 @@ function Index({ mentorDetail }) {
 
   const sendMail = async (data) => {
     try {
-      console.log("I am in sendMail client side");
+      setIsLoading(true);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
         data
       );
-      console.log(data);
       setIsLoading(false);
+      setModalPopup(true);
     } catch (error) {
-      console.error("Error sending mail:", error);
-      // Handle the error here, such as showing an error message to the user
+      setIsLoading(false);
+      if (error.response && error.response.status === 400) {
+        setError("You have already booked this session");
+        setTimeout(() => {
+          setError("");
+        }, 3000); // remove the error after 5 seconds
+      } else if (error.response && error.response.status === 405) {
+        setError("You are not allowed to book your own session");
+        setTimeout(() => {
+          setError("");
+        }, 3000); // remove the error after 5 seconds
+      } else {
+        console.error("Error sending mail:", error);
+        setError("Facing any problem? Email Us");
+      }
     }
   };
 
@@ -93,9 +108,7 @@ function Index({ mentorDetail }) {
     };
 
     try {
-      setIsLoading(true);
       await sendMail(data);
-      setModalPopup(true);
     } catch (error) {
       console.error(error);
     }
@@ -261,23 +274,76 @@ function Index({ mentorDetail }) {
                       </div>
                       <button
                         style={{ cursor: "pointer" }}
-                        onClick={handleClick(session)}
+                        onClick={() => setModalPopup(true)}
                       >
-                        Book Session
+                        <span>Book Session</span>
                       </button>
-
-                      {isLoading && (
-                        <img
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            border: "none",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="loading..."
-                        />
-                      )}
-                      {modalPopup === true ? (
+                      {error && <div style={{ color: "red" }}>{error}</div>}
+                      {error == "" && modalPopup === true ? (
+                        <div className="modalPopup">
+                          <div className="modalPopupAfterRegistrationDone">
+                            <i
+                              onClick={() => setModalPopup(false)}
+                              style={{
+                                cursor: "pointer",
+                                marginLeft: "auto",
+                                fontSize: "25px",
+                              }}
+                              className="fas fa-times"
+                            ></i>
+                            <p style={{ marginBottom: "0" }}>
+                              Hurrah! Just one step left to get your session
+                              booked <br /> Our team will contact you for
+                              payment, soon !!
+                              <br />
+                            </p>
+                            <div style={{ display: "flex", gap: "2rem" }}>
+                              <button
+                                onClick={() => setModalPopup(false)}
+                                style={{
+                                  marginRight: "auto",
+                                  cursor: "pointer",
+                                  border: "none",
+                                  backgroundColor: "red",
+                                  color: "white",
+                                  padding: "10px 20px",
+                                  borderRadius: "10px",
+                                }}
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                onClick={handleClick(session)}
+                                style={{
+                                  marginRight: "auto",
+                                  cursor: "pointer",
+                                  border: "none",
+                                  backgroundColor: "green",
+                                  color: "white",
+                                  padding: "10px 20px",
+                                  borderRadius: "10px",
+                                }}
+                              >
+                                {isLoading == true ? (
+                                  <img
+                                    style={{
+                                      width: "25px",
+                                      height: "25px",
+                                      border: "none",
+                                      margin: "0 22px",
+                                    }}
+                                    src="/assets/img/gif/Spinner.gif"
+                                    alt="loading..."
+                                  />
+                                ) : (
+                                  <span>Confirm</span>
+                                )}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+                      {/* {modalPopup === true ? (
                         <div className="modalPopup">
                           <div className="modalPopupAfterRegistrationDone">
                             <p>
@@ -288,7 +354,7 @@ function Index({ mentorDetail }) {
                             <p>Redirecting you to home in {waitTime} second</p>
                           </div>
                         </div>
-                      ) : null}
+                      ) : null} */}
                       <div></div>
                     </li>
                   ))

@@ -1,0 +1,64 @@
+.blogCard {
+  max-width: 300px;
+  border: 1px solid #b9b9b9;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.imgContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+}
+
+.imgContainer>img {
+  width: 100%;
+  min-height: 100%;
+  align-self: center;
+}
+
+.blogContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+}
+
+.authorInfo h4 {
+  margin: 0 0 0 1rem;
+}
+
+.authorImgContainer {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 100%;
+  display: flex;
+}
+
+.authorImgContainer>img {
+  width: 100%;
+  align-self: center;
+}
+
+.blogMetrics {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blogAnalytics {
+  display: flex;
+  gap: 1em;
+}
+
+.justifyAlignCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -19,7 +19,7 @@ jobs:
 
       - name: Run prettier
         run: |
-          npx prettier --write .
+          npx prettier --check .
           prettier_exit_code=$?
           if [ $prettier_exit_code -ne 0 ]; then
             echo "Prettier check failed. Please run 'npx prettier --write .' to fix formatting issues."

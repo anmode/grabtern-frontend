@@ -1,42 +1,46 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import jwt_decode from "jwt-decode";
-import Login from "../components/user/login";
-import Register from "../components/user/UserRegister";
-import { useContext } from "react";
-import LogContext from "../context/LogContext";
+import Login from "../components/user/Login";
+import Register from "../components/user/register";
 
 function UserAuthPage() {
-  //   const [logpagestate, setLogPageState] = useState(true);
-  const { logpagestate, setlogpagestate } = useContext(LogContext);
-
-  const handleLogPageToggle = () => {
-    setlogpagestate(!logpagestate);
-  };
-
+  const [logpagestate, setLogPageState] = useState(true);
   const router = useRouter();
+
+  // Function to handle toggle between login/register page
+  const handleLogPageToggle = () => {
+    setLogPageState(!logpagestate);
+
+    // Update URL hash based on current state
+    if (logpagestate) {
+      router.push("/userAuth/#register", undefined, { shallow: true });
+    } else {
+      router.push("/userAuth/#login", undefined, { shallow: true });
+    }
+  };
 
   useEffect(() => {
     handleHashChange();
-  }, [logpagestate]);
 
+    // Add event listener for URL hash change
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  // Function to check current URL hash and render corresponding component
   const handleHashChange = () => {
-    const currentHash = router.asPath.split("#")[1];
+    const currentHash = window.location.hash.substring(1);
 
     if (currentHash === "login") {
-      setlogpagestate(true);
-      return <Login />;
-      // Add your logic here
+      setLogPageState(true);
+      //    console.log("I'm in login region bro");
     } else if (currentHash === "register") {
-      setlogpagestate(false);
-      // Add your logic here
-      return <Register />;
+      setLogPageState(false);
+      //    console.log("I'm in register region bro");
     } else {
-      // Invalid hash, handle accordingly (e.g., show an error message)
-      // Add your logic here
+      console.log("Invalid Hash:", currentHash);
     }
   };
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import LogContext from "../../context/LogContext";
 
-function Register({handleLogPageToggle}) {
+function Register({ handleLogPageToggle }) {
   const router = useRouter();
   if (
     localStorage.getItem("user_name") !== null ||
@@ -144,7 +144,7 @@ function Register({handleLogPageToggle}) {
             <button
               className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
-              onClick={() =>handleLogPageToggle()}
+              onClick={() => handleLogPageToggle()}
             >
               Login{" "}
             </button>

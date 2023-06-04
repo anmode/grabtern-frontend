@@ -87,40 +87,12 @@
     margin-top: 0 !important;
   }
   
-  .properties__card {
-    position: relative;
-    height: 500px !important;
-    position: relative;
-  }
   
-  .properties__footer {
-    margin-bottom: 0 !important;
-  }
   
   .courseFooter {
     position: absolute;
     bottom: 20px;
     width: calc(100% - 40px);
-  }
-  
-  .dashboardEdit {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 15px;
-  }
-  
-  .dashboardEdit i {
-    font-size: 22px;
-    color: grey;
-    position: relative;
-    align-items: center;
-  }
-  
-  .dashboardEdit:first-child i {
-    top: 10px;
-    cursor: pointer;
-    height: 20px;
   }
   
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -294,12 +266,6 @@
   .left-content1 {
     width: 100% !important;
     padding-left: 0 !important;
-  }
-  
-  @media (max-width: 880px) {
-    .properties__card {
-      height: 770px !important;
-    }
   }
   
   .team-area {

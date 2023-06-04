@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from '../styles/Properties.module.css'
+import styles from '../styles/Internship.module.css'
 
 function Internship({
   internshipImage,
@@ -27,7 +27,7 @@ function Internship({
           <a href="#">
             <Image
               width={360}
-              height={219}
+              height={250}
               src={internshipImage}
               alt={internshipImageAlt}
             />

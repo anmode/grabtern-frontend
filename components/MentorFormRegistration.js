@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import taskStyles from '../styles/mentors.module.css'
+import styles from '../styles/Properties.module.css'
 
 import { useRouter } from "next/router";
 export default function MentorForm() {
@@ -206,7 +207,7 @@ export default function MentorForm() {
 
   return (
     <div className={taskStyles.mentorFormRegisration}>
-      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
+      <div className={styles.overlay} onClick={() => hideitems(".overlay")}></div>
       {modalPopup === true ? (
         <div className={taskStyles.modalPopup}>
           <div className={taskStyles.modalPopupAfterRegistrationDone}>

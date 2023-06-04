@@ -355,8 +355,8 @@ function Dashboard({ mentorDetail }) {
                               padding: "10px 20px",
                             }}
                           >
-                            <div className={`${taskStyles.bookSessionHeader} ${taskStyles.bookSessionColumn}`}>
-                              <div className={taskStyles.bookSessionHeaderIcons}>
+                            <div className={`${book.bookSessionHeader} ${book.bookSessionColumn}`}>
+                              <div className={book.bookSessionHeaderIcons}>
                                 <i
                                   class={
                                     session.sessionType === "video-meeting"
@@ -381,7 +381,7 @@ function Dashboard({ mentorDetail }) {
                               </div>
                             </div>
                             <div
-                              className={`${bookSessionIcons} ${bookSessionIconsEdit}`}
+                              className={`${book.bookSessionIcons} ${book.bookSessionIconsEdit}`}
                               style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -531,7 +531,7 @@ function Dashboard({ mentorDetail }) {
           </div>
         </div>
       ) : null}
-      <div className="dashboardEdit">
+      <div className={taskStyles.dashboardEdit}>
         <img src={mentorDetail.mentorImg} />
         <i class="fas fa-edit" onClick={() => setModalOpen(true)}></i>
       </div>
@@ -540,7 +540,7 @@ function Dashboard({ mentorDetail }) {
       <h2>Intern at: {mentorDetail.internAt}</h2>
       <h3>{mentorDetail.currentStatus}</h3>
       <ul
-        className="contactLinks"
+        className={taskStyles.contactLinks}
         style={{
           flexDirection: "column",
           alignItems: "flex-start",
@@ -591,7 +591,7 @@ function Dashboard({ mentorDetail }) {
       <p>{mentorDetail.description}</p>
       <br />
       <h2 style={{ fontSize: "24px" }}>Book Sessions</h2>
-      <ul className="bookSessions">
+      <ul className={book.bookSessions}>
         {mentorDetail.bookSession.length !== 0 ? (
           mentorDetail.bookSession.map((session) => (
             <li>

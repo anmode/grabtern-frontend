@@ -1,0 +1,14 @@
+.properties__card {
+    position: relative;
+    height: 500px !important;
+    position: relative;
+  }
+  
+  .properties__footer {
+    margin-bottom: 0 !important;
+  }
+  @media screen and (max-width: 880px) {
+    .properties__card {
+      height: 880px !important;
+    }
+  }

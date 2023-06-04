@@ -534,3 +534,24 @@
   .mentorForm a{
     color: #10285d;
   }
+
+  .dashboardEdit {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .dashboardEdit i {
+    font-size: 22px;
+    color: grey;
+    position: relative;
+    align-items: center;
+  }
+  
+  .dashboardEdit:first-child i {
+    top: 10px;
+    cursor: pointer;
+    height: 20px;
+  }
+  

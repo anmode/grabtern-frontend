@@ -10,7 +10,7 @@ import { useContext } from "react";
 import LogContext from "../context/LogContext";
 
 function UserAuthPage() {
-//   const [logpagestate, setLogPageState] = useState(true);
+  //   const [logpagestate, setLogPageState] = useState(true);
   const { logpagestate, setlogpagestate } = useContext(LogContext);
 
   const handleLogPageToggle = () => {

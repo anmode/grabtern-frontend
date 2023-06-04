@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useContext } from "react";
 import LogContext from "../context/LogContext";
 

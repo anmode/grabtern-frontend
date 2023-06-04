@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import jwt_decode from "jwt-decode";
-import Register from "./register.page";
+import Register from "../components/UserRegister";
 import { useContext } from "react";
 import LogContext from "../context/LogContext";
 
@@ -12,7 +12,7 @@ function Login() {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const router = useRouter();
-  const {logpagestate , setlogpagestate} = useContext(LogContext);
+  const { logpagestate, setlogpagestate } = useContext(LogContext);
 
   useEffect(() => {
     if (
@@ -85,79 +85,120 @@ function Login() {
     }
   };
 
-  const handlelog = () =>{
-    if (logpagestate)
-    {
-      setlogpagestate(false)
+  const handlelog = () => {
+    if (logpagestate) {
+      setlogpagestate(false);
+    } else {
+      setlogpagestate(true);
     }
-    else{
-      setlogpagestate(true)
-    }
-  }
+  };
 
   return (
     <>
       <Header navbarBackground={true} />
       <main className="login-body d-flex flex-row justify-content-between">
-      {logpagestate ? (<form
-          className="form-default mx-5"
-          action="login-bg.mp4"
-          onSubmit={handleSubmit}
-          style={{marginTop:"120px"}}
-        >
-          <div className=" d-flex flex-column justify-content-start tw-py-[50px] tw-px-[70px] tw-shadow-2xl" >
-            <div style={{marginBottom:"20px"}}>
-            <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold" >Login Here</h2>
-            <p className=" tw-text-gray-500 tw-mb-5">Enter your credentials to acess your account</p>
-            </div>
-            <div id="signInDiv" style={{alignSelf:"center"}} className="tw-mb-5"></div>
-            <h3 style={{color:"black",alignSelf:"center",margin:"20px"}}>Or</h3>
-            <div className=" tw-flex tw-flex-col  tw-mb-10">
-              <label for="name" className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10">Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChange}
-                value={data.email}
-                className=" tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
-              />
-            </div>
-            <div className="tw-flex tw-flex-col  tw-mb-10">
-              <label for="name" className="tw-text-3xl tw-font-medium ">Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={handleChange}
-                value={data.password}
-                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
-              />
-            </div>
-            <div >
-              <input type="submit" name="submit" value="Login" style={{
-                background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )"
-                  }} className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"/>
-            </div>
-            {error && <div style={{ color: "red" }}>{error}</div>}
-            {localStorage.getItem("new_user") && (
-              <div style={{ color: "green" }}>Please register first.</div>
-            )}
-              <Link href="/forgotpass" className="tw-font-medium tw-mt-8 tw-text-right hover:tw-text-gray-400 tw-text-blue-700">
+        {logpagestate ? (
+          <form
+            className="form-default mx-5"
+            action="login-bg.mp4"
+            onSubmit={handleSubmit}
+            style={{ marginTop: "120px" }}
+          >
+            <div className=" d-flex flex-column justify-content-start tw-py-[50px] tw-px-[70px] tw-shadow-2xl">
+              <div style={{ marginBottom: "20px" }}>
+                <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">
+                  Login Here
+                </h2>
+                <p className=" tw-text-gray-500 tw-mb-5">
+                  Enter your credentials to acess your account
+                </p>
+              </div>
+              <div
+                id="signInDiv"
+                style={{ alignSelf: "center" }}
+                className="tw-mb-5"
+              ></div>
+              <h3
+                style={{ color: "black", alignSelf: "center", margin: "20px" }}
+              >
+                Or
+              </h3>
+              <div className=" tw-flex tw-flex-col  tw-mb-10">
+                <label
+                  for="name"
+                  className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  value={data.email}
+                  className=" tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+                />
+              </div>
+              <div className="tw-flex tw-flex-col  tw-mb-10">
+                <label for="name" className="tw-text-3xl tw-font-medium ">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={handleChange}
+                  value={data.password}
+                  className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+                />
+              </div>
+              <div>
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Login"
+                  style={{
+                    background:
+                      "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
+                  }}
+                  className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
+                />
+              </div>
+              {error && <div style={{ color: "red" }}>{error}</div>}
+              {localStorage.getItem("new_user") && (
+                <div style={{ color: "green" }}>Please register first.</div>
+              )}
+              <Link
+                href="/forgotpass"
+                className="tw-font-medium tw-mt-8 tw-text-right hover:tw-text-gray-400 tw-text-blue-700"
+              >
                 Forget Password?
               </Link>
-            <div className="link-div tw-font-medium tw-mt-10">
-              Don't have an account? 
-              <button  className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700" style={{textDecoration:"none" }} onClick={()=>handlelog()}>
-                 Register here
-              </button>
+              <div className="link-div tw-font-medium tw-mt-10">
+                Don't have an account?
+                <button
+                  className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700"
+                  style={{ textDecoration: "none" }}
+                  onClick={() => handlelog()}
+                >
+                  Register here
+                </button>
+              </div>
             </div>
-          </div>
-        </form>):(<Register/>)}
-        <div className="hidden md:tw-flex">    
-        <img src="assets/img/gallery/20944201.jpg
+          </form>
+        ) : (
+          <Register />
+        )}
+        <div className="hidden md:tw-flex">
+          <img
+            src="assets/img/gallery/20944201.jpg
         
-        " alt="" height="800px" width="800px" /></div>   
+        "
+            alt=""
+            height="800px"
+            width="800px"
+          />
+        </div>
       </main>
     </>
   );

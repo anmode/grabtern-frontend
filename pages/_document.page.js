@@ -48,7 +48,7 @@ export default function Document() {
         ></script>
       </Head>
       <body>
-        <LogState/>
+        <LogState />
         <Main />
         <NextScript />
       </body>

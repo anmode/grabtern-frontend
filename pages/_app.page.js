@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+// import style from "../styles/contact.css";
 import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
 import $ from "jquery";
@@ -117,7 +118,7 @@ function MyApp({ Component, pageProps }) {
       </div>
       <BreakpointProvider>
         <LogState>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
         </LogState>
       </BreakpointProvider>
     </>

@@ -17,15 +17,36 @@ function UserAuthPage() {
     setlogpagestate(!logpagestate);
   };
 
+  const router = useRouter();
+
+  useEffect(()=>{
+    handleHashChange();
+  },[logpagestate])
+
+  const  handleHashChange = () => {
+      const currentHash = router.asPath.split('#')[1];
+  
+      if (currentHash === 'login') {
+        setlogpagestate(true)
+        return (<Login></Login>)
+        // Add your logic here
+      } else if (currentHash === 'register') {
+        setlogpagestate(false)
+        // Add your logic here
+        return (<Register></Register>)
+      } else {
+        // Invalid hash, handle accordingly (e.g., show an error message)
+        // Add your logic here
+      }
+    };
+
+  
+
   return (
     <>
       <Header navbarBackground={true} />
       <main className="login-body d-flex flex-row justify-content-between">
-        {logpagestate ? (
-          <Login handleLogPageToggle={handleLogPageToggle} />
-        ) : (
-          <Register handleLogPageToggle={handleLogPageToggle} />
-        )}
+        {logpagestate ? (<Login handleLogPageToggle = {handleLogPageToggle}/>):(<Register handleLogPageToggle = {handleLogPageToggle}></Register>)}
         <div className="tw-hidden md:tw-flex tw-h-[100vh]">
           <img
             src="assets/img/gallery/20944201.jpg"

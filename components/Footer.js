@@ -1,11 +1,16 @@
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/LoginDropdown.module.css";
+
+import style from "../styles/footer.module.css";
+{/* <link rel="stylesheet" href="../styles/foo.module.css" /> */}
+
 function Footer() {
   return (
     <footer>
-      <div className="footer-wrappper footer-bg">
-        <div className="footer-area footer-padding">
+      {/* <div className="footer-wrappper footer_bg"> */}
+      <div className={`${style.footer_bg} footer-wrappper`}>
+        <div className={`${style.footer_area} ${style.footer_padding}`}>
           <div className="container">
             <div className="row justify-content-between">
               <div className="col-xl-4 col-lg-5 col-md-4 col-sm-6">
@@ -21,15 +26,15 @@ function Footer() {
                         />
                       </a>
                     </div>
-                    <div className="footer-tittle">
-                      <div className="footer-pera">
+                    <div className={style.footer_tittle}>
+                      <div className={style.footer_pera}>
                         <p>
                           The Internship Journey started as soon as you enroll
                           in any internship course
                         </p>
                       </div>
                     </div>
-                    <div className="footer-social">
+                    <div className={style.social}>
                       
                       <ul>
                         <li>
@@ -41,43 +46,52 @@ function Footer() {
                           >
                             <i className="fab fa-twitter"></i>
                           </a>
-                      </li>
-                      <li>
-                      <a
-                        href="https://bit.ly/sai4ull"
-                        aria-label="Visit us on Facebook"
-                        title="Facebook (External link)"
-                      >
-                        <i className="fab fa-facebook-f"></i>
-                      </a></li><li>
-                      <a
-                        href="#"
-                        aria-label="Visit us on Pinterest"
-                        title="Pinterest (External link)"
-                      >
-                        <i className="fab fa-pinterest-p"></i>
-                      </a></li><li>
-                      <a
-                        href="https://www.instagram.com/grabtern.guide/"
-                        aria-label="Visit us on Instagram"
-                        title="Instagram (External link)"
-                      >
-                        <i className="fab fa-instagram"></i>
-                      </a></li><li>
-                      <a
-                        href="https://www.linkedin.com/company/grabtern/"
-                        aria-label="Visit us on Linkedin"
-                        title="Linkedin (External link)"
-                      >
-                        <i className="fab fa-linkedin"></i>
-                      </a></li><li>
-                      <a
-                        href=""
-                        aria-label="Visit us on Discord"
-                        title="Discord (External link)"
-                      >
-                        <i className="fab fa-discord"></i>
-                      </a></li>
+                        </li>
+                        <li>
+                          <a
+                            href="https://bit.ly/sai4ull"
+                            aria-label="Visit us on Facebook"
+                            title="Facebook (External link)"
+                          >
+                          <i className="fab fa-facebook-f"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="#"
+                            aria-label="Visit us on Pinterest"
+                            title="Pinterest (External link)"
+                          >
+                            <i className="fab fa-pinterest-p"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.instagram.com/grabtern.guide/"
+                            aria-label="Visit us on Instagram"
+                            title="Instagram (External link)"
+                          >
+                            <i className="fab fa-instagram"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.linkedin.com/company/grabtern/"
+                            aria-label="Visit us on Linkedin"
+                            title="Linkedin (External link)"
+                          >
+                            <i className="fab fa-linkedin"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href=""
+                            aria-label="Visit us on Discord"
+                            title="Discord (External link)"
+                          >
+                            <i className="fab fa-discord"></i>
+                          </a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -85,7 +99,7 @@ function Footer() {
               </div>
               <div className="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                 <div className="single-footer-caption mb-50">
-                  <div className="footer-tittle">
+                  <div className={style.footer_tittle}>
                     <h4>Services to Student</h4>
                     <ul>
                       <li>
@@ -114,7 +128,7 @@ function Footer() {
               </div>
               <div className="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                 <div className="single-footer-caption mb-50">
-                  <div className="footer-tittle">
+                  <div className={style.footer_tittle}>
                     <h4>Services to Mentors</h4>
                     <ul>
                       <li>
@@ -143,7 +157,7 @@ function Footer() {
               </div>
               <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                 <div className="single-footer-caption mb-50">
-                  <div className="footer-tittle">
+                  <div className={style.footer_tittle}>
                     <h4>Grabtern</h4>
                     <ul>
                       <li>
@@ -179,12 +193,12 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer-bottom-area">
+        <div className={style.footer_bottom_area }>
           <div className="container">
-            <div className="footer-border">
+            <div className={style.footer_border}>
               <div className="row d-flex align-items-center">
                 <div className="col-xl-12 ">
-                  <div className="footer-copy-right text-center">
+                  <div className={`${style.footer_copy_right} text-center`}>
                     <p>
                       Copyright &copy;
                       <script>

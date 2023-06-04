@@ -117,25 +117,41 @@ function Login() {
               />
             </div>
             <div className="form-input">
-              <input type="submit" name="submit" value="login" style={{
-                background: "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )"
-                  }}/>
+              <input
+                type="submit"
+                name="submit"
+                value="login"
+                style={{
+                  background:
+                    "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
+                }}
+              />
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
             {localStorage.getItem("new_user") && (
               <div style={{ color: "green" }}>Please register first.</div>
             )}
-              <Link href="/forgotpass" className="forget align-self-end" style={{margin:0}} >
-                Forget Password?
-              </Link>
+            <Link
+              href="/forgotpass"
+              className="forget align-self-end"
+              style={{ margin: 0 }}
+            >
+              Forget Password?
+            </Link>
             <div className="link-div m-3">
-              Don't have an account? 
-              <Link href="/register" className="registration d-inline m-2" style={{textDecoration:"none"}}>
-                 Register here
+              Don't have an account?
+              <Link
+                href="/register"
+                className="registration d-inline m-2"
+                style={{ textDecoration: "none" }}
+              >
+                Register here
               </Link>
             </div>
-            <h3 style={{color:"black",alignSelf:"center",margin:"5px"}}>Or</h3>
-            <div id="signInDiv" style={{alignSelf:"center"}}></div>
+            <h3 style={{ color: "black", alignSelf: "center", margin: "5px" }}>
+              Or
+            </h3>
+            <div id="signInDiv" style={{ alignSelf: "center" }}></div>
           </div>
         </form>
       </main>

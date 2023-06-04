@@ -11,7 +11,6 @@ import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
-import Testimonial from "../components/Testimonial";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -22,8 +21,8 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
-import testiomialsData from "./data/testiomialsData";
 
 const internshipsOptions = {
   items: 3,
@@ -59,20 +58,6 @@ const teamsOptions = {
     },
     1170: {
       items: 4,
-    },
-  },
-};
-
-const testimonialOptions = {
-  responsive: {
-    0: {
-      items: 1,
-    },
-    880: {
-      items: 2,
-    },
-    1170: {
-      items: 3,
     },
   },
 };
@@ -174,7 +159,7 @@ export default function Home() {
           </div>
         </div>
         <About />
-        <div className="topic-area section-padding40">
+        <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">

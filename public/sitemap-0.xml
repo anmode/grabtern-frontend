@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://grabtern.com</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/about</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/contact</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/dashboard</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/forgotpass</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/login</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/mentorLogin</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/mentorRegister</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/mentorRegisterSendCV</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/mentors</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/privacy</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/refundandcancellation</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/register</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://grabtern.com/termsandcondition</loc><lastmod>2023-05-30T04:46:58.661Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/contact</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/dashboard</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/forgotpass</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/login</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/mentorLogin</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/mentorRegister</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/mentorRegisterSendCV</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/mentors</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/privacy</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/refundandcancellation</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/register</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://grabtern.com/termsandcondition</loc><lastmod>2023-06-03T04:58:59.605Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

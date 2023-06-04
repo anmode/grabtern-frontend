@@ -26,7 +26,7 @@ function UserAuthPage() {
         ) : (
           <Register handleLogPageToggle={handleLogPageToggle} />
         )}
-        <div className="tw-hidden md:tw-flex tw-h-[700px]">
+        <div className="tw-hidden md:tw-flex tw-h-[100vh]">
           <img
             src="assets/img/gallery/20944201.jpg"
             alt=""

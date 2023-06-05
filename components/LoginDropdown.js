@@ -60,7 +60,6 @@ const DropdownCard = ({ isUserLoggedIn }) => {
               <>
                 <button
                   className="login-buttons"
-                  // style={{ marginTop: "20px" }}
                   onClick={() => {
                     if (isMentorLoggedIn) {
                       window.location.href = `/dashboard`;

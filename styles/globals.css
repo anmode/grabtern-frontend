@@ -244,7 +244,7 @@ a {
     /* padding: 0; */
     position: absolute;
     top: 90px;
-    width: 100% !important;
+    /* width: 100% !important; */
     max-width: 100% !important;
     left: 0;
   }
@@ -1057,6 +1057,7 @@ textarea {
   gap: 10px;
   background-color: white;
   padding: 10px;
+  margin: 5px;
   border-radius: 10px;
 }
 
@@ -1172,7 +1173,7 @@ textarea {
     flex-direction: column !important;
     gap: 5px;
     background-color: white;
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
     border-radius: 10px;
   }

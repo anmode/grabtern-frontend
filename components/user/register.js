@@ -53,7 +53,7 @@ function Register({ handleLogPageToggle }) {
         className="form-default mx-5"
         action="login-bg.mp4"
         onSubmit={handleSubmit}
-        style={{ marginTop: "10vh"}}
+        style={{ marginTop: "10vh" }}
       >
         <div className="d-flex flex-column justify-content-start tw-w-full  md:tw-py-[5vh] md:tw-px-[3vw]  tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
           <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">

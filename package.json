@@ -20,6 +20,7 @@
     "owl.carousel": "^2.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
     "react-owl-carousel": "^2.3.3",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.8.1",
@@ -30,10 +31,13 @@
     "swr": "^2.1.5"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
     "eslint": "7.32.0",
     "eslint-config-next": "13.1.1",
     "eslint-config-prettier": "^8.8.0",
     "next-sitemap": "^3.1.47",
-    "prettier": "^2.8.7"
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.7",
+    "tailwindcss": "^3.3.2"
   }
 }

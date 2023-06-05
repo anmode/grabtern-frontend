@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import LogState from "../context/LogState";
 
 export default function Document() {
   return (
@@ -47,6 +48,7 @@ export default function Document() {
         ></script>
       </Head>
       <body>
+        <LogState />
         <Main />
         <NextScript />
       </body>

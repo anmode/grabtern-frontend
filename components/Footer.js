@@ -4,7 +4,6 @@ import styles from "../styles/LoginDropdown.module.css";
 
 import style from "../styles/footer.module.css";
 
-
 function Footer() {
   return (
     <footer>

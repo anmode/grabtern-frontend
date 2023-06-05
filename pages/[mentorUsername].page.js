@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { DatePicker } from "antd";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
@@ -248,36 +249,40 @@ function Index({ mentorDetail }) {
                               ? "fas fa-phone"
                               : ""
                           }
-                          style={{ fontSize: "25px" }}
+                          style={{ fontSize: "20px", color: "#303030" }}
                         ></i>
                         <div>
                           <h2>{session.sessionName}</h2>
                           <p>{session.sessionDescription}</p>
                         </div>
                       </div>
-                      <div
-                        className="bookSessionIcons"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: "20px",
-                        }}
-                      >
-                        <div>
-                          <i className="far fa-clock"></i>
-                          {session.sessionMeetingDuration} min
+                      <div className="bookSessionFooter">
+                        {" "}
+                        <div
+                          className="bookSessionIcons"
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            gap: "20px",
+                          }}
+                        >
+                          <div>
+                            <i className="far fa-clock"></i>
+                            {session.sessionMeetingDuration} min
+                          </div>
+                          <div>
+                            <i className="fas fa-rupee-sign"></i>
+                            {session.priceSession}
+                          </div>
                         </div>
-                        <div>
-                          <i className="fas fa-rupee-sign"></i>
-                          {session.priceSession}
-                        </div>
+                        <DatePicker />
+                        <button
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setModalPopup(true)}
+                        >
+                          <span>Book Session</span>
+                        </button>
                       </div>
-                      <button
-                        style={{ cursor: "pointer" }}
-                        onClick={() => setModalPopup(true)}
-                      >
-                        <span>Book Session</span>
-                      </button>
                       {error && <div style={{ color: "red" }}>{error}</div>}
                       {error == "" && modalPopup === true ? (
                         <div className="modalPopup">

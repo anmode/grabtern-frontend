@@ -629,24 +629,24 @@ textarea {
 
 .bookSessionHeader {
   display: flex;
-  flex-direction: row !important;
-  /* justify-content: space-between; */
-  border-bottom: 1px solid grey;
-  padding-bottom: 20px;
-  gap: 20px;
-  margin: 10px 0 20px 0;
+  flex-direction: row;
+  align-items: flex-start !important;
+  border-bottom: 1px solid #d3d3d3;
+  margin-bottom: 20px;
+  gap: 15px;
   width: 100%;
 }
 
 .bookSessionHeader div h2 {
-  font-size: 22px;
-  margin-bottom: 0;
+  font-size: 18px;
 }
 
 .bookSessionHeader div p {
-  font-size: 8px;
-  font-weight: 900;
-  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 200px;
+  line-height: 22px;
+  color: #303030;
 }
 
 .mentorForm .mentorFormButotn {
@@ -939,25 +939,22 @@ textarea {
 
 .bookSessions li {
   background-color: white;
-  border: 2px solid gray;
-  padding: 25px 25px;
+  border: 1px solid #d3d3d3;
+  padding: 20px;
   border-radius: 10px;
-  height: 270px;
-  width: 400px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 8px rgba(205, 205, 205, 0.8), 0 0 15px rgb(213, 211, 211);
   transform: all;
   transition-duration: 0.2s;
 }
-.bookSessions li:hover {
-  width: 402px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 15px rgba(185, 185, 185, 0.8), 0 0 18px rgb(199, 195, 195);
+
+.bookSessionFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .bookSessionIcons {
   display: flex;
-  gap: 20px;
+  gap: 5px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -965,24 +962,23 @@ textarea {
 .bookSessionIcons div {
   display: flex;
   gap: 5px;
-  font-size: 19px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  padding: 0 10px;
 }
 
-.bookSessions > li > button {
+.bookSessions > li button {
   background: linear-gradient(#c054ff, #5274ff);
   padding: 8px 15px;
-  font-size: 19px;
+  font-size: 16px;
   color: white;
+  width: fit-content;
   border: none;
-  margin-top: 35px;
   border-radius: 5px;
   transition: transform 0.2s ease;
 }
-.bookSessions > li > button:hover {
+.bookSessions > li button:hover {
   transform: scale(1.05);
   background: linear-gradient(#b12cfe, #305aff);
 }

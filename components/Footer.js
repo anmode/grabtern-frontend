@@ -5,6 +5,7 @@ import styles from "../styles/LoginDropdown.module.css";
 import style from "../styles/footer.module.css";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer>
       {/* <div className="footer-wrappper footer_bg"> */}
@@ -189,11 +190,8 @@ function Footer() {
                 <div className="col-xl-12 ">
                   <div className={`${style.footer_copy_right} text-center`}>
                     <p>
-                      Copyright &copy;
-                      <script>
-                        document.write(new Date().getFullYear());
-                      </script>{" "}
-                      All rights reserved | Grabtern.com
+                      Copyright &copy; {currentYear} All rights reserved |
+                      Grabtern.com
                     </p>
                   </div>
                 </div>

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Header from "../Header";
 import jwt_decode from "jwt-decode";
 import { useContext } from "react";
 import LogContext from "../../context/LogContext";

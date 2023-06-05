@@ -37,7 +37,7 @@ package-lock.json
 yarn.lock
 
 # Public folder
-/public/sitemap-0.xml
+/public/sitemap-O.xml
 /public/sitemap.xml
 /public/robots.txt
 /public/fonts/

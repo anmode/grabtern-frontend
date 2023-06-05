@@ -32,7 +32,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     };
   }, []);
 
-  
   const menuToggle = () => {
     if (navbarAppear === true) {
       setNavbarAppear(false);
@@ -40,7 +39,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
       setNavbarAppear(true);
     }
   };
-
 
   return (
     <div className="header-area header-transparent">
@@ -74,7 +72,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                 <div className="menu-wrapper d-flex align-items-center justify-content-end">
                   <div
                     className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : "" 
+                      navbarAppear === true ? "active" : ""
                     }`}
                   >
                     <nav>
@@ -99,7 +97,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                           isUserLoggedIn={isUserLoggedIn}
                           isMentorLoggedIn={isMentorLoggedIn}
                         />
-
                       </ul>
                     </nav>
                   </div>

@@ -46,10 +46,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
             />
           </button>
         ) : (
-          <button
-            className={styles.loginbutton}
-            onClick={handleLoginClick}
-          >
+          <button className={styles.loginbutton} onClick={handleLoginClick}>
             Login
           </button>
         )}
@@ -85,15 +82,20 @@ const DropdownCard = ({ isUserLoggedIn }) => {
               </>
             ) : (
               <>
-                <button className="login-buttons" onClick={() => {
-                      window.location.href = `/login`;
+                <button
+                  className="login-buttons"
+                  onClick={() => {
+                    window.location.href = `/login`;
                   }}
-                  >
+                >
                   User
                 </button>
-                <button className="login-buttons" onClick={() => {
-                      window.location.href = `/mentorLogin`;
-                  }}>
+                <button
+                  className="login-buttons"
+                  onClick={() => {
+                    window.location.href = `/mentorLogin`;
+                  }}
+                >
                   Mentor
                 </button>
               </>

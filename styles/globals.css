@@ -189,7 +189,6 @@ a {
   flex-direction: column;
   gap: 7px;
 
-
   right: 50px;
 
   cursor: pointer;
@@ -1177,7 +1176,7 @@ textarea {
     margin: 5px;
     border-radius: 10px;
   }
-  
+
   .mentor-card {
     flex-direction: column;
     width: 100%;
@@ -1266,8 +1265,6 @@ textarea {
   display: block;
   margin-bottom: 10px;
 }
-
-
 
 /* error message */
 .forgot-password-form div[style="color:red"] {

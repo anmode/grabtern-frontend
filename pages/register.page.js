@@ -61,7 +61,6 @@ function Register() {
               </a>
             </div>
             <h2>Registration Here</h2>
-
             <div className="form-input">
               <label for="name">Full name</label>
               <input
@@ -107,7 +106,11 @@ function Register() {
               <input type="submit" name="submit" value="Registration" />
             </div>
             Already have a account?
-            <Link href="/login" className="registration m-1 d-inline" style={{ textDecoration: "none" }}>
+            <Link
+              href="/login"
+              className="registration m-1 d-inline"
+              style={{ textDecoration: "none" }}
+            >
               login
             </Link>
           </div>

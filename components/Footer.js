@@ -3,7 +3,9 @@ import React from "react";
 import styles from "../styles/LoginDropdown.module.css";
 
 import style from "../styles/footer.module.css";
-{/* <link rel="stylesheet" href="../styles/foo.module.css" /> */}
+{
+  /* <link rel="stylesheet" href="../styles/foo.module.css" /> */
+}
 
 function Footer() {
   return (
@@ -35,12 +37,11 @@ function Footer() {
                       </div>
                     </div>
                     <div className={style.social}>
-                      
                       <ul>
                         <li>
-
-                          <a className="twitter"
-                            href="#" 
+                          <a
+                            className="twitter"
+                            href="#"
                             aria-label="Visit us on Twitter"
                             title="Twitter (External link)"
                           >
@@ -53,7 +54,7 @@ function Footer() {
                             aria-label="Visit us on Facebook"
                             title="Facebook (External link)"
                           >
-                          <i className="fab fa-facebook-f"></i>
+                            <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
@@ -184,7 +185,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className={style.footer_bottom_area }>
+        <div className={style.footer_bottom_area}>
           <div className="container">
             <div className={style.footer_border}>
               <div className="row d-flex align-items-center">

@@ -7,8 +7,7 @@
     0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.7),
     0 0 40px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.5),
     0 0 60px rgba(255, 255, 255, 0.4), 0 0 70px rgba(255, 255, 255, 0.3);
-    
-  }
+}
 
 @media (max-width: 768px) {
   .navLink {
@@ -24,7 +23,6 @@
   /* 4664dd */
   transform: scale(1.05);
   /* text-shadow: 0 0 10px rgb(153, 138, 176); */
-  
 }
 
 .loginOption {
@@ -80,5 +78,3 @@
 .loginOption .userPicture:hover {
   background-color: transparent;
 }
-
-

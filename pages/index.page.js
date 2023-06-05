@@ -14,7 +14,6 @@ import dynamic from "next/dynamic";
 
 import ScrollToTop from "../components/scrolltotop";
 
-import Testimonial from "../components/Testimonial";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");

@@ -89,9 +89,9 @@ function Login({ handleLogPageToggle }) {
         className="form-default mx-5"
         action="login-bg.mp4"
         onSubmit={handleSubmit}
-        style={{ marginTop: "90px" }}
+        style={{ marginTop: "10vh" }}
       >
-        <div className=" d-flex flex-column justify-content-start md:tw-py-[50px] tw-py-[25px] tw-px-[70px] tw-shadow-2xl">
+        <div className="d-flex flex-column justify-content-start tw-w-full  md:tw-py-[5vh] md:tw-px-[3vw]  tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
           <div style={{ marginBottom: "20px" }}>
             <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">
               Login Here

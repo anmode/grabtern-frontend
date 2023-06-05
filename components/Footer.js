@@ -58,15 +58,6 @@ function Footer() {
                         </li>
                         <li>
                           <a
-                            href="#"
-                            aria-label="Visit us on Pinterest"
-                            title="Pinterest (External link)"
-                          >
-                            <i className="fab fa-pinterest-p"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a
                             href="https://www.instagram.com/grabtern.guide/"
                             aria-label="Visit us on Instagram"
                             title="Instagram (External link)"

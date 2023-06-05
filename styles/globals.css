@@ -125,9 +125,9 @@ a {
   position: relative;
 }
 
-.properties__footer {
+/* .properties__footer {
   margin-bottom: 0 !important;
-}
+} */
 
 .courseFooter {
   position: absolute;
@@ -420,15 +420,15 @@ a {
   .mentorFormRegisration > .container {
     padding-top: 0 !important;
   }
-  .properties__footer .restaurant-name {
+  /* .properties__footer .restaurant-name {
     font-size: 14px !important;
-  }
-  .properties__footer .price span {
+  } */
+  /* .properties__footer .price span {
     font-size: 18px !important;
     position: relative;
     top: -36px;
     margin-left: 20px;
-  }
+  } */
   .courseFooter a {
     padding: 10px;
   }

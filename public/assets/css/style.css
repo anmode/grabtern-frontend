@@ -3396,7 +3396,9 @@ hr {
     font-size: 12px;
   }
 }
-.courses-area .properties__footer {
+ .courses-area 
+ /* .properties__footer  */
+ {
   margin-bottom: 22px;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -3408,20 +3410,26 @@ hr {
     padding: 19px 10px 20px 12px;
   }
 }
-.courses-area .properties__footer .restaurant-name p {
+.courses-area 
+/* .properties__footer .restaurant-name  */
+p {
   display: inline-block;
   color: #6e7697;
 }
-.courses-area .properties__footer .restaurant-name p span {
+.courses-area 
+/* .properties__footer .restaurant-name */
+ p span {
   color: #ff7b2e;
   font-size: 12px;
 }
-.courses-area .properties__footer .price span {
+.courses-area 
+/* .properties__footer  */
+.price span {
   cursor: pointer;
   font-weight: 700;
   color: #4255a4;
   font-size: 23px;
-}
+} 
 .courses-area .properties:hover .border-btn2 {
   color: #fff;
   background: #ff9f67;

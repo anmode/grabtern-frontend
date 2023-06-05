@@ -65,8 +65,6 @@ a {
   }
   100% {
     opacity: 0;
-    /* display: none !important;
-    visibility: hidden !important; */
   }
 }
 .owl-nav button:first-child {

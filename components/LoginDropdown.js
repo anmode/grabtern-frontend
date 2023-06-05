@@ -85,7 +85,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                 <button
                   className="login-buttons"
                   onClick={() => {
-                    window.location.href = `/login`;
+                    window.location.href = `/userAuth/`;
                   }}
                 >
                   User

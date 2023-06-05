@@ -5,6 +5,7 @@ const Footer = dynamic(() => import("../components/Footer"));
 import { useRouter } from "next/router";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import styles from "../styles/MentorLogin.module.css";
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -85,7 +86,7 @@ function mentorLogin() {
         <div className="mentorFormRegisration">
           <div className="container">
             <form className="mentorForm" onSubmit={handleSubmit}>
-              <h2 style={{ gridColumn: "1/3" }}>Mentor Login</h2>
+              <h2 className={styles.mentorLoginHeading}>Mentor Login</h2>
               <div>
                 <label for="email">EMAIL</label>
 
@@ -111,7 +112,7 @@ function mentorLogin() {
                   placeholder="e.g. 12!HelloWorld"
                 />
               </div>
-              <div style={{ gridColumn: "1/3" }}>
+              <div className={styles.mentorLoginHeading}>
                 <label for="confirmPassword">Confirm Password</label>
 
                 <input
@@ -124,20 +125,16 @@ function mentorLogin() {
                 />
               </div>
               {error && (
-                <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+                <div className={styles.mentorLoginErrorMessage}>{error}</div>
               )}
-              <button
-                type="submit"
-                className="mentorFormButotn"
-                style={{ width: "fit-content", padding: "15px 25px" }}
-              >
+              <button type="submit" className={styles.mentorLoginButton}>
                 Login
               </button>
-              <div style={{ gridColumn: "1/3" }}>
+              <div className={styles.mentorLoginHeading}>
                 <div id="googleSignInButton"></div>
               </div>
               <p>
-                Do not have mentor account?{" "}
+                Do not have a mentor account?{" "}
                 <a href="/mentorRegister">Sign Up</a>
               </p>
               <p>

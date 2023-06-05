@@ -103,17 +103,16 @@ function Register() {
             <div className={`${style.forminput} pt-30`}>
               <input type="submit" name="submit" value="Registration" />
             </div>
-            <p>Already have a account?
-            <Link
-              href="/login"
-              className="registration m-1 d-inline"
-              style={{ textDecoration: "none", color: "blue" }}
-            >
-              login
-            </Link>
+            <p>
+              Already have a account?
+              <Link
+                href="/login"
+                className="registration m-1 d-inline"
+                style={{ textDecoration: "none", color: "blue" }}
+              >
+                login
+              </Link>
             </p>
-            
-           
           </div>
         </form>
       </main>

@@ -5,6 +5,7 @@ import { BreakpointProvider } from "react-socks";
 import $ from "jquery";
 import Head from "next/head";
 import Script from "next/script";
+import LogState from "../context/LogState";
 function addProductJsonLd() {
   return {
     __html: `{
@@ -107,7 +108,7 @@ function MyApp({ Component, pageProps }) {
       <div className="loaderBackground"></div>
       <div id="preloader-active" style={{ transition: "all 0.5s" }}>
         <div className="preloader d-flex align-items-center justify-content-center">
-          <div className="preloader-inner position-relative">
+          <div className="tw-flex tw-items-center tw-justify-center position-relative">
             <div className="preloader-circle"></div>
             <div className="preloader-img pere-text">
               <img src="/assets/img/logo/loder.png" alt="" />
@@ -116,7 +117,9 @@ function MyApp({ Component, pageProps }) {
         </div>
       </div>
       <BreakpointProvider>
-        <Component {...pageProps} />
+        <LogState>
+          <Component {...pageProps} />
+        </LogState>
       </BreakpointProvider>
     </>
   );

@@ -1048,7 +1048,7 @@ textarea {
   display: flex;
   flex-direction: column !important;
   gap: 10px;
-  background-color:white;
+  background-color: white;
   border: 2px solid rgb(134, 134, 230);
   padding: 10px;
   margin: 5px;

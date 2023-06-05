@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Header from "../components/Header";
-
+import style from "../styles/registration.module.css";
 function Register() {
   const router = useRouter();
   if (
@@ -48,22 +48,22 @@ function Register() {
   return (
     <>
       <Header navbarBackground={true} />
-      <main className="login-body">
+      <main className={style.loginbody}>
         <form
           className="form-default"
           action="login-bg.mp4"
           onSubmit={handleSubmit}
         >
-          <div className="login-form">
-            <div className="logout-login">
-              <a href="index.html">
-                <img src="assets/img/logo/loder.png" alt="" />
-              </a>
+          <div className={style.loginform}>
+            <div className={style.logoutlogin}>
+              <div class={style.image}>
+                <a href="index.html">
+                  <img src="assets/img/logo/loder.png" alt="" />
+                </a>
+              </div>
             </div>
             <h2>Registration Here</h2>
-
-            <div className="form-input">
-              <label for="name">Full name</label>
+            <div className={style.forminput}>
               <input
                 type="text"
                 placeholder="Full name"
@@ -72,8 +72,7 @@ function Register() {
                 value={data.fullName}
               />
             </div>
-            <div className="form-input">
-              <label for="name">Email Address</label>
+            <div className={style.forminput}>
               <input
                 type="email"
                 name="email"
@@ -82,8 +81,7 @@ function Register() {
                 value={data.email}
               />
             </div>
-            <div className="form-input">
-              <label for="name">Password</label>
+            <div className={style.forminput}>
               <input
                 type="password"
                 name="password"
@@ -92,8 +90,7 @@ function Register() {
                 value={data.password}
               />
             </div>
-            <div className="form-input">
-              <label for="name">Confirm Password</label>
+            <div className={style.forminput}>
               <input
                 type="password"
                 name="confirmPassword"
@@ -103,13 +100,20 @@ function Register() {
               />
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
-            <div className="form-input pt-30">
+            <div className={`${style.forminput} pt-30`}>
               <input type="submit" name="submit" value="Registration" />
             </div>
-            Already have a account?
-            <Link href="/login" className="registration m-1 d-inline" style={{ textDecoration: "none" }}>
+            <p>Already have a account?
+            <Link
+              href="/login"
+              className="registration m-1 d-inline"
+              style={{ textDecoration: "none", color: "blue" }}
+            >
               login
             </Link>
+            </p>
+            
+           
           </div>
         </form>
       </main>

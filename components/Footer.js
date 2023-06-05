@@ -3,9 +3,7 @@ import React from "react";
 import styles from "../styles/LoginDropdown.module.css";
 
 import style from "../styles/footer.module.css";
-{
-  /* <link rel="stylesheet" href="../styles/foo.module.css" /> */
-}
+
 
 function Footer() {
   return (

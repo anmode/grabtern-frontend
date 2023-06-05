@@ -116,7 +116,7 @@ If you'd like to contribute to Grabtern Frontend:-
 2. Create your Feature Branch (`git checkout -b <new_branch_name>`)
 3. Add your Changes (`git add .`) 
 4. Commit your Changes (`git commit -m 'Added some AmazingFeature'`)
-5. Push your branch to the remote repository (`git push origin <new_branch_name>`)
+5. Push your branch to the remote repository (`git push`). It will give you the command to set the upstream branch for your local branch. Use that command. 
 6. Pull Request using GitHub CLI (`gh pr create --base <base_branch> --head <new_branch_name> --title "Pull Request Title" --body "Pull Request Description"
 `) or you can open a pull request using the interface of version control system.
 

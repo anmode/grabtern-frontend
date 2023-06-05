@@ -25,7 +25,6 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from '../styles/hackathon.module.css';
 import { useState, useEffect } from "react";
-import testiomialsData from "./data/testiomialsData";
 
 const internshipsOptions = {
   items: 3,
@@ -65,19 +64,6 @@ const teamsOptions = {
   },
 };
 
-const testimonialOptions = {
-  responsive: {
-    0: {
-      items: 1,
-    },
-    880: {
-      items: 2,
-    },
-    1170: {
-      items: 3,
-    },
-  },
-};
 
 export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);

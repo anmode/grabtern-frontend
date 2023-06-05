@@ -1,30 +1,52 @@
-name: General Feature Request 💡
-about: Have a new idea/feature for Grabtern? Please suggest!
-
+name: "💡 Feature Request"
+description: "Have a new idea/feature for Grabtern? Please suggest!"
 title: "[FEATURE] <description>"
 labels: ["⭐ goal: addition", "🚦 status: awaiting triage"]
 
 body:
-  - type: textarea
-    id: description
+  - type: markdown
     attributes:
-      label: Description
-      description: A brief description of the enhancement you propose, including what you tried and what worked.
+      value: "Thank you for taking the time to suggest a feature request! Your input is greatly appreciated."
+  - type: textarea
+    id: description_feature
+    attributes:
+      label: "Description"
+      placeholder: "Please enter your detailed description of the new feature request here."
+      description: "A brief description of the enhancement you propose, including what you tried and what worked."
     validations:
       required: true
-
   - type: textarea
-    id: screenshots
+    id: feature_solution_proposed
+    attributes:
+      label: "Solution Proposed"
+      description: A precise description of how you would like to see this functionality implemented.
+      placeholder: "Including any relevant materials such as sketches, wireframes, or flowcharts to illustrate your proposal is highly welcomed"
+  - type: textarea
+    id: feature_screenshots
     attributes:
       label: Screenshots
-      description: Please add screenshots if applicable
+      description: "Please add screenshots if applicable"
     validations:
       required: false
-
   - type: textarea
-    id: extrainfo
+    id: additional_context_feature
     attributes:
-      label: Additional information
-      description: Is there anything else we should know about this idea?
+      label: "Additional Context"
+      description: "If you have any additional context or information that may help us understand the idea better, please provide it here."
+      placeholder: "This can include any relevant logs, issue references, or information that may be needed for smooth implementation."
     validations:
       required: false
+  - type: checkboxes
+    id: checklist_terms_feature
+    attributes:
+      label: Checklist
+      description: "By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/anmode/grabtern-frontend/blob/develop/CODE_OF_CONDUCT.md)"
+      options:
+        - label: "I have checked the existing [issues](https://github.com/anmode/grabtern-frontend/issues)"
+          required: true
+        - label: "I have read the [Contributing Guidelines](https://github.com/anmode/grabtern-frontend/blob/develop/CONTRIBUTING.md)"
+          required: true
+        - label: "I would like to be assigned this task."
+          required: false
+        - label: "I am a GSSoC'23 contributor"
+          required: false

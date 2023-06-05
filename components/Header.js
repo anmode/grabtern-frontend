@@ -93,7 +93,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                           </a>
                         </li>
                         <DropdownCard
-                          isLoggedIn={isLoggedIn}
                           isUserLoggedIn={isUserLoggedIn}
                           isMentorLoggedIn={isMentorLoggedIn}
                         />

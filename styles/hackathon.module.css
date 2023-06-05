@@ -1,0 +1,86 @@
+.hackathonArea .singleHackathon {
+  position: relative;
+}
+.hackathonArea .singleHackathon:hover {
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border-radius: 12px;
+}
+.hackathonArea .singleHackathon::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-color: rgba(66, 85, 164, 0.7);
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 12px;
+}
+.hackathonArea .singleHackathon:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.hackathonArea .singleHackathon .hackathonImg {
+  border-radius: 12px;
+}
+.hackathonArea .singleHackathon .hackathonImg img {
+  width: 100%;
+  border-radius: 12px;
+}
+.hackathonArea .singleHackathon .hackathonContentBox {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 100%;
+  transition: 0.4s;
+  z-index: 2;
+}
+.hackathonArea .singleHackathon .hackathonContentBox .hackathonContent {
+  position: absolute;
+  top: 53%;
+  transform: translateY(-47%);
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.hackathonArea .singleHackathon .hackathonContentBox .hackathonContent h3 a {
+  opacity: 0;
+  z-index: 1;
+}
+.hackathonArea .singleHackathon:hover > .hackathonImg .hackathonContent a {
+  opacity: 1;
+  visibility: visible;
+  color: #fff;
+  z-index: 0;
+  text-decoration: underline;
+  font-size: 20px;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  text-decoration: underline #fff transparent;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+.hackathonArea .singleHackathon .hackathonContentBox .hackathonContent p {
+  font-size: 16px;
+  color: #ffff;
+  padding: 0 82px;
+  line-height: 1.6;
+}
+@media (max-width: 575px) {
+  .hackathonArea .singleHackathon .hackathonContentBox .hackathonContent p {
+    padding: 0 18px;
+  }
+}

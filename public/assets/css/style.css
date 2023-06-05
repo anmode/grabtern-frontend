@@ -1665,7 +1665,7 @@ hr {
   position: absolute;
   top: 50%;
   z-index: 200;
-  left: 0;
+  left: 32%;
   right: 0;
   margin: 0 auto;
   text-align: center;
@@ -3727,7 +3727,7 @@ hr {
 }
 .login-form .form-input input[type="submit"] {
   background: linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% );;
-  color: #fff;
+  color: white;
   border: none;
   cursor: pointer;
   text-transform: capitalize;

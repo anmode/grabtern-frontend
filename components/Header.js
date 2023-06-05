@@ -183,7 +183,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     id="login-buttons"
                                     onClick={handleLoginClick}
                                   >
-                                    <a href="/login" id="loginbtn">
+                                    <a href="/userAuth" id="loginbtn">
                                       User
                                     </a>
                                   </button>

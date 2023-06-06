@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import Login from "../components/user/login";
-import Register from "../components/user/register";
+import Login from "../components/userAuth/login";
+import Register from "../components/userAuth/register";
 
 function UserAuthPage() {
   const [logpagestate, setLogPageState] = useState(true);

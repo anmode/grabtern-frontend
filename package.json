@@ -10,6 +10,8 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
     "@emailjs/browser": "^3.10.0",
     "antd": "^5.4.5",
     "axios": "^1.2.3",

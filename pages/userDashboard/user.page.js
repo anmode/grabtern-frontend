@@ -3,7 +3,7 @@ import SideBar from "../components/userDashboard/sidebar";
 import TopBar from "../components/userDashboard/topbar";
 import { Transition } from "@headlessui/react";
 
-function UserDashboard(){
+function UserDashboard() {
   const [showNav, setShowNav] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 

@@ -1,10 +1,7 @@
 name: "📚 Documentation"
 description: Report an issue in the project's documentation or README.md file.
 title: "📚 [Documentation / WorkFlow] - Title"
-labels: [
-  "documentation",
-  "no code"
-]
+labels: ["documentation", "no code"]
 body:
   - type: markdown
     attributes:

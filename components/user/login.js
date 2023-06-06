@@ -9,7 +9,7 @@ function Login({ handleLogPageToggle }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const router = useRouter();
-  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+  const { setIsUserLoggedIn } = useAuth();
 
   useEffect(() => {
     if (
@@ -28,16 +28,10 @@ function Login({ handleLogPageToggle }) {
       console.log(userObject);
       try {
         const res = await axios.post(url, userObject);
-        // localStorage.setItem("user_name", userObject.name);
-        // localStorage.setItem("user_picture", userObject.picture);
-        // localStorage.setItem("user_email", userObject.email);
-        setIsLoggedIn(true);
-        setAuthUser({
-          name: userObject.name,
-          picture: userObject.picture,
-          email: userObject.email,
-        });
-        console.log(authUser);
+        localStorage.setItem("user_name", userObject.name);
+        localStorage.setItem("user_picture", userObject.picture);
+        localStorage.setItem("user_email", userObject.email);
+        setIsUserLoggedIn(true);
         router.push(localStorage.getItem("redirectUrl") || "/");
       } catch (error) {
         setError("New user? Register first.");
@@ -72,16 +66,10 @@ function Login({ handleLogPageToggle }) {
           "Email not verified, verification link has been sent to your email"
         );
       }
-      // localStorage.setItem("token", res.data);
-      // localStorage.setItem("user_name", res.data.fullName);
-      // localStorage.setItem("user_email", res.data.email);
-      setIsLoggedIn(true);
-      setAuthUser({
-        name: res.data.fullName,
-        email: res.data.email,
-        picture: res.data.picture,
-        token: res.data,
-      });
+      localStorage.setItem("token", res.data);
+      localStorage.setItem("user_name", res.data.fullName);
+      localStorage.setItem("user_email", res.data.email);
+      setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
       if (error.response && error.response.status === 405) {

@@ -1,9 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { useContext } from "react";
-// import LogContext from "../../context/AuthContext";
 
 function Register({ handleLogPageToggle }) {
   const router = useRouter();
@@ -20,7 +17,6 @@ function Register({ handleLogPageToggle }) {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
-  const { logpagestate, setlogpagestate } = useContext(LogContext);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });

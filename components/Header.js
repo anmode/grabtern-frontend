@@ -5,19 +5,23 @@ import router from "next/router";
 import { useAuth } from "../context/AuthContext";
 
 function Header({ navbarBackground }) {
-  // localStorage.setItem('redirectUrl', window.location.href);
+  localStorage.setItem("redirectUrl", window.location.href);
   // const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
-  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
   useEffect(() => {
-    // const userName = localStorage.getItem("user_name");
-    // if (userName) {
-    //   setLoggedIn(true);
-    // }
+    const userName = localStorage.getItem("user_name");
+    if (userName) {
+      setLoggedIn(true);
+    }
     const mentorName = localStorage.getItem("mentor_name");
     if (mentorName) {
       setMentorLoggedIn(true);
@@ -52,14 +56,14 @@ function Header({ navbarBackground }) {
 
   const userlogout = () => {
     localStorage.clear();
-    setLoggedIn(false);
+    setIsUserLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
 
   const mentorlogout = () => {
     localStorage.clear();
-    setMentorLoggedIn(false);
+    setIsMentorLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
@@ -117,7 +121,7 @@ function Header({ navbarBackground }) {
                           </a>
                         </li>
 
-                        {isLoggedIn || isMentorLoggedIn ? (
+                        {isUserLoggedIn || isMentorLoggedIn ? (
                           <li>
                             <div className={styles.loginOption}>
                               <button

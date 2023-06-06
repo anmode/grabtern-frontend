@@ -9,12 +9,7 @@ function Login({ handleLogPageToggle }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const router = useRouter();
-  const {
-    authUser,
-    setAuthUser,
-    isLoggedIn,
-    setIsLoggedIn
-  } = useAuth();
+  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
 
   useEffect(() => {
     if (
@@ -41,7 +36,7 @@ function Login({ handleLogPageToggle }) {
           name: userObject.name,
           picture: userObject.picture,
           email: userObject.email,
-        })
+        });
         console.log(authUser);
         router.push(localStorage.getItem("redirectUrl") || "/");
       } catch (error) {

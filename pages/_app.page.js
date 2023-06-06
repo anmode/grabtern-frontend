@@ -5,7 +5,7 @@ import { BreakpointProvider } from "react-socks";
 import $ from "jquery";
 import Head from "next/head";
 import Script from "next/script";
-import {AuthProvider} from "../context/AuthContext";
+import { AuthProvider } from "../context/AuthContext";
 function addProductJsonLd() {
   return {
     __html: `{

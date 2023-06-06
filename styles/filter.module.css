@@ -1,0 +1,12 @@
+.global_search{
+    position: relative;
+    top: 137px;
+    left: 800px;
+    
+}
+
+.search_bar{
+  height: 35px;
+  border-radius: 15px;
+  padding: 0 10px 0 15px;
+}

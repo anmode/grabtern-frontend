@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Login from "../components/user/login";
 import Register from "../components/user/register";
 
-function UserAuthPage(){
+function UserAuthPage() {
   const router = useRouter();
   const [logpagestate, setLogPageState] = useState(false);
 
@@ -13,19 +13,23 @@ function UserAuthPage(){
     setLogPageState(!logpagestate);
 
     // Update URL hash based on current component state
-    router.push(`/userAuth/#${!logpagestate ? "register" : "login"}`, undefined, { shallow: true });
+    router.push(
+      `/userAuth/#${!logpagestate ? "register" : "login"}`,
+      undefined,
+      { shallow: true }
+    );
   };
 
-   useEffect(() => {
-     handleHashChange();
+  useEffect(() => {
+    handleHashChange();
 
-     // Add event listener for URL hash change
-     window.addEventListener("hashchange", handleHashChange);
+    // Add event listener for URL hash change
+    window.addEventListener("hashchange", handleHashChange);
 
-     return () => window.removeEventListener("hashchange", handleHashChange);
-   }, []);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
-   // Function to check current URL hash and render corresponding component
+  // Function to check current URL hash and render corresponding component
   const handleHashChange = () => {
     const currentHash = window.location.hash.substring(1);
 
@@ -34,9 +38,9 @@ function UserAuthPage(){
     } else if (currentHash === "register") {
       setLogPageState(false);
     } else {
-	  // Redirect user or display an error message 
-	  router.push('/404');
-	}
+      // Redirect user or display an error message
+      router.push("/404");
+    }
   };
 
   return (
@@ -55,6 +59,6 @@ function UserAuthPage(){
       </main>
     </>
   );
-};
+}
 
 export default UserAuthPage;

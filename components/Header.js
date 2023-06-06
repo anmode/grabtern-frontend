@@ -20,26 +20,25 @@ function Header({ navbarBackground }) {
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
 
   useEffect(() => {
-  
     if (userData?.user_name) {
       setIsUserLoggedIn(true);
     }
-    
+
     if (mentorData?.mentor_name) {
       setIsMentorLoggedIn(true);
     }
-  
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-  
+
     handleScroll();
-  
+
     window.addEventListener("scroll", handleScroll);
-  
-     return () => {
-       window.removeEventListener("scroll", handleScroll);
-     };
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const handleLoginClick = () => {
@@ -139,8 +138,8 @@ function Header({ navbarBackground }) {
                                   }}
                                   src={
                                     userData?.user_picture ||
-    mentorData?.mentor_picture ||
-    "assets/img/icon/no-profile-picture.png"
+                                    mentorData?.mentor_picture ||
+                                    "assets/img/icon/no-profile-picture.png"
                                   }
                                   alt="not found"
                                 />

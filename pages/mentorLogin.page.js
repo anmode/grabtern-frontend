@@ -14,7 +14,12 @@ function mentorLogin() {
     password: "",
     confirmPassword: "",
   });
-  const { isMentorLoggedIn, setIsMentorLoggedIn, isUserLoggedIn, setIsUserLoggedIn } = useAuth();
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

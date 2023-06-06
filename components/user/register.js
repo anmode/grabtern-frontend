@@ -14,7 +14,6 @@ function useRedirectIfAuthenticated() {
       }
     }
   }, [router]);
-  
 }
 
 function Register({ handleLogPageToggle }) {

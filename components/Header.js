@@ -20,11 +20,11 @@ function Header({ navbarBackground }) {
   useEffect(() => {
     const userName = localStorage.getItem("user_name");
     if (userName) {
-      setLoggedIn(true);
+      setIsUserLoggedIn(true);
     }
     const mentorName = localStorage.getItem("mentor_name");
     if (mentorName) {
-      setMentorLoggedIn(true);
+      setIsMentorLoggedIn(true);
     }
 
     const handleScroll = () => {
@@ -135,7 +135,7 @@ function Header({ navbarBackground }) {
                                     borderRadius: "50%",
                                   }}
                                   src={
-                                    authUser.picture ||
+                                    localStorage.getItem("user_picture") ||
                                     localStorage.getItem("mentor_picture") ||
                                     "assets/img/icon/no-profile-picture.png"
                                   }

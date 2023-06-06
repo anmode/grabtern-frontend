@@ -30,12 +30,13 @@ const DropdownCard = ({ isUserLoggedIn }) => {
     <li>
       <div className={styles.loginOption}>
         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
-          <button onClick={handleLoginClick} className={styles.userName}>
+          <button onClick={handleLoginClick} className={styles.loginbutton}>
             <img
               style={{
                 width: "35px",
                 height: "auto",
                 borderRadius: "50%",
+                alignItems: "center",
               }}
               src={
                 localStorage.getItem("user_picture") ||
@@ -46,7 +47,11 @@ const DropdownCard = ({ isUserLoggedIn }) => {
             />
           </button>
         ) : (
-          <button className={styles.loginbutton} onClick={handleLoginClick}>
+          <button
+            className={styles.loginbutton}
+            onClick={handleLoginClick}
+            style={{ color: "white" }}
+          >
             Login
           </button>
         )}
@@ -85,7 +90,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                 <button
                   className="login-buttons"
                   onClick={() => {
-                    window.location.href = `/login`;
+                    window.location.href = `/userAuth/`;
                   }}
                 >
                   User

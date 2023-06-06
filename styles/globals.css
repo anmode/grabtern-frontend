@@ -18,6 +18,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+img {
+  display: inline;
+}
 /*  */
 
 .slider-area .hero__caption.hero__caption2,
@@ -266,7 +270,7 @@ a {
   }
   .main-menu nav ul {
     gap: 40px;
-    padding: 50px 35px;
+    padding: 60px 35px;
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
@@ -1053,8 +1057,8 @@ textarea {
   flex-direction: column !important;
   gap: 10px;
   background-color: white;
-  padding: 10px;
-  margin: 5px;
+  padding: 15px;
+  /* margin: 5px; */
   border-radius: 10px;
 }
 
@@ -1171,7 +1175,6 @@ textarea {
     gap: 5px;
     background-color: white;
     padding: 10px;
-    margin: 5px;
     border-radius: 10px;
   }
 

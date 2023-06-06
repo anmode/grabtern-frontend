@@ -184,6 +184,7 @@ a,
 button {
   color: #fff;
   outline: medium none;
+  padding: 10px;
 }
 button:focus,
 input:focus,

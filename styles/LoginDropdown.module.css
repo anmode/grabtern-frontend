@@ -64,13 +64,19 @@
 
 .loginOption button {
   color: black;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 5px;
   font-weight: 600;
 }
+
+/* .login-buttons{
+  color: black;
+  background-color: aliceblue;
+  text-decoration: none;
+} */
 
 .loginOption button:hover {
   background-color: #9160ec;

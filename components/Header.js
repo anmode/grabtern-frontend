@@ -16,27 +16,30 @@ function Header({ navbarBackground }) {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
 
   useEffect(() => {
-    const userName = localStorage.getItem("user_name");
-    if (userName) {
+  
+    if (userData?.user_name) {
       setIsUserLoggedIn(true);
     }
-    const mentorName = localStorage.getItem("mentor_name");
-    if (mentorName) {
+    
+    if (mentorData?.mentor_name) {
       setIsMentorLoggedIn(true);
     }
-
+  
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-
+  
     handleScroll();
-
+  
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+  
+     return () => {
+       window.removeEventListener("scroll", handleScroll);
+     };
   }, []);
 
   const handleLoginClick = () => {
@@ -135,9 +138,9 @@ function Header({ navbarBackground }) {
                                     borderRadius: "50%",
                                   }}
                                   src={
-                                    localStorage.getItem("user_picture") ||
-                                    localStorage.getItem("mentor_picture") ||
-                                    "assets/img/icon/no-profile-picture.png"
+                                    userData?.user_picture ||
+    mentorData?.mentor_picture ||
+    "assets/img/icon/no-profile-picture.png"
                                   }
                                   alt="not found"
                                 />
@@ -189,7 +192,7 @@ function Header({ navbarBackground }) {
                                     id="login-buttons"
                                     onClick={handleLoginClick}
                                   >
-                                    <a href="/userAuth" id="loginbtn">
+                                    <a href="/userAuth#login" id="loginbtn">
                                       User
                                     </a>
                                   </button>

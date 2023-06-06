@@ -64,7 +64,7 @@ export default function MentorForm() {
 
   function handleCallbackResponse(response) {
     var userObject = jwt_decode(response.credential);
-    console.log(userObject);
+    // console.log(userObject);
     setFormData({
       name: userObject.name,
       email: userObject.email,

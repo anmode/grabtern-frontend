@@ -9,20 +9,21 @@ import Dashboard from "../components/Dashboard";
 function Index() {
   const [mentorDetail, setMentorDetail] = useState();
   const router = useRouter();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   useEffect(() => {
     const fetchMentorDetail = async (mentorToken) => {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDashboard/${mentorToken}`;
       const { data: res } = await axios.get(url, { mentorPW: mentorToken });
       console.log;
       if (res.message == "Invalid link") {
-        localStorage.removeItem("mentorToken");
-        localStorage.removeItem("mentor_name");
+        localStorage.removeItem("mentorData");
         router.push("/");
       }
       setMentorDetail(res.mentorDetail);
     };
-    if (localStorage.getItem("mentorToken") !== null) {
-      fetchMentorDetail(localStorage.getItem("mentorToken"));
+    if (mentorData?.mentorToken !== null) {
+      fetchMentorDetail(mentorData?.mentorToken);
     }
   });
   return (

@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-function Register({ handleLogPageToggle }) {
+function useRedirectIfAuthenticated() {
   const router = useRouter();
-  if (
-    localStorage.getItem("user_name") !== null ||
-    localStorage.getItem("token") !== null
-  ) {
-    router.push("/");
-  }
+
+  useEffect(() => {
+    const userDataString = localStorage.getItem("userData");
+    if (userDataString) {
+      const userData = JSON.parse(userDataString);
+      if (userData.name !== null || userData.token !== null) {
+        router.push("/");
+      }
+    }
+  }, [router]);
+  
+}
+
+function Register({ handleLogPageToggle }) {
+  useRedirectIfAuthenticated();
+
+  const router = useRouter();
   const [data, setData] = useState({
     fullName: "",
     email: "",
@@ -30,15 +41,10 @@ function Register({ handleLogPageToggle }) {
     }
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
-      const { data: res } = await axios.post(url, data);
+      await axios.post(url, data);
       router.push("/");
-      console.log(res.message);
     } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
+      if (error.response && error.response.status >= 400) {
         setError(error.response.data.message);
       }
     }

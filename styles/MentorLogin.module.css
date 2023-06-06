@@ -1,22 +1,59 @@
-/* MentorLogin.module.css */
+/* mentorLogin.module.css */
 
-.mentorLoginHeading {
-  grid-column: 1/3;
+.loginBody {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginHeading {
+  color: lightseagreen;
+  font-size: 30px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.mentorLoginErrorMessage {
-  color: red;
-  grid-column: 1/3;
+.logoImage {
+  width: 100px;
+  height: 100px;
 }
 
-.mentorLoginButton {
-  width: fit-content;
-  padding: 15px 30px;
+
+.formDefault {
+  background-color: #f2f2f2;
+  padding: 40px;
   border-radius: 5px;
+  width: 400px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoutLogin {
+  margin-bottom: 20px;
+}
+
+.formInput {
+  margin-bottom: 30px;
+}
+
+.formInput label {
   font-weight: bold;
-  font-size: 18px;
-  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.formInput input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgreen;
+  border-radius: 10px;
+}
+
+.loginButton {
   background: linear-gradient(
     to top,
     rgb(83, 116, 255) 0%,
@@ -24,7 +61,50 @@
     rgb(187, 85, 255) 95%,
     rgb(192, 84, 255) 100%
   );
-  box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
-  color: white;
+  color: #fff;
   border: none;
+  padding: 20px 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.forget {
+  margin: 0;
+  text-decoration: none;
+  color: purple;
+  align-self: flex-end;
+}
+
+.linkDiv {
+  margin: 10px 0;
+  font-size: 14px;
+  color: black;
+}
+
+.registration {
+  text-decoration: none;
+  color: purple;
+  margin-left: 5px;
+}
+
+.orHeading {
+  color: black;
+  margin: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.googleSignInButton {
+  margin-top: 20px;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
 }

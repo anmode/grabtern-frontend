@@ -8,7 +8,7 @@ import jwt_decode from "jwt-decode";
 import styles from "../styles/MentorLogin.module.css";
 import Link from "next/link";
 
-function mentorLogin() {
+function MentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ function mentorLogin() {
     e.preventDefault();
     setError("");
     if (formData.password !== formData.confirmPassword) {
-      return setError("Password not match!");
+      return setError("Password does not match!");
     }
     console.log(formData);
     try {
@@ -85,21 +85,25 @@ function mentorLogin() {
   return (
     <>
       <Header navbarBackground={true} />
-      <main className="login-body">
+      <main className={styles.loginBody}>
         <form
-          className="form-default"
+          className={styles.formDefault}
           action="login-bg.mp4"
           onSubmit={handleSubmit}
         >
-          <div className="login-form d-flex flex-column">
-            <div className="logout-login">
+          <div className={`${styles.loginForm} d-flex flex-column`}>
+            <div className={styles.logoutLogin}>
               <a href="/index.html">
-                <img src="/assets/img/logo/loder.png" alt="" />
+                <img
+                  src="/assets/img/logo/suit.png"
+                  alt=""
+                  className={`${styles.logoImage} mb-3`}
+                />
               </a>
             </div>
-            <h2>Mentor Login</h2>
-            <div className="form-input">
-              <label htmlFor="name">Email</label>
+            <h2 className={styles.loginHeading}>Mentor Login</h2>
+            <div className={styles.formInput}>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 name="email"
@@ -108,8 +112,8 @@ function mentorLogin() {
                 value={formData.email}
               />
             </div>
-            <div className="form-input">
-              <label htmlFor="name">Password</label>
+            <div className={styles.formInput}>
+              <label htmlFor="password">Password</label>
               <input
                 type="password"
                 name="password"
@@ -118,39 +122,46 @@ function mentorLogin() {
                 value={formData.password}
               />
             </div>
-            <div className="form-input">
+            <div className={styles.formInput}>
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                onChange={handleChange}
+                value={formData.confirmPassword}
+              />
+            </div>
+            <div className={styles.formInput}>
               <input
                 type="submit"
                 name="submit"
-                value="login"
-                style={{
-                  background:
-                    "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
-                }}
+                value="Login"
+                className={styles.loginButton}
               />
             </div>
-            {error && <div style={{ color: "red" }}>{error}</div>}
+            {error && <div className={styles.error}>{error}</div>}
             <Link
               href="/forgotpass"
-              className="forget align-self-end"
+              className={`${styles.forget} align-self-end`}
               style={{ margin: 0 }}
             >
               Forget Password?
             </Link>
-            <div className="link-div m-3">
-              Don't have an account?
+            <div className={styles.linkDiv}>
+              Don't have a mentor account?
               <Link
                 href="/mentorRegister"
-                className="registration d-inline m-2"
-                style={{ textDecoration: "none" }}
+                className={`${styles.registration} d-inline m-2`}
               >
-                Register here
+                Sign up
               </Link>
             </div>
-            <h3 style={{ color: "black", alignSelf: "center", margin: "5px" }}>
-              Or
-            </h3>
-            <div id="googleSignInButton" style={{ alignSelf: "center" }}></div>
+            <h3 className={styles.orHeading}>Or</h3>
+            <div
+              id="googleSignInButton"
+              className={styles.googleSignInButton}
+            ></div>
           </div>
         </form>
       </main>
@@ -158,4 +169,4 @@ function mentorLogin() {
   );
 }
 
-export default mentorLogin;
+export default MentorLogin;

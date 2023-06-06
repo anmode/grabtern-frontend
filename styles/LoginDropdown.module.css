@@ -18,9 +18,11 @@
 }
 
 .footLink:hover {
-  color: rgb(29, 11, 60) !important;
+  color: #fff !important;
+  /* color: #1b44e7 !important; */
+  /* 4664dd */
   transform: scale(1.05);
-  text-shadow: 0 0 10px rgb(153, 138, 176);
+  /* text-shadow: 0 0 10px rgb(153, 138, 176); */
 }
 
 .loginOption {
@@ -32,7 +34,6 @@
   transform: translateZ(-50px);
   margin-bottom: 70px;
 }
-
 
 .loginOption a {
   padding: 0 !important;

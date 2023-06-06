@@ -176,7 +176,7 @@ a:hover {
 a:focus,
 a:hover,
 .portfolio-cat a:hover,
-.footer -menu li a:hover {
+ -menu li a:hover {
   text-decoration: none;
 }
 a,
@@ -1665,7 +1665,7 @@ hr {
   position: absolute;
   top: 50%;
   z-index: 200;
-  left: 0;
+  left: 32%;
   right: 0;
   margin: 0 auto;
   text-align: center;
@@ -2014,22 +2014,7 @@ hr {
     padding-bottom: 0;
   }
 }
-.footer-padding {
-  padding-top: 100px;
-  padding-bottom: 13px;
-}
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .footer-padding {
-    padding-top: 70px;
-    padding-bottom: 0;
-  }
-}
-@media (max-width: 575px) {
-  .footer-padding {
-    padding-top: 70px;
-    padding-bottom: 0;
-  }
-}
+
 @media (max-width: 575px) {
   .section-tittle {
     margin-bottom: 50px;
@@ -3411,7 +3396,9 @@ hr {
     font-size: 12px;
   }
 }
-.courses-area .properties__footer {
+ .courses-area 
+ /* .properties__footer  */
+ {
   margin-bottom: 22px;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -3423,20 +3410,26 @@ hr {
     padding: 19px 10px 20px 12px;
   }
 }
-.courses-area .properties__footer .restaurant-name p {
+.courses-area 
+/* .properties__footer .restaurant-name  */
+p {
   display: inline-block;
   color: #6e7697;
 }
-.courses-area .properties__footer .restaurant-name p span {
+.courses-area 
+/* .properties__footer .restaurant-name */
+ p span {
   color: #ff7b2e;
   font-size: 12px;
 }
-.courses-area .properties__footer .price span {
+.courses-area 
+/* .properties__footer  */
+.price span {
   cursor: pointer;
   font-weight: 700;
   color: #4255a4;
   font-size: 23px;
-}
+} 
 .courses-area .properties:hover .border-btn2 {
   color: #fff;
   background: #ff9f67;
@@ -3502,86 +3495,6 @@ hr {
   font-size: 15px;
   line-height: 1.8;
 }
-.topic-area .single-topic {
-  position: relative;
-}
-.topic-area .single-topic::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  content: "";
-  background-color: rgba(66, 85, 164, 0.7);
-  opacity: 0;
-  z-index: 1;
-  -webkit-transition: 0.4s;
-  -moz-transition: 0.4s;
-  -o-transition: 0.4s;
-  transition: 0.4s;
-  border-radius: 12px;
-}
-.topic-area .single-topic:hover::before {
-  opacity: 1;
-  visibility: visible;
-}
-.topic-area .single-topic .topic-img {
-  border-radius: 12px;
-}
-.topic-area .single-topic .topic-img img {
-  width: 100%;
-}
-.topic-area .single-topic .topic-content-box {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transform: translateY(-50%);
-  height: 100%;
-  width: 100%;
-  transition: 0.4s;
-  z-index: 2;
-}
-.topic-area .single-topic .topic-content-box .topic-content {
-  position: absolute;
-  top: 53%;
-  transform: translateY(-47%);
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-.topic-area .single-topic .topic-content-box .topic-content h3 a {
-  opacity: 0;
-  z-index: 1;
-}
-.topic-area .single-topic .topic-content-box .topic-content h3 a:hover {
-  opacity: 1;
-  visibility: visible;
-  color: #fff;
-  z-index: 0;
-  text-decoration: underline;
-  font-size: 20px;
-  margin-bottom: 0px;
-  text-transform: uppercase;
-  text-decoration: underline #fff transparent;
-  -webkit-transition: 0.4s;
-  -moz-transition: 0.4s;
-  -o-transition: 0.4s;
-  transition: 0.4s;
-}
-.topic-area .single-topic .topic-content-box .topic-content p {
-  font-size: 16px;
-  color: #ffff;
-  padding: 0 82px;
-  line-height: 1.6;
-}
-@media (max-width: 575px) {
-  .topic-area .single-topic .topic-content-box .topic-content p {
-    padding: 0 18px;
-  }
-}
 .services-area {
   margin-top: -100px;
 }
@@ -3637,109 +3550,10 @@ hr {
     font-size: 15px;
   }
 }
-.footer-area .footer-pera p {
-  color: #fff;
-  padding-right: 52px;
-  font-size: 16px;
-  margin-bottom: 50px;
-  line-height: 1.8;
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .footer-area .footer-pera p {
-    padding-right: 0px;
-  }
-}
-.footer-area .footer-pera.footer-pera2 p {
-  padding: 0;
-}
-.footer-area .footer-tittle h4 {
-  color: #fff;
-  font-size: 22px;
-  margin-bottom: 29px;
-  font-weight: 600;
-}
-.footer-area .footer-tittle ul li {
-  margin-bottom: 15px;
-}
-.footer-area .footer-tittle ul li a {
-  color: #fff;
-  font-weight: 400;
-  font-size: 16px;
-  text-decoration: underline transparent;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
-}
-.footer-area .footer-tittle ul li a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-.footer-area .footer-tittle p {
-  color: #fff;
-}
-.footer-area .footer-form {
-  margin-top: 40px;
-}
-.footer-area .footer-form form {
-  position: relative;
-}
-.footer-area .footer-form form input {
-  width: 100%;
-  height: 43px;
-  padding: 10px 20px;
-  border: 1px solid #fff;
-  border-radius: 30px;
-}
-.footer-area .footer-form form .form-icon button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  border: 0;
-  cursor: pointer;
-  padding: 13px 22px;
-  line-height: 1;
-  border-radius: 0 3px 3px 0;
-}
-.footer-area .info.error {
-  color: #c86fff;
-}
-.footer-bottom-area .footer-border {
-  padding: 33px 0px 20px;
-}
-.footer-bottom-area .footer-copy-right p {
-  color: #fff;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 2;
-  margin-bottom: 12px;
-}
-.footer-bottom-area .footer-copy-right p i {
-  color: #c86fff;
-}
-.footer-social a {
-  background: rgba(128, 136, 255, 0.1);
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 14px;
-  line-height: 40px;
-  display: inline-block;
-  text-align: center;
-  margin-right: 8px;
-}
-.footer-social a:hover {
-  color: #fff;
-  background: #c86fff;
-}
-.footer-social a i {
-  display: inline-block;
-}
-.footer-bg {
-  background: #4255a4;
-}
+
+
+
+
 .login-body {
   margin: 0;
   padding: 0;
@@ -3807,7 +3621,7 @@ hr {
 }
 .login-form .form-input input[type="submit"] {
   background: linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% );;
-  color: #fff;
+  color: white;
   border: none;
   cursor: pointer;
   text-transform: capitalize;

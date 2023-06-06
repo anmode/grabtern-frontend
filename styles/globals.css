@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -14,11 +18,13 @@ a {
 * {
   box-sizing: border-box;
 }
+/*  */
 
 .slider-area .hero__caption.hero__caption2,
 .slider-area2 .hero__caption.hero__caption2 {
   padding-top: 100px;
 }
+/*  */
 .loaderBackground {
   animation: loader 1s 0.8s forwards;
   position: absolute;
@@ -121,9 +127,9 @@ a {
   position: relative;
 }
 
-.properties__footer {
+/* .properties__footer {
   margin-bottom: 0 !important;
-}
+} */
 
 .courseFooter {
   position: absolute;
@@ -275,7 +281,7 @@ a {
     margin-top: -120px;
   }
   .container {
-    padding: 20px;
+    padding: 50px;
     max-width: 100% !important;
     width: 100% !important;
   }
@@ -284,9 +290,6 @@ a {
 @media (min-width: 992px) {
   .container {
     padding: 20px;
-    /* margin: 10px; */
-    max-width: 100% !important;
-    width: 100% !important;
   }
 }
 
@@ -419,15 +422,15 @@ a {
   .mentorFormRegisration > .container {
     padding-top: 0 !important;
   }
-  .properties__footer .restaurant-name {
+  /* .properties__footer .restaurant-name {
     font-size: 14px !important;
-  }
-  .properties__footer .price span {
+  } */
+  /* .properties__footer .price span {
     font-size: 18px !important;
     position: relative;
     top: -36px;
     margin-left: 20px;
-  }
+  } */
   .courseFooter a {
     padding: 10px;
   }

@@ -47,9 +47,7 @@
   font-weight: 600;
 }
 
-.loginbutton {
-  /* width: fit-content; */
-}
+
 
 .loginOption {
   display: flex;
@@ -64,7 +62,6 @@
 
 .loginOption button {
   color: black;
-  /* background-color: aliceblue; */
   border: none;
   cursor: pointer;
   border-radius: 7px;
@@ -72,11 +69,7 @@
   font-weight: 600;
 }
 
-/* .login-buttons{
-  color: black;
-  background-color: aliceblue;
-  text-decoration: none;
-} */
+
 
 .loginOption button:hover {
   background-color: #9160ec;

@@ -12,7 +12,7 @@ function Section({
   altText,
 }) {
   return (
-    <section className="about-area1 fix pt-10">
+    <section className="mentor-page-section about-area1 fix pt-10">
       <div className={`support-wrapper align-items-center ${className}`}>
         <div className="left-content1">
           <div className="section-tittle section-tittle2 mb-55">
@@ -21,9 +21,9 @@ function Section({
               {bodyText && <p className = {bodyTextClass} > {bodyText} </p>}
             </div>
           </div>
-
+          
           {bodyList &&
-            bodyList.map((item) => {
+            bodyList.map((item) => (
               <div className="single-features">
                 <div className="features-icon">
                   <img src="/assets/img/icon/right-icon.svg" alt="" />
@@ -31,8 +31,8 @@ function Section({
                 <div className="features-caption">
                   <p>{item}</p>
                 </div>
-              </div>;
-            })}
+              </div>
+            ))}
 
           {actionButtonlink && (
             <a

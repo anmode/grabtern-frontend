@@ -2700,7 +2700,7 @@ hr {
     padding-left: 30px;
   }
 }
-.about-area1 .support-wrapper .left-content1 .about-icon {
+.about-area1 .support-wrapper .left-content1 .about-icon, .bg-icon {
   width: 80px;
   height: 80px;
   border-radius: 50px;
@@ -5090,7 +5090,7 @@ hr {
   background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c054ff', endColorstr='#5274ff',GradientType=0 );
 }
-.about-area1 .support-wrapper .left-content1 .about-icon {
+.about-area1 .support-wrapper .left-content1 .about-icon, .bg-icon {
   background: #eae2fe;
   background: -moz-linear-gradient(
     top,
@@ -6076,4 +6076,20 @@ del {
 }
 .switch-wrap {
   margin-bottom: 10px;
+}
+
+.mentor-page-section .support-wrapper{
+    gap:30px !important;
+}
+
+@media (min-width: 992px) { 
+  .mb-lg-50{
+    margin-bottom: 50px;
+  }
+  .mb-lg-100 {
+    margin-bottom: 100px;
+  }
+  .mentor-page-section .support-wrapper{
+    gap: 80px !important;
+  }
 }

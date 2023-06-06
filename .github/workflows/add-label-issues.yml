@@ -1,4 +1,4 @@
-name: Add Labels to Issues
+name: Add Label to Issues
 
 on:
   issues:

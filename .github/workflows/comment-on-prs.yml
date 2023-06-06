@@ -25,7 +25,7 @@ jobs:
             const { pull_request } = context.payload;
             const author = pull_request.user.login;
             const prNumber = pull_request.number;
-            const comment = `Thank you, @${author}, for creating this pull request and contributing to GitHub-ReadMe! 💗\n\nOur review team will thoroughly review the pull request and will reach out to you soon! 😇\nPlease make sure you have marked all the completed tasks as done. ✅\nWe appreciate your patience and contribution! 😀`;
+            const comment = `Thank you, @${author}, for creating this pull request and contributing to GitHub-ReadMe! \nOur review team will thoroughly review the pull request and will reach out to you soon! \nPlease make sure you have marked all the completed tasks as done.\nWe appreciate your patience and contribution!`;
             const { owner, repo } = context.repo;
 
             await github.issues.createComment({

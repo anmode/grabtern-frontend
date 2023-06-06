@@ -1051,15 +1051,17 @@ textarea {
   background: blue;
 }
 .login-optionslist {
-  /* position: absolute; */
+  position: absolute;
   top: 40px !important;
   display: flex;
   flex-direction: column !important;
   gap: 10px;
   background-color: white;
-  padding: 15px;
-  /* margin: 5px; */
+  padding: 7px;
+  margin: 5px;
   border-radius: 10px;
+  right: 1px;
+  width: 100px;
 }
 
 /*Mentor CSS*/

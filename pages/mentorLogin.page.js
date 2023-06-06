@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import styles from "../styles/MentorLogin.module.css";
+import Link from "next/link";
+
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -43,6 +45,7 @@ function mentorLogin() {
       }
     }
   };
+
   async function handleCallbackResponse(response) {
     var userObject = jwt_decode(response.credential);
     console.log(userObject);
@@ -82,69 +85,75 @@ function mentorLogin() {
   return (
     <>
       <Header navbarBackground={true} />
-      <main>
-        <div className="mentorFormRegisration">
-          <div className="container">
-            <form className="mentorForm" onSubmit={handleSubmit}>
-              <h2 className={styles.mentorLoginHeading}>Mentor Login</h2>
-              <div>
-                <label for="email">EMAIL</label>
-
-                <input
-                  type="email"
-                  name="email"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. peterparker@gmail.com"
-                  required
-                  value={formData.email}
-                />
-              </div>
-              <div>
-                <label for="password">Password</label>
-
-                <input
-                  type="password"
-                  name="password"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  value={formData.password}
-                  placeholder="e.g. 12!HelloWorld"
-                />
-              </div>
-              <div className={styles.mentorLoginHeading}>
-                <label for="confirmPassword">Confirm Password</label>
-
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  className="mentorFormInput"
-                  onChange={(e) => handleChange(e)}
-                  value={formData.confirmPassword}
-                  placeholder="e.g. 12!HelloWorld"
-                />
-              </div>
-              {error && (
-                <div className={styles.mentorLoginErrorMessage}>{error}</div>
-              )}
-              <button type="submit" className={styles.mentorLoginButton}>
-                Login
-              </button>
-              <div className={styles.mentorLoginHeading}>
-                <div id="googleSignInButton"></div>
-              </div>
-              <p>
-                Do not have a mentor account?{" "}
-                <a href="/mentorRegister">Sign Up</a>
-              </p>
-              <p>
-                <a href="#">Forgot password?</a>
-              </p>
-            </form>
+      <main className="login-body">
+        <form
+          className="form-default"
+          action="login-bg.mp4"
+          onSubmit={handleSubmit}
+        >
+          <div className="login-form d-flex flex-column">
+            <div className="logout-login">
+              <a href="/index.html">
+                <img src="/assets/img/logo/loder.png" alt="" />
+              </a>
+            </div>
+            <h2>Mentor Login</h2>
+            <div className="form-input">
+              <label htmlFor="name">Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                value={formData.email}
+              />
+            </div>
+            <div className="form-input">
+              <label htmlFor="name">Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+                value={formData.password}
+              />
+            </div>
+            <div className="form-input">
+              <input
+                type="submit"
+                name="submit"
+                value="login"
+                style={{
+                  background:
+                    "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
+                }}
+              />
+            </div>
+            {error && <div style={{ color: "red" }}>{error}</div>}
+            <Link
+              href="/forgotpass"
+              className="forget align-self-end"
+              style={{ margin: 0 }}
+            >
+              Forget Password?
+            </Link>
+            <div className="link-div m-3">
+              Don't have an account?
+              <Link
+                href="/mentorRegister"
+                className="registration d-inline m-2"
+                style={{ textDecoration: "none" }}
+              >
+                Register here
+              </Link>
+            </div>
+            <h3 style={{ color: "black", alignSelf: "center", margin: "5px" }}>
+              Or
+            </h3>
+            <div id="googleSignInButton" style={{ alignSelf: "center" }}></div>
           </div>
-        </div>
+        </form>
       </main>
-      <Footer />
     </>
   );
 }

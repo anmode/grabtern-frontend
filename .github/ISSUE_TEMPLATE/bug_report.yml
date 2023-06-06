@@ -14,7 +14,7 @@ body:
 
         :information_source: Before submitting the report, please make sure to read our contributing guidelines. By submitting this issue, you agree to follow our guidelines. :book:
 
-        :link: [CONTRIBUTING GUIDELINES](I have read the [Contributing Guidelines](https://github.com/anmode/grabtern-frontend/blob/develop/CONTRIBUTING.md)
+        :link: [CONTRIBUTING GUIDELINES](https://github.com/anmode/grabtern-frontend/blob/develop/CONTRIBUTING.md)
 
   - type: textarea
     id: description

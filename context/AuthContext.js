@@ -7,13 +7,13 @@ export function useAuth(){
 }
 
 
-export function LogState (props) {
-  const [authUser, setauthUser] = useState(null);
+export function AuthProvider (props) {
+  const [authUser, setAuthUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const value = {
     authUser,
-    setauthUser,
+    setAuthUser,
     isLoggedIn,
     setIsLoggedIn
   }

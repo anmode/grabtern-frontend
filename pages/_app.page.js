@@ -5,7 +5,7 @@ import { BreakpointProvider } from "react-socks";
 import $ from "jquery";
 import Head from "next/head";
 import Script from "next/script";
-import LogState from "../context/LogState";
+import {AuthProvider} from "../context/AuthContext";
 function addProductJsonLd() {
   return {
     __html: `{
@@ -117,9 +117,9 @@ function MyApp({ Component, pageProps }) {
         </div>
       </div>
       <BreakpointProvider>
-        <LogState>
+        <AuthProvider>
           <Component {...pageProps} />
-        </LogState>
+        </AuthProvider>
       </BreakpointProvider>
     </>
   );

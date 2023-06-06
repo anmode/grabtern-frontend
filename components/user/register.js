@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
-import LogContext from "../../context/LogContext";
+// import LogContext from "../../context/AuthContext";
 
 function Register({ handleLogPageToggle }) {
   const router = useRouter();

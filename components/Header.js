@@ -2,20 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
+import { useAuth } from "../context/AuthContext";
 
-function Header({ isUserLoggedIn, navbarBackground }) {
+function Header({ navbarBackground }) {
   // localStorage.setItem('redirectUrl', window.location.href);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  // const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
+  const {
+    authUser,
+    setAuthUser,
+    isLoggedIn,
+    setIsLoggedIn
+  } = useAuth();
 
   useEffect(() => {
-    const userName = localStorage.getItem("user_name");
-    if (userName) {
-      setLoggedIn(true);
-    }
+    // const userName = localStorage.getItem("user_name");
+    // if (userName) {
+    //   setLoggedIn(true);
+    // }
     const mentorName = localStorage.getItem("mentor_name");
     if (mentorName) {
       setMentorLoggedIn(true);
@@ -115,7 +122,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                           </a>
                         </li>
 
-                        {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+                        {isLoggedIn || isMentorLoggedIn ? (
                           <li>
                             <div className={styles.loginOption}>
                               <button
@@ -129,7 +136,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                                     borderRadius: "50%",
                                   }}
                                   src={
-                                    localStorage.getItem("user_picture") ||
+                                    authUser.picture ||
                                     localStorage.getItem("mentor_picture") ||
                                     "assets/img/icon/no-profile-picture.png"
                                   }

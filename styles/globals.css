@@ -19,9 +19,9 @@ a {
   box-sizing: border-box;
 }
 
-img {
+/* img {
   display: inline;
-}
+} */
 /*  */
 
 .slider-area .hero__caption.hero__caption2,
@@ -34,7 +34,7 @@ img {
   position: absolute;
   background-color: white;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 99;

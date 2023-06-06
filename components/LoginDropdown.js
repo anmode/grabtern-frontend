@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
-import { useState } from "react";
 
 const DropdownCard = ({ isUserLoggedIn }) => {
   const [loginOption, setLoginOption] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleLoginClick = () => {
     setLoginOption(!loginOption);
@@ -26,9 +26,22 @@ const DropdownCard = ({ isUserLoggedIn }) => {
     window.location.reload();
   };
 
+  const handleOutsideClick = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setLoginOption(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <li>
-      <div className={styles.loginOption}>
+      <div className={styles.loginOption} ref={dropdownRef}>
         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
           <button onClick={handleLoginClick} className={styles.loginbutton}>
             <img
@@ -36,7 +49,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                 width: "35px",
                 height: "auto",
                 borderRadius: "50%",
-                alignItems: "center",
+                display: "inline",
               }}
               src={
                 localStorage.getItem("user_picture") ||

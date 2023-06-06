@@ -47,8 +47,6 @@
   font-weight: 600;
 }
 
-
-
 .loginOption {
   display: flex;
   flex-direction: column;
@@ -68,8 +66,6 @@
   padding: 5px;
   font-weight: 600;
 }
-
-
 
 .loginOption button:hover {
   background-color: #9160ec;

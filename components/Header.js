@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
 import { useAuth } from "../context/AuthContext";
+import DropdownCard from "../components/LoginDropdown";
 
 function Header({ navbarBackground }) {
   localStorage.setItem("redirectUrl", window.location.href);
@@ -40,13 +41,6 @@ function Header({ navbarBackground }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleLoginClick = () => {
-    setLoginOption(true);
-    setTimeout(() => {
-      setLoginOption(false);
-    }, 5000);
-  };
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -122,90 +116,10 @@ function Header({ navbarBackground }) {
                             Contact
                           </a>
                         </li>
-
-                        {isUserLoggedIn || isMentorLoggedIn ? (
-                          <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                onClick={handleLoginClick}
-                                className={styles.userName}
-                              >
-                                <img
-                                  style={{
-                                    width: "35px",
-                                    height: "auto",
-                                    borderRadius: "50%",
-                                  }}
-                                  src={
-                                    userData?.user_picture ||
-                                    mentorData?.mentor_picture ||
-                                    "assets/img/icon/no-profile-picture.png"
-                                  }
-                                  alt="not found"
-                                />
-                              </button>
-
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    id="login-buttons"
-                                    style={{ marginTop: "20px" }}
-                                    onClick={() => {
-                                      if (isMentorLoggedIn) {
-                                        window.location.href = `/dashboard`;
-                                      } else {
-                                        window.location.href = `/`;
-                                      }
-                                    }}
-                                  >
-                                    Dashboard
-                                  </button>
-                                  <button
-                                    id="login-buttons"
-                                    onClick={() => {
-                                      if (isMentorLoggedIn) {
-                                        mentorlogout();
-                                      } else {
-                                        userlogout();
-                                      }
-                                    }}
-                                  >
-                                    Logout
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        ) : (
-                          <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                className={styles.loginbutton}
-                                onClick={handleLoginClick}
-                              >
-                                Login
-                              </button>
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    id="login-buttons"
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/userAuth#login" id="loginbtn">
-                                      User
-                                    </a>
-                                  </button>
-                                  <button
-                                    id="login-buttons"
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/mentorLogin">Mentor</a>
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        )}
+                        <DropdownCard
+                          isUserLoggedIn={isUserLoggedIn}
+                          isMentorLoggedIn={isMentorLoggedIn}
+                        />
                       </ul>
                     </nav>
                   </div>

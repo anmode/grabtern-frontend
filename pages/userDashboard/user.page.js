@@ -1,9 +1,9 @@
 import { useState, useEffect, Fragment } from "react";
-import SideBar from "../components/userDashboard/sidebar";
-import TopBar from "../components/userDashboard/topbar";
+import SideBar from "../../components/userDashboard/sidebar";
+import TopBar from "../../components/userDashboard/topbar";
 import { Transition } from "@headlessui/react";
 
-function UserDashboard() {
+function UserDashboard({children}) {
   const [showNav, setShowNav] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -29,7 +29,7 @@ function UserDashboard() {
 
   return (
     <>
-      <TopBar showNav={showNav} setShowNav={setShowNav} />
+      {/* <TopBar showNav={showNav} setShowNav={setShowNav} /> */}
       <Transition
         as={Fragment}
         show={showNav}
@@ -47,7 +47,7 @@ function UserDashboard() {
           showNav && !isMobile ? "pl-56" : ""
         }`}
       >
-        {/* <div className="px-4 md:px-16">{children}</div> */}
+        <div className="px-4 md:px-16">{children}</div>
       </main>
     </>
   );

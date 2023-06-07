@@ -37,7 +37,7 @@ function Section({
           {actionButtonlink && (
             <a
               href={actionButtonlink}
-              className="btn hero-btn animate__animated animate__fadeInLeft"
+              className="btn theme-button-color"
               data-animation="fadeInLeft"
               data-delay="1s"
               tabIndex="0"

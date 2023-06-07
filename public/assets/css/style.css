@@ -32,6 +32,9 @@
 .theme-color {
   color: #c86fff;
 }
+.theme-button-color {
+  background: #845ec2 !important;
+}
 .boxed-btn {
   background: #fff;
   color: #c86fff !important;
@@ -6078,9 +6081,15 @@ del {
   margin-bottom: 10px;
 }
 
+/* mentor page */
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .mentor-page-section .support-wrapper{
     gap:30px !important;
 }
+
 
 @media (min-width: 992px) { 
   .mb-lg-50{

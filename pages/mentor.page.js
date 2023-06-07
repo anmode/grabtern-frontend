@@ -3,7 +3,10 @@ import Header from "../components/Header";
 import Section from "../components/mentorPage/Section";
 import Company from "../components/mentorPage/Company";
 import IconCard from "../components/mentorPage/IconCard";
+import FAQ from "../components/mentorPage/FAQ";
 import Footer from "../components/Footer";
+
+import faq from "./data/faq";
 
 function Mentor() {
   return (
@@ -32,13 +35,19 @@ function Mentor() {
                 <Company imgSrc="/assets/img/company/GSoC.png" name="GSoC" />
               </div>
               <div className="col">
-                <Company imgSrc="/assets/img/company/microsoft.png" name="Microsoft" />
+                <Company
+                  imgSrc="/assets/img/company/microsoft.png"
+                  name="Microsoft"
+                />
               </div>
               <div className="col">
                 <Company imgSrc="/assets/img/company/mlh.png" name="MLH" />
               </div>
               <div className="col">
-                <Company imgSrc="/assets/img/company/hackerRank.png" name="Hacker Rank" />
+                <Company
+                  imgSrc="/assets/img/company/hackerRank.png"
+                  name="Hacker Rank"
+                />
               </div>
             </div>
           </div>
@@ -67,7 +76,7 @@ function Mentor() {
         />
 
         {/* Icons Cards row */}
-        <section className="mb-100">
+        <section className="mb-50">
           <div className="container">
             <div className="section-tittle text-center mb-30">
               <h2>Empower Your Expertise, Earn Your Impact</h2>
@@ -101,6 +110,20 @@ function Mentor() {
                   text="Live sessions on topics you choose to educate about"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mb-100">
+          <div className="container">
+            <div className="section-tittle text-center mb-30">
+              <h2>Frequently Asked Questions</h2>
+            </div>
+            <div>
+              {faq.map((faq) => (
+                <FAQ {...faq} />
+              ))}
             </div>
           </div>
         </section>

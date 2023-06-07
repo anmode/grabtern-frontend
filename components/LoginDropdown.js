@@ -55,7 +55,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
               }}
               src={
                 userData?.user_picture ||
-                mentorData?.mentor_picture||
+                mentorData?.mentor_picture ||
                 "assets/img/icon/no-profile-picture.png"
               }
               alt="not found"

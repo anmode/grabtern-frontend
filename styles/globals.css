@@ -1457,3 +1457,77 @@ textarea {
     margin-top: 10px;
   }
 }
+
+.datePicker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.datePickerDay {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.datePickerDayTime {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.datePickerDay li {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 !important;
+}
+
+.datePickerDay li span {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.datePickerDayTime li {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  border-radius: 0 !important;
+}
+
+.datePickerDay li:hover,
+.datePickerDay li.active {
+  background-color: black;
+  color: white;
+}
+.datePickerDayTime li:hover,
+.datePickerDayTime li.active {
+  background-color: black;
+  color: white;
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-width: 100%;
+}
+
+/* Optional styling for dropdown arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 30px;
+}

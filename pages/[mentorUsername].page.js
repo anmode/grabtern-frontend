@@ -11,6 +11,7 @@ function Index({ mentorDetail }) {
   const [waitTime, setWaitTime] = useState(6);
   const [error, setError] = useState("");
   const router = useRouter();
+  const userName = window.location.href.split("/");
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -275,13 +276,18 @@ function Index({ mentorDetail }) {
                             {session.priceSession}
                           </div>
                         </div>
-                        <DatePicker />
-                        <button
-                          style={{ cursor: "pointer" }}
-                          onClick={() => setModalPopup(true)}
+                        <a
+                          href={`${userName[userName.length - 1]}/bookSession/${
+                            session.sessionName
+                          }`}
                         >
-                          <span>Book Session</span>
-                        </button>
+                          <button
+                            style={{ cursor: "pointer" }}
+                            onClick={() => setModalPopup(true)}
+                          >
+                            <span>Book Session</span>
+                          </button>
+                        </a>
                       </div>
                       {error && <div style={{ color: "red" }}>{error}</div>}
                       {error == "" && modalPopup === true ? (

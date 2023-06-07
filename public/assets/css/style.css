@@ -176,7 +176,7 @@ a:hover {
 a:focus,
 a:hover,
 .portfolio-cat a:hover,
-.footer -menu li a:hover {
+ -menu li a:hover {
   text-decoration: none;
 }
 a,
@@ -1665,7 +1665,7 @@ hr {
   position: absolute;
   top: 50%;
   z-index: 200;
-  left: 0;
+  left: 32%;
   right: 0;
   margin: 0 auto;
   text-align: center;
@@ -2014,22 +2014,7 @@ hr {
     padding-bottom: 0;
   }
 }
-.footer-padding {
-  padding-top: 100px;
-  padding-bottom: 13px;
-}
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .footer-padding {
-    padding-top: 70px;
-    padding-bottom: 0;
-  }
-}
-@media (max-width: 575px) {
-  .footer-padding {
-    padding-top: 70px;
-    padding-bottom: 0;
-  }
-}
+
 @media (max-width: 575px) {
   .section-tittle {
     margin-bottom: 50px;
@@ -3412,7 +3397,9 @@ hr {
     font-size: 12px;
   }
 }
-.courses-area .properties__footer {
+ .courses-area 
+ /* .properties__footer  */
+ {
   margin-bottom: 22px;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
@@ -3424,20 +3411,26 @@ hr {
     padding: 19px 10px 20px 12px;
   }
 }
-.courses-area .properties__footer .restaurant-name p {
+.courses-area 
+/* .properties__footer .restaurant-name  */
+p {
   display: inline-block;
   color: #6e7697;
 }
-.courses-area .properties__footer .restaurant-name p span {
+.courses-area 
+/* .properties__footer .restaurant-name */
+ p span {
   color: #ff7b2e;
   font-size: 12px;
 }
-.courses-area .properties__footer .price span {
+.courses-area 
+/* .properties__footer  */
+.price span {
   cursor: pointer;
   font-weight: 700;
   color: #4255a4;
   font-size: 23px;
-}
+} 
 .courses-area .properties:hover .border-btn2 {
   color: #fff;
   background: #ff9f67;
@@ -3638,6 +3631,7 @@ hr {
     font-size: 15px;
   }
 }
+
 .footer-area .footer-pera p {
   color: #fff;
   padding-right: 52px;
@@ -3740,6 +3734,7 @@ hr {
 .footer-bg {
   background: #4255a4;
 }
+
 .login-body {
   margin: 0;
   padding: 0;
@@ -3807,7 +3802,7 @@ hr {
 }
 .login-form .form-input input[type="submit"] {
   background: linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% );;
-  color: #fff;
+  color: white;
   border: none;
   cursor: pointer;
   text-transform: capitalize;

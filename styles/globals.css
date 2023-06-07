@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -15,12 +19,22 @@ a {
   box-sizing: border-box;
 }
 
+/* img {
+  display: inline;
+} */
+/*  */
+
+.slider-area .hero__caption.hero__caption2,
+.slider-area2 .hero__caption.hero__caption2 {
+  padding-top: 100px;
+}
+/*  */
 .loaderBackground {
   animation: loader 1s 0.8s forwards;
   position: absolute;
   background-color: white;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 99;
@@ -119,9 +133,9 @@ a {
   position: relative;
 }
 
-.properties__footer {
+/* .properties__footer {
   margin-bottom: 0 !important;
-}
+} */
 
 .courseFooter {
   position: absolute;
@@ -189,7 +203,6 @@ a {
   flex-direction: column;
   gap: 7px;
 
-
   right: 50px;
 
   cursor: pointer;
@@ -241,10 +254,10 @@ a {
     display: flex;
   }
   .header-bottom .container-fluid .row div:nth-child(2) {
-    padding: 0;
+    /* padding: 0; */
     position: absolute;
     top: 90px;
-    width: 100% !important;
+    /* width: 100% !important; */
     max-width: 100% !important;
     left: 0;
   }
@@ -256,10 +269,10 @@ a {
     display: block !important;
   }
   .main-menu nav ul {
-    gap: 50px;
-    padding: 50px 35px;
+    gap: 40px;
+    padding: 60px 35px;
     width: 100%;
-    height: 380px;
+    height: 100%;
     background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
     display: flex;
     flex-direction: column;
@@ -274,6 +287,16 @@ a {
     margin-top: -120px;
   }
   .container {
+    padding: 20px;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
     padding: 50px;
     max-width: 100% !important;
     width: 100% !important;
@@ -415,15 +438,15 @@ a {
   .mentorFormRegisration > .container {
     padding-top: 0 !important;
   }
-  .properties__footer .restaurant-name {
+  /* .properties__footer .restaurant-name {
     font-size: 14px !important;
-  }
-  .properties__footer .price span {
+  } */
+  /* .properties__footer .price span {
     font-size: 18px !important;
     position: relative;
     top: -36px;
     margin-left: 20px;
-  }
+  } */
   .courseFooter a {
     padding: 10px;
   }
@@ -761,18 +784,6 @@ textarea {
   text-align: center;
 }
 
-.contactLinks {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.contactLinks i {
-  font-size: 24px;
-  color: grey;
-  cursor: pointer;
-}
-
 .modalPopup {
   transition: all 0.5s ease-in-out;
   position: fixed; /* Stay in place */
@@ -1041,9 +1052,16 @@ textarea {
 }
 .login-optionslist {
   position: absolute;
-  top: 30px !important;
+  top: 40px !important;
   display: flex;
   flex-direction: column !important;
+  gap: 10px;
+  background-color: white;
+  padding: 7px;
+  margin: 5px;
+  border-radius: 10px;
+  right: 1px;
+  width: 100px;
 }
 
 /*Mentor CSS*/
@@ -1151,6 +1169,17 @@ textarea {
 }
 
 @media only screen and (max-width: 800px) {
+  .login-optionslist {
+    position: absolute;
+    top: 40px !important;
+    display: flex;
+    flex-direction: column !important;
+    gap: 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
   .mentor-card {
     flex-direction: column;
     width: 100%;
@@ -1167,8 +1196,8 @@ textarea {
   }
 
   .mentor-card__photo {
-    width: 15vw;
-    height: 15vw;
+    width: 25vw;
+    height: 25vw;
     margin: auto;
   }
 
@@ -1239,8 +1268,6 @@ textarea {
   display: block;
   margin-bottom: 10px;
 }
-
-
 
 /* error message */
 .forgot-password-form div[style="color:red"] {

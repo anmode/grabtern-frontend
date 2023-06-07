@@ -32,20 +32,20 @@ function Mentor() {
             </p>
             <div className="row pb-50">
               <div className="col">
-                <Company imgSrc="/assets/img/company/GSoC.png" name="GSoC" />
+                <Company imgSrc="/assets/img/company/GSoC.svg" name="GSoC" />
               </div>
               <div className="col">
                 <Company
-                  imgSrc="/assets/img/company/microsoft.png"
+                  imgSrc="/assets/img/company/microsoft.svg"
                   name="Microsoft"
                 />
               </div>
               <div className="col">
-                <Company imgSrc="/assets/img/company/mlh.png" name="MLH" />
+                <Company imgSrc="/assets/img/company/mlh.svg" name="MLH" />
               </div>
               <div className="col">
                 <Company
-                  imgSrc="/assets/img/company/hackerRank.png"
+                  imgSrc="/assets/img/company/hackerRank.svg"
                   name="Hacker Rank"
                 />
               </div>

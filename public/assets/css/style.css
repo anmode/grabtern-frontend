@@ -2483,6 +2483,13 @@ hr {
   margin-bottom: 30px;
   display: block;
 }
+.slider-error{
+  background-image: url(../img/hero/download.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+}
 @media (max-width: 575px) {
   .slider-area .hero__caption span,
   .slider-area2 .hero__caption span {

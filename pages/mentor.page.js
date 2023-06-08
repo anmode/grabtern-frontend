@@ -121,8 +121,8 @@ function Mentor() {
               <h2>Frequently Asked Questions</h2>
             </div>
             <div>
-              {faq.map((faq) => (
-                <FAQ {...faq} />
+              {faq.map((faq, index) => (
+                <FAQ {...faq} key={index}/>
               ))}
             </div>
           </div>

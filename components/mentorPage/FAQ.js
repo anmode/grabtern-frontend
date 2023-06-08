@@ -10,9 +10,9 @@ function FAQ({ ques, ans }) {
         <p className="h2 col-10 col-sm-11">{ques}</p>
         <div className="col-1" >
           {open ? (
-            <i class="fas fa-chevron-up"  />
+            <i className="fas fa-chevron-up"  />
           ) : (
-            <i class="fas fa-chevron-down"  />
+            <i className="fas fa-chevron-down"  />
           )}
         </div>
       </div>

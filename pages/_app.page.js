@@ -57,11 +57,13 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Internships | Education</title>
         <meta name="title" content="GrabTern" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
-
+        <meta name="language" content="English" />
+        <link rel="icon" href="/whitelogo.png" />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link
@@ -91,11 +93,20 @@ function MyApp({ Component, pageProps }) {
         <meta property="twitter:title" content="GrabTern" />
         <meta
           property="twitter:description"
-          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+          content="With GrabTern you can easily get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
         <meta
           property="twitter:image"
           content="https://grabtern.com/grabtern_meta_img.png"
+        />
+        <meta name="twitter:site" content="@grabtern_twitter_username" />
+        <meta
+          name="linkedin:profile"
+          content="https://www.linkedin.com/company/grabtern/"
+        />
+        <meta
+          property="instagram:username"
+          content="https://www.instagram.com/grabtern.guide/"
         />
         <script
           type="application/ld+json"

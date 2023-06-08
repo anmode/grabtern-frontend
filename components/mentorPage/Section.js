@@ -45,7 +45,7 @@ function Section({
         </div>
 
         {imageSrc && (
-          <div className="right-content1 w-75">
+          <div className="right-content1 w-100 ">
             <div className="right-img">
               <img src={imageSrc} alt={altText} />
             </div>

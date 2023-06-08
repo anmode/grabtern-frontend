@@ -69,15 +69,15 @@ function Mentor() {
         />
 
         <Section
-          className="flex-column-reverse flex-lg-row mb-0 mb-lg-50"
+          className="flex-column-reverse flex-lg-row mb-50 mb-lg-100"
           headingText="Build your Community and Monetize💰 your XP"
           bodyText="Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact. "
           imageSrc="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
         />
 
         {/* Icons Cards row */}
-        <section className="mb-50">
-          <div className="container">
+        <section className="mb-100">
+          <div className="container py-0">
             <div className="section-tittle text-center mb-30">
               <h2>Empower Your Expertise, Earn Your Impact</h2>
             </div>
@@ -116,7 +116,7 @@ function Mentor() {
 
         {/* FAQ */}
         <section className="mb-100">
-          <div className="container">
+          <div className="container py-0">
             <div className="section-tittle text-center mb-30">
               <h2>Frequently Asked Questions</h2>
             </div>

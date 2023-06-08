@@ -28,7 +28,7 @@ function Mentor() {
         <section className="testimonial-bg mb-50">
           <div className="container py-0">
             <p className="h1 text-muted mb-30 text-center font-weight-bold pt-50">
-              Our Top Mentors also work at
+              Our Top Mentors Interned at
             </p>
             <div className="row pb-50">
               <div className="col">

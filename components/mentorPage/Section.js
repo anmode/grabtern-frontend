@@ -18,10 +18,10 @@ function Section({
           <div className="section-tittle section-tittle2 mb-55">
             <div className="front-text">
               {headingText && <h2> {headingText} </h2>}
-              {bodyText && <p className = {bodyTextClass} > {bodyText} </p>}
+              {bodyText && <p className={bodyTextClass}> {bodyText} </p>}
             </div>
           </div>
-          
+
           {bodyList &&
             bodyList.map((item) => (
               <div className="single-features">
@@ -37,11 +37,7 @@ function Section({
           {actionButtonlink && (
             <a
               href={actionButtonlink}
-              className="btn theme-button-color"
-              data-animation="fadeInLeft"
-              data-delay="1s"
-              tabIndex="0"
-              style={{ animationDelay: "1s" }}
+              className="mentor-section-btn theme-button-color"
             >
               {actionButtonText}
             </a>

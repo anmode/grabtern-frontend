@@ -303,7 +303,7 @@ hr {
   color: #fff;
   background: #ff3500;
 }
-.btn {
+.btn, .mentor-section-btn {
   background: #ff9f67;
   font-family: "Josefin Sans", sans-serif;
   text-transform: capitalize;
@@ -371,6 +371,9 @@ hr {
 .btn.btn3:hover::before {
   background: #ff9f67;
   border: 1px solid transparent;
+}
+.mentor-section-btn:hover{
+  background-color: #6e4fa0 !important;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .btn.btn3 {

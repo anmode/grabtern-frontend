@@ -3,10 +3,11 @@ import Header from "../components/Header";
 import Section from "../components/mentorPage/Section";
 import Company from "../components/mentorPage/Company";
 import IconCard from "../components/mentorPage/IconCard";
-import FAQ from "../components/mentorPage/FAQ";
+import FAQList from "../components/mentorPage/FAQList";
 import Footer from "../components/Footer";
 
 import faq from "./data/faq";
+
 
 function Mentor() {
   return (
@@ -120,11 +121,7 @@ function Mentor() {
             <div className="section-tittle text-center mb-30">
               <h2>Frequently Asked Questions</h2>
             </div>
-            <div>
-              {faq.map((faq, index) => (
-                <FAQ {...faq} key={index}/>
-              ))}
-            </div>
+            <FAQList faq = {faq}/>
           </div>
         </section>
       </main>

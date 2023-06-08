@@ -75,8 +75,6 @@ a {
   }
   100% {
     opacity: 0;
-    /* display: none !important;
-    visibility: hidden !important; */
   }
 }
 .owl-nav button:first-child {
@@ -704,10 +702,6 @@ textarea {
   color: unset;
 }
 
-/* .findMentors {
-  padding: 100px 30px;
-} */
-
 .mentorLists {
   display: flex;
   flex-wrap: wrap;
@@ -757,10 +751,6 @@ textarea {
     text-align: center;
     font-size: 90%;
   }
-
-  /* .findMentors {
-    padding: 100px 0 !important;
-  } */
 
   .mentorCard p,
   .mentorCard h3 {
@@ -1215,12 +1205,6 @@ textarea {
     height: 55vh;
   }
 }
-/* @media only screen and (max-width: 1080px) and (min-width: 820px) {
-  .mentor-card {
-    width: 45vw;
-    height: 55vh;
-  }
-} */
 
 /* Terms and condition */
 .TNCcontainer {

@@ -42,7 +42,8 @@
 
 .loginOption button {
   background: none;
-  width: fit-content;
+  width: 100%;
+  text-align: left;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -64,9 +65,16 @@
   color: black;
   border: none;
   cursor: pointer;
-  border-radius: 7px;
-  padding: 5px;
+  padding: 10px;
   font-weight: 600;
+}
+
+.loginOption button:first-child:hover{
+  border-radius: 7px 7px 0px 0px;
+}
+
+.loginOption button:nth-child(2):hover{
+  border-radius: 0px 0px 7px 7px;
 }
 
 .loginOption button:hover {

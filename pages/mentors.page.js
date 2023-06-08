@@ -22,7 +22,7 @@ function Mentors({ mentorsData }) {
         </div> */}
         <section className="findMentors">
           <div className="container">
-            <h1>Find All mentors here's</h1>
+            <h1>Find All Mentors Here</h1>
             {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (

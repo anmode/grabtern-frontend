@@ -10,6 +10,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;

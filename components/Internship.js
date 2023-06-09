@@ -17,10 +17,10 @@ function Internship({
       ? `${internshipDescription.substring(0, 120)}…`
       : internshipDescription;
 
-      const handleInternshipLinkClick = (e) => {
-        e.preventDefault();
-        window.open(internshipLink, "_blank");
-      };
+  const handleInternshipLinkClick = (e) => {
+    e.preventDefault();
+    window.open(internshipLink, "_blank");
+  };
   return (
     <div
       className="properties pb-20 item"
@@ -28,7 +28,7 @@ function Internship({
     >
       <div className="properties__card">
         <div className="properties__img overlay1">
-          <a href="#" onClick={handleInternshipLinkClick} >
+          <a href="#" onClick={handleInternshipLinkClick}>
             <Image
               width={360}
               height={219}
@@ -41,7 +41,7 @@ function Internship({
           <div className="courseInfo">
             <p>{internshipCategories}</p>
             <h3>
-              <a href={internshipLink} onClick={handleInternshipLinkClick} >
+              <a href={internshipLink} onClick={handleInternshipLinkClick}>
                 {internshipTitle}
               </a>
             </h3>

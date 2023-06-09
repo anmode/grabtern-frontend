@@ -165,7 +165,7 @@ function Login({ handleLogPageToggle }) {
             <div style={{ color: "green" }}>Please register first.</div>
           )}
           <Link
-            href="/forgotpass"
+            href="/forgotpass?user=user"
             className="tw-font-medium tw-mt-8 tw-text-right hover:tw-text-gray-400 tw-text-blue-700"
           >
             Forget Password?

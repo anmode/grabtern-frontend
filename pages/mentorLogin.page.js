@@ -142,7 +142,7 @@ function mentorLogin() {
             {error && <div style={{ color: "red" }}>{error}</div>}
             <Link
               href="/forgotpass"
-              className="forget align-self-end"
+              className="forget align-self-start"
               style={{ margin: 0 }}
             >
               Forgot Password?

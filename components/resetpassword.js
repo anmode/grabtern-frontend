@@ -3,7 +3,8 @@ import axios from "axios";
 import router from "next/router";
 
 const ResetPassword = (props) => {
-  const {user} = router.query;
+  const { entity } = router.query;
+  const entityTypeParam = entity === "user" ? "user" : "mentor";
   const [isLoading, setIsLoading] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,11 +23,12 @@ const ResetPassword = (props) => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/resetPassword?users=user`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/resetPassword`,
         {
           resetToken: props.resetToken,
           newPassword: newPassword,
           confirmPassword: confirmPassword,
+          entityType: entityTypeParam,
         }
       );
       setIsLoading(false);

@@ -161,7 +161,7 @@ function mentorLogin() {
                 <a href="/mentorRegister">Sign Up</a>
               </p>
               <p>
-                <a href="/restMentorPassword">Forgot password?</a>
+                <a href="/forgotpass?entity=mentor">Forgot password?</a>
               </p>
             </form>
           </div>

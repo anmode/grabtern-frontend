@@ -2,7 +2,7 @@ import React from "react";
 
 function FAQ({ ques, ans, open, setOpen, index }) {
   const toggleOpen = () => {
-    (open == index) ? setOpen(-1) : setOpen(index);
+    open == index ? setOpen(-1) : setOpen(index);
   };
 
   return (

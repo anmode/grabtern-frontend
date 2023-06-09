@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 
 import faq from "./data/faq";
 
-
 function Mentor() {
   return (
     <>
@@ -121,7 +120,7 @@ function Mentor() {
             <div className="section-tittle text-center mb-30">
               <h2>Frequently Asked Questions</h2>
             </div>
-            <FAQList faq = {faq}/>
+            <FAQList faq={faq} />
           </div>
         </section>
       </main>

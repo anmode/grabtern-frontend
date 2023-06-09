@@ -12,14 +12,9 @@ export default function Document() {
         ></script>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <title>Internships | Education</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="shortcut icon"
-          type="image/x-icon"
-          href="/assets/img/favicon.ico"
-        />
+
+        {/* Favicon */}
+        <link rel="shortcut icon" type="image/x-icon" href="/whitelogo.png" />
 
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
@@ -35,7 +30,6 @@ export default function Document() {
         <link rel="stylesheet" href="/assets/css/slick.css" />
         <link rel="stylesheet" href="/assets/css/nice-select.css" />
         <link rel="stylesheet" href="/assets/css/style.css" />
-
         <script
           async
           src="https://kit.fontawesome.com/c26b883059.js"

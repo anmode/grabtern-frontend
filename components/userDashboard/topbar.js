@@ -9,15 +9,16 @@ import {
 import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import Link from "next/link";
+import styles from "../../styles/LoginDropdown.module.css";
 
 export default function TopBar({ showNav, setShowNav }) {
   return (
     <div
-      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
+      className={`fixed w-full h-16 flex tw-flex-row !important justify-between items-center transition-all duration-[400ms] ${
         showNav ? "pl-56" : ""
       }`}
     >
-      <div className="pl-4 md:pl-16">
+      <div className="pl-4 md:pl-16 tw-w-11">
         <Bars3CenterLeftIcon
           className="h-8 w-8 text-gray-700 cursor-pointer"
           onClick={() => setShowNav(!showNav)}
@@ -107,16 +108,34 @@ export default function TopBar({ showNav, setShowNav }) {
           <div>
             <Menu.Button className="inline-flex w-full justify-center items-center">
               <picture>
-                <img
+                {/* <img
                   src="/man-smiling.jpg"
                   className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
                   alt="profile picture"
-                />
+                /> */}
+                <div className="mx-4"
+                                // onClick={handleLoginClick}
+                                // className={styles.userName}
+                              >
+                                <img
+                                  style={{
+                                    width: "35px",
+                                    height: "auto",
+                                    borderRadius: "50%",
+                                  }}
+                                  src={
+                                    localStorage.getItem("user_picture") ||
+                                    localStorage.getItem("mentor_picture") ||
+                                    "assets/img/icon/no-profile-picture.png"
+                                  }
+                                  alt="not found"
+                                />
+                              </div>
               </picture>
               <span className="hidden md:block font-medium text-gray-700">
-                Rettson
+                username
               </span>
-              <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" />
+              <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700 tw-w-8" />
             </Menu.Button>
           </div>
           <Transition

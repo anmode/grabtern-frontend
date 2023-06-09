@@ -29,7 +29,8 @@ function UserDashboard({children}) {
 
   return (
     <>
-      {/* <TopBar showNav={showNav} setShowNav={setShowNav} /> */}
+    <div >
+      
       <Transition
         as={Fragment}
         show={showNav}
@@ -41,14 +42,20 @@ function UserDashboard({children}) {
         leaveTo="-translate-x-full"
       >
         <SideBar showNav={showNav} />
+        
       </Transition>
+      </div>
       <main
         className={`pt-16 transition-all duration-[400ms] ${
           showNav && !isMobile ? "pl-56" : ""
         }`}
       >
+        <div className="tw-flex tw-flex-row">
+        <TopBar showNav={showNav} setShowNav={setShowNav} />
         <div className="px-4 md:px-16">{children}</div>
+        </div>
       </main>
+     
     </>
   );
 }

@@ -7,21 +7,22 @@ const SideBar = forwardRef(({ showNav }, ref) => {
   const router = useRouter();
 
   return (
-    <div ref={ref} className="fixed w-56 h-full bg-white shadow-sm">
-      <div className="flex justify-center mt-6 mb-14">
+    <div ref={ref} className="fixed w-56 h-full  shadow-sm">
+      <div className="flex justify-center tw-py-5 tw-w-60 tw-bg-gray-300 mb-14 tw-flex-row">
         <picture>
           <img
-            className="w-32 h-auto"
-            src="/ferox-transparent.png"
+            className="tw-w-40 tw-py-4 tw-my-4 tw-mx-5 h-auto "
+            src="/_next/image?url=%2Fwhitelogo.png&amp;w=256&amp;q=75" alt="grabtern logo"
             alt="company logo"
           />
         </picture>
+        
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col  tw-w-60 tw-min-h-screen tw-bg-slate-400 py-4">
         <Link href="/">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors tw-w-11 ${
               router.pathname == "/"
                 ? "bg-orange-100 text-orange-500"
                 : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
@@ -37,7 +38,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/account">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors tw-w-12 ${
               router.pathname == "/account"
                 ? "bg-orange-100 text-orange-500"
                 : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
@@ -53,7 +54,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/billing">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors tw-w-12 ${
               router.pathname == "/billing"
                 ? "bg-orange-100 text-orange-500"
                 : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"

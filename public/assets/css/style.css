@@ -32,6 +32,9 @@
 .theme-color {
   color: #c86fff;
 }
+.theme-button-color {
+  background: #845ec2 !important;
+}
 .boxed-btn {
   background: #fff;
   color: #c86fff !important;
@@ -300,7 +303,7 @@ hr {
   color: #fff;
   background: #ff3500;
 }
-.btn {
+.btn, .mentor-section-btn {
   background: #ff9f67;
   font-family: "Josefin Sans", sans-serif;
   text-transform: capitalize;
@@ -368,6 +371,9 @@ hr {
 .btn.btn3:hover::before {
   background: #ff9f67;
   border: 1px solid transparent;
+}
+.mentor-section-btn:hover{
+  background-color: #6e4fa0 !important;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .btn.btn3 {
@@ -2685,7 +2691,7 @@ hr {
     padding-left: 30px;
   }
 }
-.about-area1 .support-wrapper .left-content1 .about-icon {
+.about-area1 .support-wrapper .left-content1 .about-icon, .bg-icon {
   width: 80px;
   height: 80px;
   border-radius: 50px;
@@ -4984,7 +4990,7 @@ p {
   background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c054ff', endColorstr='#5274ff',GradientType=0 );
 }
-.about-area1 .support-wrapper .left-content1 .about-icon {
+.about-area1 .support-wrapper .left-content1 .about-icon, .bg-icon {
   background: #eae2fe;
   background: -moz-linear-gradient(
     top,
@@ -5970,4 +5976,26 @@ del {
 }
 .switch-wrap {
   margin-bottom: 10px;
+}
+
+/* mentor page */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mentor-page-section .support-wrapper{
+    gap:30px !important;
+}
+
+
+@media (min-width: 992px) { 
+  .mb-lg-50{
+    margin-bottom: 50px;
+  }
+  .mb-lg-100 {
+    margin-bottom: 100px;
+  }
+  .mentor-page-section .support-wrapper{
+    gap: 80px !important;
+  }
 }

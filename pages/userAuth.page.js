@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Header from "../components/Header";
 import Login from "../components/user/login";
 import Register from "../components/user/register";
+import Head from "next/head";
 
 function UserAuthPage() {
   const [logpagestate, setLogPageState] = useState(true);
@@ -46,6 +47,9 @@ function UserAuthPage() {
 
   return (
     <>
+      <Head>
+        <title>GrabTern | Users Login Here</title>
+      </Head>
       <Header navbarBackground={true} />
       <main className="login-body d-flex flex-row justify-content-between">
         {logpagestate ? (

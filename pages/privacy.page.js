@@ -1,10 +1,16 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Header from "../components/Header";
+import Head from "next/head";
+
+
 const Footer = dynamic(() => import("../components/Footer"));
 function privacy() {
   return (
     <>
+      <Head>
+        <title>GrabTern | Privacy Policy</title>
+      </Head>
       <Header navbarBackground={true} />
       <div className="TNCcontainer">
         <div className="front">

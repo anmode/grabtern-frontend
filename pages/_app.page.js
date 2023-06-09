@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Internships | Education</title>
+        <title>GrabTern | Grab Your Internships</title>
         <meta name="title" content="GrabTern" />
         <meta
           name="description"

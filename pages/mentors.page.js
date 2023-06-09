@@ -5,14 +5,19 @@ import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+import Head from "next/head";
+
 
 function Mentors({ mentorsData }) {
   return (
     <>
-      <Header />
-      <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
-      <main>
-        {/* <div className="sidebody" style="height:69vh;">
+        <Head>
+        <title>GrabTern | Find Your Mentors</title>
+        </Head>
+        <Header />
+        <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
+        <main>
+          {/* <div className="sidebody" style="height:69vh;">
           <div className="searchbar">
             <input placeholder="Search...." id="searchbar" name="searchbar" type="text">
 
@@ -20,24 +25,24 @@ function Mentors({ mentorsData }) {
             <i className="fa-soli fa-magnifying-glass"></i>
           </div>
         </div> */}
-        <section className="findMentors">
-          <div className="container">
-            <h1>Find All mentors here's</h1>
-            {mentorsData.length === 0 ? (
-              <p>There is no mentor right now...</p>
-            ) : (
-              <div className="mentorLists">
-                {mentorsData.map((mentor) => (
-                  <a href={`/${mentor.username}`} key={mentor._id}>
-                    {<MentorCard mentor={mentor} />}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
-      <Footer />
+          <section className="findMentors">
+            <div className="container">
+              <h1>Find All mentors here's</h1>
+              {mentorsData.length === 0 ? (
+                <p>There is no mentor right now...</p>
+              ) : (
+                <div className="mentorLists">
+                  {mentorsData.map((mentor) => (
+                    <a href={`/${mentor.username}`} key={mentor._id}>
+                      {<MentorCard mentor={mentor} />}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        </main>
+        <Footer />
     </>
   );
 }

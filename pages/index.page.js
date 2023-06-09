@@ -291,6 +291,9 @@ export default function Home() {
                       imageAlt={profile.imageAlt}
                       profileName={profile.profileName}
                       profileDescription={profile.profileDescription}
+                      profileLinkedIn={profile.profileLinkedIn}
+                      profileGithub={profile.profileGithub}
+                      profileTwitter={profile.profileTwitter}
                     />
                   ))}
                 </OwlCarousel>

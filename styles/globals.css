@@ -1138,6 +1138,19 @@ textarea {
   color: grey;
 }
 
+.member-card__social {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.member-card__social a:hover {
+  color: grey;
+}
+
+.member {
+  margin: 0 1rem;
+}
 .mentor-card__linkedin,
 .mentor-card__rating,
 .mentor-card__booked-session {

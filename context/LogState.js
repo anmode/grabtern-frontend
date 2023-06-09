@@ -2,10 +2,10 @@ import LogContext from "./LogContext";
 import { useState } from "react";
 
 const LogState = (props) => {
-  const [logpagestate, setlogpagestate] = useState(true);
+  const [logPageState, setLogPageState] = useState(true);
 
   return (
-    <LogContext.Provider value={{ logpagestate, setlogpagestate }}>
+    <LogContext.Provider value={{ logPageState, setLogPageState }}>
       {props.children}
     </LogContext.Provider>
   );

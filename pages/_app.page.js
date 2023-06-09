@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Internships | Education</title>
+        <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
           content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
         <meta name="language" content="English" />
-        <link rel="icon" href="/whitelogo.png" />
+        <link rel="icon" href="/assets/img/favicon1.ico" />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link

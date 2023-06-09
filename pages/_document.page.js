@@ -5,11 +5,17 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        {/* no longer needed since handling error directly in mentor form */}
+        {/* <link
+          rel="preload"
+          href="https://accounts.google.com/gsi/client"
+          as="script"
+        />
         <script
           src="https://accounts.google.com/gsi/client"
           async
           defer
-        ></script>
+        ></script> */}
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <title>Internships | Education</title>

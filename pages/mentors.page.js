@@ -25,24 +25,24 @@ function Mentors({ mentorsData }) {
             <i className="fa-soli fa-magnifying-glass"></i>
           </div>
         </div> */}
-          <section className="findMentors">
-            <div className="container">
-              <h1>Find All mentors here's</h1>
-              {mentorsData.length === 0 ? (
-                <p>There is no mentor right now...</p>
-              ) : (
-                <div className="mentorLists">
-                  {mentorsData.map((mentor) => (
-                    <a href={`/${mentor.username}`} key={mentor._id}>
-                      {<MentorCard mentor={mentor} />}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-        </main>
-        <Footer />
+        <section className="findMentors">
+          <div className="container">
+            <h1>Find All Mentors Here</h1>
+            {mentorsData.length === 0 ? (
+              <p>There is no mentor right now...</p>
+            ) : (
+              <div className="mentorLists">
+                {mentorsData.map((mentor) => (
+                  <a href={`/${mentor.username}`} key={mentor._id}>
+                    {<MentorCard mentor={mentor} />}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+      <Footer />
     </>
   );
 }

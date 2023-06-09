@@ -11,8 +11,14 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+  defaults:
+    run:
+      working-directory: /home/muskandn/Documents/icons
+      shell: bash -eux {0}
+      node-version: 16.x
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.4.3
       - name: Install Dependencies
         run: npm install
       - name: Build Project

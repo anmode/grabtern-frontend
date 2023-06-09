@@ -8,6 +8,7 @@ import hackathonsData from "./data/hackathonsData";
 import Hackathon from "../components/Hackathons";
 import teamsData from "./data/teamsData";
 import TeamProfile from "../components/TeamProfile";
+import Testimonial from "../components/Testimonial.js";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
@@ -242,7 +243,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* <section className='testimonials'>
+        <section className='testimonials'>
           <h2>Testimonials</h2>
           <p>Here is what client say to us!</p>
           <ul className='testimonialsList'>
@@ -258,12 +259,18 @@ export default function Home() {
               className="owl-carousel owl-theme"
             >
               {testiomialsData.map((testimonial, index) => (
-                <Testimonial key={index} testimonialUserName={testimonial.testimonialUserName} testimonialUserHeadline={testimonial.testimonialUserHeadline} testimonialUserImage={testimonial.testimonialUserImage} testimonialRate={testimonial.testimonialRate} testimonialDescription={testimonial.testimonialDescription} />
+                <Testimonial 
+                key={index} 
+                testimonialUserName={testimonial.testimonialUserName} 
+                testimonialUserHeadline={testimonial.testimonialUserHeadline} 
+                testimonialUserImage={testimonial.testimonialUserImage} 
+                testimonialRate={testimonial.testimonialRate} 
+                testimonialDescription={testimonial.testimonialDescription} />
               ))}
 
             </OwlCarousel>) : null}
           </ul>
-        </section> */}
+        </section>
         <section className="team-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">

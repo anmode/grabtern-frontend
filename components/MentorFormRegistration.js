@@ -98,6 +98,27 @@ export default function MentorForm() {
   }
 
   useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      // Code that depends on the Google script
+      // For example, you can access the `google` object here
+      google.accounts.id.initialize({
+        client_id:
+          "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+        callback: handleCallbackResponse,
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("googleSignInButton"),
+        { theme: "outline", size: "large" }
+      );
+      google.accounts.id.prompt();
+    };
+    document.head.appendChild(script);
+
     setInterval(() => {
       if (typeof window !== "undefined") {
         if (document.querySelector("#credential_picker_container") !== null) {
@@ -106,20 +127,6 @@ export default function MentorForm() {
       }
     }, 1300);
 
-    google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
-    );
-    google.accounts.id.prompt();
-  }, []);
-
-  useEffect(() => {
     if (modalPopup === true && waitTime !== 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
@@ -128,8 +135,7 @@ export default function MentorForm() {
     if (waitTime === 0) {
       router.push("/");
     }
-  });
-
+  }, [modalPopup, waitTime, router]);
   // const handleFileChange = e => {
   //   setFormData({ ...formData, resume: e.target.files[0] });
   // };

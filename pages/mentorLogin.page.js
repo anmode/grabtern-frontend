@@ -90,11 +90,7 @@ function mentorLogin() {
       </Head>
       <Header navbarBackground={true} />
       <main className="login-body">
-        <form
-          className="form-default"
-          action="login-bg.mp4"
-          onSubmit={handleSubmit}
-        >
+        <form className="form-default" onSubmit={handleSubmit}>
           <div className="login-form d-flex flex-column">
             <div className="logout-login">
               <a href="/index.html">

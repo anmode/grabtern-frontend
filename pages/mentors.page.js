@@ -5,10 +5,14 @@ import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+import Head from "next/head";
 
 function Mentors({ mentorsData }) {
   return (
     <>
+      <Head>
+        <title>GrabTern | Find Your Mentors</title>
+      </Head>
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
@@ -22,7 +26,7 @@ function Mentors({ mentorsData }) {
         </div> */}
         <section className="findMentors">
           <div className="container">
-            <h1>Find All mentors here's</h1>
+            <h1>Find All Mentors Here</h1>
             {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (

@@ -1,0 +1,120 @@
+.loginbody {
+  margin: 0;
+  margin-top: 180px;
+  padding: 0;
+  width: 100%;
+}
+.loginform {
+  margin: 130px auto 5px auto;
+  width: 480px;
+  padding: 90px 45px 12px 45px;
+  color: whitesmoke;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: min-content;
+}
+@media (max-width: 575px) {
+  .loginform {
+    width: 380px;
+    padding: 110px 40px 15px 40px;
+    margin: 100px auto 0 auto;
+  }
+}
+.image {
+  width: 100px;
+  height: 95px;
+  position: absolute;
+  top: 130px;
+  left: calc(50% - 50px);
+  margin: 0 auto;
+  border: 15px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.image img {
+  width: 69px;
+  height: 60px;
+  margin-top: 8px;
+}
+.loginform h2 {
+  color: #000;
+  font-size: 30px;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.loginform .forminput {
+  position: relative;
+  margin: 2vh 0;
+}
+.loginform .forminput label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+.loginform .forminput input {
+  outline: none;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: transparent;
+  font-size: 18px;
+  border: none;
+  color: gray;
+  border-bottom: 1px solid gray;
+}
+.loginform .forminput input::placeholder {
+  color: gray;
+}
+.loginform .forminput input[type="submit"] {
+  background: linear-gradient(
+    to top,
+    rgb(83, 116, 255) 0%,
+    rgb(127, 102, 255) 40%,
+    rgb(187, 85, 255) 95%,
+    rgb(192, 84, 255) 100%
+  );
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  line-height: 1;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+.loginform .forminput input[type="submit"]:hover {
+  background: #000;
+  background: #a35cff;
+}
+.loginform .forget {
+  display: block;
+  margin-top: 20px;
+  color: #656eff;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+.loginform .forget:hover {
+  color: gray;
+}
+.loginform .registration {
+  display: block;
+
+  color: #656eff;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+.link-div {
+  justify-content: center;
+  align-items: center;
+}
+.loginform .registration:hover {
+  color: gray;
+}

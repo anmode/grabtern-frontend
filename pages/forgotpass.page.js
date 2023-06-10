@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import Head from "next/head";
+
 
 function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +37,9 @@ function ForgotPassword() {
 
   return (
     <>
+      <Head>
+        <title>GrabTern | Frogot Password</title>
+      </Head>
       <Header navbarBackground={true} />
       <main className="forgot-password-body">
         <form className="login-form" onSubmit={handleSubmit}>

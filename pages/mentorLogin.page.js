@@ -7,6 +7,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import styles from "../styles/MentorLogin.module.css";
 import Link from "next/link";
+import Head from "next/head";
 
 function mentorLogin() {
   const router = useRouter();
@@ -84,6 +85,9 @@ function mentorLogin() {
 
   return (
     <>
+      <Head>
+        <title>GrabTern | Mentors Login Here</title>
+      </Head>
       <Header navbarBackground={true} />
       <main className="login-body">
         <form

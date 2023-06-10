@@ -5,6 +5,7 @@ import { BreakpointProvider } from "react-socks";
 import $ from "jquery";
 import Head from "next/head";
 import Script from "next/script";
+import LogState from "../context/LogState";
 function addProductJsonLd() {
   return {
     __html: `{
@@ -54,13 +55,15 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Internships | Education</title>
+        <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
-
+        <meta name="language" content="English" />
+        <link rel="icon" href="/assets/img/favicon1.ico" />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link
@@ -90,11 +93,20 @@ function MyApp({ Component, pageProps }) {
         <meta property="twitter:title" content="GrabTern" />
         <meta
           property="twitter:description"
-          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+          content="With GrabTern you can easily get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
         <meta
           property="twitter:image"
           content="https://grabtern.com/grabtern_meta_img.png"
+        />
+        <meta name="twitter:site" content="@grabtern_twitter_username" />
+        <meta
+          name="linkedin:profile"
+          content="https://www.linkedin.com/company/grabtern/"
+        />
+        <meta
+          property="instagram:username"
+          content="https://www.instagram.com/grabtern.guide/"
         />
         <script
           type="application/ld+json"
@@ -107,7 +119,7 @@ function MyApp({ Component, pageProps }) {
       <div className="loaderBackground"></div>
       <div id="preloader-active" style={{ transition: "all 0.5s" }}>
         <div className="preloader d-flex align-items-center justify-content-center">
-          <div className="preloader-inner position-relative">
+          <div className="tw-flex tw-items-center tw-justify-center position-relative">
             <div className="preloader-circle"></div>
             <div className="preloader-img pere-text">
               <img src="/assets/img/logo/loder.png" alt="" />
@@ -116,7 +128,9 @@ function MyApp({ Component, pageProps }) {
         </div>
       </div>
       <BreakpointProvider>
-        <Component {...pageProps} />
+        <LogState>
+          <Component {...pageProps} />
+        </LogState>
       </BreakpointProvider>
     </>
   );

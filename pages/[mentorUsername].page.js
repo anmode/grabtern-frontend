@@ -355,7 +355,7 @@ function Index({ mentorDetail }) {
                               Thank you Our team Will contacting you, check your
                               inbox.
                             </p>
-                            <img src="/iconMentorRegistrationPopup.jpg" />
+                            <img src="/iconMentorRegistrationPopup.webp" />
                             <p>Redirecting you to home in {waitTime} second</p>
                           </div>
                         </div>

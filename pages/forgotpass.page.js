@@ -46,7 +46,7 @@ function ForgotPassword() {
           <div className="forgot-password-form">
             <div className="logout-login">
               <a href="index.html">
-                <img src="assets/img/logo/loder.png" alt="" />
+                <img src="assets/img/logo/loder.webp" alt="" />
               </a>
             </div>
             <h2>Forgot Password</h2>

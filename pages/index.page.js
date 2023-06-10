@@ -192,11 +192,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="about-area3 fix">
+        <section className="about-area3 fix tw-bg-primary-10 tw-py-12 md:tw-py-20">
           <div className="support-wrapper align-items-center">
             <div className="right-content3">
-              <div className="right-img">
-                <img src="/assets/img/gallery/mentors.avif" alt="about" />
+              <div className="right-img tw-mx-auto tw-w-10/12 md:tw-w-9/12">
+                <img src="/assets/img/gallery/mentorSection.svg" alt="about" />
               </div>
             </div>
             <div className="left-content3">

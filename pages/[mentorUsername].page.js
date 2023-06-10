@@ -330,7 +330,17 @@ function Index({ mentorDetail }) {
                                 }}
                               >
                                 {isLoading == true ? (
-                                  <img
+                                  // <img
+                                  //   style={{
+                                  //     width: "25px",
+                                  //     height: "25px",
+                                  //     border: "none",
+                                  //     margin: "0 22px",
+                                  //   }}
+                                  //   src="/assets/img/gif/Spinner.gif"
+                                  //   alt="loading..."
+                                  // />
+                                  <Image
                                     style={{
                                       width: "25px",
                                       height: "25px",
@@ -339,6 +349,8 @@ function Index({ mentorDetail }) {
                                     }}
                                     src="/assets/img/gif/Spinner.gif"
                                     alt="loading..."
+                                    width={25}
+                                    height={25}
                                   />
                                 ) : (
                                   <span>Confirm</span>

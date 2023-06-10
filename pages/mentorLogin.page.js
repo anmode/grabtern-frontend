@@ -5,6 +5,8 @@ const Footer = dynamic(() => import("../components/Footer"));
 import { useRouter } from "next/router";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import Head from "next/head";
+
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -80,6 +82,9 @@ function mentorLogin() {
 
   return (
     <>
+      <Head>
+        <title>GrabTern | Mentors Login Here</title>
+      </Head>
       <Header navbarBackground={true} />
       <main>
         <div className="mentorFormRegisration">

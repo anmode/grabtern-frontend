@@ -2,9 +2,14 @@ import React from "react";
 import dynamic from "next/dynamic";
 import Header from "../components/Header";
 const Footer = dynamic(() => import("../components/Footer"));
+import Head from "next/head";
+
 function scrap() {
   return (
     <>
+      <Head>
+        <title>GrabTern | Refunds And Cancellation</title>
+      </Head>
       <Header navbarBackground={true} />
       <style
         dangerouslySetInnerHTML={{

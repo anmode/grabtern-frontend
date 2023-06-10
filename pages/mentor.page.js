@@ -5,12 +5,16 @@ import Company from "../components/mentorPage/Company";
 import IconCard from "../components/mentorPage/IconCard";
 import FAQList from "../components/mentorPage/FAQList";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 import faq from "./data/faq";
 
 function Mentor() {
   return (
     <>
+      <Head>
+        <title>GrabTern | Find Your Mentors</title>
+      </Head>
       <Header navbarBackground={true} />
       <main>
         {/* Header */}

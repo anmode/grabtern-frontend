@@ -6006,3 +6006,66 @@ del {
     gap: 80px !important;
   }
 }
+
+/*------------------
+  Error Page
+--------------------*/
+.error {
+  display: flex;
+  align-items: center; /* Optional - aligns items vertically in the center */
+}
+
+.error .img{
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.error-content{
+  flex-grow: 1; /* Takes up remaining space */
+  padding: 20px; /* Optional - add padding to the div content */
+}
+
+.error-title{
+  font-size: 3.5rem;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.error-subtitle{
+  font-size:2.1 rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.error-text{
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.error-btn{
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #1f2b7b;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width:1110px){
+  .error{
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .error .img{
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+

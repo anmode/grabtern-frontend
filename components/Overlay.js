@@ -1,14 +1,14 @@
-import { useState,useEffect } from 'react'
-import React from 'react'
-import styles from '../styles/Overlay.module.css'
-import Image from 'next/image'
+import { useState, useEffect } from "react";
+import React from "react";
+import styles from "../styles/Overlay.module.css";
+import Image from "next/image";
 import jwt_decode from "jwt-decode";
 
 const Overlay = () => {
-  const [show,setShow] = useState(true)
-  const disappearOverlay = () =>{
-    setShow(false)
-  }
+  const [show, setShow] = useState(true);
+  const disappearOverlay = () => {
+    setShow(false);
+  };
 
   let number = Math.random(0 * 100);
   const [formData, setFormData] = useState({
@@ -99,25 +99,31 @@ const Overlay = () => {
   }, []);
   return (
     <div>
-      {
-        show  && (
-          <div className={styles.overlay} onClick={disappearOverlay}>
-            <Image className={styles.overlayArrow} src='/Arrow.svg' width={500} height={500}/>
-              <div className={styles.overlayText} >
-                <h1>Sign In</h1>
-                <p>Please select an account to continue using Grabtern</p>
-                <p>By logging in you agree to the Terms & Conditions</p>
-                <ul>
-                  <li><p>Privacy Policy</p></li>
-                  <li><p>Terms & Conditions</p></li>
-                </ul>
-              </div>
+      {show && (
+        <div className={styles.overlay} onClick={disappearOverlay}>
+          <Image
+            className={styles.overlayArrow}
+            src="/Arrow.svg"
+            width={500}
+            height={500}
+          />
+          <div className={styles.overlayText}>
+            <h1>Sign In</h1>
+            <p>Please select an account to continue using Grabtern</p>
+            <p>By logging in you agree to the Terms & Conditions</p>
+            <ul>
+              <li>
+                <p>Privacy Policy</p>
+              </li>
+              <li>
+                <p>Terms & Conditions</p>
+              </li>
+            </ul>
           </div>
-        )
-      }
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Overlay
-
+export default Overlay;

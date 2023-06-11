@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "../components/Header";
 import Head from "next/head";
 
-
 function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");

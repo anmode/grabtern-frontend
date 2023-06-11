@@ -5,7 +5,6 @@ import Login from "../components/user/login";
 import Register from "../components/user/register";
 import Head from "next/head";
 
-
 function UserAuthPage() {
   const [logpagestate, setLogPageState] = useState(true);
   const router = useRouter();

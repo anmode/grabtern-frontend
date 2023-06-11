@@ -73,9 +73,9 @@ const ResetPassword = (props) => {
           //   src="/assets/img/gif/Spinner.gif"
           //   alt="loading..."
           // />
-          <Image 
-            src="/assets/img/gif/Spinner.gif" 
-            alt="loading..." 
+          <Image
+            src="/assets/img/gif/Spinner.gif"
+            alt="loading..."
             width="50"
             height="50"
             style={{

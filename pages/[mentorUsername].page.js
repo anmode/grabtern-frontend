@@ -5,7 +5,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
@@ -250,8 +249,8 @@ function Index({ mentorDetail }) {
                             session.sessionType === "video-meeting"
                               ? "fas fa-video"
                               : session.sessionType === "call-meeting"
-                                ? "fas fa-phone"
-                                : ""
+                              ? "fas fa-phone"
+                              : ""
                           }
                           style={{ fontSize: "25px" }}
                         ></i>

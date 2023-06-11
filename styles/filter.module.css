@@ -1,12 +1,14 @@
-.global_search{
-    position: relative;
-    top: 137px;
-    left: 800px;
-    
+.global_search {
+  position: relative;
+  top: 45px;
+  left: 450px;
 }
 
-.search_bar{
+.search_bar {
+  background: rgba(244, 246, 249, 0.5);
   height: 35px;
   border-radius: 15px;
   padding: 0 10px 0 15px;
+  border: 1px solid gray;
+  color: #1c4980e6;
 }

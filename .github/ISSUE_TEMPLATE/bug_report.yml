@@ -1,9 +1,7 @@
 name: "🐞 Bug Report"
 description: Create a new ticket for a bug.
 title: "🐞 [BUG] - Title"
-labels: [
-  "bug"
-]
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
@@ -59,7 +57,7 @@ body:
       label: "Screenshots"
       description: If applicable, add screenshots to help explain your problem.
       value: |
-        ![DESCRIPTION](LINK.png)  
+        ![DESCRIPTION](LINK.png)
     validations:
       required: false
   - type: textarea
@@ -114,5 +112,3 @@ body:
       options:
         - label: I have read and agree to the Contributing Guidelines of this project.
           required: true
-
-      

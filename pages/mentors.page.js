@@ -5,12 +5,26 @@ import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+import { useState, useEffect } from "react";
+import styles from "../styles/filter.module.css";
 
 function Mentors({ mentorsData }) {
+  const [search, setsearch] = useState("");
+
   return (
     <>
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
+      <div className={styles.global_search}>
+        <input
+          className={styles.search_bar}
+          _ngcontent-d2c-frontend-c75=""
+          type="text"
+          autoComplete="off"
+          placeholder="Search Mentors"
+          onChange={(e) => setsearch(e.target.value)}
+        />
+      </div>
       <main>
         {/* <div className="sidebody" style="height:69vh;">
           <div className="searchbar">
@@ -27,11 +41,25 @@ function Mentors({ mentorsData }) {
               <p>There is no mentor right now...</p>
             ) : (
               <div className="mentorLists">
-                {mentorsData.map((mentor) => (
-                  <a href={`/${mentor.username}`} key={mentor._id}>
-                    {<MentorCard mentor={mentor} />}
-                  </a>
-                ))}
+                {mentorsData
+                  .filter((item) => {
+                    if (search === "") {
+                      return item;
+                    } else if (
+                      item.name.toLowerCase().includes(search.toLowerCase()) ||
+                      item.currentStatus
+                        .toLowerCase()
+                        .includes(search.toLowerCase()) ||
+                      item.internAt.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return item;
+                    }
+                  })
+                  .map((mentor) => (
+                    <a href={`/${mentor.username}`} key={mentor._id}>
+                      {<MentorCard mentor={mentor} />}
+                    </a>
+                  ))}
               </div>
             )}
           </div>

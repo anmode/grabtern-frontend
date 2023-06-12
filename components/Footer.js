@@ -23,7 +23,7 @@ function Footer() {
               </div>
             </div>
             <div>
-                <h1 className="font-medium tracking-widest text-3xl mb-5 text-violet-500 dark:text-muted-100 uppercase">Services to Student</h1>
+                <h1 className="font-bold tracking-widest text-3xl mb-5 text-black dark:text-muted-100 uppercase">Services to Student</h1>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                     <li className="mb-4">
                         <a href="#" className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300">One to One Mentorship</a>
@@ -40,7 +40,7 @@ function Footer() {
                 </ul>
             </div>
             <div>
-                <h1 className="font-medium tracking-widest text-3xl mb-5 text-violet-500 dark:text-muted-100 uppercase">Services to Mentors</h1>
+                <h1 className="font-bold tracking-widest text-3xl mb-5 text-black dark:text-muted-100 uppercase">Services to Mentors</h1>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                     <li className="mb-4">
                         <a href="#" className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300">Community Base</a>
@@ -57,7 +57,7 @@ function Footer() {
                 </ul>
             </div>
             <div>
-                <h1 className="font-medium tracking-widest text-3xl mb-5 text-violet-500 dark:text-muted-100 uppercase">Grabtern</h1>
+                <h1 className="font-bold tracking-widest text-3xl mb-5 text-black dark:text-muted-100 uppercase">Grabtern</h1>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                     <li className="mb-4">
                         <a href="/refundandcancellation" className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300">Refund Policy</a>
@@ -82,7 +82,7 @@ function Footer() {
                     <div class="relative w-full sm:w-80 md:w-80 sm:mr-4 md:mr-16">
                       <input type="text" class="w-full h-16 bg-[#cbd5e1] bg-opacity-50 rounded-lg border border-muted-300 dark:border-muted-600 md:text-md lg:text-md text-muted-700 py-1 px-3 leading-8 tw-accessibility transition-colors duration-300 ease-in-out" placeholder="Email Address"></input>
                     </div> 
-                    <button class="w-full md:w-auto h-16 inline-flex items-center justify-center text-white bg-[#4f46e5] border-0 py-2 px-6 focus:outline-none hover:bg-[#4338ca] rounded-lg font-semibold">Subscribe</button>
+                    <button class="w-full md:w-auto h-16 inline-flex items-center justify-center text-white bg-[#845ec2] border-0 py-2 px-6 focus:outline-none hover:bg-[#6b21a8] rounded-lg font-semibold">Subscribe</button>
                   </div>
                   <span class="flex space-x-6 ltablet:ml-auto lg:ml-auto md:mt-0 mt-6 w-full lg:justify-center md:justify-center md:w-auto">
                     <a href="https://bit.ly/sai4ull" className="text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500">

@@ -1,36 +1,65 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 const Header = dynamic(() => import("../../../components/Header"));
 function bookSessionPage({ mentorDetail, sessionName }) {
   const [day, setDay] = useState();
   const [time, setTime] = useState();
+  const [timezone, setTimeZoneVal] = useState();
   const bookSession = mentorDetail.bookSession.find(
     (obj) => obj.sessionName === sessionName
   );
+  const datePickerDay = bookSession.datePickerDay.join(" ");
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+  ];
+
+  const datePickerDayDate = datePickerDay.split(" ").map((word) => {
+    const currentDate = new Date();
+    if (daysOfWeek.includes(word)) {
+      const currentDayIndex = daysOfWeek.indexOf(word);
+      const daysToAdd = (currentDayIndex - currentDate.getDay() + 7) % 7;
+      const nextDate = new Date(
+        currentDate.setDate(currentDate.getDate() + daysToAdd)
+      );
+      const nextDay = nextDate.getDate();
+      const nextMonth = nextDate.toLocaleString("default", { month: "long" });
+
+      return `${nextDay} ${nextMonth}`;
+    }
+  });
+  console.log(datePickerDayDate);
 
   function updateTime() {
     // Retrieve the selected time zone from the dropdown
     var timezone = document.getElementById("timezone").value;
+    let datePickerDayTimeLists = document.querySelectorAll(
+      "#datePickerDayTime li"
+    );
+    datePickerDayTimeLists.forEach((time, index) => {
+      let timeToArray = bookSession.datePickerTime[index].split(":");
+      let timeInfo = {
+        hour: timeToArray[0],
+        minute: timeToArray[1].replace(" AM", "").replace(" PM", ""),
+        period: timeToArray[1].includes("AM") ? "AM" : "PM",
+      };
+      const currentTime = new Date();
+      currentTime.setHours(timeInfo.hour);
+      currentTime.setMinutes(timeInfo.minute);
+      const convertedTime = currentTime.toLocaleString("en-US", {
+        timeZone: timezone,
+        hour12: true,
+        hour: "numeric",
+        minute: "numeric",
+      });
 
-    // Get the current date and time in the selected time zone
-    var currentDate = new Date().toLocaleString("en-US", {
-      timeZone: timezone,
+      time.innerHTML = convertedTime;
     });
-
-    // Split the date and time components
-    var [date, time] = currentDate.split(", ");
-
-    // Remove the seconds from the time
-    time = time.split(":").slice(0, 2).join(":");
-
-    // Update the time in the date picker
-    var timeElements = document
-      .getElementById("datePickerDayTime")
-      .getElementsByTagName("li");
-    for (var i = 0; i < timeElements.length; i++) {
-      timeElements[i].textContent = time;
-    }
   }
 
   function addActive(e) {
@@ -50,6 +79,47 @@ function bookSessionPage({ mentorDetail, sessionName }) {
     console.log(time);
     e.target.classList.add("active");
   }
+
+  useEffect(() => {
+    const timezoneOptions = document.querySelectorAll("#timezone option");
+    console.log(timezoneOptions);
+    timezoneOptions.forEach((timezone) => {
+      if (timezone.textContent === bookSession.datePickerTimezone) {
+        timezone.selected = true;
+      }
+    });
+  }, []);
+
+  const bookedSession = async () => {
+    try {
+      if (
+        localStorage.getItem("user_name") === null ||
+        localStorage.getItem("user_email") === null
+      ) {
+        return "Please login as user first before booked a session!";
+      }
+      const data = {
+        userName: localStorage.getItem("user_name"),
+        userEmail: localStorage.getItem("user_email"),
+        bookSessionDay: day.replace("\n", " "),
+        bookSessionTime: document.querySelector("#datePickerDayTime li.active")
+          .innerText,
+        bookSessionTimezone: document.getElementById("timezone").value,
+        bookSessionName: sessionName,
+        bookSessionPrice: bookSession.priceSession,
+        bookSessionMentorName: mentorDetail.name,
+        bookSessionMentorEmail: mentorDetail.email,
+      };
+      console.log(data);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSession`,
+        data
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   console.log(bookSession);
   return (
     <div>
@@ -121,21 +191,17 @@ function bookSessionPage({ mentorDetail, sessionName }) {
                 <div className="datePicker">
                   <span>Select day:</span>
                   <ul className="datePickerDay">
-                    <li onClick={addActive}>
-                      Monday <span>13 Jun</span>
-                    </li>
-                    <li onClick={addActive}>
-                      Sunday <span>13 Jun</span>
-                    </li>
-                    <li onClick={addActive}>
-                      Wednesday <span>13 Jun</span>
-                    </li>
+                    {bookSession.datePickerDay.map((day, index) => (
+                      <li onClick={addActive}>
+                        {day} <span>{datePickerDayDate[index]}</span>
+                      </li>
+                    ))}
                   </ul>
-                  <span>Select date:</span>
+                  <span>Select time:</span>
                   <ul id="datePickerDayTime" className="datePickerDayTime">
-                    <li onClick={addActive}>10:30 PM</li>
-                    <li onClick={addActive}>11:30 PM</li>
-                    <li onClick={addActive}>12:30 PM</li>
+                    {bookSession.datePickerTime.map((time, index) => (
+                      <li onClick={addActive}>{time}</li>
+                    ))}
                   </ul>
                   <span>Select timezone:</span>
                   <select id="timezone" onChange={() => updateTime()}>
@@ -208,7 +274,7 @@ function bookSessionPage({ mentorDetail, sessionName }) {
                 </div>
                 <button
                   style={{ cursor: "pointer" }}
-                  onClick={() => setModalPopup(true)}
+                  onClick={() => bookedSession()}
                 >
                   <span>Confirm detail</span>
                 </button>

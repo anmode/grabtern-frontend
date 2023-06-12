@@ -17,18 +17,16 @@ function Login({ handleLogPageToggle }) {
   } = useAuth();
 
   useEffect(() => {
-    if (localStorage.getItem("userData") !== null) {
-      const redirectUrl = JSON.parse(
-        localStorage.getItem("userData")
-      ).redirectUrl;
-      router.push(redirectUrl || "/");
-    }
-
-    // Initialize Google sign-in button
+    const checkUserLoggedIn = async () => {
+      if (localStorage.getItem("userData") !== null) {
+        const redirectUrl = JSON.parse(localStorage.getItem("userData")).redirectUrl;
+        router.push(redirectUrl || "/");
+      }
+    };
+  
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
-      // console.log(userObject);
       try {
         const res = await axios.post(url, userObject);
         const userData = {
@@ -37,25 +35,37 @@ function Login({ handleLogPageToggle }) {
           user_email: userObject.email,
         };
         localStorage.setItem("userData", JSON.stringify(userData));
-        setIsUserLoggedIn(true);
-        router.push(localStorage.getItem("redirectUrl") || "/");
+        router.push("/");
       } catch (error) {
         setError("New user? Register first.");
         console.log(error);
       }
     };
-
-    google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-      callback: handleCallBackResponse,
-    });
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
-      theme: "outline",
-      size: "large",
-    });
-    google.accounts.id.prompt();
+  
+    const initGoogleSignIn = () => {
+      try {
+        google.accounts.id.initialize({
+          client_id: "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+          callback: handleCallBackResponse,
+        });
+        google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+          theme: "outline",
+          size: "large",
+        });
+        google.accounts.id.prompt();
+      } catch (error) {
+        console.error("Google sign-in initialization failed:", error);
+      }
+    };
+  
+    if (!isUserLoggedIn) {
+      initGoogleSignIn();
+      // console.log(!isUserLoggedIn);
+    } else {
+      checkUserLoggedIn();
+    }
   }, []);
+  
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });

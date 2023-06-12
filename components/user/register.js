@@ -27,6 +27,7 @@ function Register({ handleLogPageToggle }) {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
+  const [verificationSent, setVerificationSent] = useState(false);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -35,16 +36,24 @@ function Register({ handleLogPageToggle }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setVerificationSent(false);
+
     if (data.password !== data.confirmPassword) {
-      return setError("Password do not match!");
+      return setError("Passwords do not match!");
     }
+
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
-      router.push("/");
+      setVerificationSent(true);
+      setTimeout(() => {
+        router.push("/");
+      }, 5000); // Redirect after 5 seconds
     } catch (error) {
       if (error.response && error.response.status >= 400) {
         setError(error.response.data.message);
+      } else {
+        setError("An error occurred. Please try again later.");
       }
     }
   };
@@ -127,6 +136,12 @@ function Register({ handleLogPageToggle }) {
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
             />
           </div>
+          {verificationSent && (
+          <p style={{ color: "green" }}>
+            An email has been sent to {data.email}. Please check your inbox to
+            verify your account.
+          </p>
+        )}
           {error && <div style={{ color: "red" }}>{error}</div>}
           <div>
             <input

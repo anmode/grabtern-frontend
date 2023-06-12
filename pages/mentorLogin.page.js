@@ -114,7 +114,7 @@ function mentorLogin() {
           <div className="login-form d-flex flex-column">
             <div className="logout-login">
               <a href="/index.html">
-                <img src="/assets/img/logo/loder.png" alt="" />
+                <img src="/assets/img/logo/loder.webp" alt="" />
               </a>
             </div>
             <h2>Mentor Login</h2>

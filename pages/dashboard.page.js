@@ -4,7 +4,7 @@ const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 import axios from "axios";
 import { useRouter } from "next/router";
-import Dashboard from "../components/Dashboard";
+import Head from "next/head";
 
 function Index() {
   const [mentorDetail, setMentorDetail] = useState();
@@ -28,6 +28,9 @@ function Index() {
   });
   return (
     <>
+      <Head>
+        <title>GrabTern | Mentors Dashboard</title>
+      </Head>
       <Header navbarBackground={true} />
       <main style={{ marginTop: "118px" }}>
         <div className="container">

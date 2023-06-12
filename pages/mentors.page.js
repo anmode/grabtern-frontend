@@ -5,10 +5,14 @@ import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+import Head from "next/head";
 
 function Mentors({ mentorsData }) {
   return (
     <>
+      <Head>
+        <title>GrabTern | Find Your Mentors</title>
+      </Head>
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>

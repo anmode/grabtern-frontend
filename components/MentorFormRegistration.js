@@ -215,7 +215,7 @@ export default function MentorForm() {
               you will receive an email with a link to instantly generate your
               card.
             </p>
-            <img src="/iconMentorRegistrationPopup.jpg" />
+            <img src="/iconMentorRegistrationPopup.webp" />
             <p>Redirecting you to home in {waitTime} second</p>
           </div>
         </div>
@@ -233,7 +233,7 @@ export default function MentorForm() {
             <img
               src={
                 formData.mentorImg.length === 0
-                  ? "/assets/img/icon/no-profile-picture.png"
+                  ? "/assets/img/icon/no-profile-picture.webp"
                   : formData.mentorImg
               }
               className="mentorPhoto"

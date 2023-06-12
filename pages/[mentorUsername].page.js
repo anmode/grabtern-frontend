@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -115,6 +116,9 @@ function Index({ mentorDetail }) {
   };
   return (
     <>
+      <Head>
+        <title>GrabTern | Book Your Session</title>
+      </Head>
       <Header navbarBackground={true} />
       <main style={{ marginTop: "119px" }}>
         {!mentorDetail ? (
@@ -325,7 +329,17 @@ function Index({ mentorDetail }) {
                                 }}
                               >
                                 {isLoading == true ? (
-                                  <img
+                                  // <img
+                                  //   style={{
+                                  //     width: "25px",
+                                  //     height: "25px",
+                                  //     border: "none",
+                                  //     margin: "0 22px",
+                                  //   }}
+                                  //   src="/assets/img/gif/Spinner.gif"
+                                  //   alt="loading..."
+                                  // />
+                                  <Image
                                     style={{
                                       width: "25px",
                                       height: "25px",
@@ -334,6 +348,8 @@ function Index({ mentorDetail }) {
                                     }}
                                     src="/assets/img/gif/Spinner.gif"
                                     alt="loading..."
+                                    width={25}
+                                    height={25}
                                   />
                                 ) : (
                                   <span>Confirm</span>
@@ -350,7 +366,7 @@ function Index({ mentorDetail }) {
                               Thank you Our team Will contacting you, check your
                               inbox.
                             </p>
-                            <img src="/iconMentorRegistrationPopup.jpg" />
+                            <img src="/iconMentorRegistrationPopup.webp" />
                             <p>Redirecting you to home in {waitTime} second</p>
                           </div>
                         </div>

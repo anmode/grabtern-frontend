@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <title>GrabTern</title>
         <script
           src="https://accounts.google.com/gsi/client"
           async
@@ -14,7 +15,11 @@ export default function Document() {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
         {/* Favicon */}
-        <link rel="shortcut icon" type="image/x-icon" href="/whitelogo.png" />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="/aasets/img/favicon1.ico"
+        />
 
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />

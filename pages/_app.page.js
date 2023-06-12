@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Internships | Education</title>
+        <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
           content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
         <meta name="language" content="English" />
-        <link rel="icon" href="/whitelogo.png" />
+        <link rel="icon" href="/assets/img/favicon1.ico" />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link
@@ -85,7 +85,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:image"
-          content="https://grabtern.com/grabtern_meta_img.png"
+          content="https://grabtern.com/grabtern_meta_img.webp"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -97,7 +97,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="twitter:image"
-          content="https://grabtern.com/grabtern_meta_img.png"
+          content="https://grabtern.com/grabtern_meta_img.webp"
         />
         <meta name="twitter:site" content="@grabtern_twitter_username" />
         <meta
@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
           <div className="tw-flex tw-items-center tw-justify-center position-relative">
             <div className="preloader-circle"></div>
             <div className="preloader-img pere-text">
-              <img src="/assets/img/logo/loder.png" alt="" />
+              <img src="/assets/img/logo/loder.webp" alt="" />
             </div>
           </div>
         </div>

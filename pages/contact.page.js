@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import dynamic from "next/dynamic";
 import style from "../styles/contact.module.css";
+import Head from "next/head";
 
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
@@ -38,6 +39,9 @@ function Contact() {
   };
   return (
     <>
+      <Head>
+        <title>GrabTern | Contact Us</title>
+      </Head>
       <Header />
       <SimpleBanner bannerTittle="Contact us" siteName="Contact" />
       <main className={style.main}>

@@ -111,11 +111,12 @@ function bookSessionPage({ mentorDetail, sessionName }) {
         bookSessionMentorEmail: mentorDetail.email,
       };
       console.log(data);
-      const response = await axios.post(
+      await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSession`,
         data
       );
-      console.log(response);
+      alert("You have successfully booked a session");
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }

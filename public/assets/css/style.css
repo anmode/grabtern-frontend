@@ -131,13 +131,13 @@ p {
   font-weight: normal;
 }
 .bg-img-1 {
-  background-image: url(../img/slider/slider-img-1.jpg);
+  background-image: url(../img/slider/slider-img-1.webp);
 }
 .bg-img-2 {
-  background-image: url(../img/background-img/bg-img-2.jpg);
+  background-image: url(../img/background-img/bg-img-2.webp);
 }
 .cta-bg-1 {
-  background-image: url(../img/background-img/bg-img-3.jpg);
+  background-image: url(../img/background-img/bg-img-3.webp);
 }
 .img {
   max-width: 100%;
@@ -2467,14 +2467,14 @@ hr {
 }
 .slider-area,
 .slider-area2 {
-  background-image: url(../img/hero/h1_hero.png);
+  background-image: url(../img/hero/h1_hero.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .slider-area.slider-area2,
 .slider-area2.slider-area2 {
-  background-image: url(../img/hero/hero2.png);
+  background-image: url(../img/hero/hero2.webp);
 }
 .slider-area .hero__caption,
 .slider-area2 .hero__caption {
@@ -5682,7 +5682,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center
+  background: url(../img/elements/primary-check.webp) no-repeat center
     center/cover;
   border: none;
 }
@@ -5717,7 +5717,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center
+  background: url(../img/elements/success-check.webp) no-repeat center
     center/cover;
   border: none;
 }
@@ -5756,7 +5756,7 @@ del {
   z-index: 3;
 }
 .disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center
+  background: url(../img/elements/disabled-check.webp) no-repeat center
     center/cover;
   border: none;
 }
@@ -5791,7 +5791,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center
+  background: url(../img/elements/primary-radio.webp) no-repeat center
     center/cover;
   border: none;
 }
@@ -5826,7 +5826,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center
+  background: url(../img/elements/success-radio.webp) no-repeat center
     center/cover;
   border: none;
 }
@@ -5865,7 +5865,7 @@ del {
   z-index: 3;
 }
 .disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center
+  background: url(../img/elements/disabled-radio.webp) no-repeat center
     center/cover;
   border: none;
 }

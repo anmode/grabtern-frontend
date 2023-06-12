@@ -1,6 +1,6 @@
 export default [
   {
-    internshipImage: "/assets/img/gallery/gsoc.webp",
+    internshipImage: "/assets/img/gallery/gsoc.png",
     internshipImageAlt: "GSoC-Google Summer of Code",
     internshipCategories: "GrabTern",
     internshipTitle: "GSoC-Google Summer of Code",
@@ -12,7 +12,7 @@ export default [
     internshipLink: "https://summerofcode.withgoogle.com/",
   },
   {
-    internshipImage: "/assets/img/gallery/mlhprep.webp",
+    internshipImage: "/assets/img/gallery/mlhprep.png",
     internshipImageAlt: "MLH Prep - Member League Hacking",
     internshipCategories: "GrabTern",
     internshipTitle: "MLH Prep - Member League Hacking",
@@ -24,7 +24,7 @@ export default [
     internshipLink: "https://fellowship.mlh.io/programs/prep",
   },
   {
-    internshipImage: "/assets/img/gallery/mlhfellowship.webp",
+    internshipImage: "/assets/img/gallery/mlhfellowship.png",
     internshipImageAlt: "MLH Fellowship Program",
     internshipCategories: "GrabTern",
     internshipTitle: "MLH Fellowship Program",
@@ -36,7 +36,7 @@ export default [
     internshipLink: "https://fellowship.mlh.io/",
   },
   {
-    internshipImage: "/assets/img/gallery/adobeshe.webp",
+    internshipImage: "/assets/img/gallery/adobeshe.png",
     internshipImageAlt: "Adobe SHE - Student to Hero Empowerment",
     internshipCategories: "GrabTern",
     internshipTitle: "Adobe SHE - Student to Hero Empowerment",
@@ -49,7 +49,7 @@ export default [
       "https://careers.adobe.com/us/en/job/R129181/Project-Manager-SheSparks-Intern",
   },
   {
-    internshipImage: "/assets/img/gallery/mitacs.webp",
+    internshipImage: "/assets/img/gallery/mitacs.png",
     internshipImageAlt: "Mitacs GRI - Globalink Research Internship",
     internshipCategories: "GrabTern",
     internshipTitle: "Mitacs GRI - Globalink Research Internship",
@@ -62,7 +62,7 @@ export default [
       "https://www.mitacs.ca/en/programs/globalink/globalink-research-internship",
   },
   {
-    internshipImage: "/assets/img/gallery/grid.webp",
+    internshipImage: "/assets/img/gallery/grid.png",
     internshipImageAlt:
       "Flipkart G.R.I.D (Graduate Research Internship Development)",
     internshipCategories: "GrabTern",
@@ -77,7 +77,7 @@ export default [
       "https://unstop.com/hackathons/flipkart-grid-40-software-development-challenge-flipkart-grid-40-flipkart-348170",
   },
   {
-    internshipImage: "/assets/img/gallery/step.webp",
+    internshipImage: "/assets/img/gallery/step.png",
     internshipImageAlt: "Google STEP - Student Training in Engineering Program",
     internshipCategories: "GrabTern",
     internshipTitle: "Google STEP - Student Training in Engineering Program",
@@ -89,7 +89,7 @@ export default [
     internshipLink: "https://buildyourfuture.withgoogle.com/programs/step",
   },
   {
-    internshipImage: "/assets/img/gallery/wow.webp",
+    internshipImage: "/assets/img/gallery/wow.png",
     internshipImageAlt: "Amazon WOW - Women Only",
     internshipCategories: "GrabTern",
     internshipTitle: "Amazon WOW - Women Only",
@@ -101,7 +101,7 @@ export default [
     internshipLink: "https://amazonwowindia.splashthat.com/",
   },
   {
-    internshipImage: "/assets/img/gallery/outreachy.webp",
+    internshipImage: "/assets/img/gallery/outreachy.png",
     internshipImageAlt: "OutReachy - Women Only",
     internshipCategories: "GrabTern",
     internshipTitle: "OutReachy - Women Only",
@@ -113,7 +113,7 @@ export default [
     internshipLink: "https://www.outreachy.org/",
   },
   {
-    internshipImage: "/assets/img/gallery/sob.webp",
+    internshipImage: "/assets/img/gallery/sob.png",
     internshipImageAlt: "Summer of Bitcoin- Summer Internship Program",
     internshipCategories: "GrabTern",
     internshipTitle: "Summer of Bitcoin- Summer Internship Program",
@@ -125,7 +125,7 @@ export default [
     internshipLink: "https://www.summerofbitcoin.org/",
   },
   {
-    internshipImage: "/assets/img/gallery/sn-bose.webp",
+    internshipImage: "/assets/img/gallery/sn-bose.png",
     internshipImageAlt: "S.N Bose Scholars Program- Scholars Program",
     internshipCategories: "GrabTern",
     internshipTitle: "S.N Bose Scholars Program- Scholars Program",

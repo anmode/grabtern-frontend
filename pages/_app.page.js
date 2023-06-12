@@ -85,7 +85,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:image"
-          content="https://grabtern.com/grabtern_meta_img.webp"
+          content="https://grabtern.com/grabtern_meta_img.png"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -97,7 +97,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="twitter:image"
-          content="https://grabtern.com/grabtern_meta_img.webp"
+          content="https://grabtern.com/grabtern_meta_img.png"
         />
         <meta name="twitter:site" content="@grabtern_twitter_username" />
         <meta
@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
           <div className="tw-flex tw-items-center tw-justify-center position-relative">
             <div className="preloader-circle"></div>
             <div className="preloader-img pere-text">
-              <img src="/assets/img/logo/loder.webp" alt="" />
+              <img src="/assets/img/logo/loder.png" alt="" />
             </div>
           </div>
         </div>

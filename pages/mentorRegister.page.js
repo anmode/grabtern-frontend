@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import MentorForm from "../components/MentorFormRegistration";
 import Head from "next/head";
 
+
 const MentorRegister = () => {
   return (
     <>

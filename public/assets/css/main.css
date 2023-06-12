@@ -127,13 +127,13 @@ p {
   font-weight: normal;
 }
 .bg-img-1 {
-  background-image: url(../img/slider/slider-img-1.webp);
+  background-image: url(../img/slider/slider-img-1.jpg);
 }
 .bg-img-2 {
-  background-image: url(../img/background-img/bg-img-2.webp);
+  background-image: url(../img/background-img/bg-img-2.jpg);
 }
 .cta-bg-1 {
-  background-image: url(../img/background-img/bg-img-3.webp);
+  background-image: url(../img/background-img/bg-img-3.jpg);
 }
 .img {
   max-width: 100%;
@@ -2285,7 +2285,7 @@ hr {
 .slider-area .hero__caption::after {
   position: absolute;
   content: "";
-  background-image: url(../img/hero/hero_arrow.webp);
+  background-image: url(../img/hero/hero_arrow.png);
   left: 0;
   right: 0;
   bottom: -26px;
@@ -2548,7 +2548,7 @@ hr {
 .safe-industery-area .safe-caption-right .safe-alert-box .safe-alert::after {
   position: absolute;
   content: "";
-  background-image: url(../img/safe_industery/arrow_bottom.webp);
+  background-image: url(../img/safe_industery/arrow_bottom.png);
   left: 0;
   right: 0;
   bottom: 0;
@@ -2898,7 +2898,7 @@ hr {
 .wantToWork-area::after {
   position: absolute;
   content: "";
-  background-image: url(../img/icon/footer_arrow.webp);
+  background-image: url(../img/icon/footer_arrow.png);
   left: 0;
   right: 0;
   bottom: 0;
@@ -4389,13 +4389,13 @@ a i:hover {
   background-color: #222;
 }
 .breadcam_bg {
-  background-image: url(../img/banner/bradcam.webp);
+  background-image: url(../img/banner/bradcam.png);
 }
 .breadcam_bg_1 {
-  background-image: url(../img/banner/bradcam2.webp);
+  background-image: url(../img/banner/bradcam2.png);
 }
 .breadcam_bg_2 {
-  background-image: url(../img/banner/bradcam3.webp);
+  background-image: url(../img/banner/bradcam3.png);
 }
 .bradcam_area {
   background-size: cover;
@@ -5333,7 +5333,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.webp) no-repeat center
+  background: url(../img/elements/primary-check.png) no-repeat center
     center/cover;
   border: none;
 }
@@ -5368,7 +5368,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.webp) no-repeat center
+  background: url(../img/elements/success-check.png) no-repeat center
     center/cover;
   border: none;
 }
@@ -5407,7 +5407,7 @@ del {
   z-index: 3;
 }
 .disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.webp) no-repeat center
+  background: url(../img/elements/disabled-check.png) no-repeat center
     center/cover;
   border: none;
 }
@@ -5442,7 +5442,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.webp) no-repeat center
+  background: url(../img/elements/primary-radio.png) no-repeat center
     center/cover;
   border: none;
 }
@@ -5477,7 +5477,7 @@ del {
   border: 1px solid #f1f1f1;
 }
 .confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.webp) no-repeat center
+  background: url(../img/elements/success-radio.png) no-repeat center
     center/cover;
   border: none;
 }
@@ -5516,7 +5516,7 @@ del {
   z-index: 3;
 }
 .disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.webp) no-repeat center
+  background: url(../img/elements/disabled-radio.png) no-repeat center
     center/cover;
   border: none;
 }

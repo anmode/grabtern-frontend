@@ -1,6 +1,6 @@
 export default [
   {
-    courseImage: "/assets/img/gallery/gsoc.webp",
+    courseImage: "/assets/img/gallery/gsoc.png",
     courseImageAlt: "GSoC-Google Summer of Code",
     courseCategories: "GrabTern",
     courseTitle: "GSoC-Google Summer of Code",
@@ -11,7 +11,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/mlhprep.webp",
+    courseImage: "/assets/img/gallery/mlhprep.png",
     courseImageAlt: "MLH Prep - Member League Hacking",
     courseCategories: "GrabTern",
     courseTitle: "MLH Prep - Member League Hacking",
@@ -22,7 +22,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/mlhfellowship.webp",
+    courseImage: "/assets/img/gallery/mlhfellowship.png",
     courseImageAlt: "MLH Fellowship Program",
     courseCategories: "GrabTern",
     courseTitle: "MLH Fellowship Program",
@@ -33,7 +33,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/adobeshe.webp",
+    courseImage: "/assets/img/gallery/adobeshe.png",
     courseImageAlt: "Adobe SHE - Student to Hero Empowerment",
     courseCategories: "GrabTern",
     courseTitle: "Adobe SHE - Student to Hero Empowerment",
@@ -44,7 +44,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/mitacs.webp",
+    courseImage: "/assets/img/gallery/mitacs.png",
     courseImageAlt: "Mitacs GRI - Globalink Research Internship",
     courseCategories: "GrabTern",
     courseTitle: "Mitacs GRI - Globalink Research Internship",
@@ -55,7 +55,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/grid.webp",
+    courseImage: "/assets/img/gallery/grid.png",
     courseImageAlt:
       "Flipkart G.R.I.D (Graduate Research Internship Development)",
     courseCategories: "GrabTern",
@@ -67,7 +67,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/step.webp",
+    courseImage: "/assets/img/gallery/step.png",
     courseImageAlt: "Google STEP - Student Training in Engineering Program",
     courseCategories: "GrabTern",
     courseTitle: "Google STEP - Student Training in Engineering Program",
@@ -78,7 +78,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/wow.webp",
+    courseImage: "/assets/img/gallery/wow.png",
     courseImageAlt: "Amazon WOW - Women Only",
     courseCategories: "GrabTern",
     courseTitle: "Amazon WOW - Women Only",
@@ -89,7 +89,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/hackerrank.webp",
+    courseImage: "/assets/img/gallery/hackerrank.png",
     courseImageAlt: "HackerRank Summer and Winter Internship",
     courseCategories: "GrabTern",
     courseTitle: "HackerRank Summer and Winter Internship",
@@ -100,7 +100,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/isro.webp",
+    courseImage: "/assets/img/gallery/isro.png",
     courseImageAlt: "ISRO Internship",
     courseCategories: "GrabTern",
     courseTitle: "ISRO Internship",
@@ -111,7 +111,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/mlamazon.webp",
+    courseImage: "/assets/img/gallery/mlamazon.png",
     courseImageAlt: "Amazon ML Summer School",
     courseCategories: "GrabTern",
     courseTitle: "Amazon ML Summer School",
@@ -122,7 +122,7 @@ export default [
     coursePrice: 1,
   },
   {
-    courseImage: "/assets/img/gallery/kde.webp",
+    courseImage: "/assets/img/gallery/kde.png",
     courseImageAlt: "KDE - Season Of Docs",
     courseCategories: "GrabTern",
     courseTitle: "KDE - Season Of Docs",

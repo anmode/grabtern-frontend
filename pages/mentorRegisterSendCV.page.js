@@ -78,7 +78,7 @@ function mentorRegisterSendCV() {
                   email 1-2 days if you got accepted and your card will be
                   generated automatically
                 </p>
-                <img src="/iconMentorRegistrationPopup.webp" />
+                <img src="/iconMentorRegistrationPopup.jpg" />
                 <p>Redirecting you to home in {waitTime} second</p>
               </div>
             </div>

@@ -19,7 +19,7 @@ function Footer() {
                     <div className="footer-logo mb-25">
                       <a href="index.html">
                         <Image
-                          src="/whitelogo.webp"
+                          src="/whitelogo.png"
                           width={120}
                           height={69}
                           alt=""

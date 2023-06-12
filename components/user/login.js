@@ -19,11 +19,13 @@ function Login({ handleLogPageToggle }) {
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       if (localStorage.getItem("userData") !== null) {
-        const redirectUrl = JSON.parse(localStorage.getItem("userData")).redirectUrl;
+        const redirectUrl = JSON.parse(
+          localStorage.getItem("userData")
+        ).redirectUrl;
         router.push(redirectUrl || "/");
       }
     };
-  
+
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
@@ -41,11 +43,12 @@ function Login({ handleLogPageToggle }) {
         console.log(error);
       }
     };
-  
+
     const initGoogleSignIn = () => {
       try {
         google.accounts.id.initialize({
-          client_id: "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+          client_id:
+            "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
           callback: handleCallBackResponse,
         });
         google.accounts.id.renderButton(document.getElementById("signInDiv"), {
@@ -57,7 +60,7 @@ function Login({ handleLogPageToggle }) {
         console.error("Google sign-in initialization failed:", error);
       }
     };
-  
+
     if (!isUserLoggedIn) {
       initGoogleSignIn();
       // console.log(!isUserLoggedIn);
@@ -65,7 +68,6 @@ function Login({ handleLogPageToggle }) {
       checkUserLoggedIn();
     }
   }, []);
-  
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -92,12 +94,14 @@ function Login({ handleLogPageToggle }) {
       setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
-      if (error.response && error.response.status === 405) {
+      if (error.response && error.response.status === 403) {
         setError(
           "Email not verified, verification link has been sent to your email"
         );
-      } else if (error.response && error.response.status === 401) {
+      } else if (error.response && error.response.status === 402) {
         setError("Invalid email or password.");
+      } else if (error.response && error.response.status === 401) {
+        setError("New User? Register first.");
       } else {
         setError("login failed. please contact us.");
       }

@@ -35,7 +35,7 @@ const DropdownCard = () => {
     setIsUserLoggedIn(false);
     router.push("/");
   };
-  
+
   const handleOutsideClick = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setLoginOption(false);
@@ -54,8 +54,6 @@ const DropdownCard = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
-
-
 
   return (
     <li>

@@ -137,11 +137,11 @@ function Register({ handleLogPageToggle }) {
             />
           </div>
           {verificationSent && (
-          <p style={{ color: "green" }}>
-            An email has been sent to {data.email}. Please check your inbox to
-            verify your account.
-          </p>
-        )}
+            <p style={{ color: "green" }}>
+              An email has been sent to {data.email}. Please check your inbox to
+              verify your account.
+            </p>
+          )}
           {error && <div style={{ color: "red" }}>{error}</div>}
           <div>
             <input

@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "../components/Header";
 import Head from "next/head";
 
-
 function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -46,7 +45,7 @@ function ForgotPassword() {
           <div className="forgot-password-form">
             <div className="logout-login">
               <a href="index.html">
-                <img src="assets/img/logo/loder.png" alt="" />
+                <img src="assets/img/logo/loder.webp" alt="" />
               </a>
             </div>
             <h2>Forgot Password</h2>
@@ -64,7 +63,16 @@ function ForgotPassword() {
               <input type="submit" name="submit" value="Reset Password" />
             </div>
             {isLoading && (
-              <img
+              // <img
+              //   style={{
+              //     width: "50px",
+              //     height: "50px",
+              //     border: "none",
+              //   }}
+              //   src="/assets/img/gif/Spinner.gif"
+              //   alt="loading..."
+              // />
+              <Image
                 style={{
                   width: "50px",
                   height: "50px",
@@ -72,6 +80,8 @@ function ForgotPassword() {
                 }}
                 src="/assets/img/gif/Spinner.gif"
                 alt="loading..."
+                height={50}
+                width={50}
               />
             )}
             {error && <div style={{ color: "red" }}>{error}</div>}

@@ -38,9 +38,10 @@ function Contact() {
       );
   };
   return (
-    <><Head>
-      <title>GrabTern | Contact Us</title>
-    </Head>
+    <>
+      <Head>
+        <title>GrabTern | Contact Us</title>
+      </Head>
       <Header />
       <SimpleBanner bannerTittle="Contact us" siteName="Contact" />
       <main className={style.main}>
@@ -107,8 +108,8 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter Message'"
                             placeholder=" Enter Message"
-                          // value={userMessage}
-                          // onChange={(e) => setUserMessage(e.value)}
+                            // value={userMessage}
+                            // onChange={(e) => setUserMessage(e.value)}
                           />
                         </div>
                       </div>
@@ -122,8 +123,8 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter your name'"
                             placeholder="Enter your name"
-                          // value={userName}
-                          // onChange={(e) => setUserName(e.value)}
+                            // value={userName}
+                            // onChange={(e) => setUserName(e.value)}
                           />
                         </div>
                       </div>
@@ -137,8 +138,8 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter email address'"
                             placeholder="Email"
-                          // value={userEmail}
-                          // onChange={(e) => setUserEmail(e.value)}
+                            // value={userEmail}
+                            // onChange={(e) => setUserEmail(e.value)}
                           />
                         </div>
                       </div>
@@ -152,8 +153,8 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter Subject'"
                             placeholder="Enter Subject"
-                          // value={userSubject}
-                          // onChange={(e) => setUserSubject(e.value)}
+                            // value={userSubject}
+                            // onChange={(e) => setUserSubject(e.value)}
                           />
                         </div>
                       </div>

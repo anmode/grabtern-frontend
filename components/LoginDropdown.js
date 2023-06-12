@@ -54,7 +54,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
               src={
                 localStorage.getItem("user_picture") ||
                 localStorage.getItem("mentor_picture") ||
-                "assets/img/icon/no-profile-picture.png"
+                "assets/img/icon/no-profile-picture.webp"
               }
               alt="not found"
             />

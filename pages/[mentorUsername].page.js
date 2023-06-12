@@ -5,7 +5,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
@@ -250,8 +249,8 @@ function Index({ mentorDetail }) {
                             session.sessionType === "video-meeting"
                               ? "fas fa-video"
                               : session.sessionType === "call-meeting"
-                                ? "fas fa-phone"
-                                : ""
+                              ? "fas fa-phone"
+                              : ""
                           }
                           style={{ fontSize: "25px" }}
                         ></i>
@@ -330,7 +329,17 @@ function Index({ mentorDetail }) {
                                 }}
                               >
                                 {isLoading == true ? (
-                                  <img
+                                  // <img
+                                  //   style={{
+                                  //     width: "25px",
+                                  //     height: "25px",
+                                  //     border: "none",
+                                  //     margin: "0 22px",
+                                  //   }}
+                                  //   src="/assets/img/gif/Spinner.gif"
+                                  //   alt="loading..."
+                                  // />
+                                  <Image
                                     style={{
                                       width: "25px",
                                       height: "25px",
@@ -339,6 +348,8 @@ function Index({ mentorDetail }) {
                                     }}
                                     src="/assets/img/gif/Spinner.gif"
                                     alt="loading..."
+                                    width={25}
+                                    height={25}
                                   />
                                 ) : (
                                   <span>Confirm</span>
@@ -355,7 +366,7 @@ function Index({ mentorDetail }) {
                               Thank you Our team Will contacting you, check your
                               inbox.
                             </p>
-                            <img src="/iconMentorRegistrationPopup.jpg" />
+                            <img src="/iconMentorRegistrationPopup.webp" />
                             <p>Redirecting you to home in {waitTime} second</p>
                           </div>
                         </div>

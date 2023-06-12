@@ -61,7 +61,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                     <Image
                       width={80}
                       height={80}
-                      src="/whitelogo.png"
+                      src="/whitelogo.webp"
                       style={{ padding: "15px 0" }}
                       alt="grabtern_logo"
                     />

@@ -6,19 +6,19 @@ import Register from "../components/user/register";
 import Head from "next/head";
 
 function UserAuthPage() {
-  const [logpagestate, setLogPageState] = useState(true);
   const router = useRouter();
+  const [logpagestate, setLogPageState] = useState(false);
 
   // Function to handle toggle between login/register page
   const handleLogPageToggle = () => {
     setLogPageState(!logpagestate);
 
-    // Update URL hash based on current state
-    if (logpagestate) {
-      router.push("/userAuth/#register", undefined, { shallow: true });
-    } else {
-      router.push("/userAuth/#login", undefined, { shallow: true });
-    }
+    // Update URL hash based on current component state
+    router.push(
+      `/userAuth/#${!logpagestate ? "register" : "login"}`,
+      undefined,
+      { shallow: true }
+    );
   };
 
   useEffect(() => {
@@ -36,12 +36,11 @@ function UserAuthPage() {
 
     if (currentHash === "login") {
       setLogPageState(true);
-      //    console.log("I'm in login region bro");
     } else if (currentHash === "register") {
       setLogPageState(false);
-      //    console.log("I'm in register region bro");
     } else {
-      console.log("Invalid Hash:", currentHash);
+      // Redirect user or display an error message
+      router.push("/404");
     }
   };
 
@@ -57,8 +56,9 @@ function UserAuthPage() {
         ) : (
           <Register handleLogPageToggle={handleLogPageToggle}></Register>
         )}
+        {/* Use dynamic imports for images */}
         <div className="tw-hidden md:tw-flex tw-h-[100vh]">
-          <img src="assets/img/gallery/20944201.webp" alt="" />
+          <img src="/assets/img/gallery/20944201.webp" alt="" />
         </div>
       </main>
     </>

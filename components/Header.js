@@ -92,6 +92,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                             Contact
                           </a>
                         </li>
+                        <li>
+                          <a href="/Sign in" className={styles.navLink}>
+                            Sign in 
+                          </a>
+                        </li>
                         <DropdownCard
                           isUserLoggedIn={isUserLoggedIn}
                           isMentorLoggedIn={isMentorLoggedIn}

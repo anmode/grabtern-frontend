@@ -1,23 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
-import DropdownCard from "./LoginDropdown";
+import router from "next/router";
+import { useAuth } from "../context/AuthContext";
+import DropdownCard from "../components/LoginDropdown";
 
-function Header({ isUserLoggedIn, navbarBackground }) {
-  // localStorage.setItem('redirectUrl', window.location.href);
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
+function Header({ navbarBackground }) {
+  localStorage.setItem("redirectUrl", window.location.href);
+  // const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
+  const [loginOption, setLoginOption] = useState(false);
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
 
   useEffect(() => {
-    const userName = localStorage.getItem("user_name");
-    if (userName) {
-      setLoggedIn(true);
+    if (userData?.user_name) {
+      setIsUserLoggedIn(true);
     }
-    const mentorName = localStorage.getItem("mentor_name");
-    if (mentorName) {
-      setMentorLoggedIn(true);
+
+    if (mentorData?.mentor_name) {
+      setIsMentorLoggedIn(true);
     }
 
     const handleScroll = () => {
@@ -27,6 +36,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     handleScroll();
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -38,6 +48,20 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     } else {
       setNavbarAppear(true);
     }
+  };
+
+  const userlogout = () => {
+    localStorage.clear();
+    setIsUserLoggedIn(false);
+    router.push("/");
+    window.location.reload();
+  };
+
+  const mentorlogout = () => {
+    localStorage.clear();
+    setIsMentorLoggedIn(false);
+    router.push("/");
+    window.location.reload();
   };
 
   return (
@@ -61,7 +85,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                     <Image
                       width={80}
                       height={80}
-                      src="/whitelogo.png"
+                      src="/whitelogo.webp"
                       style={{ padding: "15px 0" }}
                       alt="grabtern_logo"
                     />

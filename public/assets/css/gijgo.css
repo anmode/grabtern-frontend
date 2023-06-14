@@ -2117,7 +2117,7 @@ ul.gj-list-md li.disabled > [data-role="wrapper"] > [data-role="expander"] {
   line-height: 1;
   color: #9d9d9d;
   position: relative;
-  /* background-image: url(../img/logo/date-picker-icon.png); */
+  /* background-image: url(../img/logo/date-picker-icon.webp); */
 }
 .gj-datepicker-md [role="right-icon"] {
   position: absolute;

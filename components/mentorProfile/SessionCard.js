@@ -22,10 +22,10 @@ export default function SessionCard( { type, name, description, duration, priceP
           <button
             type="button" 
             role="button" 
-            className="tw-flex tw-flex-row tw-self-end tw-justify-center tw-gap-3 tw-text-white tw-bg-[#4338CA] tw-rounded-[16px] tw-py-2 tw-pr-7 tw-pl-4 tw-mt-4 tw-items-center tw-max-w-[210px] hover:tw-bg-[#322995] active:tw-outline active:tw-outline-2 active:tw-outline-[#4338CA]/80 tw-transition-all"
+            className="tw-flex tw-flex-row tw-self-end tw-justify-center tw-gap-3 tw-text-white tw-bg-[#4338CA] tw-rounded-[12px] tw-py-2 tw-pr-7 tw-pl-4 tw-mt-4 tw-items-center tw-max-w-[210px] hover:tw-bg-[#322995] active:tw-outline active:tw-outline-2 active:tw-outline-[#4338CA]/80 tw-transition-all"
             onClick={handleBookSession}
           >
-            <BsPlus className="tw-text-[32px]"/><span className="tw-text-[22px] tw-text-semibold"> Book Session</span>
+            <BsPlus className="tw-text-[24px]"/><span className="tw-text-[18px] tw-font-normal"> Book Session</span>
           </button>
         </div>
       </div>

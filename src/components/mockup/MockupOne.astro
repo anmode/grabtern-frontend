@@ -1,0 +1,32 @@
+---
+import Polka from "@components/base/Polka.astro";
+---
+
+<div class="relative flex flex-col gap-6 ptablet:w-[480px]">
+  <!--Polka dots-->
+  <div class="absolute -top-5 -left-5 z-0">
+    <Polka />
+  </div>
+  <div class="absolute -bottom-5 -right-5 z-0">
+    <Polka />
+  </div>
+
+  <!--Items-->
+  <div class="flex items-end gap-6">
+    <!--Item-->
+    <div class="w-full">
+      <div
+        class="relative z-10 w-full p-5 rounded-xl bg-white dark:bg-muted-800 border border-muted-200 dark:border-muted-700 shadow-xl shadow-muted-400/10 dark:shadow-muted-800/10"
+      >
+        <video
+          controls="controls"
+          className="video"
+          muted
+          style={{ width: "100%", maxWidth: "100%", height: "auto" }}
+        >
+          <source src="/video/riya.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </div>
+</div>

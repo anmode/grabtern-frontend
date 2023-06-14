@@ -1,0 +1,68 @@
+---
+import Logo from "@components/base/Logo.astro";
+import ButtonMain from "@components/base/ButtonMain.astro";
+import ThemeToggler from "@components/base/ThemeToggler.astro";
+import Hamburger from "@components/base/Hamburger.astro";
+import NavbarSearchFilters from "@components/navigation/NavbarSearchFilters.astro";
+---
+
+<div
+  x-cloak
+  x-data="navbar()"
+  x-on:scroll.window="scroll()"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  :class="scrolled || $store.app.mobileOpen ? 'bg-white dark:bg-muted-900 shadow-lg shadow-muted-300/30 dark:shadow-muted-900/40' : ''"
+>
+  <div
+    class="w-full max-w-7xl mx-auto flex items-center justify-between pl-4 pr-0 lg:pr-4 font-sans"
+  >
+    <!-- Left -->
+    <div class="w-full lg:w-auto flex items-center gap-6">
+      <a href="/">
+        <div
+          class="transition-all duration-300"
+          :class="scrolled || $store.app.mobileOpen ? 'text-rose-500' : 'text-primary-600'"
+        >
+          <img class="w-18 h-12 invert" src="/img/logo/logo.webp" />
+        </div>
+      </a>
+      <div class="flex items-center justify-center h-20 w-20 lg:hidden ml-auto">
+        <Hamburger />
+      </div>
+    </div>
+    <!-- Right -->
+    <div
+      class="flex-col items-center lg:justify-end gap-x-6"
+      :class="$store.app.mobileOpen ? 'absolute top-[80px] left-0 w-full flex text-center px-6 pt-2 pb-6 border-t border-muted-200 dark:border-muted-800 bg-white dark:bg-muted-900 shadow-lg shadow-muted-300/40 dark:shadow-muted-900/50' : 'hidden lg:flex lg:flex-row'"
+    >
+      <div class="flex flex-col lg:flex-row items-center gap-x-6">
+        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+          :class="activeStep === 'spy-1' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
+        >
+          <a href="#doctors">Home</a>
+        </div>
+        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+          :class="activeStep === 'spy-2' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
+        >
+          <a href="#product">Mentors</a>
+        </div>
+        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+          :class="activeStep === 'spy-3' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
+        >
+          <a href="#pricing">Contact</a>
+        </div>
+        <div class="relative py-3 lg:py-5 text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 transition-colors duration-300">
+          <a href="#">Sign In</a>
+        </div>
+        <div class="py-3 lg:py-5">
+          <ThemeToggler />
+        </div>
+      </div>
+      <div class="w-full md:w-auto">
+        <ButtonMain to={"#"} class="'w-full md:w-[240px] lg:w-[110px]'"
+          >Signup</ButtonMain
+        >
+      </div>
+    </div>
+  </div>
+</div>

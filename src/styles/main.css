@@ -1,0 +1,23 @@
+@import "./modules/tooltip.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+@layer utilities {
+  [x-cloak] {
+    display: none !important;
+  }
+
+  .tw-accessibility {
+    @apply outline-none focus-visible:outline-dashed focus-visible:outline-muted-300 dark:focus-visible:outline-muted-600 focus-visible:outline-offset-2;
+  }
+
+  .tw-accessibility-static {
+    @apply outline-dashed outline-muted-300 dark:outline-muted-600 outline-offset-2;
+  }
+}

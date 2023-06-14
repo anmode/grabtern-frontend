@@ -1,0 +1,49 @@
+---
+import MockupOne from "@components/mockup/MockupOne.astro";
+---
+
+<div
+  id="product"
+  class="flex flex-col md:flex-row items-center py-6"
+  x-intersect="activeStep = 'spy-2'"
+>
+  <!--Column-->
+  <div class="w-full md:w-1/2 relative p-6">
+    <!--Section content-->
+    <div class="w-full max-w-lg space-y-4 lg:pl-10">
+      <!--Title-->
+      <h2
+        class="font-heading font-medium text-4xl text-muted-800 dark:text-white"
+      >
+        What Grabtern Do for their Students
+      </h2>
+      <!--Subtitle-->
+      <p class="font-sans text-lg text-muted-500 dark:text-muted-400">
+        We stay in touch with both the students and mentors throughout the
+        mentorship process to ensure that both parties are getting the support
+        they need and to address any issues that may arise.
+      </p>
+      <ul class="flex flex-col gap-3 text-sm text-slate-500">
+        <li class="flex items-center gap-4">
+          <img src="/img/icons/right-icon.svg" class="w-4 h-4" />One to One
+          Interaction and doubt solving.
+        </li>
+        <li class="flex items-center gap-4">
+          <img src="/img/icons/right-icon.svg" class="w-4 h-4" />Students can
+          access mentorship on their own schedule and pace.
+        </li>
+        <li class="flex items-center gap-4">
+          <img src="/img/icons/right-icon.svg" class="w-4 h-4" />Students can
+          connect with industry leaders and gain insight and advice from
+          experienced mentors
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!--Column-->
+  <div class="w-full md:w-1/2 relative p-6">
+    <!--Feature-->
+    <MockupOne />
+  </div>
+</div>

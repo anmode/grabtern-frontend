@@ -1,0 +1,517 @@
+---
+import Polka from "@components/base/Polka.astro";
+import Card from "@components/base/Card.astro";
+---
+
+<div x-cloak class="relative overflow-hidden" x-intersect="activeStep = ''">
+  <div x-data="swiper()" class="carousel-container">
+    <div class="carousel-controls flex items-center justify-end mb-4">
+      <button
+        class="w-10 h-10 flex items-center justify-center rounded-xl text-muted-600 hover:text-primary-600 dark:text-muted-300 dark:hover:text-muted-100 hover:bg-muted-200 dark:hover:bg-muted-900 transition-colors duration-300"
+        @click="swiper.slidePrev()"
+      >
+        <i class="iconify" data-icon="lucide:arrow-left"></i>
+      </button>
+
+      <button
+        class="w-10 h-10 flex items-center justify-center rounded-xl text-muted-600 hover:text-primary-600 dark:text-muted-300 dark:hover:text-muted-100 hover:bg-muted-200 dark:hover:bg-muted-900 transition-colors duration-300"
+        @click="swiper.slideNext()"
+      >
+        <i class="iconify" data-icon="lucide:arrow-right"></i>
+      </button>
+    </div>
+    <div class="swiper-container" x-ref="container">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="swiper-slide">
+          <Card class="'p-4'">
+            <div
+              class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+            >
+              <img
+                class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+                src="/img/illustrations/doctors/doctor-1.svg"
+                alt="Doctor"
+              />
+            </div>
+            <div class="font-sans mt-3">
+              <h4 class="font-semibold text-muted-800 dark:text-muted-100">
+                Dr. Melissa Thorman
+              </h4>
+              <p class="text-sm text-muted-400">Cardiologist</p>
+            </div>
+            <div class="mt-2">
+              <p
+                class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo
+                illi intellegunt quid
+              </p>
+            </div>
+            <div class="flex items-center justify-between font-sans mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  tooltip="Book appointment"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i
+                    class="iconify w-4 h-4"
+                    data-icon="ph:calendar-check-duotone"></i>
+                </button>
+                <button
+                  tooltip="Send message"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"
+                  ></i>
+                </button>
+                <button
+                  tooltip="View profile"
+                  class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+                >
+                  <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-end gap-2">
+                <i
+                  class="iconify w-4 h-4 text-yellow-400"
+                  data-icon="uiw:star-on"></i>
+                <span
+                  class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+                  >4.8/5</span
+                >
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

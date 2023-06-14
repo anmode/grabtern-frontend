@@ -216,7 +216,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="about-area3 fix">
+        <section className="about-area3 fix mb-40">
           <div className="support-wrapper align-items-center">
             <div className="right-content3">
               <div className="right-img">
@@ -269,7 +269,7 @@ export default function Home() {
           </div>
         </section>
         <section className='team-area section-padding40 fix'>
-          <div className="testimonials container"></div>
+          <div className="container">
           <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
@@ -302,6 +302,7 @@ export default function Home() {
 
             </OwlCarousel>) : null}
           </ul>
+          </div>
         </section>
         <section className="team-area section-padding40 fix">
           <div className="container">

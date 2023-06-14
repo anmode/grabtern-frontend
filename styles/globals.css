@@ -385,6 +385,9 @@ a {
   .team-area {
     padding-top: 0 !important;
   }
+  /* .testimonialsList{
+    -top: 30px;
+  } */
   .testimonialsList .box .info .name {
     font-size: 15px !important;
   }

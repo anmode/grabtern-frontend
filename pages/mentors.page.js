@@ -43,7 +43,7 @@ function Mentors({ mentorsData }) {
   const handleInfiniteScroll = async () => {
     try {
       if (
-        (window.innerHeight + document.documentElement.scrollTop )*1.5 >=
+        (window.innerHeight + document.documentElement.scrollTop) * 1.5 >=
         document.documentElement.scrollHeight
       ) {
         setLimit((prev) => prev + 6);

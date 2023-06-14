@@ -138,17 +138,18 @@ function Index({ mentorDetail }) {
         {/* Session Cards Container */}
         <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
           {/* Session Cards for every session */}
-          {mentorDetail.bookSession.length != 0 && mentorDetail.bookSession.map((session, index) => (
-            <SessionCard
-              key={index}
-              type={session.sessionType}
-              name={session.sessionName}
-              description={session.sessionDescription}
-              duration={session.sessionMeetingDuration}
-              price={session.priceSession}
-              handleBookSession={() => setModalPopup(true)}
-            />
-          ))}
+          {mentorDetail.bookSession.length != 0 &&
+            mentorDetail.bookSession.map((session, index) => (
+              <SessionCard
+                key={index}
+                type={session.sessionType}
+                name={session.sessionName}
+                description={session.sessionDescription}
+                duration={session.sessionMeetingDuration}
+                price={session.priceSession}
+                handleBookSession={() => setModalPopup(true)}
+              />
+            ))}
         </div>
         {/* Share Mentor Page Modal */}
         {showModal && (
@@ -160,7 +161,7 @@ function Index({ mentorDetail }) {
         {/* Error Display */}
         {error && <div style={{ color: "red" }}>{error}</div>}
         {/* Book Session Modal */}
-        { !error && modalPopup === true && (
+        {!error && modalPopup === true && (
           <BookSessionModal
             handleClose={() => setModalPopup(false)}
             handleCancel={() => setModalPopup(false)}

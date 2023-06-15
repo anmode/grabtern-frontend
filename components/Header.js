@@ -65,7 +65,7 @@ function Header({ navbarBackground }) {
   };
 
   return (
-    <div className="header-area header-transparent">
+    <div className="header-area header-transparent tw-z-[999]">
       <div className="main-header ">
         <div
           className={`header-bottom  header-sticky ${

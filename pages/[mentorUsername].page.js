@@ -4,6 +4,10 @@ const Header = dynamic(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import SessionCard from "../components/mentorProfile/SessionCard";
+import MentorCard from "../components/mentorProfile/MentorCard";
+import SharePageModal from "../components/mentorProfile/SharePageModal";
+import BookSessionModal from "../components/mentorProfile/BookSessionModal";
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -120,266 +124,49 @@ function Index({ mentorDetail }) {
         <title>GrabTern | Book Your Session</title>
       </Head>
       <Header navbarBackground={true} />
-      <main style={{ marginTop: "119px" }}>
-        {!mentorDetail ? (
-          <p>Loading...</p>
-        ) : (
-          <div className="mentorDetail">
-            <div className="container">
-              {showModal === true ? (
-                <div className="modalPopup">
-                  <div className="modalPopupAfterRegistrationDone">
-                    <i
-                      onClick={() => setShowModal(false)}
-                      style={{
-                        cursor: "pointer",
-                        marginLeft: "auto",
-                        fontSize: "25px",
-                      }}
-                      className="fas fa-times"
-                    ></i>
-                    <p style={{ marginBottom: "0" }}>
-                      Here is the link of the mentor detail that you can share
-                      with your friends: <br />
-                      <br />
-                      <span
-                        onClick={(e) => {
-                          navigator.clipboard.writeText(e.target.innerText);
-                          alert("Copied to clipboard!");
-                        }}
-                        style={{
-                          backgroundColor: "whitesmoke",
-                          width: "100%",
-                          padding: "15px",
-                        }}
-                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${mentorDetail.username}`}</span>
-                    </p>
-                    <button
-                      onClick={() => setShowModal(false)}
-                      style={{
-                        marginRight: "auto",
-                        cursor: "pointer",
-                        border: "none",
-                        backgroundColor: "green",
-                        color: "white",
-                        padding: "10px 20px",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      Done
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-              <div className="row1">
-                <img src={mentorDetail.mentorImg} />
-                <i
-                  class="fas fa-share-square"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setShowModal(true)}
-                ></i>
-              </div>
-              <h1>{mentorDetail.name}</h1>
-              <h3>
-                {mentorDetail.internAt} | {mentorDetail.currentStatus}
-              </h3>
-              <ul
-                className="contactLinks"
-                style={{
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  margin: "20px 0",
-                }}
-              >
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "600",
-                  }}
-                >
-                  <i class="fas fa-envelope"></i>
-                  <a target="_blank" href={`mailto:${mentorDetail.email}`}>
-                    {mentorDetail.email}
-                  </a>
-                </li>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "600",
-                  }}
-                >
-                  <i class="fab fa-linkedin"></i>
-                  <a target="_blank" href={mentorDetail.social.linkedin}>
-                    {mentorDetail.social.linkedin}
-                  </a>
-                </li>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "600",
-                  }}
-                >
-                  <i class="fab fa-twitter"></i>
-                  <a target="_blank" href={mentorDetail.social.twitter}>
-                    {mentorDetail.social.twitter}
-                  </a>
-                </li>
-              </ul>
-              <br />
-              <h2 style={{ fontSize: "24px" }}>About</h2>
-              <p>{mentorDetail.description}</p>
-              <br />
-              <h2 style={{ fontSize: "24px" }}>Sessions</h2>
-              <ul className="bookSessions">
-                {mentorDetail.bookSession.length !== 0 ? (
-                  mentorDetail.bookSession.map((session) => (
-                    <li>
-                      <div
-                        className="bookSessionHeader"
-                        style={{ alignItems: "center" }}
-                      >
-                        <i
-                          class={
-                            session.sessionType === "video-meeting"
-                              ? "fas fa-video"
-                              : session.sessionType === "call-meeting"
-                              ? "fas fa-phone"
-                              : ""
-                          }
-                          style={{ fontSize: "25px" }}
-                        ></i>
-                        <div>
-                          <h2>{session.sessionName}</h2>
-                          <p>{session.sessionDescription}</p>
-                        </div>
-                      </div>
-                      <div
-                        className="bookSessionIcons"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: "20px",
-                        }}
-                      >
-                        <div>
-                          <i className="far fa-clock"></i>
-                          {session.sessionMeetingDuration} min
-                        </div>
-                        <div>
-                          <i className="fas fa-rupee-sign"></i>
-                          {session.priceSession}
-                        </div>
-                      </div>
-                      <button
-                        style={{ cursor: "pointer" }}
-                        onClick={() => setModalPopup(true)}
-                      >
-                        <span>Book Session</span>
-                      </button>
-                      {error && <div style={{ color: "red" }}>{error}</div>}
-                      {error == "" && modalPopup === true ? (
-                        <div className="modalPopup">
-                          <div className="modalPopupAfterRegistrationDone">
-                            <i
-                              onClick={() => setModalPopup(false)}
-                              style={{
-                                cursor: "pointer",
-                                marginLeft: "auto",
-                                fontSize: "25px",
-                              }}
-                              className="fas fa-times"
-                            ></i>
-                            <p style={{ marginBottom: "0" }}>
-                              Hurrah! Just one step left to get your session
-                              booked <br /> Our team will contact you for
-                              payment, soon !!
-                              <br />
-                            </p>
-                            <div style={{ display: "flex", gap: "2rem" }}>
-                              <button
-                                onClick={() => setModalPopup(false)}
-                                style={{
-                                  marginRight: "auto",
-                                  cursor: "pointer",
-                                  border: "none",
-                                  backgroundColor: "red",
-                                  color: "white",
-                                  padding: "10px 20px",
-                                  borderRadius: "10px",
-                                }}
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                onClick={handleClick(session)}
-                                style={{
-                                  marginRight: "auto",
-                                  cursor: "pointer",
-                                  border: "none",
-                                  backgroundColor: "green",
-                                  color: "white",
-                                  padding: "10px 20px",
-                                  borderRadius: "10px",
-                                }}
-                              >
-                                {isLoading == true ? (
-                                  // <img
-                                  //   style={{
-                                  //     width: "25px",
-                                  //     height: "25px",
-                                  //     border: "none",
-                                  //     margin: "0 22px",
-                                  //   }}
-                                  //   src="/assets/img/gif/Spinner.gif"
-                                  //   alt="loading..."
-                                  // />
-                                  <Image
-                                    style={{
-                                      width: "25px",
-                                      height: "25px",
-                                      border: "none",
-                                      margin: "0 22px",
-                                    }}
-                                    src="/assets/img/gif/Spinner.gif"
-                                    alt="loading..."
-                                    width={25}
-                                    height={25}
-                                  />
-                                ) : (
-                                  <span>Confirm</span>
-                                )}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      ) : null}
-                      {/* {modalPopup === true ? (
-                        <div className="modalPopup">
-                          <div className="modalPopupAfterRegistrationDone">
-                            <p>
-                              Thank you Our team Will contacting you, check your
-                              inbox.
-                            </p>
-                            <img src="/iconMentorRegistrationPopup.webp" />
-                            <p>Redirecting you to home in {waitTime} second</p>
-                          </div>
-                        </div>
-                      ) : null} */}
-                      <div></div>
-                    </li>
-                  ))
-                ) : mentorDetail.bookSession.length === 0 ? (
-                  <p>You not have book sessions yet</p>
-                ) : null}
-              </ul>
-            </div>
-          </div>
+      {/* Mentor Page */}
+      <main className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
+        <MentorCard
+          mentorImage={mentorDetail.mentorImg}
+          name={mentorDetail.name}
+          internAt={mentorDetail.internAt}
+          currentStatus={mentorDetail.currentStatus}
+          socialLinks={mentorDetail.social}
+          about={mentorDetail.description}
+          handleSharePage={() => setShowModal(true)}
+        />
+        {/* Session Cards Container */}
+        <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+          {/* Session Cards for every session */}
+          {mentorDetail.bookSession.length != 0 &&
+            mentorDetail.bookSession.map((session, index) => (
+              <SessionCard
+                key={index}
+                type={session.sessionType}
+                name={session.sessionName}
+                description={session.sessionDescription}
+                duration={session.sessionMeetingDuration}
+                price={session.priceSession}
+                handleBookSession={() => setModalPopup(true)}
+              />
+            ))}
+        </div>
+        {/* Share Mentor Page Modal */}
+        {showModal && (
+          <SharePageModal
+            handleClose={() => setShowModal(false)}
+            username={mentorDetail.name}
+          />
+        )}
+        {/* Error Display */}
+        {error && <div style={{ color: "red" }}>{error}</div>}
+        {/* Book Session Modal */}
+        {!error && modalPopup === true && (
+          <BookSessionModal
+            handleClose={() => setModalPopup(false)}
+            handleCancel={() => setModalPopup(false)}
+            handleBookSession={() => handleClick()}
+          />
         )}
       </main>
     </>

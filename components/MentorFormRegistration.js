@@ -152,6 +152,10 @@ export default function MentorForm() {
 
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
+    if(!file){
+      setFormData({ ...formData, mentorImg: "" });
+      return;
+    }
     const base64 = await convertBase64(file);
     setFormData({ ...formData, mentorImg: base64 });
   };
@@ -247,6 +251,7 @@ export default function MentorForm() {
               {formData.mentorImg.length > 0 ? (
                 <input
                   type="file"
+                  accept="image/*"
                   name="mentorProfile"
                   className="mentorFormInput"
                   onChange={(e) => handleUploadImageChange(e)}
@@ -254,6 +259,7 @@ export default function MentorForm() {
               ) : (
                 <input
                   type="file"
+                  accept="image/*"
                   name="mentorProfile"
                   className="mentorFormInput"
                   onChange={(e) => handleUploadImageChange(e)}

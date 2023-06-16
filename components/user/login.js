@@ -38,7 +38,7 @@ function Login({ handleLogPageToggle }) {
           user_email: userObject.email,
         };
         localStorage.setItem("userData", JSON.stringify(userData));
-        router.push( localStorage.getItem("redirectUrl")|| "/");
+        router.push(localStorage.getItem("redirectUrl") || "/");
       } catch (error) {
         setError("New user? Register first.");
         console.log(error);

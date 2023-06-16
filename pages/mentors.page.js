@@ -12,21 +12,30 @@ function Mentors({ mentorsData }) {
   const [limit, setLimit] = useState(6);
   const [loading, setLoading] = useState(false);
   const [skipvalue, setSkipValue] = useState(6);
+  const [completed, setCompleted] = useState(false);
 
   const getMentorData = async () => {
-    setLoading(true);
+    {
+      !completed && setLoading(true);
+    }
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists?_limit=${limit}&_skipvalue=${skipvalue}`
     );
     const newData = await res.json();
-    const filterData = newData.filter(
-      (mentor) =>
-        mentor.verified === true && mentor.token === "mentorIsVerified"
-    );
-    setData([...data, ...filterData]);
-    setSkipValue(skipvalue + limit);
-    setLoading(false);
-    console.log("data here", newData);
+    if (newData.length > 0) {
+      const filterData = newData.filter(
+        (mentor) =>
+          mentor.verified === true && mentor.token === "mentorIsVerified"
+      );
+
+      setData([...data, ...filterData]);
+      setSkipValue(skipvalue + limit);
+      setLoading(false);
+      console.log("data here", newData);
+    } else {
+      setCompleted(true);
+      setLoading(false);
+    }
     // Add logic to update your state or perform other operations with the fetched data
   };
 
@@ -43,7 +52,7 @@ function Mentors({ mentorsData }) {
   const handleInfiniteScroll = async () => {
     try {
       if (
-        (window.innerHeight + document.documentElement.scrollTop) * 1.5 >=
+        (window.innerHeight + document.documentElement.scrollTop) * 1.2 >=
         document.documentElement.scrollHeight
       ) {
         setLimit((prev) => prev + 6);
@@ -84,12 +93,22 @@ function Mentors({ mentorsData }) {
                 ))}
               </div>
             )}
+
             {loading && (
-              <img
-                style={{ width: "100px", height: "100px" }}
-                src="/assets/img/gif/Spinner.gif"
-                alt="...jljk"
-              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100px",
+                }}
+              >
+                <img
+                  style={{ width: "100px", height: "100px" }}
+                  src="/assets/img/gif/Spinner.gif"
+                  alt="...loading"
+                />
+              </div>
             )}
           </div>
         </section>

@@ -151,11 +151,11 @@ function Index({ mentorDetail }) {
           />
         )} */}
         {/* Successful Alert Message */}
-        {emailSent && (
+        {/* {emailSent && (
           <div style={{ color: "green" }}>
             Your session has been booked! Check your inbox for payment details.
           </div>
-        )}
+        )} */}
       </main>
       {isLoading && (
         <>

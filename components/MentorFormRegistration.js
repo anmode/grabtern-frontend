@@ -152,7 +152,7 @@ export default function MentorForm() {
 
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
-    if(!file){
+    if (!file) {
       setFormData({ ...formData, mentorImg: "" });
       return;
     }

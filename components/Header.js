@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/LoginDropdown";
 
 function Header({ navbarBackground }) {
-  localStorage.setItem("redirectUrl", window.location.href);
+  // localStorage.setItem("redirectUrl", window.location.href);
   // const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);

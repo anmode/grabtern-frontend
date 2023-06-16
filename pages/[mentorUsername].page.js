@@ -9,6 +9,10 @@ import MentorCard from "../components/mentorProfile/MentorCard";
 import SharePageModal from "../components/mentorProfile/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/BookSessionModal";
 import { useAuth } from "../context/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styles from '../styles/loader.module.css';
+
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +25,7 @@ function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState(null);
+  
   const {
     isMentorLoggedIn,
     setIsMentorLoggedIn,
@@ -52,22 +57,16 @@ function Index({ mentorDetail }) {
       );
       setIsLoading(false);
       setModalPopup(true);
-      setEmailSent(true); // Set emailSent to true when email is sent successfully
+      toast.success('Your session has been booked! Check your inbox for payment details.'); // Success toast
     } catch (error) {
       setIsLoading(false);
       if (error.response && error.response.status === 400) {
-        setError("You have already booked this session");
-        setTimeout(() => {
-          setError("");
-        }, 3000); // remove the error after 3 seconds
+        toast.error('You have already booked this session'); // Error toast
       } else if (error.response && error.response.status === 405) {
-        setError("You are not allowed to book your own session");
-        setTimeout(() => {
-          setError("");
-        }, 3000); // remove the error after 3 seconds
+        toast.error('You are not allowed to book your own session'); // Error toast
       } else {
         console.error("Error sending mail:", error);
-        setError("Facing any problem? Email Us");
+        toast.error('Facing any problem? Email Us'); // Error toast
       }
     }
   };
@@ -128,8 +127,8 @@ function Index({ mentorDetail }) {
                 description={session.sessionDescription}
                 duration={session.sessionMeetingDuration}
                 price={session.priceSession}
-                handleBookSession={() => setModalPopup(true)}
-                //  handleBookSession={() => handleClick(session)}
+                // handleBookSession={() => setModalPopup(true)}
+                 handleBookSession={() => handleClick(session)}
               />
             ))}
         </div>
@@ -143,13 +142,13 @@ function Index({ mentorDetail }) {
         {/* Error Display */}
         {error && <div style={{ color: "red" }}>{error}</div>}
         {/* Book Session Modal */}
-        {!error && modalPopup && (
+        {/* {!error && modalPopup && (
           <BookSessionModal
             handleClose={() => setModalPopup(false)}
             handleCancel={() => setModalPopup(false)}
             handleConfirm={() => handleClick(session)}
           />
-        )}
+        )} */}
         {/* Successful Alert Message */}
         {emailSent && (
           <div style={{ color: "green" }}>
@@ -157,6 +156,23 @@ function Index({ mentorDetail }) {
           </div>
         )}
       </main>
+      {isLoading && (
+      <>
+        <div className={styles.overlay}></div>
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 9999,
+          }}
+        >
+          <div className={styles.loader}></div>
+        </div>
+      </>
+    )}
+      <ToastContainer />
     </>
   );
 }

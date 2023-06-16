@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../components/Header"));
+const Header = React.lazy(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -101,103 +101,138 @@ function Index({ mentorDetail }) {
 
   return (
     <>
-      <Head>
-        <title>GrabTern | Book Your Session</title>
-      </Head>
-      <Header navbarBackground={true} />
-      {/* Mentor Page */}
-      <main className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
-        <MentorCard
-          mentorImage={mentorDetail.mentorImg}
-          name={mentorDetail.name}
-          internAt={mentorDetail.internAt}
-          currentStatus={mentorDetail.currentStatus}
-          socialLinks={mentorDetail.social}
-          about={mentorDetail.description}
-          handleSharePage={() => setShowModal(true)}
-        />
-        {/* Session Cards Container */}
-        <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
-          {/* Session Cards for every session */}
-          {mentorDetail.bookSession.length !== 0 &&
-            mentorDetail.bookSession.map((session, index) => (
-              <SessionCard
-                key={index}
-                type={session.sessionType}
-                name={session.sessionName}
-                description={session.sessionDescription}
-                duration={session.sessionMeetingDuration}
-                price={session.priceSession}
-                // handleBookSession={() => setModalPopup(true)}
-                handleBookSession={() => handleClick(session)}
-              />
-            ))}
-        </div>
-        {/* Share Mentor Page Modal */}
-        {showModal && (
-          <SharePageModal
-            handleClose={() => setShowModal(false)}
-            username={mentorDetail.username}
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Head>
+          <title>GrabTern | Book Your Session</title>
+        </Head>
+        <Header navbarBackground={true} />
+        {/* Mentor Page */}
+        <main className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
+          <MentorCard
+            mentorImage={mentorDetail.mentorImg}
+            name={mentorDetail.name}
+            internAt={mentorDetail.internAt}
+            currentStatus={mentorDetail.currentStatus}
+            socialLinks={mentorDetail.social}
+            about={mentorDetail.description}
+            handleSharePage={() => setShowModal(true)}
           />
-        )}
-        {/* Error Display */}
-        {/* {error && <div style={{ color: "red" }}>{error}</div>} */}
-        {/* Book Session Modal */}
-        {/* {!error && modalPopup && (
+          {/* Session Cards Container */}
+          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+            {/* Session Cards for every session */}
+            {mentorDetail.bookSession.length !== 0 &&
+              mentorDetail.bookSession.map((session, index) => (
+                <SessionCard
+                  key={index}
+                  type={session.sessionType}
+                  name={session.sessionName}
+                  description={session.sessionDescription}
+                  duration={session.sessionMeetingDuration}
+                  price={session.priceSession}
+                  // handleBookSession={() => setModalPopup(true)}
+                  handleBookSession={() => handleClick(session)}
+                />
+              ))}
+          </div>
+          {/* Share Mentor Page Modal */}
+          {showModal && (
+            <SharePageModal
+              handleClose={() => setShowModal(false)}
+              username={mentorDetail.username}
+            />
+          )}
+          {/* Error Display */}
+          {/* {error && <div style={{ color: "red" }}>{error}</div>} */}
+          {/* Book Session Modal */}
+          {/* {!error && modalPopup && (
           <BookSessionModal
             handleClose={() => setModalPopup(false)}
             handleCancel={() => setModalPopup(false)}
             handleConfirm={() => handleClick(session)}
           />
         )} */}
-        {/* Successful Alert Message */}
-        {/* {emailSent && (
+          {/* Successful Alert Message */}
+          {/* {emailSent && (
           <div style={{ color: "green" }}>
             Your session has been booked! Check your inbox for payment details.
           </div>
         )} */}
-      </main>
-      {isLoading && (
-        <>
-          <div className={styles.overlay}></div>
-          <div
-            style={{
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 9999,
-            }}
-          >
-            <div className={styles.loader}></div>
-          </div>
-        </>
-      )}
-      <ToastContainer />
+        </main>
+        {isLoading && (
+          <>
+            <div className={styles.overlay}></div>
+            <div
+              style={{
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 9999,
+              }}
+            >
+              <div className={styles.loader}></div>
+            </div>
+          </>
+        )}
+        <ToastContainer />
+      </React.Suspense>
     </>
   );
 }
 
 export default Index;
 
-export const getServerSideProps = async (context) => {
+// export const getServerSideProps = async (context) => {
+//   const { mentorUsername } = context.params;
+//   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
+//   const { data: res } = await axios.get(url);
+//   if (res.message === "Invalid link") {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: "/",
+//       },
+//       props: {
+//         mentorDetail: null,
+//       },
+//     };
+//   }
+//   return {
+//     props: {
+//       mentorDetail: res.mentorDetail,
+//     },
+//   };
+// };
+
+export const getStaticPaths = async () => {
+  // Fetch all mentor usernames to generate static pages
+  const { data: mentors } = await axios.get(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`
+  );
+
+  const paths = mentors
+    .filter((mentor) => mentor.username !== "") // Filter out the conflicting path
+    .map((mentor) => ({
+      params: { mentorUsername: mentor.username },
+    }));
+  return { paths, fallback: "blocking" };
+};
+
+export const getStaticProps = async (context) => {
   const { mentorUsername } = context.params;
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
   const { data: res } = await axios.get(url);
+
   if (res.message === "Invalid link") {
     return {
-      redirect: {
-        permanent: false,
-        destination: "/",
-      },
-      props: {
-        mentorDetail: null,
-      },
+      notFound: true,
     };
   }
+
   return {
     props: {
       mentorDetail: res.mentorDetail,
     },
+    revalidate: 60, // Revalidate the data every 60 seconds
   };
 };

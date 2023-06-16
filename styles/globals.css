@@ -298,7 +298,7 @@ a {
 @media (min-width: 992px) {
   .container {
     padding: 20px;
-    margin: 10px;
+    /* margin: 10px; */
     padding: 50px;
     max-width: 100% !important;
     width: 100% !important;

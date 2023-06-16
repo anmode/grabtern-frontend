@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import jwt_decode from "jwt-decode";
 import { useAuth } from "../../context/AuthContext";
+import { redirect } from "next/dist/server/api-utils";
 
 function Login({ handleLogPageToggle }) {
   const [data, setData] = useState({ email: "", password: "" });
@@ -37,7 +38,7 @@ function Login({ handleLogPageToggle }) {
           user_email: userObject.email,
         };
         localStorage.setItem("userData", JSON.stringify(userData));
-        router.push("/");
+        router.push( localStorage.getItem("redirectUrl")|| "/");
       } catch (error) {
         setError("New user? Register first.");
         console.log(error);

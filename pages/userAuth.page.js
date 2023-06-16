@@ -7,42 +7,29 @@ import Head from "next/head";
 
 function UserAuthPage() {
   const router = useRouter();
-  const [logpagestate, setLogPageState] = useState(false);
+  const [logPageState, setLogPageState] = useState("");
 
   // Function to handle toggle between login/register page
   const handleLogPageToggle = () => {
-    setLogPageState(!logpagestate);
+    const newPageState = logPageState === "login" ? "register" : "login";
+    setLogPageState(newPageState);
+    updateURLHash(newPageState);
+  };
 
-    // Update URL hash based on current component state
-    router.push(
-      `/userAuth/#${!logpagestate ? "register" : "login"}`,
-      undefined,
-      { shallow: true }
-    );
+  // Function to update the URL hash based on the current component state
+  const updateURLHash = (newHash) => {
+    window.location.hash = newHash;
   };
 
   useEffect(() => {
-    handleHashChange();
-
-    // Add event listener for URL hash change
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  // Function to check current URL hash and render corresponding component
-  const handleHashChange = () => {
     const currentHash = window.location.hash.substring(1);
-
-    if (currentHash === "login") {
-      setLogPageState(true);
-    } else if (currentHash === "register") {
-      setLogPageState(false);
+    if (currentHash === "login" || currentHash === "register") {
+      setLogPageState(currentHash);
     } else {
       // Redirect user or display an error message
-      router.push("/404");
+      router.replace("/404");
     }
-  };
+  }, []);
 
   return (
     <>
@@ -51,7 +38,7 @@ function UserAuthPage() {
       </Head>
       <Header navbarBackground={true} />
       <main className="login-body d-flex flex-row justify-content-between">
-        {logpagestate ? (
+        {logPageState === "login" ? (
           <Login handleLogPageToggle={handleLogPageToggle} />
         ) : (
           <Register handleLogPageToggle={handleLogPageToggle}></Register>

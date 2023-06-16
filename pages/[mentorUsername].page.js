@@ -8,61 +8,40 @@ import SessionCard from "../components/mentorProfile/SessionCard";
 import MentorCard from "../components/mentorProfile/MentorCard";
 import SharePageModal from "../components/mentorProfile/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/BookSessionModal";
+import { useAuth } from "../context/AuthContext";
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
   const [error, setError] = useState("");
+  const [emailSent, setEmailSent] = useState(false); // New state variable
   const router = useRouter();
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const [selectedSession, setSelectedSession] = useState(null);
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("user_name") !== null) {
-  //     setLoggedIn(true);
-  //   }
-  //   if (modalPopup === true && waitTime > 0) {
-  //     setTimeout(() => {
-  //       setWaitTime((value) => (value -= 1));
-  //     }, 1000);
-  //   }
-  // }, [modalPopup, waitTime]);
-
-  // useEffect(() => {
-  //   if (modalPopup === true) {
-  //     router.push("/mentors");
-  //   }
-  // }, [modalPopup]);
-  const handleClick = (Mentordata) => () => {
-    if (isLoggedIn) {
-      setModalPopup(true);
+  const handleClick = (mentordata) => {
+    if (isUserLoggedIn) {
       handleBookSession(
-        Mentordata.sessionName,
+        mentordata.sessionName,
         mentorDetail.email,
         mentorDetail.name,
-        Mentordata.sessionMeetingDuration,
-        Mentordata.priceSession
+        mentordata.sessionMeetingDuration,
+        mentordata.priceSession
       );
     } else {
-      router.push("/login");
+      // const redirectUrl = `/userAuth/#login?redirect=/${mentorDetail.username}`;
+      router.push("/userAuth#login");
     }
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("user_name") !== null) {
-      setLoggedIn(true);
-    }
-    if (modalPopup === true && waitTime !== 0) {
-      setTimeout(() => {
-        setWaitTime((value) => (value -= 1));
-      }, 1000);
-    }
-    if (waitTime === 0) {
-      router.push("/");
-    }
-  });
 
   const sendMail = async (data) => {
     try {
@@ -73,18 +52,19 @@ function Index({ mentorDetail }) {
       );
       setIsLoading(false);
       setModalPopup(true);
+      setEmailSent(true); // Set emailSent to true when email is sent successfully
     } catch (error) {
       setIsLoading(false);
       if (error.response && error.response.status === 400) {
         setError("You have already booked this session");
         setTimeout(() => {
           setError("");
-        }, 3000); // remove the error after 5 seconds
+        }, 3000); // remove the error after 3 seconds
       } else if (error.response && error.response.status === 405) {
         setError("You are not allowed to book your own session");
         setTimeout(() => {
           setError("");
-        }, 3000); // remove the error after 5 seconds
+        }, 3000); // remove the error after 3 seconds
       } else {
         console.error("Error sending mail:", error);
         setError("Facing any problem? Email Us");
@@ -99,8 +79,8 @@ function Index({ mentorDetail }) {
     sessionTime,
     sessionPrice
   ) => {
-    const userEmail = localStorage.getItem("user_email");
-    const userName = localStorage.getItem("user_name");
+    const userEmail = userData.user_email;
+    const userName = userData.user_name;
     const data = {
       sessionName,
       mentorEmail,
@@ -118,6 +98,7 @@ function Index({ mentorDetail }) {
       console.error(error);
     }
   };
+
   return (
     <>
       <Head>
@@ -138,7 +119,7 @@ function Index({ mentorDetail }) {
         {/* Session Cards Container */}
         <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
           {/* Session Cards for every session */}
-          {mentorDetail.bookSession.length != 0 &&
+          {mentorDetail.bookSession.length !== 0 &&
             mentorDetail.bookSession.map((session, index) => (
               <SessionCard
                 key={index}
@@ -148,6 +129,7 @@ function Index({ mentorDetail }) {
                 duration={session.sessionMeetingDuration}
                 price={session.priceSession}
                 handleBookSession={() => setModalPopup(true)}
+                //  handleBookSession={() => handleClick(session)}
               />
             ))}
         </div>
@@ -155,18 +137,24 @@ function Index({ mentorDetail }) {
         {showModal && (
           <SharePageModal
             handleClose={() => setShowModal(false)}
-            username={mentorDetail.name}
+            username={mentorDetail.username}
           />
         )}
         {/* Error Display */}
         {error && <div style={{ color: "red" }}>{error}</div>}
         {/* Book Session Modal */}
-        {!error && modalPopup === true && (
+        {!error && modalPopup && (
           <BookSessionModal
             handleClose={() => setModalPopup(false)}
             handleCancel={() => setModalPopup(false)}
-            handleBookSession={() => handleClick()}
+            handleConfirm={() => handleClick(session)}
           />
+        )}
+        {/* Successful Alert Message */}
+        {emailSent && (
+          <div style={{ color: "green" }}>
+            Your session has been booked! Check your inbox for payment details.
+          </div>
         )}
       </main>
     </>

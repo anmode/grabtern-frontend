@@ -58,10 +58,10 @@ const testimonialOptions={
       items: 2,
     },
     900: {
-      items: 3,
+      items: 2,
     },
     1170: {
-      items: 4,
+      items: 3,
     },
   },
 }

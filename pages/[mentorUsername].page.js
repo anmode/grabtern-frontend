@@ -141,7 +141,7 @@ function Index({ mentorDetail }) {
           />
         )}
         {/* Error Display */}
-        {error && <div style={{ color: "red" }}>{error}</div>}
+        {/* {error && <div style={{ color: "red" }}>{error}</div>} */}
         {/* Book Session Modal */}
         {/* {!error && modalPopup && (
           <BookSessionModal

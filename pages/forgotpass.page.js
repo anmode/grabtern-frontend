@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 function ForgotPassword() {
+  const router = useRouter();
+  const { entity } = router.query; // 'entity' will contain the entity type ('user' or 'mentor')
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
@@ -16,10 +19,17 @@ function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
     try {
       setIsLoading(true);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/forgotPassword`;
-      const { data } = await axios.post(url, { email });
+
+      const entityTypeParam = entity === "user" ? "user" : "mentor";
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword`;
+      const { data } = await axios.post(url, {
+        email,
+        entityType: entityTypeParam,
+      });
+
       setSuccess(true);
       setIsLoading(false);
     } catch (error) {
@@ -40,6 +50,7 @@ function ForgotPassword() {
         <title>GrabTern | Frogot Password</title>
       </Head>
       <Header navbarBackground={true} />
+
       <main className="forgot-password-body">
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="forgot-password-form">

@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import LogState from "../context/LogState";
+import { AuthProvider } from "../context/AuthContext";
 
 export default function Document() {
   return (
@@ -47,7 +47,7 @@ export default function Document() {
         ></script>
       </Head>
       <body>
-        <LogState />
+        <AuthProvider />
         <Main />
         <NextScript />
       </body>

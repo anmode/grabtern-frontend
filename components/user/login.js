@@ -6,9 +6,14 @@ import jwt_decode from "jwt-decode";
 import { useAuth } from "../../context/AuthContext";
 import { redirect } from "next/dist/server/api-utils";
 
+import { useContext } from "react";
+import LogContext from "../../context/LogContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login({ handleLogPageToggle }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [login,setLogin] =useState(false);
   const router = useRouter();
   const {
     isMentorLoggedIn,
@@ -17,6 +22,8 @@ function Login({ handleLogPageToggle }) {
     setIsUserLoggedIn,
   } = useAuth();
 
+
+ 
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       if (localStorage.getItem("userData") !== null) {
@@ -81,7 +88,7 @@ function Login({ handleLogPageToggle }) {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const res = await axios.post(url, data);
       if (!res.verified) {
-        setError(
+        toast.error(
           "Email not verified, verification link has been sent to your email"
         );
       }
@@ -95,20 +102,31 @@ function Login({ handleLogPageToggle }) {
       setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
-      if (error.response && error.response.status === 403) {
-        setError(
+      if (error.response && error.response.status === 405) {
+        toast.error(
           "Email not verified, verification link has been sent to your email"
         );
-      } else if (error.response && error.response.status === 402) {
-        setError("Invalid email or password.");
       } else if (error.response && error.response.status === 401) {
-        setError("New User? Register first.");
-      } else {
-        setError("login failed. please contact us.");
+        toast.error("Invalid email or password.");
       }
+      else if(localStorage.getItem("user_name")!==null && localStorage.getItem("user_email")!==null){
+        setLogin(true);
+       
+      }
+
+      
+      else {
+        toast.error("login failed. please contact us.");
+        
+      }
+     
     }
   };
-
+  const addToast=()=>{
+    if(login === true){
+      toast.success("login successful");
+    }
+  }
   return (
     <>
       <form
@@ -173,12 +191,17 @@ function Login({ handleLogPageToggle }) {
                   "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255)100% )",
               }}
               className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
+              onClick={addToast}
             />
+           
           </div>
+         
+          <ToastContainer/>
           {error && <div style={{ color: "red" }}>{error}</div>}
           {localStorage.getItem("new_user") && (
-            <div style={{ color: "green" }}>Please register first.</div>
+            <div style={{ color: "green" }} >Please register first.</div>
           )}
+          
           <Link
             href="/forgotpass?entity=user"
             className="tw-font-medium tw-mt-8 tw-text-right hover:tw-text-gray-400 tw-text-blue-700"

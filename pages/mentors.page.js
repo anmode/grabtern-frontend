@@ -3,11 +3,11 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 import { useState, useEffect } from "react";
 import styles from "../styles/filter.module.css";
 import Head from "next/head";
+
 
 
 function Mentors({ mentorsData }) {
@@ -15,9 +15,6 @@ function Mentors({ mentorsData }) {
 
   return (
     <>
-      <Head>
-        <title>GrabTern | Find Your Mentors</title>
-      </Head>
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <div className={styles.global_search}>
@@ -31,17 +28,9 @@ function Mentors({ mentorsData }) {
         />
       </div>
       <main>
-        {/* <div className="sidebody" style="height:69vh;">
-          <div className="searchbar">
-            <input placeholder="Search...." id="searchbar" name="searchbar" type="text">
-
-            </input>
-            <i className="fa-soli fa-magnifying-glass"></i>
-          </div>
-        </div> */}
         <section className="findMentors">
           <div className="container">
-            <h1>Find All Mentors Here</h1>
+            <h1>Find All mentors here's</h1>
             {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (
@@ -70,7 +59,6 @@ function Mentors({ mentorsData }) {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import LogState from "../context/LogState";
+import { AuthProvider } from "../context/AuthContext";
 
 export default function Document() {
   return (
@@ -15,7 +15,11 @@ export default function Document() {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
         {/* Favicon */}
-        <link rel="shortcut icon" type="image/x-icon" href="/aasets/img/favicon1.ico" />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="/aasets/img/favicon1.ico"
+        />
 
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
@@ -43,7 +47,7 @@ export default function Document() {
         ></script>
       </Head>
       <body>
-        <LogState />
+        <AuthProvider />
         <Main />
         <NextScript />
       </body>

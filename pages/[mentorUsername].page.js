@@ -59,7 +59,7 @@ function Index({ mentorDetail }) {
         data
       );
       setIsLoading(false);
-      setModalPopup(true);
+      setModalPopup(false);
       toast.success(
         "Your session has been booked! Check your inbox for payment details."
       ); // Success toast

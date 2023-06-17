@@ -50,19 +50,19 @@ function Header({ navbarBackground }) {
     }
   };
 
-  const userlogout = () => {
-    localStorage.clear();
-    setIsUserLoggedIn(false);
-    router.push("/");
-    window.location.reload();
-  };
+  // const userlogout = () => {
+  //   localStorage.clear();
+  //   setIsUserLoggedIn(false);
+  //   router.push("/");
+  //   window.location.reload();
+  // };
 
-  const mentorlogout = () => {
-    localStorage.clear();
-    setIsMentorLoggedIn(false);
-    router.push("/");
-    window.location.reload();
-  };
+  // const mentorlogout = () => {
+  //   localStorage.clear();
+  //   setIsMentorLoggedIn(false);
+  //   router.push("/");
+  //   window.location.reload();
+  // };
 
   return (
     <div className="header-area header-transparent tw-z-[999]">

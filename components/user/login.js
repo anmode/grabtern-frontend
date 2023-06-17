@@ -18,15 +18,6 @@ function Login({ handleLogPageToggle }) {
   } = useAuth();
 
   useEffect(() => {
-    const checkUserLoggedIn = async () => {
-      if (localStorage.getItem("userData") !== null) {
-        const redirectUrl = JSON.parse(
-          localStorage.getItem("userData")
-        ).redirectUrl;
-        router.push(redirectUrl || "/");
-      }
-    };
-
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
@@ -38,13 +29,14 @@ function Login({ handleLogPageToggle }) {
           user_email: userObject.email,
         };
         localStorage.setItem("userData", JSON.stringify(userData));
-        router.push(localStorage.getItem("redirectUrl") || "/");
+        const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
+        router.push(redirectUrl);
       } catch (error) {
         setError("New user? Register first.");
         console.log(error);
       }
     };
-
+  
     const initGoogleSignIn = () => {
       try {
         google.accounts.id.initialize({
@@ -61,14 +53,17 @@ function Login({ handleLogPageToggle }) {
         console.error("Google sign-in initialization failed:", error);
       }
     };
-
-    if (!isUserLoggedIn) {
-      initGoogleSignIn();
-      // console.log(!isUserLoggedIn);
-    } else {
-      checkUserLoggedIn();
+  
+    initGoogleSignIn();
+    
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData && userData.redirectUrl) {
+      const redirectUrl = userData.redirectUrl;
+      router.push(redirectUrl);
     }
+  
   }, []);
+  
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });

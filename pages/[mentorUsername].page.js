@@ -20,7 +20,6 @@ function Index({ mentorDetail }) {
   const [error, setError] = useState("");
   const [emailSent, setEmailSent] = useState(false); // New state variable
   const router = useRouter();
-  localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState("");
@@ -33,20 +32,19 @@ function Index({ mentorDetail }) {
   } = useAuth();
 
   const handleClick = (mentordata) => {
-    console.log("selectedSession ", selectedSession);
+    const { sessionName, sessionMeetingDuration, priceSession } = mentordata;
+    const { email, name, username } = mentorDetail;
+  
     if (isUserLoggedIn) {
-      handleBookSession(
-        mentordata.sessionName,
-        mentorDetail.email,
-        mentorDetail.name,
-        mentordata.sessionMeetingDuration,
-        mentordata.priceSession
-      );
+     sessionStorage.removeItem("redirectUrl")
+     handleBookSession(sessionName, email, name, sessionMeetingDuration, priceSession);
     } else {
-      // const redirectUrl = `/userAuth/#login?redirect=/${mentorDetail.username}`;
-      router.push("/userAuth#login");
+      const redirectUrl = window.location.href;
+      sessionStorage.setItem("redirectUrl", redirectUrl);
+      router.push(`/userAuth#login`);
     }
   };
+  
 
   const sendMail = async (data) => {
     try {

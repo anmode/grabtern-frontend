@@ -4,11 +4,15 @@ import jwt_decode from "jwt-decode";
 
 import { useRouter } from "next/router";
 import Overlay from "./Overlay";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function MentorForm() {
   const router = useRouter();
-  const [modalPopup, setModalPopup] = useState(false);
+  //const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
   const [isChecked, setIsChecked] = useState(false);
+  const [addtoast, setaddToast] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
     sessionDescription: "Achieve your goals faster with customized road map",
@@ -17,6 +21,7 @@ export default function MentorForm() {
     // peopleAttend: "",
     priceSession: "",
   });
+
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
@@ -121,7 +126,7 @@ export default function MentorForm() {
   }, []);
 
   useEffect(() => {
-    if (modalPopup === true && waitTime !== 0) {
+    if (addtoast === true && waitTime !== 0) {
       setTimeout(() => {
         setWaitTime((value) => (value -= 1));
       }, 1000);
@@ -183,7 +188,8 @@ export default function MentorForm() {
         console.log(error);
         const { data: res } = await axios.post(url, formData);
         setIsLoading(false);
-        setModalPopup(true);
+        //setModalPopup(true);
+        setaddToast(true);
       } catch (error) {
         setIsLoading(false);
         console.log(error);
@@ -192,11 +198,11 @@ export default function MentorForm() {
           error.response.status >= 400 &&
           error.response.status <= 500
         ) {
-          setError(error.response.data.message);
+          toast.error(error.response.data.message);
         }
       }
     } else {
-      alert("Please agree to the terms before submitting");
+      toast.error("Please agree to the terms before submitting");
     }
   };
 
@@ -207,7 +213,7 @@ export default function MentorForm() {
   return (
     <div className="mentorFormRegisration">
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
-      {modalPopup === true ? (
+      {/* {modalPopup === true ? (
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">
             <p>
@@ -219,7 +225,8 @@ export default function MentorForm() {
             <p>Redirecting you to home in {waitTime} second</p>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
+      {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="container">
         <img
           src="/assets/img/vector_images/vector-registration.svg"
@@ -410,10 +417,12 @@ export default function MentorForm() {
                 style={{ width: "fit-content", padding: "15px 25px" }}
                 type="submit"
                 className="mentorFormButotn"
+                onClick={addtoast}
               >
                 Register
               </button>
             </div>
+            <ToastContainer />
             <div>
               {isLoading && (
                 <img

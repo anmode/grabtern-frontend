@@ -2,23 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
+import { useAuth } from "../context/AuthContext";
+import DropdownCard from "../components/LoginDropdown";
 
-function Header({ isUserLoggedIn, navbarBackground }) {
-  // localStorage.setItem('redirectUrl', window.location.href);
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
+function Header({ navbarBackground }) {
+  // localStorage.setItem("redirectUrl", window.location.href);
+  // const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
   const [loginOption, setLoginOption] = useState(false);
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
 
   useEffect(() => {
-    const userName = localStorage.getItem("user_name");
-    if (userName) {
-      setLoggedIn(true);
+    if (userData?.user_name) {
+      setIsUserLoggedIn(true);
     }
-    const mentorName = localStorage.getItem("mentor_name");
-    if (mentorName) {
-      setMentorLoggedIn(true);
+
+    if (mentorData?.mentor_name) {
+      setIsMentorLoggedIn(true);
     }
 
     const handleScroll = () => {
@@ -28,17 +36,11 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     handleScroll();
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleLoginClick = () => {
-    setLoginOption(true);
-    setTimeout(() => {
-      setLoginOption(false);
-    }, 5000);
-  };
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -50,20 +52,20 @@ function Header({ isUserLoggedIn, navbarBackground }) {
 
   const userlogout = () => {
     localStorage.clear();
-    setLoggedIn(false);
+    setIsUserLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
 
   const mentorlogout = () => {
     localStorage.clear();
-    setMentorLoggedIn(false);
+    setIsMentorLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
 
   return (
-    <div className="header-area header-transparent">
+    <div className="header-area header-transparent tw-z-[999]">
       <div className="main-header ">
         <div
           className={`header-bottom  header-sticky ${
@@ -76,15 +78,15 @@ function Header({ isUserLoggedIn, navbarBackground }) {
           style={{ transition: "all 0.5s ease-in" }}
         >
           <div className="container-fluid">
-            <div className="row align-items-center">
-              <div className="col-xl-2 col-lg-2">
+            <div className="row align-items-center justify-content-between">
+              <div>
                 <div className="logo">
                   <a href="/">
                     <Image
-                      width={100}
-                      height={117}
-                      src="/whitelogo.png"
-                      style={{ padding: "30px 0" }}
+                      width={80}
+                      height={80}
+                      src="/whitelogo.webp"
+                      style={{ padding: "15px 0" }}
                       alt="grabtern_logo"
                     />
                   </a>
@@ -98,99 +100,26 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                     }`}
                   >
                     <nav>
-                      <ul id="navigation">
+                      <ul id="navigation" className="navigation">
                         <li className="active">
-                          <a href="/">Home</a>
+                          <a href="/" className={styles.navLink}>
+                            Home
+                          </a>
                         </li>
                         <li>
-                          <a href="/mentors">Mentors</a>
+                          <a href="/mentors" className={styles.navLink}>
+                            Mentors
+                          </a>
                         </li>
                         <li>
-                          <a href="/contact">Contact</a>
-                          
+                          <a href="/contact" className={styles.navLink}>
+                            Contact
+                          </a>
                         </li>
-
-                        {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
-                          <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                onClick={handleLoginClick}
-                                className={styles.userName}
-                              >
-                                <img
-                                  style={{
-                                    width: "35px",
-                                    height: "auto",
-                                    borderRadius: "50%",
-                                  }}
-                                  src={
-                                    localStorage.getItem("user_picture") ||
-                                    localStorage.getItem("mentor_picture") ||
-                                    "assets/img/icon/no-profile-picture.png"
-                                  }
-                                  alt="not found"
-                                />
-                              </button>
-
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    className="login-buttons"
-                                    style={{ marginTop: "20px" }}
-                                    onClick={() => {
-                                      if (isMentorLoggedIn) {
-                                        window.location.href = `/dashboard`;
-                                      } else {
-                                        window.location.href = `/`;
-                                      }
-                                    }}
-                                  >
-                                    Dashboard
-                                  </button>
-                                  <button
-                                    className="login-buttons"
-                                    onClick={() => {
-                                      if (isMentorLoggedIn) {
-                                        mentorlogout();
-                                      } else {
-                                        userlogout();
-                                      }
-                                    }}
-                                  >
-                                    Logout
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        ) : (
-                          <li>
-                            <div className={styles.loginOption}>
-                              <button
-                                className={styles.loginbutton}
-                                onClick={handleLoginClick}
-                              >
-                                Login
-                              </button>
-                              {loginOption && (
-                                <div className="login-optionslist">
-                                  <button
-                                    className="login-buttons"
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/login">User</a>
-                                  </button>
-                                  <button
-                                    className="login-buttons"
-                                    onClick={handleLoginClick}
-                                  >
-                                    <a href="/mentorLogin">Mentor</a>
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        )}
+                        <DropdownCard
+                          isUserLoggedIn={isUserLoggedIn}
+                          isMentorLoggedIn={isMentorLoggedIn}
+                        />
                       </ul>
                     </nav>
                   </div>

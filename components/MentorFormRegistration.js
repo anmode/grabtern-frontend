@@ -4,15 +4,15 @@ import jwt_decode from "jwt-decode";
 
 import { useRouter } from "next/router";
 import Overlay from "./Overlay";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
   const router = useRouter();
   //const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
   const [isChecked, setIsChecked] = useState(false);
-  const [addtoast,setaddToast] = useState(false);
+  const [addtoast, setaddToast] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
     sessionDescription: "Achieve your goals faster with customized road map",
@@ -21,7 +21,7 @@ export default function MentorForm() {
     // peopleAttend: "",
     priceSession: "",
   });
- 
+
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
@@ -226,9 +226,7 @@ export default function MentorForm() {
           </div>
         </div>
       ) : null} */}
-       {addtoast===true?(
-    toast.success("Registered successfully")
-  ):null}
+      {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="container">
         <img
           src="/assets/img/vector_images/vector-registration.svg"
@@ -419,12 +417,12 @@ export default function MentorForm() {
                 style={{ width: "fit-content", padding: "15px 25px" }}
                 type="submit"
                 className="mentorFormButotn"
-               onClick={addtoast}
+                onClick={addtoast}
               >
                 Register
               </button>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
             <div>
               {isLoading && (
                 <img

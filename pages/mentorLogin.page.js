@@ -8,8 +8,8 @@ import jwt_decode from "jwt-decode";
 import styles from "../styles/MentorLogin.module.css";
 import Link from "next/link";
 import Head from "next/head";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useAuth } from "../context/AuthContext";
 function mentorLogin() {
@@ -161,7 +161,7 @@ function mentorLogin() {
                 }}
               />
             </div>
-            <ToastContainer/>
+            <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}
             <Link
               href="/forgotpass"

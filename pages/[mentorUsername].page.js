@@ -34,17 +34,22 @@ function Index({ mentorDetail }) {
   const handleClick = (mentordata) => {
     const { sessionName, sessionMeetingDuration, priceSession } = mentordata;
     const { email, name, username } = mentorDetail;
-  
+
     if (isUserLoggedIn) {
-     sessionStorage.removeItem("redirectUrl")
-     handleBookSession(sessionName, email, name, sessionMeetingDuration, priceSession);
+      sessionStorage.removeItem("redirectUrl");
+      handleBookSession(
+        sessionName,
+        email,
+        name,
+        sessionMeetingDuration,
+        priceSession
+      );
     } else {
       const redirectUrl = window.location.href;
       sessionStorage.setItem("redirectUrl", redirectUrl);
       router.push(`/userAuth#login`);
     }
   };
-  
 
   const sendMail = async (data) => {
     try {

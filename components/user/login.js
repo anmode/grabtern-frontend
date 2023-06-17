@@ -8,12 +8,12 @@ import { redirect } from "next/dist/server/api-utils";
 
 import { useContext } from "react";
 import LogContext from "../../context/LogContext";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Login({ handleLogPageToggle }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  const [login,setLogin] =useState(false);
+  const [login, setLogin] = useState(false);
   const router = useRouter();
   const {
     isMentorLoggedIn,
@@ -22,8 +22,6 @@ function Login({ handleLogPageToggle }) {
     setIsUserLoggedIn,
   } = useAuth();
 
-
- 
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
@@ -43,7 +41,7 @@ function Login({ handleLogPageToggle }) {
         console.log(error);
       }
     };
-  
+
     const initGoogleSignIn = () => {
       try {
         google.accounts.id.initialize({
@@ -60,17 +58,15 @@ function Login({ handleLogPageToggle }) {
         console.error("Google sign-in initialization failed:", error);
       }
     };
-  
+
     initGoogleSignIn();
-    
+
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData && userData.redirectUrl) {
       const redirectUrl = userData.redirectUrl;
       router.push(redirectUrl);
     }
-  
   }, []);
-  
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -103,25 +99,21 @@ function Login({ handleLogPageToggle }) {
         );
       } else if (error.response && error.response.status === 401) {
         toast.error("Invalid email or password.");
-      }
-      else if(localStorage.getItem("user_name")!==null && localStorage.getItem("user_email")!==null){
+      } else if (
+        localStorage.getItem("user_name") !== null &&
+        localStorage.getItem("user_email") !== null
+      ) {
         setLogin(true);
-       
-      }
-
-      
-      else {
+      } else {
         toast.error("login failed. please contact us.");
-        
       }
-     
     }
   };
-  const addToast=()=>{
-    if(login === true){
+  const addToast = () => {
+    if (login === true) {
       toast.success("login successful");
     }
-  }
+  };
   return (
     <>
       <form
@@ -188,15 +180,14 @@ function Login({ handleLogPageToggle }) {
               className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
               onClick={addToast}
             />
-           
           </div>
-         
-          <ToastContainer/>
+
+          <ToastContainer />
           {error && <div style={{ color: "red" }}>{error}</div>}
           {localStorage.getItem("new_user") && (
-            <div style={{ color: "green" }} >Please register first.</div>
+            <div style={{ color: "green" }}>Please register first.</div>
           )}
-          
+
           <Link
             href="/forgotpass?entity=user"
             className="tw-font-medium tw-mt-8 tw-text-right hover:tw-text-gray-400 tw-text-blue-700"

@@ -4,10 +4,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import jwt_decode from "jwt-decode";
 import { useAuth } from "../../context/AuthContext";
-import { redirect } from "next/dist/server/api-utils";
-
-import { useContext } from "react";
-import LogContext from "../../context/LogContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Login({ handleLogPageToggle }) {

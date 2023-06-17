@@ -132,7 +132,7 @@ function Index({ mentorDetail }) {
                   name={session.sessionName}
                   description={session.sessionDescription}
                   duration={session.sessionMeetingDuration}
-                  price={session.priceSession}
+                  pricePerSession={session.priceSession}
                   handleBookSession={() => {
                     setModalPopup(true);
                     setSelectedSession(session);

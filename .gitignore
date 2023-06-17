@@ -35,3 +35,10 @@ yarn-error.log*
 
 package-lock.json
 yarn.lock
+
+# Public folder
+/public/sitemap-0.xml
+/public/sitemap.xml
+/public/robots.txt
+/public/fonts/
+/public/img/

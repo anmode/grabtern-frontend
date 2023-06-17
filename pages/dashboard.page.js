@@ -4,29 +4,33 @@ const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 import axios from "axios";
 import { useRouter } from "next/router";
-import Dashboard from "../components/Dashboard";
+import Head from "next/head";
 
 function Index() {
   const [mentorDetail, setMentorDetail] = useState();
   const router = useRouter();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   useEffect(() => {
     const fetchMentorDetail = async (mentorToken) => {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDashboard/${mentorToken}`;
       const { data: res } = await axios.get(url, { mentorPW: mentorToken });
       console.log;
       if (res.message == "Invalid link") {
-        localStorage.removeItem("mentorToken");
-        localStorage.removeItem("mentor_name");
+        localStorage.removeItem("mentorData");
         router.push("/");
       }
       setMentorDetail(res.mentorDetail);
     };
-    if (localStorage.getItem("mentorToken") !== null) {
-      fetchMentorDetail(localStorage.getItem("mentorToken"));
+    if (mentorData?.mentorToken !== null) {
+      fetchMentorDetail(mentorData?.mentorToken);
     }
   });
   return (
     <>
+      <Head>
+        <title>GrabTern | Mentors Dashboard</title>
+      </Head>
       <Header navbarBackground={true} />
       <main style={{ marginTop: "118px" }}>
         <div className="container">

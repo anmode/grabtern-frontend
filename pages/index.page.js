@@ -4,12 +4,15 @@ import servicesData from "./data/ServicesData";
 import Service from "../components/Service";
 import internshipsData from "./data/coursesData";
 import Internship from "../components/Internship";
+import hackathonsData from "./data/hackathonsData";
+import Hackathon from "../components/Hackathons";
 import teamsData from "./data/teamsData";
 import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
-import Testimonial from "../components/Testimonial";
+import Head from "next/head";
+
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -20,8 +23,8 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
-import testiomialsData from "./data/testiomialsData";
 
 const internshipsOptions = {
   items: 3,
@@ -57,20 +60,6 @@ const teamsOptions = {
     },
     1170: {
       items: 4,
-    },
-  },
-};
-
-const testimonialOptions = {
-  responsive: {
-    0: {
-      items: 1,
-    },
-    880: {
-      items: 2,
-    },
-    1170: {
-      items: 3,
     },
   },
 };
@@ -163,6 +152,7 @@ export default function Home() {
                       internshipRating={internship.internshipRating}
                       internshipPayed={internship.internshipPayed}
                       internshipPrice={internship.internshipPrice}
+                      internshipLink={internship.internshipLink}
                     />
                   ))}
                 </OwlCarousel>
@@ -171,7 +161,7 @@ export default function Home() {
           </div>
         </div>
         <About />
-        <div className="topic-area section-padding40">
+        <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
@@ -181,90 +171,15 @@ export default function Home() {
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/tata Imagination.png"
-                      alt="tata Imagination"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">Tata Imagination</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Apple Swift Challenge.png"
-                      alt="Apple Swift Challenge"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">
-                            Apple Swift <br /> Challenge
-                          </a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Hackoctoberfest.png"
-                      alt="Hackoctoberfest"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">Hackoctoberfest</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img
-                      src="/assets/img/hackathons/Microsoft Image Cup.png"
-                      alt="Microsoft Image Cup"
-                    />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">Microsoft Image Cup</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-6">
-                <div className="single-topic text-center mb-30">
-                  <div className="topic-img">
-                    <img src="/assets/img/hackathons/SIH.png" alt="SIH" />
-                    <div className="topic-content-box">
-                      <div className="topic-content">
-                        <h3>
-                          <a href="#">SIH</a>
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {hackathonsData.map((hackathon, index) => (
+                <Hackathon
+                  key={index}
+                  hackathonImage={hackathon.hackathonImage}
+                  hackathonImageAlt={hackathon.hackathonImageAlt}
+                  hackathonLink={hackathon.hackathonLink}
+                  hackathonTitle={hackathon.hackathonTitle}
+                />
+              ))}
             </div>
             <div className="row justify-content-center">
               <div className="col-xl-12">

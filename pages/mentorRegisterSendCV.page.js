@@ -4,6 +4,8 @@ const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 import emailjs from "@emailjs/browser";
 import { useRouter } from "next/router";
+import Head from "next/head";
+
 function mentorRegisterSendCV() {
   const router = useRouter();
   const [modalPopup, setModalPopup] = useState(false);
@@ -62,6 +64,9 @@ function mentorRegisterSendCV() {
   };
   return (
     <>
+      <Head>
+        <title>GrabTern | Send Your CV</title>
+      </Head>
       <Header navbarBackground={true} />
       <main>
         <div className="mentorFormRegisration">
@@ -73,7 +78,7 @@ function mentorRegisterSendCV() {
                   email 1-2 days if you got accepted and your card will be
                   generated automatically
                 </p>
-                <img src="/iconMentorRegistrationPopup.jpg" />
+                <img src="/iconMentorRegistrationPopup.webp" />
                 <p>Redirecting you to home in {waitTime} second</p>
               </div>
             </div>

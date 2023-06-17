@@ -18,10 +18,12 @@ function Mentors({ mentorsData }) {
     {
       !completed && setLoading(true);
     }
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists?_limit=${limit}&_skipvalue=${skipvalue}`
     );
     const newData = await res.json();
+
     if (newData.length > 0) {
       const filterData = newData.filter(
         (mentor) =>
@@ -36,7 +38,6 @@ function Mentors({ mentorsData }) {
       setCompleted(true);
       setLoading(false);
     }
-    // Add logic to update your state or perform other operations with the fetched data
   };
 
   useEffect(() => {
@@ -93,7 +94,7 @@ function Mentors({ mentorsData }) {
                 ))}
               </div>
             )}
-
+            
             {loading && (
               <div
                 style={{

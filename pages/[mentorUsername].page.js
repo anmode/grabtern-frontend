@@ -23,7 +23,7 @@ function Index({ mentorDetail }) {
   localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const [selectedSession, setSelectedSession] = useState(null);
+  const [selectedSession, setSelectedSession] = useState("");
 
   const {
     isMentorLoggedIn,
@@ -33,6 +33,7 @@ function Index({ mentorDetail }) {
   } = useAuth();
 
   const handleClick = (mentordata) => {
+    console.log("selectedSession ", selectedSession);
     if (isUserLoggedIn) {
       handleBookSession(
         mentordata.sessionName,
@@ -129,8 +130,11 @@ function Index({ mentorDetail }) {
                   description={session.sessionDescription}
                   duration={session.sessionMeetingDuration}
                   price={session.priceSession}
-                  // handleBookSession={() => setModalPopup(true)}
-                  handleBookSession={() => handleClick(session)}
+                  handleBookSession={() => {
+                    setModalPopup(true);
+                    setSelectedSession(session);
+                  }}
+                  // handleBookSession={() => handleClick(session)}
                 />
               ))}
           </div>
@@ -144,13 +148,13 @@ function Index({ mentorDetail }) {
           {/* Error Display */}
           {/* {error && <div style={{ color: "red" }}>{error}</div>} */}
           {/* Book Session Modal */}
-          {/* {!error && modalPopup && (
-          <BookSessionModal
-            handleClose={() => setModalPopup(false)}
-            handleCancel={() => setModalPopup(false)}
-            handleConfirm={() => handleClick(session)}
-          />
-        )} */}
+          {!error && modalPopup && (
+            <BookSessionModal
+              handleClose={() => setModalPopup(false)}
+              handleCancel={() => setModalPopup(false)}
+              handleConfirm={() => handleClick(selectedSession)}
+            />
+          )}
           {/* Successful Alert Message */}
           {/* {emailSent && (
           <div style={{ color: "green" }}>

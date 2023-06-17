@@ -8,6 +8,8 @@ import jwt_decode from "jwt-decode";
 import styles from "../styles/MentorLogin.module.css";
 import Link from "next/link";
 import Head from "next/head";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useAuth } from "../context/AuthContext";
 function mentorLogin() {
@@ -33,7 +35,7 @@ function mentorLogin() {
     e.preventDefault();
     setError("");
     if (formData.password !== formData.confirmPassword) {
-      return setError("Password does not match!");
+      return toast.error("Password does not match!");
     }
     console.log(formData);
     try {
@@ -55,7 +57,7 @@ function mentorLogin() {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -84,7 +86,7 @@ function mentorLogin() {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   }
@@ -159,6 +161,7 @@ function mentorLogin() {
                 }}
               />
             </div>
+            <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}
             <Link
               href="/forgotpass"

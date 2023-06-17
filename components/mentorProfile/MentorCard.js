@@ -17,7 +17,7 @@ export default function MentorCard({
   return (
     <>
       {/* Mentor card */}
-      <div className="tw-flex tw-flex-col tw-items-center tw-justify-center lg:tw-max-w-[800px] tw-max-w-[448px] tw-gap-5 tw-rounded-b-[36px] tw-shadow-xl tw-shadow-black/10 tw-rounded-[36px]">
+      <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-max-w-[448px] tw-gap-5 tw-rounded-b-[36px] tw-shadow-xl tw-shadow-black/10 tw-rounded-[36px]">
         {/* Mentor Pic with Name and Status - upper half*/}
         <div className="tw-flex tw-flex-col tw-items-middle tw-justify-center tw-relative">
           {/* Mentor Pic Container with Overlay*/}

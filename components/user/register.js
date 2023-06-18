@@ -67,7 +67,7 @@ function Register({ handleLogPageToggle }) {
       >
         <div className="d-flex flex-column justify-content-start tw-w-full  md:tw-py-[5vh] md:tw-px-[3vw]  tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
           <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">
-            Registration
+            Register
           </h2>
           <p className=" tw-text-gray-500 tw-mb-5">
             The faster you fill up, the faster you get a internship
@@ -147,7 +147,7 @@ function Register({ handleLogPageToggle }) {
             <input
               type="submit"
               name="submit"
-              value="Registration"
+              value="Register"
               style={{
                 background:
                   "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",

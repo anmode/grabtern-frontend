@@ -28,12 +28,14 @@ const DropdownCard = () => {
     localStorage.clear();
     setIsMentorLoggedIn(false);
     router.push("/");
+    location.reload();
   };
 
   const userlogout = () => {
     localStorage.clear();
     setIsUserLoggedIn(false);
     router.push("/");
+    location.reload();
   };
 
   const handleOutsideClick = (event) => {

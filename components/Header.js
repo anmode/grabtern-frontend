@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/LoginDropdown";
 
 function Header({ navbarBackground }) {
-  localStorage.setItem("redirectUrl", window.location.href);
+  // localStorage.setItem("redirectUrl", window.location.href);
   // const [isLoggedIn, setLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [navbarAppear, setNavbarAppear] = useState(false);
@@ -50,22 +50,22 @@ function Header({ navbarBackground }) {
     }
   };
 
-  const userlogout = () => {
-    localStorage.clear();
-    setIsUserLoggedIn(false);
-    router.push("/");
-    window.location.reload();
-  };
+  // const userlogout = () => {
+  //   localStorage.clear();
+  //   setIsUserLoggedIn(false);
+  //   router.push("/");
+  //   window.location.reload();
+  // };
 
-  const mentorlogout = () => {
-    localStorage.clear();
-    setIsMentorLoggedIn(false);
-    router.push("/");
-    window.location.reload();
-  };
+  // const mentorlogout = () => {
+  //   localStorage.clear();
+  //   setIsMentorLoggedIn(false);
+  //   router.push("/");
+  //   window.location.reload();
+  // };
 
   return (
-    <div className="header-area header-transparent">
+    <div className="header-area header-transparent tw-z-[999]">
       <div className="main-header ">
         <div
           className={`header-bottom  header-sticky ${

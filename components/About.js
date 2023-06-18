@@ -66,6 +66,7 @@ function About() {
               controls="controls"
               className="video"
               muted
+              autoPlay
               style={{ width: "100%", maxWidth: "100%", height: "auto" }}
             >
               <source src="/video.mp4" type="video/mp4" />

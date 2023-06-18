@@ -117,10 +117,12 @@ function Dashboard({ mentorDetail }) {
       delete formDataCopy.__v;
       setFormData(formDataCopy);
       removeSessionId();
-      console.log(formData);
+      // console.log(formData);
       const url = `${
         process.env.NEXT_PUBLIC_BACKEND_URL
-      }/api/mentors/updateMentor/${localStorage.getItem("mentorToken")}`;
+      }/api/mentors/updateMentor/${
+        JSON.parse(localStorage.getItem("mentorData")).mentorToken
+      }`;
       const { data: res } = await axios.post(url, formData);
       alert(res);
       setModalOpen(false);

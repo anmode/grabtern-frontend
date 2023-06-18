@@ -2,8 +2,11 @@ const webpack = require("webpack");
 
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
     config.plugins.push(
       new webpack.ProvidePlugin({
         $: "jquery",

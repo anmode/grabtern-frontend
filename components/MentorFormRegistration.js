@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function MentorForm() {
   const router = useRouter();
   //const [modalPopup, setModalPopup] = useState(false);
-  const [waitTime, setWaitTime] = useState(5);
+  // const [waitTime, setWaitTime] = useState(5);
   const [isChecked, setIsChecked] = useState(false);
   const [addtoast, setaddToast] = useState(false);
   const [bookSession, setBookSession] = useState({
@@ -125,16 +125,16 @@ export default function MentorForm() {
     google.accounts.id.prompt();
   }, []);
 
-  useEffect(() => {
-    if (addtoast === true && waitTime !== 0) {
-      setTimeout(() => {
-        setWaitTime((value) => (value -= 1));
-      }, 1000);
-    }
-    if (waitTime === 0) {
-      router.push("/");
-    }
-  });
+  // useEffect(() => {
+  //   if (addtoast === true && waitTime !== 0) {
+  //     setTimeout(() => {
+  //       setWaitTime((value) => (value -= 1));
+  //     }, 1000);
+  //   }
+  //   if (waitTime === 0) {
+  //     router.push("/");
+  //   }
+  // });
 
   // const handleFileChange = e => {
   //   setFormData({ ...formData, resume: e.target.files[0] });

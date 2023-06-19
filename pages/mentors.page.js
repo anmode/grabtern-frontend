@@ -42,9 +42,9 @@ function Mentors({ mentorsData }) {
 
             <ul className="mentorLists">
               {mentorsData.filter((mentor)=>
-                  mentor.name.toLowerCase().includes(query)||
-                  mentor.internAt.toLowerCase().includes(query)||
-                  mentor.currentStatus.toLowerCase().includes(query)
+                  mentor.name.toLowerCase().includes(query.toLowerCase())||
+                  mentor.internAt.toLowerCase().includes(query.toLowerCase())||
+                  mentor.currentStatus.toLowerCase().includes(query.toLowerCase())
                   //item.
               ).map((mentor)=>(
                 // <li key={mentor.imageSrc} className="listitem">

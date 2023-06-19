@@ -14,7 +14,6 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 
 function Index({ mentorDetail }) {
-  const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
   const [error, setError] = useState("");

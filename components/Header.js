@@ -7,14 +7,12 @@ import DropdownCard from "./LoginDropdown";
 import { AiOutlineSearch } from "react-icons/ai";
 import { SunIcon } from "@heroicons/react/24/solid";
 
-
 function Header({ isUserLoggedIn }) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
-
 
   useEffect(() => {
     const userName = localStorage.getItem("user_name");
@@ -37,7 +35,6 @@ function Header({ isUserLoggedIn }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
 
   return (
     <nav className="flex justify-between items-center mb-6 bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 pt-3 text-black">
@@ -82,7 +79,6 @@ function Header({ isUserLoggedIn }) {
             isUserLoggedIn={isUserLoggedIn}
             isMentorLoggedIn={isMentorLoggedIn}
           />
-
         </div>
       </div>
 
@@ -120,7 +116,6 @@ function Header({ isUserLoggedIn }) {
                 isUserLoggedIn={isUserLoggedIn}
                 isMentorLoggedIn={isMentorLoggedIn}
               />
-              
             </div>
           )}
         </div>

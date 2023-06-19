@@ -635,13 +635,13 @@ a {
   gap: 1px;
 }
 
-.mentorForm div label {
+.mentorForm div .label {
   font-weight: 600;
   font-size: small;
   width: auto;
 }
 
-.mentorForm div label::after {
+.mentorForm div .label::after {
   content: " :";
 }
 

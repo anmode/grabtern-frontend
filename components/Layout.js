@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
+import { useEffect, useState } from "react";
+import Head from "next/head";
 
 const Layout = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove(darkMode ? 'light' : 'dark');
-    root.classList.add(darkMode ? 'dark' : 'light');
+    root.classList.remove(darkMode ? "light" : "dark");
+    root.classList.add(darkMode ? "dark" : "light");
   }, [darkMode]);
 
   return (
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
           className="p-2 rounded bg-gray-300 dark:bg-gray-800"
           onClick={() => setDarkMode(!darkMode)}
         >
-          {darkMode ? 'Light Mode' : 'Dark Mode'}
+          {darkMode ? "Light Mode" : "Dark Mode"}
         </button>
       </nav>
 

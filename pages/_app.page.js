@@ -56,7 +56,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-    
       <Head>
         <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
@@ -119,24 +118,23 @@ function MyApp({ Component, pageProps }) {
         {/* <script src="https://accounts.google.com/gsi/client" async defer ></script> */}
       </Head>
 
-
-<ThemeProvider>
-      <div className="loaderBackground"></div>
-      <div id="preloader-active" style={{ transition: "all 0.5s" }}>
-        <div className="preloader d-flex align-items-center justify-content-center">
-          <div className="tw-flex tw-items-center tw-justify-center position-relative">
-            <div className="preloader-circle"></div>
-            <div className="preloader-img pere-text">
-              <img src="/assets/img/logo/loder.webp" alt="" />
+      <ThemeProvider>
+        <div className="loaderBackground"></div>
+        <div id="preloader-active" style={{ transition: "all 0.5s" }}>
+          <div className="preloader d-flex align-items-center justify-content-center">
+            <div className="tw-flex tw-items-center tw-justify-center position-relative">
+              <div className="preloader-circle"></div>
+              <div className="preloader-img pere-text">
+                <img src="/assets/img/logo/loder.webp" alt="" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <BreakpointProvider>
-        <LogState>
-        <Component {...pageProps} />
-        </LogState>
-      </BreakpointProvider>
+        <BreakpointProvider>
+          <LogState>
+            <Component {...pageProps} />
+          </LogState>
+        </BreakpointProvider>
       </ThemeProvider>
     </>
   );

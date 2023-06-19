@@ -28,7 +28,7 @@ a {
 } */
 /*  */
 
-.theme{
+.theme {
   transition: 1s all ease;
 }
 
@@ -41,12 +41,6 @@ a {
   background-color: #111;
   color: #fdf8f8;
 }
-
-
-
-
-
-
 
 .slider-area .hero__caption.hero__caption2,
 .slider-area2 .hero__caption.hero__caption2 {

@@ -3,29 +3,18 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
-// import styles from "../styles/LoginDropdown.module.css";
 import DropdownCard from "./LoginDropdown";
 import { AiOutlineSearch } from "react-icons/ai";
+import { SunIcon } from "@heroicons/react/24/solid";
 
-import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 
-function Header({ isUserLoggedIn, navbarBackground }) {
+function Header({ isUserLoggedIn }) {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
 
-  // useEffect(() => {
-
-  //   const root = window.document.documentElement;
-  //   root.classList.remove(darkMode ? 'light' : 'dark');
-  //   root.classList.add(darkMode ? 'dark' : 'light');
-  // }, [darkMode])
-
-  // const toggleDarkMode = () => {
-  //   setDarkMode(!darkMode);
-  // };
 
   useEffect(() => {
     const userName = localStorage.getItem("user_name");
@@ -49,13 +38,6 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     };
   }, []);
 
-  // const menuToggle = () => {
-  //   if (navbarAppear === true) {
-  //     setNavbarAppear(false);
-  //   } else {
-  //     setNavbarAppear(true);
-  //   }
-  // };
 
   return (
     <nav className="flex justify-between items-center mb-6 bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 pt-3 text-black">
@@ -70,7 +52,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
       </Link>
 
       <div className="flex justify-center items-center ml-2">
-        <AiOutlineSearch className="text-gray-500" />
+        <AiOutlineSearch className="text-gray-500 mx-0.5 cursor-pointer" />
         <input
           type="text"
           placeholder="Search"
@@ -93,12 +75,14 @@ function Header({ isUserLoggedIn, navbarBackground }) {
             Contact
           </Link>
 
-          <DarkModeToggle />
+          {/* <DarkModeToggle /> */}
+          <SunIcon className="h-7 w-7 text-yellow-400 cursor-pointer" />
 
           <DropdownCard
             isUserLoggedIn={isUserLoggedIn}
             isMentorLoggedIn={isMentorLoggedIn}
           />
+
         </div>
       </div>
 
@@ -136,6 +120,7 @@ function Header({ isUserLoggedIn, navbarBackground }) {
                 isUserLoggedIn={isUserLoggedIn}
                 isMentorLoggedIn={isMentorLoggedIn}
               />
+              
             </div>
           )}
         </div>

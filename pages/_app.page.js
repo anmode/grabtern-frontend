@@ -2,10 +2,12 @@ import "../styles/globals.css";
 // import style from "../styles/contact.css";
 import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
+import { ThemeProvider } from "../context/ThemeContext";
 import $ from "jquery";
 import Head from "next/head";
 import Script from "next/script";
 import LogState from "../context/LogState";
+import Header from "../components/Header";
 function addProductJsonLd() {
   return {
     __html: `{
@@ -54,6 +56,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    
       <Head>
         <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
@@ -116,6 +119,8 @@ function MyApp({ Component, pageProps }) {
         {/* <script src="https://accounts.google.com/gsi/client" async defer ></script> */}
       </Head>
 
+
+<ThemeProvider>
       <div className="loaderBackground"></div>
       <div id="preloader-active" style={{ transition: "all 0.5s" }}>
         <div className="preloader d-flex align-items-center justify-content-center">
@@ -129,9 +134,10 @@ function MyApp({ Component, pageProps }) {
       </div>
       <BreakpointProvider>
         <LogState>
-          <Component {...pageProps} />
+        <Component {...pageProps} />
         </LogState>
       </BreakpointProvider>
+      </ThemeProvider>
     </>
   );
 }

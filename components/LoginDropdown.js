@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "../styles/LoginDropdown.module.css";
+// import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
+import Link from "next/link";
 
 const DropdownCard = ({ isUserLoggedIn }) => {
   const [loginOption, setLoginOption] = useState(false);
@@ -40,14 +41,15 @@ const DropdownCard = ({ isUserLoggedIn }) => {
   }, []);
 
   return (
-    <li>
-      <div className={styles.loginOption} ref={dropdownRef}>
+
+    <div ref={dropdownRef}>
         {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
-          <button onClick={handleLoginClick} className={styles.loginbutton}>
+          <button onClick={handleLoginClick} >
             <img
               style={{
-                width: "35px",
+                width: "30px",
                 height: "auto",
+                marginRight: '10px',
                 borderRadius: "50%",
                 display: "inline",
               }}
@@ -60,33 +62,33 @@ const DropdownCard = ({ isUserLoggedIn }) => {
             />
           </button>
         ) : (
+         
           <button
-            className={styles.loginbutton}
+            type="button"
             onClick={handleLoginClick}
-            style={{ color: "white" }}
+            className="text-white bg-blue-700 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-md px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-700 dark:hover:bg-blue-700 dark:focus:ring-blue-100"
+            
           >
-            Login
+            Sign In
           </button>
+
         )}
 
+
         {loginOption && (
-          <div className="login-optionslist">
+          <div
+        >
             {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
-              <>
-                <button
-                  className="login-buttons"
-                  onClick={() => {
-                    if (isMentorLoggedIn) {
-                      window.location.href = `/dashboard`;
-                    } else {
-                      window.location.href = `/`;
-                    }
-                  }}
+              <div className="absolute mt-4 right-12 top-full border border-gray-700 py-3 px-5 rounded-lg bg-white flex flex-col gap-3 justify-end items-start">
+                <Link
+                href={isMentorLoggedIn ? '/dashboard' : '/'}
+                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
                 >
                   Dashboard
-                </button>
-                <button
-                  className="login-buttons"
+                </Link>
+                <Link
+                  className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+                  href='#'
                   onClick={() => {
                     if (isMentorLoggedIn) {
                       mentorlogout();
@@ -96,32 +98,27 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                   }}
                 >
                   Logout
-                </button>
-              </>
+                </Link>
+              </div>
             ) : (
-              <>
-                <button
-                  className="login-buttons"
-                  onClick={() => {
-                    window.location.href = `/userAuth/`;
-                  }}
-                >
-                  User
-                </button>
-                <button
-                  className="login-buttons"
-                  onClick={() => {
-                    window.location.href = `/mentorLogin`;
-                  }}
-                >
-                  Mentor
-                </button>
-              </>
+              <div className="absolute mt-4 right-12 top-full border border-gray-700 py-3 px-5 rounded-lg bg-white flex flex-col gap-3 justify-end items-start ">
+                <Link
+                href="/userAuth/"
+                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium "
+              >
+                User
+              </Link>
+              <Link
+                href="/mentorLogin"
+                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+              >
+                Mentor
+              </Link>
+              </div>
             )}
           </div>
         )}
       </div>
-    </li>
   );
 };
 

@@ -1,14 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "../styles/LoginDropdown.module.css";
+import Link from "next/link";
+import { RxHamburgerMenu } from "react-icons/rx";
+// import styles from "../styles/LoginDropdown.module.css";
 import DropdownCard from "./LoginDropdown";
+import { AiOutlineSearch } from "react-icons/ai";
+
+import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 
 function Header({ isUserLoggedIn, navbarBackground }) {
-  // localStorage.setItem('redirectUrl', window.location.href);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [navbarAppear, setNavbarAppear] = useState(false);
+  const [toggleDropdown, setToggleDropdown] = useState(false);
+  const [searchText, setSearchText] = useState("");
+
+  // useEffect(() => {
+
+  //   const root = window.document.documentElement;
+  //   root.classList.remove(darkMode ? 'light' : 'dark');
+  //   root.classList.add(darkMode ? 'dark' : 'light');
+  // }, [darkMode])
+
+  // const toggleDarkMode = () => {
+  //   setDarkMode(!darkMode);
+  // };
 
   useEffect(() => {
     const userName = localStorage.getItem("user_name");
@@ -32,93 +49,98 @@ function Header({ isUserLoggedIn, navbarBackground }) {
     };
   }, []);
 
-  const menuToggle = () => {
-    if (navbarAppear === true) {
-      setNavbarAppear(false);
-    } else {
-      setNavbarAppear(true);
-    }
-  };
+  // const menuToggle = () => {
+  //   if (navbarAppear === true) {
+  //     setNavbarAppear(false);
+  //   } else {
+  //     setNavbarAppear(true);
+  //   }
+  // };
 
   return (
-    <div className="header-area header-transparent">
-      <div className="main-header ">
-        <div
-          className={`header-bottom  header-sticky ${
-            scrollY > 400
-              ? "sticky-bar"
-              : navbarBackground === true
-              ? "sticky-bar"
-              : ""
-          }`}
-          style={{ transition: "all 0.5s ease-in" }}
-        >
-          <div className="container-fluid">
-            <div className="row align-items-center justify-content-between">
-              <div>
-                <div className="logo">
-                  <a href="/">
-                    <Image
-                      width={80}
-                      height={80}
-                      src="/whitelogo.webp"
-                      style={{ padding: "15px 0" }}
-                      alt="grabtern_logo"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div className="col-xl-10 col-lg-10">
-                <div className="menu-wrapper d-flex align-items-center justify-content-end">
-                  <div
-                    className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
-                    }`}
-                  >
-                    <nav>
-                      <ul id="navigation" className="navigation">
-                        <li className="active">
-                          <a href="/" className={styles.navLink}>
-                            Home
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/mentors" className={styles.navLink}>
-                            Mentors
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/contact" className={styles.navLink}>
-                            Contact
-                          </a>
-                        </li>
-                        <DropdownCard
-                          isUserLoggedIn={isUserLoggedIn}
-                          isMentorLoggedIn={isMentorLoggedIn}
-                        />
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`menuToggle ${
-                  navbarAppear === true ? "active" : ""
-                }`}
-                onClick={() => menuToggle()}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div className="col-12">
-                <div className="mobile_menu d-block d-lg-none"></div>
-              </div>
-            </div>
-          </div>
+    <nav className="flex justify-between items-center mb-6 bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 pt-3 text-black">
+      <Link href="/" className="flex gap-2 justify-center items-center">
+        <Image
+          src="/whitelogo.webp"
+          alt="grabtern_logo"
+          width={50}
+          height={50}
+          className="mx-2 mb-2 bg-violet-500 py-2 rounded-sm "
+        />
+      </Link>
+
+      <div className="flex justify-center items-center ml-2">
+        <AiOutlineSearch className="text-gray-500" />
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="px-3 py-2 border border-gray-300 rounded-lg ml-2 focus:outline-none"
+        />
+      </div>
+
+      {/* For Desktop Navigation*/}
+      <div className="sm:flex hidden">
+        <div className="flex gap-3 justify-between items-center md:gap-5">
+          <Link href="/" className="hover:text-blue-800">
+            Home
+          </Link>
+          <Link href="/mentors" className="hover:text-blue-800">
+            Mentor
+          </Link>
+          <Link href="/contact" className="hover:text-blue-800">
+            Contact
+          </Link>
+
+          <DarkModeToggle />
+
+          <DropdownCard
+            isUserLoggedIn={isUserLoggedIn}
+            isMentorLoggedIn={isMentorLoggedIn}
+          />
         </div>
       </div>
-    </div>
+
+      {/* For Mobile Navigation */}
+      <div className="sm:hidden flex relative">
+        <div className="flex">
+          <RxHamburgerMenu
+            className="h-10 w-12 mx-2"
+            onClick={() => {
+              setToggleDropdown((prev) => !prev);
+            }}
+          />
+          {toggleDropdown && (
+            <div className="absolute right-10 top-full mt-5 w-full p-5 rounded-lg bg-white dark:bg-slate-600 dark:text-white min-w-[200px] flex flex-col gap-5 justify-end items-center">
+              <Link
+                href="/"
+                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+              >
+                Home
+              </Link>
+              <Link
+                href="/mentors"
+                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+              >
+                Mentor
+              </Link>
+              <Link
+                href="/contact"
+                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+              >
+                Contact
+              </Link>
+
+              <DropdownCard
+                isUserLoggedIn={isUserLoggedIn}
+                isMentorLoggedIn={isMentorLoggedIn}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </nav>
   );
 }
 

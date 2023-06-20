@@ -1,29 +1,41 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import { useAuth } from "../context/AuthContext";
 import styles from "../styles/LoginDropdown.module.css";
-import router from "next/router";
 
-const DropdownCard = ({ isUserLoggedIn }) => {
+const DropdownCard = () => {
   const [loginOption, setLoginOption] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
   const dropdownRef = useRef(null);
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const router = useRouter();
 
   const handleLoginClick = () => {
-    setLoginOption(!loginOption);
+    if (isUserLoggedIn || isMentorLoggedIn) {
+      setLoginOption(!loginOption);
+    } else {
+      setLoginOption(true);
+    }
   };
 
   const mentorlogout = () => {
     localStorage.clear();
-    setMentorLoggedIn(false);
+    setIsMentorLoggedIn(false);
     router.push("/");
-    window.location.reload();
+    location.reload();
   };
 
   const userlogout = () => {
     localStorage.clear();
-    setLoggedIn(false);
+    setIsUserLoggedIn(false);
     router.push("/");
-    window.location.reload();
+    location.reload();
   };
 
   const handleOutsideClick = (event) => {
@@ -33,16 +45,22 @@ const DropdownCard = ({ isUserLoggedIn }) => {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setLoginOption(false);
+      }
     };
-  }, []);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   return (
     <li>
       <div className={styles.loginOption} ref={dropdownRef}>
-        {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+        {isUserLoggedIn || isMentorLoggedIn ? (
           <button onClick={handleLoginClick} className={styles.loginbutton}>
             <img
               style={{
@@ -52,8 +70,8 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                 display: "inline",
               }}
               src={
-                localStorage.getItem("user_picture") ||
-                localStorage.getItem("mentor_picture") ||
+                userData?.user_picture ||
+                mentorData?.mentor_picture ||
                 "assets/img/icon/no-profile-picture.webp"
               }
               alt="not found"
@@ -71,15 +89,15 @@ const DropdownCard = ({ isUserLoggedIn }) => {
 
         {loginOption && (
           <div className="login-optionslist">
-            {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+            {isUserLoggedIn || isMentorLoggedIn ? (
               <>
                 <button
                   className="login-buttons"
                   onClick={() => {
                     if (isMentorLoggedIn) {
-                      window.location.href = `/dashboard`;
+                      router.push("/dashboard");
                     } else {
-                      window.location.href = `/`;
+                      router.push("/");
                     }
                   }}
                 >
@@ -93,6 +111,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                     } else {
                       userlogout();
                     }
+                    setLoginOption(false);
                   }}
                 >
                   Logout
@@ -103,7 +122,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                 <button
                   className="login-buttons"
                   onClick={() => {
-                    window.location.href = `/userAuth/`;
+                    router.push("/userAuth/#login");
                   }}
                 >
                   User
@@ -111,7 +130,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
                 <button
                   className="login-buttons"
                   onClick={() => {
-                    window.location.href = `/mentorLogin`;
+                    router.push("/mentorLogin");
                   }}
                 >
                   Mentor

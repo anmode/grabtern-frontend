@@ -2702,6 +2702,9 @@ hr {
   text-align: center;
   box-shadow: 0px 15px 25px rgba(66, 85, 164, 0.08);
 }
+.about-icon img{
+  margin: 40% auto;
+}
 .about-area1 .support-wrapper .left-content1 .single-features {
   display: flex;
 }

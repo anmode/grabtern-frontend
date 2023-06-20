@@ -2,41 +2,39 @@ import React from "react";
 
 const MentorCard = ({ mentor }) => {
   return (
-    <div className="mentor-card">
+    <div className="mentor-card shadow-lg max-w-2xl transform transition duration-300 hover:scale-105 m-4">
       <img
         src={mentor.mentorImg}
         alt={mentor.name}
-        className="mentor-card__photo"
+        className="h-80 rounded-full w-80"
       />
-      <div className="mentor-card__info">
-        <h2 className="mentor-card__name">{mentor.name}</h2>
-        <p className="mentor-card__intern">
-          <b>Intern at:</b>
+      <div className="mentor-card__info p-3">
+        <h1 className="text-center font-semibold text-3xl">{mentor.name}</h1>
+        <p className="mentor-card__intern text-center text-xl">
+          <b>Intern at: </b>
           {mentor.internAt}
         </p>
-        <p className="mentor-card__status">
-          <b>Current Status:</b>
-          {mentor.currentStatus}
-        </p>
-        {/* <p className="mentor-card__description">{mentor.description}</p> */}
-        <div className="mentor-card__social">
+        <div className="mentor-card__social flex justify-between">
           <a href={`${mentor.social.linkedin}`} target="_blank">
-            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-linkedin text-[#0077b5] text-4xl hover:text-blue-700"></i>
           </a>
           <a href={`${mentor.social.twitter}`} target="_blank">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-twitter text-[#1DA1F2] text-4xl hover:text-blue-700"></i>
           </a>
+        </div>
+        <div className="flex justify-center">
           <a
             href={mentor.bookedSession}
-            className="mentor-card__booked-session"
+            className="mentor-card__booked-session text-2xl"
           >
             Booked Sessions: {mentor.bookedSession}
           </a>
         </div>
-        <button className="mentor-card__book-session">Book Session</button>
+        <div className="flex justify-center items-center my-2 transition-all duration-300">
+          <button className="bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">Book Session</button>
+        </div>
       </div>
     </div>
   );
 };
-
 export default MentorCard;

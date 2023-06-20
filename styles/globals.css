@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
+* {
   padding: 0;
   margin: 0;
 }
@@ -12,8 +12,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    overflow-x: hidden;
-  
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -719,10 +718,10 @@ textarea {
   gap: 20px;
   justify-content: center;
 }
-.app{
+.app {
   border: 2px solid rgb(192, 84, 255);
   height: 40px;
-  margin:40px 40%;
+  margin: 40px 40%;
   width: 25%;
   border-radius: 25px;
   font-size: 2.3rem;

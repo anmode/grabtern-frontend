@@ -9,12 +9,10 @@ function Testimonial({
   testimonialDescription,
 }) {
   return (
-    
-
     <div className="box">
       <i className="fas fa-quote-left quote"></i>
       <p>
-        {testimonialDescription.split(" ").length <100
+        {testimonialDescription.split(" ").length < 100
           ? testimonialDescription
           : testimonialDescription.split(" ").slice(0, 100).join(" ") + "..."}
       </p>
@@ -42,7 +40,6 @@ function Testimonial({
             ) : null}
           </div>
         </div>
-        
       </div>
     </div>
   );

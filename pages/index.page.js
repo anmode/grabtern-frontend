@@ -8,7 +8,7 @@ import hackathonsData from "./data/hackathonsData";
 import Hackathon from "../components/Hackathons";
 import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
-import Testimonial from "../components/Testimonial.js"
+import Testimonial from "../components/Testimonial.js";
 import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
@@ -45,7 +45,7 @@ const internshipsOptions = {
   },
 };
 
-const testimonialOptions={
+const testimonialOptions = {
   margin: 40,
   items: 4,
   nav: true,
@@ -64,8 +64,7 @@ const testimonialOptions={
       items: 3,
     },
   },
-}
-
+};
 
 const teamsOptions = {
   margin: 40,
@@ -268,40 +267,46 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className='team-area section-padding40 fix'>
+        <section className="team-area section-padding40 fix">
           <div className="container">
-          <div className="row justify-content-center">
+            <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
                   <h2>Testimonials</h2>
                 </div>
               </div>
             </div>
-          
-          
-          <ul className='testimonialsList'>
-            {carousel === true ? (<OwlCarousel
-              {...testimonialOptions}
-              autoplay={true}
-              lazyLoad={true}
-              smartSpeed={1000}
-              autoplayTimeout={3500}
-              nav={true}
-              loop={true}
-              autoplayHoverPause={true}
-              className="owl-carousel owl-theme"
-            >
-              {testiomialsData.map((testimonial, index) => (
-                <Testimonial key={index} 
-                testimonialUserName={testimonial.testimonialUserName} 
-                testimonialUserHeadline={testimonial.testimonialUserHeadline} 
-                testimonialUserImage={testimonial.testimonialUserImage} 
-                testimonialRate={testimonial.testimonialRate} 
-                testimonialDescription={testimonial.testimonialDescription} />
-              ))}
 
-            </OwlCarousel>) : null}
-          </ul>
+            <ul className="testimonialsList">
+              {carousel === true ? (
+                <OwlCarousel
+                  {...testimonialOptions}
+                  autoplay={true}
+                  lazyLoad={true}
+                  smartSpeed={1000}
+                  autoplayTimeout={3500}
+                  nav={true}
+                  loop={true}
+                  autoplayHoverPause={true}
+                  className="owl-carousel owl-theme"
+                >
+                  {testiomialsData.map((testimonial, index) => (
+                    <Testimonial
+                      key={index}
+                      testimonialUserName={testimonial.testimonialUserName}
+                      testimonialUserHeadline={
+                        testimonial.testimonialUserHeadline
+                      }
+                      testimonialUserImage={testimonial.testimonialUserImage}
+                      testimonialRate={testimonial.testimonialRate}
+                      testimonialDescription={
+                        testimonial.testimonialDescription
+                      }
+                    />
+                  ))}
+                </OwlCarousel>
+              ) : null}
+            </ul>
           </div>
         </section>
         <section className="team-area section-padding40 fix">

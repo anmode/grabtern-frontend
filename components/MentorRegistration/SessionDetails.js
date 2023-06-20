@@ -1,22 +1,33 @@
 import React from "react";
+import Input from "./Input";
 
-function SessionDetails({formData, handleChange, isChecked}) {
+function SessionDetails({
+  formData,
+  handleSessionPriceChange,
+  isChecked,
+  setIsChecked,
+}) {
+  const inputs = [
+    {
+      label: "30min 1-1 SESSION PRICE",
+      type: "text",
+      name: "priceSession",
+      className: "mentorFormInput",
+      onChange: handleSessionPriceChange,
+      placeholder: "e.g. ₹51",
+      required: true,
+      value: formData.bookSession[0].priceSession,
+    },
+  ];
   return (
     <>
-      <div style={{ gridColumn: "1/3" }}>
-        <label className="label" htmlFor="priceSession">
-          30min 1-1 SESSION PRICE
-        </label>
-        <input
-          type="text"
-          name="priceSession"
-          className="mentorFormInput"
-          onChange={(e) => handleSessionPriceChange(e)}
-          placeholder="e.g. ₹51"
-          required
-          value={formData.bookSession[0].priceSession}
-        />
-      </div>
+      {/* page inputs start */}
+      {inputs.map((input, index) => (
+        <Input {...input} key={index}/>
+      ))}
+      {/* page inputs ends*/}
+
+      {/* terms and consition checkbox start*/}
       <label>
         <input
           type="checkbox"
@@ -26,6 +37,7 @@ function SessionDetails({formData, handleChange, isChecked}) {
         &nbsp;We will take 11% of your session price as platform fee. So
         according to it keep your session price. Thank you!
       </label>
+      {/* terms and consition checkbox  end*/}
     </>
   );
 }

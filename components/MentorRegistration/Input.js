@@ -1,17 +1,34 @@
-import React from 'react'
+import React from "react";
 
-function Input({type, name, className, onChange, placeholder, value}) {
+function Input({
+  label,
+  type,
+  name,
+  className,
+  handleChange,
+  placeholder,
+  value,
+  ...rest
+}) {
   return (
-    <input
+    <div>
+      <label className="label uppercase" htmlFor={name}>
+        {label}
+      </label>
+      <input
+        id={name}
         type={type}
         name={name}
-        className = {className}
-        onChange = {onChange}
-        placeholder = {placeholder}
-        value = {value}
-    />
-  )
+        className={className}
+        onChange={(e) => handleChange(e)}
+        placeholder={placeholder}
+        value={value}
+        {...rest}
+      />
+    </div>
+  );
 }
 
-export default Input
-{}
+export default Input;
+{
+}

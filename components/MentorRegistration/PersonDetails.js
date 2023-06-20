@@ -1,6 +1,74 @@
-import React from "react";
+import React, {useEffect} from "react";
+import Input from "./Input";
 
-function PersonDetails({formData, handleChange}) {
+function PersonDetails({ formData, handleChange, handleUploadImageChange, handleCallbackResponse }) {
+  // inputs list
+  const inputs = [
+    {
+      label: "name",
+      type: "text",
+      name: "name",
+      className: "mentorFormInput",
+      handleChange: handleChange,
+      placeholder: "e.g. Peter Parker",
+      required: true,
+      value: formData.name,
+    },
+    {
+      label: "username",
+      type: "text",
+      name: "username",
+      className: "mentorFormInput",
+      onChange: handleChange,
+      placeholder: "e.g. peter-parker12",
+      required: true,
+      value: formData.username,
+    },
+    {
+      label: "email",
+      type: "text",
+      name: "email",
+      className: "mentorFormInput",
+      onChange: handleChange,
+      placeholder: "e.g. peterparker4321@gmail.com",
+      required: true,
+      value: formData.email,
+    },
+    {
+      label: "phone",
+      type: "number",
+      name: "mobile",
+      className: "mentorFormInput",
+      onChange: handleChange,
+      placeholder: "0123456789",
+      required: true,
+      value: formData.mobile,
+    },
+  ];
+
+  //   google sign in button functions
+  useEffect(() => {
+    setInterval(() => {
+      if (typeof window !== "undefined") {
+        if (document.querySelector("#credential_picker_container") !== null) {
+          document.querySelector(".overlay").classList.add("show");
+        }
+      }
+    }, 1300);
+
+    google.accounts.id.initialize({
+      client_id:
+        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleSignInButton"),
+      { theme: "outline", size: "large" }
+    );
+    google.accounts.id.prompt();
+  }, []);
+
   return (
     <>
       {/* google signin button start */}
@@ -43,77 +111,17 @@ function PersonDetails({formData, handleChange}) {
       </div>
       {/* image section ends */}
 
-      {/* name and username section start */}
-      <div>
-        <label className="label" htmlFor="name">
-          NAME
-        </label>
+      {/* inputs start */}
+      {inputs.map((input, index) => (
+        <Input {...input} key={index} />
+      ))}
+      {/* inputs end */}
 
-        <input
-          type="text"
-          name="name"
-          className="mentorFormInput"
-          onChange={(e) => handleChange(e)}
-          placeholder="e.g. Peter Parker"
-          required
-          value={formData.name}
-        />
-      </div>
-      <div>
-        <label className="label" htmlFor="username">
-          USERNAME
-        </label>
-
-        <input
-          type="text"
-          name="username"
-          className="mentorFormInput"
-          onChange={(e) => handleChange(e)}
-          placeholder="e.g. peter-parker12"
-          required
-          value={formData.username}
-        />
-      </div>
-      {/* name and user name section end */}
-
-      {/* email and phone section start */}
-      <div>
-        <label className="label" htmlFor="email">
-          EMAIL
-        </label>
-
-        <input
-          type="text"
-          name="email"
-          className="mentorFormInput"
-          onChange={(e) => handleChange(e)}
-          placeholder="e.g. peterparker4321#gmail.com"
-          required
-          value={formData.email}
-        />
-      </div>
-      <div>
-        <label className="label" htmlFor="mobile">
-          PHONE
-        </label>
-
-        <input
-          type="number"
-          name="mobile"
-          className="mentorFormInput"
-          onChange={(e) => handleChange(e)}
-          placeholder="0123456789"
-          required
-          value={formData.mobile}
-        />
-      </div>
-      {/* email and phone ends */}
       {/* bio section start */}
       <div style={{ gridColumn: "1/3" }}>
         <label className="label" htmlFor="description">
           DESCRIPTION
         </label>
-
         <textarea
           cols="10"
           rows="7"

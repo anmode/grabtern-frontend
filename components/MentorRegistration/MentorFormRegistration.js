@@ -29,7 +29,8 @@ export default function MentorForm() {
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   let number = Math.random(0 * 100);
-  const [formData, setFormData] = useState({
+
+  const InitialFormState = {
     name: "",
     email: "",
     username: "",
@@ -53,14 +54,15 @@ export default function MentorForm() {
     ],
     description: "",
     mentorImg: {
-      name:"",
-      image:""
+      name: "",
+      image: "",
     },
     // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
     verified: false,
-  });
+  };
+  const [formData, setFormData] = useState(InitialFormState);
 
   const handleChange = (e) => {
     console.log(formData);
@@ -78,61 +80,16 @@ export default function MentorForm() {
     var userObject = jwt_decode(response.credential);
     // console.log(userObject);
     setFormData({
+      ...InitialFormState,
       name: userObject.name,
       email: userObject.email,
-      username: "",
-      mobile: "",
-      internAt: "",
-      currentStatus: "",
-      social: {
-        linkedin: "",
-        twitter: "",
-      },
-      bookSession: [
-        {
-          sessionName: "1 on 1 Mentorship",
-          sessionDescription:
-            "Achieve your goals faster with customized road map",
-          sessionType: "video-meeting",
-          sessionMeetingDuration: "30",
-          // peopleAttend: "",
-          priceSession: "",
-        },
-      ],
-      description: "",
       mentorImg: {
         name: userObject.name,
-        image: userObject.picture
+        image: userObject.picture,
       },
-      // resume: '',
-      password: `GrabternMentorPW!${number}!`,
-      confirmPassword: `GrabternMentorPW!${number}!`,
-      verified: false,
     });
     console.log(formData);
   }
-
-  useEffect(() => {
-    setInterval(() => {
-      if (typeof window !== "undefined") {
-        if (document.querySelector("#credential_picker_container") !== null) {
-          document.querySelector(".overlay").classList.add("show");
-        }
-      }
-    }, 1300);
-
-    google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
-    );
-    google.accounts.id.prompt();
-  }, []);
 
   useEffect(() => {
     if (addtoast === true && waitTime !== 0) {
@@ -167,7 +124,7 @@ export default function MentorForm() {
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setFormData({ ...formData, mentorImg: {name: file.name, image:base64} });
+    setFormData({ ...formData, mentorImg: { name: file.name, image: base64 } });
   };
 
   const handleSessionPriceChange = (e) => {
@@ -225,49 +182,66 @@ export default function MentorForm() {
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="container">
         <form className="mentorForm" onSubmit={handleSubmit}>
-          
-          <PersonDetails formData = {formData} handleChange={handleChange}/>
-          <ContactDetails formData = {formData} handleChange={handleChange}/>
-          <SessionDetails formData = {formData} handleChange={handleChange} isChecked={isChecked}/>
-          
-        {error && <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>}
-      <hr
-        style={{
-          margin: "10px 0",
-          borderColor: "grey",
-          gridColumn: "1/3",
-        }}
-      />
-      {msg && <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>}
-      <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
-        <div>
-          <button
-            style={{ width: "fit-content", padding: "15px 25px" }}
-            type="submit"
-            className="mentorFormButotn"
-            onClick={addtoast}
-          >
-            Register
-          </button>
-        </div>
-        <ToastContainer />
-        <div>
-          {isLoading && (
-            <img
-              style={{ width: "50px", height: "50px" }}
-              src="/assets/img/gif/Spinner.gif"
-              alt="...jljk"
-            />
+          <PersonDetails
+            formData={formData}
+            handleChange={handleChange}
+            handleUploadImageChange={handleUploadImageChange}
+            handleCallbackResponse={handleCallbackResponse}
+          />
+          <ContactDetails
+            formData={formData}
+            handleChange={handleChange}
+            handleSocialChange={handleSocialChange}
+          />
+          <SessionDetails
+            formData={formData}
+            handleSessionPriceChange={handleSessionPriceChange}
+            isChecked={isChecked}
+            setIsChecked={setIsChecked}
+          />
+
+          {error && (
+            <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
           )}
-        </div>
-      </div>
-          
+          <hr
+            style={{
+              margin: "10px 0",
+              borderColor: "grey",
+              gridColumn: "1/3",
+            }}
+          />
+          {msg && (
+            <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+          )}
+          <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
+            <div>
+              <button
+                style={{ width: "fit-content", padding: "15px 25px" }}
+                type="submit"
+                className="mentorFormButotn"
+                onClick={addtoast}
+              >
+                Register
+              </button>
+            </div>
+            <ToastContainer />
+            <div>
+              {isLoading && (
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src="/assets/img/gif/Spinner.gif"
+                  alt="...jljk"
+                />
+              )}
+            </div>
+          </div>
+
           <p>
-            Already have mentor account? <a href="/mentorLogin">Login</a>
+            Already have mentor account? <a className= "tw-underline tw-decoration-[1.5px]" href="/mentorLogin">Login</a>
           </p>
           <p>
             Facing difficulties?{" "}
-            <a href="/mentorRegisterSendCV">Send your CV/Resume to us!</a>
+            <a className= "tw-underline tw-decoration-[1.5px]" href="/mentorRegisterSendCV">Send your CV/Resume to us!</a>
           </p>
         </form>
       </div>

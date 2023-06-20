@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Overlay from "./Overlay";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ImageCropper from "./ImageCropper";
 
 export default function MentorForm() {
   const router = useRouter();
@@ -55,6 +56,9 @@ export default function MentorForm() {
     confirmPassword: `GrabternMentorPW!${number}!`,
     verified: false,
   });
+
+  const mentorImgRef = useRef(null);
+  const [showImageCropper, setShowImageCropper] = useState(false);
 
   const handleChange = (e) => {
     console.log(formData);
@@ -157,8 +161,13 @@ export default function MentorForm() {
 
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
+    if (!file) {
+      setFormData({ ...formData, mentorImg: "" });
+      return;
+    }
     const base64 = await convertBase64(file);
     setFormData({ ...formData, mentorImg: base64 });
+    setShowImageCropper(true);
   };
 
   const handleSessionPriceChange = (e) => {
@@ -210,8 +219,20 @@ export default function MentorForm() {
     document.querySelector(className).style.display = "none";
   }
 
+  const handleMentorImageSrcChange = (imageSrc) => {
+    if (!imageSrc) mentorImgRef.current.value = "";
+    setFormData({ ...formData, mentorImg: imageSrc });
+    setShowImageCropper(false);
+  };
+
   return (
     <div className="mentorFormRegisration">
+      {showImageCropper && (
+        <ImageCropper
+          imageSrc={formData.mentorImg}
+          changeImageSrc={handleMentorImageSrcChange}
+        />
+      )}
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {/* {modalPopup === true ? (
         <div className="modalPopup">
@@ -251,20 +272,25 @@ export default function MentorForm() {
                   ? "Change your profile image"
                   : "Upload you profile photo here"}
               </h3>
+
               {formData.mentorImg.length > 0 ? (
                 <input
                   type="file"
+                  accept="image/*"
                   name="mentorProfile"
                   className="mentorFormInput"
                   onChange={(e) => handleUploadImageChange(e)}
+                  ref={mentorImgRef}
                 />
               ) : (
                 <input
                   type="file"
+                  accept="image/*"
                   name="mentorProfile"
                   className="mentorFormInput"
                   onChange={(e) => handleUploadImageChange(e)}
                   required
+                  ref={mentorImgRef}
                 />
               )}
             </div>

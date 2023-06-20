@@ -8,7 +8,7 @@ const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
 function Mentors({ mentorsData }) {
-  const [query,setQuery]=useState("");
+  const [query, setQuery] = useState("");
 
   // console.log(query)
   // console.log(teamsData.filter(user=>user.profileName.toLowerCase().includes("ag")))
@@ -22,11 +22,11 @@ function Mentors({ mentorsData }) {
             <h1>Find All mentors here's</h1>
 
             <div className="app">
-              <input 
-                  type="text" 
-                  placeholder="Search Mentors..." 
-                  className="search" 
-                  onChange={(e)=>setQuery(e.target.value)}
+              <input
+                type="text"
+                placeholder="Search Mentors..."
+                className="search"
+                onChange={(e) => setQuery(e.target.value)}
               />
             </div>
 
@@ -41,21 +41,27 @@ function Mentors({ mentorsData }) {
             </ul> */}
 
             <ul className="mentorLists">
-              {mentorsData.filter((mentor)=>
-                  mentor.name.toLowerCase().includes(query.toLowerCase())||
-                  mentor.internAt.toLowerCase().includes(query.toLowerCase())||
-                  mentor.currentStatus.toLowerCase().includes(query.toLowerCase())
+              {mentorsData
+                .filter(
+                  (mentor) =>
+                    mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+                    mentor.internAt
+                      .toLowerCase()
+                      .includes(query.toLowerCase()) ||
+                    mentor.currentStatus
+                      .toLowerCase()
+                      .includes(query.toLowerCase())
                   //item.
-              ).map((mentor)=>(
-                // <li key={mentor.imageSrc} className="listitem">
-                //   {mentor.profileName}
-                // </li>
-                <a href={`/${mentor.username}`} key={mentor._id}>
+                )
+                .map((mentor) => (
+                  // <li key={mentor.imageSrc} className="listitem">
+                  //   {mentor.profileName}
+                  // </li>
+                  <a href={`/${mentor.username}`} key={mentor._id}>
                     {<MentorCard mentor={mentor} />}
                   </a>
                 ))}
             </ul>
-            
 
             {/* {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
@@ -68,7 +74,6 @@ function Mentors({ mentorsData }) {
                 ))}
               </div>
             )} */}
-
           </div>
         </section>
       </main>

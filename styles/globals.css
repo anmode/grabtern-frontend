@@ -346,7 +346,7 @@ a {
   margin: 0 auto;
   padding: 0 60px;
 }
-
+/* 
 .right-content1 {
   padding-top: 0 !important;
   margin-left: 0 !important;
@@ -376,7 +376,7 @@ a {
   width: 100% !important;
   padding-left: 0 !important;
 }
-
+*/
 @media (max-width: 880px) {
   .properties__card {
     height: 770px !important;
@@ -390,7 +390,7 @@ a {
 @media (max-width: 576px) {
   .team-area {
     padding-top: 0 !important;
-  }
+  } 
   /* .testimonialsList{
     -top: 30px;
   } */

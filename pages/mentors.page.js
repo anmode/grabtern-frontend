@@ -3,7 +3,7 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 import teamsData from "./data/teamsData";
-import {useApi} from './customHook/useAPi.js'
+import { useApi } from "./customHook/useAPi.js";
 import { list } from "postcss";
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));

@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const useApi = (url) => {
   const [apidata, setApiData] = useState([]);
-  const isCachePresent = useRef(sessionStorage.getItem('isCachePresent') === 'true');
+  const isCachePresent = useRef(
+    sessionStorage.getItem("isCachePresent") === "true"
+  );
 
   const fetchData = useCallback(async (url) => {
     try {
@@ -12,18 +14,18 @@ export const useApi = (url) => {
         setApiData(data);
       }
     } catch (err) {
-      console.error('Error fetching data:', err);
+      console.error("Error fetching data:", err);
       // Handle the error (e.g., display an error message)
     }
   }, []);
 
   const startCaching = useCallback(async () => {
-    const newCache = await caches.open('new-cache');
+    const newCache = await caches.open("new-cache");
     await newCache.add(url);
     if (newCache) {
-      const res = await caches.has('new-cache');
+      const res = await caches.has("new-cache");
       if (res) {
-        sessionStorage.setItem('isCachePresent', 'true');
+        sessionStorage.setItem("isCachePresent", "true");
         isCachePresent.current = true;
       }
     }
@@ -40,7 +42,7 @@ export const useApi = (url) => {
         fetchData(url);
       }
     } catch (err) {
-      console.error('Error retrieving data from cache:', err);
+      console.error("Error retrieving data from cache:", err);
       // Handle the error (e.g., display an error message)
     }
   }, [url, fetchData]);
@@ -52,7 +54,14 @@ export const useApi = (url) => {
     } else {
       datafromCache();
     }
-  }, [url, apidata.length, isCachePresent.current, fetchData, startCaching, datafromCache]);
+  }, [
+    url,
+    apidata.length,
+    isCachePresent.current,
+    fetchData,
+    startCaching,
+    datafromCache,
+  ]);
 
   return apidata;
 };

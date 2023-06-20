@@ -17,7 +17,7 @@ export default function MentorCard({
   return (
     <>
       {/* Mentor card */}
-      <div className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-max-w-[448px] tw-gap-5 tw-rounded-b-[36px] tw-shadow-xl tw-shadow-black/10 tw-rounded-[36px]">
+      <div className="tw-m-4 hover:tw-scale-105 tw-shadow-2xl tw-shadow-slate-700 tw-transition-all tw-border-[1px] tw-border-black tw-flex tw-flex-col tw-items-center tw-justify-center tw-max-w-[448px] tw-gap-5 tw-rounded-b-3xl tw-rounded-3xl">
         {/* Mentor Pic with Name and Status - upper half*/}
         <div className="tw-flex tw-flex-col tw-items-middle tw-justify-center tw-relative">
           {/* Mentor Pic Container with Overlay*/}
@@ -28,7 +28,7 @@ export default function MentorCard({
               alt="mentor"
               width="448"
               height="448"
-              className="tw-z-0 tw-rounded-t-[36px]"
+              className="tw-z-0 tw-rounded-t-3xl"
             />
             {/* Mentor Pic Overlay */}
             <div
@@ -62,7 +62,7 @@ export default function MentorCard({
             {/* Mentor Social Links and Share Icon */}
             <div className="tw-flex tw-flex-row tw-justify-between">
               {/* Mentor Social Links Container */}
-              <div className="tw-flex tw-flex-row tw-text-[#4338CA] tw-gap-4">
+              <div className="tw-flex tw-flex-row tw-text-[#4338CA] tw-gap-10">
                 <Link href={`mailto:${email}`}>
                   <MdAlternateEmail className="tw-text-[28px] hover:tw-text-[#4338CA]/75 tw-transition-opacity active:tw-scale-75" />
                 </Link>

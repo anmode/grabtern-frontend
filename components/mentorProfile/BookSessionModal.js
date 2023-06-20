@@ -10,7 +10,7 @@ export default function BookSessionModal({
     <>
       <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-fixed tw-top-0 tw-left-0 tw-bg-black/25 tw-w-full tw-h-full tw-z-[999]">
         {/* Modal Container */}
-        <div className="tw-flex tw-flex-col tw-items-stretch tw-justify-start tw-bg-white tw-rounded-[36px] tw-p-[30px] tw-w-[448px] tw-gap-8">
+        <div className="tw-flex tw-flex-col tw-items-stretch tw-justify-start tw-bg-white tw-rounded-3xl tw-p-[30px] tw-w-[448px] tw-gap-8">
           {/* Modal Header */}
           <div className="tw-flex tw-flex-row tw-items-center tw-justify-between">
             <h1 className="tw-text-[28px] tw-font-semibold tw-text-[#4338CA] tw-leading-none tw-mt-[4px]">

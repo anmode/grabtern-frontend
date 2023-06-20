@@ -1,7 +1,12 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Input from "./Input";
 
-function PersonDetails({ formData, handleChange, handleUploadImageChange, handleCallbackResponse }) {
+function PersonDetails({
+  formData,
+  handleChange,
+  handleUploadImageChange,
+  handleCallbackResponse,
+}) {
   // inputs list
   const inputs = [
     {
@@ -26,7 +31,7 @@ function PersonDetails({ formData, handleChange, handleUploadImageChange, handle
     },
     {
       label: "email",
-      type: "text",
+      type: "email",
       name: "email",
       className: "mentorFormInput",
       onChange: handleChange,
@@ -90,7 +95,7 @@ function PersonDetails({ formData, handleChange, handleUploadImageChange, handle
         <div>
           <label
             htmlFor="mentorProfile"
-            className="text-center text-white theme-button-color px-5 py-2 rounded cursor-pointer"
+            className="mentorFormButton theme-button-color"
           >
             {formData.mentorImg.image.length > 0
               ? "Change Image"

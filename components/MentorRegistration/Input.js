@@ -11,7 +11,7 @@ function Input({
   ...rest
 }) {
   return (
-    <div>
+    <div className="div">
       <label className="label uppercase" htmlFor={name}>
         {label}
       </label>

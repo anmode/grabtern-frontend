@@ -24,7 +24,7 @@ export default function MentorForm() {
     // peopleAttend: "",
     priceSession: "",
   });
-
+  const [formStep, setFormStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
@@ -176,29 +176,56 @@ export default function MentorForm() {
     document.querySelector(className).style.display = "none";
   }
 
+  const prevStep = (e) => {
+    e.preventDefault();
+    setFormStep(formStep - 1);
+  };
+  const nextStep = (e) => {
+    e.preventDefault();
+    setFormStep(formStep + 1);
+  };
   return (
     <div className="mentorFormRegisration">
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="container">
         <form className="mentorForm" onSubmit={handleSubmit}>
-          <PersonDetails
-            formData={formData}
-            handleChange={handleChange}
-            handleUploadImageChange={handleUploadImageChange}
-            handleCallbackResponse={handleCallbackResponse}
-          />
-          <ContactDetails
-            formData={formData}
-            handleChange={handleChange}
-            handleSocialChange={handleSocialChange}
-          />
-          <SessionDetails
-            formData={formData}
-            handleSessionPriceChange={handleSessionPriceChange}
-            isChecked={isChecked}
-            setIsChecked={setIsChecked}
-          />
+          {/* form sections start */}
+          <>
+            {{
+              1: (
+                <PersonDetails
+                  formData={formData}
+                  handleChange={handleChange}
+                  handleUploadImageChange={handleUploadImageChange}
+                  handleCallbackResponse={handleCallbackResponse}
+                />
+              ),
+              2: (
+                <ContactDetails
+                  formData={formData}
+                  handleChange={handleChange}
+                  handleSocialChange={handleSocialChange}
+                />
+              ),
+              3: (
+                <SessionDetails
+                  formData={formData}
+                  handleSessionPriceChange={handleSessionPriceChange}
+                  isChecked={isChecked}
+                  setIsChecked={setIsChecked}
+                />
+              ),
+            }[formStep] || (
+              <PersonDetails
+                formData={formData}
+                handleChange={handleChange}
+                handleUploadImageChange={handleUploadImageChange}
+                handleCallbackResponse={handleCallbackResponse}
+              />
+            )}
+          </>
+          {/* form sections end */}
 
           {error && (
             <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
@@ -213,17 +240,30 @@ export default function MentorForm() {
           {msg && (
             <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
           )}
-          <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
-            <div>
+          {/* prev next and submit buttons start */}
+          <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
+            <button
+              type="submit"
+              className="mentorFormButton theme-button-color"
+              onClick={formStep == 3 ? handleSubmit : nextStep}
+            >
+              {formStep == 3 ? "Register" : "Next"}
+            </button>
+
+            {formStep != 1 && (
               <button
-                style={{ width: "fit-content", padding: "15px 25px" }}
-                type="submit"
-                className="mentorFormButotn"
-                onClick={addtoast}
+                type="button"
+                className="mentorFormButton tw-bg-slate-400"
+                onClick={prevStep}
               >
-                Register
+                Back
               </button>
-            </div>
+            )}
+          </div>
+          {/* prev next and submit buttons end */}
+
+          {/* toast and loading container start */}
+          <div>
             <ToastContainer />
             <div>
               {isLoading && (
@@ -235,14 +275,28 @@ export default function MentorForm() {
               )}
             </div>
           </div>
+          {/* toast and loading container end */}
 
+          {/* bottom link start */}
           <p>
-            Already have mentor account? <a className= "tw-underline tw-decoration-[1.5px]" href="/mentorLogin">Login</a>
+            Already have mentor account?{" "}
+            <a
+              className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
+              href="/mentorLogin"
+            >
+              Login
+            </a>
           </p>
           <p>
             Facing difficulties?{" "}
-            <a className= "tw-underline tw-decoration-[1.5px]" href="/mentorRegisterSendCV">Send your CV/Resume to us!</a>
+            <a
+              className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
+              href="/mentorRegisterSendCV"
+            >
+              Send your CV/Resume to us!
+            </a>
           </p>
+          {/* bottom links end */}
         </form>
       </div>
     </div>

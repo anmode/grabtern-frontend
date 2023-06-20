@@ -629,7 +629,7 @@ a {
   }
 }
 
-.mentorForm div {
+.mentorForm .div {
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -675,26 +675,31 @@ textarea {
   margin-bottom: 0;
 }
 
-.mentorForm .mentorFormButotn {
+.mentorForm .mentorFormButton {
   /* max-width: 150px; */
   color: white;
+  text-align: center;
   border: none;
-  padding: 15px;
+  padding: 0.5rem 1.25rem ;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to top,
     rgb(83, 116, 255) 0%,
     rgb(127, 102, 255) 40%,
     rgb(187, 85, 255) 95%,
     rgb(192, 84, 255) 100%
-  );
+  ); */
   box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
 }
 
-.mentorForm button:active {
+.mentorForm .mentorFormButton:active {
+  transform: scale(1.01);
   box-shadow: unset !important;
+}
+.mentorForm .mentorFormButton:hover{
+  transform: scale(0.99);
 }
 
 .mentorForm a,

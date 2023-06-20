@@ -58,7 +58,7 @@ function Index({ mentorDetail }) {
         data
       );
       setIsLoading(false);
-      setModalPopup(true);
+      setModalPopup(false);
       toast.success(
         "Your session has been booked! Check your inbox for payment details."
       ); // Success toast
@@ -131,7 +131,7 @@ function Index({ mentorDetail }) {
                   name={session.sessionName}
                   description={session.sessionDescription}
                   duration={session.sessionMeetingDuration}
-                  price={session.priceSession}
+                  pricePerSession={session.priceSession}
                   handleBookSession={() => {
                     setModalPopup(true);
                     setSelectedSession(session);

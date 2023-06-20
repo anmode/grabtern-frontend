@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
+* {
   padding: 0;
   margin: 0;
 }
@@ -12,8 +12,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    overflow-x: hidden;
-  
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -438,13 +437,17 @@ a {
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
-    margin-left: 130px;
+    margin: auto;
   }
   .mentorForm {
     border: none !important;
+    padding: 0 15px !important;
   }
   .mentorFormRegisration > .container {
     padding-top: 0 !important;
+  }
+  .mentorForm .mentorFormHeading {
+    font-size: 25px;
   }
   /* .properties__footer .restaurant-name {
     font-size: 14px !important;
@@ -567,7 +570,7 @@ a {
 
 .mentorFormRegisration {
   margin-top: 118px;
-  padding: 70px 30px;
+  padding: 0px 30px;
 }
 
 .overlay {
@@ -596,14 +599,16 @@ a {
 
 .mentorForm {
   width: fit-content;
-  padding: 40px;
+  padding: 60px 40px;
   background-color: white;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(2, 400px);
   gap: 20px;
   column-gap: 40px;
-  border: 1px solid gray;
+  box-shadow: 0.5px 0.5px 30px rgb(228, 226, 226);
+  margin: 0 auto;
+  margin-bottom:20px ;
 }
 
 @media screen and (max-width: 992px) {
@@ -618,7 +623,7 @@ a {
   }
 
   .mentorFormRegisration {
-    padding: 70px 0;
+    padding: 0;
     margin-top: 0px;
   }
 
@@ -680,7 +685,7 @@ textarea {
   color: white;
   text-align: center;
   border: none;
-  padding: 0.5rem 1.25rem ;
+  padding: 0.5rem 1.25rem;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
@@ -693,12 +698,45 @@ textarea {
   ); */
   box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
 }
-
+.mentorForm .mentorFormHeading {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.mentorForm .trackerStep {
+  height: 30px;
+  aspect-ratio: 1;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid #845ec2;
+  color: #845ec2;
+  font-weight: 600;
+  opacity: 0.5;
+  margin: auto;
+}
+.mentorForm .trackerStep.active {
+  opacity: 1;
+}
+.mentorForm .trackerStep.done {
+  color: white;
+  background-color: #845ec2;
+  opacity: 1;
+}
+.mentorForm .trackerLine {
+  border-bottom: 2px solid #845ec2;
+  opacity: 0.3;
+  flex: 1;
+  margin: 0 10px;
+}
+.mentorForm .trackerStep.done + .trackerLine {
+  opacity: 1;
+}
 .mentorForm .mentorFormButton:active {
   transform: scale(1.01);
   box-shadow: unset !important;
 }
-.mentorForm .mentorFormButton:hover{
+.mentorForm .mentorFormButton:hover {
   transform: scale(0.99);
 }
 

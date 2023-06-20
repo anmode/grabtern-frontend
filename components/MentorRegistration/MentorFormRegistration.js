@@ -188,8 +188,35 @@ export default function MentorForm() {
     <div className="mentorFormRegisration">
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {addtoast === true ? toast.success("Registered successfully") : null}
-      <div className="container">
+      <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={handleSubmit}>
+          {/* steps tracker start */}
+          <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
+            <div
+              className={`trackerStep ${
+                formStep == 1 ? "active" : formStep > 1 ? "done" : ""
+              }`}
+            >
+              ✔
+            </div>
+            <div className="trackerLine"></div>
+            <div
+              className={`trackerStep ${
+                formStep == 2 ? "active" : formStep > 2 ? "done" : ""
+              }`}
+            >
+              ✔
+            </div>
+            <div className="trackerLine"></div>
+            <div
+              className={`trackerStep ${
+                formStep == 3 ? "active" : formStep > 3 ? "done" : ""
+              }`}
+            >
+              ✔
+            </div>
+          </div>
+          {/* steps tracker end */}
           {/* form sections start */}
           <>
             {{

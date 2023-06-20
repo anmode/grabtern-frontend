@@ -76,6 +76,7 @@ function PersonDetails({
 
   return (
     <>
+      <p className="mentorFormHeading">Tell us about yourself</p>
       {/* google signin button start */}
       <div style={{ gridColumn: "1/3" }}>
         <div id="googleSignInButton"></div>

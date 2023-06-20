@@ -46,6 +46,7 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
   ];
   return (
     <>
+      <p className="mentorFormHeading">Tell us about your Experience</p>
       {inputs.map((input, index) => (
         <Input {...input} key={index} />
       ))}

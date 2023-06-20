@@ -21,6 +21,7 @@ function SessionDetails({
   ];
   return (
     <>
+      <p className="mentorFormHeading">Tell us about your Schedule</p>
       {/* page inputs start */}
       {inputs.map((input, index) => (
         <Input {...input} key={index}/>

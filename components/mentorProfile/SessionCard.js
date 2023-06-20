@@ -35,7 +35,7 @@ export default function SessionCard({
           </p>
           {/* Session card Charge */}
           <p className="tw-flex tw-flex-row tw-items-center tw-gap-3 tw-text-[16px] tw-whitespace-nowrap tw-font-medium tw-text-black/50">
-            <BsCurrencyRupee /> {pricePerSession} mins
+            <BsCurrencyRupee /> {pricePerSession}
           </p>
           {/* Session Book Button */}
           <button

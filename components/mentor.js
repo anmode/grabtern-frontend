@@ -2,7 +2,7 @@ import React from "react";
 
 const MentorCard = ({ mentor }) => {
   return (
-    <div className="mentor-card shadow-lg max-w-2xl transform transition duration-300 hover:scale-105 m-4">
+    <div className="mentor-card max-w-2xl transform transition duration-300 hover:scale-100">
       <img
         src={mentor.mentorImg}
         alt={mentor.name}

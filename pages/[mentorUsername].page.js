@@ -20,10 +20,9 @@ function Index({ mentorDetail }) {
   const [error, setError] = useState("");
   const [emailSent, setEmailSent] = useState(false); // New state variable
   const router = useRouter();
-  localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const [selectedSession, setSelectedSession] = useState(null);
+  const [selectedSession, setSelectedSession] = useState("");
 
   const {
     isMentorLoggedIn,
@@ -33,17 +32,22 @@ function Index({ mentorDetail }) {
   } = useAuth();
 
   const handleClick = (mentordata) => {
+    const { sessionName, sessionMeetingDuration, priceSession } = mentordata;
+    const { email, name, username } = mentorDetail;
+
     if (isUserLoggedIn) {
+      sessionStorage.removeItem("redirectUrl");
       handleBookSession(
-        mentordata.sessionName,
-        mentorDetail.email,
-        mentorDetail.name,
-        mentordata.sessionMeetingDuration,
-        mentordata.priceSession
+        sessionName,
+        email,
+        name,
+        sessionMeetingDuration,
+        priceSession
       );
     } else {
-      // const redirectUrl = `/userAuth/#login?redirect=/${mentorDetail.username}`;
-      router.push("/userAuth#login");
+      const redirectUrl = window.location.href;
+      sessionStorage.setItem("redirectUrl", redirectUrl);
+      router.push(`/userAuth#login`);
     }
   };
 
@@ -55,7 +59,7 @@ function Index({ mentorDetail }) {
         data
       );
       setIsLoading(false);
-      setModalPopup(true);
+      setModalPopup(false);
       toast.success(
         "Your session has been booked! Check your inbox for payment details."
       ); // Success toast
@@ -128,9 +132,12 @@ function Index({ mentorDetail }) {
                   name={session.sessionName}
                   description={session.sessionDescription}
                   duration={session.sessionMeetingDuration}
-                  price={session.priceSession}
-                  // handleBookSession={() => setModalPopup(true)}
-                  handleBookSession={() => handleClick(session)}
+                  pricePerSession={session.priceSession}
+                  handleBookSession={() => {
+                    setModalPopup(true);
+                    setSelectedSession(session);
+                  }}
+                  // handleBookSession={() => handleClick(session)}
                 />
               ))}
           </div>
@@ -144,13 +151,13 @@ function Index({ mentorDetail }) {
           {/* Error Display */}
           {/* {error && <div style={{ color: "red" }}>{error}</div>} */}
           {/* Book Session Modal */}
-          {/* {!error && modalPopup && (
-          <BookSessionModal
-            handleClose={() => setModalPopup(false)}
-            handleCancel={() => setModalPopup(false)}
-            handleConfirm={() => handleClick(session)}
-          />
-        )} */}
+          {!error && modalPopup && (
+            <BookSessionModal
+              handleClose={() => setModalPopup(false)}
+              handleCancel={() => setModalPopup(false)}
+              handleConfirm={() => handleClick(selectedSession)}
+            />
+          )}
           {/* Successful Alert Message */}
           {/* {emailSent && (
           <div style={{ color: "green" }}>

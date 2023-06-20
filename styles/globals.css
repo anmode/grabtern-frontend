@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  padding: 0;
+  margin: 0;
+}
 
 html,
 body {
@@ -8,6 +12,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -300,7 +305,7 @@ a {
 @media (min-width: 992px) {
   .container {
     padding: 20px;
-    /* margin: 10px; */
+    margin: 0px;
     padding: 50px;
     max-width: 100% !important;
     width: 100% !important;
@@ -347,6 +352,37 @@ a {
 }
 
 
+.right-content1 {
+  padding-top: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.about-area1 .support-wrapper {
+  gap: 80px;
+  flex-wrap: nowrap !important;
+}
+
+.right-img {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .video {
+    width: 540px !important;
+    max-width: unset !important;
+  }
+}
+
+
+.left-content1 {
+  width: 100% !important;
+  padding-left: 0 !important;
+}
+
+
 @media (max-width: 880px) {
   .properties__card {
     height: 770px !important;
@@ -362,6 +398,9 @@ a {
   .team-area {
     padding-top: 0 !important;
   }
+  /* .testimonialsList{
+    -top: 30px;
+  } */
   .testimonialsList .box .info .name {
     font-size: 15px !important;
   }
@@ -455,17 +494,17 @@ a {
   }
 }
 
-.testimonials {
-  max-width: 1200px;
+/* .testimonials {
+  max-width: 1800px;
   margin: 100px auto 0;
   padding: 0 40px;
-}
+} */
 
-.testimonials h2 {
+/* .testimonials h2 {
   text-align: center;
   font-size: 30px;
   font-weight: 700;
-}
+} */
 
 .testimonials > p {
   text-align: center;
@@ -484,18 +523,30 @@ a {
   margin-left: 7px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: calc(100% - 20px);
+  border-radius: 5%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.testimonialsList .box:hover{
+  transform: translateY(-1%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.27);
+
 }
 
 .testimonialsList .box i.quote {
   font-size: 20px;
-  color: #17a2b8;
+  color: #845ec2;
+  margin-bottom: 30px;
 }
 
 .testimonialsList .box .content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
+  
+  /* justify-content: space-between; */
+  padding-top: 27px;
 }
 
 .testimonialsList .box .info .name {
@@ -504,7 +555,7 @@ a {
 }
 
 .testimonialsList .box .info .job {
-  color: #17a2b8;
+  color: #10285d;
   font-size: 16px;
   font-weight: 500;
 }
@@ -514,14 +565,15 @@ a {
 }
 
 .box .info .stars i {
-  color: #17a2b8;
+  color: #f6b608;
 }
 
 .testimonialsList .box .content .image {
   width: 75px;
   height: 75px;
-  border: 3px solid #17a2b8;
+  border: 3px solid #845ec2;
   border-radius: 50%;
+  margin-right: 15px;
 }
 
 .box .content .image img {
@@ -690,7 +742,16 @@ textarea {
   gap: 20px;
   justify-content: center;
 }
-
+.app {
+  border: 2px solid rgb(192, 84, 255);
+  height: 40px;
+  margin: 40px 40%;
+  width: 25%;
+  border-radius: 25px;
+  font-size: 2.3rem;
+  padding-left: 15px;
+  color: rgb(127, 102, 255);
+}
 .mentorCard {
   background-color: white;
   display: flex;

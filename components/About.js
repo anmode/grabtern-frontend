@@ -73,6 +73,24 @@ function About() {
             </div>
           </div>
         </div>
+
+        <div className="right-content1">
+          <div className="right-img">
+            <video
+              controls="controls"
+              className="video"
+              muted
+              autoPlay
+              style={{ width: "100%", maxWidth: "100%", height: "auto" }}
+            >
+              <source src="/video.mp4" type="video/mp4" />
+            </video>
+            {/* <div className="video-icon" style={{ position: "relative", left: "-70px", top: "-110px" }}>
+                                <a className={`popup-video btn-icon ${isVideoPlayed === true ? "videoButton" : ""}`} onClick={() => playVideo()}><i className="fas fa-play" style={{ color: "white" }}></i></a>
+                        </div> */}
+          </div>
+        </div>
+
       </div>
 
 

@@ -7,6 +7,8 @@ import Internship from "../components/Internship";
 import hackathonsData from "./data/hackathonsData";
 import Hackathon from "../components/Hackathons";
 import teamsData from "./data/teamsData";
+import testiomialsData from "./data/testiomialsData";
+import Testimonial from "../components/Testimonial.js"
 import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
@@ -42,6 +44,28 @@ const internshipsOptions = {
     },
   },
 };
+
+const testimonialOptions={
+  margin: 40,
+  items: 4,
+  nav: true,
+  loop: true,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    900: {
+      items: 2,
+    },
+    1170: {
+      items: 3,
+    },
+  },
+}
+
 
 const teamsOptions = {
   margin: 40,
@@ -192,7 +216,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="about-area3 fix">
+        <section className="about-area3 fix mb-40">
           <div className="support-wrapper align-items-center">
             <div className="right-content3">
               <div className="right-img">
@@ -244,9 +268,17 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* <section className='testimonials'>
-          <h2>Testimonials</h2>
-          <p>Here is what client say to us!</p>
+        <section className='team-area section-padding40 fix'>
+          <div className="container">
+          <div className="row justify-content-center">
+              <div className="col-xl-7 col-lg-8">
+                <div className="section-tittle text-center mb-55">
+                  <h2>Testimonials</h2>
+                </div>
+              </div>
+            </div>
+          
+          
           <ul className='testimonialsList'>
             {carousel === true ? (<OwlCarousel
               {...testimonialOptions}
@@ -260,12 +292,18 @@ export default function Home() {
               className="owl-carousel owl-theme"
             >
               {testiomialsData.map((testimonial, index) => (
-                <Testimonial key={index} testimonialUserName={testimonial.testimonialUserName} testimonialUserHeadline={testimonial.testimonialUserHeadline} testimonialUserImage={testimonial.testimonialUserImage} testimonialRate={testimonial.testimonialRate} testimonialDescription={testimonial.testimonialDescription} />
+                <Testimonial key={index} 
+                testimonialUserName={testimonial.testimonialUserName} 
+                testimonialUserHeadline={testimonial.testimonialUserHeadline} 
+                testimonialUserImage={testimonial.testimonialUserImage} 
+                testimonialRate={testimonial.testimonialRate} 
+                testimonialDescription={testimonial.testimonialDescription} />
               ))}
 
             </OwlCarousel>) : null}
           </ul>
-        </section> */}
+          </div>
+        </section>
         <section className="team-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">

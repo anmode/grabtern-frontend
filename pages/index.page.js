@@ -192,55 +192,44 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="about-area3 fix">
+        <section className="about-area3 fix sectionMentor">
           <div className="support-wrapper align-items-center">
             <div className="right-content3">
               <div className="right-img">
-                <img src="/assets/img/gallery/mentors.avif" alt="about" />
+                <img id="image" src="/assets/img/gallery/mentors.avif" alt="about" />
               </div>
             </div>
-            <div className="left-content3">
+            <div className="left-content3" id="text1">
               <div className="section-tittle section-tittle2 mb-20">
                 <div className="front-text">
-                  <h2>Why to be Mentor at Grabtern?</h2>
+                  <h2 >Why to be <span className="rainbow-text">Mentor at Grabtern?</span></h2>
                 </div>
               </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
+
+              <ul class="encircled-bullet-points">
+                <li><span class="tick-mark">&#10003;</span><span class="item-text"><div className="features-caption">
                   <p>
                     <b>Professional networking:</b> Mentors can expand their
                     professional network by connecting with students and other
                     mentors in the community.
                   </p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
+                </div></span></li>
+                <li><span class="tick-mark">&#10003;</span><span class="item-text">  <div className="features-caption">
                   <p>
                     <b>Giving back:</b> Mentors can feel a sense of fulfillment
                     by giving back to the community and contributing to the
                     development of future professionals.
                   </p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
+                </div></span></li>
+                <li><span class="tick-mark">&#10003;</span><span class="item-text">  <div className="features-caption">
                   <p>
                     <b>Continued learning:</b> Mentors can continue to learn and
                     grow by staying up-to-date on the latest industry trends and
                     knowledge through mentoring students.
                   </p>
-                </div>
-              </div>
+                </div></span></li>
+              </ul>
+
             </div>
           </div>
         </section>

@@ -1510,4 +1510,126 @@ textarea {
     width: 94%;
     margin-top: 10px;
   }
+  /* .sectionMentor{
+    translate: -200px;
+  } */
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to right,blue, purple );
+  background-size: 200% auto;
+  animation: rainbow 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.1s ease;
+}
+
+.rainbow-text:hover {
+  animation-play-state: paused;
+}
+@media (min-width: 768px) {
+  .sectionMentor {
+    transform: translateX(100px);
+  }
+}
+
+.encircled-bullet-points li {
+  list-style-type: none;
+  position: relative;
+  padding-left: 30px;
+}
+
+.tick-mark {
+  display: inline-block;
+  font-size: 24px; 
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border: 2px solid orange; 
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: orange; 
+  font-weight: bold; 
+  margin-top: -27px; 
+}
+.item-text {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px; 
+}
+@media (max-width: 768px) {
+
+  .tick-mark {
+    transform: translateY(-35px);
+    
+  }
+}
+#image {
+  width: 600px;
+  position: relative;
+}
+
+#image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); 
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#image::after {
+  content: '\2713'; /* Tick symbol */
+  font-size: 72px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: #ffffff;
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#image:hover::before {
+  opacity: 1;
+}
+
+#image:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+#text1{
+  padding-left: 0px;
+}
+.btn-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 10px auto 35px;
+}
+#image {
+  width: 600px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#image:hover {
+  transform: scale(1.1); 
 }

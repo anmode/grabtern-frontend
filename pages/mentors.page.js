@@ -3,7 +3,7 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 import teamsData from "./data/teamsData";
-import { useApi } from "./customHook/useApi";
+import {useApi} from './customHook/useAPi.js'
 import { list } from "postcss";
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
@@ -11,8 +11,8 @@ const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
 
-  // const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  // const data = useApi(url);
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  const data = useApi(url);
   // const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
 
   // console.log(query)

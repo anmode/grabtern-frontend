@@ -4880,6 +4880,10 @@ p {
   font-size: 13px;
   background: transparent;
 }
+.form-contact .form-control.inputField {
+border: 1px solid red;
+}
+
 .form-contact .form-control:focus {
   outline: 0;
   box-shadow: none;

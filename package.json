@@ -11,10 +11,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.5",
     "antd": "^5.4.5",
     "axios": "^1.2.3",
     "jquery": "^3.6.3",
@@ -24,6 +20,7 @@
     "owl.carousel": "^2.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-easy-crop": "^4.7.4",
     "react-icons": "^4.9.0",
     "react-owl-carousel": "^2.3.3",
     "react-query": "^3.39.3",

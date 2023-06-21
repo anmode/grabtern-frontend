@@ -6,6 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import DropdownCard from "./LoginDropdown";
 import { AiOutlineSearch } from "react-icons/ai";
 import { SunIcon } from "@heroicons/react/24/solid";
+import logo from "../public/Grabtern2.png";
 
 function Header({ isUserLoggedIn }) {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -37,14 +38,14 @@ function Header({ isUserLoggedIn }) {
   }, []);
 
   return (
-    <nav className="flex justify-between items-center mb-6 bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200 pt-3 text-black">
+    <nav className="flex justify-between items-center mb-0 bg-gray-100 fixed w-full z-20 top-0 left-0 border-b border-gray-400 text-black">
       <Link href="/" className="flex gap-2 justify-center items-center">
         <Image
-          src="/whitelogo.webp"
+          src={logo}
           alt="grabtern_logo"
           width={50}
           height={50}
-          className="mx-2 mb-2 bg-violet-500 py-2 rounded-sm "
+          className="m-2 cursor-pointer rounded-lg object-contain"
         />
       </Link>
 
@@ -61,7 +62,7 @@ function Header({ isUserLoggedIn }) {
 
       {/* For Desktop Navigation*/}
       <div className="sm:flex hidden">
-        <div className="flex gap-3 justify-between items-center md:gap-5">
+        <div className="flex gap-3 justify-between items-center md:gap-5 cursor-pointer">
           <Link href="/" className="hover:text-blue-800">
             Home
           </Link>

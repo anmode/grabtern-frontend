@@ -89,7 +89,9 @@ function SessionDetails({
 
       {/* time zone input starts */}
       <div className="div">
-        <label className="label uppercase" htmlFor="timezone">Time Zone</label>
+        <label className="label uppercase" htmlFor="timezone">
+          Time Zone
+        </label>
         <TimeZoneInput
           id="timezone"
           name="timezone"

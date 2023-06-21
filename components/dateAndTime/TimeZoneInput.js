@@ -1,13 +1,8 @@
 import React from "react";
 
-function TimeZoneInput({id, name, onChange, value}) {
+function TimeZoneInput({ id, name, onChange, value }) {
   return (
-    <select
-      id={id}
-      name={name}
-      onChange={onChange}
-      value={value}
-    >
+    <select id={id} name={name} onChange={onChange} value={value}>
       <option value="(GMT-11:00) Pacific/Midway">
         (GMT-11:00) Pacific/Midway
       </option>

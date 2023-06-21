@@ -207,7 +207,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-12">
                 <div className="section-tittle text-center mt-20">
-                  <a href="internships.html" className="border-btn">
+                  <a href="/hackathon" className="border-btn">
                     View More Hackathons
                   </a>
                 </div>

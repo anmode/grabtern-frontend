@@ -94,11 +94,11 @@
     }
   }
   .about_text{
-    padding: 20px;
+    padding: 12px;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
     text-align: center;
-    margin: 30px;
+    margin: 20px;
     margin-bottom: 10px;
   }
   .about_text p{
@@ -114,6 +114,13 @@
   .feature_caption p{
     text-align: center;
     font-size: 15px;
+  }
+  .about_text{
+    margin: 0px;
+    padding: 2px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    margin-bottom: 10px;
   }
   .about_text p{
     font-size: 18px;

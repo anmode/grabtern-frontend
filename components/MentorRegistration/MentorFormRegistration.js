@@ -197,7 +197,7 @@ export default function MentorForm() {
       <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={handleSubmit}>
           {/* steps tracker start */}
-          <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
+          <div className="col-span-2 flex justify-between items-center mb-8">
             <div
               className={`trackerStep ${
                 formStep == 1 ? "active" : formStep > 1 ? "done" : ""
@@ -275,7 +275,7 @@ export default function MentorForm() {
             <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
           )}
           {/* prev next and submit buttons start */}
-          <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
+          <div className="flex items-center justify-between flex flex-row-reverse col-span-2">
             <button
               type="submit"
               className="mentorFormButton theme-button-color"
@@ -287,7 +287,7 @@ export default function MentorForm() {
             {formStep != 1 && (
               <button
                 type="button"
-                className="mentorFormButton tw-bg-slate-400"
+                className="mentorFormButton bg-slate-400"
                 onClick={prevStep}
               >
                 Back
@@ -315,7 +315,7 @@ export default function MentorForm() {
           <p>
             Already have mentor account?{" "}
             <a
-              className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
+              className="underline decoration-[1.5px] hover:opacity-80"
               href="/mentorLogin"
             >
               Login
@@ -324,7 +324,7 @@ export default function MentorForm() {
           <p>
             Facing difficulties?{" "}
             <a
-              className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
+              className="underline decoration-[1.5px] hover:opacity-80"
               href="/mentorRegisterSendCV"
             >
               Send your CV/Resume to us!

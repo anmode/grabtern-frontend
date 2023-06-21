@@ -179,9 +179,9 @@ export default function MentorForm() {
   }
 
   const changeSchedule = (newSchedule) => {
-    setFormData({...formData, 'schedules': newSchedule})
-  }
-  
+    setFormData({ ...formData, schedules: newSchedule });
+  };
+
   const prevStep = (e) => {
     e.preventDefault();
     setFormStep(formStep - 1);

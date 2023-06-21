@@ -187,7 +187,7 @@ function SessionDetails({
 
       {/* schedule list starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">
-        {(formData.schedules).map((schedule, index) => (
+        {formData.schedules.map((schedule, index) => (
           <ScheduleCard
             key={index}
             schedule={schedule}

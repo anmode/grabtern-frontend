@@ -31,7 +31,7 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
       onChange: handleSocialChange,
       placeholder: "e.g. https://www.linkedin.com/peterparker",
       required: true,
-      pattern:"https://linkedin.com/in/*",
+      pattern: "https://linkedin.com/in/*",
       value: formData.social.linkedin,
     },
     {
@@ -42,7 +42,7 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
       onChange: handleSocialChange,
       placeholder: "e.g. https://www.twitter.com/peterparker",
       required: true,
-      pattern:"https://twitter.com/*",
+      pattern: "https://twitter.com/*",
       value: formData.social.twitter,
     },
   ];

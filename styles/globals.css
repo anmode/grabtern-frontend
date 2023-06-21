@@ -666,7 +666,8 @@ a {
 }
 
 .mentorForm div input,
-textarea, .scheduleCard,
+textarea,
+.scheduleCard,
 select {
   width: 100%;
   border: 2px solid rgb(220, 220, 220);
@@ -675,7 +676,7 @@ select {
   background-color: transparent;
 }
 
-.scheduleCard div *{
+.scheduleCard div * {
   text-transform: capitalize;
   font-size: small !important;
 }

@@ -32,6 +32,9 @@ function Index({ mentorDetail }) {
   } = useAuth();
 
   const handleClick = (mentordata) => {
+    const { sessionName, sessionMeetingDuration, priceSession } = mentordata;
+    const { email, name, username } = mentorDetail;
+
     if (isUserLoggedIn) {
       sessionStorage.removeItem("redirectUrl");
       handleBookSession(
@@ -129,9 +132,12 @@ function Index({ mentorDetail }) {
                   name={session.sessionName}
                   description={session.sessionDescription}
                   duration={session.sessionMeetingDuration}
-                  price={session.priceSession}
-                  // handleBookSession={() => setModalPopup(true)}
-                  handleBookSession={() => handleClick(session)}
+                  pricePerSession={session.priceSession}
+                  handleBookSession={() => {
+                    setModalPopup(true);
+                    setSelectedSession(session);
+                  }}
+                  // handleBookSession={() => handleClick(session)}
                 />
               ))}
           </div>

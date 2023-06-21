@@ -12,6 +12,8 @@ import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+
 import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/LoginDropdown";
 import Image from "next/image";
@@ -126,16 +128,22 @@ export default function Home() {
     const tagMatch = hackathon.tags.some((tag) =>
       tag.toLowerCase().includes(tagFilter.toLowerCase())
     );
-  
+  console.log(tagFilter);
     if (tagFilter !== "" && !tagMatch) {
+      console.log("hpo");
+      if (tagFilter === "bookmarked") {
+        console.log("hello");
+        return (hackathon.bookmarked);
+      }
       return false; // Skip the hackathon if it doesn't match the tag filter
-    }
-  
+    } 
+      console.log("pooh");
     const titleMatch = hackathon.hackathonTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
   
     return titleMatch;
+    
   });
   
   
@@ -144,7 +152,10 @@ export default function Home() {
   console.log(filteredHackathons);
   const handleBookmark = (index) => {
     const updatedHackathons = [...HackathonsData];
+    console.log(updatedHackathons[index]);
+    console.log("hello"+updatedHackathons[index]+ updatedHackathons[index].bookmarked);
     updatedHackathons[index].bookmarked = !updatedHackathons[index].bookmarked;
+    console.log("ua"+updatedHackathons[index]+ updatedHackathons[index].bookmarked);
     setHackathonsData(updatedHackathons);
   };
 
@@ -365,13 +376,8 @@ export default function Home() {
                     onClick={() => handleBookmark(index)}
                   >
                     {hackathon.bookmarked ? (
-                      <Tooltip  placement="left"  sx={{[`& .MuiTooltip-tooltip`]: {    
-                        fontFamily: "'Grape Nuts', Helvetica",
-                        color: "deepskyblue",
-                        backgroundColor: "red",
-                      }}}title={<h2
-                        className="animate-charcter"
-                       
+                      
+                      <Tooltip  placement="left" title={<h2
                         style={{
                           textTransform: "uppercase",
                           backgroundImage:
@@ -392,16 +398,12 @@ export default function Home() {
                       <BookmarkOutlinedIcon
                         className="h-6 w-6"
                         sx={{ fontSize: 40 }}
-                        style={{ fill: "red" }}
+                        style={{ fill: "#FFDD43" }}
                       />
                       </Tooltip>
 
                     ) : (
-                      <Tooltip  placement="left"  sx={{[`& .MuiTooltip-tooltip`]: {    
-                        fontFamily: "'Grape Nuts', Helvetica",
-                        color: "deepskyblue",
-                        backgroundColor: "red",
-                      }}}title={<h2
+                      <Tooltip  placement="left" title={<h2
                         className="animate-charcter"
                        
                         style={{
@@ -424,7 +426,7 @@ export default function Home() {
                                               <BookmarkBorderOutlinedIcon
                         className="h-6 w-6"
                         sx={{ fontSize: 40 }}
-                        style={{ fill: "red" }}
+                        style={{ fill: '#F2F7FF' }}
                       />
                       </Tooltip>
 

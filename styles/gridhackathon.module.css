@@ -1,105 +1,123 @@
 .singleHackathon {
-    /* 
+  /* 
       background-image: url("/assets/img/hackathons/Squiggly-Pattern.gif"); */
-      animation-name: changeBackground; /* specify the name of the animation */
-      animation-duration: 15s; /* specify the duration of the animation */
-      animation-timing-function: ease-in-out; /* specify the timing function of the animation */
-     /* specify the number of times the animation should repeat */
-      background-image: url("/assets/img/hackathons/css-particles-background.gif"); /* set the initial background image */
-      background-size: cover; /* set the backgrou
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+
+  /* specify the number of times the animation should repeat */
+  background-size: cover;
+  /* set the backgrou
       /* Add this line to cover the entire container with the background image */
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items:center;
-      justify-content: center;
-      /* background: linear-gradient(45deg, #FFC107, #FF4081); Add this line for gradient background */
-      border: 2px solid #b914b9;
-     
-      /* Adjust the height as per your requirement */
-    }
-    @keyframes changeBackground {
-      0% {
-        background-image: url(/assets/img/hackathons/css-particles-background.gif);
-      }
-      33.33% {
-        background-image: url(/assets/img/hackathons/particle.gif);
-      }
-      66.66% {
-        background-image: url(/assets/img/hackathons/Squiggly-Pattern.gif);
-      }
-      100% {
-        background-image: url(/assets/img/hackathons/css-particles-background.gif);
-      }
-    }
-    
-    .imageAnimation {
-      animation: changeBackground 15s infinite;
-    }
-    
-    .hackathonImg {
-    
-      width: 100%;
-      height: 130%;
-      /* object-fit: cover; */
-      margin-left: 1070px;
-      /* Add this line to set the left margin */
-      border-radius: 4px;
-      /* Adjust the border-radius as per your requirement */
-    
-      /* margin-bottom: 10px */
-        /* Add this line to hide the overflow */
-    }
-    
-    .hackathonImg img {
-      
-      display: block;
-      border: 1px solid #2be6e6;
-        
-        object-fit: cover;
-    }
-    
-    .hackathonContentBox {
-     text-align: right;
-      margin-top: 2px;
-      color: aliceblue;
-      /* background: linear-gradient(45deg, #FFC107, #FF4081); */
-      padding: 20px;
-    }
-    
-    .text-lg {
-      text-align: left;
-    }
-    
-    .hackathonContent {
-      color: rgb(216, 240, 38);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    
-      
-      border: none;
-      /* Add this line to remove the border */
-    
-    }
-    
-    .hackathonContent h3 {
-      color: rgb(216, 240, 38);
-      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-      font-size: 18px;
-      /* Adjust the font size as per your requirement */
-      margin-bottom: 10px;
-    }
-    
-    .hackathonContent p {
-      font-family:DM Sans
-      ;
-    
-      background-color: #0d066a;
-      color: rgb(255, 251, 254);
-      font-size: 19px;
-      /* Adjust the font size as per your requirement */
-      text-align: center;
-      margin-bottom: 0;
-    }
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(45deg, #FFC107, #FF4081); Add this line for gradient background */
+  border: 2px solid #b914b9;
+
+  /* Adjust the height as per your requirement */
+}
+
+@keyframes changeBackground {
+  0% {
+    background-image: url(/assets/img/hackathons/css-particles-background.gif);
+  }
+
+  33.33% {
+    background-image: url(/assets/img/hackathons/particle.gif);
+  }
+
+  66.66% {
+    background-image: url(/assets/img/hackathons/Squiggly-Pattern.gif);
+  }
+
+  100% {
+    background-image: url(/assets/img/hackathons/css-particles-background.gif);
+  }
+}
+
+.imageAnimation {
+  animation: changeBackground 15s infinite;
+}
+
+.hackathonImg {
+
+  width: 100%;
+  height: 130%;
+  /* object-fit: cover; */
+  margin-left: 1070px;
+  /* Add this line to set the left margin */
+  border-radius: 4px;
+  /* Adjust the border-radius as per your requirement */
+
+  /* margin-bottom: 10px */
+  /* Add this line to hide the overflow */
+}
+
+.hackathonImg img {
+
+  display: block;
+  border: 1px solid #2be6e6;
+
+  object-fit: cover;
+}
+
+.hackathonContentBox {
+  text-align: right;
+  margin-top: 2px;
+  color: aliceblue;
+  /* background: linear-gradient(45deg, #FFC107, #FF4081); */
+  padding: 20px;
+}
+
+.text-lg {
+  text-align: left;
+}
+
+.hackathonContent {
+  color: rgb(216, 240, 38);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  border: none;
+  /* Add this line to remove the border */
+
+}
+
+.hackathonContent h3 {
+  color:#fff ;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  font-size: 18px;
+  /* Adjust the font size as per your requirement */
+  margin-bottom: 10px;
+}
+
+.hackathonContent p {
+  font-family: DM Sans;
+
+  /* background-color: #0d066a; */
+
+  background-image: linear-gradient(-225deg, #231557 0%, #44107a 89%, #ff1361 67%, #fff800 100%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: "#fff";
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 29px;
+  /* text-shadow: 0px 0px 4px black; */
+  font-size: 19px;
+  /* Adjust the font size as per your requirement */
+  text-align: center;
+  margin-bottom: 0;
+}

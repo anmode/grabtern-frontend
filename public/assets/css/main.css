@@ -379,29 +379,25 @@ hr {
   box-shadow: none;
 }
 .border-btn {
-  border: 2px solid #c6a16e;
-  color: #c6a16e;
-  font: "Josefin Sans", sans-serif;
-  background: none;
-  -moz-user-select: none;
+  position: relative;
+  display: inline-block;
   padding: 28px 50px;
   margin: 10px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 0;
+  text-transform: uppercase;
+  color: #c6a16e;
+  background: none;
+  border: 2px solid #c6a16e;
   border-radius: 5px;
-  position: relative;
-  transition: color 0.4s linear;
-  position: relative;
+  cursor: pointer;
   overflow: hidden;
-  margin: 0;
+  transition: color 0.4s linear;
 }
+
 .border-btn::before {
-  border: 2px solid transparent;
   content: "";
   position: absolute;
   left: 0;
@@ -410,17 +406,19 @@ hr {
   height: 100%;
   background: #c6a16e;
   z-index: -1;
-  transition: transform 0.5s;
-  transition-timing-function: ease;
   transform-origin: 0 0;
-  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
   transform: scaleY(0);
-  border-radius: 0;
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0;
 }
+
 .border-btn:hover::before {
   transform: scaleY(1);
-  order: 2px solid transparent;
+  opacity: 1;
 }
+
+
+
 .send-btn {
   background: #c6a16e;
   color: #fff;

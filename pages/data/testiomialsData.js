@@ -26,7 +26,7 @@ export default [
   {
     testimonialUserName: "Ankit Kumar",
     testimonialUserHeadline: "B.Tech(2nd Year) | GSOC 2022",
-    testimonialUserImage: "ankit.webp",
+    testimonialUserImage: "ankit.jpeg",
     testimonialRate: 4,
     testimonialDescription:
       "I was able to secure an internship that paid $3000, all thanks to the guidance and support of the GrabTern team. The platform is designed to help individuals like me achieve their career aspirations. If you're looking for a paid internship that will boost your resume and give you valuable industry experience, don't waste another moment searching. Use GrabTern and watch your career take off.",

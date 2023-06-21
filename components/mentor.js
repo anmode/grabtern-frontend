@@ -31,7 +31,9 @@ const MentorCard = ({ mentor }) => {
           </a>
         </div>
         <div className="flex justify-center items-center my-2 transition-all duration-300">
-          <button className="bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">Book Session</button>
+          <button className="bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">
+            Book Session
+          </button>
         </div>
       </div>
     </div>

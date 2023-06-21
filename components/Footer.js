@@ -93,7 +93,7 @@ function Footer() {
                     <h4>Services to Student</h4>
                     <ul>
                       <li>
-                        <a href="#" className={styles.footLink}>
+                        <a href="/mentors" className={styles.footLink}>
                           One to One Mentorship
                         </a>
                       </li>
@@ -137,7 +137,7 @@ function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a href="#" className={styles.footLink}>
+                        <a href="mentorRegister" className={styles.footLink}>
                           Get paid
                         </a>
                       </li>

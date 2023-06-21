@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/SearchBar.module.css'; // Import the CSS file
+import styles from '../styles/Searchbar.module.css'; // Import the CSS file
 
 import { IconButton, MenuItem, Select } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";

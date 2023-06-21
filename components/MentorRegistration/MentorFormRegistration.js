@@ -41,17 +41,19 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    bookSession: [
-      {
-        sessionName: "1 on 1 Mentorship",
-        sessionDescription:
-          "Achieve your goals faster with customized road map",
-        sessionType: "video-meeting",
-        sessionMeetingDuration: "30",
-        // peopleAttend: "",
-        priceSession: "",
-      },
-    ],
+    // bookSession: [
+    //   {
+    //     sessionName: "1 on 1 Mentorship",
+    //     sessionDescription:
+    //       "Achieve your goals faster with customized road map",
+    //     sessionType: "video-meeting",
+    //     sessionMeetingDuration: "30",
+    //     // peopleAttend: "",
+    //     priceSession: "",
+    //   },
+    // ],
+    price: "",
+    schedules: [],
     description: "",
     mentorImg: {
       name: "",
@@ -127,15 +129,15 @@ export default function MentorForm() {
     setFormData({ ...formData, mentorImg: { name: file.name, image: base64 } });
   };
 
-  const handleSessionPriceChange = (e) => {
-    let bookSessionCopy = formData.bookSession[0];
-    bookSessionCopy.priceSession = e.target.value;
-    setFormData({
-      ...formData,
-      bookSession: [bookSessionCopy],
-    });
-    console.log(formData);
-  };
+  // const handleSessionPriceChange = (e) => {
+  //   let bookSessionCopy = formData.bookSession[0];
+  //   bookSessionCopy.priceSession = e.target.value;
+  //   setFormData({
+  //     ...formData,
+  //     bookSession: [bookSessionCopy],
+  //   });
+  //   console.log(formData);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -176,6 +178,10 @@ export default function MentorForm() {
     document.querySelector(className).style.display = "none";
   }
 
+  const changeSchedule = (newSchedule) => {
+    setFormData({...formData, 'schedules': newSchedule})
+  }
+  
   const prevStep = (e) => {
     e.preventDefault();
     setFormStep(formStep - 1);
@@ -238,9 +244,10 @@ export default function MentorForm() {
               3: (
                 <SessionDetails
                   formData={formData}
-                  handleSessionPriceChange={handleSessionPriceChange}
+                  handleChange={handleChange}
                   isChecked={isChecked}
                   setIsChecked={setIsChecked}
+                  changeSchedule={changeSchedule}
                 />
               ),
             }[formStep] || (

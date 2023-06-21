@@ -608,7 +608,7 @@ a {
   column-gap: 40px;
   box-shadow: 0.5px 0.5px 30px rgb(228, 226, 226);
   margin: 0 auto;
-  margin-bottom:20px ;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 992px) {
@@ -651,11 +651,18 @@ a {
 }
 
 .mentorForm div input,
-textarea {
+textarea, .scheduleCard,
+select {
   width: 100%;
   border: 2px solid rgb(220, 220, 220);
   padding: 6px 10px;
   border-radius: 3px;
+  background-color: transparent;
+}
+
+.scheduleCard div *{
+  text-transform: capitalize;
+  font-size: small !important;
 }
 
 .bookSessionHeader {
@@ -762,10 +769,10 @@ textarea {
   gap: 20px;
   justify-content: center;
 }
-.app{
+.app {
   border: 2px solid rgb(192, 84, 255);
   height: 40px;
-  margin:40px 40%;
+  margin: 40px 40%;
   width: 25%;
   border-radius: 25px;
   font-size: 2.3rem;

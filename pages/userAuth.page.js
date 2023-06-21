@@ -6,44 +6,30 @@ import Register from "../components/user/register";
 import Head from "next/head";
 
 function UserAuthPage() {
-  const [logpagestate, setLogPageState] = useState(true);
   const router = useRouter();
+  const [logPageState, setLogPageState] = useState("");
 
   // Function to handle toggle between login/register page
   const handleLogPageToggle = () => {
-    setLogPageState(!logpagestate);
+    const newPageState = logPageState === "login" ? "register" : "login";
+    setLogPageState(newPageState);
+    updateURLHash(newPageState);
+  };
 
-    // Update URL hash based on current state
-    if (logpagestate) {
-      router.push("/userAuth/#register", undefined, { shallow: true });
-    } else {
-      router.push("/userAuth/#login", undefined, { shallow: true });
-    }
+  // Function to update the URL hash based on the current component state
+  const updateURLHash = (newHash) => {
+    window.location.hash = newHash;
   };
 
   useEffect(() => {
-    handleHashChange();
-
-    // Add event listener for URL hash change
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  // Function to check current URL hash and render corresponding component
-  const handleHashChange = () => {
     const currentHash = window.location.hash.substring(1);
-
-    if (currentHash === "login") {
-      setLogPageState(true);
-      //    console.log("I'm in login region bro");
-    } else if (currentHash === "register") {
-      setLogPageState(false);
-      //    console.log("I'm in register region bro");
+    if (currentHash === "login" || currentHash === "register") {
+      setLogPageState(currentHash);
     } else {
-      console.log("Invalid Hash:", currentHash);
+      // Redirect user or display an error message
+      router.replace("/404");
     }
-  };
+  }, []);
 
   return (
     <>
@@ -52,13 +38,14 @@ function UserAuthPage() {
       </Head>
       <Header navbarBackground={true} />
       <main className="login-body d-flex flex-row justify-content-between">
-        {logpagestate ? (
+        {logPageState === "login" ? (
           <Login handleLogPageToggle={handleLogPageToggle} />
         ) : (
           <Register handleLogPageToggle={handleLogPageToggle}></Register>
         )}
+        {/* Use dynamic imports for images */}
         <div className="tw-hidden md:tw-flex tw-h-[100vh]">
-          <img src="assets/img/gallery/20944201.webp" alt="" />
+          <img src="/assets/img/gallery/20944201.webp" alt="" />
         </div>
       </main>
     </>

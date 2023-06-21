@@ -1,64 +1,55 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../components/Header"));
+const Header = React.lazy(() => import("../components/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import SessionCard from "../components/mentorProfile/SessionCard";
+import MentorCard from "../components/mentorProfile/MentorCard";
+import SharePageModal from "../components/mentorProfile/SharePageModal";
+import BookSessionModal from "../components/mentorProfile/BookSessionModal";
+import { useAuth } from "../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "../styles/loader.module.css";
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
   const [error, setError] = useState("");
+  const [emailSent, setEmailSent] = useState(false); // New state variable
   const router = useRouter();
-  localStorage.setItem("redirectUrl", window.location.href);
   const [showModal, setShowModal] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const [selectedSession, setSelectedSession] = useState("");
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("user_name") !== null) {
-  //     setLoggedIn(true);
-  //   }
-  //   if (modalPopup === true && waitTime > 0) {
-  //     setTimeout(() => {
-  //       setWaitTime((value) => (value -= 1));
-  //     }, 1000);
-  //   }
-  // }, [modalPopup, waitTime]);
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
-  // useEffect(() => {
-  //   if (modalPopup === true) {
-  //     router.push("/mentors");
-  //   }
-  // }, [modalPopup]);
-  const handleClick = (Mentordata) => () => {
-    if (isLoggedIn) {
-      setModalPopup(true);
+  const handleClick = (mentordata) => {
+    const { sessionName, sessionMeetingDuration, priceSession } = mentordata;
+    const { email, name, username } = mentorDetail;
+
+    if (isUserLoggedIn) {
+      sessionStorage.removeItem("redirectUrl");
       handleBookSession(
-        Mentordata.sessionName,
-        mentorDetail.email,
-        mentorDetail.name,
-        Mentordata.sessionMeetingDuration,
-        Mentordata.priceSession
+        sessionName,
+        email,
+        name,
+        sessionMeetingDuration,
+        priceSession
       );
     } else {
-      router.push("/login");
+      const redirectUrl = window.location.href;
+      sessionStorage.setItem("redirectUrl", redirectUrl);
+      router.push(`/userAuth#login`);
     }
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("user_name") !== null) {
-      setLoggedIn(true);
-    }
-    if (modalPopup === true && waitTime !== 0) {
-      setTimeout(() => {
-        setWaitTime((value) => (value -= 1));
-      }, 1000);
-    }
-    if (waitTime === 0) {
-      router.push("/");
-    }
-  });
 
   const sendMail = async (data) => {
     try {
@@ -68,22 +59,19 @@ function Index({ mentorDetail }) {
         data
       );
       setIsLoading(false);
-      setModalPopup(true);
+      setModalPopup(false);
+      toast.success(
+        "Your session has been booked! Check your inbox for payment details."
+      ); // Success toast
     } catch (error) {
       setIsLoading(false);
       if (error.response && error.response.status === 400) {
-        setError("You have already booked this session");
-        setTimeout(() => {
-          setError("");
-        }, 3000); // remove the error after 5 seconds
+        toast.error("You have already booked this session"); // Error toast
       } else if (error.response && error.response.status === 405) {
-        setError("You are not allowed to book your own session");
-        setTimeout(() => {
-          setError("");
-        }, 3000); // remove the error after 5 seconds
+        toast.error("You are not allowed to book your own session"); // Error toast
       } else {
         console.error("Error sending mail:", error);
-        setError("Facing any problem? Email Us");
+        toast.error("Facing any problem? Email Us"); // Error toast
       }
     }
   };
@@ -95,8 +83,8 @@ function Index({ mentorDetail }) {
     sessionTime,
     sessionPrice
   ) => {
-    const userEmail = localStorage.getItem("user_email");
-    const userName = localStorage.getItem("user_name");
+    const userEmail = userData.user_email;
+    const userName = userData.user_name;
     const data = {
       sessionName,
       mentorEmail,
@@ -114,298 +102,144 @@ function Index({ mentorDetail }) {
       console.error(error);
     }
   };
+
   return (
     <>
-      <Head>
-        <title>GrabTern | Book Your Session</title>
-      </Head>
-      <Header navbarBackground={true} />
-      <main style={{ marginTop: "119px" }}>
-        {!mentorDetail ? (
-          <p>Loading...</p>
-        ) : (
-          <div className="mentorDetail">
-            <div className="container">
-              {showModal === true ? (
-                <div className="modalPopup">
-                  <div className="modalPopupAfterRegistrationDone">
-                    <i
-                      onClick={() => setShowModal(false)}
-                      style={{
-                        cursor: "pointer",
-                        marginLeft: "auto",
-                        fontSize: "25px",
-                      }}
-                      className="fas fa-times"
-                    ></i>
-                    <p style={{ marginBottom: "0" }}>
-                      Here is the link of the mentor detail that you can share
-                      with your friends: <br />
-                      <br />
-                      <span
-                        onClick={(e) => {
-                          navigator.clipboard.writeText(e.target.innerText);
-                          alert("Copied to clipboard!");
-                        }}
-                        style={{
-                          backgroundColor: "whitesmoke",
-                          width: "100%",
-                          padding: "15px",
-                        }}
-                      >{`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${mentorDetail.username}`}</span>
-                    </p>
-                    <button
-                      onClick={() => setShowModal(false)}
-                      style={{
-                        marginRight: "auto",
-                        cursor: "pointer",
-                        border: "none",
-                        backgroundColor: "green",
-                        color: "white",
-                        padding: "10px 20px",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      Done
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-              <div className="row1">
-                <img src={mentorDetail.mentorImg} />
-                <i
-                  class="fas fa-share-square"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setShowModal(true)}
-                ></i>
-              </div>
-              <h1>{mentorDetail.name}</h1>
-              <h3>
-                {mentorDetail.internAt} | {mentorDetail.currentStatus}
-              </h3>
-              <ul
-                className="contactLinks"
-                style={{
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  margin: "20px 0",
-                }}
-              >
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "600",
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Head>
+          <title>GrabTern | Book Your Session</title>
+        </Head>
+        <Header navbarBackground={true} />
+        {/* Mentor Page */}
+        <main className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
+          <MentorCard
+            mentorImage={mentorDetail.mentorImg}
+            name={mentorDetail.name}
+            internAt={mentorDetail.internAt}
+            currentStatus={mentorDetail.currentStatus}
+            socialLinks={mentorDetail.social}
+            about={mentorDetail.description}
+            handleSharePage={() => setShowModal(true)}
+          />
+          {/* Session Cards Container */}
+          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+            {/* Session Cards for every session */}
+            {mentorDetail.bookSession.length !== 0 &&
+              mentorDetail.bookSession.map((session, index) => (
+                <SessionCard
+                  key={index}
+                  type={session.sessionType}
+                  name={session.sessionName}
+                  description={session.sessionDescription}
+                  duration={session.sessionMeetingDuration}
+                  pricePerSession={session.priceSession}
+                  handleBookSession={() => {
+                    setModalPopup(true);
+                    setSelectedSession(session);
                   }}
-                >
-                  <i class="fas fa-envelope"></i>
-                  <a target="_blank" href={`mailto:${mentorDetail.email}`}>
-                    {mentorDetail.email}
-                  </a>
-                </li>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "600",
-                  }}
-                >
-                  <i class="fab fa-linkedin"></i>
-                  <a target="_blank" href={mentorDetail.social.linkedin}>
-                    {mentorDetail.social.linkedin}
-                  </a>
-                </li>
-                <li
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "600",
-                  }}
-                >
-                  <i class="fab fa-twitter"></i>
-                  <a target="_blank" href={mentorDetail.social.twitter}>
-                    {mentorDetail.social.twitter}
-                  </a>
-                </li>
-              </ul>
-              <br />
-              <h2 style={{ fontSize: "24px" }}>About</h2>
-              <p>{mentorDetail.description}</p>
-              <br />
-              <h2 style={{ fontSize: "24px" }}>Sessions</h2>
-              <ul className="bookSessions">
-                {mentorDetail.bookSession.length !== 0 ? (
-                  mentorDetail.bookSession.map((session) => (
-                    <li>
-                      <div
-                        className="bookSessionHeader"
-                        style={{ alignItems: "center" }}
-                      >
-                        <i
-                          class={
-                            session.sessionType === "video-meeting"
-                              ? "fas fa-video"
-                              : session.sessionType === "call-meeting"
-                              ? "fas fa-phone"
-                              : ""
-                          }
-                          style={{ fontSize: "25px" }}
-                        ></i>
-                        <div>
-                          <h2>{session.sessionName}</h2>
-                          <p>{session.sessionDescription}</p>
-                        </div>
-                      </div>
-                      <div
-                        className="bookSessionIcons"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: "20px",
-                        }}
-                      >
-                        <div>
-                          <i className="far fa-clock"></i>
-                          {session.sessionMeetingDuration} min
-                        </div>
-                        <div>
-                          <i className="fas fa-rupee-sign"></i>
-                          {session.priceSession}
-                        </div>
-                      </div>
-                      <button
-                        style={{ cursor: "pointer" }}
-                        onClick={() => setModalPopup(true)}
-                      >
-                        <span>Book Session</span>
-                      </button>
-                      {error && <div style={{ color: "red" }}>{error}</div>}
-                      {error == "" && modalPopup === true ? (
-                        <div className="modalPopup">
-                          <div className="modalPopupAfterRegistrationDone">
-                            <i
-                              onClick={() => setModalPopup(false)}
-                              style={{
-                                cursor: "pointer",
-                                marginLeft: "auto",
-                                fontSize: "25px",
-                              }}
-                              className="fas fa-times"
-                            ></i>
-                            <p style={{ marginBottom: "0" }}>
-                              Hurrah! Just one step left to get your session
-                              booked <br /> Our team will contact you for
-                              payment, soon !!
-                              <br />
-                            </p>
-                            <div style={{ display: "flex", gap: "2rem" }}>
-                              <button
-                                onClick={() => setModalPopup(false)}
-                                style={{
-                                  marginRight: "auto",
-                                  cursor: "pointer",
-                                  border: "none",
-                                  backgroundColor: "red",
-                                  color: "white",
-                                  padding: "10px 20px",
-                                  borderRadius: "10px",
-                                }}
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                onClick={handleClick(session)}
-                                style={{
-                                  marginRight: "auto",
-                                  cursor: "pointer",
-                                  border: "none",
-                                  backgroundColor: "green",
-                                  color: "white",
-                                  padding: "10px 20px",
-                                  borderRadius: "10px",
-                                }}
-                              >
-                                {isLoading == true ? (
-                                  // <img
-                                  //   style={{
-                                  //     width: "25px",
-                                  //     height: "25px",
-                                  //     border: "none",
-                                  //     margin: "0 22px",
-                                  //   }}
-                                  //   src="/assets/img/gif/Spinner.gif"
-                                  //   alt="loading..."
-                                  // />
-                                  <Image
-                                    style={{
-                                      width: "25px",
-                                      height: "25px",
-                                      border: "none",
-                                      margin: "0 22px",
-                                    }}
-                                    src="/assets/img/gif/Spinner.gif"
-                                    alt="loading..."
-                                    width={25}
-                                    height={25}
-                                  />
-                                ) : (
-                                  <span>Confirm</span>
-                                )}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      ) : null}
-                      {/* {modalPopup === true ? (
-                        <div className="modalPopup">
-                          <div className="modalPopupAfterRegistrationDone">
-                            <p>
-                              Thank you Our team Will contacting you, check your
-                              inbox.
-                            </p>
-                            <img src="/iconMentorRegistrationPopup.webp" />
-                            <p>Redirecting you to home in {waitTime} second</p>
-                          </div>
-                        </div>
-                      ) : null} */}
-                      <div></div>
-                    </li>
-                  ))
-                ) : mentorDetail.bookSession.length === 0 ? (
-                  <p>You not have book sessions yet</p>
-                ) : null}
-              </ul>
-            </div>
+                  // handleBookSession={() => handleClick(session)}
+                />
+              ))}
           </div>
+          {/* Share Mentor Page Modal */}
+          {showModal && (
+            <SharePageModal
+              handleClose={() => setShowModal(false)}
+              username={mentorDetail.username}
+            />
+          )}
+          {/* Error Display */}
+          {/* {error && <div style={{ color: "red" }}>{error}</div>} */}
+          {/* Book Session Modal */}
+          {!error && modalPopup && (
+            <BookSessionModal
+              handleClose={() => setModalPopup(false)}
+              handleCancel={() => setModalPopup(false)}
+              handleConfirm={() => handleClick(selectedSession)}
+            />
+          )}
+          {/* Successful Alert Message */}
+          {/* {emailSent && (
+          <div style={{ color: "green" }}>
+            Your session has been booked! Check your inbox for payment details.
+          </div>
+        )} */}
+        </main>
+        {isLoading && (
+          <>
+            <div className={styles.overlay}></div>
+            <div
+              style={{
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 9999,
+              }}
+            >
+              <div className={styles.loader}></div>
+            </div>
+          </>
         )}
-      </main>
+        <ToastContainer />
+      </React.Suspense>
     </>
   );
 }
 
 export default Index;
 
-export const getServerSideProps = async (context) => {
+// export const getServerSideProps = async (context) => {
+//   const { mentorUsername } = context.params;
+//   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
+//   const { data: res } = await axios.get(url);
+//   if (res.message === "Invalid link") {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: "/",
+//       },
+//       props: {
+//         mentorDetail: null,
+//       },
+//     };
+//   }
+//   return {
+//     props: {
+//       mentorDetail: res.mentorDetail,
+//     },
+//   };
+// };
+
+export const getStaticPaths = async () => {
+  // Fetch all mentor usernames to generate static pages
+  const { data: mentors } = await axios.get(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`
+  );
+
+  const paths = mentors
+    .filter((mentor) => mentor.username !== "") // Filter out the conflicting path
+    .map((mentor) => ({
+      params: { mentorUsername: mentor.username },
+    }));
+  return { paths, fallback: "blocking" };
+};
+
+export const getStaticProps = async (context) => {
   const { mentorUsername } = context.params;
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
   const { data: res } = await axios.get(url);
+
   if (res.message === "Invalid link") {
     return {
-      redirect: {
-        permanent: false,
-        destination: "/",
-      },
-      props: {
-        mentorDetail: null,
-      },
+      notFound: true,
     };
   }
+
   return {
     props: {
       mentorDetail: res.mentorDetail,
     },
+    revalidate: 60, // Revalidate the data every 60 seconds
   };
 };

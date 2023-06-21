@@ -8,7 +8,10 @@ import jwt_decode from "jwt-decode";
 import styles from "../styles/MentorLogin.module.css";
 import Link from "next/link";
 import Head from "next/head";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import { useAuth } from "../context/AuthContext";
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -17,6 +20,12 @@ function mentorLogin() {
     password: "",
     confirmPassword: "",
   });
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,14 +35,20 @@ function mentorLogin() {
     e.preventDefault();
     setError("");
     if (formData.password !== formData.confirmPassword) {
-      return setError("Password does not match!");
+      return toast.error("Password does not match!");
     }
     console.log(formData);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/auth`;
       const { data: res } = await axios.post(url, formData);
-      localStorage.setItem("mentorToken", res.loginToken);
-      localStorage.setItem("mentor_name", res.fullName);
+      // localStorage.setItem("mentorToken", res.loginToken);
+      // localStorage.setItem("mentor_name", res.fullName);
+      const mentorData = {
+        mentor_name: res.fullName,
+        mentorToken: res.loginToken,
+      };
+      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      setIsMentorLoggedIn(true);
       router.push("/");
     } catch (error) {
       console.log(error);
@@ -42,7 +57,7 @@ function mentorLogin() {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -53,9 +68,16 @@ function mentorLogin() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/gloginauth`;
       const { data: res } = await axios.post(url, userObject);
-      localStorage.setItem("mentorToken", res.loginToken);
-      localStorage.setItem("mentor_name", userObject.name);
-      localStorage.setItem("mentor_picture", userObject.picture);
+      // localStorage.setItem("mentorToken", res.loginToken);
+      // localStorage.setItem("mentor_name", userObject.name);
+      // localStorage.setItem("mentor_picture", userObject.picture);
+      const mentorData = {
+        mentorToken: res.loginToken,
+        mentor_picture: userObject.picture,
+        mentor_name: userObject.name,
+      };
+      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      setIsMentorLoggedIn(true);
       router.push("/");
     } catch (error) {
       console.log(error);
@@ -64,7 +86,7 @@ function mentorLogin() {
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   }
@@ -94,7 +116,7 @@ function mentorLogin() {
           <div className="login-form d-flex flex-column">
             <div className="logout-login">
               <a href="/index.html">
-                <img src="/assets/img/logo/loder.png" alt="" />
+                <img src="/assets/img/logo/loder.webp" alt="" />
               </a>
             </div>
             <h2>Mentor Login</h2>
@@ -139,6 +161,7 @@ function mentorLogin() {
                 }}
               />
             </div>
+            <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}
             <Link
               href="/forgotpass"

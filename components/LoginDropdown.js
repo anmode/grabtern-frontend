@@ -64,7 +64,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
         <button
           type="button"
           onClick={handleLoginClick}
-          className="text-white bg-blue-700 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-md px-3 py-2 text-center mr-3 md:mr-0 dark:bg-blue-700 dark:hover:bg-blue-700 dark:focus:ring-blue-100"
+          className="tw-text-white tw-mb-8 tw-bg-blue-700 hover:tw-bg-blue-600 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-white tw-font-medium tw-rounded-lg tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 dark:tw-bg-blue-700 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-100"
         >
           Sign In
         </button>
@@ -73,15 +73,15 @@ const DropdownCard = ({ isUserLoggedIn }) => {
       {loginOption && (
         <div>
           {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
-            <div className="absolute mt-4 right-12 top-full border border-gray-700 py-3 px-5 rounded-lg bg-white flex flex-col gap-3 justify-end items-start">
+            <div className="tw-relative md:tw-absolute md:tw-mt-5 md:tw-right-12 tw-top-full tw-border tw-border-gray-300 tw-py-3 tw-px-5 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-justify-center tw-items-start">
               <Link
                 href={isMentorLoggedIn ? "/dashboard" : "/"}
-                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Dashboard
               </Link>
               <Link
-                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
                 href="#"
                 onClick={() => {
                   if (isMentorLoggedIn) {
@@ -95,16 +95,16 @@ const DropdownCard = ({ isUserLoggedIn }) => {
               </Link>
             </div>
           ) : (
-            <div className="absolute mt-4 right-12 top-full border border-gray-700 py-3 px-5 rounded-lg bg-white flex flex-col gap-3 justify-end items-start ">
+            <div className="tw-relative md:tw-absolute md:tw-mt-5 md:tw-right-12 tw-top-full tw-border tw-border-gray-300 tw-py-3 tw-px-5 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-justify-center tw-items-start ">
               <Link
                 href="/userAuth/"
-                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium "
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium "
               >
                 User
               </Link>
               <Link
                 href="/mentorLogin"
-                className="text-xl p-2 font-inter text-gray-700 hover:text-gray-500 font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Mentor
               </Link>

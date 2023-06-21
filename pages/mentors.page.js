@@ -1,33 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
+import teamsData from "./data/teamsData";
+import { list } from "postcss";
 const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
-import Head from "next/head";
 
 function Mentors({ mentorsData }) {
+  const [query, setQuery] = useState("");
+
+  // console.log(query)
+  // console.log(teamsData.filter(user=>user.profileName.toLowerCase().includes("ag")))
   return (
     <>
-      <Head>
-        <title>GrabTern | Find Your Mentors</title>
-      </Head>
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
-        {/* <div className="sidebody" style="height:69vh;">
-          <div className="searchbar">
-            <input placeholder="Search...." id="searchbar" name="searchbar" type="text">
-
-            </input>
-            <i className="fa-soli fa-magnifying-glass"></i>
-          </div>
-        </div> */}
         <section className="findMentors">
           <div className="container">
-            <h1>Find All Mentors Here</h1>
-            {mentorsData.length === 0 ? (
+            <h1>Find All mentors here's</h1>
+
+            <div className="app">
+              <input
+                type="text"
+                placeholder="Search Mentors..."
+                className="search"
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+
+            {/* <ul className="list">
+              {teamsData.filter((user)=>
+              user.profileName.toLowerCase().includes(query)
+              ).map((user)=>(
+                <li key={user.imageSrc} className="listitem">
+                  {user.profileName}
+                </li>
+                ))}
+            </ul> */}
+
+            <ul className="mentorLists">
+              {mentorsData
+                .filter(
+                  (mentor) =>
+                    mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+                    mentor.internAt
+                      .toLowerCase()
+                      .includes(query.toLowerCase()) ||
+                    mentor.currentStatus
+                      .toLowerCase()
+                      .includes(query.toLowerCase())
+                  //item.
+                )
+                .map((mentor) => (
+                  // <li key={mentor.imageSrc} className="listitem">
+                  //   {mentor.profileName}
+                  // </li>
+                  <a href={`/${mentor.username}`} key={mentor._id}>
+                    {<MentorCard mentor={mentor} />}
+                  </a>
+                ))}
+            </ul>
+
+            {/* {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (
               <div className="mentorLists">
@@ -37,11 +73,10 @@ function Mentors({ mentorsData }) {
                   </a>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

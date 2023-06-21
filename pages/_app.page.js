@@ -1,56 +1,54 @@
 import "../styles/globals.css";
-// import style from "../styles/contact.css";
 import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
-import $ from "jquery";
 import Head from "next/head";
-import Script from "next/script";
-import LogState from "../context/LogState";
+import { AuthProvider } from "../context/AuthContext";
 function addProductJsonLd() {
   return {
-    __html: `{
-				"@context": "https://schema.org/", 
-				"@type": "BreadcrumbList", 
-				"itemListElement": [{
-					"@type": "ListItem", 
-					"position": 1, 
-					"name": "Home",
-					"item": "https://www.grabtern.com"  
-				},{
-					"@type": "ListItem", 
-					"position": 2, 
-					"name": "Internships",
-					"item": "https://grabtern.com/internships"  
-				},{
-					"@type": "ListItem", 
-					"position": 3, 
-					"name": "About",
-					"item": "https://grabtern.com/about"  
-				},{
-          "@type": "ListItem", 
-					"position": 4, 
-					"name": "Contact",
-					"item": "https://grabtern.com/contact"  
-        }]
-			}`,
+    __html: {
+      "@context": "https://schema.org/",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.grabtern.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Internships",
+          item: "https://grabtern.com/internships",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "About",
+          item: "https://grabtern.com/about",
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Contact",
+          item: "https://grabtern.com/contact",
+        },
+      ],
+    },
   };
 }
-
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
-
+  const [preloaderActive, setPreloaderActive] = useState(true);
   useEffect(() => {
     setShowChild(true);
+    setTimeout(() => {
+      setPreloaderActive(false);
+    }, 1400);
   }, []);
-
   if (!showChild) {
     return null;
   }
-
-  setTimeout(function () {
-    $("#preloader-active").fadeOut("fast");
-    $(".loaderBackground").fadeOut("fast");
-  }, 1400);
 
   return (
     <>
@@ -116,21 +114,26 @@ function MyApp({ Component, pageProps }) {
         {/* <script src="https://accounts.google.com/gsi/client" async defer ></script> */}
       </Head>
 
-      <div className="loaderBackground"></div>
-      <div id="preloader-active" style={{ transition: "all 0.5s" }}>
-        <div className="preloader d-flex align-items-center justify-content-center">
-          <div className="tw-flex tw-items-center tw-justify-center position-relative">
-            <div className="preloader-circle"></div>
-            <div className="preloader-img pere-text">
-              <img src="/assets/img/logo/loder.webp" alt="" />
+      {preloaderActive && (
+        <div className="preloader-container">
+          <div className="loaderBackground"></div>
+          <div id="preloader-active" style={{ transition: "all 0.5s" }}>
+            <div className="preloader d-flex align-items-center justify-content-center">
+              <div className="tw-flex tw-items-center tw-justify-center position-relative">
+                <div className="preloader-circle"></div>
+                <div className="preloader-img pere-text">
+                  <img src="/assets/img/logo/loder.webp" alt="" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
+
       <BreakpointProvider>
-        <LogState>
+        <AuthProvider>
           <Component {...pageProps} />
-        </LogState>
+        </AuthProvider>
       </BreakpointProvider>
     </>
   );

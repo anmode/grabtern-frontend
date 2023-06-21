@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  padding: 0;
+  margin: 0;
+}
 
 html,
 body {
@@ -8,6 +12,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -298,7 +303,7 @@ a {
 @media (min-width: 992px) {
   .container {
     padding: 20px;
-    margin: 10px;
+    margin: 0px;
     padding: 50px;
     max-width: 100% !important;
     width: 100% !important;
@@ -713,7 +718,16 @@ textarea {
   gap: 20px;
   justify-content: center;
 }
-
+.app {
+  border: 2px solid rgb(192, 84, 255);
+  height: 40px;
+  margin: 40px 40%;
+  width: 25%;
+  border-radius: 25px;
+  font-size: 2.3rem;
+  padding-left: 15px;
+  color: rgb(127, 102, 255);
+}
 .mentorCard {
   background-color: white;
   display: flex;

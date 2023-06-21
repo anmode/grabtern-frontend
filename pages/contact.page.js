@@ -9,7 +9,7 @@ const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
 function Contact() {
-  const form = useRef();
+  const form = useRef(null);
   const sendEmail = (e) => {
     e.preventDefault();
     const templateParams = {
@@ -36,6 +36,7 @@ function Contact() {
           console.log(error.text);
         }
       );
+    form.current.reset();
   };
   return (
     <>
@@ -108,6 +109,7 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter Message'"
                             placeholder=" Enter Message"
+                            required
                             // value={userMessage}
                             // onChange={(e) => setUserMessage(e.value)}
                           />
@@ -123,6 +125,7 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter your name'"
                             placeholder="Enter your name"
+                            required
                             // value={userName}
                             // onChange={(e) => setUserName(e.value)}
                           />
@@ -138,6 +141,7 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter email address'"
                             placeholder="Email"
+                            required
                             // value={userEmail}
                             // onChange={(e) => setUserEmail(e.value)}
                           />
@@ -153,6 +157,7 @@ function Contact() {
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter Subject'"
                             placeholder="Enter Subject"
+                            required
                             // value={userSubject}
                             // onChange={(e) => setUserSubject(e.value)}
                           />

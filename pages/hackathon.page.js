@@ -158,6 +158,17 @@ export default function Home() {
     console.log("ua"+updatedHackathons[index]+ updatedHackathons[index].bookmarked);
     setHackathonsData(updatedHackathons);
   };
+  const [open, setOpen] = useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = (index) => {
+    handleBookmark(index);
+    setOpen(true);
+  };
+
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
@@ -373,11 +384,18 @@ export default function Home() {
                     className={`${
                       hackathon.bookmarked ? "text-red-500" : "text-gray-500"
                     }`}
-                    onClick={() => handleBookmark(index)}
+                    onClick={() => handleTooltipOpen(index)}
                   >
                     {hackathon.bookmarked ? (
-                      
-                      <Tooltip  placement="left" title={<h2
+                                <ClickAwayListener onClickAway={handleTooltipClose}>
+                                <div>
+                                <Tooltip  placement="left"  sx={{[`& .MuiTooltip-tooltip`]: {    
+                        fontFamily: "'Grape Nuts', Helvetica",
+                        color: "deepskyblue",
+                        backgroundColor: "red",
+                      }}}title={<h2
+                        className="animate-charcter"
+                       
                         style={{
                           textTransform: "uppercase",
                           backgroundImage:
@@ -398,12 +416,18 @@ export default function Home() {
                       <BookmarkOutlinedIcon
                         className="h-6 w-6"
                         sx={{ fontSize: 40 }}
-                        style={{ fill: "#FFDD43" }}
+                        style={{ fill: "red" }}
                       />
                       </Tooltip>
+                                </div>
+                              </ClickAwayListener>
 
                     ) : (
-                      <Tooltip  placement="left" title={<h2
+<Tooltip  placement="left"  sx={{[`& .MuiTooltip-tooltip`]: {    
+                        fontFamily: "'Grape Nuts', Helvetica",
+                        color: "deepskyblue",
+                        backgroundColor: "red",
+                      }}}title={<h2
                         className="animate-charcter"
                        
                         style={{
@@ -426,9 +450,10 @@ export default function Home() {
                                               <BookmarkBorderOutlinedIcon
                         className="h-6 w-6"
                         sx={{ fontSize: 40 }}
-                        style={{ fill: '#F2F7FF' }}
+                        style={{ fill: "red" }}
                       />
                       </Tooltip>
+                    
 
                     )}
                   </button>

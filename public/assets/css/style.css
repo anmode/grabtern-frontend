@@ -47,7 +47,7 @@
 .theme-color {
   color: #c86fff;
 }
-.theme-button-color {
+.theme-button-color , .theme-bg{
   background: #845ec2 !important;
 }
 .boxed-btn {

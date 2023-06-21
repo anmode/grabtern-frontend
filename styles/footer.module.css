@@ -76,7 +76,6 @@
   font-size: 23px;
 }*/
 .footer_area .footer_pera p {
-  color: #fff;
   padding-right: 52px;
   font-size: 16px;
   margin-bottom: 50px;
@@ -144,7 +143,8 @@
   color: #c86fff;
 }
 .footer_bottom_area .footer_border {
-  padding: 33px 0px 20px;
+  color: #9b9fa7;
+  padding: 2px 20px;
 }
 .footer_bottom_area .footer_copy_right p {
   color: #fff;

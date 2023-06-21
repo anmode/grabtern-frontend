@@ -1,10 +1,11 @@
 import React from "react";
 
 function ScheduleCard({ schedule, removeSchedule, index }) {
+  console.log(schedule);
   return (
-    <div className="scheduleCard flex items-start">
-      <div className="flex-1">
-        <div className="flex gap-4">
+    <div className="scheduleCard tw-flex tw-items-start">
+      <div className="tw-flex-1">
+        <div className="tw-flex tw-gap-4">
           <p>
             <strong>Day: </strong> {schedule.day}
           </p>
@@ -13,7 +14,7 @@ function ScheduleCard({ schedule, removeSchedule, index }) {
             {schedule.timezone}
           </p>
         </div>
-        <div className="flex gap-4">
+        <div className="tw-flex tw-gap-4">
           <p>
             {" "}
             <strong>Starts At: </strong>

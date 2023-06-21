@@ -106,7 +106,7 @@ function SessionDetails({
       {/* time inputs ends */}
 
       {/* add schedule button starts */}
-      <div className="col-span-2 text-right">
+      <div className="tw-col-span-2 tw-text-right">
         <button
           type="button"
           className="mentorFormButton theme-button-color"
@@ -118,7 +118,7 @@ function SessionDetails({
       {/* add schedule button ends */}
 
       {/* schedule list starts */}
-      <div className="col-span-2 grid lg:grid-cols-2 gap-12">
+      <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">
         {formData.schedules.map((schedule, index) => (
           <ScheduleCard
             key={index}

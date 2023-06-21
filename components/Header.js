@@ -14,7 +14,7 @@ function Header({ isUserLoggedIn }) {
   const [scrollY, setScrollY] = useState(0);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const dropdownRef = useRef()
+  const dropdownRef = useRef();
 
   useEffect(() => {
     const userName = localStorage.getItem("user_name");
@@ -51,10 +51,12 @@ function Header({ isUserLoggedIn }) {
     };
   }, []);
 
-
   return (
     <nav className="tw-flex tw-justify-between tw-items-center tw-mb-0 tw-bg-gray-100 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-border-b tw-border-gray-400 tw-text-black">
-      <Link href="/" className="tw-flex tw-gap-2 tw-justify-center tw-items-center">
+      <Link
+        href="/"
+        className="tw-flex tw-gap-2 tw-justify-center tw-items-center"
+      >
         <Image
           src={logo}
           alt="grabtern_logo"

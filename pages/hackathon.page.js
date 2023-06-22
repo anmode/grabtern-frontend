@@ -60,7 +60,7 @@ const buttonStyle = {
   backgroundImage: 'linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673)',
   boxShadow: '0 4px 15px 0 rgba(49, 196, 190, 0.75)',
 };
-const navbarBackground=true;
+const navbarBackground = true;
 const handleButtonHover = (e) => {
   e.target.style.backgroundPosition = '100% 0';
 };
@@ -128,34 +128,42 @@ export default function Home() {
     const tagMatch = hackathon.tags.some((tag) =>
       tag.toLowerCase().includes(tagFilter.toLowerCase())
     );
-  console.log(tagFilter);
+    console.log(tagFilter);
     if (tagFilter !== "" && !tagMatch) {
       console.log("hpo");
       if (tagFilter === "bookmarked") {
+        if(searchQuery!=" ")
+        {
+          const titleMatch = hackathon.hackathonTitle
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return titleMatch && (hackathon.bookmarked) ;
+        }
         console.log("hello");
         return (hackathon.bookmarked);
       }
       return false; // Skip the hackathon if it doesn't match the tag filter
-    } 
-      console.log("pooh");
+    }
+    console.log("pooh");
     const titleMatch = hackathon.hackathonTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
-  
+
     return titleMatch;
-    
+
   });
-  
-  
-  
-  
+
+
+
+
   console.log(filteredHackathons);
   const handleBookmark = (index) => {
     const updatedHackathons = [...HackathonsData];
     console.log(updatedHackathons[index]);
-    console.log("hello"+updatedHackathons[index]+ updatedHackathons[index].bookmarked);
+    console.log("hello" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     updatedHackathons[index].bookmarked = !updatedHackathons[index].bookmarked;
-    console.log("ua"+updatedHackathons[index]+ updatedHackathons[index].bookmarked);
+    console.log("ua" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     setHackathonsData(updatedHackathons);
   };
   const [open, setOpen] = useState(false);
@@ -249,251 +257,252 @@ export default function Home() {
           />
         </div>
       ) : null}
-    
-    <div className="header-area header-transparent tw-z-[999]">
-      <div className="main-header ">
-        <div
-          className={`header-bottom  header-sticky ${
-            scrollY > 400
+
+      <div className="header-area header-transparent tw-z-[999]">
+        <div className="main-header ">
+          <div
+            className={`header-bottom  header-sticky ${scrollY > 400
               ? "sticky-bar"
               : navbarBackground === true
-              ? "sticky-bar"
-              : ""
-          }`}
-          style={{ transition: "all 0.5s ease-in" }}
-        >
-          <div className="container-fluid">
-            <div className="row align-items-center justify-content-between">
-              <div>
-                <div className="logo">
-                  <a href="/">
-                    <Image
-                      width={80}
-                      height={80}
-                      src="/whitelogo.webp"
-                      style={{ padding: "15px 0" }}
-                      alt="grabtern_logo"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div className="col-xl-10 col-lg-10">
-                <div className="menu-wrapper d-flex align-items-center justify-content-end">
-                  <div
-                    className={`main-menu d-none d-lg-block ${
-                      navbarAppear === true ? "active" : ""
-                    }`}
-                  >
-                    <nav>
-                      <ul id="navigation" className="navigation">
-                        <li className="active">
-                          <a href="/" className={styles.navLink}>
-                            Home
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/mentors" className={styles.navLink}>
-                            Mentors
-                          </a>
-                        </li>
-                        <li>
-                          <a href="/contact" className={styles.navLink}>
-                            Contact
-                          </a>
-                        </li>
-                        <DropdownCard
-                          isUserLoggedIn={isUserLoggedIn}
-                          isMentorLoggedIn={isMentorLoggedIn}
-                        />
-                      </ul>
-                    </nav>
+                ? "sticky-bar"
+                : ""
+              }`}
+            style={{ transition: "all 0.5s ease-in" }}
+          >
+            <div className="container-fluid">
+              <div className="row align-items-center justify-content-between">
+                <div>
+                  <div className="logo">
+                    <a href="/">
+                      <Image
+                        width={80}
+                        height={80}
+                        src="/whitelogo.webp"
+                        style={{ padding: "15px 0" }}
+                        alt="grabtern_logo"
+                      />
+                    </a>
                   </div>
                 </div>
-              </div>
-              <div
-                className={`menuToggle ${
-                  navbarAppear === true ? "active" : ""
-                }`}
-                onClick={() => menuToggle()}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div className="col-12">
-                <div className="mobile_menu d-block d-lg-none"></div>
+                <div className="col-xl-10 col-lg-10">
+                  <div className="menu-wrapper d-flex align-items-center justify-content-end">
+                    <div
+                      className={`main-menu d-none d-lg-block ${navbarAppear === true ? "active" : ""
+                        }`}
+                    >
+                      <nav>
+                        <ul id="navigation" className="navigation">
+                          <li className="active">
+                            <a href="/" className={styles.navLink}>
+                              Home
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/mentors" className={styles.navLink}>
+                              Mentors
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/contact" className={styles.navLink}>
+                              Contact
+                            </a>
+                          </li>
+                          <DropdownCard
+                            isUserLoggedIn={isUserLoggedIn}
+                            isMentorLoggedIn={isMentorLoggedIn}
+                          />
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={`menuToggle ${navbarAppear === true ? "active" : ""
+                    }`}
+                  onClick={() => menuToggle()}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="col-12">
+                  <div className="mobile_menu d-block d-lg-none"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
       <main>
         <br></br>
         <br></br>
         <br></br>
         <br></br>
         <br></br>
-      <div className="bg-gray-100 py-8 flex justify-center items-center mt-8">
-        <div className="container mx-auto">
-          <div className="text-center mb-8 flex flex-col items-center">
-            <h2
-              className="animate-charcter"
-              style={{
-                textTransform: "uppercase",
-                backgroundImage:
-                  "linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%)",
-                backgroundSize: "auto auto",
-                backgroundClip: "border-box",
-                backgroundSize: "200% auto",
-                color: "#fff",
-                backgroundClip: "text",
-                textFillColor: "transparent",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                animation: "textclip 2s linear infinite",
-                display: "inline-block",
-                fontSize: "29px",
-              }}
-            >
-              Explore Top Hackathons Now
-            </h2>
-            <div className="mb-4 p-4">
-              <SearchBar
-                setSearchQuery={setSearchQuery}
-                handleTagFilter={handleTagFilter}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap justify-center">
-            {filteredHackathons.map((hackathon, index) => (
-              <div
-                className={`${gstyles.singleHackathon} bg-white p-4 rounded border border-gray-200 hover:shadow-md mx-4 my-2`}
-                key={index}
+        <div className="bg-gray-100 py-8 flex justify-center items-center mt-8">
+          <div className="container mx-auto">
+            <div className="text-center mb-8 flex flex-col items-center">
+              <h2
+                className="animate-charcter"
+                style={{
+                  textTransform: "uppercase",
+                  backgroundImage:
+                    "linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%)",
+                  backgroundSize: "auto auto",
+                  backgroundClip: "border-box",
+                  backgroundSize: "200% auto",
+                  color: "#fff",
+                  backgroundClip: "text",
+                  textFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  animation: "textclip 2s linear infinite",
+                  display: "inline-block",
+                  fontSize: "29px",
+                }}
               >
-                {/* Bookmark Icon */}
+                Explore Top Hackathons Now
+              </h2>
+              <div className="mb-4 p-4">
+                <SearchBar
+                  setSearchQuery={setSearchQuery}
+                  handleTagFilter={handleTagFilter}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center">
+              {filteredHackathons.map((hackathon, index) => (
                 <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "flex-end",
-                  }}
+                  className={`${gstyles.singleHackathon} bg-white p-4 rounded hover:shadow-md `}
+                  key={index}
                 >
-                  <button
-                    className={`${
-                      hackathon.bookmarked ? "text-red-500" : "text-gray-500"
-                    }`}
-                    onClick={() => handleTooltipOpen(index)}
+                  {/* Bookmark Icon */}
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "flex-end",
+                    }}
                   >
-                    {hackathon.bookmarked ? (
-                                <ClickAwayListener onClickAway={handleTooltipClose}>
-                                <div>
-                                <Tooltip  placement="left"  sx={{[`& .MuiTooltip-tooltip`]: {    
-                        fontFamily: "'Grape Nuts', Helvetica",
-                        color: "deepskyblue",
-                        backgroundColor: "red",
-                      }}}title={<h2
-                        className="animate-charcter"
-                       
-                        style={{
-                          textTransform: "uppercase",
-                          backgroundImage:
-                            "linear-gradient(#3bff3e,#3bff3e)",
-                          backgroundSize: "auto auto",
-                          backgroundClip: "border-box",
-                          backgroundSize: "200% auto",
-                          color: "#FEE715",
-                          backgroundClip: "text",
-                          textFillColor: "transparent",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          animation: "textclip 2s linear infinite",
-                          display: "inline-block",
-                          fontSize: "29px",
-                        }}
-                      >Remove</h2>} >
-                      <BookmarkOutlinedIcon
-                        className="h-6 w-6"
-                        sx={{ fontSize: 40 }}
-                        style={{ fill: "red" }}
-                      />
-                      </Tooltip>
-                                </div>
-                              </ClickAwayListener>
+                    <button
+                      className={`${hackathon.bookmarked ? "text-red-500" : "text-gray-500"
+                        }`}
+                      onClick={() => handleTooltipOpen(index)}
+                    >
+                      {hackathon.bookmarked ? (
+                        <ClickAwayListener onClickAway={handleTooltipClose}>
+                          <div>
+                            <Tooltip placement="left" sx={{
+                              [`& .MuiTooltip-tooltip`]: {
+                                fontFamily: "'Grape Nuts', Helvetica",
+                                color: "deepskyblue",
+                                backgroundColor: "red",
+                              }
+                            }} title={<h2
+                              className="animate-charcter"
 
-                    ) : (
-<Tooltip  placement="left"  sx={{[`& .MuiTooltip-tooltip`]: {    
-                        fontFamily: "'Grape Nuts', Helvetica",
-                        color: "deepskyblue",
-                        backgroundColor: "red",
-                      }}}title={<h2
-                        className="animate-charcter"
-                       
-                        style={{
-                          textTransform: "uppercase",
-                          backgroundImage:
-                            "linear-gradient(#3bff3e,#3bff3e)",
-                          backgroundSize: "auto auto",
-                          backgroundClip: "border-box",
-                          backgroundSize: "200% auto",
-                          color: "#FEE715",
-                          backgroundClip: "text",
-                          textFillColor: "transparent",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          animation: "textclip 2s linear infinite",
-                          display: "inline-block",
-                          fontSize: "29px",
-                        }}
-                      >Save it</h2>} >
-                                              <BookmarkBorderOutlinedIcon
-                        className="h-6 w-6"
-                        sx={{ fontSize: 40 }}
-                        style={{ fill: "red" }}
-                      />
-                      </Tooltip>
-                    
+                              style={{
+                                textTransform: "uppercase",
+                                backgroundImage:
+                                  "linear-gradient(#3bff3e,#3bff3e)",
+                                backgroundSize: "auto auto",
+                                backgroundClip: "border-box",
+                                backgroundSize: "200% auto",
+                                color: "#fff",
+                                backgroundClip: "text",
+                                textFillColor: "transparent",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                animation: "textclip 2s linear infinite",
+                                display: "inline-block",
+                                fontSize: "29px",
+                              }}
+                            >Remove</h2>} >
+                              <BookmarkOutlinedIcon
+                                className="h-6 w-6"
+                                sx={{ fontSize: 40 }}
+                                style={{ fill: "#FFDD43" }}
+                              />
+                            </Tooltip>
+                          </div>
+                        </ClickAwayListener>
 
-                    )}
-                  </button>
-                </div>
+                      ) : (
+                        <Tooltip placement="left"
+                        style={{ fill: "#FFF" }}  sx={{
+                          [`& .MuiTooltip-tooltip`]: {
+                            fontFamily: "'Grape Nuts', Helvetica",
+                            color: "deepskyblue",
+                            backgroundColor: "#FFDD43",
+                          }
+                        }} title={<h2
+                          className="animate-charcter"
 
-                {/* Hackathon Content */}
-                <div className={`${gstyles.hackathonImg}`}>
-                  <Image
-                    className="object-cover w-full h-full rounded"
-                    src={hackathon.hackathonImage}
-                    alt={hackathon.hackathonImageAlt}
-                    width={364}
-                    height={260}
-                  />
-                </div>
-                <div className={`${gstyles.hackathonContentBox}`}>
-                  <div className={`${gstyles.hackathonContent}`}>
-                    <h3 className="text-lg font-bold ">
-                      <a
-                        href={hackathon.hackathonLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white-500 hover:underline"
-                      >
-                        {hackathon.hackathonTitle}
-                      </a>
-                    </h3>
-                    <p className="text-gray-700 ">
-                      {hackathon.hackathonDescription}
-                    </p>
+                          style={{
+                            textTransform: "uppercase",
+                            backgroundImage:
+                              "linear-gradient(#3bff3e,#3bff3e)",
+                            backgroundSize: "auto auto",
+                            backgroundClip: "border-box",
+                            backgroundSize: "200% auto",
+                            color: "#FEE715",
+                            backgroundClip: "text",
+                            textFillColor: "transparent",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            animation: "textclip 2s linear infinite",
+                            display: "inline-block",
+                            fontSize: "29px",
+                          }}
+                        >Save it</h2>} >
+                          <BookmarkBorderOutlinedIcon
+                            className="h-6 w-6"
+                            sx={{ fontSize: 40 }}
+                            style={{ fill: "#FFDD43" }}
+                          />
+                        </Tooltip>
+
+
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Hackathon Content */}
+                  <div className={`${gstyles.hackathonImg}`}>
+                    <Image
+                      className="object-cover w-full h-full rounded"
+                      src={hackathon.hackathonImage}
+                      alt={hackathon.hackathonImageAlt}
+                      width={364}
+                      height={260}
+                    />
+                  </div>
+                  <div className={`${gstyles.hackathonContentBox}`}>
+                    <div className={`${gstyles.hackathonContent}`}>
+                      <h3 className="text-lg font-bold ">
+                        <a
+                          href={hackathon.hackathonLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white-500 hover:underline"
+                        >
+                          {hackathon.hackathonTitle}
+                        </a>
+                      </h3>
+                      <p className="text-gray-700 ">
+                        {hackathon.hackathonDescription}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    
-   
-        
+
+
+
       </main>
       <Footer />
     </div>

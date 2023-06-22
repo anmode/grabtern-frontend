@@ -345,19 +345,7 @@ export default function Home() {
               <h2
                 className="animate-charcter"
                 style={{
-                  textTransform: "uppercase",
-                  backgroundImage:
-                    "linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%)",
-                  backgroundSize: "auto auto",
-                  backgroundClip: "border-box",
-                  backgroundSize: "200% auto",
-                  color: "#fff",
-                  backgroundClip: "text",
-                  textFillColor: "transparent",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  animation: "textclip 2s linear infinite",
-                  display: "inline-block",
+                  
                   fontSize: "29px",
                 }}
               >

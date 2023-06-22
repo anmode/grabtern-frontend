@@ -1,6 +1,6 @@
 export default [
   {
-    hackathonImage: "/assets/img/hackathons/Solve for Tomorrow.webp",
+    hackathonImage: "/assets/img/hackathons/2Solve for Tomorrow.jpg",
     hackathonImageAlt: "Solve for Tommorow",
     hackathonLink: "https://www.samsung.com/in/solvefortomorrow/",
     hackathonTitle: "Solve for Tommorow",
@@ -8,7 +8,7 @@ export default [
     ,tags: ["web"]
    , bookmarked: false  },
   {
-    hackathonImage: "/assets/img/hackathons/Google Girl Hackathon.webp",
+    hackathonImage: "/assets/img/hackathons/Google 3Girl Hackathon.jpg",
     hackathonImageAlt: "Google Girls Hackathon",
     hackathonLink:
       "https://unstop.com/hackathons/girl-hackathon-2023-google-681413",
@@ -17,7 +17,7 @@ export default [
     , bookmarked: false,
   tags: ["web"]    },
   {
-    hackathonImage: "/assets/img/hackathons/94.webp",
+    hackathonImage: "/assets/img/hackathons/93.jpg",
     hackathonImageAlt: "Flow Hackathon Season 2",
     hackathonLink: "https://flow-hackathon-s2.devfolio.co/",
     hackathonTitle: "Flow Hackathon Season 2",
@@ -25,11 +25,13 @@ export default [
     , bookmarked: false,
     tags: ["Blockchain"] },
   {
-    hackathonImage: "/assets/img/hackathons/128.webp",
-    hackathonImageAlt: "Filecoin Orbit India Hackathon - MIT Karnataka",
-    hackathonLink: "https://filecoin-orbit-india-hackathon-mit-karnataka.devfolio.co//",
-    hackathonTitle: "Filecoin Orbit India Hackathon - MIT Karnataka",
-    hackathonDescription:"Filecoin Orbit India Hackathon is a 10 day long hackathon organized by Loarr in partnership with the Filecoin foundation with the goal of inspiring and fostering a community of builders promoting technological advancements in the Web3 space."
+    hackathonImage: "/assets/img/hackathons/917.webp",
+    hackathonImageAlt: "ETHBarcelona",
+    hackathonLink: "https://ethbarcelona.devfolio.co/",
+    hackathonTitle: "ETHBarcelona",
+    hackathonDescription:`ETHBarcelona is an experience for web3 builders, leaders, thinkers, artists and creators in general that celebrate the values of decentralization, public goods and social impact.From decentralized social networks to decentralized identity solutions, teams have the chance to shape the future of social connectivity in the Web3 era.
+
+    `
     , bookmarked: false,tags: ["Blockchain"]  },
   {
     hackathonImage: "/assets/img/hackathons/689.webp",
@@ -83,7 +85,7 @@ export default [
     tags: ["web"] },
   
   {
-    hackathonImage: "/assets/img/hackathons/north.jpg",
+    hackathonImage: "/assets/img/hackathons/maxresdefault.jpg",
     hackathonImageAlt: "Hack The North",
     hackathonLink: "https://hackthenorth.com/",
     hackathonTitle: "Hack The North",

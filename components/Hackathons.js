@@ -13,8 +13,8 @@ function Hackathon({
       <div className={`${styles.singleHackathon} text-center mb-30`}>
         <div className={styles.hackathonImg}>
           <Image
-            width={264}
-            height={150}
+            width={364}
+            height={350}
             src={hackathonImage}
             alt={hackathonImageAlt}
           />

@@ -1,3 +1,7 @@
+
+.singleHackathon .hackathonImg img{
+  /* object-fit: cover; */
+}
 .hackathonArea .singleHackathon {
   position: relative;
 }
@@ -29,9 +33,11 @@
 }
 .hackathonArea .singleHackathon .hackathonImg {
   border-radius: 12px;
+  /* object-fit: cover; */
 }
 .hackathonArea .singleHackathon .hackathonImg img {
   width: 100%;
+  /* height:max-content; */
   border-radius: 12px;
 }
 .hackathonArea .singleHackathon .hackathonContentBox {

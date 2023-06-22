@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import SimpleReactValidator from "simple-react-validator";
 
 import { useRouter } from "next/router";
 import Overlay from "../Overlay";
@@ -181,14 +182,25 @@ export default function MentorForm() {
   const changeSchedule = (newSchedule) => {
     setFormData({ ...formData, schedules: newSchedule });
   };
+  // for validator
+  const validator = useRef(new SimpleReactValidator());
+  const [, forceUpdate] = useState();
 
+  // for next and previous buttons
   const prevStep = (e) => {
     e.preventDefault();
     setFormStep(formStep - 1);
   };
   const nextStep = (e) => {
     e.preventDefault();
-    setFormStep(formStep + 1);
+    if (validator.current.allValid()) {
+      validator.current.hideMessages();
+      setFormStep(formStep + 1);
+      forceUpdate(1);
+    } else {
+      validator.current.showMessages();
+      forceUpdate(2);
+    }  
   };
   return (
     <div className="mentorFormRegisration">
@@ -232,6 +244,7 @@ export default function MentorForm() {
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
                   handleCallbackResponse={handleCallbackResponse}
+                  validator={validator}
                 />
               ),
               2: (
@@ -239,6 +252,7 @@ export default function MentorForm() {
                   formData={formData}
                   handleChange={handleChange}
                   handleSocialChange={handleSocialChange}
+                  validator={validator}
                 />
               ),
               3: (
@@ -248,6 +262,7 @@ export default function MentorForm() {
                   isChecked={isChecked}
                   setIsChecked={setIsChecked}
                   changeSchedule={changeSchedule}
+                  validator={validator}
                 />
               ),
             }[formStep] || (

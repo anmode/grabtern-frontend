@@ -10,6 +10,7 @@ function SessionDetails({
   isChecked,
   setIsChecked,
   changeSchedule,
+  validator
 }) {
   const initialSchedule = {
     day: "monday",
@@ -28,12 +29,14 @@ function SessionDetails({
     changeSchedule([...formData.schedules, newSchedule]);
     setNewSchedule(initialSchedule);
   };
+  // removing schedule function
   const removeSchedule = (removeIndex) => {
     const updatedSchedule = formData.schedules.filter((value, index) => {
       return index != removeIndex;
     });
     changeSchedule(updatedSchedule);
   };
+  // inputs
   const inputs = [
     {
       label: "30min 1-1 SESSION PRICE",
@@ -44,8 +47,12 @@ function SessionDetails({
       placeholder: "e.g. ₹51",
       required: true,
       value: formData.price,
+      validator: validator,
+      validation: 'required|currency'
     },
   ];
+
+  // time inputs
   const timeInputs = [
     {
       label: "Start Time",
@@ -56,6 +63,8 @@ function SessionDetails({
       placeholder: "12:30 PM",
       required: true,
       value: newSchedule.startsAt,
+      validator: validator,
+      validation: 'required'
     },
     {
       label: "End Time",
@@ -66,6 +75,8 @@ function SessionDetails({
       placeholder: "2:30 PM",
       required: true,
       value: newSchedule.endsAt,
+      validator: validator,
+      validation: 'required'
     },
   ];
   return (

@@ -8,6 +8,8 @@ function Input({
   handleChange,
   placeholder,
   value,
+  validator,
+  validation,
   ...rest
 }) {
   return (
@@ -25,6 +27,7 @@ function Input({
         value={value}
         {...rest}
       />
+      {validator.current.message(name, value, validation)}
     </div>
   );
 }

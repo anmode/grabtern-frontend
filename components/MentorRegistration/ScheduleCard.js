@@ -1,7 +1,6 @@
 import React from "react";
 
 function ScheduleCard({ schedule, removeSchedule, index }) {
-  console.log(schedule);
   return (
     <div className="scheduleCard tw-flex tw-items-start">
       <div className="tw-flex-1">

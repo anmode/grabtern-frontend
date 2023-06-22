@@ -29,9 +29,14 @@ function Register({ handleLogPageToggle }) {
   const [error, setError] = useState("");
   const [verificationSent, setVerificationSent] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
+  };
+
+  const toggleConPasswordVisibility = () => {
+    setConIsPasswordVisible((prevState) => !prevState);
   };
 
   const handleChange = ({ currentTarget: input }) => {
@@ -176,7 +181,7 @@ function Register({ handleLogPageToggle }) {
               Confirm Password
             </label>
             <input
-              type={isPasswordVisible ? 'text' : 'password'}
+              type={isConPasswordVisible ? 'text' : 'password'}
               name="confirmPassword"
               placeholder="Confirm Password"
               onChange={handleChange}
@@ -185,9 +190,9 @@ function Register({ handleLogPageToggle }) {
             />
             <button
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-top-12  tw-flex tw-items-center tw-px-4 tw-text-gray-600"
-              onClick={togglePasswordVisibility}
+              onClick={toggleConPasswordVisibility}
             >
-              {isPasswordVisible ? (
+              {isConPasswordVisible ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

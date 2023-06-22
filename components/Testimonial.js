@@ -17,13 +17,13 @@ function Testimonial({
       </p>
       <div className="content">
         <div className="image">
-          {/* <Image
-            width={25}
-            height={25}
+        { <Image
+            width={75}
+            height={75}
             className="tw-w-4 tw-h-auto"
             src={testimonialUserImage}
             alt="testimonial-profile"
-          /> */}
+          /> }
         </div>
         <div className="info">
           <div className="name tw-font-bold">{testimonialUserName}</div>

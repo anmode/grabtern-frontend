@@ -80,6 +80,16 @@ npm run dev
 This will start the development server on http://localhost:3000/.
 
 ---
+- And if server stop then 
+```
+
+npm run build
+```
+
+npm start
+```
+
+This will start server
 
 ## 🧰 Tech Stack Used
 

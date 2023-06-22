@@ -176,7 +176,7 @@ function Login({ handleLogPageToggle }) {
               value={data.password}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
             />
-            <button
+            <div
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-items-center tw-px-4 tw-text-gray-600 tw-top-12"
               onClick={togglePasswordVisibility}
             >
@@ -216,7 +216,7 @@ function Login({ handleLogPageToggle }) {
                   />
                 </svg>
               )}
-            </button>
+            </div>
           </div>
 
           <div>
@@ -233,7 +233,6 @@ function Login({ handleLogPageToggle }) {
             >Login</button>
           </div>
 
-          <ToastContainer />
           {error && <div style={{ color: "red" }}>{error}</div>}
           {localStorage.getItem("new_user") && (
             <div style={{ color: "green" }}>Please register first.</div>
@@ -256,6 +255,7 @@ function Login({ handleLogPageToggle }) {
             </button>
           </div>
         </div>
+        <ToastContainer />
       </form>
     </>
   );

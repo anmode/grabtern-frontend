@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styles from "../styles/sidebar.module.css";
+import styles from "../../styles/sidebar.module.css";
 import Sidebar from "./sidebar.page";
 import Profile from "./profile.page";
 import Sessions from "./sessions.page";

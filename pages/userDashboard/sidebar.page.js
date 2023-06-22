@@ -1,10 +1,32 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/sidebar.module.css";
-import { SidebarData } from "./sidebarData.page.js";
+import styles from "../../styles/sidebar.module.css";
 
-function Sidebar() {
+import {
+  FaTh,
+  FaUserAlt,
+  FaCalender
+}from 'react-icons/Fa';
+import {AiFillHome} from 'react-icons/ai'
+const Sidebar=()=> {
+  const menuItem=[
+    {
+      title: "Home",
+      icon: <AiFillHome />,
+      path: "/",
+    },
+    {
+      title: "Profile",
+      icon: <FaUserAlt />,
+      path: "/Profile",
+    },
+    {
+      title: "My Sessions",
+      icon: <FaTh />,
+      path: "/Sessions",
+    },
+  ]
   return (
     <div className={styles.pageContainer}>
       <div className={styles.Sidebar}>
@@ -37,7 +59,7 @@ function Sidebar() {
         {localStorage.username}
         </div>
         <ul className={styles.sidebarList}>
-          {SidebarData.map((val, key) => {
+          {menuItem.map((val, key) => {
             return (
               <>
                 <li

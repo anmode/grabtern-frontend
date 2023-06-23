@@ -2,11 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 // import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
 import Link from "next/link";
+import { useAuth } from "../context/AuthContext";
 
-const DropdownCard = ({ isUserLoggedIn }) => {
+
+const DropdownCard = () => {
   const [loginOption, setLoginOption] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setMentorLoggedIn] = useState(false);
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
   const dropdownRef = useRef(null);
 
   const handleLoginClick = () => {
@@ -15,14 +21,14 @@ const DropdownCard = ({ isUserLoggedIn }) => {
 
   const mentorlogout = () => {
     localStorage.clear();
-    setMentorLoggedIn(false);
+    setIsMentorLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
 
   const userlogout = () => {
     localStorage.clear();
-    setLoggedIn(false);
+    setIsUserLoggedIn(false);
     router.push("/");
     window.location.reload();
   };
@@ -42,7 +48,7 @@ const DropdownCard = ({ isUserLoggedIn }) => {
 
   return (
     <div ref={dropdownRef}>
-      {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+      {isUserLoggedIn || isMentorLoggedIn ? (
         <button onClick={handleLoginClick}>
           <img
             style={{
@@ -66,13 +72,13 @@ const DropdownCard = ({ isUserLoggedIn }) => {
           onClick={handleLoginClick}
           className="tw-text-white tw-mb-8 tw-bg-blue-700 hover:tw-bg-blue-600 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-white tw-font-medium tw-rounded-lg tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 dark:tw-bg-blue-700 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-100"
         >
-          Sign In
+          Sign Up
         </button>
       )}
 
       {loginOption && (
         <div>
-          {isLoggedIn || isUserLoggedIn || isMentorLoggedIn ? (
+          {isUserLoggedIn || isMentorLoggedIn ? (
             <div className="tw-relative md:tw-absolute md:tw-mt-5 md:tw-right-12 tw-top-full tw-border tw-border-gray-300 tw-py-3 tw-px-5 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-justify-center tw-items-start">
               <Link
                 href={isMentorLoggedIn ? "/dashboard" : "/"}

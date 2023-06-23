@@ -17,6 +17,7 @@ function Input({
       <label className="label uppercase" htmlFor={name}>
         {label}
       </label>
+      {validator.current.message(name, value, validation)}
       <input
         id={name}
         type={type}
@@ -27,7 +28,6 @@ function Input({
         value={value}
         {...rest}
       />
-      {validator.current.message(name, value, validation)}
     </div>
   );
 }

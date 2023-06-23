@@ -4,7 +4,6 @@ import router from "next/router";
 import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 
-
 const DropdownCard = () => {
   const [loginOption, setLoginOption] = useState(false);
   const {
@@ -70,7 +69,7 @@ const DropdownCard = () => {
         <button
           type="button"
           onClick={handleLoginClick}
-          className="tw-text-white tw-mb-8 tw-bg-blue-700 hover:tw-bg-blue-600 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-white tw-font-medium tw-rounded-lg tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 dark:tw-bg-blue-700 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-100"
+          className="tw-text-white tw-mb-8 tw-bg-blue-700 hover:tw-bg-blue-600 focus:tw-ring-4 focus:tw-outline-none tw-font-medium tw-rounded-lg tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 dark:tw-bg-blue-700 dark:hover:tw-bg-blue-700 "
         >
           Sign Up
         </button>

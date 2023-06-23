@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import {Card,Link, CardMedia, CardContent, CardActions, Button, CardActionArea, Typography} from '@mui/material'
+
 
 function Internship({
   internshipImage,
@@ -22,34 +24,40 @@ function Internship({
     window.open(internshipLink, "_blank");
   };
   return (
-    <div
-      className="properties pb-20 item"
-      style={{ minHeight: "469px !important" }}
+    
+    <Card
+      onClick={handleInternshipLinkClick}
+      className="properties__card"
     >
-      <div className="properties__card">
-        <div className="properties__img overlay1">
-          <a href="#" onClick={handleInternshipLinkClick}>
-            <Image
-              width={360}
-              height={219}
-              src={internshipImage}
-              alt={internshipImageAlt}
-            />
-          </a>
+      <CardActionArea>
+          <CardMedia
+            className="properties__img"
+            component="img"
+            image={internshipImage}
+            onClick={handleInternshipLinkClick}
+            alt={internshipImageAlt}
+          />
+      </CardActionArea>
+      <CardContent className="properties__info">
+        <Typography   
+          fontSize="16px" 
+          color="#6e7697"
+        >
+        {internshipCategories}
+        </Typography>
+      <CardActions>
+        <Link href={internshipLink}  className="properties__link">{internshipTitle}</Link>
+      </CardActions>
+        <div>
+        <Typography 
+          variant="p"  
+          fontSize="1.5rem" 
+          color="#6e7697"
+        >{internshipDescription}
+        </Typography>
         </div>
-        <div className="properties__caption">
-          <div className="courseInfo">
-            <p>{internshipCategories}</p>
-            <h3>
-              <a href={internshipLink} onClick={handleInternshipLinkClick}>
-                {internshipTitle}
-              </a>
-            </h3>
-            <p>{description}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
 

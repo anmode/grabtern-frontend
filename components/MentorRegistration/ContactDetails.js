@@ -38,12 +38,12 @@ function ContactDetails({
       name: "linkedin",
       className: "mentorFormInput",
       onChange: handleSocialChange,
-      placeholder: "e.g. https://www.linkedin.com/peterparker",
+      placeholder: "e.g. https://www.linkedin.com/in/peterparker",
       required: true,
-      pattern: "https://linkedin.com/in/*",
+      pattern: "https://www.linkedin.com/in/*",
       value: formData.social.linkedin,
       validator: validator,
-      validation: ['required', {'regex': 'https://linkedin.com/in/*'}]
+      validation: ['required', 'url', {regex : '^https://(www.)?linkedin.com/((in/[^/]+/?)|(pub/[^/]+/((\w|\d)+/?){3}))$'}]
     },
     {
       label: "twitter",
@@ -51,12 +51,12 @@ function ContactDetails({
       name: "twitter",
       className: "mentorFormInput",
       onChange: handleSocialChange,
-      placeholder: "e.g. https://www.twitter.com/peterparker",
+      placeholder: "e.g. https://twitter.com/peterparker",
       required: true,
       pattern: "https://twitter.com/*",
       value: formData.social.twitter,
       validator: validator,
-      validation: 'required|url'
+      validation: ['required', 'url', {regex :  '^https://(www.)?twitter.com/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+)'}]
     },
   ];
   return (

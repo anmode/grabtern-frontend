@@ -2,39 +2,34 @@ import React from "react";
 
 const MentorCard = ({ mentor }) => {
   return (
-    <div className="mentor-card tw-shadow-lg tw-transform tw-transition tw-duration-300 hover:tw-scale-105 tw-m-4">
-      <img
-        src={mentor.mentorImg}
-        alt={mentor.name}
-        className="tw-h-60 tw-rounded-full tw-w-60"
-      />
-      <div className="mentor-card__info tw-p-3 tw-flex tw-flex-row">
-        <h1 className="tw-font-semibold tw-text-3xl text-center">{mentor.name}</h1>
-        <p className="tw-text-center tw-text-xl">
-          <b>Intern at: </b>
-          {mentor.internAt}
-        </p>
-        <div className="tw-flex tw-justify-center">
-          <a
-            href={mentor.bookedSession}
-            className="tw-text-xl"
-          >
-            Booked Sessions: {mentor.bookedSession}
-          </a>
-        </div>
-        <div className="tw-flex tw-justify-center tw-items-center tw-my-2 tw-transition-all tw-duration-300 tw-m-5">
-          <div className="tw-flex tw-justify-evenly">
-            <a href={`${mentor.social.linkedin}`} target="_blank">
-              <i className="fab fa-linkedin tw-text-[#0077b5] tw-text-5xl hover:tw-text-blue-700"></i>
-            </a>
-            <a href={`${mentor.social.twitter}`} target="_blank">
-              <i className="fab fa-twitter tw-text-[#1DA1F2] tw-text-5xl hover:tw-text-blue-700"></i>
-            </a>
-          </div>
-          <button className="tw-bg-purple-600 hover:tw-bg-purple-800 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded">Book Session</button>
+        <div className="card-container tw-flex justify-content-center flex-column align-center">
+         <div className="upper-container tw-bg-[#7F00FF] tw-h-1/3 tw-w-full tw-rounded-t-2xl">
+            <div className="tw-w-full tw-h-full d-flex justify-content-center position-relative tw-top-20">
+               <img className='tw-w-48 tw-h-48 tw-rounded-full' src={mentor.mentorImg} alt={mentor.name}/>
+            </div>
+         </div>
+         <div className="lower-container tw-h-2/3 tw-bg-white">
+              <div>
+                <h1 className="tw-font-semibold tw-text-3xl text-center tw-py-4">{mentor.name}</h1>
+                <p className="tw-text-center tw-text-2xl tw-mb-4">
+                  <b>Intern at: </b>
+                  {mentor.internAt}
+                </p>
+              </div>
+              <a href={mentor.bookedSession} className="tw-text-2xl tw-font-gray-400 text-center"><p>Booked Sessions: {mentor.bookedSession}</p></a>
+                <div className="tw-flex tw-justify-evenly">
+                  <a href={`${mentor.social.linkedin}`} target="_blank">
+                    <i className="fab fa-linkedin tw-text-[#0077b5] tw-text-5xl hover:tw-text-blue-700"></i>
+                  </a>
+                  <a href={`${mentor.social.twitter}`} target="_blank">
+                    <i className="fab fa-twitter tw-text-[#1DA1F2] tw-text-5xl hover:tw-text-blue-700"></i>
+                  </a>
+                </div>
+              <div className="py-3">
+                <button className="btn tw-bg-[#7F00FF] tw-text-white tw-font-bold tw-rounded">Book Session</button>
+              </div>
         </div>
       </div>
-    </div>
   );
 };
 export default MentorCard;

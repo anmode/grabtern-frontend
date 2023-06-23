@@ -3364,8 +3364,8 @@ hr {
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
-  margin-left:2rem;
-  margin-bottom: 1rem;
+  /* width: 97%; */
+  margin: auto;
 }
 .courses-area .properties__img{
     width: 80%;
@@ -3377,6 +3377,7 @@ hr {
   color: #4255a4;
   text-Decoration: none;
   text-align: left;
+  font-weight: 500;
   font-Size:2rem;
 }
 .courses-area .properties__link:hover{
@@ -3385,10 +3386,22 @@ hr {
   font-Size:2rem;
 }
 .courses-area .properties__info{
-  max-height:16rem; 
+  max-height:13rem; 
   overflow-y: hidden;
   text-overflow: ellipsis;
   font-size: 2rem;
+  margin: 2rem;
+}
+@media (max-width:880px){
+  .courses-area .properties__info{
+    max-height: 35rem;
+  }
+}
+.courses-area .properties__Description{
+  margin-top: 1rem;
+  font-Size:16px; 
+  color:#6e7697;
+  line-height: 30px;
 }
 .courses-area .properties__card:hover {
   box-shadow: 0px 8px 8px 0px rgba(2, 25, 65, 0.08);

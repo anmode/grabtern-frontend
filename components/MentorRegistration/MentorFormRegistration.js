@@ -68,7 +68,7 @@ export default function MentorForm() {
   const [formData, setFormData] = useState(InitialFormState);
 
   const handleChange = (e) => {
-    console.log(formData);
+    // console.log(formData);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -186,11 +186,25 @@ export default function MentorForm() {
   const validator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
 
+  // submit function
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (validator.current.allValid()) {
+      validator.current.hideMessages();
+      handleSubmit(e);
+      forceUpdate(1);
+    } else {
+      validator.current.showMessages();
+      forceUpdate(2);
+    }
+  }
+
   // for next and previous buttons
   const prevStep = (e) => {
     e.preventDefault();
     setFormStep(formStep - 1);
   };
+
   const nextStep = (e) => {
     e.preventDefault();
     if (validator.current.allValid()) {
@@ -207,7 +221,7 @@ export default function MentorForm() {
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
-        <form className="mentorForm" onSubmit={handleSubmit}>
+        <form className="mentorForm" onSubmit={onSubmit}>
           {/* steps tracker start */}
           <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
             <div
@@ -294,7 +308,7 @@ export default function MentorForm() {
             <button
               type="submit"
               className="mentorFormButton theme-button-color"
-              onClick={formStep == 3 ? handleSubmit : nextStep}
+              onClick={formStep == 3 ? onSubmit : nextStep}
             >
               {formStep == 3 ? "Register" : "Next"}
             </button>

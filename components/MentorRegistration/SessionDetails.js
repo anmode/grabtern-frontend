@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import SimpleReactValidator from "simple-react-validator";
 import DayInput from "../dateAndTime/DayInput";
 import TimeZoneInput from "../dateAndTime/TimeZoneInput";
 import Input from "./Input";
@@ -10,7 +11,7 @@ function SessionDetails({
   isChecked,
   setIsChecked,
   changeSchedule,
-  validator
+  validator,
 }) {
   const initialSchedule = {
     day: "monday",
@@ -19,16 +20,30 @@ function SessionDetails({
     endsAt: "",
   };
   const [newSchedule, setNewSchedule] = useState(initialSchedule);
+
   // handle change function
   const onChange = (e) => {
     const target = e.target;
     setNewSchedule({ ...newSchedule, [target.name]: target.value });
   };
+
+  // for validator
+  const sessionValidator = useRef(new SimpleReactValidator());
+  const [, forceUpdate] = useState();
+
   // adding schedule function
   const addSchedule = () => {
-    changeSchedule([...formData.schedules, newSchedule]);
-    setNewSchedule(initialSchedule);
+    if (sessionValidator.current.allValid()) {
+      sessionValidator.current.hideMessages();
+      changeSchedule([...formData.schedules, newSchedule]);
+      setNewSchedule(initialSchedule);
+      forceUpdate(1);
+    } else {
+      sessionValidator.current.showMessages();
+      forceUpdate(2);
+    }
   };
+
   // removing schedule function
   const removeSchedule = (removeIndex) => {
     const updatedSchedule = formData.schedules.filter((value, index) => {
@@ -36,6 +51,7 @@ function SessionDetails({
     });
     changeSchedule(updatedSchedule);
   };
+
   // inputs
   const inputs = [
     {
@@ -48,7 +64,7 @@ function SessionDetails({
       required: true,
       value: formData.price,
       validator: validator,
-      validation: 'required|currency'
+      validation: 'required|currency',
     },
   ];
 
@@ -63,8 +79,8 @@ function SessionDetails({
       placeholder: "12:30 PM",
       required: true,
       value: newSchedule.startsAt,
-      validator: validator,
-      validation: 'required'
+      validator: sessionValidator,
+      validation: ['required', {regex: '([01]?[0-9]|2[0-3]):[0-5][0-9]'}],
     },
     {
       label: "End Time",
@@ -75,8 +91,8 @@ function SessionDetails({
       placeholder: "2:30 PM",
       required: true,
       value: newSchedule.endsAt,
-      validator: validator,
-      validation: 'required'
+      validator: sessionValidator,
+      validation: ['required', {regex: '([01]?[0-9]|2[0-3]):[0-5][0-9]'}],
     },
   ];
   return (

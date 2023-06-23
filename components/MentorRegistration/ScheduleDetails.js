@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import DayInput from "../dateAndTime/DayInput";
-import TimeZoneInput from "../dateAndTime/TimeZoneInput";
+import DayInput from "../basic/dateAndTime/DayInput";
+import TimeZoneInput from "../basic/dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import ScheduleCard from "./ScheduleCard";
 

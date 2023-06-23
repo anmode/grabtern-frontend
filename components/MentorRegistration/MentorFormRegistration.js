@@ -7,7 +7,7 @@ import Overlay from "../Overlay";
 import { ToastContainer, toast } from "react-toastify";
 import PersonDetails from "./PersonDetails";
 import ContactDetails from "./ContactDetails";
-import SessionDetails from "./SessionDetails";
+import SessionDetails from "./ScheduleDetails";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
@@ -59,7 +59,6 @@ export default function MentorForm() {
       name: "",
       image: "",
     },
-    // resume: '',
     password: `GrabternMentorPW!${number}!`,
     confirmPassword: `GrabternMentorPW!${number}!`,
     verified: false,

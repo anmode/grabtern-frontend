@@ -9,7 +9,6 @@ import { SunIcon } from "@heroicons/react/24/solid";
 import logo from "../public/logo.png";
 import { useAuth } from "../context/AuthContext";
 
-
 function Header() {
   const {
     isMentorLoggedIn,
@@ -147,6 +146,10 @@ function Header() {
                 className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Contact
+              </Link>
+
+              <Link href="/login" className="hover:tw-text-blue-800">
+                Sign In
               </Link>
 
               <DropdownCard

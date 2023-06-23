@@ -96,7 +96,7 @@ function Header() {
           <Link href="/contact" className="hover:tw-text-blue-800">
             Contact
           </Link>
-          <Link href="/login" className="hover:tw-text-blue-800">
+          <Link href="/" className="hover:tw-text-blue-800">
             Sign In
           </Link>
 
@@ -148,7 +148,7 @@ function Header() {
                 Contact
               </Link>
 
-              <Link href="/login" className="hover:tw-text-blue-800">
+              <Link href="/" className="hover:tw-text-blue-800">
                 Sign In
               </Link>
 

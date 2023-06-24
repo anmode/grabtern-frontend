@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import emailjs, { send } from "@emailjs/browser";
 import dynamic from "next/dynamic";
 import style from "../styles/contact.module.css";
 import Head from "next/head";
 import * as yup from 'yup';
-import {useFormik} from "formik"
+import { useFormik } from "formik"
 import { error } from "jquery";
 
 
@@ -17,31 +17,30 @@ const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
 
 function Contact() {
-  const form = useRef(null);  
+  const form = useRef(null);
   //create a schema for a form
   const validForm = yup.object().shape({
     name: yup.string().required("Please enter your name!"),
     email: yup.string().email("Please enter a valid Email!").required("Please enter a email"),
     message: yup.string().required("Please enter a message!"),
-    subject:yup.string().required("Please enter a subject!"),
+    subject: yup.string().required("Please enter a subject!"),
   });
 
   //check value of forms
 
-  const { values , touched, errors , action ,handleBlur ,handleChange,handleSubmit} = useFormik({
-    initialValues :{
+  const { values, touched, errors, action, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
       message: "",
-      name:"",
-      email:"",
-      subject:"",
+      name: "",
+      email: "",
+      subject: "",
     },
-  
+
     validationSchema: validForm,
   });
 
-  function showToast(message)
-  {
-   // console.log("called");
+  function showToast(message) {
+    // console.log("called");
     toast(message, {
       position: "top-right",
       autoClose: 5000,
@@ -52,7 +51,7 @@ function Contact() {
       progress: undefined,
       theme: "light",
       type: "error",
-      });
+    });
   }
 
   //console.log(errors);
@@ -60,84 +59,79 @@ function Contact() {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-      handleSubmit;
+    handleSubmit;
     console.log(errors);
 
     //console.log("mail called");
 
-    if(values.message==='')
-    {showToast("Please enter a message!");}
-    else if(values.name==='')
-    {showToast("Please enter a name!");}
-    else if(values.email==='')
-    {showToast("Please enter a email!");}
-   else  if(values.subject==='')
-    {showToast("Please enter a subject!")}
-   
-   else
-   {
-   
-    const templateParams = {
-    //  name: values.name,
-       name: document.querySelector("#name").value,
-       email: document.querySelector("#email").value,
-       message: document.querySelector("#message").value,
-       subject: document.querySelector("#subject").value,
-     };
-    
-     console.log(templateParams);
+    if (values.message === '') { showToast("Please enter a message!"); }
+    else if (values.name === '') { showToast("Please enter a name!"); }
+    else if (values.email === '') { showToast("Please enter a email!"); }
+    else if (values.subject === '') { showToast("Please enter a subject!") }
+
+    else {
+
+      const templateParams = {
+        //  name: values.name,
+        name: document.querySelector("#name").value,
+        email: document.querySelector("#email").value,
+        message: document.querySelector("#message").value,
+        subject: document.querySelector("#subject").value,
+      };
+
+      console.log(templateParams);
       emailjs
-       .send(
-         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
-         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY,
-         templateParams,
-         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-       )
-       .then(
-         (result) => {
-           toast('Contact form sent successfully !', {
-             position: "top-right",
-             autoClose: 5000,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined,
-             theme: "light",
-             type: "success"
-             });
-           console.log(result.text);
-         },
-         (error) => {
-           toast('Contact form sent successfully !', {
-             position: "top-right",
-             autoClose: 5000,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined,
-             theme: "light",
-             type: "error",
-             });
-           console.log(error.text);
-         },
+        .send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY,
+          templateParams,
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          (result) => {
+            toast('Contact form sent successfully !', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              type: "success"
+            });
+            console.log(result.text);
+          },
+          (error) => {
+            toast('Contact form sent successfully !', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              type: "error",
+            });
+            console.log(error.text);
+          },
 
-         values.message='',
-         values.name='',
-         values.email='',
-         values.subject='',
-         handleChange,
- 
-       );
+          values.message = '',
+          values.name = '',
+          values.email = '',
+          values.subject = '',
+          handleChange,
+
+        );
 
 
-    
-   }
-   
+
+    }
+
   };
 
- 
+
   return (
     <>
       <Head>
@@ -195,17 +189,17 @@ function Contact() {
                     ref={form}
                     method="post"
                   >
-                    <ToastContainer limit={1}/>
+                    <ToastContainer limit={1} />
                     <div className={`${style.cf} row`}>
                       <h2 className={style.ctitle}>Get in Touch</h2>
                       <div className="col-12">
                         <div className={style.fgroup}>
                           <textarea
-                           className={'form-control w-100'}
+                            className={'form-control w-100'}
                             name="message"
                             id="message"
                             cols={30}
-                            rows={9}
+                            rows={5}
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter Message'"
                             placeholder=" Enter Message"
@@ -213,8 +207,17 @@ function Contact() {
                             value={values.message}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // value={userMessage}
-                            // onChange={(e) => setUserMessage(e.value)}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #c86fff',
+                              outline: 'none',
+                              boxShadow: '0 0 5px rgba(200, 134, 255, 0.5)',
+                              resize: 'vertical',
+                            }}
+                          // value={userMessage}
+                          // onChange={(e) => setUserMessage(e.value)}
                           />
                         </div>
                       </div>
@@ -231,14 +234,23 @@ function Contact() {
                             onblur="this.placeholder = 'Enter your name'"
                             placeholder="Enter your name"
                             required
-                            value={values.name} 
+                            value={values.name}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // onChange={(e) => setUserName(e.value)}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #c86fff',
+                              outline: 'none',
+                              boxShadow: '0 0 5px rgba(200, 134, 255, 0.5)',
+
+                            }}
+                          // onChange={(e) => setUserName(e.value)}
                           />
                         </div>
                       </div>
-                     
+
                       { //(errors.name!=='')?showToast(errors.name):errors.name=''
                       }
                       <div className="col-sm-6">
@@ -255,11 +267,20 @@ function Contact() {
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // value={userEmail}
-                            // onChange={(e) => setUserEmail(e.value)}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #c86fff',
+                              outline: 'none',
+                              boxShadow: '0 0 5px rgba(200, 134, 255, 0.5)',
+
+                            }}
+                          // value={userEmail}
+                          // onChange={(e) => setUserEmail(e.value)}
                           />
                         </div>
-                       
+
                       </div>
                       { //(errors.email!=='')?showToast(errors.email):errors.email=''
                       }
@@ -277,19 +298,43 @@ function Contact() {
                             value={values.subject}
                             onChange={handleChange}
                             onBlur={handleBlur}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #c86fff',
+                              outline: 'none',
+                              boxShadow: '0 0 5px rgba(200, 134, 255, 0.5)',
 
-                            // value={userSubject}
-                            // onChange={(e) => setUserSubject(e.value)}
+                            }}
+
+                          // value={userSubject}
+                          // onChange={(e) => setUserSubject(e.value)}
                           />
                         </div>
-                      
+
                       </div>
                       { //(errors.subject!=='')?showToast(errors.subject):errors.subject=''
                       }
                       <div>
-                        <button type="submit" className={style.boxedbtn} onClick={sendEmail}>
+                        <button type="submit"
+                          className={style.boxedbtn}
+                          onClick={sendEmail}
+                          style={{
+                            background: 'linear-gradient(#6474fc, #ec64fc)',
+                            color: '#fff',
+                            fontWeight: 'bold',
+                            borderRadius: '5px',
+                            border: '2px solid #c86fff',
+                            outline: 'none',
+                            boxShadow: '0 0 5px rgba(200, 134, 255, 0.5)',
+                            transition: 'color 0.3s ease-in-out',
+                          }}
+                          onMouseEnter={(e) => (e.target.style.color = 'whitesmoke')}
+                          onMouseLeave={(e) => (e.target.style.color = '#fff')}>
                           Send
                         </button>
+
                       </div>
                     </div>
                   </form>

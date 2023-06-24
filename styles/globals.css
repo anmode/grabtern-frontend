@@ -1088,7 +1088,7 @@ textarea {
 /*Mentor CSS*/
 .card-container{
   margin-bottom: 2rem;
-  width: 24vw;
+  width: 18.6vw;
   height: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
@@ -1111,14 +1111,17 @@ textarea {
   font-size: 16px;
   transition: all .3s ease-in;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 912px) {
   .card-container {
+    display: flex;
     flex-direction: column;
+    max-width:100%;
     width: 100%;
-    height: 100%;
-    gap: 30px;
+    height: auto;
+    gap: 18px;
+    padding: 0;
+    margin: 0;
     text-align: center;
-    margin: auto;
   }
 }
 .mentor-card__info::-webkit-scrollbar-thumb {

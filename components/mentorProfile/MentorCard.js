@@ -31,7 +31,7 @@ export default function MentorCard({
           {/* Mentor Name and Mentor InternAt/Status */}
           <div className="tw-mt-5 tw-flex tw-text-gray-950 tw-flex-col tw-item-center tw-relative tw-mx-[10px]  tw-mb-6 tw-gap-3">
             {/* Mentor Name */}
-            <h1 className="tw-text-[22px] tw-text-[#4338CA]  tw-font-bold tw-text-center ">
+            <h1 className="tw-text-[25px] tw-text-[#4338CA]  tw-font-bold tw-text-center ">
               {name}
             </h1>
             {/* Mentor Current Status and Intern Position */}
@@ -63,7 +63,7 @@ export default function MentorCard({
             {/* About Section Heading */}
             {/* <h1 className="tw-text-[36px] tw-font-normal tw-text-[#4338CA] tw-mb-[12px]"> */}
             <h1 className="tw-font-bold tw-text-[20px] tw-mb-8;">About</h1>
-            <p className="tw-leading-[1.6] tw-text-[#636b6f] tw-text-[13px] tw-font-normal tw-m-0 tw-text-justify">
+            <p className="tw-leading-[1.6] tw-text-[#636b6f] tw-text-[18px] tw-font-normal tw-m-0 tw-text-justify">
               {about}
             </p>
           </div>

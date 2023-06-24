@@ -6,9 +6,6 @@ import ScheduleCard from "./ScheduleCard";
 
 function ScheduleDetails({
   formData,
-  handleChange,
-  isChecked,
-  setIsChecked,
   changeSchedule,
 }) {
   const initialSchedule = {
@@ -34,18 +31,6 @@ function ScheduleDetails({
     });
     changeSchedule(updatedSchedule);
   };
-  const inputs = [
-    {
-      label: "30min 1-1 SESSION PRICE",
-      type: "text",
-      name: "price",
-      className: "mentorFormInput",
-      onChange: handleChange,
-      placeholder: "e.g. ₹51",
-      required: true,
-      value: formData.price,
-    },
-  ];
   const timeInputs = [
     {
       label: "Start Time",
@@ -132,23 +117,6 @@ function ScheduleDetails({
       </div>
       {/* schedule list starts */}
 
-      {/* price inputs start */}
-      {inputs.map((input, index) => (
-        <Input {...input} key={index} />
-      ))}
-      {/* price inputs ends*/}
-
-      {/* terms and consition checkbox start*/}
-      <label>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
-        />
-        &nbsp;We will take 11% of your session price as platform fee. So
-        according to it keep your session price. Thank you!
-      </label>
-      {/* terms and consition checkbox  end*/}
     </>
   );
 }

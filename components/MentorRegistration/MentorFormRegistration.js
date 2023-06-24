@@ -245,8 +245,6 @@ export default function MentorForm() {
                 <ScheduleDetails
                   formData={formData}
                   handleChange={handleChange}
-                  isChecked={isChecked}
-                  setIsChecked={setIsChecked}
                   changeSchedule={changeSchedule}
                 />
               ),

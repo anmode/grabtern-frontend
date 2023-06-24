@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DayInput from "../dateAndTime/DayInput";
 import TimeZoneInput from "../dateAndTime/TimeZoneInput";
 import Input from "./Input";
-import ScheduleCard from "./ScheduleCard";
+import Card from "./Card";
 
 function ScheduleDetails({
   formData,
@@ -107,11 +107,14 @@ function ScheduleDetails({
       {/* schedule list starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">
         {formData.schedules.map((schedule, index) => (
-          <ScheduleCard
+          <Card
             key={index}
-            schedule={schedule}
+            rows = {
+              [{'day': schedule.day, 'timezone' : schedule.timezone},
+              {'starts at': schedule.startsAt, 'ends at' : schedule.endsAt }]
+            }
             index={index}
-            removeSchedule={removeSchedule}
+            removeCard={removeSchedule}
           />
         ))}
       </div>

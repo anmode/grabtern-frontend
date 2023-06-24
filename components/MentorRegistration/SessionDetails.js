@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "./Input";
 
-function SessionDetails() {
+function SessionDetails({formData, changeArray}) {
   const initialSession = {
     name: "",
     type: "",
@@ -13,19 +13,19 @@ function SessionDetails() {
   // handle change function
   const onChange = (e) => {
     const target = e.target;
-    setNewSession({ ...newSchedule, [target.name]: target.value });
+    setNewSession({ ...newSession, [target.name]: target.value });
   };
   // add new session
   const addSession = () => {
-    changeSchedule([...formData.sessions, newSession]);
+    changeArray('sessions', [...formData.sessions, newSession]);
     setNewSession(initialSession);
   };
   // remove session
   const removeSession = (removeIndex) => {
-    const updatedSchedule = formData.session.filter((value, index) => {
+    const updatedSessions = formData.sessions.filter((value, index) => {
       return index != removeIndex;
     });
-    changeSchedule(updatedSession);
+    changeArray('sessions', updatedSessions);
   };
 
   // inputs
@@ -97,7 +97,7 @@ function SessionDetails() {
         <button
           type="button"
           className="mentorFormButton theme-button-color"
-          onClick={addSchedule}
+          onClick={addSession}
         >
           Add Session
         </button>

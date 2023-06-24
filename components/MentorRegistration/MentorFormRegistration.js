@@ -168,8 +168,8 @@ export default function MentorForm() {
     document.querySelector(className).style.display = "none";
   }
 
-  const changeSchedule = (newSchedule) => {
-    setFormData({ ...formData, schedules: newSchedule });
+  const changeArray = (name, newValue) => {
+    setFormData({ ...formData, [name]: newValue });
   };
 
   const prevStep = (e) => {
@@ -242,11 +242,12 @@ export default function MentorForm() {
               3: (
                 <ScheduleDetails
                   formData={formData}
-                  handleChange={handleChange}
-                  changeSchedule={changeSchedule}
+                  changeArray={changeArray}
                 />
               ),
-              4: <SessionDetails />,
+              4: (
+                <SessionDetails formData={formData} changeArray={changeArray} />
+              ),
             }[formStep] || (
               <PersonDetails
                 formData={formData}

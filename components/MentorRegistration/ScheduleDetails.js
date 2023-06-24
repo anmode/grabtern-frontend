@@ -6,7 +6,7 @@ import ScheduleCard from "./ScheduleCard";
 
 function ScheduleDetails({
   formData,
-  changeSchedule,
+  changeArray,
 }) {
   const initialSchedule = {
     day: "monday",
@@ -22,14 +22,14 @@ function ScheduleDetails({
   };
   // adding schedule function
   const addSchedule = () => {
-    changeSchedule([...formData.schedules, newSchedule]);
+    changeArray('schedules', [...formData.schedules, newSchedule]);
     setNewSchedule(initialSchedule);
   };
   const removeSchedule = (removeIndex) => {
     const updatedSchedule = formData.schedules.filter((value, index) => {
       return index != removeIndex;
     });
-    changeSchedule(updatedSchedule);
+    changeArray('schedules', updatedSchedule);
   };
   const timeInputs = [
     {

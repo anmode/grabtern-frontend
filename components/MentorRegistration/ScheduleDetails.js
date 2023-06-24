@@ -4,10 +4,7 @@ import TimeZoneInput from "../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 
-function ScheduleDetails({
-  formData,
-  changeArray,
-}) {
+function ScheduleDetails({ formData, changeArray }) {
   const initialSchedule = {
     day: "monday",
     timezone: "(GMT-11:00) Pacific/Midway",
@@ -22,14 +19,14 @@ function ScheduleDetails({
   };
   // adding schedule function
   const addSchedule = () => {
-    changeArray('schedules', [...formData.schedules, newSchedule]);
+    changeArray("schedules", [...formData.schedules, newSchedule]);
     setNewSchedule(initialSchedule);
   };
   const removeSchedule = (removeIndex) => {
     const updatedSchedule = formData.schedules.filter((value, index) => {
       return index != removeIndex;
     });
-    changeArray('schedules', updatedSchedule);
+    changeArray("schedules", updatedSchedule);
   };
   const timeInputs = [
     {
@@ -109,17 +106,16 @@ function ScheduleDetails({
         {formData.schedules.map((schedule, index) => (
           <Card
             key={index}
-            rows = {
-              [{'day': schedule.day, 'timezone' : schedule.timezone},
-              {'starts at': schedule.startsAt, 'ends at' : schedule.endsAt }]
-            }
+            rows={[
+              { day: schedule.day, timezone: schedule.timezone },
+              { "starts at": schedule.startsAt, "ends at": schedule.endsAt },
+            ]}
             index={index}
             removeCard={removeSchedule}
           />
         ))}
       </div>
       {/* schedule list starts */}
-
     </>
   );
 }

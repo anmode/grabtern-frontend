@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Card from "./Card";
 import Input from "./Input";
 
 function SessionDetails({ formData, changeArray }) {
@@ -104,6 +105,23 @@ function SessionDetails({ formData, changeArray }) {
         </button>
       </div>
       {/* add session button ends */}
+
+      {/* session card starts */}
+      <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">
+        {formData.sessions.map((session, index) => (
+          <Card
+            key={index}
+            rows={[
+              { name: session.name, type: session.type },
+              { duration: session.duration, price: session.price },
+              { description: session.description },
+            ]}
+            index={index}
+            removeCard={removeSession}
+          />
+        ))}
+      </div>
+      {/* session card ends */}
     </>
   );
 }

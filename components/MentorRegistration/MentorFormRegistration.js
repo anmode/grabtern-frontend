@@ -7,7 +7,7 @@ import Overlay from "../Overlay";
 import { ToastContainer, toast } from "react-toastify";
 import PersonDetails from "./PersonDetails";
 import ContactDetails from "./ContactDetails";
-import SessionDetails from "./SessionDetails";
+import ScheduleDetails from "./ScheduleDetails";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
@@ -242,7 +242,7 @@ export default function MentorForm() {
                 />
               ),
               3: (
-                <SessionDetails
+                <ScheduleDetails
                   formData={formData}
                   handleChange={handleChange}
                   isChecked={isChecked}

@@ -4,7 +4,7 @@ import TimeZoneInput from "../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import ScheduleCard from "./ScheduleCard";
 
-function SessionDetails({
+function ScheduleDetails({
   formData,
   handleChange,
   isChecked,
@@ -153,4 +153,4 @@ function SessionDetails({
   );
 }
 
-export default SessionDetails;
+export default ScheduleDetails;

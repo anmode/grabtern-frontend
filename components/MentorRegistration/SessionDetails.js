@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "./Input";
 
-function SessionDetails({formData, changeArray}) {
+function SessionDetails({ formData, changeArray }) {
   const initialSession = {
     name: "",
     type: "",
@@ -17,7 +17,7 @@ function SessionDetails({formData, changeArray}) {
   };
   // add new session
   const addSession = () => {
-    changeArray('sessions', [...formData.sessions, newSession]);
+    changeArray("sessions", [...formData.sessions, newSession]);
     setNewSession(initialSession);
   };
   // remove session
@@ -25,7 +25,7 @@ function SessionDetails({formData, changeArray}) {
     const updatedSessions = formData.sessions.filter((value, index) => {
       return index != removeIndex;
     });
-    changeArray('sessions', updatedSessions);
+    changeArray("sessions", updatedSessions);
   };
 
   // inputs
@@ -71,6 +71,7 @@ function SessionDetails({formData, changeArray}) {
       value: newSession.price,
     },
     {
+      divClassName: "tw-col-span-2",
       label: "Session Description",
       type: "text",
       name: "description",

@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import PersonDetails from "./PersonDetails";
 import ContactDetails from "./ContactDetails";
 import ScheduleDetails from "./ScheduleDetails";
+import SessionDetails from "./SessionDetails";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
@@ -41,18 +42,7 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    // bookSession: [
-    //   {
-    //     sessionName: "1 on 1 Mentorship",
-    //     sessionDescription:
-    //       "Achieve your goals faster with customized road map",
-    //     sessionType: "video-meeting",
-    //     sessionMeetingDuration: "30",
-    //     // peopleAttend: "",
-    //     priceSession: "",
-    //   },
-    // ],
-    price: "",
+    sessions: [],
     schedules: [],
     description: "",
     mentorImg: {
@@ -221,6 +211,14 @@ export default function MentorForm() {
             >
               ✔
             </div>
+            <div className="trackerLine"></div>
+            <div
+              className={`trackerStep ${
+                formStep == 4 ? "active" : formStep > 3 ? "done" : ""
+              }`}
+            >
+              ✔
+            </div>
           </div>
           {/* steps tracker end */}
           {/* form sections start */}
@@ -248,6 +246,7 @@ export default function MentorForm() {
                   changeSchedule={changeSchedule}
                 />
               ),
+              4: <SessionDetails />,
             }[formStep] || (
               <PersonDetails
                 formData={formData}
@@ -277,9 +276,9 @@ export default function MentorForm() {
             <button
               type="submit"
               className="mentorFormButton theme-button-color"
-              onClick={formStep == 3 ? handleSubmit : nextStep}
+              onClick={formStep == 4 ? handleSubmit : nextStep}
             >
-              {formStep == 3 ? "Register" : "Next"}
+              {formStep == 4 ? "Register" : "Next"}
             </button>
 
             {formStep != 1 && (

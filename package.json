@@ -13,6 +13,7 @@
     "@emailjs/browser": "^3.10.0",
     "antd": "^5.4.5",
     "axios": "^1.2.3",
+    "formik": "^2.4.2",
     "jquery": "^3.6.3",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
@@ -30,7 +31,8 @@
     "redis": "^4.6.5",
     "sharp": "^0.32.1",
     "styled-components": "^5.3.10",
-    "swr": "^2.1.5"
+    "swr": "^2.1.5",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

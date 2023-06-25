@@ -102,7 +102,7 @@ export default [
       , bookmarked: false ,
       tags: ["Blockchain","upcoming"]},
       {
-        hackathonImage: "/assets/img/hackathons/q5_2_1173x720.PNG",
+        hackathonImage: "/assets/img/hackathons/q5_2_1173x720.png",
         hackathonImageAlt: "Encode Summer Hackathon",
         hackathonLink: "https://www.eventbrite.com/e/encode-summer-hackathon-sponsored-by-the-solana-foundation-launch-event-tickets-616408252677?aff=ebdssbdestsearch&keep_tld=1",
         hackathonTitle: "Encode Summer Hackathon",

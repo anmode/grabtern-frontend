@@ -139,22 +139,26 @@ function Index({ mentorDetail }) {
                       setModalPopup(true);
                       setSelectedSession(session);
                     }}
-                  // handleBookSession={() => handleClick(session)}
+                    // handleBookSession={() => handleClick(session)}
                   />
                 ))}
             </div>
-            <div>
-            </div>
+            <div></div>
             {/* <Testimonial testimonialUserName={mentorDetail.testimonials.name}
             testimonialUserHeadline={mentorDetail.testimonials.headline}
             testimonialUserImage={mentorDetail.testimonials.image}
             testimonialRate={mentorDetail.testimonials.rate}
-            testimonialDescription={mentorDetail.testimonials.description} /> */
-            }
+            testimonialDescription={mentorDetail.testimonials.description} /> */}
           </div>
           <div className="tw-w-22 tw-h-auto tw-flex tw-flex-wrap ">
             {/* {for testing purpose}  */}
-          <Testimonial testimonialUserName="test_user" testimonialUserHeadline="test headline" testimonialRate="4" testimonialUserImage="/assets/img/icon/no-profile-picture.webp" testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50" />
+            <Testimonial
+              testimonialUserName="test_user"
+              testimonialUserHeadline="test headline"
+              testimonialRate="4"
+              testimonialUserImage="/assets/img/icon/no-profile-picture.webp"
+              testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50"
+            />
 
             {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
           </div>

@@ -132,7 +132,12 @@ console.log(HackathonsData);
     );
     if(tagFilter==='All')
     {
-return true;
+      const titleMatch = hackathon.hackathonTitle
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return (titleMatch && true);
+
     }
     else{
     console.log(tagFilter);

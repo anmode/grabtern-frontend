@@ -1100,30 +1100,10 @@ textarea {
   color: black;
 }
 .lower-container{
-  padding: 18px;
-  padding-top: 38px;
+  padding-top: 35px;
   text-align: center;
 }
 
-.lower-container .btn{
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 16px;
-  transition: all .3s ease-in;
-}
-@media only screen and (max-width: 912px) {
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    max-width:100%;
-    width: 100%;
-    height: auto;
-    gap: 18px;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-  }
-}
 .mentor-card__info::-webkit-scrollbar-thumb {
   background-color: transparent; /* Set the color of the scrollbar thumb */
 }
@@ -1193,14 +1173,11 @@ textarea {
     border-radius: 10px;
   }
 
-  .mentor-card {
+  .card-container {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    gap: 25px;
-    padding: 20px;
     text-align: center;
-    margin: auto;
   }
 
   .mentor-card__book-session {
@@ -1220,16 +1197,37 @@ textarea {
 }
 
 @media only screen and (min-width: 1080px) and (max-width: 1200px) {
-  .mentor-card {
+  .card-container {
     width: 30vw;
     height: 60vh;
   }
 }
 
-@media only screen and (max-width: 1080px) and (min-width: 820px) {
-  .mentor-card {
+@media only screen and (max-width: 912px) and (min-width: 820px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
     width: 45vw;
-    height: 55vh;
+    height: 23vh;
+  }
+}
+
+@media only screen and (max-width: 1080px) and (min-width: 913px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+    height: 50vh;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 819px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 100%;
+    text-align: center;
   }
 }
 

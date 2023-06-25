@@ -9,7 +9,7 @@ function Testimonial({
   testimonialDescription,
 }) {
   return (
-    <div className="box tw-flex tw-flex-col-reverse tw-border-dashed tw-shadow-2xl tw-p-5" >
+    <div className="box tw-flex tw-flex-col-reverse tw-border-dashed tw-shadow-2xl tw-p-5">
       <p>
         {testimonialDescription.split(" ").length < 100
           ? testimonialDescription
@@ -17,17 +17,19 @@ function Testimonial({
       </p>
       <div className="content">
         <div className="image">
-        { <Image
-            width={75}
-            height={75}
-            className="tw-w-4 tw-h-auto"
-            src={testimonialUserImage}
-            alt="testimonial-profile"
-          /> }
+          {
+            <Image
+              width={75}
+              height={75}
+              className="tw-w-4 tw-h-auto"
+              src={testimonialUserImage}
+              alt="testimonial-profile"
+            />
+          }
         </div>
         <div className="info">
           <div className="name tw-font-bold">{testimonialUserName}</div>
-          <div className="job tw-font-semibold" >{testimonialUserHeadline}</div>
+          <div className="job tw-font-semibold">{testimonialUserHeadline}</div>
           <div className="stars">
             {Array(Math.floor(testimonialRate))
               .fill("")
@@ -37,7 +39,7 @@ function Testimonial({
 
             {testimonialRate.toString().includes(".") ? (
               <i className="fas fa-star-half"></i>
-              ) : null}
+            ) : null}
           </div>
         </div>
       </div>

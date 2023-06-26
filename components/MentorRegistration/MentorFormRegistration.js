@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import SimpleReactValidator from "simple-react-validator";
 
 import { useRouter } from "next/router";
 import Overlay from "../Overlay";
@@ -57,7 +58,7 @@ export default function MentorForm() {
   const [formData, setFormData] = useState(InitialFormState);
 
   const handleChange = (e) => {
-    console.log(formData);
+    // console.log(formData);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -171,21 +172,46 @@ export default function MentorForm() {
   const changeArray = (name, newValue) => {
     setFormData({ ...formData, [name]: newValue });
   };
+  // for validator
+  const validator = useRef(new SimpleReactValidator());
+  const [, forceUpdate] = useState();
 
+  // submit function
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (validator.current.allValid()) {
+      validator.current.hideMessages();
+      handleSubmit(e);
+      forceUpdate(1);
+    } else {
+      validator.current.showMessages();
+      forceUpdate(2);
+    }
+  };
+
+  // for next and previous buttons
   const prevStep = (e) => {
     e.preventDefault();
     setFormStep(formStep - 1);
   };
+
   const nextStep = (e) => {
     e.preventDefault();
-    setFormStep(formStep + 1);
+    if (validator.current.allValid()) {
+      validator.current.hideMessages();
+      setFormStep(formStep + 1);
+      forceUpdate(1);
+    } else {
+      validator.current.showMessages();
+      forceUpdate(2);
+    }
   };
   return (
     <div className="mentorFormRegisration">
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
-        <form className="mentorForm" onSubmit={handleSubmit}>
+        <form className="mentorForm" onSubmit={onSubmit}>
           {/* steps tracker start */}
           <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
             <div
@@ -230,6 +256,7 @@ export default function MentorForm() {
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
                   handleCallbackResponse={handleCallbackResponse}
+                  validator={validator}
                 />
               ),
               2: (
@@ -237,16 +264,22 @@ export default function MentorForm() {
                   formData={formData}
                   handleChange={handleChange}
                   handleSocialChange={handleSocialChange}
+                  validator={validator}
                 />
               ),
               3: (
                 <ScheduleDetails
                   formData={formData}
                   changeArray={changeArray}
+                  validator={validator}
                 />
               ),
               4: (
-                <SessionDetails formData={formData} changeArray={changeArray} />
+                <SessionDetails
+                  formData={formData}
+                  changeArray={changeArray}
+                  validator={validator}
+                />
               ),
             }[formStep] || (
               <PersonDetails
@@ -277,7 +310,7 @@ export default function MentorForm() {
             <button
               type="submit"
               className="mentorFormButton theme-button-color"
-              onClick={formStep == 4 ? handleSubmit : nextStep}
+              onClick={formStep == 4 ? onSubmit : nextStep}
             >
               {formStep == 4 ? "Register" : "Next"}
             </button>

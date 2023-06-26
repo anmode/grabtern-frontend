@@ -653,6 +653,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1px;
+  position: relative;
 }
 
 .mentorForm div .label {
@@ -676,6 +677,17 @@ select {
   background-color: transparent;
 }
 
+.srv-validation-message {
+  color: red;
+  font-size: 1rem;
+  position: absolute;
+  top: 100%;
+}
+.srv-validation-message ~ input,
+.srv-validation-message ~ textarea,
+.srv-validation-message ~ select {
+  border: 1px solid red !important;
+}
 .scheduleCard div * {
   text-transform: capitalize;
   font-size: small !important;

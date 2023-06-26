@@ -523,6 +523,8 @@ a {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
   overflow: hidden;
+  height: 460px;
+  /* background-color: red; */
 }
 
 .testimonialsList .box:hover {

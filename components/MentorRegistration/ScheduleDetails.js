@@ -5,7 +5,7 @@ import TimeZoneInput from "../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 
-function ScheduleDetails({ formData, changeArray }) {
+function ScheduleDetails({ formData, changeArray, validator }) {
   const initialSchedule = {
     day: "monday",
     timezone: "(GMT-11:00) Pacific/Midway",
@@ -53,7 +53,7 @@ function ScheduleDetails({ formData, changeArray }) {
       required: true,
       value: newSchedule.startsAt,
       validator: scheduleValidator,
-      validation: ['required', {regex: '([01]?[0-9]|2[0-3]):[0-5][0-9]'}],
+      validation: ["required", { regex: "([01]?[0-9]|2[0-3]):[0-5][0-9]" }],
     },
     {
       label: "End Time",
@@ -65,7 +65,7 @@ function ScheduleDetails({ formData, changeArray }) {
       required: true,
       value: newSchedule.endsAt,
       validator: scheduleValidator,
-      validation: ['required', {regex: '([01]?[0-9]|2[0-3]):[0-5][0-9]'}],
+      validation: ["required", { regex: "([01]?[0-9]|2[0-3]):[0-5][0-9]" }],
     },
   ];
   return (
@@ -118,6 +118,15 @@ function ScheduleDetails({ formData, changeArray }) {
         </button>
       </div>
       {/* add schedule button ends */}
+
+      {/* error if it does not have any schedule */}
+        {validator.current.message(
+          "schedules",
+          formData.schedules,
+          "required|min:1",
+          { className: "tw-relative tw-text-red-600 tw-text-2xl" }
+        )}
+      {/* error if it does not have any schedule */}
 
       {/* schedule list starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

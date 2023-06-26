@@ -187,7 +187,7 @@ export default function MentorForm() {
       validator.current.showMessages();
       forceUpdate(2);
     }
-  }
+  };
 
   // for next and previous buttons
   const prevStep = (e) => {
@@ -204,7 +204,7 @@ export default function MentorForm() {
     } else {
       validator.current.showMessages();
       forceUpdate(2);
-    }  
+    }
   };
   return (
     <div className="mentorFormRegisration">
@@ -271,10 +271,15 @@ export default function MentorForm() {
                 <ScheduleDetails
                   formData={formData}
                   changeArray={changeArray}
+                  validator={validator}
                 />
               ),
               4: (
-                <SessionDetails formData={formData} changeArray={changeArray} />
+                <SessionDetails
+                  formData={formData}
+                  changeArray={changeArray}
+                  validator={validator}
+                />
               ),
             }[formStep] || (
               <PersonDetails
@@ -305,7 +310,7 @@ export default function MentorForm() {
             <button
               type="submit"
               className="mentorFormButton theme-button-color"
-              onClick={formStep == 4 ? handleSubmit : nextStep}
+              onClick={formStep == 4 ? onSubmit : nextStep}
             >
               {formStep == 4 ? "Register" : "Next"}
             </button>

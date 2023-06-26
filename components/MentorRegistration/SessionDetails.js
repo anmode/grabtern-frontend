@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import Card from "./Card";
 import Input from "./Input";
 
-function SessionDetails({ formData, changeArray }) {
+function SessionDetails({ formData, changeArray, validator }) {
   const initialSession = {
     name: "",
     type: "",
@@ -128,6 +128,15 @@ function SessionDetails({ formData, changeArray }) {
         </button>
       </div>
       {/* add session button ends */}
+
+      {/* error if it does not have any session */}
+      {validator.current.message(
+        "sessions",
+        formData.sessions,
+        "required|min:1",
+        { className: "tw-relative tw-text-red-600 tw-text-2xl" }
+      )}
+      {/* error if it does not have any session */}
 
       {/* session card starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

@@ -19,7 +19,6 @@ function mentorLogin() {
   const [error, setError] = useState("");
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -39,10 +38,6 @@ function mentorLogin() {
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
-  };
-
-  const toggleConPasswordVisibility = () => {
-    setConIsPasswordVisible((prevState) => !prevState);
   };
 
   const handleSubmit = async (e) => {
@@ -147,7 +142,7 @@ function mentorLogin() {
             <div className="form-input">
               <label htmlFor="password">Password</label>
               <input
-                type={isPasswordVisible ? 'text' : 'password'}
+                type={isPasswordVisible ? "text" : "password"}
                 name="password"
                 placeholder="Password"
                 onChange={handleChange}
@@ -157,31 +152,7 @@ function mentorLogin() {
                 className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
                 onClick={togglePasswordVisibility}
               >
-                {isPasswordVisible ? (
-                  <VisibillityOff />
-                ) : (
-                  <Visibillity />
-                )}
-              </div>
-            </div>
-            <div className="form-input">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <input className="tw-pr-16"
-                type={isConPasswordVisible ? "text" : "password"}
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                onChange={handleChange}
-                value={formData.confirmPassword}
-              />
-              <div
-                className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-                onClick={toggleConPasswordVisibility}
-              >
-                {isConPasswordVisible ? (
-                  <VisibillityOff />
-                ) : (
-                  <Visibillity />
-                )}
+                {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
               </div>
             </div>
             <div className="form-input">

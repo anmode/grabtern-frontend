@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
 
-
 function useRedirectIfAuthenticated() {
   const router = useRouter();
 
@@ -127,7 +126,7 @@ function Register({ handleLogPageToggle }) {
               Password
             </label>
             <input
-              type={isPasswordVisible ? 'text' : 'password'}
+              type={isPasswordVisible ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={handleChange}
@@ -138,11 +137,7 @@ function Register({ handleLogPageToggle }) {
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
               onClick={togglePasswordVisibility}
             >
-              {isPasswordVisible ? (
-                <VisibillityOff />
-              ) : (
-                <Visibillity />
-              )}
+              {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
           </div>
 
@@ -154,7 +149,7 @@ function Register({ handleLogPageToggle }) {
               Confirm Password
             </label>
             <input
-              type={isConPasswordVisible ? 'text' : 'password'}
+              type={isConPasswordVisible ? "text" : "password"}
               name="confirmPassword"
               placeholder="Confirm Password"
               onChange={handleChange}
@@ -165,11 +160,7 @@ function Register({ handleLogPageToggle }) {
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
               onClick={toggleConPasswordVisibility}
             >
-              {isConPasswordVisible ? (
-                <VisibillityOff />
-              ) : (
-                <Visibillity />
-              )}
+              {isConPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
           </div>
           {verificationSent && (

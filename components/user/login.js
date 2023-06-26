@@ -11,7 +11,6 @@ import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff";
 
 function Login({ handleLogPageToggle }) {
-
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [login, setLogin] = useState(false);
@@ -30,7 +29,6 @@ function Login({ handleLogPageToggle }) {
   };
 
   useEffect(() => {
-
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
@@ -167,12 +165,14 @@ function Login({ handleLogPageToggle }) {
           </div>
 
           <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
-            <label for="name" className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
+            <label
+              for="name"
+              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Password
             </label>
             <input
-              type={isPasswordVisible ? 'text' : 'password'}
+              type={isPasswordVisible ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={handleChange}
@@ -184,11 +184,7 @@ function Login({ handleLogPageToggle }) {
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
               onClick={togglePasswordVisibility}
             >
-              {isPasswordVisible ? (
-                <VisibillityOff />
-              ) : (
-                <Visibillity />
-              )}
+              {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
           </div>
 
@@ -203,7 +199,9 @@ function Login({ handleLogPageToggle }) {
               }}
               className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
               onClick={addToast}
-            >Login</button>
+            >
+              Login
+            </button>
           </div>
 
           {error && <div style={{ color: "red" }}>{error}</div>}

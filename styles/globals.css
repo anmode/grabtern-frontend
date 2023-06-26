@@ -527,26 +527,32 @@ a {
 
 .testimonialsList .box:hover {
   transform: translateY(-1%);
+  transform: scale(1.05);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.27);
 }
 
 .testimonialsList .box i.quote {
-  font-size: 20px;
-  color: #845ec2;
-  margin-bottom: 30px;
+  font-size: 35px;
+  color: rgb(79 70 229 ) !important;
+  margin-bottom: 10px;
 }
 
 .testimonialsList .box .content {
-  display: flex;
+  /* display: flex; */
   align-items: center;
+  
 
   /* justify-content: space-between; */
   padding-top: 27px;
 }
-
+.testimonialsList .box .info {
+  /* background-color: #005fa3; */
+  margin-left: 95px;
+}
 .testimonialsList .box .info .name {
   font-size: 17px;
   font-weight: 600;
+
 }
 
 .testimonialsList .box .info .job {
@@ -566,9 +572,10 @@ a {
 .testimonialsList .box .content .image {
   width: 75px;
   height: 75px;
-  border: 3px solid #845ec2;
+  /* border: 3px solid #845ec2; */
   border-radius: 50%;
   margin-right: 15px;
+  margin-top: -75px;
 }
 
 .box .content .image img {
@@ -581,7 +588,88 @@ a {
 
 .testimonialsList .owl-nav {
   display: block;
+  
 }
+
+.owl-carousel .owl-nav .owl-next,
+.owl-carousel .owl-nav .owl-prev {
+  color: black;
+  height: 40px;
+  /* height: fit-content; */
+  /* top: -100px; */
+}
+
+.owl-nav button.owl-prev{
+  left: 92.5%;
+  overflow: hidden;
+  top: -80px;
+  margin-bottom: 50px;
+  height: 40px;
+  margin-top: 10px;
+  background-color: #005fa3;
+}
+.owl-nav button.owl-next{
+  right: 0.5%;
+  top: -80px;
+  margin-bottom: 50px;
+  background-color: #005fa3;
+  overflow: hidden;
+  height: 40px;
+  margin-top: 10px;
+
+}
+.owl-nav button.owl-prev span {
+  font-size: 100px;
+  /* margin-left: 96.5%; */
+  font-size: 45px;
+  color: gray;
+  /* background-color: red; */
+  padding-top: -10px;
+  margin-top: -10px;
+  width: 50px;
+  padding-left: 15px;
+  height: 40px;
+  align-items: center;
+  padding-right: 15px;
+  border-radius: 10px;
+}
+.owl-nav button.owl-next span {
+  font-size: 45px;
+  /* margin-right: 2.5%; */
+  color: gray;
+  margin-top: 100px;
+  /* background-color: red; */
+  border-radius: 10px;
+  width: 40px;
+  padding-left: 15px;
+  align-items: center;
+  z-index: 10;
+  padding-right: 15px;
+}
+.owl-nav button.owl-next span:hover{
+  
+  --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+  
+}
+.owl-nav button.owl-prev span:hover{
+ 
+  --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+  
+}
+.owl-nav button.owl-prev span:hover {
+  --tw-text-opacity: 1;
+    color: rgb(79 70 229 ) !important;
+}
+.owl-nav button.owl-next span:hover {
+  color: rgb(79 70 229 ) !important;
+}
+/* .owl-carousel .owl-nav button.owl-next{
+  left: 100px;
+  background-color: #005fa3;
+  color: red;
+} */
 
 .mentorFormRegisration {
   margin-top: 118px;

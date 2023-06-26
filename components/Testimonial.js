@@ -10,23 +10,9 @@ function Testimonial({
 }) {
   return (
     <div className="box tw-flex tw-flex-col-reverse tw-border-dashed tw-shadow-2xl tw-p-5">
-      <p>
-        {testimonialDescription.split(" ").length < 100
-          ? testimonialDescription
-          : testimonialDescription.split(" ").slice(0, 100).join(" ") + "..."}
-      </p>
+      
       <div className="content">
-        <div className="image">
-          {
-            <Image
-              width={75}
-              height={75}
-              className="tw-w-4 tw-h-auto"
-              src={testimonialUserImage}
-              alt="testimonial-profile"
-            />
-          }
-        </div>
+        
         <div className="info">
           <div className="name tw-font-bold">{testimonialUserName}</div>
           <div className="job tw-font-semibold">{testimonialUserHeadline}</div>
@@ -42,7 +28,23 @@ function Testimonial({
             ) : null}
           </div>
         </div>
+        <div className="image">
+          {
+            <Image
+              width={75}
+              height={75}
+              className="tw-w-4 tw-h-auto"
+              src={testimonialUserImage}
+              alt="testimonial-profile"
+            />
+          }
+        </div>
       </div>
+      <p>
+        {testimonialDescription.split(" ").length < 100
+          ? testimonialDescription
+          : testimonialDescription.split(" ").slice(0, 100).join(" ") + "..."}
+      </p>
       <i className="fas fa-quote-left quote"></i>
     </div>
   );

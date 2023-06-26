@@ -102,7 +102,7 @@ export default [
       , bookmarked: false ,
       tags: ["Blockchain","upcoming"]},
       {
-        hackathonImage: "/assets/img/hackathons/q5_2_1173x720.png",
+        hackathonImage: "/assets/img/hackathons/q5_2_1173x720.webp",
         hackathonImageAlt: "Encode Summer Hackathon",
         hackathonLink: "https://www.eventbrite.com/e/encode-summer-hackathon-sponsored-by-the-solana-foundation-launch-event-tickets-616408252677?aff=ebdssbdestsearch&keep_tld=1",
         hackathonTitle: "Encode Summer Hackathon",
@@ -110,7 +110,7 @@ export default [
         , bookmarked: false ,
         tags: ["Blockchain","upcoming"]},
         {
-          hackathonImage: "/assets/img/hackathons/p_1178x720.png",
+          hackathonImage: "/assets/img/hackathons/p_1178x720.webp",
           hackathonImageAlt: "BUIDL Bitcoin Hackathon",
           hackathonLink: "https://www.eventbrite.com/e/internet-computer-buidl-bitcoin-hackathon-finale-and-prizegiving-tickets-595801286687?aff=ebdssbdestsearch&keep_tld=1",
           hackathonTitle: "BUIDL Bitcoin Hackathon",

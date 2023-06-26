@@ -20,18 +20,18 @@ function ScheduleDetails({ formData, changeArray }) {
   };
 
   // for validator
-  const sessionValidator = useRef(new SimpleReactValidator());
+  const scheduleValidator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
 
   // adding schedule function
   const addSchedule = () => {
-    if (sessionValidator.current.allValid()) {
-      sessionValidator.current.hideMessages();
+    if (scheduleValidator.current.allValid()) {
+      scheduleValidator.current.hideMessages();
       changeArray("schedules", [...formData.schedules, newSchedule]);
       setNewSchedule(initialSchedule);
       forceUpdate(1);
     } else {
-      sessionValidator.current.showMessages();
+      scheduleValidator.current.showMessages();
       forceUpdate(2);
     }
   };
@@ -52,7 +52,7 @@ function ScheduleDetails({ formData, changeArray }) {
       placeholder: "12:30 PM",
       required: true,
       value: newSchedule.startsAt,
-      validator: sessionValidator,
+      validator: scheduleValidator,
       validation: ['required', {regex: '([01]?[0-9]|2[0-3]):[0-5][0-9]'}],
     },
     {
@@ -64,7 +64,7 @@ function ScheduleDetails({ formData, changeArray }) {
       placeholder: "2:30 PM",
       required: true,
       value: newSchedule.endsAt,
-      validator: sessionValidator,
+      validator: scheduleValidator,
       validation: ['required', {regex: '([01]?[0-9]|2[0-3]):[0-5][0-9]'}],
     },
   ];

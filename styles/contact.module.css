@@ -37,7 +37,7 @@
   margin-bottom: 20px;
 }
 
-.ctitle:hover {
+/* .ctitle:hover {
   animation: text-glow 1s ease-in-out infinite;
 }
 
@@ -53,7 +53,7 @@
   100% {
     text-shadow: 0 0 5px #845ec2;
   }
-}
+} */
 
 .contactinfo {
   color: whitesmoke;

@@ -1,42 +1,23 @@
+//components/mentor.js
 import React from "react";
 
 const MentorCard = ({ mentor }) => {
   return (
-    <div className="mentor-card shadow-lg max-w-2xl transform transition duration-300 hover:scale-105 m-4">
-      <img
-        src={mentor.mentorImg}
-        alt={mentor.name}
-        className="h-80 rounded-full w-80"
-      />
-      <div className="mentor-card__info p-3">
-        <h1 className="text-center font-semibold text-3xl">{mentor.name}</h1>
-        <p className="mentor-card__intern text-center text-xl">
-          <b>Intern at: </b>
-          {mentor.internAt}
-        </p>
-        <div className="mentor-card__social flex justify-between">
-          <a href={`${mentor.social.linkedin}`} target="_blank">
-            <i class="fab fa-linkedin text-[#0077b5] text-4xl hover:text-blue-700"></i>
-          </a>
-          <a href={`${mentor.social.twitter}`} target="_blank">
-            <i class="fab fa-twitter text-[#1DA1F2] text-4xl hover:text-blue-700"></i>
-          </a>
-        </div>
-        <div className="flex justify-center">
-          <a
-            href={mentor.bookedSession}
-            className="mentor-card__booked-session text-2xl"
-          >
-            Booked Sessions: {mentor.bookedSession}
-          </a>
-        </div>
-        <div className="flex justify-center items-center my-2 transition-all duration-300">
-          <button className="bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">
-            Book Session
-          </button>
-        </div>
+        <div className="card-container tw-flex flex-lg-column tw-justify-center align-center tw-rounded-2xl tw-gap-5">
+         <div className="upper-container tw-bg-[#845ec2] tw-h-1/3 tw-w-full tw-rounded-t-2xl">
+            <div className="tw-w-full tw-h-full d-flex justify-content-center position-relative tw-top-20">
+               <img className='tw-w-48 tw-h-48 tw-rounded-full' src={mentor.mentorImg} alt={mentor.name}/>
+            </div>
+         </div>
+            <div className="lower-container tw-h-2/3 tw-bg-white tw-rounded-2xl">
+              <h1 className="tw-font-bold tw-text-4xl text-center tw-py-12">{mentor.name}</h1>
+              <div className="tw-flex tw-justify-center">
+                <p className="tw-text-center tw-font-medium tw-text-3xl">
+                  Interned at: {mentor.internAt}
+                </p>
+              </div>
+          </div>
       </div>
-    </div>
   );
 };
 export default MentorCard;

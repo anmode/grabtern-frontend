@@ -1,33 +1,32 @@
 import React, { useRef } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import emailjs, { send } from "@emailjs/browser";
 import dynamic from "next/dynamic";
 import style from "../styles/contact.module.css";
 import Head from "next/head";
-import * as yup from 'yup';
-import { useFormik } from "formik"
+import * as yup from "yup";
+import { useFormik } from "formik";
 import { error } from "jquery";
-
 
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
-
-
 
 function Contact() {
   const form = useRef(null);
   //create a schema for a form
   const validForm = yup.object().shape({
     name: yup.string().required("Please enter your name!"),
-    email: yup.string().email("Please enter a valid Email!").required("Please enter a email"),
+    email: yup
+      .string()
+      .email("Please enter a valid Email!")
+      .required("Please enter a email"),
     message: yup.string().required("Please enter a message!"),
     subject: yup.string().required("Please enter a subject!"),
   });
 
   //check value of forms
-
   const { values, touched, errors, action, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       message: "",
@@ -63,14 +62,12 @@ function Contact() {
     console.log(errors);
 
     //console.log("mail called");
-
     if (values.message === '') { showToast("Please enter a message!"); }
     else if (values.name === '') { showToast("Please enter a name!"); }
     else if (values.email === '') { showToast("Please enter a email!"); }
     else if (values.subject === '') { showToast("Please enter a subject!") }
 
     else {
-
       const templateParams = {
         //  name: values.name,
         name: document.querySelector("#name").value,
@@ -130,7 +127,6 @@ function Contact() {
     }
 
   };
-
 
   return (
     <>
@@ -221,12 +217,13 @@ function Contact() {
                           />
                         </div>
                       </div>
-                      { //(errors.message!=='')?showToast(errors.message):errors.message=''
+                      {
+                        //(errors.message!=='')?showToast(errors.message):errors.message=''
                       }
                       <div className="col-sm-6">
                         <div className={style.fgroup}>
                           <input
-                            className={'form-control valid'}
+                            className={"form-control valid"}
                             name="name"
                             id="name"
                             type="text"
@@ -252,11 +249,12 @@ function Contact() {
                       </div>
 
                       { //(errors.name!=='')?showToast(errors.name):errors.name=''
+
                       }
                       <div className="col-sm-6">
                         <div className={style.fgroup}>
                           <input
-                            className={'form-control valid'}
+                            className={"form-control valid"}
                             name="email"
                             id="email"
                             type="email"
@@ -282,12 +280,13 @@ function Contact() {
                         </div>
 
                       </div>
-                      { //(errors.email!=='')?showToast(errors.email):errors.email=''
+                      {
+                        //(errors.email!=='')?showToast(errors.email):errors.email=''
                       }
                       <div className="col-12">
                         <div className={style.fgroup}>
                           <input
-                            className={'form-control valid'}
+                            className={"form-control valid"}
                             name="subject"
                             id="subject"
                             type="text"
@@ -314,7 +313,8 @@ function Contact() {
                         </div>
 
                       </div>
-                      { //(errors.subject!=='')?showToast(errors.subject):errors.subject=''
+                      {
+                        //(errors.subject!=='')?showToast(errors.subject):errors.subject=''
                       }
                       <div>
                         <button type="submit"

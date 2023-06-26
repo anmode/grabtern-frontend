@@ -24,7 +24,7 @@ function Mentors({ mentorsData }) {
       <main>
         <section className="findMentors">
           <div className="container">
-            <h1>Find All mentors here's</h1>
+            <h1>Find All mentors here</h1>
 
             <div className="app">
               <input

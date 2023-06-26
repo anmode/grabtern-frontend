@@ -27,7 +27,7 @@
   font-size: 40px;
   margin-left: 18px;
   /* color: rgb(155, 15, 155); */
-  background: linear-gradient(#3c4ff5, #e53cf8);
+  background: linear-gradient(#4f46E5, #acecf4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -40,15 +40,15 @@
 
 @keyframes text-glow {
   0% {
-    text-shadow: 0 0 5px rgba(100, 116, 252, 0.7);
+    text-shadow: 0 0 5px #4f46E5;
   }
 
   50% {
-    text-shadow: 0 0 10px rgba(100, 116, 252, 0.7);
+    text-shadow: 0 0 10px #4f46E5;
   }
 
   100% {
-    text-shadow: 0 0 5px rgba(100, 116, 252, 0.7);
+    text-shadow: 0 0 5px #4f46E5;
   }
 }
 
@@ -88,7 +88,7 @@
   margin-left: 200px;
   color: whitesmoke;
   border-radius: 5px;
-  background: linear-gradient(45deg, #6474fc, #ec64fc);
+  background: linear-gradient(45deg, #4f46E5, #acecf4);
   /* background-color: rgb(192, 84, 255); */
 }
 
@@ -104,7 +104,7 @@
   font-size: 14px;
   font-weight: 400;
   margin-left: 15px;
-  border: 1px solid #c86fff;
+  border: 1px solid #ec9bbb;
   letter-spacing: 3px;
   margin-top: 20px;
   text-align: center;
@@ -112,7 +112,7 @@
   cursor: pointer;
   overflow: hidden;
   z-index: 1;
-  color: #c86fff;
+  color: #4f46E5;
 }
 
 .boxedbtn::before {
@@ -122,7 +122,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #6473fc8b, #ed64fc80);
+  background: linear-gradient(to right, #4f46E5, #acecf4);
   transition: left 0.3s ease-in-out;
   z-index: -1;
 }
@@ -134,8 +134,9 @@
 .boxedbtn span {
   position: relative;
   z-index: 2;
-  color: #c86fff !important;
+  color: #ff6fa8b0 !important;
   transition: color 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(134, 158, 255, 0.542),
 }
 
 .boxedbtn:hover span {

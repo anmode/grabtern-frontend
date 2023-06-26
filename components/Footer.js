@@ -4,62 +4,62 @@ import React from "react";
 function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="font-sans bg-white dark:bg-[#cbd5e1]">
-      <div className="flex justify-center md:justify-center">
-        <div className="mx-auto w-full max-w-screen-xl">
-          <div className="grid gap-12 px-7 py-6 lg:py-8 md:grid-cols-4 md:divide-x-2 grid-cols-1 text-center">
-            <div className="footer-logo text-center">
-              <div className="flex justify-center">
+    <footer className="tw-font-sans tw-bg-white tw-dark:bg-[#cbd5e1]">
+      <div className="tw-flex tw-justify-center tw-md:justify-center">
+        <div className="tw-mx-auto tw-w-full tw-max-w-screen-xl">
+          <div className="tw-grid tw-gap-12 tw-px-7 tw-py-6 tw-lg:py-8 md:tw-grid-cols-4 md:tw-divide-x-2 tw-grid-cols-1 tw-text-center">
+            <div className="tw-footer-logo tw-text-center">
+              <div className="tw-flex tw-justify-center">
                 <a href="index.html">
                   <Image
                     src="/GrabternLogo.svg"
                     width={140}
                     height={90}
                     alt=""
-                    className="sm: mx-60 md:mx-0"
+                    className="tw-sm:mx-60 tw-md:mx-0"
                   />
                 </a>
               </div>
-              <div className="md:py-4">
-                <p className="text-neutral-600 dark:text-neutral-500 mb-7 md:mb-0 md:text-2xl md:text-left sm: text-3xl md:ml-2">
+              <div className="tw-md:py-4">
+                <p className="tw-text-neutral-600 tw-dark:text-neutral-500 tw-mb-7 tw-md:mb-0 tw-md:text-2xl tw-md:text-left tw-sm:text-3xl tw-md:ml-2">
                   The internship started as soon as you enroll in any internship
                   course
                 </p>
               </div>
             </div>
             <div>
-              <h1 className="font-bold tracking-widest text-3xl mb-5 text-black dark:text-muted-100 uppercase">
+              <h1 className="tw-font-bold tw-tracking-widest tw-text-3xl tw-mb-5 tw-text-black dark:tw-text-muted-100 tw-uppercase">
                 Services to Student
               </h1>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
+              <ul className="tw-text-gray-500 dark:tw-text-gray-400 tw-font-medium">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors duration-300"
                   >
                     One to One Mentorship
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors duration-300"
                   >
                     Networking
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors duration-300"
                   >
                     Live Sessions
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors duration-300"
                   >
                     Resources
                   </a>
@@ -67,38 +67,38 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h1 className="font-bold tracking-widest text-3xl mb-5 text-black dark:text-muted-100 uppercase">
+              <h1 className="tw-font-bold tw-tracking-widest tw-text-3xl tw-mb-5 tw-text-black dark:tw-text-muted-100 tw-uppercase">
                 Services to Mentors
               </h1>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
+              <ul className="tw-text-gray-500 dark:tw-text-gray-400 tw-font-medium">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Community Base
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Self Satisfaction
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Build Leadership skills
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="#"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:tw-hover:text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Get Paid
                   </a>
@@ -106,38 +106,38 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h1 className="font-bold tracking-widest text-3xl mb-5 text-black dark:text-muted-100 uppercase">
+              <h1 className="tw-font-bold tw-tracking-widest tw-text-3xl tw-mb-5 tw-text-black dark:tw-text-muted-100 tw-uppercase">
                 Grabtern
               </h1>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
+              <ul className="tw-text-gray-500 dark:tw-text-gray-400 tw-font-medium">
+                <li className="tw-mb-4">
                   <a
                     href="/refundandcancellation"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Refund Policy
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="/termsandcondition"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Terms and Condition
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="/privacy"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Privacy Policy
                   </a>
                 </li>
-                <li className="mb-4">
+                <li className="tw-mb-4">
                   <a
                     href="/contact"
-                    className="text-2xl text-neutral-600 dark:text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500 transition-colors duration-300"
+                    className="tw-text-2xl tw-text-neutral-600 dark:tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500 tw-transition-colors tw-duration-300"
                   >
                     Contact Us
                   </a>
@@ -146,25 +146,25 @@ function Footer() {
             </div>
           </div>
           <hr />
-          <div className="border-t-2 border-muted-200 dark:border-muted-800 py-2">
-            <div className="w-full max-w-7xl mx-auto">
-              <div className="px-5 py-8 flex flex-col md:flex-row mx-auto items-center">
-                <div className="w-full ltablet:w-auto lg:w-auto flex flex-col md:flex-row items-center justify-center md:justify-start gap-y-2">
-                  <div className="flex sm:w-80 md:w-80 sm:mr-4 md:mr-16">
+          <div className="tw-border-t-2 tw-border-muted-200 dark:tw-border-muted-800 tw-py-2">
+            <div className="tw-w-full tw-max-w-7xl tw-mx-auto">
+              <div className="tw-px-5 tw-py-8 tw-flex tw-flex-col md:tw-flex-row tw-mx-auto tw-items-center">
+                <div className="tw-w-full ltablet:tw-w-auto lg:tw-w-auto tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-center md:tw-justify-start tw-gap-y-2">
+                  <div className="tw-flex sm:tw-w-80 md:tw-w-80 sm:tw-mr-4 md:tw-mr-16">
                     <input
                       type="text"
-                      className="mr-3 w-96 h-16 bg-[#cbd5e1] bg-opacity-50 rounded-lg border border-muted-300 dark:border-muted-600 md:text-md lg:text-md text-muted-700 py-1 px-3 leading-8 tw-accessibility transition-colors duration-300 ease-in-out"
+                      className="tw-mr-3 tw-w-96 tw-h-16 tw-bg-[#cbd5e1] tw-bg-opacity-50 tw-rounded-lg tw-border tw-border-muted-300 dark:tw-border-muted-600 md:tw-text-md lg:tw-text-md tw-text-muted-700 tw-py-1 tw-px-3 tw-leading-8 tw-accessibility tw-transition-colors tw-duration-300 tw-ease-in-out"
                       placeholder="Email Address"
                     ></input>
-                    <button className="md:w-auto h-16 text-white bg-[#845ec2] border-0 py-2 px-6 focus:outline-none hover:bg-[#6b21a8] rounded-lg font-semibold">
+                    <button className="md:tw-w-auto tw-h-16 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
                       Subscribe
                     </button>
                   </div>
                 </div>
-                <span className="flex space-x-6 ltablet:ml-auto lg:ml-auto md:mt-0 mt-6 w-full lg:justify-center md:justify-center md:w-auto">
+                <span className="tw-flex tw-space-x-6 tw-justify-center sm:tw-ml-auto md:tw-mt-0 tw-mt-6 tw-w-full lg:tw-justify-center md:tw-justify-center md:tw-w-auto">
                   <a
                     href="https://bit.ly/sai4ull"
-                    className="text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500"
+                    className="tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +179,7 @@ function Footer() {
                   </a>
                   <a
                     href="https://www.instagram.com/grabtern.guide/"
-                    className="text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500"
+                    className="tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +194,7 @@ function Footer() {
                   </a>
                   <a
                     href="#"
-                    className="text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500"
+                    className="tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +209,7 @@ function Footer() {
                   </a>
                   <a
                     href="https://github.com/anmode/grabtern-frontend"
-                    className="text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500"
+                    className="tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +224,7 @@ function Footer() {
                   </a>
                   <a
                     href="#"
-                    className="text-neutral-500 hover:text-violet-500 dark:hover:text-violet-500"
+                    className="tw-text-neutral-500 hover:tw-text-violet-500 dark:hover:tw-text-violet-500"
                     aria-label="Visit us on Discord"
                     title="Discord (External link)"
                   >
@@ -243,10 +243,10 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="bg-slate-100 py-3">
-            <div className="w-full max-w-7xl mx-auto">
-              <div className="py-1 px-1 flex flex-wrap flex-col md:justify-center sm:flex-row sm:justify-center">
-                <p className="text-gray-500 dark:text-gray-500 font-bold md:ml-5 text-center">
+          <div className="tw-bg-slate-100 tw-py-3">
+            <div className="tw-w-full tw-max-w-7xl tw-mx-auto">
+              <div className="tw-py-1 tw-px-1 tw-flex tw-flex-wrap tw-flex-col md:tw-justify-center sm:tw-flex-row sm:tw-justify-center">
+                <p className="tw-text-gray-500 dark:tw-text-gray-500 tw-font-bold md:tw-ml-5 tw-text-center">
                   Copyright &copy; {currentYear} All rights reserved |
                   Grabtern.com
                 </p>

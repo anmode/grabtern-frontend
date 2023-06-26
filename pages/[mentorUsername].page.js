@@ -12,6 +12,7 @@ import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
+import Testimonial from "../components/Testimonial";
 
 function Index({ mentorDetail }) {
   const [modalPopup, setModalPopup] = useState(false);
@@ -110,35 +111,55 @@ function Index({ mentorDetail }) {
         </Head>
         <Header navbarBackground={true} />
         {/* Mentor Page */}
-        <main className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
-          <MentorCard
-            mentorImage={mentorDetail.mentorImg}
-            name={mentorDetail.name}
-            internAt={mentorDetail.internAt}
-            currentStatus={mentorDetail.currentStatus}
-            socialLinks={mentorDetail.social}
-            about={mentorDetail.description}
-            handleSharePage={() => setShowModal(true)}
-          />
-          {/* Session Cards Container */}
-          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
-            {/* Session Cards for every session */}
-            {mentorDetail.bookSession.length !== 0 &&
-              mentorDetail.bookSession.map((session, index) => (
-                <SessionCard
-                  key={index}
-                  type={session.sessionType}
-                  name={session.sessionName}
-                  description={session.sessionDescription}
-                  duration={session.sessionMeetingDuration}
-                  pricePerSession={session.priceSession}
-                  handleBookSession={() => {
-                    setModalPopup(true);
-                    setSelectedSession(session);
-                  }}
-                  // handleBookSession={() => handleClick(session)}
-                />
-              ))}
+        <main className="tw-flex tw-flex-col tw-items-center">
+          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
+            <MentorCard
+              mentorImage={mentorDetail.mentorImg}
+              name={mentorDetail.name}
+              internAt={mentorDetail.internAt}
+              currentStatus={mentorDetail.currentStatus}
+              socialLinks={mentorDetail.social}
+              about={mentorDetail.description}
+              handleSharePage={() => setShowModal(true)}
+            />
+            {/* Session Cards Container */}
+            <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+              {/* Session Cards for every session */}
+              {mentorDetail.bookSession.length !== 0 &&
+                mentorDetail.bookSession.map((session, index) => (
+                  <SessionCard
+                    key={index}
+                    type={session.sessionType}
+                    name={session.sessionName}
+                    description={session.sessionDescription}
+                    duration={session.sessionMeetingDuration}
+                    pricePerSession={session.priceSession}
+                    handleBookSession={() => {
+                      setModalPopup(true);
+                      setSelectedSession(session);
+                    }}
+                    // handleBookSession={() => handleClick(session)}
+                  />
+                ))}
+            </div>
+            <div></div>
+            {/* <Testimonial testimonialUserName={mentorDetail.testimonials.name}
+            testimonialUserHeadline={mentorDetail.testimonials.headline}
+            testimonialUserImage={mentorDetail.testimonials.image}
+            testimonialRate={mentorDetail.testimonials.rate}
+            testimonialDescription={mentorDetail.testimonials.description} /> */}
+          </div>
+          <div className="tw-w-22 tw-h-auto tw-flex tw-flex-wrap ">
+            {/* {for testing purpose}  */}
+            <Testimonial
+              testimonialUserName="test_user"
+              testimonialUserHeadline="test headline"
+              testimonialRate="4"
+              testimonialUserImage="/assets/img/icon/no-profile-picture.webp"
+              testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50"
+            />
+
+            {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
           </div>
           {/* Share Mentor Page Modal */}
           {showModal && (

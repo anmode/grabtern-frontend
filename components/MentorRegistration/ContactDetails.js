@@ -18,7 +18,7 @@ function ContactDetails({
       required: true,
       value: formData.internAt,
       validator: validator,
-      validation: 'required|alpha_space'
+      validation: 'required|alpha_num_dash_space'
     },
     {
       label: "current status",

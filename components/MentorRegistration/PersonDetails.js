@@ -32,7 +32,7 @@ function PersonDetails({
       required: true,
       value: formData.username,
       validator: validator,
-      validation: "required|alpha_num_dash",
+      validation: "required|alpha_num",
     },
     {
       label: "email",

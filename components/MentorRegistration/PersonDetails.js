@@ -6,6 +6,7 @@ function PersonDetails({
   handleChange,
   handleUploadImageChange,
   handleCallbackResponse,
+  validator,
 }) {
   // inputs list
   const inputs = [
@@ -18,6 +19,8 @@ function PersonDetails({
       placeholder: "e.g. Peter Parker",
       required: true,
       value: formData.name,
+      validator: validator,
+      validation: "required|alpha_space",
     },
     {
       label: "username",
@@ -28,6 +31,8 @@ function PersonDetails({
       placeholder: "e.g. peter-parker12",
       required: true,
       value: formData.username,
+      validator: validator,
+      validation: "required|alpha_num",
     },
     {
       label: "email",
@@ -38,6 +43,8 @@ function PersonDetails({
       placeholder: "e.g. peterparker4321@gmail.com",
       required: true,
       value: formData.email,
+      validator: validator,
+      validation: "required|email",
     },
     {
       label: "phone",
@@ -48,6 +55,8 @@ function PersonDetails({
       placeholder: "0123456789",
       required: true,
       value: formData.mobile,
+      validator: validator,
+      validation: "required|phone",
     },
   ];
 
@@ -102,12 +111,17 @@ function PersonDetails({
               ? "Change Image"
               : "Upload Image"}
           </label>
+          {validator.current.message(
+            "mentorProfileImage",
+            formData.mentorImg.name,
+            "required"
+          )}
           <p className="px-2 ">{formData.mentorImg.name}</p>
           <input
             type="file"
             accept="image/*"
             id="mentorProfile"
-            name="mentorProfile"
+            name="mentorProfileImage"
             className="mentorFormInput"
             onChange={(e) => handleUploadImageChange(e)}
             hidden
@@ -124,10 +138,15 @@ function PersonDetails({
       {/* inputs end */}
 
       {/* bio section start */}
-      <div style={{ gridColumn: "1/3" }}>
+      <div style={{ gridColumn: "1/3" }} className="div">
         <label className="label" htmlFor="description">
           DESCRIPTION
         </label>
+        {validator.current.message(
+          "description",
+          formData.description,
+          "required"
+        )}
         <textarea
           cols="10"
           rows="7"

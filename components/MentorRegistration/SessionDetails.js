@@ -1,154 +1,159 @@
-import React, { useState } from "react";
-import DayInput from "../dateAndTime/DayInput";
-import TimeZoneInput from "../dateAndTime/TimeZoneInput";
+import React, { useState, useRef } from "react";
+import SimpleReactValidator from "simple-react-validator";
+import Card from "./Card";
 import Input from "./Input";
-import ScheduleCard from "./ScheduleCard";
 
-function SessionDetails({
-  formData,
-  handleChange,
-  isChecked,
-  setIsChecked,
-  changeSchedule,
-}) {
-  const initialSchedule = {
-    day: "monday",
-    timezone: "(GMT-11:00) Pacific/Midway",
-    startsAt: "",
-    endsAt: "",
+function SessionDetails({ formData, changeArray, validator }) {
+  const initialSession = {
+    name: "",
+    type: "",
+    duration: "",
+    price: "",
+    description: "",
   };
-  const [newSchedule, setNewSchedule] = useState(initialSchedule);
+  const [newSession, setNewSession] = useState(initialSession);
   // handle change function
   const onChange = (e) => {
     const target = e.target;
-    setNewSchedule({ ...newSchedule, [target.name]: target.value });
+    setNewSession({ ...newSession, [target.name]: target.value });
   };
-  // adding schedule function
-  const addSchedule = () => {
-    changeSchedule([...formData.schedules, newSchedule]);
-    setNewSchedule(initialSchedule);
+
+  // for validator
+  const sessionValidator = useRef(new SimpleReactValidator());
+  const [, forceUpdate] = useState();
+
+  // add new session
+  const addSession = () => {
+    if (sessionValidator.current.allValid()) {
+      sessionValidator.current.hideMessages();
+      changeArray("sessions", [...formData.sessions, newSession]);
+      setNewSession(initialSession);
+      forceUpdate(1);
+    } else {
+      sessionValidator.current.showMessages();
+      forceUpdate(2);
+    }
   };
-  const removeSchedule = (removeIndex) => {
-    const updatedSchedule = formData.schedules.filter((value, index) => {
+  // remove session
+  const removeSession = (removeIndex) => {
+    const updatedSessions = formData.sessions.filter((value, index) => {
       return index != removeIndex;
     });
-    changeSchedule(updatedSchedule);
+    changeArray("sessions", updatedSessions);
   };
+
+  // inputs
   const inputs = [
     {
-      label: "30min 1-1 SESSION PRICE",
+      label: "Session Name",
+      type: "text",
+      name: "name",
+      className: "mentorFormInput",
+      onChange: onChange,
+      placeholder: "eg. 1 on 1 Mentorship",
+      required: true,
+      value: newSession.name,
+      validator: sessionValidator,
+      validation: "required|alpha_num_dash_space",
+    },
+    {
+      label: "Session Type",
+      type: "text",
+      name: "type",
+      className: "mentorFormInput",
+      onChange: onChange,
+      placeholder: "eg. Video Meeting",
+      required: true,
+      value: newSession.type,
+      validator: sessionValidator,
+      validation: "required|alpha_num_dash_space",
+    },
+    {
+      label: "Session Duration (in minutes)",
+      type: "text",
+      name: "duration",
+      className: "mentorFormInput",
+      onChange: onChange,
+      placeholder: "eg. 45",
+      required: true,
+      value: newSession.duration,
+      validator: sessionValidator,
+      validation: "required|numeric",
+    },
+    {
+      label: "Session Price",
       type: "text",
       name: "price",
       className: "mentorFormInput",
-      onChange: handleChange,
-      placeholder: "e.g. ₹51",
-      required: true,
-      value: formData.price,
-    },
-  ];
-  const timeInputs = [
-    {
-      label: "Start Time",
-      type: "time",
-      name: "startsAt",
-      className: "mentorFormInput",
       onChange: onChange,
-      placeholder: "12:30 PM",
+      placeholder: "eg. $10",
       required: true,
-      value: newSchedule.startsAt,
+      value: newSession.price,
+      validator: sessionValidator,
+      validation: "required|currency",
     },
     {
-      label: "End Time",
-      type: "time",
-      name: "endsAt",
+      divClassName: "tw-col-span-2",
+      label: "Session Description",
+      type: "text",
+      name: "description",
       className: "mentorFormInput",
       onChange: onChange,
-      placeholder: "2:30 PM",
+      placeholder: "eg. Achieve your goals faster with customized road map",
       required: true,
-      value: newSchedule.endsAt,
+      value: newSession.description,
+      element: "textarea",
+      validator: sessionValidator,
+      validation: "required",
     },
   ];
   return (
     <>
-      <p className="mentorFormHeading">Tell us about your Schedule</p>
-      {/* available day and time picker */}
+      <p className="mentorFormHeading">Tell us about your Sessions</p>
 
-      {/* day input starts */}
-      <div className="div">
-        <label className="label uppercase" htmlFor="day">
-          Day
-        </label>
-        <DayInput
-          id="day"
-          name="day"
-          onChange={onChange}
-          value={newSchedule.value}
-        />
-      </div>
-      {/* day input ends */}
-
-      {/* time zone input starts */}
-      <div className="div">
-        <label className="label uppercase" htmlFor="timezone">
-          Time Zone
-        </label>
-        <TimeZoneInput
-          id="timezone"
-          name="timezone"
-          onChange={onChange}
-          value={newSchedule.timezone}
-        />
-      </div>
-      {/* time zone input ends */}
-
-      {/* time inputs start */}
-      {timeInputs.map((input, index) => (
+      {/* inputs starts*/}
+      {inputs.map((input, index) => (
         <Input {...input} key={index} />
       ))}
-      {/* time inputs ends */}
+      {/* inputs ends */}
 
-      {/* add schedule button starts */}
+      {/* add session button starts */}
       <div className="tw-col-span-2 tw-text-right">
         <button
           type="button"
           className="mentorFormButton theme-button-color"
-          onClick={addSchedule}
+          onClick={addSession}
         >
-          Add Schedule
+          Add Session
         </button>
       </div>
-      {/* add schedule button ends */}
+      {/* add session button ends */}
 
-      {/* schedule list starts */}
+      {/* error if it does not have any session */}
+      {validator.current.message(
+        "sessions",
+        formData.sessions,
+        "required|min:1",
+        { className: "tw-relative tw-text-red-600 tw-text-2xl" }
+      )}
+      {/* error if it does not have any session */}
+
+      {/* session card starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">
-        {formData.schedules.map((schedule, index) => (
-          <ScheduleCard
+        {formData.sessions.map((session, index) => (
+          <Card
             key={index}
-            schedule={schedule}
+            rows={[
+              { name: session.name, type: session.type },
+              { duration: session.duration, price: session.price },
+              { description: session.description },
+            ]}
             index={index}
-            removeSchedule={removeSchedule}
+            removeCard={removeSession}
           />
         ))}
       </div>
-      {/* schedule list starts */}
-
-      {/* price inputs start */}
-      {inputs.map((input, index) => (
-        <Input {...input} key={index} />
-      ))}
-      {/* price inputs ends*/}
-
-      {/* terms and consition checkbox start*/}
-      <label>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
-        />
-        &nbsp;We will take 11% of your session price as platform fee. So
-        according to it keep your session price. Thank you!
-      </label>
-      {/* terms and consition checkbox  end*/}
+      {/* session card ends */}
     </>
   );
 }

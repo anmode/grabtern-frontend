@@ -1,3 +1,6 @@
+.main{
+  background-color: #e5e7eb;
+}
 .cf {
   display: flex;
   padding: 30px 0 30px 0;
@@ -27,7 +30,7 @@
   font-size: 40px;
   margin-left: 18px;
   /* color: rgb(155, 15, 155); */
-  background: linear-gradient(#4f46E5, #acecf4);
+  background: #845ec2;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -40,15 +43,15 @@
 
 @keyframes text-glow {
   0% {
-    text-shadow: 0 0 5px #4f46E5;
+    text-shadow: 0 0 5px #845ec2;
   }
 
   50% {
-    text-shadow: 0 0 10px #4f46E5;
+    text-shadow: 0 0 10px #845ec2;
   }
 
   100% {
-    text-shadow: 0 0 5px #4f46E5;
+    text-shadow: 0 0 5px #845ec2;
   }
 }
 
@@ -88,7 +91,7 @@
   margin-left: 200px;
   color: whitesmoke;
   border-radius: 5px;
-  background: linear-gradient(45deg, #4f46E5, #acecf4);
+  background: #845ec2;
   /* background-color: rgb(192, 84, 255); */
 }
 

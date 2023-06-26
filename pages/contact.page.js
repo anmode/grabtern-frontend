@@ -207,9 +207,8 @@ function Contact() {
                               padding: '10px',
                               fontSize: '16px',
                               borderRadius: '5px',
-                              border: '2px solid #acecf4',
+                              border: '2px solid #e5e7eb',
                               outline: 'none',
-                              boxShadow: '0 0 5px rgba(134, 158, 255, 0.542)',
                               resize: 'vertical',
                             }}
                           // value={userMessage}
@@ -238,9 +237,9 @@ function Contact() {
                               padding: '10px',
                               fontSize: '16px',
                               borderRadius: '5px',
-                              border: '2px solid #acecf4',
+                              border: '2px solid #e5e7eb',
                               outline: 'none',
-                              boxShadow: '0 0 5px rgba(134, 158, 255, 0.542)',
+
 
                             }}
                           // onChange={(e) => setUserName(e.value)}
@@ -269,9 +268,9 @@ function Contact() {
                               padding: '10px',
                               fontSize: '16px',
                               borderRadius: '5px',
-                              border: '2px solid #acecf4',
+                              border: '2px solid #e5e7eb',
                               outline: 'none',
-                              boxShadow: '0 0 5px rgba(134, 158, 255, 0.542)',
+
 
                             }}
                           // value={userEmail}
@@ -301,9 +300,9 @@ function Contact() {
                               padding: '10px',
                               fontSize: '16px',
                               borderRadius: '5px',
-                              border: '2px solid #acecf4',
+                              border: '2px solid #e5e7eb',
                               outline: 'none',
-                              boxShadow: '0 0 5px rgba(134, 158, 255, 0.542)',
+
 
                             }}
 
@@ -317,19 +316,15 @@ function Contact() {
                         //(errors.subject!=='')?showToast(errors.subject):errors.subject=''
                       }
                       <div>
-                        <button type="submit"
-                          className={style.boxedbtn}
+                        <button type="button"
+                          class="md:tw-w-auto tw-h-16 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold"
                           onClick={sendEmail}
                           style={{
-                            background: 'linear-gradient(#4f46E5, #acecf4)',
-                            color: '#fff',
-                            fontWeight: 'bold',
-                            borderRadius: '5px',
-                            border: '2px solid rgba(79, 70, 229, 0)',
-                            outline: 'none',
-                            boxShadow: '0 0 5px rgba(134, 158, 255, 0.542)',
-                            transition: 'color 0.3s ease-in-out',
+                            padding: '5px 15px',
+                            width: '100px',
+                            marginLeft: "17px"
                           }}
+
                           onMouseEnter={(e) => (e.target.style.color = 'whitesmoke')}
                           onMouseLeave={(e) => (e.target.style.color = '#fff')}>
                           Send

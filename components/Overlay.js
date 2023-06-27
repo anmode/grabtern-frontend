@@ -4,26 +4,18 @@ import styles from "../styles/Overlay.module.css";
 import Image from "next/image";
 import jwt_decode from "jwt-decode";
 
-const Overlay = ({ InitialFormState, setFormData }) => {
+const Overlay = ({ callbackFunction }) => {
   const [show, setShow] = useState(true);
   const disappearOverlay = () => {
     setShow(false);
   };
 
   let number = Math.random(0 * 100);
-  
+
   // call back response function
   function handleCallbackResponse(response) {
     var userObject = jwt_decode(response.credential);
-    setFormData({
-      ...InitialFormState,
-      name: userObject.name,
-      email: userObject.email,
-      mentorImg: {
-        name: userObject.name,
-        image: userObject.picture,
-      },
-    });
+    callbackFunction(userObject);
     disappearOverlay();
   }
 

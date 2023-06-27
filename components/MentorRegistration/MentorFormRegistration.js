@@ -68,6 +68,19 @@ export default function MentorForm() {
     });
   };
 
+  // callback function for google sign in
+  const callbackFunction = (userObject) => {
+    setFormData({
+      ...InitialFormState,
+      name: userObject.name,
+      email: userObject.email,
+      mentorImg: {
+        name: userObject.name,
+        image: userObject.picture,
+      },
+    });
+  }
+
   useEffect(() => {
     if (addtoast === true && waitTime !== 0) {
       setTimeout(() => {
@@ -192,7 +205,7 @@ export default function MentorForm() {
   };
   return (
     <div className="mentorFormRegisration">
-      <Overlay  InitialFormState={InitialFormState} setFormData={setFormData}/>
+      <Overlay  callbackFunction={callbackFunction}/>
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={onSubmit}>

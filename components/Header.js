@@ -112,6 +112,11 @@ function Header({ navbarBackground }) {
                           </a>
                         </li>
                         <li>
+                          <a href="/blogs" className={styles.navLink}>
+                            Blogs
+                          </a>
+                        </li>
+                        <li>
                           <a href="/contact" className={styles.navLink}>
                             Contact
                           </a>

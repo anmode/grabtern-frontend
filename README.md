@@ -90,7 +90,6 @@ npm run build
 
 npm start
 
-
 This will start server
 
 ## 🧰 Tech Stack Used

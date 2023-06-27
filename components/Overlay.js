@@ -47,19 +47,17 @@ const Overlay = ({ callbackFunction }) => {
           <Image
             className={styles.overlayArrow}
             src="/Arrow.svg"
-            width={500}
-            height={500}
+            width={200}
+            height={200}
           />
           <div className={styles.overlayText}>
             <h1>Sign In</h1>
             <p>Please select an account to continue using Grabtern</p>
             <p>By logging in you agree to the Terms & Conditions</p>
-            <ul>
-              <li>
-                <p>Privacy Policy</p>
-              </li>
-              <li>
-                <p>Terms & Conditions</p>
+            <ul className="tw-text-white">
+              <li className="tw-list-disc tw-list-inside">Privacy Policy</li>
+              <li className="tw-list-disc tw-list-inside">
+                Terms & Conditions
               </li>
             </ul>
           </div>

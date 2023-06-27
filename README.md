@@ -90,8 +90,6 @@ npm run build
 
 npm start
 
-```
-
 This will start server
 
 ## 🧰 Tech Stack Used
@@ -158,4 +156,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 [Anmol Agrawal](https://github.com/anmode)
 
 <h3 align="center">Show some ❤️ by 🌟 this awesome repository!</h3>
-```

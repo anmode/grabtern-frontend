@@ -50,6 +50,9 @@ export default function MentorForm() {
     schedules: [],
     sessions: [],
     verified: false,
+    password: `GrabternMentorPW!${number}!`,
+    confirmPassword: `GrabternMentorPW!${number}!`,
+    // resume: ''
   };
   const [formData, setFormData] = useState(InitialFormState);
 
@@ -126,6 +129,7 @@ export default function MentorForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     setError("");
     // if (formData.bookSession.length !== 2) {
     //   return setError(

@@ -124,9 +124,9 @@ export default function Home() {
   const [tagFilter, setTagFilter] = useState("");
 
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
-console.log(HackathonsData);
+// console.log(HackathonsData);
   const filteredHackathons = HackathonsData.filter((hackathon) => {
-    console.log(hackathon.tags);
+    // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
       tag.toLowerCase().includes(tagFilter.toLowerCase())
     );
@@ -140,9 +140,9 @@ console.log(HackathonsData);
 
     }
     else{
-    console.log(tagFilter);
+    // console.log(tagFilter);
     if (tagFilter !== "" && !tagMatch) {
-      console.log("hpo");
+      // console.log("hpo");
       if (tagFilter === "bookmarked") {
         if(searchQuery!=" ")
         {
@@ -152,13 +152,13 @@ console.log(HackathonsData);
 
     return titleMatch && (hackathon.bookmarked) ;
         }
-        console.log("hello");
+        // console.log("hello");
         return (hackathon.bookmarked);
       }
       return false;
      } // Skip the hackathon if it doesn't match the tag filter
     }
-    console.log("pooh");
+    // console.log("pooh");
     const titleMatch = hackathon.hackathonTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -170,13 +170,13 @@ console.log(HackathonsData);
 
 
 
-  console.log(filteredHackathons);
+  // console.log(filteredHackathons);
   const handleBookmark = (index) => {
     const updatedHackathons = [...HackathonsData];
     console.log(updatedHackathons[index]);
-    console.log("hello" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
+    // console.log("hello" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     updatedHackathons[index].bookmarked = !updatedHackathons[index].bookmarked;
-    console.log("ua" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
+    // console.log("ua" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     setHackathonsData(updatedHackathons);
   };
   const [open, setOpen] = useState(false);
@@ -354,7 +354,7 @@ console.log(HackathonsData);
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2>Explore Top Hackathons</h2>
+                  <h2 style={{color:"#845ec2"}}>Explore Top Hackathons</h2>
                 </div>
               </div>
             </div>

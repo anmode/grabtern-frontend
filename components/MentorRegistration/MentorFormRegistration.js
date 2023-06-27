@@ -33,26 +33,23 @@ export default function MentorForm() {
   let number = Math.random(0 * 100);
 
   const InitialFormState = {
+    username: "",
     name: "",
     email: "",
-    username: "",
     mobile: "",
     internAt: "",
     currentStatus: "",
-    social: {
-      linkedin: "",
-      twitter: "",
-    },
-    sessions: [],
-    schedules: [],
     description: "",
     mentorImg: {
       name: "",
       image: "",
     },
-    // resume: '',
-    password: `GrabternMentorPW!${number}!`,
-    confirmPassword: `GrabternMentorPW!${number}!`,
+    social: {
+      linkedin: "",
+      twitter: "",  
+    },
+    schedules: [],
+    sessions:[],
     verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);

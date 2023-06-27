@@ -1,6 +1,7 @@
 .main{
   background-color: #e5e7eb;
 }
+
 .cf {
   display: flex;
   padding: 30px 0 30px 0;
@@ -24,7 +25,7 @@
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 .csection {
-  padding: 10px 0 50px;
+  padding: 10px 50px 50px 50px;
 }
 .ctitle {
   font-size: 40px;
@@ -203,19 +204,24 @@
 @media screen and (max-width: 765px) {
   .cf {
     width: 100%;
-    padding: 20px;
+    /* padding: 20px; */
   }
 
   .flexx {
     margin-top: -80px;
+    /* margin-left: 5%;
+    margin-right: 8%; */
+    padding: 10px 10px 5px 40px;
   }
 
   .offsetlg {
-    margin-left: -10px;
+    /* margin-left: -10px;
     margin-right: 0;
     max-width: 100%;
     padding-top: 0;
-    margin-top: 0px;
+    margin-top: 0px; */
+    translate: -15px;
+    margin-top: 0px; 
   }
 
   .ctitle {
@@ -248,7 +254,7 @@
 
   .offsetlg {
     margin-bottom: 20px;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-right: 0px;
     margin-left: 0px;
     padding: 0%;

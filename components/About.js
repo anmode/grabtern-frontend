@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "../styles/about.module.css";
 import { FaPlus } from "react-icons/fa";
+
 function About() {
   const [isVideoPlayed, setIsVideoPlayed] = useState(false);
   const playVideo = () => {

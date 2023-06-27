@@ -112,6 +112,7 @@ function Index({ mentorDetail }) {
         </Head>
         <Header navbarBackground={true} />
         {/* Mentor Page */}
+<<<<<<< HEAD
         <main className="tw-flex tw-flex-col tw-items-center">
           <div className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
             <MentorCard
@@ -161,6 +162,37 @@ function Index({ mentorDetail }) {
             />
 
             {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
+=======
+        <main className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
+          <MentorCard
+            mentorImage={mentorDetail.mentorImg}
+            name={mentorDetail.name}
+            internAt={mentorDetail.internAt}
+            currentStatus={mentorDetail.currentStatus}
+            socialLinks={mentorDetail.social}
+            about={mentorDetail.description}
+            handleSharePage={() => setShowModal(true)}
+          />
+          {/* Session Cards Container */}
+          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+            {/* Session Cards for every session */}
+            {mentorDetail.bookSession.length !== 0 &&
+              mentorDetail.bookSession.map((session, index) => (
+                <SessionCard
+                  key={index}
+                  type={session.sessionType}
+                  name={session.sessionName}
+                  description={session.sessionDescription}
+                  duration={session.sessionMeetingDuration}
+                  pricePerSession={session.priceSession}
+                  handleBookSession={() => {
+                    setModalPopup(true);
+                    setSelectedSession(session);
+                  }}
+                  // handleBookSession={() => handleClick(session)}
+                />
+              ))}
+>>>>>>> cee91fefc456c89dd05c2d6f59f957263d7323d3
           </div>
           {/* Share Mentor Page Modal */}
           {showModal && (

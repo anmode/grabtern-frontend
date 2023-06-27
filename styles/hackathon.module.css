@@ -28,6 +28,7 @@
   visibility: visible;
 }
 .hackathonArea .singleHackathon .hackathonImg {
+ 
   border-radius: 12px;
 }
 .hackathonArea .singleHackathon .hackathonImg img {
@@ -83,4 +84,10 @@
   .hackathonArea .singleHackathon .hackathonContentBox .hackathonContent p {
     padding: 0 18px;
   }
+}
+.chipfil {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  gap: 1rem;
 }

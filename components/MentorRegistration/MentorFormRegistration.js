@@ -79,7 +79,7 @@ export default function MentorForm() {
         image: userObject.picture,
       },
     });
-  }
+  };
 
   useEffect(() => {
     if (addtoast === true && waitTime !== 0) {
@@ -206,7 +206,7 @@ export default function MentorForm() {
   };
   return (
     <div className="mentorFormRegisration">
-      <Overlay  callbackFunction={callbackFunction}/>
+      <Overlay callbackFunction={callbackFunction} />
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={onSubmit}>

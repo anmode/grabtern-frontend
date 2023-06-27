@@ -281,12 +281,13 @@ export default function Home() {
               {carousel === true ? (
                 <OwlCarousel
                   {...testimonialOptions}
-                  autoplay={true}
+                  autoplay={false}
                   lazyLoad={true}
-                  smartSpeed={1000}
+                  smartSpeed={250}
                   autoplayTimeout={3500}
                   nav={true}
                   loop={true}
+                  rewind={true}
                   autoplayHoverPause={true}
                   className="owl-carousel owl-theme"
                 >

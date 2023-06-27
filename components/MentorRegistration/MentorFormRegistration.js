@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import SimpleReactValidator from "simple-react-validator";
 
 import { useRouter } from "next/router";
@@ -68,21 +67,6 @@ export default function MentorForm() {
       social: { ...formData.social, [e.target.name]: e.target.value },
     });
   };
-
-  function handleCallbackResponse(response) {
-    var userObject = jwt_decode(response.credential);
-    // console.log(userObject);
-    setFormData({
-      ...InitialFormState,
-      name: userObject.name,
-      email: userObject.email,
-      mentorImg: {
-        name: userObject.name,
-        image: userObject.picture,
-      },
-    });
-    console.log(formData);
-  }
 
   useEffect(() => {
     if (addtoast === true && waitTime !== 0) {
@@ -208,7 +192,7 @@ export default function MentorForm() {
   };
   return (
     <div className="mentorFormRegisration">
-      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
+      <Overlay  InitialFormState={InitialFormState} setFormData={setFormData}/>
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={onSubmit}>
@@ -255,7 +239,6 @@ export default function MentorForm() {
                   formData={formData}
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
-                  handleCallbackResponse={handleCallbackResponse}
                   validator={validator}
                 />
               ),

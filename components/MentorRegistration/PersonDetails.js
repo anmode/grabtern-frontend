@@ -5,7 +5,6 @@ function PersonDetails({
   formData,
   handleChange,
   handleUploadImageChange,
-  handleCallbackResponse,
   validator,
 }) {
   // inputs list
@@ -59,29 +58,6 @@ function PersonDetails({
       validation: "required|phone",
     },
   ];
-
-  //   google sign in button functions
-  useEffect(() => {
-    setInterval(() => {
-      if (typeof window !== "undefined") {
-        if (document.querySelector("#credential_picker_container") !== null) {
-          document.querySelector(".overlay").classList.add("show");
-        }
-      }
-    }, 1300);
-
-    google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
-    );
-    google.accounts.id.prompt();
-  }, []);
 
   return (
     <>

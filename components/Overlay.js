@@ -31,7 +31,7 @@ const Overlay = ({ InitialFormState, setFormData }) => {
     setInterval(() => {
       if (typeof window !== "undefined") {
         if (document.querySelector("#credential_picker_container") !== null) {
-          document.querySelector(".overlay").classList.add("show");
+          document.querySelector("#overlay").classList.add("show");
         }
       }
     }, 1300);
@@ -51,7 +51,7 @@ const Overlay = ({ InitialFormState, setFormData }) => {
   return (
     <div>
       {show && (
-        <div className={`${styles.overlay} overlay`} onClick={disappearOverlay}>
+        <div className={styles.overlay} id="overlay" onClick={disappearOverlay}>
           <Image
             className={styles.overlayArrow}
             src="/Arrow.svg"

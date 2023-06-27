@@ -137,13 +137,14 @@ function Contact() {
       <SimpleBanner bannerTittle="Contact us" siteName="Contact" />
       <main className={style.main}>
         <div className={style.mainbody}>
+          <div id="both">
           <section className={style.csection}>
             <div className="container">
               <div className="d-none d-sm-block mb-5 pb-4"></div>
               <div className="row">
                 <div className="col-12"></div>
                 <div className={`col-lg-8 ${style.flexx}`}>
-                  <div className={`${style.offsetlg} col-lg-3`}>
+                  <div className={`${style.offsetlg} col-lg-3 bg-slate-100`}>
                     <div className={`${style.contactinfo} media`}>
                       <div className={style.media_head}>
                         <h3>Contact Information</h3>
@@ -337,6 +338,7 @@ function Contact() {
               </div>
             </div>
           </section>
+          </div>
         </div>
       </main>
       <Footer />

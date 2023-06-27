@@ -1,5 +1,11 @@
 .main{
-  background-color: #e5e7eb;
+  background-color: #f1f5f9; 
+  
+}
+#both{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cf {
@@ -25,7 +31,8 @@
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 .csection {
-  padding: 10px 50px 50px 50px;
+  padding: 10px 50px 50px 62px;
+  
 }
 .ctitle {
   font-size: 40px;

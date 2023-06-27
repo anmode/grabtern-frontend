@@ -49,6 +49,7 @@ export default function MentorForm() {
       twitter: "",  
     },
     schedules: [],
+    sessions:[],
     verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);

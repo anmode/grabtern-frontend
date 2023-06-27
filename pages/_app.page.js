@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
 import Head from "next/head";
 import { AuthProvider } from "../context/AuthContext";
+
+
+
 function addProductJsonLd() {
   return {
     __html: {

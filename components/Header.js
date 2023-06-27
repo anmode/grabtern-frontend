@@ -5,6 +5,7 @@ import router from "next/router";
 import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/LoginDropdown";
 
+
 function Header({ navbarBackground }) {
   // localStorage.setItem("redirectUrl", window.location.href);
   // const [isLoggedIn, setLoggedIn] = useState(false);

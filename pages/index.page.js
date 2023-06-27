@@ -15,6 +15,7 @@ import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
+
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");

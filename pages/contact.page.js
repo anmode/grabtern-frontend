@@ -9,6 +9,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { error } from "jquery";
 
+
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
 const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));

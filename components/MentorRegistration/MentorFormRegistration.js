@@ -46,10 +46,10 @@ export default function MentorForm() {
     },
     social: {
       linkedin: "",
-      twitter: "",  
+      twitter: "",
     },
     schedules: [],
-    sessions:[],
+    sessions: [],
     verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);

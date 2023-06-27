@@ -194,7 +194,7 @@ export default function Home() {
               </div>
             </div>
             <div className="row">
-              {hackathonsData.slice(0,8).map((hackathon, index) => (
+              {hackathonsData.slice(0, 8).map((hackathon, index) => (
                 <Hackathon
                   key={index}
                   hackathonImage={hackathon.hackathonImage}

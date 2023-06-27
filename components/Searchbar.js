@@ -7,8 +7,6 @@ import { IconButton, MenuItem, Select } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
-
-
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 function SearchBar({ setSearchQuery, handleTagFilter }) {
   const [selectedTag, setSelectedTag] = useState("All");

@@ -1,4 +1,3 @@
-
 import About from "../components/About";
 import Header from "../components/Header";
 import servicesData from "./data/ServicesData";
@@ -13,7 +12,7 @@ import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 
-import ClickAwayListener from '@mui/material/ClickAwayListener';
+import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/LoginDropdown";
@@ -24,9 +23,9 @@ import SearchBar from "../components/Searchbar";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from "@mui/material/Tooltip";
 // import Hackathons from "./hackathon.page";
-import Link from 'next/link';
+import Link from "next/link";
 import styles from "../styles/LoginDropdown.module.css";
 
 var $ = require("jquery");
@@ -43,31 +42,32 @@ import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
 
 const buttonStyle = {
-  width: '200px',
-  fontSize: '16px',
+  width: "200px",
+  fontSize: "16px",
   fontWeight: 600,
-  color: '#fff',
-  cursor: 'pointer',
-  margin: '20px',
-  height: '55px',
-  textAlign: 'center',
-  border: 'none',
-  backgroundSize: '300% 100%',
-  borderRadius: '50px',
-  MozTransition: 'all .4s ease-in-out',
-  OTransition: 'all .4s ease-in-out',
-  WebkitTransition: 'all .4s ease-in-out',
-  transition: 'all .4s ease-in-out',
-  backgroundImage: 'linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673)',
-  boxShadow: '0 4px 15px 0 rgba(49, 196, 190, 0.75)',
+  color: "#fff",
+  cursor: "pointer",
+  margin: "20px",
+  height: "55px",
+  textAlign: "center",
+  border: "none",
+  backgroundSize: "300% 100%",
+  borderRadius: "50px",
+  MozTransition: "all .4s ease-in-out",
+  OTransition: "all .4s ease-in-out",
+  WebkitTransition: "all .4s ease-in-out",
+  transition: "all .4s ease-in-out",
+  backgroundImage:
+    "linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673)",
+  boxShadow: "0 4px 15px 0 rgba(49, 196, 190, 0.75)",
 };
 const navbarBackground = true;
 const handleButtonHover = (e) => {
-  e.target.style.backgroundPosition = '100% 0';
+  e.target.style.backgroundPosition = "100% 0";
 };
 
 const handleButtonHoverOut = (e) => {
-  e.target.style.backgroundPosition = '0 0';
+  e.target.style.backgroundPosition = "0 0";
 };
 
 const internshipsOptions = {
@@ -124,39 +124,35 @@ export default function Home() {
   const [tagFilter, setTagFilter] = useState("");
 
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
-// console.log(HackathonsData);
+  // console.log(HackathonsData);
   const filteredHackathons = HackathonsData.filter((hackathon) => {
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
       tag.toLowerCase().includes(tagFilter.toLowerCase())
     );
-    if(tagFilter==='All')
-    {
+    if (tagFilter === "All") {
       const titleMatch = hackathon.hackathonTitle
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
 
-    return (titleMatch && true);
+      return titleMatch && true;
+    } else {
+      // console.log(tagFilter);
+      if (tagFilter !== "" && !tagMatch) {
+        // console.log("hpo");
+        if (tagFilter === "bookmarked") {
+          if (searchQuery != " ") {
+            const titleMatch = hackathon.hackathonTitle
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase());
 
-    }
-    else{
-    // console.log(tagFilter);
-    if (tagFilter !== "" && !tagMatch) {
-      // console.log("hpo");
-      if (tagFilter === "bookmarked") {
-        if(searchQuery!=" ")
-        {
-          const titleMatch = hackathon.hackathonTitle
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-
-    return titleMatch && (hackathon.bookmarked) ;
+            return titleMatch && hackathon.bookmarked;
+          }
+          // console.log("hello");
+          return hackathon.bookmarked;
         }
-        // console.log("hello");
-        return (hackathon.bookmarked);
-      }
-      return false;
-     } // Skip the hackathon if it doesn't match the tag filter
+        return false;
+      } // Skip the hackathon if it doesn't match the tag filter
     }
     // console.log("pooh");
     const titleMatch = hackathon.hackathonTitle
@@ -164,11 +160,7 @@ export default function Home() {
       .includes(searchQuery.toLowerCase());
 
     return titleMatch;
-
   });
-
-
-
 
   // console.log(filteredHackathons);
   const handleBookmark = (index) => {
@@ -189,7 +181,6 @@ export default function Home() {
     handleBookmark(index);
     setOpen(true);
   };
-
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
@@ -235,7 +226,6 @@ export default function Home() {
     setShowComponent(true);
   };
 
-
   const [carousel, setCarousel] = useState(false);
   const hasPlayedGreeting = localStorage.getItem("has_played_greeting");
   useEffect(() => {
@@ -274,12 +264,13 @@ export default function Home() {
       <div className="header-area header-transparent tw-z-[999]">
         <div className="main-header ">
           <div
-            className={`header-bottom  header-sticky ${scrollY > 400
-              ? "sticky-bar"
-              : navbarBackground === true
+            className={`header-bottom  header-sticky ${
+              scrollY > 400
+                ? "sticky-bar"
+                : navbarBackground === true
                 ? "sticky-bar"
                 : ""
-              }`}
+            }`}
             style={{ transition: "all 0.5s ease-in" }}
           >
             <div className="container-fluid">
@@ -300,8 +291,9 @@ export default function Home() {
                 <div className="col-xl-10 col-lg-10">
                   <div className="menu-wrapper d-flex align-items-center justify-content-end">
                     <div
-                      className={`main-menu d-none d-lg-block ${navbarAppear === true ? "active" : ""
-                        }`}
+                      className={`main-menu d-none d-lg-block ${
+                        navbarAppear === true ? "active" : ""
+                      }`}
                     >
                       <nav>
                         <ul id="navigation" className="navigation">
@@ -330,8 +322,9 @@ export default function Home() {
                   </div>
                 </div>
                 <div
-                  className={`menuToggle ${navbarAppear === true ? "active" : ""
-                    }`}
+                  className={`menuToggle ${
+                    navbarAppear === true ? "active" : ""
+                  }`}
                   onClick={() => menuToggle()}
                 >
                   <span></span>
@@ -347,23 +340,21 @@ export default function Home() {
         </div>
       </div>
       <main>
-     
-
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2 style={{color:"#845ec2"}}>Explore Top Hackathons</h2>
+                  <h2 style={{ color: "#845ec2" }}>Explore Top Hackathons</h2>
                 </div>
               </div>
             </div>
             <div className="mb-4 p-4">
-                <SearchBar
-                  setSearchQuery={setSearchQuery}
-                  handleTagFilter={handleTagFilter}
-                />
-              </div>
+              <SearchBar
+                setSearchQuery={setSearchQuery}
+                handleTagFilter={handleTagFilter}
+              />
+            </div>
             <div className="row">
               {filteredHackathons.map((hackathon, index) => (
                 <Hackathon
@@ -386,9 +377,6 @@ export default function Home() {
             </div> */}
           </div>
         </div>
-
-
-
       </main>
       <Footer />
     </div>

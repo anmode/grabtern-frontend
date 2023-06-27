@@ -132,6 +132,14 @@ a {
   .courses-actives {
     display: block !important;
   }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 10px;
+    padding: 10px 10px; 
+  }
 }
 
 .properties__card {
@@ -189,6 +197,14 @@ a {
     padding-left: 25px;
     padding-right: 25px;
   }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 10px;
+    padding: 10px 10px; 
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -196,12 +212,28 @@ a {
     padding-left: 60px;
     padding-right: 60px;
   }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 10px;
+    padding: 10px 10px; 
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .container {
     padding-left: 30px;
     padding-right: 30px;
+  }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 10px;
+    padding: 10px 10px; 
   }
 }
 
@@ -248,11 +280,27 @@ a {
   .services-area .single-services {
     padding: 22px 18px !important;
   }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 10px;
+    padding: 10px 10px; 
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-area1 .support-wrapper {
     display: flex !important;
+  }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 10px;
+    padding: 10px 10px; 
   }
 }
 
@@ -510,9 +558,7 @@ a {
 .testimonialsList {
   /* display: flex; */
   display: block;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  margin: 10px 125px;
+  margin: 10px 80px;
   padding: 10px 10px; 
   /* background-color: #005fa3; */
   /* overflow: visible; */
@@ -750,6 +796,21 @@ a {
   .mentorFormRegisration > .container > .mentorForm {
     margin: 67px auto;
   }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 50px;
+    padding: 10px 10px; 
+  }
+  .testimonialsList .owl-nav button.owl-prev{
+    left: 50%;
+  }
+  .testimonialsList .owl-nav button.owl-next{
+    right: 1.5%;
+  
+  }
 }
 .mentorFormSetupPW {
   margin: unset !important;
@@ -789,6 +850,20 @@ a {
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+  .testimonialsList {
+    /* display: flex; */
+    display: block;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin: 10px 15px;
+    padding: 10px 10px; 
+  }
+  .testimonialsList .owl-nav button.owl-prev{
+    left: 80.5%;  
+  }
+  .testimonialsList .owl-nav button.owl-next{
+    right: 1%;  
   }
 }
 
@@ -996,6 +1071,13 @@ select {
   .mentorCard h3 {
     padding: 0 10px;
   }
+  .testimonialsList .owl-nav button.owl-prev{
+    left: 50.5%; 
+  }
+  .testimonialsList .owl-nav button.owl-next{
+    right: 1%;  
+  }
+  
 }
 
 .mentorCard:hover {
@@ -1258,6 +1340,7 @@ select {
   .mentor-register-page .container > img {
     margin: 0 70px;
   }
+  
 }
 .description {
   color: black;
@@ -1445,6 +1528,16 @@ select {
   .mentor-card__info {
     margin: auto;
   }
+  .testimonialsList {
+    margin: 10px 10px;
+    padding: 10px 10px; 
+  }
+  .testimonialsList .owl-nav button.owl-prev{
+    left: 85.5%;  
+  }
+  .testimonialsList .owl-nav button.owl-next{
+    right: 1%;  
+  }
 }
 
 @media only screen and (min-width: 1080px) and (max-width: 1200px) {
@@ -1452,12 +1545,26 @@ select {
     width: 30vw;
     height: 60vh;
   }
+  .testimonialsList {
+    margin: 10px 20px;
+  }
+  
 }
 
 @media only screen and (max-width: 1080px) and (min-width: 820px) {
   .mentor-card {
     width: 45vw;
     height: 55vh;
+  }
+  .testimonialsList {
+    margin: 10px 10px;
+    padding: 10px 10px; 
+  }
+  .testimonialsList .owl-nav button.owl-prev{
+    left: 88.5%;  
+  }
+  .testimonialsList .owl-nav button.owl-next{
+    right: 1%;  
   }
 }
 
@@ -1730,5 +1837,14 @@ select {
     margin: auto;
     width: 94%;
     margin-top: 10px;
+  }
+  .testimonialsList {
+    margin: 10px 10px;
+  }
+  .testimonialsList .owl-nav button.owl-prev{
+    left: 55.5%;  
+  }
+  .testimonialsList .owl-nav button.owl-next{
+    right: 50%;  
   }
 }

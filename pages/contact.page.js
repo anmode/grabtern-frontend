@@ -9,9 +9,9 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { error } from "jquery";
 
-const Footer = dynamic(() => import("../components/Footer"));
-const Header = dynamic(() => import("../components/Header"));
-const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+const Footer = dynamic(() => import("../components/layout/Footer"));
+const Header = dynamic(() => import("../components/layout/Header"));
+const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Contact() {
   const form = useRef(null);

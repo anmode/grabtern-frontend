@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import styles from "../styles/Overlay.module.css";
+import styles from "../../styles/Overlay.module.css";
 import Image from "next/image";
 import jwt_decode from "jwt-decode";
 

@@ -3,12 +3,12 @@ import axios from "axios";
 import SimpleReactValidator from "simple-react-validator";
 
 import { useRouter } from "next/router";
-import Overlay from "../Overlay";
+import Overlay from "../basic/Overlay";
 import { ToastContainer, toast } from "react-toastify";
-import PersonDetails from "./PersonDetails";
-import ContactDetails from "./ContactDetails";
-import ScheduleDetails from "./ScheduleDetails";
-import SessionDetails from "./SessionDetails";
+import PersonDetails from "./components/PersonDetails";
+import ContactDetails from "./components/ContactDetails";
+import ScheduleDetails from "./components/ScheduleDetails";
+import SessionDetails from "./components/SessionDetails";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {

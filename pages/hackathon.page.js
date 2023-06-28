@@ -19,7 +19,7 @@ import DropdownCard from "../components/basic/LoginDropdown";
 import Image from "next/image";
 import Head from "next/head";
 // import gstyles from "../styles/gridhackathon.module.css";
-import SearchBar from "../components/hackthon/components/Searchbar";
+import SearchBar from "../components/hackthons/components/Searchbar";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";

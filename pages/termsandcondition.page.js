@@ -1,9 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import Head from "next/head";
 
-const Footer = dynamic(() => import("../components/Footer"));
+const Footer = dynamic(() => import("../components/layout/Footer"));
 function scrap() {
   return (
     <>

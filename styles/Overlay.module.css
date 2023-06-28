@@ -7,12 +7,14 @@
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 2;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  padding: 1px 3rem;
 }
 
 .overlayText {
-  position: absolute;
-  top: 40%;
-  left: 10%;
 }
 
 .overlayText h1 {
@@ -25,9 +27,10 @@
 }
 
 .overlayArrow {
-  position: relative;
-  left: 35%;
-  top: 25%;
+  margin-left: 1rem;
+  width: 30%;
+  max-width: 500px;
+  min-width: 200px;
   color: white;
   z-index: 1;
   font-weight: 100;

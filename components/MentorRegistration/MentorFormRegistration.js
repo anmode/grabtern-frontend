@@ -29,7 +29,7 @@ export default function MentorForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  let number = Math.random(0 * 100);
+  let number = window.crypto.getRandomValues(new Uint32Array(1))[0];
 
   const InitialFormState = {
     username: "",

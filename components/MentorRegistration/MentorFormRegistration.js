@@ -15,7 +15,7 @@ export default function MentorForm() {
   const router = useRouter();
   //const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
   const [addtoast, setaddToast] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
@@ -29,7 +29,6 @@ export default function MentorForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  let number = window.crypto.getRandomValues(new Uint32Array(1))[0];
 
   const InitialFormState = {
     username: "",
@@ -50,9 +49,6 @@ export default function MentorForm() {
     schedules: [],
     sessions: [],
     verified: false,
-    password: `GrabternMentorPW!${number}!`,
-    confirmPassword: `GrabternMentorPW!${number}!`,
-    // resume: ''
   };
   const [formData, setFormData] = useState(InitialFormState);
 
@@ -136,30 +132,26 @@ export default function MentorForm() {
     //     "The number of book sessions must be more than 2 or equal to 2!"
     //   );
     // }
-    if (isChecked) {
-      // Register mentor
-      try {
-        // console.log(formData);
-        setIsLoading(true);
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-        console.log(error);
-        const { data: res } = await axios.post(url, formData);
-        setIsLoading(false);
-        //setModalPopup(true);
-        setaddToast(true);
-      } catch (error) {
-        setIsLoading(false);
-        console.log(error);
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          toast.error(error.response.data.message);
-        }
+    // Register mentor
+    try {
+      // console.log(formData);
+      setIsLoading(true);
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
+      console.log(error);
+      const { data: res } = await axios.post(url, formData);
+      setIsLoading(false);
+      //setModalPopup(true);
+      setaddToast(true);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        toast.error(error.response.data.message);
       }
-    } else {
-      toast.error("Please agree to the terms before submitting");
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import DayInput from "../dateAndTime/DayInput";
-import TimeZoneInput from "../dateAndTime/TimeZoneInput";
+import DayInput from "../../dateAndTime/DayInput";
+import TimeZoneInput from "../../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 

@@ -1,0 +1,22 @@
+.scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .arrowUp {
+    font-size: 20px;
+  }
+  
+  .scrollToTop:hover {
+    opacity: 0.8;
+  }
+  

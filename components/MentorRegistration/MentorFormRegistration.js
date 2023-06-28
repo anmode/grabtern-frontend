@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import SimpleReactValidator from "simple-react-validator";
 
 import { useRouter } from "next/router";
@@ -30,7 +29,7 @@ export default function MentorForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  let number = Math.random(0 * 100);
+  let number = window.crypto.getRandomValues(new Uint32Array(1))[0];
 
   const InitialFormState = {
     username: "",
@@ -51,6 +50,9 @@ export default function MentorForm() {
     schedules: [],
     sessions: [],
     verified: false,
+    password: `GrabternMentorPW!${number}!`,
+    confirmPassword: `GrabternMentorPW!${number}!`,
+    // resume: ''
   };
   const [formData, setFormData] = useState(InitialFormState);
 
@@ -66,9 +68,8 @@ export default function MentorForm() {
     });
   };
 
-  function handleCallbackResponse(response) {
-    var userObject = jwt_decode(response.credential);
-    // console.log(userObject);
+  // callback function for google sign in
+  const callbackFunction = (userObject) => {
     setFormData({
       ...InitialFormState,
       name: userObject.name,
@@ -78,8 +79,7 @@ export default function MentorForm() {
         image: userObject.picture,
       },
     });
-    console.log(formData);
-  }
+  };
 
   useEffect(() => {
     if (addtoast === true && waitTime !== 0) {
@@ -129,6 +129,7 @@ export default function MentorForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     setError("");
     // if (formData.bookSession.length !== 2) {
     //   return setError(
@@ -205,7 +206,7 @@ export default function MentorForm() {
   };
   return (
     <div className="mentorFormRegisration">
-      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
+      <Overlay callbackFunction={callbackFunction} />
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={onSubmit}>
@@ -252,7 +253,6 @@ export default function MentorForm() {
                   formData={formData}
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
-                  handleCallbackResponse={handleCallbackResponse}
                   validator={validator}
                 />
               ),

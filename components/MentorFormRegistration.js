@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+{/*import React, { useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
@@ -213,7 +213,7 @@ export default function MentorForm() {
   return (
     <div className="mentorFormRegisration">
       <div className="overlay" onClick={() => hideitems(".overlay")}></div>
-      {/* {modalPopup === true ? (
+      {modalPopup === true ? (
         <div className="modalPopup">
           <div className="modalPopupAfterRegistrationDone">
             <p>
@@ -225,7 +225,7 @@ export default function MentorForm() {
             <p>Redirecting you to home in {waitTime} second</p>
           </div>
         </div>
-      ) : null} */}
+      ) : null}
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="container">
         <img
@@ -453,4 +453,4 @@ export default function MentorForm() {
       </div>
     </div>
   );
-}
+}*/}

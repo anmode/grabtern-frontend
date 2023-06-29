@@ -18,7 +18,7 @@ function ContactDetails({
       required: true,
       value: formData.internAt,
       validator: validator,
-      validation: 'required|alpha_num_dash_space'
+      validation: "required|alpha_num_dash_space",
     },
     {
       label: "current status",
@@ -30,7 +30,7 @@ function ContactDetails({
       required: true,
       value: formData.currentStatus,
       validator: validator,
-      validation: 'required|alpha_num_dash_space'
+      validation: "required|alpha_num_dash_space",
     },
     {
       label: "linkedIn",
@@ -43,7 +43,14 @@ function ContactDetails({
       pattern: "https://www.linkedin.com/in/*",
       value: formData.social.linkedin,
       validator: validator,
-      validation: ['required', 'url', {regex : '^https://(www.)?linkedin.com/((in/[^/]+/?)|(pub/[^/]+/((\w|\d)+/?){3}))$'}]
+      validation: [
+        "required",
+        "url",
+        {
+          regex:
+            "^https://(www.)?linkedin.com/((in/[^/]+/?)|(pub/[^/]+/((w|d)+/?){3}))$",
+        },
+      ],
     },
     {
       label: "twitter",
@@ -56,7 +63,14 @@ function ContactDetails({
       pattern: "https://twitter.com/*",
       value: formData.social.twitter,
       validator: validator,
-      validation: ['required', 'url', {regex :  '^https://(www.)?twitter.com/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+)'}]
+      validation: [
+        "required",
+        "url",
+        {
+          regex:
+            "^https://(www.)?twitter.com/(?![a-zA-Z0-9_]+/)([a-zA-Z0-9_]+)",
+        },
+      ],
     },
   ];
   return (

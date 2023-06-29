@@ -10,13 +10,13 @@
 
 .cf {
   display: flex;
-  padding: 30px 0 30px 0;
-  flex-wrap: wrap;
+  /* padding: 30px 0 30px 0; */
+  /* flex-wrap: wrap; */
   height: 480px;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   padding: 30px 30px 30px 30px;
   background-color: white;
-  width: 650px;
+  /* width: 650px; */
   font: sans-serif;
   border-radius: 5px;
   border: 2px solid whitesmoke;
@@ -24,16 +24,18 @@
 .flexx {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 2% 20% 4% 20% ;
 }
 .fgroup {
   margin: 3px;
   box-shadow: rgb(230, 221, 233) 1px 1px 5px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
-.csection {
+/* .csection {
   padding: 10px 50px 50px 62px;
   
-}
+} */
 .ctitle {
   font-size: 40px;
   margin-left: 18px;
@@ -92,11 +94,12 @@
   margin-top: 30px;
   font-weight: bold;
 }
+
 .offsetlg {
   height: 475px;
-  margin-right: 15px;
-  max-width: 500px;
-  margin-left: 200px;
+  /* margin-right: 15px; */
+  max-width: fit-content;
+  /* margin-left: 200px; */
   color: whitesmoke;
   border-radius: 5px;
   background: #845ec2;
@@ -157,23 +160,29 @@
 
 /* Media Queries */
 @media screen and (max-width: 1379px) {
-  .offsetlg {
+  /* .offsetlg {
     margin-left: 90px;
     max-width: 100%;
     margin-top: 0;
-  }
+  } */
 
-  .cf {
+  .flexx {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2% 10% 4% 10% ;
+  }
+  /* .cf {
     width: 500px;
   }
 
   .csection {
     padding: 0px;
-  }
+  } */
 }
 
 @media screen and (max-width: 979px) {
-  .offsetlg {
+  /* .offsetlg {
     margin-right: 0;
     margin-left: 62px;
     width: 300px;
@@ -182,31 +191,39 @@
 
   .cf {
     width: 500px;
+  } */
+  .flexx {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1% 7% 3% 7% ;
   }
 }
 
 @media screen and (max-width: 816px) {
   .offsetlg {
-    margin-right: 0;
+    /* margin-right: 0;
     margin-left: 0px;
     padding-left: 40px;
     padding-right: 0px;
     width: 750px;
     height: 380px;
-    margin-top: 0px;
-    /* box-shadow: rgb(230, 221, 233) 1px 1px 5px 0px ; */
+    margin-top: 0px; */
+    /* width: 100%; */
+    max-width: 100%;
   }
 
-  .cf {
-    width: 100%;
-    margin-left: 1px;
-    
-  }
-
+ .cf {
+  width: 100%;
+  margin-left: 1px;
+  
+}
   .flexx {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
+    margin: 1% 7% 3% 7% ;
   }
 }
 

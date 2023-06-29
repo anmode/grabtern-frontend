@@ -143,7 +143,7 @@ function Contact() {
               <div className="d-none d-sm-block mb-5 pb-4"></div>
               <div className="row">
                 <div className="col-12"></div>
-                <div className={`col-lg-8 ${style.flexx}`}>
+                <div className={`${style.flexx}`}>
                   <div className={`${style.offsetlg} col-lg-3 bg-slate-100`}>
                     <div className={`${style.contactinfo} media`}>
                       <div className={style.media_head}>

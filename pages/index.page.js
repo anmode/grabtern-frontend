@@ -42,6 +42,9 @@ const internshipsOptions = {
     1170: {
       items: 3,
     },
+    2000:{
+      items:4
+    }
   },
 };
 

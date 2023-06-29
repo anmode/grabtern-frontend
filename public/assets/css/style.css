@@ -3369,12 +3369,31 @@ hr {
   box-shadow: 0px 8px 8px 0px rgba(2, 25, 65, 0.08);
 }
 .courses-area .properties__img img {
-  width: 100%;
+  width: auto;
+  height: 33rem;
   border-radius: 10px 10px 0 0;
+  object-fit: fill;
   position: relative;
+}
+@media (max-width:879px) {
+  .courses-area .properties__img img{
+    height: 40rem;
+  }
 }
 .courses-area .properties__caption {
   padding: 29px 20px 20px 20px;
+  height: 15rem;
+  overflow-y: scroll;
+}
+@media (max-width:574px) {
+  .courses-area .properties__caption{
+    height: 27.1rem;
+  }
+}
+@media (max-width:880px) and (min-width:574px) {
+  .courses-area .properties__caption{
+    height: 35rem;
+  }
 }
 .courses-area .properties__caption h3 {
   font-size: 20px;

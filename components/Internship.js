@@ -45,7 +45,7 @@ function Internship({
                 {internshipTitle}
               </a>
             </h3>
-            <p>{description}</p>
+            <p>{internshipDescription}</p>
           </div>
         </div>
       </div>

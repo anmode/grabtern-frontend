@@ -27,16 +27,7 @@ function Contact() {
   });
 
   //check value of forms
-
-  const {
-    values,
-    touched,
-    errors,
-    action,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-  } = useFormik({
+  const { values, touched, errors, action, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       message: "",
       name: "",
@@ -71,16 +62,12 @@ function Contact() {
     console.log(errors);
 
     //console.log("mail called");
+    if (values.message === '') { showToast("Please enter a message!"); }
+    else if (values.name === '') { showToast("Please enter a name!"); }
+    else if (values.email === '') { showToast("Please enter a email!"); }
+    else if (values.subject === '') { showToast("Please enter a subject!") }
 
-    if (values.message === "") {
-      showToast("Please enter a message!");
-    } else if (values.name === "") {
-      showToast("Please enter a name!");
-    } else if (values.email === "") {
-      showToast("Please enter a email!");
-    } else if (values.subject === "") {
-      showToast("Please enter a subject!");
-    } else {
+    else {
       const templateParams = {
         //  name: values.name,
         name: document.querySelector("#name").value,
@@ -99,7 +86,7 @@ function Contact() {
         )
         .then(
           (result) => {
-            toast("Contact form sent successfully !", {
+            toast('Contact form sent successfully !', {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
@@ -108,12 +95,12 @@ function Contact() {
               draggable: true,
               progress: undefined,
               theme: "light",
-              type: "success",
+              type: "success"
             });
             console.log(result.text);
           },
           (error) => {
-            toast("Contact form sent successfully !", {
+            toast('Contact form sent successfully !', {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
@@ -127,13 +114,18 @@ function Contact() {
             console.log(error.text);
           },
 
-          (values.message = ""),
-          (values.name = ""),
-          (values.email = ""),
-          (values.subject = ""),
-          handleChange
+          values.message = '',
+          values.name = '',
+          values.email = '',
+          values.subject = '',
+          handleChange,
+
         );
+
+
+
     }
+
   };
 
   return (
@@ -145,13 +137,14 @@ function Contact() {
       <SimpleBanner bannerTittle="Contact us" siteName="Contact" />
       <main className={style.main}>
         <div className={style.mainbody}>
+          <div id="both">
           <section className={style.csection}>
             <div className="container">
               <div className="d-none d-sm-block mb-5 pb-4"></div>
               <div className="row">
                 <div className="col-12"></div>
-                <div className={`col-lg-8 ${style.flexx}`}>
-                  <div className={`${style.offsetlg} col-lg-3`}>
+                <div className={`${style.flexx}`}>
+                  <div className={`${style.offsetlg} col-lg-3 bg-slate-100`}>
                     <div className={`${style.contactinfo} media`}>
                       <div className={style.media_head}>
                         <h3>Contact Information</h3>
@@ -199,11 +192,11 @@ function Contact() {
                       <div className="col-12">
                         <div className={style.fgroup}>
                           <textarea
-                            className={"form-control w-100"}
+                            className={'form-control w-100'}
                             name="message"
                             id="message"
                             cols={30}
-                            rows={9}
+                            rows={5}
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Enter Message'"
                             placeholder=" Enter Message"
@@ -211,8 +204,16 @@ function Contact() {
                             value={values.message}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // value={userMessage}
-                            // onChange={(e) => setUserMessage(e.value)}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #e5e7eb',
+                              outline: 'none',
+                              resize: 'vertical',
+                            }}
+                          // value={userMessage}
+                          // onChange={(e) => setUserMessage(e.value)}
                           />
                         </div>
                       </div>
@@ -233,13 +234,22 @@ function Contact() {
                             value={values.name}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // onChange={(e) => setUserName(e.value)}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #e5e7eb',
+                              outline: 'none',
+
+
+                            }}
+                          // onChange={(e) => setUserName(e.value)}
                           />
                         </div>
                       </div>
 
-                      {
-                        //(errors.name!=='')?showToast(errors.name):errors.name=''
+                      { //(errors.name!=='')?showToast(errors.name):errors.name=''
+
                       }
                       <div className="col-sm-6">
                         <div className={style.fgroup}>
@@ -255,10 +265,20 @@ function Contact() {
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // value={userEmail}
-                            // onChange={(e) => setUserEmail(e.value)}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #e5e7eb',
+                              outline: 'none',
+
+
+                            }}
+                          // value={userEmail}
+                          // onChange={(e) => setUserEmail(e.value)}
                           />
                         </div>
+
                       </div>
                       {
                         //(errors.email!=='')?showToast(errors.email):errors.email=''
@@ -277,23 +297,40 @@ function Contact() {
                             value={values.subject}
                             onChange={handleChange}
                             onBlur={handleBlur}
+                            style={{
+                              padding: '10px',
+                              fontSize: '16px',
+                              borderRadius: '5px',
+                              border: '2px solid #e5e7eb',
+                              outline: 'none',
 
-                            // value={userSubject}
-                            // onChange={(e) => setUserSubject(e.value)}
+
+                            }}
+
+                          // value={userSubject}
+                          // onChange={(e) => setUserSubject(e.value)}
                           />
                         </div>
+
                       </div>
                       {
                         //(errors.subject!=='')?showToast(errors.subject):errors.subject=''
                       }
                       <div>
-                        <button
-                          type="submit"
-                          className={style.boxedbtn}
+                        <button type="button"
+                          class="md:tw-w-auto tw-h-16 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold"
                           onClick={sendEmail}
-                        >
+                          style={{
+                            padding: '5px 15px',
+                            width: '100px',
+                            marginLeft: "17px"
+                          }}
+
+                          onMouseEnter={(e) => (e.target.style.color = 'whitesmoke')}
+                          onMouseLeave={(e) => (e.target.style.color = '#fff')}>
                           Send
                         </button>
+
                       </div>
                     </div>
                   </form>
@@ -301,6 +338,7 @@ function Contact() {
               </div>
             </div>
           </section>
+          </div>
         </div>
       </main>
       <Footer />

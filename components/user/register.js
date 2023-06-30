@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+import Visibillity from "../../public/assets/Visibillity.jsx";
+import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
@@ -28,6 +31,16 @@ function Register({ handleLogPageToggle }) {
   });
   const [error, setError] = useState("");
   const [verificationSent, setVerificationSent] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prevState) => !prevState);
+  };
+
+  const toggleConPasswordVisibility = () => {
+    setConIsPasswordVisible((prevState) => !prevState);
+  };
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -104,7 +117,8 @@ function Register({ handleLogPageToggle }) {
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
             />
           </div>
-          <div className="tw-flex tw-flex-col  tw-mb-10">
+
+          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
             <label
               for="name"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
@@ -112,15 +126,22 @@ function Register({ handleLogPageToggle }) {
               Password
             </label>
             <input
-              type="password"
+              type={isPasswordVisible ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={handleChange}
               value={data.password}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
             />
+            <div
+              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+              onClick={togglePasswordVisibility}
+            >
+              {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+            </div>
           </div>
-          <div className="tw-flex tw-flex-col  tw-mb-10">
+
+          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
             <label
               for="name"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
@@ -128,13 +149,19 @@ function Register({ handleLogPageToggle }) {
               Confirm Password
             </label>
             <input
-              type="password"
+              type={isConPasswordVisible ? "text" : "password"}
               name="confirmPassword"
               placeholder="Confirm Password"
               onChange={handleChange}
               value={data.confirmPassword}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
             />
+            <div
+              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+              onClick={toggleConPasswordVisibility}
+            >
+              {isConPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+            </div>
           </div>
           {verificationSent && (
             <p style={{ color: "green" }}>

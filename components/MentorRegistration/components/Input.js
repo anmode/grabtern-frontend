@@ -9,6 +9,8 @@ function Input({
   handleChange,
   placeholder,
   value,
+  validator,
+  validation,
   element,
   ...rest
 }) {
@@ -17,6 +19,7 @@ function Input({
       <label className="label uppercase" htmlFor={name}>
         {label}
       </label>
+      {validator.current.message(name, value, validation)}
       {element == "textarea" ? (
         <textarea
           cols="10"
@@ -47,5 +50,3 @@ function Input({
 }
 
 export default Input;
-{
-}

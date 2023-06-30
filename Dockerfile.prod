@@ -1,0 +1,57 @@
+# FROM node:20-alpine3.17 as builder
+# WORKDIR /grabtern-app
+# COPY ./package*.json ./
+# RUN npm install
+# # Copy the rest of the application code
+# COPY . .
+# # Build the application
+# RUN npm run build
+
+
+# FROM nginx:alpine
+# COPY --from=builder /grabtern-app/build /usr/share/nginx/html
+# EXPOSE 80
+# CMD ["nginx", "-g", "daemon off;"]
+
+
+
+
+
+
+# # Stage 2: Distroles image base
+# FROM gcr.io/distroless/nodejs20-debian11
+
+# # Set the working directory
+# WORKDIR /grabtern-app
+
+# # Copy the built files from the previous stage
+# COPY --from=builder /grabtern-app/dist ./dist
+# COPY --from=builder /grabtern-app/node_modules ./node_modules
+# COPY --from=builder /grabtern-app/package*.json ./
+
+# # Expose the port your application listens on (if applicable)
+# EXPOSE 3000
+
+# # Start the application
+# CMD [ "npm", "run", "dev" ]
+
+
+
+# Stage 1: Install dependencies
+FROM node:20-alpine3.17 as deps
+WORKDIR /grabtern-app
+COPY package*.json ./
+RUN npm install
+
+# Stage 2: Build the app
+FROM node:16-alpine as builder
+WORKDIR /grabtern-app
+COPY --from=deps /grabtern-app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+# Stage 3: Create the production image
+FROM nginx:alpine
+COPY --from=builder /grabtern-app/.next /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

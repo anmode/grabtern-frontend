@@ -1,15 +1,21 @@
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import axios from "axios";
-import { useRouter } from "next/router";
 import jwt_decode from "jwt-decode";
-import { useAuth } from "../../context/AuthContext";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../context/AuthContext";
+
+import Visibillity from "../../public/assets/Visibillity.jsx";
+import VisibillityOff from "../../public/assets/VisibillityOff";
+
 function Login({ handleLogPageToggle }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [login, setLogin] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const router = useRouter();
   const {
     isMentorLoggedIn,
@@ -17,6 +23,10 @@ function Login({ handleLogPageToggle }) {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prevState) => !prevState);
+  };
 
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
@@ -110,6 +120,7 @@ function Login({ handleLogPageToggle }) {
       toast.success("login successful");
     }
   };
+
   return (
     <>
       <form
@@ -135,7 +146,8 @@ function Login({ handleLogPageToggle }) {
           <h3 style={{ color: "black", alignSelf: "center", margin: "20px" }}>
             Or
           </h3>
-          <div className=" tw-flex tw-flex-col tw-mb-10">
+
+          <div className="tw-flex tw-flex-col tw-mb-10">
             <label
               for="name"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
@@ -148,24 +160,36 @@ function Login({ handleLogPageToggle }) {
               placeholder="Email"
               onChange={handleChange}
               value={data.email}
-              className=" tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
             />
           </div>
-          <div className="tw-flex tw-flex-col tw-mb-10">
-            <label for="name" className="tw-text-3xl tw-font-medium ">
+
+          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
+            <label
+              for="name"
+              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
+            >
               Password
             </label>
             <input
-              type="password"
+              type={isPasswordVisible ? "text" : "password"}
               name="password"
               placeholder="Password"
               onChange={handleChange}
               value={data.password}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
             />
+
+            <div
+              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+              onClick={togglePasswordVisibility}
+            >
+              {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+            </div>
           </div>
+
           <div>
-            <input
+            <button
               type="submit"
               name="submit"
               value="Login"
@@ -175,10 +199,11 @@ function Login({ handleLogPageToggle }) {
               }}
               className="tw-px-10 tw-py-[6px] tw-font-semibold tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
               onClick={addToast}
-            />
+            >
+              Login
+            </button>
           </div>
 
-          <ToastContainer />
           {error && <div style={{ color: "red" }}>{error}</div>}
           {localStorage.getItem("new_user") && (
             <div style={{ color: "green" }}>Please register first.</div>
@@ -201,6 +226,7 @@ function Login({ handleLogPageToggle }) {
             </button>
           </div>
         </div>
+        <ToastContainer />
       </form>
     </>
   );

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import SimpleReactValidator from "simple-react-validator";
 import Card from "./Card";
 import Input from "./Input";
 
-function SessionDetails({ formData, changeArray }) {
+function SessionDetails({ formData, changeArray, validator }) {
   const initialSession = {
     name: "",
     type: "",
@@ -16,10 +17,22 @@ function SessionDetails({ formData, changeArray }) {
     const target = e.target;
     setNewSession({ ...newSession, [target.name]: target.value });
   };
+
+  // for validator
+  const sessionValidator = useRef(new SimpleReactValidator());
+  const [, forceUpdate] = useState();
+
   // add new session
   const addSession = () => {
-    changeArray("sessions", [...formData.sessions, newSession]);
-    setNewSession(initialSession);
+    if (sessionValidator.current.allValid()) {
+      sessionValidator.current.hideMessages();
+      changeArray("sessions", [...formData.sessions, newSession]);
+      setNewSession(initialSession);
+      forceUpdate(1);
+    } else {
+      sessionValidator.current.showMessages();
+      forceUpdate(2);
+    }
   };
   // remove session
   const removeSession = (removeIndex) => {
@@ -40,6 +53,8 @@ function SessionDetails({ formData, changeArray }) {
       placeholder: "eg. 1 on 1 Mentorship",
       required: true,
       value: newSession.name,
+      validator: sessionValidator,
+      validation: "required|alpha_num_dash_space",
     },
     {
       label: "Session Type",
@@ -50,6 +65,8 @@ function SessionDetails({ formData, changeArray }) {
       placeholder: "eg. Video Meeting",
       required: true,
       value: newSession.type,
+      validator: sessionValidator,
+      validation: "required|alpha_num_dash_space",
     },
     {
       label: "Session Duration (in minutes)",
@@ -60,6 +77,8 @@ function SessionDetails({ formData, changeArray }) {
       placeholder: "eg. 45",
       required: true,
       value: newSession.duration,
+      validator: sessionValidator,
+      validation: "required|numeric",
     },
     {
       label: "Session Price",
@@ -70,6 +89,8 @@ function SessionDetails({ formData, changeArray }) {
       placeholder: "eg. $10",
       required: true,
       value: newSession.price,
+      validator: sessionValidator,
+      validation: "required|currency",
     },
     {
       divClassName: "tw-col-span-2",
@@ -82,6 +103,8 @@ function SessionDetails({ formData, changeArray }) {
       required: true,
       value: newSession.description,
       element: "textarea",
+      validator: sessionValidator,
+      validation: "required",
     },
   ];
   return (
@@ -105,6 +128,15 @@ function SessionDetails({ formData, changeArray }) {
         </button>
       </div>
       {/* add session button ends */}
+
+      {/* error if it does not have any session */}
+      {validator.current.message(
+        "sessions",
+        formData.sessions,
+        "required|min:1",
+        { className: "tw-relative tw-text-red-600 tw-text-2xl" }
+      )}
+      {/* error if it does not have any session */}
 
       {/* session card starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

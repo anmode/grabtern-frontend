@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-const Header = React.lazy(() => import("../components/Header"));
+const Header = React.lazy(() => import("../components/layout/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import SessionCard from "../components/mentorProfile/SessionCard";
-import MentorCard from "../components/mentorProfile/MentorCard";
-import SharePageModal from "../components/mentorProfile/SharePageModal";
-import BookSessionModal from "../components/mentorProfile/BookSessionModal";
+import SessionCard from "../components/mentorProfile/components/SessionCard";
+import MentorCard from "../components/mentorProfile/components/MentorCard";
+import SharePageModal from "../components/mentorProfile/components/SharePageModal";
+import BookSessionModal from "../components/mentorProfile/components/BookSessionModal";
 import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

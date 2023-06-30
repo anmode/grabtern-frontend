@@ -1,7 +1,12 @@
 import React from "react";
 import Input from "./Input";
 
-function ContactDetails({ formData, handleChange, handleSocialChange }) {
+function ContactDetails({
+  formData,
+  handleChange,
+  handleSocialChange,
+  validator,
+}) {
   const inputs = [
     {
       label: "intern",
@@ -12,6 +17,8 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
       placeholder: "e.g. MITACS",
       required: true,
       value: formData.internAt,
+      validator: validator,
+      validation: "required|alpha_num_dash_space",
     },
     {
       label: "current status",
@@ -22,6 +29,8 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
       placeholder: "e.g. Amazon SDE-I",
       required: true,
       value: formData.currentStatus,
+      validator: validator,
+      validation: "required|alpha_num_dash_space",
     },
     {
       label: "linkedIn",
@@ -29,10 +38,19 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
       name: "linkedin",
       className: "mentorFormInput",
       onChange: handleSocialChange,
-      placeholder: "e.g. https://www.linkedin.com/peterparker",
+      placeholder: "e.g. https://www.linkedin.com/in/peterparker",
       required: true,
-      pattern: "https://linkedin.com/in/*",
+      pattern: "https://www.linkedin.com/in/*",
       value: formData.social.linkedin,
+      validator: validator,
+      validation: [
+        "required",
+        "url",
+        {
+          regex:
+            "^https://(www.)?linkedin.com/((in/[^/]+/?)|(pub/[^/]+/((w|d)+/?){3}))$",
+        },
+      ],
     },
     {
       label: "twitter",
@@ -40,10 +58,19 @@ function ContactDetails({ formData, handleChange, handleSocialChange }) {
       name: "twitter",
       className: "mentorFormInput",
       onChange: handleSocialChange,
-      placeholder: "e.g. https://www.twitter.com/peterparker",
+      placeholder: "e.g. https://twitter.com/peterparker",
       required: true,
       pattern: "https://twitter.com/*",
       value: formData.social.twitter,
+      validator: validator,
+      validation: [
+        "required",
+        "url",
+        {
+          regex:
+            "^https://(www.)?twitter.com/(?![a-zA-Z0-9_]+/)([a-zA-Z0-9_]+)",
+        },
+      ],
     },
   ];
   return (

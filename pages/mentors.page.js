@@ -31,7 +31,7 @@ function Mentors({ mentorsData }) {
               <input
                 type="text"
                 placeholder="Search Mentors..."
-                className="search tw-h-16 px-8 p-4 tw-rounded-full py-2 text-gray-700 sm:w-50 md:tw-w-1/4"
+                className="search tw-h-16 px-8 p-4 tw-rounded-full py-2 text-gray-700 sm:w-50 md:tw-w-1/3"
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>

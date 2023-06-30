@@ -1,12 +1,13 @@
+//components/mentor.page.js
 import React, { useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 import teamsData from "./data/teamsData";
-import { useApi } from "./customHook/useAPi.js";
+import { useApi } from "../hook/useAPi.js";
 import { list } from "postcss";
-const Header = dynamic(() => import("../components/Header"));
-const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+const Header = dynamic(() => import("../components/layout/Header"));
+const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
@@ -26,11 +27,11 @@ function Mentors({ mentorsData }) {
           <div className="container">
             <h1>Find All mentors here</h1>
 
-            <div className="tw-flex tw-justify-center">
+            <div className="tw-flex tw-justify-center tw-py-6 tw-p-4">
               <input
                 type="text"
                 placeholder="Search Mentors..."
-                className="search tw-h-20 px-8 p-4 tw-rounded-full py-2 text-gray-700 sm:w-50 md:tw-w-2/5"
+                className="search tw-h-16 px-8 p-4 tw-rounded-full py-2 text-gray-700 sm:w-50 md:tw-w-1/4"
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>

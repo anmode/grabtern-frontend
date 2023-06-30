@@ -13,10 +13,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
-// import MentorTestimonial from "../components/mentorTestimonial";
+import MentorTestimonial from "../components/mentorTestimonial/mentorTestimonial"
 import Link from "next/link";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaLinkedin, FaTwitter, FaShareAlt } from "react-icons/fa";
+import styles1 from "../styles/mentorTestimonial.module.css"
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
@@ -206,6 +207,15 @@ function Index({ mentorDetail }) {
                 ))}
             </div>
             </div>
+            <div className="testimonials tw-min-w-full tw-justify-center tw-flex tw-flex-col tw-mt-6">
+              <div className="tw-flex tw-justify-center">
+            <h1 className="tw-text-7xl tw-items-center tw-px-8 tw-relative tw-top-8  ">Testimonials</h1>
+            </div>
+            <div className={`${styles1.testimonialdiv2} testimonialdiv2 tw-relative tw-justify-center tw-ml-[212px]`}>
+<MentorTestimonial/>
+
+</div>
+            </div>
             <div></div>
             {/* <Testimonial testimonialUserName={mentorDetail.testimonials.name}
             testimonialUserHeadline={mentorDetail.testimonials.headline}
@@ -223,9 +233,7 @@ function Index({ mentorDetail }) {
               testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50"
 
             /> */}
-            <div className="testimonials  tw-min-w-full">
-{/* <MentorTestimonial /> */}
-</div>
+     
             {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
           </div>
           {/* Share Mentor Page Modal */}

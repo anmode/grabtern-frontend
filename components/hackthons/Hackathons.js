@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from "../styles/hackathon.module.css";
+import styles from "../../styles/hackathon.module.css";
 
 function Hackathon({
   hackathonImage,

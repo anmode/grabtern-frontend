@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
+const Header = dynamic(() => import("../components/layout/Header"));
+const Footer = dynamic(() => import("../components/layout/Footer"));
 
 import Visibillity from "../public/assets/Visibillity.jsx";
 import VisibillityOff from "../public/assets/VisibillityOff.jsx";

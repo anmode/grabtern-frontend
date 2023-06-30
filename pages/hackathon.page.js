@@ -1,25 +1,25 @@
 import About from "../components/About";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import servicesData from "./data/ServicesData";
 import Service from "../components/Service";
 import internshipsData from "./data/coursesData";
 import Internship from "../components/Internship";
 import hackathonsData from "./data/hackathonsData";
-import Hackathon from "../components/Hackathons";
+import Hackathon from "../components/hackthons/Hackathons";
 import teamsData from "./data/teamsData";
 import TeamProfile from "../components/TeamProfile";
-import Footer from "../components/Footer";
+import Footer from "../components/layout/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 import { useAuth } from "../context/AuthContext";
-import DropdownCard from "../components/LoginDropdown";
+import DropdownCard from "../components/basic/LoginDropdown";
 import Image from "next/image";
 import Head from "next/head";
 // import gstyles from "../styles/gridhackathon.module.css";
-import SearchBar from "../components/Searchbar";
+import SearchBar from "../components/hackthons/components/Searchbar";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";

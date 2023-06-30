@@ -1,10 +1,10 @@
 import React from "react";
 import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../../components/Header"));
+const Header = dynamic(() => import("../../components/layout/Header"));
 const MentorFormSetupPW = dynamic(() =>
   import("../../components/MentorFormSetupPW")
 );
-const Footer = dynamic(() => import("../../components/Footer"));
+const Footer = dynamic(() => import("../../components/layout/Footer"));
 import axios from "axios";
 
 function Index({ mentorPWCode }) {

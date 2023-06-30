@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import hackathonStyle from "../styles/hackathon.module.css";
+import hackathonStyle from "../../../styles/hackathon.module.css";
 // import styles from '../styles/Searchbar.module.css'; // Import the CSS file
 import InputAdornment from "@mui/material/InputAdornment";
 import Chip from "@mui/material/Chip";

@@ -1211,7 +1211,7 @@ select {
     height: 100%;
     text-align: center;
   }
-  .mentorLists a{
+  .mentorLists a {
     display: flex;
     justify-content: center;
   }

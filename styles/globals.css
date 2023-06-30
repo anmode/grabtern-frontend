@@ -778,16 +778,12 @@ select {
   color: unset;
 }
 
-.app {
+.search {
   border: 2px solid rgb(192, 84, 255);
-  height: 40px;
-  margin: 40px 40%;
-  width: 25%;
-  border-radius: 25px;
   font-size: 2.3rem;
-  padding-left: 15px;
   color: rgb(127, 102, 255);
 }
+
 .mentorCard {
   background-color: white;
   display: flex;
@@ -1214,6 +1210,10 @@ select {
     width: 35vh;
     height: 100%;
     text-align: center;
+  }
+  .mentorLists a{
+    display: flex;
+    justify-content: center;
   }
 }
 

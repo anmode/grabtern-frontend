@@ -26,11 +26,11 @@ function Mentors({ mentorsData }) {
           <div className="container">
             <h1>Find All mentors here</h1>
 
-            <div className="app">
+            <div className="tw-flex tw-justify-center">
               <input
                 type="text"
                 placeholder="Search Mentors..."
-                className="search"
+                className="search tw-h-20 px-8 p-4 tw-rounded-full py-2 text-gray-700 sm:w-50 md:tw-w-2/5"
                 onChange={(e) => setQuery(e.target.value)}
               />
             </div>

@@ -21,17 +21,23 @@ This is the frontend repository for Grabtern, a web application built with Next.
  </p>
  </div>
  <br>
- 
- 
-## Table of Contents
 
-- [Getting Started](#getting-started)
-- [Tech Stack Used](#-tech-stack-used)
-- [Prettier lint Test](#-prettier-lint-test-and-how-to-fix-it)
-- [Contributing](#contributing)
-- [Author](#author)
-- [License](#license)
-- [Our Contributors](#-thank-you-for-your-contribution)
+<details>
+   <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#getting-started">Getting Started 📌</a>
+      <ul>
+        <li><a href="#-tech-stack-used">Tech Stacks used 💻</a></li>
+      </ul>
+    </li>
+    <li><a href="#-prettier-lint-test-and-how-to-fix-it">Prettier lint Test</a></li>
+    <li><a href="#contributing">How to contribute?</a></li>
+    <li><a href="#author">Author</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#-thank-you-for-your-contribution">Our Contributors</a></li>
+  </ol>
+</details>
 
 ---
 
@@ -75,6 +81,17 @@ This will start the development server on http://localhost:3000/.
 
 ---
 
+- And if server stop then
+
+```
+
+npm run build
+```
+
+npm start
+
+This will start server
+
 ## 🧰 Tech Stack Used
 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
@@ -114,9 +131,10 @@ If you'd like to contribute to Grabtern Frontend:-
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b <new_branch_name>`)
-3. Commit your Changes (`git commit -m 'Added some AmazingFeature'`)
-4. Push to the Branch (`git pull origin <branch_name>`)
-5. Open a Pull Request
+3. Save your changes (`git add .`)
+4. Commit your Changes (`git commit -m 'Added some AmazingFeature'`)
+5. Push to the Branch (`git push origin <branch_name>`)
+6. Open a Pull Request
 
 ---
 

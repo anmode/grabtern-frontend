@@ -4,18 +4,14 @@ import Image from "next/image";
 import styles from "../styles/404.module.css";
 import dynamic from "next/dynamic";
 const Footer = dynamic(() => import("../components/Footer"));
-const Header = dynamic(() => import("../components/Header"));
-const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
 
 function ErrorPage() {
     return (
         <>
-            <Header />
-            <SimpleBanner bannerTittle="Error 404" siteName="Error" />
             <div className={styles.mainContainer} >
                 <div className={styles.imageContainer} >
                     <img
-                        src="/error.png"
+                        src="/Errorr.svg"
                         alt="bg"
                     />
                 </div>

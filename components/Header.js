@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { GrFormClose } from "react-icons/gr";
+
 import DropdownCard from "./LoginDropdown";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { SunIcon } from "@heroicons/react/24/solid";
@@ -63,7 +65,7 @@ function Header() {
       className={
         scrollY
           ? "tw-flex tw-justify-between tw-items-center tw-mb-0 tw-bg-white tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-black dark:tw-bg-muted-900 tw-shadow-lg tw-shadow-muted-300/30 dark:tw-shadow-muted-900/40 tw-transition-all tw-duration-300"
-          : "tw-flex tw-justify-between tw-items-center tw-mb-0 tw-bg-gray-200 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 dark:tw-bg-muted-900 tw-shadow-lg tw-shadow-muted-300/30 dark:tw-shadow-muted-900/40 tw-text-black"
+          : "tw-flex tw-justify-between tw-items-center tw-mb-0 tw-bg-muted-100 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 dark:tw-bg-muted-900 tw-shadow-lg tw-shadow-muted-300/30 dark:tw-shadow-muted-900/40 tw-text-black"
       }
     >
       <Link
@@ -127,43 +129,46 @@ function Header() {
       {/* For Mobile Navigation */}
       <div className="sm:tw-hidden tw-flex tw-relative" ref={dropdownRef}>
         <div className="tw-flex">
-          <RxHamburgerMenu
-            className="tw-h-10 tw-w-12 tw-mx-2"
+          <div
+            className="tw-text-5xl tw-mx-2 cursor-pointer"
             onClick={() => {
               setToggleDropdown((prev) => !prev);
             }}
-          />
+          >
+             <ion-icon name={toggleDropdown ? 'close':'menu'}></ion-icon>
+          </div>
           {toggleDropdown && (
-            <div className="tw-absolute tw-right-0 tw-top-full tw-mt-6 tw-w-full tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-slate-600 dark:tw-text-white tw-min-w-[320px] tw-flex tw-flex-col tw-gap-6 tw-justify-start tw-items-center tw-text-xl tw-font-semibold">
+            <div className="tw-absolute tw-right-0 tw-top-full tw-mt-8 tw-w-full tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-slate-600 dark:tw-text-white tw-min-w-[100vw] tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-xl tw-font-semibold tw-pb-12">
               <Link
                 href="/"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-2xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Home
               </Link>
               <Link
                 href="/mentors"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-2xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Mentor
               </Link>
               <Link
                 href="/contact"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-2xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Contact
               </Link>
 
               <Link
                 href="/"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-2xl tw-p-2 tw-font-inter tw-text-gray-700 hover:tw-text-gray-500 tw-font-medium"
               >
                 Sign In
               </Link>
+              <SunIcon className="tw-h-10 tw-bg-white tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer" />
               <button
                 type="button"
                 onClick=""
-                className="tw-w-1/2 tw-rounded-full tw-border tw-border-blue-600 tw-bg-blue-600 tw-py-2 tw-px-5 tw-text-white tw-transition-all hover:tw-bg-white hover:tw-text-black tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
+                className=" tw-w-full tw-rounded-lg tw-border tw-border-blue-600 tw-bg-blue-600 tw-py-3 tw-text-white tw-transition-all hover:tw-bg-white hover:tw-text-black tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
               >
                 Sign Up
               </button>

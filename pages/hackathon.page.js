@@ -123,16 +123,18 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [tagFilter, setTagFilter] = useState(["All"]);
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
-  const [filterHack, setFilterHack] = useState(hackathonsData)
+  const [filterHack, setFilterHack] = useState(hackathonsData);
 
   const filteredHackathons = HackathonsData.filter((hackathon) => {
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
-      tagFilter.some((filter) => tag.toLowerCase().includes(filter.toLowerCase()))
+      tagFilter.some((filter) =>
+        tag.toLowerCase().includes(filter.toLowerCase())
+      )
     );
 
     if (tagMatch) {
-      return hackathon
+      return hackathon;
     }
   });
 
@@ -140,8 +142,13 @@ export default function Home() {
     // if (tagFilter.includes("All") && tagFilter.length === 1) {
     //   setFilterHack(hackathonsData)
     // }
-    setFilterHack(filteredHackathons.length !== 0 || (!tagFilter.includes('All') && tagFilter.length < 2) ? filteredHackathons : hackathonsData)
-  })
+    setFilterHack(
+      filteredHackathons.length !== 0 ||
+        (!tagFilter.includes("All") && tagFilter.length < 2)
+        ? filteredHackathons
+        : hackathonsData
+    );
+  });
 
   // console.log(filteredHackathons);
   const handleBookmark = (index) => {
@@ -334,7 +341,7 @@ export default function Home() {
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
-                tagFilter = {tagFilter}
+                tagFilter={tagFilter}
               />
             </div>
             <div className="row">

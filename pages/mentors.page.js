@@ -3,10 +3,10 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 import teamsData from "./data/teamsData";
-import { useApi } from "./customHook/useAPi.js";
+import { useApi } from "../hook/useAPi.js";
 import { list } from "postcss";
-const Header = dynamic(() => import("../components/Header"));
-const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+const Header = dynamic(() => import("../components/layout/Header"));
+const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
@@ -24,7 +24,7 @@ function Mentors({ mentorsData }) {
       <main>
         <section className="findMentors">
           <div className="container">
-            <h1>Find All mentors here's</h1>
+            <h1>Find All mentors here</h1>
 
             <div className="app">
               <input

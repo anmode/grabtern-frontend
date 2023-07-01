@@ -84,3 +84,9 @@
     padding: 0 18px;
   }
 }
+.chipfil {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  gap: 1rem;
+}

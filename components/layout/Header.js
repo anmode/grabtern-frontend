@@ -1,20 +1,13 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-<<<<<<< HEAD:components/Header.js
 import Link from "next/link";
-=======
-import styles from "../../styles/LoginDropdown.module.css";
-import router from "next/router";
-import { useAuth } from "../../context/AuthContext";
-import DropdownCard from "../basic/LoginDropdown";
->>>>>>> upstream/develop:components/layout/Header.js
 
 // import DropdownCard from "./LoginDropdown";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { SunIcon } from "@heroicons/react/24/solid";
-import logo from "../public/logo.png";
-import { useAuth } from "../context/AuthContext";
+import logo from "../../public/logo.png";
+import { useAuth } from "../../context/AuthContext";
 
 function Header() {
   const {

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import styles from "../styles/LoginDropdown.module.css";
+import styles from "../../styles/LoginDropdown.module.css";
 import router from "next/router";
-import { useAuth } from "../context/AuthContext";
-import DropdownCard from "../components/LoginDropdown";
+import { useAuth } from "../../context/AuthContext";
+import DropdownCard from "../basic/LoginDropdown";
 
 function Header({ navbarBackground }) {
   // localStorage.setItem("redirectUrl", window.location.href);

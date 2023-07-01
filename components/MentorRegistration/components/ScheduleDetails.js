@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import DayInput from "../dateAndTime/DayInput";
-import TimeZoneInput from "../dateAndTime/TimeZoneInput";
+import React, { useState, useRef } from "react";
+import SimpleReactValidator from "simple-react-validator";
+import DayInput from "../../dateAndTime/DayInput";
+import TimeZoneInput from "../../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 
-function ScheduleDetails({ formData, changeArray }) {
+function ScheduleDetails({ formData, changeArray, validator }) {
   const initialSchedule = {
     day: "monday",
     timezone: "(GMT-11:00) Pacific/Midway",
@@ -17,10 +18,22 @@ function ScheduleDetails({ formData, changeArray }) {
     const target = e.target;
     setNewSchedule({ ...newSchedule, [target.name]: target.value });
   };
+
+  // for validator
+  const scheduleValidator = useRef(new SimpleReactValidator());
+  const [, forceUpdate] = useState();
+
   // adding schedule function
   const addSchedule = () => {
-    changeArray("schedules", [...formData.schedules, newSchedule]);
-    setNewSchedule(initialSchedule);
+    if (scheduleValidator.current.allValid()) {
+      scheduleValidator.current.hideMessages();
+      changeArray("schedules", [...formData.schedules, newSchedule]);
+      setNewSchedule(initialSchedule);
+      forceUpdate(1);
+    } else {
+      scheduleValidator.current.showMessages();
+      forceUpdate(2);
+    }
   };
   const removeSchedule = (removeIndex) => {
     const updatedSchedule = formData.schedules.filter((value, index) => {
@@ -28,6 +41,7 @@ function ScheduleDetails({ formData, changeArray }) {
     });
     changeArray("schedules", updatedSchedule);
   };
+
   const timeInputs = [
     {
       label: "Start Time",
@@ -38,6 +52,8 @@ function ScheduleDetails({ formData, changeArray }) {
       placeholder: "12:30 PM",
       required: true,
       value: newSchedule.startsAt,
+      validator: scheduleValidator,
+      validation: ["required", { regex: "([01]?[0-9]|2[0-3]):[0-5][0-9]" }],
     },
     {
       label: "End Time",
@@ -48,6 +64,8 @@ function ScheduleDetails({ formData, changeArray }) {
       placeholder: "2:30 PM",
       required: true,
       value: newSchedule.endsAt,
+      validator: scheduleValidator,
+      validation: ["required", { regex: "([01]?[0-9]|2[0-3]):[0-5][0-9]" }],
     },
   ];
   return (
@@ -100,6 +118,15 @@ function ScheduleDetails({ formData, changeArray }) {
         </button>
       </div>
       {/* add schedule button ends */}
+
+      {/* error if it does not have any schedule */}
+      {validator.current.message(
+        "schedules",
+        formData.schedules,
+        "required|min:1",
+        { className: "tw-relative tw-text-red-600 tw-text-2xl" }
+      )}
+      {/* error if it does not have any schedule */}
 
       {/* schedule list starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

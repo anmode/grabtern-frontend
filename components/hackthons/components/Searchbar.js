@@ -14,16 +14,13 @@ function SearchBar({ setSearchQuery, handleTagFilter, tagFilter }) {
   const [selectedTag, setSelectedTag] = useState(["All"]);
 
   const handleTagChange = (value) => {
-
     if (selectedTag.includes(value)) {
       setSelectedTag(selectedTag.filter((tag) => tag !== value));
       handleTagFilter(tagFilter.filter((tag) => tag !== value));
-    }
-    else {
+    } else {
       setSelectedTag([...selectedTag, value]);
       handleTagFilter([...tagFilter, value]);
     }
-
   };
 
   useEffect(() => {
@@ -31,7 +28,7 @@ function SearchBar({ setSearchQuery, handleTagFilter, tagFilter }) {
       setSelectedTag(["All"]);
       handleTagFilter(["All"]);
     }
-  })
+  });
 
   const theme = createTheme({
     components: {
@@ -128,8 +125,12 @@ function SearchBar({ setSearchQuery, handleTagFilter, tagFilter }) {
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor: selectedTag.includes("Blockchain") ? "#845ec2" : "inherit",
-            borderColor: selectedTag.includes("Blockchain") ? "#845ec2" : "#845ec2",
+            backgroundColor: selectedTag.includes("Blockchain")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Blockchain")
+              ? "#845ec2"
+              : "#845ec2",
             color: selectedTag.includes("Blockchain") ? "#fff" : "#845ec2",
           }}
         />
@@ -141,24 +142,34 @@ function SearchBar({ setSearchQuery, handleTagFilter, tagFilter }) {
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor: selectedTag.includes("Upcoming") ? "#845ec2" : "inherit",
-            borderColor: selectedTag.includes("Upcoming") ? "#845ec2" : "#845ec2",
+            backgroundColor: selectedTag.includes("Upcoming")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Upcoming")
+              ? "#845ec2"
+              : "#845ec2",
             color: selectedTag.includes("Upcoming") ? "#fff" : "#845ec2",
           }}
         />
         <Chip
-          variant={selectedTag.includes("Beginner Friendly") ? "default" : "outlined"}
+          variant={
+            selectedTag.includes("Beginner Friendly") ? "default" : "outlined"
+          }
           color={selectedTag.includes("Beginner Friendly") ? "primary" : "info"}
           label="Beginner Friendly"
           onClick={() => handleTagChange("Beginner Friendly")}
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor:
-              selectedTag.includes("Beginner Friendly") ? "#845ec2" : "inherit",
-            borderColor:
-              selectedTag.includes("Beginner Friendly") ? "#845ec2" : "#845ec2",
-            color: selectedTag.includes("Beginner Friendly") ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("Beginner Friendly")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Beginner Friendly")
+              ? "#845ec2"
+              : "#845ec2",
+            color: selectedTag.includes("Beginner Friendly")
+              ? "#fff"
+              : "#845ec2",
           }}
         />
         <Chip
@@ -169,9 +180,12 @@ function SearchBar({ setSearchQuery, handleTagFilter, tagFilter }) {
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor:
-              selectedTag.includes("Programming") ? "#845ec2" : "inherit",
-            borderColor: selectedTag.includes("Programming") ? "#845ec2" : "#845ec2",
+            backgroundColor: selectedTag.includes("Programming")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Programming")
+              ? "#845ec2"
+              : "#845ec2",
             color: selectedTag.includes("Programming") ? "#fff" : "#845ec2",
           }}
         />

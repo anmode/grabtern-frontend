@@ -2,10 +2,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { GrFormClose } from "react-icons/gr";
 
-import DropdownCard from "./LoginDropdown";
+// import DropdownCard from "./LoginDropdown";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { SunIcon } from "@heroicons/react/24/solid";
 import logo from "../public/logo.png";

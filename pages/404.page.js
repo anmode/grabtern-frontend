@@ -12,8 +12,7 @@ function ErrorPage() {
                 <div className={styles.mainContainer} >
                     <div className={styles.imageContainer} >
                         <img
-                            // src="/Errorr.svg"
-                            src="/new11.png"
+                            src="/Error.svg"
                             alt="bg"
                         />
                     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./link.module.css";
+import styles from "./Link.module.css";
 
 function ButtonLink({ text, href, className = "", variant = "primary" }) {
   let variantClass;

@@ -22,7 +22,7 @@
 }
 /* secondary variant */
 .linkSecondary {
-  @apply tw-text-base-400;
+  @apply tw-text-base-400 tw-bg-[transparent];
 }
 .linkSecondary:hover {
   @apply tw-bg-base-300 tw-text-base-400;

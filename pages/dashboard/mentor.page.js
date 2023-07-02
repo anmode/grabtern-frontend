@@ -13,9 +13,9 @@ function MentorDashboard() {
           <Sidebar />
           <Routes>
             <Route path="/" />
-             <Route path="/Profile" element={<Profile />} />
-            <Route path="/Sessions" element={<Sessions />} />  
-            <Route path="/Calender" element={<Calender />} /> 
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Sessions" element={<Sessions />} />
+            <Route path="/Calender" element={<Calender />} />
           </Routes>
         </div>
       </BrowserRouter>

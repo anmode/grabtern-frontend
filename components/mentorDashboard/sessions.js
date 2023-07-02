@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Sessions() {
-  return (
-    <div>
-      Sessions
-    </div>
-  )
+  return <div>Sessions</div>;
 }
 
-export default Sessions
+export default Sessions;

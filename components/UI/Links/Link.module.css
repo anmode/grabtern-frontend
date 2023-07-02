@@ -1,10 +1,10 @@
 /* button style link */
 .linkBtn {
-  @apply tw-px-[1.5rem] tw-py-[1rem] tw-rounded-2xl;
+  @apply tw-px-[1.5rem] tw-py-[1rem] tw-rounded-2xl tw-bg-primary-100 tw-text-[white];
 }
 /* icon style link */
 .linkIcon {
-  @apply tw-w-[35px] tw-h-[35px] tw-text-3xl tw-rounded-full tw-inline-flex tw-justify-center tw-items-center;
+  @apply tw-w-[35px] tw-h-[35px] tw-text-3xl tw-rounded-full tw-bg-primary-100 tw-text-[white] tw-inline-flex tw-justify-center tw-items-center;
 }
 /* primary variant */
 .linkPrimary {

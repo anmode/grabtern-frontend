@@ -1,22 +1,18 @@
 export default [
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Q: How does Grabtern help in connecting mentors and mentees?",
+    ans: "A: Grabtern facilitates mentor-mentee connections by matching mentees with mentors who have expertise and experience in their desired fields. Through a structured program, mentees have the opportunity to connect with mentors, engage in mentorship sessions, and build professional relationships.",
   },
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Q: How do I apply to become a mentee in the Grabtern program?",
+    ans: "A: To become a mentee in the Grabtern program, interested individuals can apply through the Grabtern website or platform. The application process typically involves submitting an application form, sharing relevant background information, and expressing interest in specific areas of mentorship.",
   },
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Q: How are mentors selected for the Grabtern program?",
+    ans: "A: Mentors for the Grabtern program are selected based on their expertise, experience, and willingness to share their knowledge and support mentees. Grab considers mentors from various departments and roles within the organization to ensure a diverse range of mentorship opportunities.",
   },
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Q: Can I have multiple mentors in the Grabtern program?",
+    ans: "A: While Grabtern primarily focuses on one-on-one mentorship relationships, there may be opportunities for mentees to receive guidance from multiple mentors within the program. This can provide mentees with diverse perspectives and insights from different professionals.",
   },
 ];

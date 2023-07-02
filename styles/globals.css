@@ -1645,3 +1645,32 @@ select {
     margin-top: 10px;
   }
 }
+
+@media only screen and (max-width: 767px) {
+  .mb-10 {
+    margin-bottom: 10px !important;
+  }
+  
+  .mt-100 {
+    margin-top: 10px !important;
+  }
+  
+  .mr-100 {
+    margin-right: 10px !important;
+  }
+  
+  .ml-100 {
+    margin-left: 10px !important;
+  }
+  
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .section-tittle {
+    margin-bottom: 15px !important;
+    text-align: center !important;
+  }
+}
+

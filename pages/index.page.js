@@ -15,6 +15,9 @@ import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
+import FAQList from "../components/FAQList";
+import faq from "./data/faq";
+
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -267,6 +270,16 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className="mb-10 mt-100 mr-100 ml-100">
+          <div className="container">
+            <div className="section-tittle text-center mb-30 ">
+              <h2>Frequently Asked Questions</h2>
+            </div>
+            <FAQList faq={faq} />
+          </div>
+        </section>
+
+
         <section className="team-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">

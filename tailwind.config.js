@@ -20,6 +20,7 @@ module.exports = {
       8: "8px",
     },
     colors: {
+      "primary-10": "var(--primary-10)",
       "primary-50": "var(--primary-50)",
       "primary-100": "var(--primary-100)",
       "primary-200": "var(--primary-200)",

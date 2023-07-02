@@ -1,0 +1,36 @@
+/* button style link */
+.linkBtn {
+  @apply tw-px-[1.5rem] tw-py-[1rem] tw-rounded-2xl;
+}
+/* icon style link */
+.linkIcon {
+  @apply tw-w-[35px] tw-h-[35px] tw-text-3xl tw-rounded-full tw-inline-flex tw-justify-center tw-items-center;
+}
+/* primary variant */
+.linkPrimary {
+  @apply tw-bg-primary-100 tw-text-[white];
+}
+.linkPrimary:hover {
+  @apply tw-bg-primary-200;
+}
+/* outline variant */
+.linkOutline {
+  @apply tw-bg-[transparent] tw-text-primary-100 tw-border-[1px] tw-border-primary-100;
+}
+.linkOutline:hover {
+  @apply tw-bg-primary-100 tw-text-[white];
+}
+/* secondary variant */
+.linkSecondary {
+  @apply tw-text-base-400;
+}
+.linkSecondary:hover {
+  @apply tw-bg-base-300 tw-text-base-400;
+}
+/* text style link*/
+.linkText {
+  @apply tw-text-primary-100 tw-text-[14px] tw-font-medium tw-inline-flex tw-items-center tw-gap-4;
+}
+.linkText:hover {
+  @apply tw-text-primary-50 tw-gap-6;
+}

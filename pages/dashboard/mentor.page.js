@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "../../styles/sidebar.module.css";
-import Sidebar from "./sidebar.page";
-import Profile from "./profile.page";
-import Sessions from "./sessions.page";
-import Calender from "./calender.page";
+import Sidebar from "../../components/mentorDashboard/sidebar";
+import Profile from "../../components/mentorDashboard/profile";
+import Sessions from "../../components/mentorDashboard/sessions";
+import Calender from "../../components/mentorDashboard/calender";
 function MentorDashboard() {
   return (
     <>

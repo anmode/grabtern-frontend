@@ -1,7 +1,11 @@
+.boxx{
+    background-color: #F1F5F9;
+    z-index: -1;
+}
 .imageContainer {
     background-size: cover;
     background-position: center;
-    z-index: -1;
+    z-index: 1;
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -19,12 +23,15 @@
     font-size: 70px;
     font-family: "Josefin Sans", sans-serif;
     font-weight: bold;
+    
 }
 
 .mainSection {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .text1 {
@@ -53,6 +60,10 @@
     max-width: 90%;
     max-height: 90%;
 }
+.footer {
+    position: relative;
+    z-index: 1;
+  }
 
 
 /* Media Queries */

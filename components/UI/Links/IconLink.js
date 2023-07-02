@@ -2,22 +2,8 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Link.module.css";
 
-function IconLink({ Icon, href, className = "", variant = "primary" }) {
-  let variantClass;
-  switch (variant) {
-    case "primary":
-      variantClass = "linkPrimary";
-      break;
-    case "secondary":
-      variantClass = "linkSecondary";
-      break;
-    case "outline":
-      variantClass = "linkOutline";
-      break;
-    default:
-      variantClass = "linkPrimary";
-      break;
-  }
+function IconLink({ Icon, href, className = "", variant = "Primary" }) {
+  let variantClass = `link${variant}`;
   return (
     <div>
       <Link

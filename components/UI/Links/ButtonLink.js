@@ -2,22 +2,10 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Link.module.css";
 
-function ButtonLink({ text, href, className = "", variant = "primary" }) {
-  let variantClass;
-  switch (variant) {
-    case "primary":
-      variantClass = "linkPrimary";
-      break;
-    case "secondary":
-      variantClass = "linkSecondary";
-      break;
-    case "outline":
-      variantClass = "linkOutline";
-      break;
-    default:
-      variantClass = "linkPrimary";
-      break;
-  }
+function ButtonLink({ text, href, className = "", variant = "Primary" }) {
+  let variantClass = `link${variant.charAt(0).toUpperCase()}${variant.slice(
+    1
+  )}`;
   return (
     <Link
       href={href}

@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 // import styles from "../styles/LoginDropdown.module.css";
 import router from "next/router";
 import Link from "next/link";
-import { useAuth } from "../context/AuthContext";
-import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
-import styles from "../../styles/LoginDropdown.module.css";
+// import styles from "../../styles/LoginDropdown.module.css";
 
 const DropdownCard = () => {
   const [loginOption, setLoginOption] = useState(false);

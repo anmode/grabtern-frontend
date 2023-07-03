@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/404.module.css";
 import dynamic from "next/dynamic";
-const Footer = dynamic(() => import("../components/Footer"));
 
 function ErrorPage() {
   return (
@@ -38,9 +37,6 @@ function ErrorPage() {
           </div>
         </div>
       </section>
-      <div className={styles.footer}>
-        <Footer />
-      </div>
     </>
   );
 }

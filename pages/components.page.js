@@ -11,6 +11,8 @@ function components() {
       {/* buttons */}
       <h2>Buttons</h2>
       Primary: <Button text="click here" onClick={() => {}} />
+      Secondary:{" "}
+      <Button text="click here" onClick={() => {}} variant="secondary" />
       {/* links */}
       <h2>Links</h2>
       {/* button style */}

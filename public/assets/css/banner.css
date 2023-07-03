@@ -1,53 +1,38 @@
-.main-container {
-    background-color: #F1F4F8;
-    min-height: 850px;
-    position: relative;
-    width: 100%;
-    border: none;
-    outline: none;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .hero-container {
     background-color: #F1F4F8;
-    max-width: 97%;
-    margin: 0 auto;
-    min-height: 850px;
-    display: flex;
-    align-items: center;
-    border: none;
-    outline: none;
-
-}
-
-.hero-section {
-    display: flex;
     width: 100%;
+    height: 845px;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-around;
+    gap: 20px;
     position: relative;
-    top: -71px;
 }
 
 .text-container {
-    width: 30%;
-    position: relative;
-    left: -85px;
+    flex-basis: 30%;
 }
 
 .text-container>h1 {
-    font-size: 40px;
+    font-size: 4.8rem;
     font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 10px;
     color: black;
-    line-height: 55px;
-    margin-bottom: 21px;
-
 }
 
 .text-container>p {
-    font-size: 16px;
-    color: rgb(100 116 139);
+    font-size: 1.8rem;
+    font-weight: 300;
     margin-bottom: 18px;
-    width: 90%;
+    color: rgb(100 116 139);
+    line-height: 1.6;
 }
 
 .text-container a button {
@@ -58,15 +43,12 @@
     border: white solid transparent;
     outline: 2px solid transparent;
     outline-offset: 1px;
+    cursor: pointer;
 }
 
 .text-container .hero-section-btn-active {
     color: white;
     background: #4E47E5;
-}
-
-.text-container .hero-section-btn-active:hover {
-    background: rgb(59, 51, 222);
 }
 
 .text-container .hero-section-btn {
@@ -76,34 +58,29 @@
     outline-offset: 2px;
 }
 
-.text-container .hero-section-btn:hover {
-    color: rgb(240, 243, 247);
-    background: rgb(59, 51, 222);
+.image-container {
+    flex-basis: 30%;
 }
 
-.image-container>img {
-    align-items: center;
-    position: absolute;
-    right: 230px;
-    top: -43px;
-    object-fit: contain;
-    border: 2px solid firebrick;
-    height: 408px;
-    border-radius: 20%;
+.image-container img {
+    max-width: 100vw;
+    height: 50vh;
 }
 
 .image-container1 {
     position: absolute;
     background-color: rgb(255, 255, 255);
-    width: 294px;
-    height: 89px;
-    border-radius: 20px 20px 0 0;
-    bottom: -88px;
+    width: 305px;
+    height: 132px;
+    z-index: 1;
+    border-radius: 20px;
     right: 545px;
-    padding: 13px;
+    bottom: 58px;
+    padding: 10px;
     outline: 1px solid #00000024;
     outline-offset: 1px;
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
     overflow: hidden;
 }
@@ -112,7 +89,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 11px;
     padding: 0 4px;
 }
 
@@ -153,24 +129,24 @@
 
 
 .graph {
-    left: 666px;
-    top: -46px;
+    left: 723px;
+    top: 189px;
     width: 60px;
     height: 60px;
     font-size: 28px;
 }
 
 .rocket {
-    right: 729px;
-    top: 41px;
+    right: 713px;
+    top: 287px;
     width: 45px;
     height: 45px;
     font-size: 20px;
 }
 
 .bulb {
-    right: 555px;
-    top: -120px;
+    right: 557px;
+    top: 105px;
     width: 70px;
     height: 70px;
     font-size: 55px;
@@ -178,8 +154,19 @@
 
 .graduate-hat {
     right: 130px;
-    bottom: -88px;
+    bottom: 58px;
     width: 60px;
     height: 60px;
     font-size: 35px;
 }
+
+/* @media screen and (max-width: 768px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .text-container{
+        top: 50px;
+    }
+}  */

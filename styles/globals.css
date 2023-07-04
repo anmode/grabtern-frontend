@@ -35,8 +35,8 @@
   .h6 {
     @apply tw-text-base-500;
   }
-  p{
-    @apply tw-text-base-400
+  p {
+    @apply tw-text-base-400;
   }
 }
 html,

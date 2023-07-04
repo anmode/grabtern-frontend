@@ -73,8 +73,8 @@ function Header() {
         <Image
           src={logo}
           alt="grabtern_logo"
-          width={80}
-          height={80}
+          width={85}
+          height={85}
           className="tw-ml-2 tw-cursor-pointer tw-object-contain"
         />
       </Link>

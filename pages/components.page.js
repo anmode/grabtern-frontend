@@ -47,42 +47,62 @@ function components() {
       </div>
       {/* SEction */}
       <div className="tw-my-10">
-        <h2>Header</h2>
-        <SectionHeader
-          kicker="On-Demand Healthcare"
-          heading="Forget about the hassle"
-          subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
-        />
+        <h2>Section Components</h2>
+        header
+        <div className="tw-my-10">
+          <SectionHeader
+            kicker="On-Demand Healthcare"
+            heading="Forget about the hassle"
+            subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+          />
+        </div>
       </div>
       {/* cards */}
       <div className="tw-my-10">
         <h2>Cards</h2>
         Default:
-        <IconCard
-          Icon={PiAlarmDuotone}
-          heading="Save time & effort"
-          body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
-        />
+        <div className="tw-max-w-[450px] tw-my-20">
+          <IconCard
+            Icon={PiAlarmDuotone}
+            heading="Save time & effort"
+            body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+          />
+        </div>
         Card with bg and large font
-        <IconCard
-          intent="bg"
-          size="lg"
-          Icon={FaQuoteLeft}
-          heading="Save time & effort"
-          body="
+        <div className="tw-max-w-[450px] tw-my-20">
+          <IconCard
+            intent="bg"
+            size="lg"
+            Icon={FaQuoteLeft}
+            heading="Save time & effort"
+            body="
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo id
           est convenienter naturae vivere, a natura discedere. Duo Reges:
           constructio interrete.
         "
-        />
+          />
+        </div>
         {/* image card */}
         Default
-        <ImageCard
-          image="/assets/img/gallery/step.webp"
-          heading="Flipkart G.R.I.D (Graduate Research Internship Development)"
-          subheading="Grabtern"
-          body="It's a global program focused on bringing more student developers into open source software development. Google Summer of Code is a global program that offers student developers stipends to write code for various open source software projects."
-        />
+        <div className="tw-max-w-[450px] tw-my-20">
+          <ImageCard
+            image="/assets/img/gallery/step.webp"
+            heading="Flipkart G.R.I.D (Graduate Research Internship Development)"
+            subheading="Grabtern"
+            body="It's a global program focused on bringing more student developers into open source software development. Google Summer of Code is a global program that offers student developers stipends to write code for various open source software projects."
+            link="https://summerofcode.withgoogle.com/"
+          />
+        </div>
+        <div className="tw-max-w-[450px] tw-my-20">
+          <ImageCard
+            image="https://doctor-ruby.vercel.app/img/illustrations/doctors/doctor-12.svg"
+            imageType="popUp"
+            heading="Flipkart G.R.I.D (Graduate Research Internship Development)"
+            subheading="Grabtern"
+            body="It's a global program focused on bringing more student developers into open source software development. Google Summer of Code is a global program that offers student developers stipends to write code for various open source software projects."
+            link="https://summerofcode.withgoogle.com/"
+          />
+        </div>
       </div>
     </div>
   );

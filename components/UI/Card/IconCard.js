@@ -14,7 +14,10 @@ function IconCard({
     <div
       className={clsx(
         "tw-font-sans",
-        intent == "bg" && ["tw-bg-base-100", "tw-p-6 tw-rounded-lg"],
+        intent == "bg" && [
+          "tw-bg-base-100",
+          "tw-p-6 tw-rounded-lg tw-border tw-border-base-300",
+        ],
         className
       )}
     >

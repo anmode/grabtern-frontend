@@ -8,6 +8,7 @@ import IconCard from "../components/UI/Card/IconCard";
 import { BiUser } from "react-icons/bi";
 import { PiAlarmDuotone } from "react-icons/pi";
 import { FaQuoteLeft } from "react-icons/fa";
+import ImageCard from "../components/UI/Card/ImageCard";
 
 function components() {
   return (
@@ -73,6 +74,14 @@ function components() {
           est convenienter naturae vivere, a natura discedere. Duo Reges:
           constructio interrete.
         "
+        />
+        {/* image card */}
+        Default
+        <ImageCard
+          image="/assets/img/gallery/step.webp"
+          heading="Flipkart G.R.I.D (Graduate Research Internship Development)"
+          subheading="Grabtern"
+          body="It's a global program focused on bringing more student developers into open source software development. Google Summer of Code is a global program that offers student developers stipends to write code for various open source software projects."
         />
       </div>
     </div>

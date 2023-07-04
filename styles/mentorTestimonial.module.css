@@ -58,3 +58,19 @@
       margin-bottom: 56px;
     }
   }
+  @media(max-width:1024px){
+    .testimonialdiv3{
+      width: 239px;
+    }
+    .username{
+      position: relative;
+      top: 5.5rem;
+    }
+    .quotes{
+      position: relative;
+      top: 6.4rem;
+    }
+    .testimonialdiv1{
+      width: 100%;
+    }
+  }

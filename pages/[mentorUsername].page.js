@@ -209,20 +209,16 @@ function Index({ mentorDetail }) {
             </div>
             <div className="testimonials tw-min-w-full tw-justify-center tw-flex tw-flex-col tw-mt-6">
               <div className="tw-flex tw-justify-center">
-            <h1 className="tw-text-7xl tw-items-center tw-px-8 tw-relative tw-top-8  ">Testimonials</h1>
+            <h1 className="tw-text-7xl tw-flex tw-items-center tw-px-8 tw-relative tw-top-8  ">Testimonials</h1>
             </div>
-            <div className={`${styles1.testimonialdiv2} testimonialdiv2 tw-relative tw-justify-center tw-ml-[212px]`}>
-<MentorTestimonial/>
+            <div className={`${styles1.testimonialdiv2} tw-flex tw-relative tw-justify-center `}>
+           <MentorTestimonial />
+         
 
 </div>
             </div>
             <div></div>
-            {/* <Testimonial testimonialUserName={mentorDetail.testimonials.name}
-            testimonialUserHeadline={mentorDetail.testimonials.headline}
-            testimonialUserImage={mentorDetail.testimonials.image}
-            testimonialRate={mentorDetail.testimonials.rate}
-            testimonialDescription={mentorDetail.testimonials.description} /> */}
-         
+           
           <div className="tw-w-22 tw-h-auto tw-flex tw-flex-wrap ">
             {/* {for testing purpose}  */}
             {/* <Testimonial

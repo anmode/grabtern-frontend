@@ -1,10 +1,10 @@
 /* button style link */
 .linkBtn {
-  @apply tw-px-[1.5rem] tw-py-[1rem] tw-rounded-2xl tw-bg-primary-100 tw-text-[white];
+  @apply tw-font-sans tw-px-5 tw-py-3 tw-rounded-xl tw-leading-5 tw-bg-primary-100 tw-text-[white];
 }
 /* icon style link */
 .linkIcon {
-  @apply tw-w-[35px] tw-h-[35px] tw-text-3xl tw-rounded-full tw-bg-primary-100 tw-text-[white] tw-inline-flex tw-justify-center tw-items-center;
+  @apply tw-w-[35px] tw-h-[35px] tw-text-xl tw-rounded-full tw-bg-primary-100 tw-text-[white] tw-inline-flex tw-justify-center tw-items-center;
 }
 /* primary variant */
 .linkPrimary {
@@ -29,7 +29,7 @@
 }
 /* text style link*/
 .linkText {
-  @apply tw-text-primary-100 tw-text-[14px] tw-font-medium tw-inline-flex tw-items-center tw-gap-4;
+  @apply tw-text-primary-100 tw-text-sm tw-inline-flex tw-items-center tw-gap-4;
 }
 .linkText:hover {
   @apply tw-text-primary-50 tw-gap-6;

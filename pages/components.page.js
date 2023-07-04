@@ -4,7 +4,9 @@ import ButtonLink from "../components/UI/Links/ButtonLink";
 import IconLink from "../components/UI/Links/IconLink";
 import TextLink from "../components/UI/Links/TextLink";
 import { BiUser } from "react-icons/bi";
+import {PiAlarmDuotone} from "react-icons/pi";
 import SectionHeader from "../components/UI/Section/SectionHeader";
+import IconCard from "../components/UI/Card/IconCard";
 
 function components() {
   return (
@@ -48,6 +50,15 @@ function components() {
           kicker="On-Demand Healthcare"
           heading="Forget about the hassle"
           subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+        />
+      </div>
+      {/* cards */}
+      <div className="tw-my-10">
+        <h2>Cards</h2>
+        <IconCard
+          Icon={PiAlarmDuotone}
+          heading="Save time & effort"
+          body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
         />
       </div>
     </div>

@@ -4,7 +4,8 @@ import styles from "../../styles/sidebar.module.css";
 import Sidebar from "../../components/mentorDashboard/sidebar";
 import Profile from "../../components/mentorDashboard/profile";
 import Sessions from "../../components/mentorDashboard/sessions";
-import Calender from "../../components/mentorDashboard/calender";
+import Calendar from "../../components/mentorDashboard/calendar";
+
 function MentorDashboard() {
   return (
     <>
@@ -12,10 +13,10 @@ function MentorDashboard() {
         <div className={styles.page}>
           <Sidebar />
           <Routes>
-            <Route path="/" />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/sessions" element={<Sessions />} />
-            <Route path="/calender" element={<Calender />} />
+            <Route path="/mentor" element={<></>} />
+            <Route path="/mentor/profile" element={<Profile />} />
+            <Route path="/mentor/sessions" element={<Sessions />} />
+            <Route path="/mentor/calendar" element={<Calendar />} />
           </Routes>
         </div>
       </BrowserRouter>

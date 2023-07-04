@@ -4,6 +4,7 @@ import ButtonLink from "../components/UI/Links/ButtonLink";
 import IconLink from "../components/UI/Links/IconLink";
 import TextLink from "../components/UI/Links/TextLink";
 import { BiUser } from "react-icons/bi";
+import SectionHeader from "../components/UI/Section/SectionHeader";
 
 function components() {
   return (
@@ -31,12 +32,23 @@ function components() {
         Outline: <IconLink Icon={BiUser} href="/" variant="outline" />
       </div>
       {/* text */}
-      <h2>Text style link</h2>
-      <div>
-        Without arrow: <TextLink text="Read More" href="/" />
+      <div className="tw-my-10">
+        <h2>Text style link</h2>
+        <div>
+          Without arrow: <TextLink text="Read More" href="/" />
+        </div>
+        <div>
+          WithArrow: <TextLink text="Read More" href="/" arrow="true" />
+        </div>
       </div>
-      <div>
-        WithArrow: <TextLink text="Read More" href="/" arrow="true" />
+      {/* SEction */}
+      <div className="tw-my-10">
+        <h2>Header</h2>
+        <SectionHeader
+          kicker="On-Demand Healthcare"
+          heading="Forget about the hassle"
+          subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+        />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import hackathonStyle from "../../../styles/hackathon.module.css";
 // import styles from '../styles/Searchbar.module.css'; // Import the CSS file
 import InputAdornment from "@mui/material/InputAdornment";
@@ -8,13 +8,28 @@ import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-function SearchBar({ setSearchQuery, handleTagFilter }) {
-  const [selectedTag, setSelectedTag] = useState("All");
+import { startCase } from "lodash";
+
+function SearchBar({ setSearchQuery, handleTagFilter, tagFilter }) {
+  const [selectedTag, setSelectedTag] = useState(["All"]);
 
   const handleTagChange = (value) => {
-    setSelectedTag(value);
-    handleTagFilter(value);
+    if (selectedTag.includes(value)) {
+      setSelectedTag(selectedTag.filter((tag) => tag !== value));
+      handleTagFilter(tagFilter.filter((tag) => tag !== value));
+    } else {
+      setSelectedTag([...selectedTag, value]);
+      handleTagFilter([...tagFilter, value]);
+    }
   };
+
+  useEffect(() => {
+    if (selectedTag.length === 0) {
+      setSelectedTag(["All"]);
+      handleTagFilter(["All"]);
+    }
+  });
+
   const theme = createTheme({
     components: {
       // Name of the component ⚛️
@@ -75,8 +90,8 @@ function SearchBar({ setSearchQuery, handleTagFilter }) {
         style={{ marginTop: "20px" }}
       >
         <Chip
-          variant={selectedTag === "All" ? "default" : "outlined"}
-          // color={selectedTag === "All" ? "primary" : "info"}
+          variant={selectedTag.includes("All") ? "default" : "outlined"}
+          color={selectedTag.includes("All") ? "primary" : "info"}
           label="ALL"
           value="All"
           onClick={() => handleTagChange("All")}
@@ -84,78 +99,94 @@ function SearchBar({ setSearchQuery, handleTagFilter }) {
             width: "90px",
             height: "45px",
             fontSize: "20px",
-            backgroundColor: selectedTag === "All" ? "#845ec2" : "#fff",
-            borderColor: selectedTag === "All" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "All" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("All") ? "#845ec2" : "#fff",
+            borderColor: selectedTag.includes("All") ? "#845ec2" : "#845ec2",
+            color: selectedTag.includes("All") ? "#fff" : "#845ec2",
           }}
         />
         <Chip
-          variant={selectedTag === "web" ? "default" : "outlined"}
-          color={selectedTag === "web" ? "primary" : "info"}
+          variant={selectedTag.includes("web") ? "default" : "outlined"}
+          color={selectedTag.includes("web") ? "primary" : "info"}
           label="Web Development"
           onClick={() => handleTagChange("web")}
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor: selectedTag === "web" ? "#845ec2" : "#fff",
-            borderColor: selectedTag === "web" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "web" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("web") ? "#845ec2" : "#fff",
+            borderColor: selectedTag.includes("web") ? "#845ec2" : "#845ec2",
+            color: selectedTag.includes("web") ? "#fff" : "#845ec2",
           }}
         />
         <Chip
-          variant={selectedTag === "Blockchain" ? "default" : "outlined"}
-          color={selectedTag === "Blockchain" ? "primary" : "info"}
+          variant={selectedTag.includes("Blockchain") ? "default" : "outlined"}
+          color={selectedTag.includes("Blockchain") ? "primary" : "info"}
           label="Blockchain"
           onClick={() => handleTagChange("Blockchain")}
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor:
-              selectedTag === "Blockchain" ? "#845ec2" : "inherit",
-            borderColor: selectedTag === "Blockchain" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "Blockchain" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("Blockchain")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Blockchain")
+              ? "#845ec2"
+              : "#845ec2",
+            color: selectedTag.includes("Blockchain") ? "#fff" : "#845ec2",
           }}
         />
         <Chip
-          variant={selectedTag === "Upcoming" ? "default" : "outlined"}
-          color={selectedTag === "Upcoming" ? "primary" : "info"}
+          variant={selectedTag.includes("Upcoming") ? "default" : "outlined"}
+          color={selectedTag.includes("Upcoming") ? "primary" : "info"}
           label="Upcoming"
           onClick={() => handleTagChange("Upcoming")}
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor: selectedTag === "Upcoming" ? "#845ec2" : "inherit",
-            borderColor: selectedTag === "Upcoming" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "Upcoming" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("Upcoming")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Upcoming")
+              ? "#845ec2"
+              : "#845ec2",
+            color: selectedTag.includes("Upcoming") ? "#fff" : "#845ec2",
           }}
         />
         <Chip
-          variant={selectedTag === "Beginner Friendly" ? "default" : "outlined"}
-          color={selectedTag === "Beginner Friendly" ? "primary" : "info"}
+          variant={
+            selectedTag.includes("Beginner Friendly") ? "default" : "outlined"
+          }
+          color={selectedTag.includes("Beginner Friendly") ? "primary" : "info"}
           label="Beginner Friendly"
           onClick={() => handleTagChange("Beginner Friendly")}
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor:
-              selectedTag === "Beginner Friendly" ? "#845ec2" : "inherit",
-            borderColor:
-              selectedTag === "Beginner Friendly" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "Beginner Friendly" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("Beginner Friendly")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Beginner Friendly")
+              ? "#845ec2"
+              : "#845ec2",
+            color: selectedTag.includes("Beginner Friendly")
+              ? "#fff"
+              : "#845ec2",
           }}
         />
         <Chip
-          variant={selectedTag === "Programming" ? "default" : "outlined"}
-          color={selectedTag === "Programming" ? "primary" : "info"}
+          variant={selectedTag.includes("Programming") ? "default" : "outlined"}
+          color={selectedTag.includes("Programming") ? "primary" : "info"}
           label="Programming"
           onClick={() => handleTagChange("Programming")}
           style={{
             height: "45px",
             fontSize: "20px",
-            backgroundColor:
-              selectedTag === "Programming" ? "#845ec2" : "inherit",
-            borderColor: selectedTag === "Programming" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "Programming" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag.includes("Programming")
+              ? "#845ec2"
+              : "inherit",
+            borderColor: selectedTag.includes("Programming")
+              ? "#845ec2"
+              : "#845ec2",
+            color: selectedTag.includes("Programming") ? "#fff" : "#845ec2",
           }}
         />
       </div>

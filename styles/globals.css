@@ -6,6 +6,18 @@
   margin: 0;
 }
 
+:root {
+  --primary-10: #cdc2ff;
+  --primary-50: #9d94c6;
+  --primary-100: #845ec2;
+  --primary-200: #6e4fa0;
+  --base-100: #fff;
+  --base-200: #f1f5f9;
+  --base-300: #e2e8f0;
+  --base-400: #64748b;
+  --base-500: #1e293b;
+}
+
 html,
 body {
   padding: 0;

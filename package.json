@@ -17,6 +17,7 @@
     "@mui/material": "^5.13.6",
     "antd": "^5.4.5",
     "axios": "^1.2.3",
+    "clsx": "^1.2.1",
     "formik": "^2.4.2",
     "jquery": "^3.6.3",
     "jwt-decode": "^3.1.2",

@@ -3,10 +3,11 @@ import Button from "../components/UI/Button/Button";
 import ButtonLink from "../components/UI/Links/ButtonLink";
 import IconLink from "../components/UI/Links/IconLink";
 import TextLink from "../components/UI/Links/TextLink";
-import { BiUser } from "react-icons/bi";
-import {PiAlarmDuotone} from "react-icons/pi";
 import SectionHeader from "../components/UI/Section/SectionHeader";
 import IconCard from "../components/UI/Card/IconCard";
+import { BiUser } from "react-icons/bi";
+import { PiAlarmDuotone } from "react-icons/pi";
+import { FaQuoteLeft } from "react-icons/fa";
 
 function components() {
   return (
@@ -55,10 +56,23 @@ function components() {
       {/* cards */}
       <div className="tw-my-10">
         <h2>Cards</h2>
+        Default:
         <IconCard
           Icon={PiAlarmDuotone}
           heading="Save time & effort"
           body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+        />
+        Card with bg and large font
+        <IconCard
+          intent="bg"
+          size="lg"
+          Icon={FaQuoteLeft}
+          heading="Save time & effort"
+          body="
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo id
+          est convenienter naturae vivere, a natura discedere. Duo Reges:
+          constructio interrete.
+        "
         />
       </div>
     </div>

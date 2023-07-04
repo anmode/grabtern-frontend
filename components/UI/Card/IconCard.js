@@ -1,11 +1,46 @@
 import React from "react";
+import clsx from "clsx";
 
-function IconCard({ className, Icon, heading, body, children}) {
+function IconCard({
+  className,
+  Icon,
+  heading,
+  body,
+  children,
+  intent = "normal",
+  size = "sm",
+}) {
   return (
-    <div className={`tw-font-sans ${className ? className : ""}`}>
-      {Icon && <Icon className="tw-text-primary-100 tw-w-7 tw-h-7 tw-mb-2" />}
-      {heading && <h4 className="tw-font-light tw-text-lg tw-mb-2">{heading}</h4>}
-      {body && <p className="tw-text-sm">{body}</p>}
+    <div
+      className={clsx(
+        "tw-font-sans",
+        intent == "bg" && ["tw-bg-base-100", "tw-p-6 tw-rounded-lg"],
+        className
+      )}
+    >
+      {Icon && (
+        <Icon
+          className={clsx(
+            "tw-text-primary-100 tw-w-7 tw-h-7 tw-mb-2",
+            size == "lg" && ["tw-w-8 tw-h-8"]
+          )}
+        />
+      )}
+      {heading && (
+        <h4
+          className={clsx(
+            "tw-font-light tw-text-lg tw-mb-2",
+            size == "lg" && ["tw-text-xl"]
+          )}
+        >
+          {heading}
+        </h4>
+      )}
+      {body && (
+        <p className={clsx("tw-text-sm", size == "lg" && ["tw-text-base"])}>
+          {body}
+        </p>
+      )}
       {children}
     </div>
   );

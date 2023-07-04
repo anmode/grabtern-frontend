@@ -122,14 +122,14 @@ h6 {
   font-weight: 400;
   text-transform: normal;
 }
-p {
-  /* font-family: "Mulish", sans-serif; */
+/* p {
+  font-family: "Mulish", sans-serif;
   color: #10285d;
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
-}
+} */
 .bg-img-1 {
   background-image: url(../img/slider/slider-img-1.webp);
 }

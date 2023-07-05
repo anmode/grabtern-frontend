@@ -128,7 +128,7 @@ function Mentor() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer/>
     </>
   );
 }

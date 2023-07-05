@@ -17,14 +17,16 @@ function ProfileCard({
   return (
     <div
       className={clsx(
-        "tw-flex tw-shadow-xl tw-shadow-base-300",
+        "tw-flex",
         size == "sm" && ["tw-gap-3"],
         size == "md" && ["tw-gap-4"],
         size == "lg" && ["tw-gap-5"],
         direction == "col" && ["tw-flex-col"],
         direction == "row-reverse" && ["tw-flex-row-reverse"],
         align == "center" && ["tw-text-center tw-items-center"],
-        intent == "bg" && ["tw-bg-base-100 tw-rounded-xl tw-p-4"],
+        intent == "bg" && [
+          "tw-bg-base-100 tw-rounded-xl  tw-shadow-xl tw-shadow-base-300 tw-p-4",
+        ],
         className
       )}
     >

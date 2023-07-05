@@ -10,6 +10,7 @@ import { PiAlarmDuotone } from "react-icons/pi";
 import { FaQuoteLeft } from "react-icons/fa";
 import ImageCard from "../components/UI/Card/ImageCard";
 import ProfileCard from "../components/UI/Card/ProfileCard";
+import Section from "../components/UI/Section/Section";
 
 function components() {
   return (
@@ -144,6 +145,46 @@ function components() {
           </div>
         </div>
       </div>
+      {/* row section */}
+      row section:
+      <Section
+        kicker="On-Demand Healthcare"
+        heading="Forget about the hassle"
+        subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+        direction="row"
+      >
+        <p>
+          One to One Interaction and doubt solving. Students can access
+          mentorship on their own schedule and pace. Students can connect with
+          industry leaders and gain insight and advice from experienced mentors
+        </p>
+        <ProfileCard
+          image="https://res.cloudinary.com/grabtern-cloud/image/upload/v1688361690/og87pyq4vyptl1dlmffs.png"
+          heading="Maya Rosselini "
+          subheading="Google Summer of Code 2022"
+          body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          intent="bg"
+          align="center"
+          direction="col"
+        />
+      </Section>
+      {/* column section */}
+      column section:
+      <Section
+        kicker="On-Demand Healthcare"
+        heading="Forget about the hassle"
+        subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc incredibile, quod beatissimum."
+      >
+        <ProfileCard
+          image="https://res.cloudinary.com/grabtern-cloud/image/upload/v1688361690/og87pyq4vyptl1dlmffs.png"
+          heading="Maya Rosselini "
+          subheading="Google Summer of Code 2022"
+          body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          intent="bg"
+          align="center"
+          direction="col"
+        />
+      </Section>
     </div>
   );
 }

@@ -4,6 +4,7 @@ module.exports = {
   reactStrictMode: true,
   images: {
     domains: ["lh3.googleusercontent.com"],
+    domains: ["res.cloudinary.com"],
   },
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
   webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {

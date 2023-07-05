@@ -114,10 +114,31 @@ export default function MentorForm() {
     });
   };
 
+  const uploadToCloudinary = async (file) => {
+    const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
+    try {
+      const res = await axios.post(url, {
+        file: file,
+        upload_preset: "image_preset",
+      });
+      console.log(res.data.secure_url);
+      return res.data.secure_url;
+    } catch (error) {
+      console.log("Couldn't upload image to Cloudinary", error);
+    }
+  };
+
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setFormData({ ...formData, mentorImg: { name: file.name, image: base64 } });
+    const fileData = await convertBase64(file);
+    console.log("The uploaded image is: ", file);
+    const imgLink = await uploadToCloudinary(fileData);
+    console.log(imgLink);
+    setFormData({
+      ...formData,
+      mentorImg: { ...formData.mentorImg, image: imgLink },
+    });
+    console.log(formData);
   };
 
   // const handleSessionPriceChange = (e) => {

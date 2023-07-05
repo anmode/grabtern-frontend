@@ -189,15 +189,15 @@ function Index({ mentorDetail }) {
               </div>
             <div className="session-card tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px] tw-ml-32 tw-relative tw-mt-32">
               {/* Session Cards for every session */}
-              {mentorDetail.bookSession.length !== 0 &&
-                mentorDetail.bookSession.map((session, index) => (
+              {mentorDetail?.bookSession?.length !== 0 &&
+                mentorDetail?.bookSession?.map((session, index) => (
                   <SessionCard
                     key={index}
-                    type={session.sessionType}
-                    name={session.sessionName}
-                    description={session.sessionDescription}
-                    duration={session.sessionMeetingDuration}
-                    pricePerSession={session.priceSession}
+                    type={session?.sessionType}
+                    name={session?.sessionName}
+                    description={session?.sessionDescription}
+                    duration={session?.sessionMeetingDuration}
+                    pricePerSession={session?.priceSession}
                     handleBookSession={() => {
                       setModalPopup(true);
                       setSelectedSession(session);
@@ -236,7 +236,7 @@ function Index({ mentorDetail }) {
           {showModal && (
             <SharePageModal
               handleClose={() => setShowModal(false)}
-              username={mentorDetail.username}
+              username={mentorDetail?.username}
             />
           )}
           {/* Error Display */}

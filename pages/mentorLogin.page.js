@@ -50,11 +50,11 @@ function mentorLogin() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/auth`;
       const { data: res } = await axios.post(url, formData);
-      // localStorage.setItem("mentorToken", res.loginToken);
+      // localStorage.setItem("mentorToken", res.mentorToken);
       // localStorage.setItem("mentor_name", res.fullName);
       const mentorData = {
         mentor_name: res.fullName,
-        mentorToken: res.loginToken,
+        mentorToken: res.mentorToken,
       };
       localStorage.setItem("mentorData", JSON.stringify(mentorData));
       setIsMentorLoggedIn(true);
@@ -77,11 +77,11 @@ function mentorLogin() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/gloginauth`;
       const { data: res } = await axios.post(url, userObject);
-      // localStorage.setItem("mentorToken", res.loginToken);
+      // localStorage.setItem("mentorToken", res.mentorToken);
       // localStorage.setItem("mentor_name", userObject.name);
       // localStorage.setItem("mentor_picture", userObject.picture);
       const mentorData = {
-        mentorToken: res.loginToken,
+        mentorToken: res.mentorToken,
         mentor_picture: userObject.picture,
         mentor_name: userObject.name,
       };

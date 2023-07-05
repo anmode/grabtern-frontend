@@ -1,16 +1,16 @@
 import About from "../components/About";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import servicesData from "./data/ServicesData";
 import Service from "../components/Service";
 import internshipsData from "./data/coursesData";
 import Internship from "../components/Internship";
 import hackathonsData from "./data/hackathonsData";
-import Hackathon from "../components/Hackathons";
+import Hackathon from "../components/hackthons/Hackathons";
 import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
 import Testimonial from "../components/Testimonial.js";
 import TeamProfile from "../components/TeamProfile";
-import Footer from "../components/Footer";
+import Footer from "../components/layout/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -195,7 +195,7 @@ export default function Home() {
               </div>
             </div>
             <div className="row">
-              {hackathonsData.slice(0, 8).map((hackathon, index) => (
+              {hackathonsData.slice(0, 4).map((hackathon, index) => (
                 <Hackathon
                   key={index}
                   hackathonImage={hackathon.hackathonImage}

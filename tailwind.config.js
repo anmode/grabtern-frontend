@@ -19,6 +19,17 @@ module.exports = {
       6: "6px",
       8: "8px",
     },
+    colors: {
+      "primary-10": "var(--primary-10)",
+      "primary-50": "var(--primary-50)",
+      "primary-100": "var(--primary-100)",
+      "primary-200": "var(--primary-200)",
+      "base-100": "var(--base-100)",
+      "base-200": "var(--base-200)",
+      "base-300": "var(--base-300)",
+      "base-400": "var(--base-400)",
+      "base-500": "var(--base-500)",
+    },
   },
   plugins: [],
 };

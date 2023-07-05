@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/Header";
-import Section from "../components/mentorPage/Section";
-import Company from "../components/mentorPage/Company";
-import IconCard from "../components/mentorPage/IconCard";
-import FAQList from "../components/mentorPage/FAQList";
-import Footer from "../components/Footer";
+import Header from "../components/layout/Header";
+import Section from "../components/mentorPage/components/Section";
+import Company from "../components/mentorPage/components/Company";
+import IconCard from "../components/mentorPage/components/IconCard";
+import FAQList from "../components/mentorPage/components/FAQList";
+import Footer from "../components/layout/Footer";
 import Head from "next/head";
 
 import faq from "./data/faq";

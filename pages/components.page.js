@@ -9,6 +9,7 @@ import { BiUser } from "react-icons/bi";
 import { PiAlarmDuotone } from "react-icons/pi";
 import { FaQuoteLeft } from "react-icons/fa";
 import ImageCard from "../components/UI/Card/ImageCard";
+import ProfileCard from "../components/UI/Card/ProfileCard";
 
 function components() {
   return (
@@ -102,6 +103,45 @@ function components() {
             body="It's a global program focused on bringing more student developers into open source software development. Google Summer of Code is a global program that offers student developers stipends to write code for various open source software projects."
             link="https://summerofcode.withgoogle.com/"
           />
+          {/* profile card */}
+          <div className="tw-max-w-[450px] tw-my-20">
+            small:
+            <ProfileCard
+              image="https://res.cloudinary.com/grabtern-cloud/image/upload/v1688361690/og87pyq4vyptl1dlmffs.png"
+              heading="Maya Rosselini "
+              subheading="Google Summer of Code 2022"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              intent="bg"
+              size="sm"
+              rounded="lg"
+              orient="row"
+            />
+          </div>
+          <div className="tw-max-w-[450px] tw-my-20">
+            Default:
+            <ProfileCard
+              image="https://res.cloudinary.com/grabtern-cloud/image/upload/v1688361690/og87pyq4vyptl1dlmffs.png"
+              heading="Maya Rosselini "
+              subheading="Google Summer of Code 2022"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              intent="bg"
+              align="center"
+              direction="col"
+            />
+          </div>
+          <div className="tw-max-w-[450px] tw-my-20">
+            large:
+            <ProfileCard
+              image="https://res.cloudinary.com/grabtern-cloud/image/upload/v1688361690/og87pyq4vyptl1dlmffs.png"
+              heading="Maya Rosselini "
+              subheading="Google Summer of Code 2022"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              intent="bg"
+              size="lg"
+              rounded="lg"
+              orient="row"
+            />
+          </div>
         </div>
       </div>
     </div>

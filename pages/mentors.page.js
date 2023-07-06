@@ -23,15 +23,6 @@ function Mentors({ mentorsData }) {
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
-        {/* <ul className="list">
-              {teamsData.filter((user)=>
-              user.profileName.toLowerCase().includes(query)
-              ).map((user)=>(
-                <li key={user.imageSrc} className="listitem">
-                  {user.profileName}
-                </li>
-                ))}
-            </ul> */}
         <Section
           kicker="Our Mentors"
           heading="Find all Mentors Here"
@@ -39,6 +30,7 @@ function Mentors({ mentorsData }) {
           Inspiration, and Success"
           align="center"
         >
+          {/* input */}
           <div className="app">
             <input
               type="text"
@@ -57,29 +49,13 @@ function Mentors({ mentorsData }) {
                   mentor.currentStatus
                     .toLowerCase()
                     .includes(query.toLowerCase())
-                //item.
               )
               .map((mentor) => (
-                // <li key={mentor.imageSrc} className="listitem">
-                //   {mentor.profileName}
-                // </li>
                 <a href={`/${mentor.username}`} key={mentor._id}>
                   {<MentorCard mentor={mentor} />}
                 </a>
               ))}
           </div>
-
-          {/* {mentorsData.length === 0 ? (
-              <p>There is no mentor right now...</p>
-            ) : (
-              <div className="mentorLists">
-                {mentorsData.map((mentor) => (
-                  <a href={`/${mentor.username}`} key={mentor._id}>
-                    {<MentorCard mentor={mentor} />}
-                  </a>
-                ))}
-              </div>
-            )} */}
         </Section>
       </main>
     </>

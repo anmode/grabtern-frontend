@@ -91,13 +91,9 @@ export default Mentors;
 export const getStaticProps = async (context) => {
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
   const { data } = await axios.get(url);
-
   return {
     props: {
-      mentorsData: data.filter(
-        (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified"
-      ),
+      mentorsData: data,
     },
     revalidate: 20, // revalidate the data every 20 seconds
   };

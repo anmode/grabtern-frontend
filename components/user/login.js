@@ -84,6 +84,7 @@ function Login({ handleLogPageToggle }) {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const res = await axios.post(url, data);
+      console.log(res);
       if (!res.verified) {
         toast.error(
           "Email not verified, verification link has been sent to your email"
@@ -99,6 +100,7 @@ function Login({ handleLogPageToggle }) {
       setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
+      console.log(error);
       if (error.response && error.response.status === 405) {
         toast.error(
           "Email not verified, verification link has been sent to your email"

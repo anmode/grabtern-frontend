@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
 
-function Index({ mentorDetail }) {
+function Index({ mentorDetail, mentorUsername }) {
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
   const [error, setError] = useState("");
@@ -23,6 +23,7 @@ function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     isMentorLoggedIn,
@@ -125,15 +126,16 @@ function Index({ mentorDetail }) {
             {/* Session Cards Container */}
             <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
               {/* Session Cards for every session */}
-              {mentorDetail.bookSession.length !== 0 &&
-                mentorDetail.bookSession.map((session, index) => (
+              {mentorDetail.sessions[0].sessions.length !== 0 &&
+                mentorDetail.sessions[0].sessions.map((session, index) => (
                   <SessionCard
                     key={index}
-                    type={session.sessionType}
-                    name={session.sessionName}
-                    description={session.sessionDescription}
-                    duration={session.sessionMeetingDuration}
-                    pricePerSession={session.priceSession}
+                    mentorUsername={mentorUsername}
+                    type={session.type}
+                    name={session.name}
+                    description={session.description}
+                    duration={session.duration}
+                    pricePerSession={session.price}
                     handleBookSession={() => {
                       setModalPopup(true);
                       setSelectedSession(session);
@@ -255,10 +257,11 @@ export const getStaticProps = async (context) => {
       notFound: true,
     };
   }
-
+  console.log(res.mentorDetail, res.mentorDetail.sessions[0].sessions);
   return {
     props: {
       mentorDetail: res.mentorDetail,
+      mentorUsername,
     },
     revalidate: 60, // Revalidate the data every 60 seconds
   };

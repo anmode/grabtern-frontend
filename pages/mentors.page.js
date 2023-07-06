@@ -45,7 +45,7 @@ function Mentors({ mentorsData }) {
                 ))}
             </ul> */}
 
-            <ul className="mentorLists">
+            <div className="tw-grid tw-gap-4 md:tw-grid-cols-2 lg:tw-grid-cols-3">
               {mentorsData
                 .filter(
                   (mentor) =>
@@ -66,7 +66,7 @@ function Mentors({ mentorsData }) {
                     {<MentorCard mentor={mentor} />}
                   </a>
                 ))}
-            </ul>
+            </div>
 
             {/* {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>

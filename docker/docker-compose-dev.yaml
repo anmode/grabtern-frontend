@@ -1,0 +1,11 @@
+services:
+  frontend:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.dev
+    container_name: grabtern-frontend-container-dev
+    image: grabtern-frontend-img:dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${PWD}:/grabtern-app

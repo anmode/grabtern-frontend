@@ -1,0 +1,10 @@
+services:
+  grab-prod:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.prod
+    container_name: grabtern-frontend-container-prod
+    image: grabtern-frontend-img:prod
+
+    ports:
+      - "3000:3000"

@@ -1,0 +1,25 @@
+
+FROM node:18-alpine AS base
+WORKDIR /grabtern-app
+COPY ../package*.json ./
+RUN npm ci
+COPY .. .
+
+# Linux + Node + Source + Project dependencies + build assets
+FROM base AS build
+ENV NODE_ENV=production
+WORKDIR /build
+COPY --from=base /grabtern-app ./
+RUN npm run build
+
+# We keep some artifacts from build
+FROM node:18-alpine AS production
+ENV NODE_ENV=production
+WORKDIR /grabtern-app
+COPY --from=build /build/package*.json ./
+COPY --from=build /build/.next ./.next/
+COPY --from=build /build/public ./public/
+RUN npm ci --only=production
+
+EXPOSE 3000
+CMD npm run start

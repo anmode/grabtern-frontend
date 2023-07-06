@@ -92,24 +92,28 @@ npm start
 
 This will start server
 
-----------------------------------------------
-For Docker users
-in Development 
-clone the repo and move the the file "docker-compose-dev.yaml" out or in same level of "grabtern-frontend" directory 
+---
 
+For Docker users
+in Development
 To start
 
-use command 
+use command
+
 ```
 docker-compose -f docker-compose-dev.yml up
 
 ```
+
 for stop
+
 ```
 docker-compose -f docker-compose-dev.yml stop
 
 ```
-for stop and remove 
+
+for stop and remove
+
 ```
 docker-compose -f docker-compose-dev.yml down
 

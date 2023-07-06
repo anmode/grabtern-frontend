@@ -101,21 +101,21 @@ To start
 use command
 
 ```
-docker-compose -f docker-compose-dev.yml up
+docker-compose -f docker/docker-compose-dev.yaml up
 
 ```
 
 for stop
 
 ```
-docker-compose -f docker-compose-dev.yml stop
+docker-compose -f docker/docker-compose-dev.yaml stop
 
 ```
 
 for stop and remove
 
 ```
-docker-compose -f docker-compose-dev.yml down
+docker-compose -f docker/docker-compose-dev.yaml down
 
 ```
 

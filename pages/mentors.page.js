@@ -11,8 +11,8 @@ const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
 
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  const data = useApi(url);
+  // const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  // const data = useApi(url);
   // const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
 
   // console.log(query)

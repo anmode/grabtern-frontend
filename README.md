@@ -112,7 +112,7 @@ docker-compose -f docker/docker-compose-dev.yaml stop
 
 ```
 
-for stop and remove
+for stop and remove container
 
 ```
 docker-compose -f docker/docker-compose-dev.yaml down

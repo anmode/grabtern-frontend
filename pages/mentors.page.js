@@ -7,6 +7,7 @@ import { useApi } from "../hook/useAPi.js";
 import { list } from "postcss";
 const Header = dynamic(() => import("../components/layout/Header"));
 const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
+import Section from "../components/UI/Section/Section";
 
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
@@ -22,20 +23,7 @@ function Mentors({ mentorsData }) {
       <Header />
       <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
-        <section className="findMentors">
-          <div className="container">
-            <h1>Find All mentors here</h1>
-
-            <div className="app">
-              <input
-                type="text"
-                placeholder="Search Mentors..."
-                className="search"
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
-
-            {/* <ul className="list">
+        {/* <ul className="list">
               {teamsData.filter((user)=>
               user.profileName.toLowerCase().includes(query)
               ).map((user)=>(
@@ -44,31 +32,44 @@ function Mentors({ mentorsData }) {
                 </li>
                 ))}
             </ul> */}
+        <Section
+          kicker="Our Mentors"
+          heading="Find all Mentors Here"
+          subheading="Embark on a Journey of Knowledge,
+          Inspiration, and Success"
+          align="center"
+        >
+          <div className="app">
+            <input
+              type="text"
+              placeholder="Search Mentors..."
+              className="search"
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </div>
+          {/* mentors cards */}
+          <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+            {mentorsData
+              .filter(
+                (mentor) =>
+                  mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+                  mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
+                  mentor.currentStatus
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
+                //item.
+              )
+              .map((mentor) => (
+                // <li key={mentor.imageSrc} className="listitem">
+                //   {mentor.profileName}
+                // </li>
+                <a href={`/${mentor.username}`} key={mentor._id}>
+                  {<MentorCard mentor={mentor} />}
+                </a>
+              ))}
+          </div>
 
-            <div className="tw-grid tw-gap-4 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-              {mentorsData
-                .filter(
-                  (mentor) =>
-                    mentor.name.toLowerCase().includes(query.toLowerCase()) ||
-                    mentor.internAt
-                      .toLowerCase()
-                      .includes(query.toLowerCase()) ||
-                    mentor.currentStatus
-                      .toLowerCase()
-                      .includes(query.toLowerCase())
-                  //item.
-                )
-                .map((mentor) => (
-                  // <li key={mentor.imageSrc} className="listitem">
-                  //   {mentor.profileName}
-                  // </li>
-                  <a href={`/${mentor.username}`} key={mentor._id}>
-                    {<MentorCard mentor={mentor} />}
-                  </a>
-                ))}
-            </div>
-
-            {/* {mentorsData.length === 0 ? (
+          {/* {mentorsData.length === 0 ? (
               <p>There is no mentor right now...</p>
             ) : (
               <div className="mentorLists">
@@ -79,8 +80,7 @@ function Mentors({ mentorsData }) {
                 ))}
               </div>
             )} */}
-          </div>
-        </section>
+        </Section>
       </main>
     </>
   );

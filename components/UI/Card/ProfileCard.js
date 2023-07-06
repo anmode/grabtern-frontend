@@ -36,7 +36,7 @@ function ProfileCard({
             "tw-aspect-square tw-object-cover",
             size == "sm" && ["tw-w-10 tw-h-10"],
             size == "md" && ["tw-w-14"],
-            size == "lg" && ["tw-w-52"],
+            size == "lg" && ["tw-w-40"],
             rounded == "sm" && ["tw-rounded-xl"],
             rounded == "md" && [" tw-rounded-3xl"],
             rounded == "lg" && ["tw-rounded-full"]

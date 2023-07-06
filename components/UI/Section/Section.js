@@ -14,10 +14,10 @@ function Section({
   return (
     <section className={clsx("tw-w-full tw-py-16 tw-px-4", className)}>
       <div
-        className={
-          (clsx("tw-w-full tw-max-w-7xl tw-mx-auto"),
-          direction == "row" && ["md:tw-flex tw-items-center tw-py-6"])
-        }
+        className={clsx(
+          "tw-w-full tw-max-w-7xl tw-mx-auto",
+          direction == "row" && ["md:tw-flex tw-items-center tw-py-6"]
+        )}
       >
         {/* column */}
         <div className={clsx(direction == "row" && ["tw-p-6 tw-w-1/2"])}>

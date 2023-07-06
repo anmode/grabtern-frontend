@@ -2,92 +2,100 @@ import React from "react";
 
 function Banner({ isMentorLoggedIn }) {
   return (
-    <section className="slider-area ">
-      <div className="slider-active slick-initialized slick-slider">
-        <div className="slick-list draggable">
-          <div className="slick-track" style={{ opacity: 1, width: "1423px" }}>
-            <div
-              className="single-slider slider-height d-flex align-items-center slick-slide slick-current slick-active"
-              data-slick-index="0"
-              aria-hidden="false"
-              tabIndex="0"
-              style={{
-                width: "1423px",
-                position: "relative",
-                left: "0px",
-                top: "0px",
-                zIndex: 999,
-                opacity: 1,
-              }}
-            >
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 col-md-12">
-                    <div className="hero__caption">
-                      <h1
-                        data-animation="fadeInLeft"
-                        data-delay="0.2s"
-                        className="animate__animated animate__fadeInLeft"
-                        style={{ animationDelay: "0.8s" }}
-                      >
-                        Grab your Intern with GrabTern
-                      </h1>
-                      <p
-                        data-animation="fadeInLeft"
-                        data-delay="0.4s"
-                        className="animate__animated animate__fadeInLeft"
-                        style={{ animationDelay: "1s" }}
-                      >
-                        Book a meeting with a past intern to receive one-on-one
-                        mentoring and enhance your chances of landing your ideal
-                        intern.
-                      </p>
-                      <a
-                        href="/mentors"
-                        className="btn hero-btn animate__animated animate__fadeInLeft"
-                        data-animation="fadeInLeft"
-                        data-delay="1s"
-                        tabIndex="0"
-                        style={{ animationDelay: "1s" }}
-                      >
-                        Find Mentor
-                      </a>{" "}
-                      &nbsp; &nbsp; &nbsp; &nbsp;
-                      {/* {isMentorLoggedIn === false ?(<a href="/mentorRegister" className="btn hero-btn animate__animated animate__fadeInLeft" data-animation="fadeInLeft" data-delay="1s" tabIndex="0" style={{animationDelay: "1s"}}>Be a Mentor</a>):null}  */}
-                      {isMentorLoggedIn === true ? (
-                        <>
-                          <a
-                            href="/dashboard"
-                            className="btn hero-btn animate__animated animate__fadeInLeft"
-                            data-animation="fadeInLeft"
-                            data-delay="1s"
-                            tabIndex="0"
-                            style={{ animationDelay: "1s" }}
-                          >
-                            Dashboard
-                          </a>
-                        </>
-                      ) : (
-                        <a
-                          href="/mentorRegister"
-                          className="btn hero-btn animate__animated animate__fadeInLeft"
-                          data-animation="fadeInLeft"
-                          data-delay="1s"
-                          tabIndex="0"
-                          style={{ animationDelay: "1s" }}
-                        >
-                          Be a Mentor
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
+    <>
+      <div className="hero-container">
+        <div className="text-container">
+          {/* heading */}
+          <h1>Grab your Intern with GrabTern</h1>
+          {/* description */}
+          <p
+            data-animation="fadeInLeft"
+            data-delay="0.4s"
+            className="animate__animated animate__fadeInLeft"
+            style={{ animationDelay: "1s" }}
+          >
+            Book a meeting with a past intern to receive one-on-one mentoring
+            and enhance your chances of landing your ideal intern.
+          </p>
+          {/* Button  */}
+          <div className="buttons">
+            <a href="/mentors">
+              <button
+                className="hero-section-btn-active animate__animated animate__fadeInLeft"
+                data-animation="fadeInLeft"
+                data-delay="1s"
+                tabIndex="0"
+                style={{ animationDelay: "1s" }}
+              >
+                Find Mentor
+              </button>
+            </a>{" "}
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            {isMentorLoggedIn === true ? (
+              <>
+                <a href="/dashboard">
+                  <button
+                    className="hero-section-btn animate__animated animate__fadeInLeft"
+                    data-animation="fadeInLeft"
+                    data-delay="1s"
+                    tabIndex="0"
+                    style={{ animationDelay: "1s" }}
+                  >
+                    Dashboard
+                  </button>
+                </a>
+              </>
+            ) : (
+              <a href="/mentorRegister">
+                <button
+                  className="hero-section-btn animate__animated animate__fadeInLeft"
+                  data-animation="fadeInLeft"
+                  data-delay="1s"
+                  tabIndex="0"
+                  style={{ animationDelay: "1s" }}
+                >
+                  Be a Mentor
+                </button>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div className="image-container">
+          <div className="vector-img"></div>
+          <div className="decorations">
+            <div className="image-container1">
+              <div className="text">
+                <h4>Mentors</h4>
+                <h3>4 New</h3>
+              </div>
+              <div className="mentor-img">
+                <img
+                  src="https://media.cssninja.io/shuriken/avatars/4.svg"
+                  alt="Avatar"
+                />
+                <img
+                  src="https://media.cssninja.io/shuriken/avatars/2.svg"
+                  alt="Avatar"
+                />
+                <img
+                  src="https://media.cssninja.io/shuriken/avatars/3.svg"
+                  alt="Avatar"
+                />
+                <img
+                  src="https://media.cssninja.io/shuriken/avatars/6.svg"
+                  alt="Avatar"
+                />
               </div>
             </div>
+            <div className="graph circle">📈</div>
+            <div className="rocket circle ">🚀</div>
+            <div className="bulb circle">💡</div>
+            <div className="graduate-hat circle">🎓</div>
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }
 

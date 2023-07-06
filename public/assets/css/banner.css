@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero-container {
+    background-color: #F1F4F8;
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    padding: 0 160px;
+}
+
+.text-container {
+    width: 40%;
+    height: 40vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.text-container>h1 {
+    font-size: 4.8rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+    color: black;
+}
+
+.text-container>p {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 18px;
+    color: rgb(100 116 139);
+    line-height: 1.6;
+}
+
+.text-container a button {
+    font-size: 14px;
+    padding: 12px 20px;
+    font-weight: 500;
+    border-radius: 12px;
+    border: white solid transparent;
+    outline: 2px solid transparent;
+    outline-offset: 1px;
+    cursor: pointer;
+}
+
+.text-container .hero-section-btn-active {
+    color: white;
+    background: #4E47E5;
+}
+
+.text-container .hero-section-btn {
+    color: rgb(100 116 139);
+    background: white;
+    outline: 1px solid #00000024;
+    outline-offset: 2px;
+}
+
+.image-container {
+    width: 50%;
+    height: 60vh;
+    position: relative;
+    padding: 20px;
+}
+
+.decorations {
+    width: 100%;
+    height: 60vh;
+    /* position: relative; */
+}
+
+.vector-img {
+    background-image: url(../img/hero/hero.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.image-container1 {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    width: 305px;
+    height: 132px;
+    border-radius: 20px;
+    left: -5%;
+    bottom: -10%;
+    padding: 10px;
+    outline: 1px solid #00000024;
+    outline-offset: 1px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.image-container1 .text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.image-container1 .text h4 {
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.image-container1 .text h3 {
+    color: grey;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.mentor-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 6px;
+}
+
+.mentor-img img {
+    width: 60px;
+    border-radius: 20px;
+}
+
+.circle {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid #00000024;
+    outline-offset: 1px;
+    position: absolute;
+}
+
+
+.graph {
+    left: -10%;
+    top: 0%;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.rocket {
+    left: 4%;
+    top: 21%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.bulb {
+    left: 32%;
+    top: -16%;
+    width: 65px;
+    height: 65px;
+    font-size: 40px;
+}
+
+.graduate-hat {
+    right: -12%;
+    bottom: -10%;
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        padding: 0;
+    }
+
+    /* .vector-img{
+        background-size: contain;
+    } */
+    .text-container {
+        width: 100%;
+        height: 30vh;
+        position: absolute;
+        top: 20%;
+        text-align: center;
+    }
+
+    .image-container {
+        width: 100%;
+        position: absolute;
+        height: 48vh;
+        bottom: 10%;
+        padding: 10px;
+    }
+
+    .decorations {
+        width: 100%;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        padding: 0;
+        margin-bottom: 100px;
+
+    }
+
+    .text-container {
+        width: 90%;
+        height: 25vh;
+        position: absolute;
+        top: 25%;
+        text-align: center;
+        padding: 0 110px;
+    }
+
+    .image-container {
+        width: 100%;
+        position: absolute;
+        height: 46vh;
+        bottom: 3%;
+        padding: 80px;
+    }
+
+    .image-container1 {
+        left: 5%;
+        bottom: 0%;
+    }
+
+    .graph {
+        left: 3%;
+        top: 13%;
+    }
+
+    .rocket {
+        left: 15%;
+        top: 28%;
+    }
+
+    .bulb {
+        left: 38%;
+        top: 5%;
+    }
+
+    .graduate-hat {
+        right: 5%;
+        bottom: 0%;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .hero-container {
+        width: 100%;
+        height: 110vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        padding: 0 10px;
+        margin-bottom: 100px;
+    }
+
+    .text-container {
+        width: 50%;
+        height: 45vh;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .image-container {
+        width: 70%;
+        height: 45vh;
+        position: relative;
+    }
+
+    .image-container1 {
+        left: -5%;
+        bottom: 0%;
+    }
+
+    .graph {
+        left: -5%;
+        top: 13%;
+    }
+
+    .rocket {
+        left: 8%;
+        top: 28%;
+    }
+
+    .bulb {
+        left: 32%;
+        top: -5%;
+    }
+
+    .graduate-hat {
+        display: none;
+    }
+}
+
+/* @media screen and (min-width: 1281px) {
+    .hero-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 0;
+
+    }
+
+    .text-container {
+        width: 20%;
+        height: 45vh;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .image-container {
+        width: 30%;
+        height: 50vh;
+        position: relative;
+    }
+
+    .image-container1 {
+        left: 5%;
+        bottom: 0%;
+    }
+
+    .graph {
+        left: -6%;
+        top: 13%;
+    }
+
+    .rocket {
+        left: 8%;
+        top: 28%;
+    }
+
+    .bulb {
+        left: 32%;
+        top: -6%;
+    }
+
+    .graduate-hat {
+        right: -5%;
+        bottom: 0%;
+    }
+} */

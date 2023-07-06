@@ -5,7 +5,7 @@ const Footer = dynamic(() => import("../components/layout/Footer"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Dashboard from "../components/Dashboard"
+import Dashboard from "../components/Dashboard";
 
 function Index() {
   const [mentorDetail, setMentorDetail] = useState();

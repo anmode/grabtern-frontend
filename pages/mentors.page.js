@@ -55,7 +55,7 @@ function Mentors({ mentorsData }) {
                       .includes(query.toLowerCase()) ||
                     mentor.currentStatus
                       .toLowerCase()
-                      .includes(query.toLowerCase()),
+                      .includes(query.toLowerCase())
                   //item.
                 )
                 .map((mentor) => (
@@ -96,7 +96,7 @@ export const getStaticProps = async (context) => {
     props: {
       mentorsData: data.filter(
         (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified",
+          mentor.verified === true && mentor.token === "mentorIsVerified"
       ),
     },
     revalidate: 20, // revalidate the data every 20 seconds

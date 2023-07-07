@@ -14,7 +14,7 @@ const DropdownCard = () => {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  
+
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const dropdownRef = useRef(null);

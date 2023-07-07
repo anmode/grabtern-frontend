@@ -86,7 +86,7 @@ function Login({ handleLogPageToggle }) {
       const res = await axios.post(url, data);
       if (!res.verified) {
         toast.error(
-          "Email not verified, verification link has been sent to your email",
+          "Email not verified, verification link has been sent to your email"
         );
       }
       const userData = {
@@ -101,7 +101,7 @@ function Login({ handleLogPageToggle }) {
     } catch (error) {
       if (error.response && error.response.status === 405) {
         toast.error(
-          "Email not verified, verification link has been sent to your email",
+          "Email not verified, verification link has been sent to your email"
         );
       } else if (error.response && error.response.status === 401) {
         toast.error("Invalid email or password.");

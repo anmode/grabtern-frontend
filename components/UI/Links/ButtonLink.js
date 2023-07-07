@@ -4,7 +4,7 @@ import styles from "./Link.module.css";
 
 function ButtonLink({ text, href, className = "", variant = "Primary" }) {
   let variantClass = `link${variant.charAt(0).toUpperCase()}${variant.slice(
-    1,
+    1
   )}`;
   return (
     <Link

@@ -124,7 +124,7 @@ function ScheduleDetails({ formData, changeArray, validator }) {
         "schedules",
         formData.schedules,
         "required|min:1",
-        { className: "tw-relative tw-text-red-600 tw-text-2xl" },
+        { className: "tw-relative tw-text-red-600 tw-text-2xl" }
       )}
       {/* error if it does not have any schedule */}
 

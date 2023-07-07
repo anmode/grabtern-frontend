@@ -29,7 +29,7 @@ function Section({
             className={clsx(
               "",
               align == "center" && ["tw-text-center tw-mx-auto"],
-              direction == "col" && ["tw-mb-14"],
+              direction == "col" && ["tw-mb-14"]
             )}
           />
           {/* content under header */}

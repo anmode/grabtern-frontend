@@ -127,7 +127,7 @@ function Header() {
       <div className="sm:tw-hidden tw-flex tw-relative" ref={dropdownRef}>
         <div className="tw-flex">
           <div
-            className="tw-text-3xl tw-font-light tw-mx-2 cursor-pointer tw-bg-[#845ec2]"
+            className="tw-text-3xl tw-font-light tw-mx-2 cursor-pointer tw-text-[#845ec2]"
             onClick={() => {
               setToggleDropdown((prev) => !prev);
             }}

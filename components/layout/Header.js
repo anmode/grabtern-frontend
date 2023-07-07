@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 // import DropdownCard from "./LoginDropdown";
 // import { AiOutlineSearch } from "react-icons/ai";
 import { SunIcon } from "@heroicons/react/24/solid";

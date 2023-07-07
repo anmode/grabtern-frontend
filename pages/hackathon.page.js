@@ -129,8 +129,8 @@ export default function Home() {
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
       tagFilter.some((filter) =>
-        tag.toLowerCase().includes(filter.toLowerCase())
-      )
+        tag.toLowerCase().includes(filter.toLowerCase()),
+      ),
     );
 
     if (tagMatch) {
@@ -146,7 +146,7 @@ export default function Home() {
       filteredHackathons.length !== 0 ||
         (!tagFilter.includes("All") && tagFilter.length < 2)
         ? filteredHackathons
-        : hackathonsData
+        : hackathonsData,
     );
   });
 

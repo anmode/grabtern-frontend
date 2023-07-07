@@ -90,7 +90,7 @@ function PersonDetails({
           {validator.current.message(
             "mentorProfileImage",
             formData.mentorImg.name,
-            "required"
+            "required",
           )}
           <p className="px-2 ">{formData.mentorImg.name}</p>
           <input
@@ -121,7 +121,7 @@ function PersonDetails({
         {validator.current.message(
           "description",
           formData.description,
-          "required"
+          "required",
         )}
         <textarea
           cols="10"

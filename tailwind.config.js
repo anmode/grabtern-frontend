@@ -36,6 +36,10 @@ module.exports = {
       "base-400": "var(--base-400)",
       "base-500": "var(--base-500)",
     },
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+      heading: ["Inter", "sans-serif"],
+    },
   },
   plugins: [],
 };

@@ -1,5 +1,5 @@
 .btn {
-  @apply tw-px-[1.5rem] tw-py-[0.5rem] tw-bg-primary-100 tw-text-[white] tw-rounded-lg tw-shadow-md tw-capitalize tw-cursor-pointer;
+  @apply tw-px-6 tw-py-2 tw-font-sans tw-bg-primary-100 tw-text-[white] tw-rounded-lg tw-shadow-md tw-capitalize tw-cursor-pointer;
 }
 .btn:hover {
   @apply tw-scale-[0.99];

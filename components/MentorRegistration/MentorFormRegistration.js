@@ -129,7 +129,9 @@ export default function MentorForm() {
     console.log(imgLink);
     setFormData({
       ...formData,
-      mentorImg: { ...formData.mentorImg, image: imgLink },
+      mentorImg: {
+        image: imgLink,
+      },
     });
     console.log(formData);
   };

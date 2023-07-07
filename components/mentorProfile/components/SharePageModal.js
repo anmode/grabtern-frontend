@@ -36,7 +36,7 @@ export default function SharePageModal({ handleClose, username }) {
               className="tw-text-[18px] tw-text-gray-800 hover:tw-bg-gray-300 active:tw-bg-gray-300 tw-p-4 tw-rounded-lg  tw-transition-all"
               onClick={() => {
                 navigator.clipboard.writeText(
-                  `${process.env.NEXT_PUBLIC_FRONTEND_URL}/${username}`
+                  `${process.env.NEXT_PUBLIC_FRONTEND_URL}/${username}`,
                 );
                 alert("Copied to clipboard!");
               }}

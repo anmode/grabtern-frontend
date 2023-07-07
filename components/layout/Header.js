@@ -116,7 +116,7 @@ function Header() {
           <button
             type="button"
             onClick=""
-            className="tw-text-white tw-mb-8 tw-bg-[#845ec2] hover:tw-bg-[#845ec2] focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-white tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 "
+            className="tw-text-white tw-mb-8 tw-bg-[#845ec2] hover:tw-scale-[0.99] active:tw-scale-[1.01] active:tw-shadow-none tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 "
           >
             Sign Up
           </button>
@@ -165,7 +165,7 @@ function Header() {
               <button
                 type="button"
                 onClick=""
-                className=" tw-w-full tw-rounded-lg tw-border tw-border-blue-600 tw-bg-[#845ec2] tw-py-3 tw-text-white tw-transition-all hover:tw-bg-white hover:tw-text-black tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
+                className=" tw-w-full tw-rounded-lg tw-border btn:hover btn:active tw-bg-[#845ec2] hover:tw-scale-[0.99] active:tw-scale-[1.01] active:tw-shadow-none tw-py-3 tw-text-white tw-transition-all tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
               >
                 Signup
               </button>

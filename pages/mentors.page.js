@@ -3,16 +3,16 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 import MentorCard from "../components/mentor";
 import teamsData from "./data/teamsData";
-import { useApi } from "./customHook/useAPi.js";
+import { useApi } from "../hook/useAPi.js";
 import { list } from "postcss";
-const Header = dynamic(() => import("../components/Header"));
-const SimpleBanner = dynamic(() => import("../components/SimpleBanner"));
+const Header = dynamic(() => import("../components/layout/Header"));
+const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
 
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  const data = useApi(url);
+  // const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  // const data = useApi(url);
   // const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
 
   // console.log(query)
@@ -55,7 +55,7 @@ function Mentors({ mentorsData }) {
                       .includes(query.toLowerCase()) ||
                     mentor.currentStatus
                       .toLowerCase()
-                      .includes(query.toLowerCase())
+                      .includes(query.toLowerCase()),
                   //item.
                 )
                 .map((mentor) => (
@@ -96,7 +96,7 @@ export const getStaticProps = async (context) => {
     props: {
       mentorsData: data.filter(
         (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified"
+          mentor.verified === true && mentor.token === "mentorIsVerified",
       ),
     },
     revalidate: 20, // revalidate the data every 20 seconds

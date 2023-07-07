@@ -5,7 +5,6 @@ function PersonDetails({
   formData,
   handleChange,
   handleUploadImageChange,
-  handleCallbackResponse,
   validator,
 }) {
   // inputs list
@@ -60,29 +59,6 @@ function PersonDetails({
     },
   ];
 
-  //   google sign in button functions
-  useEffect(() => {
-    setInterval(() => {
-      if (typeof window !== "undefined") {
-        if (document.querySelector("#credential_picker_container") !== null) {
-          document.querySelector(".overlay").classList.add("show");
-        }
-      }
-    }, 1300);
-
-    google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
-    );
-    google.accounts.id.prompt();
-  }, []);
-
   return (
     <>
       <p className="mentorFormHeading">Tell us about yourself</p>
@@ -114,7 +90,7 @@ function PersonDetails({
           {validator.current.message(
             "mentorProfileImage",
             formData.mentorImg.name,
-            "required"
+            "required",
           )}
           <p className="px-2 ">{formData.mentorImg.name}</p>
           <input
@@ -145,7 +121,7 @@ function PersonDetails({
         {validator.current.message(
           "description",
           formData.description,
-          "required"
+          "required",
         )}
         <textarea
           cols="10"

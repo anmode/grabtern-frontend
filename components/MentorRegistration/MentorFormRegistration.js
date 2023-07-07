@@ -1,22 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import SimpleReactValidator from "simple-react-validator";
 
 import { useRouter } from "next/router";
-import Overlay from "../Overlay";
+import Overlay from "../basic/Overlay";
 import { ToastContainer, toast } from "react-toastify";
-import PersonDetails from "./PersonDetails";
-import ContactDetails from "./ContactDetails";
-import ScheduleDetails from "./ScheduleDetails";
-import SessionDetails from "./SessionDetails";
+import PersonDetails from "./components/PersonDetails";
+import ContactDetails from "./components/ContactDetails";
+import ScheduleDetails from "./components/ScheduleDetails";
+import SessionDetails from "./components/SessionDetails";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
   const router = useRouter();
   //const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
   const [addtoast, setaddToast] = useState(false);
   const [bookSession, setBookSession] = useState({
     sessionName: "1 on 1 Mentorship",
@@ -30,29 +29,25 @@ export default function MentorForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  let number = Math.random(0 * 100);
 
   const InitialFormState = {
+    username: "",
     name: "",
     email: "",
-    username: "",
     mobile: "",
     internAt: "",
     currentStatus: "",
-    social: {
-      linkedin: "",
-      twitter: "",
-    },
-    sessions: [],
-    schedules: [],
     description: "",
     mentorImg: {
       name: "",
       image: "",
     },
-    // resume: '',
-    password: `GrabternMentorPW!${number}!`,
-    confirmPassword: `GrabternMentorPW!${number}!`,
+    social: {
+      linkedin: "",
+      twitter: "",
+    },
+    schedules: [],
+    sessions: [],
     verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);
@@ -69,9 +64,8 @@ export default function MentorForm() {
     });
   };
 
-  function handleCallbackResponse(response) {
-    var userObject = jwt_decode(response.credential);
-    // console.log(userObject);
+  // callback function for google sign in
+  const callbackFunction = (userObject) => {
     setFormData({
       ...InitialFormState,
       name: userObject.name,
@@ -81,8 +75,7 @@ export default function MentorForm() {
         image: userObject.picture,
       },
     });
-    console.log(formData);
-  }
+  };
 
   useEffect(() => {
     if (addtoast === true && waitTime !== 0) {
@@ -153,36 +146,33 @@ export default function MentorForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     setError("");
     // if (formData.bookSession.length !== 2) {
     //   return setError(
     //     "The number of book sessions must be more than 2 or equal to 2!"
     //   );
     // }
-    if (isChecked) {
-      // Register mentor
-      try {
-        // console.log(formData);
-        setIsLoading(true);
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
-        console.log(error);
-        const { data: res } = await axios.post(url, formData);
-        setIsLoading(false);
-        //setModalPopup(true);
-        setaddToast(true);
-      } catch (error) {
-        setIsLoading(false);
-        console.log(error);
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          toast.error(error.response.data.message);
-        }
+    // Register mentor
+    try {
+      // console.log(formData);
+      setIsLoading(true);
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
+      console.log(error);
+      const { data: res } = await axios.post(url, formData);
+      setIsLoading(false);
+      //setModalPopup(true);
+      setaddToast(true);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        toast.error(error.response.data.message);
       }
-    } else {
-      toast.error("Please agree to the terms before submitting");
     }
   };
 
@@ -229,7 +219,7 @@ export default function MentorForm() {
   };
   return (
     <div className="mentorFormRegisration">
-      <div className="overlay" onClick={() => hideitems(".overlay")}></div>
+      <Overlay callbackFunction={callbackFunction} />
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
         <form className="mentorForm" onSubmit={onSubmit}>
@@ -276,7 +266,6 @@ export default function MentorForm() {
                   formData={formData}
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
-                  handleCallbackResponse={handleCallbackResponse}
                   validator={validator}
                 />
               ),

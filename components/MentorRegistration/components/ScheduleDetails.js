@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import DayInput from "../dateAndTime/DayInput";
-import TimeZoneInput from "../dateAndTime/TimeZoneInput";
+import DayInput from "../../dateAndTime/DayInput";
+import TimeZoneInput from "../../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 
@@ -124,7 +124,7 @@ function ScheduleDetails({ formData, changeArray, validator }) {
         "schedules",
         formData.schedules,
         "required|min:1",
-        { className: "tw-relative tw-text-red-600 tw-text-2xl" }
+        { className: "tw-relative tw-text-red-600 tw-text-2xl" },
       )}
       {/* error if it does not have any schedule */}
 

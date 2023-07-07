@@ -78,9 +78,9 @@ function Sessions({mentorDetail}) {
           <div className={`${styles1.sessions}  tw-min-w-full  tw-py-11 tw-flex tw-flex-col`}>
               <div  className="  tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center">
 
-              <h1 className="tw-text-7xl tw-items-center tw-px-8 tw-relative tw-top-8  ">Sessions</h1>
+              <div className={`${styles1.sessionHeading }tw-text-4xl tw-items-center tw-px-8 tw-relative tw-top-8 `}>Sessions</div>
               </div>
-            <div className={`${styles1.sessionCard} tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px] tw-ml-32 tw-relative tw-mt-32`}>
+            <div className={`${styles1.sessionCard} tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px] tw-ml-8 tw-relative tw-mt-32`}>
               {/* Session Cards for every session */}
               {mentorDetail.bookSession.length !== 0 &&
                 mentorDetail.bookSession.map((session, index) => (

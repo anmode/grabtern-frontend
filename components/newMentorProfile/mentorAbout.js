@@ -18,7 +18,7 @@ function MentorAbout({mentorDetail}) {
 
   return (
     <div>
-        <div className={`${styles1.about}  tw-flex tw-flex-col tw-relative   tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap`}>
+        <div className={`${styles1.about}  tw-flex tw-flex-col tw-relative   tw-items-start  tw-mt-[7rem] tw-gap-[60px] tw-flex-wrap`}>
             <div className={`${styles1.aboutSection} tw-relative tw-right-[107px] tw-flex tw-flex-row`}>
             <div className={`${styles1.mentorDiv1} mentorDiv1 tw-ml-32 tw-p-32 tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center tw-border-r-2 tw-border-r-[black]`}>
             <img src={mentorDetail?.mentorImg} alt="not found" className="tw-rounded-full tw-w-48 tw-shadow-xl tw-shadow-black/10 tw-h-48 tw-justify-center tw-flex"/>

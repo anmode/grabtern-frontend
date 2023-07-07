@@ -135,7 +135,7 @@ function Header() {
             <ion-icon name={toggleDropdown ? "close" : "menu"}></ion-icon>
           </div>
           {toggleDropdown && (
-            <div className="tw-absolute tw-right-0 tw-top-full tw-mt-0 tw-w-full tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-slate-600 dark:tw-text-white tw-min-w-[100vw] tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
+            <div className="tw-absolute tw-right-0 tw-top-full tw-mt-0 tw-w-full tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-black dark:tw-text-white tw-min-w-[100vw] tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
               <Link
                 href="/"
                 className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-600 hover:tw-text-gray-500 tw-font-medium"

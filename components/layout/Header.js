@@ -116,7 +116,7 @@ function Header() {
           <button
             type="button"
             onClick=""
-            className="tw-text-white tw-mb-8 tw-bg-blue-700 hover:tw-bg-blue-600 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-white tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 dark:tw-bg-blue-700 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-100"
+            className="tw-text-white tw-mb-8 tw-bg-blue-700 hover:tw-bg-blue-600 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-white tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 "
           >
             Sign Up
           </button>
@@ -135,29 +135,29 @@ function Header() {
             <ion-icon name={toggleDropdown ? "close" : "menu"}></ion-icon>
           </div>
           {toggleDropdown && (
-            <div className="tw-absolute tw-right-0 tw-top-full tw-mt-0 tw-w-full tw-p-6 tw-rounded-lg tw-bg-white dark:tw-bg-black dark:tw-text-white tw-min-w-[100vw] tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
+            <div className="tw-absolute tw-right-0 tw-top-full tw-mt-0 tw-w-full tw-p-6 tw-rounded-lg tw-bg-white tw-min-w-[100vw] tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
               <Link
                 href="/"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-600 dark:tw-text-white hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
               >
                 Home
               </Link>
               <Link
                 href="/mentors"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-600 dark:tw-text-white  hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500   hover:tw-text-gray-500 tw-font-medium"
               >
                 Mentor
               </Link>
               <Link
                 href="/contact"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-600 dark:tw-text-white  hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
               >
                 Contact
               </Link>
 
               <Link
                 href="/"
-                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-600 dark:tw-text-white  hover:tw-text-gray-500 tw-font-medium"
+                className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
               >
                 Sign In
               </Link>
@@ -165,7 +165,7 @@ function Header() {
               <button
                 type="button"
                 onClick=""
-                className=" tw-w-full tw-rounded-lg tw-border tw-border-blue-600 tw-bg-blue-600 tw-py-3 tw-text-white tw-transition-all hover:tw-bg-white hover:tw-text-black tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
+                className=" tw-w-full tw-rounded-lg tw-border tw-border-blue-600 tw-bg-[#845ec2] tw-py-3 tw-text-white tw-transition-all hover:tw-bg-white hover:tw-text-black tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
               >
                 Signup
               </button>

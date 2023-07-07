@@ -14,6 +14,9 @@ const DropdownCard = () => {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
+  
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const dropdownRef = useRef(null);
 
   const handleLoginClick = () => {
@@ -60,8 +63,8 @@ const DropdownCard = () => {
               display: "inline",
             }}
             src={
-              localStorage.getItem("user_picture") ||
-              localStorage.getItem("mentor_picture") ||
+              userData?.user_picture ||
+              mentorData?.mentor_picture ||
               "assets/img/icon/no-profile-picture.webp"
             }
             alt="not found"

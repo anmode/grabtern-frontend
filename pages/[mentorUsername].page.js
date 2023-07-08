@@ -4,7 +4,7 @@ const Header = React.lazy(() => import("../components/layout/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import SessionCard from "../components/mentorProfile/components/SessionCard";
+import SessionCard from "../components/newMentorProfile/SessionCard";
 import MentorCard from "../components/mentorProfile/components/MentorCard";
 import SharePageModal from "../components/mentorProfile/components/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/components/BookSessionModal";
@@ -14,11 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
-import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial"
-import Sessions from "../components/newMentorProfile/sessions";
-import Link from "next/link";
-import { MdAlternateEmail } from "react-icons/md";
-import { FaLinkedin, FaTwitter, FaShareAlt } from "react-icons/fa";
+import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial";
 import styles1 from "../styles/mentorTestimonial.module.css"
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -113,37 +109,56 @@ function Index({ mentorDetail }) {
   return (
     <>
       <React.Suspense fallback={<div>Loading...</div>}>
-
         <Head>
           <title>GrabTern | Book Your Session</title>
         </Head>
         <Header navbarBackground={true} />
         {/* Mentor Page */}
         <main className="tw-flex tw-flex-col tw-items-center">
-
-
-          {/* Mentors Page section */}
-          <div><MentorAbout mentorDetail={mentorDetail} /></div>
-          <Sessions mentorDetail={mentorDetail} />
-          <MentorTestimonial />
-
-
-
-          <div></div>
-
-          <div className="tw-w-22 tw-h-auto tw-flex tw-flex-wrap ">
-            {/* {for testing purpose}  */}
-            {/* <Testimonial
-              testimonialUserName="test_user"
-              testimonialUserHeadline="test headline"
-              testimonialRate="4"
-              testimonialUserImage="/assets/img/icon/no-profile-picture.webp"
-              testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50"
-
+          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start  tw-gap-[60px] tw-flex-wrap">
+            {/* <MentorCard
+              mentorImage={mentorDetail.mentorImg}
+              name={mentorDetail.name}
+              internAt={mentorDetail.internAt}
+              currentStatus={mentorDetail.currentStatus}
+              socialLinks={mentorDetail.social}
+              about={mentorDetail.description}
+              handleSharePage={() => setShowModal(true)}
             /> */}
+            <MentorAbout mentorDetail={mentorDetail}/>
+            
+             </div>
+            {/* Session Cards Container */}
+            <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+            <div className={`${styles1.sessions}  tw-min-w-full  tw-py-11 tw-flex tw-flex-col`}>
+            <div  className="  tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center">
 
-            {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
-          </div>
+<div className={`tw-text-4xl tw-items-center tw-px-8 tw-relative tw-mb-7 `}>Sessions</div>
+</div>
+              {/* Session Cards for every session */}
+              {mentorDetail?.bookSession?.length !== 0 &&
+                mentorDetail?.bookSession?.map((session, index) => (
+                  <SessionCard
+                    key={index}
+                    type={session?.sessionType}
+                    name={session?.sessionName}
+                    description={session?.sessionDescription}
+                    duration={session?.sessionMeetingDuration}
+                    pricePerSession={session?.priceSession}
+                    handleBookSession={() => {
+                      setModalPopup(true);
+                      setSelectedSession(session);
+                    }}
+                    // handleBookSession={() => handleClick(session)}
+                  />
+                ))}
+               </div>  
+            </div>
+            <MentorTestimonial/>
+            <div></div>
+     
+
+           
           {/* Share Mentor Page Modal */}
           {showModal && (
             <SharePageModal
@@ -192,27 +207,7 @@ function Index({ mentorDetail }) {
 
 export default Index;
 
-// export const getServerSideProps = async (context) => {
-//   const { mentorUsername } = context.params;
-//   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
-//   const { data: res } = await axios.get(url);
-//   if (res.message === "Invalid link") {
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: "/",
-//       },
-//       props: {
-//         mentorDetail: null,
-//       },
-//     };
-//   }
-//   return {
-//     props: {
-//       mentorDetail: res.mentorDetail,
-//     },
-//   };
-// };
+
 
 export const getStaticPaths = async () => {
   // Fetch all mentor usernames to generate static pages

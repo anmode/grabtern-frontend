@@ -12,8 +12,8 @@ function MentorTestimonial() {
     <div className={`${styles1.testimonialdiv1} tw-flex tw-flex-row tw-justify-between tw-mt-2   tw-p-7   tw-w-[90%] `}>
     
       <div className={`${styles1.testimonialdiv3}  tw-h-[338px] tw-w-[371px] tw-bg-white tw-flex tw-items-center  tw-rounded-3xl tw-shadow-md tw-shadow-gray-500`}>
-      <div className={` tw-flex     tw-h-[300px] tw-w-[350px] tw-justify-center tw-flex-col tw-relative tw-top-[18px] tw-left-[13px]`}>
-        <div className={`${styles1.testimonialdiv4}tw-absolute tw-top-[16px] tw-text-[22px]`}>
+      <div className={` tw-flex     tw-h-[290px] tw-w-[350px] tw-justify-center tw-flex-col tw-relative  tw-left-[13px]`}>
+        <div className={`${styles1.testimonialdiv4}tw-absolute  tw-text-[20px]`}>
 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia recusandae, quo eveniet ipsum molestiae expedita obcaecati iste aperiam odit.
 </div>
 
@@ -25,8 +25,8 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia re
      
       </div>
       <div className={`${styles1.testimonialdiv3}  tw-h-[338px] tw-w-[371px] tw-bg-white tw-flex tw-items-center  tw-rounded-3xl tw-shadow-md tw-shadow-gray-500`}>
-      <div className={`${styles1.testimonialdiv4} tw-flex     tw-h-[300px] tw-w-[350px] tw-justify-center tw-flex-col tw-relative tw-top-[18px] tw-left-[13px]`}>
-        <div className={`${styles1.testimonialdiv4}tw-absolute tw-top-[16px] tw-text-[22px]`}>
+      <div className={`${styles1.testimonialdiv4} tw-flex     tw-h-[290px] tw-w-[350px] tw-justify-center tw-flex-col tw-relative  tw-left-[13px]`}>
+        <div className={`${styles1.testimonialdiv4}tw-absolute tw-top-[16px] tw-text-[20px]`}>
 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia recusandae, quo eveniet ipsum molestiae expedita obcaecati iste aperiam odit.
 </div>
 
@@ -38,8 +38,8 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia re
      
       </div>
       <div className={`${styles1.testimonialdiv3}  tw-h-[338px] tw-w-[371px] tw-bg-white tw-flex tw-items-center  tw-rounded-3xl tw-shadow-md tw-shadow-gray-500`}>
-      <div className={`${styles1.testimonialdiv4} tw-flex     tw-h-[300px] tw-w-[350px] tw-justify-center tw-flex-col tw-relative tw-top-[18px] tw-left-[13px]`}>
-        <div className={`${styles1.testimonialdiv4}tw-absolute tw-top-[16px] tw-text-[22px]`}>
+      <div className={`${styles1.testimonialdiv4} tw-flex     tw-h-[290px] tw-w-[350px] tw-justify-center tw-flex-col tw-relative  tw-left-[13px]`}>
+        <div className={`${styles1.testimonialdiv4}tw-absolute tw-top-[16px] tw-text-[20px]`}>
 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae officia recusandae, quo eveniet ipsum molestiae expedita obcaecati iste aperiam odit.
 </div>
 

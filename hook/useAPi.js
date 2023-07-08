@@ -1,11 +1,11 @@
 // import React, { useState, useEffect, useRef, useCallback } from "react";
 // import axios from "axios";
 
-export const useApi = (url) => {
-    const [apidata, setApiData] = useState([]);
-    const isCachePresent = useRef(
-      sessionStorage.getItem("isCachePresent") === "true",
-    );
+// export const useApi = (url) => {
+//     const [apidata, setApiData] = useState([]);
+//     const isCachePresent = useRef(
+//       sessionStorage.getItem("isCachePresent") === "true",
+//     );
   
   //   const fetchData = useCallback(async (url) => {
   //     try {

@@ -35,13 +35,14 @@
     top: 0;
     margin-left:168px;
   }
-  .links{
-    top: 18px;
-      margin-right: 148px;
+  .linkSection{
+    
+    top: 75px ;
+    
   }
   .description{
-    width: auto;
-    margin-left: 5rem;
+    width: 370px;
+    margin-left: 6rem;
    } 
   .sessions{
     margin-top: 20px;
@@ -51,16 +52,14 @@
     margin-left: 200px;
     font-size: 2rem;
   }
+  .sessionCard{
+    position: relative;
+    top: 36px;
+    width: 333px;
+  }
   }
   
-  @media(max-width:768px){
-    .sessionCard{
-      margin: 24px;
-      height: 259px;
-      margin-top: 60px;
-  }
-  
-    }
+
   
   @media(max-width:768px){
     .testimonialdiv1{
@@ -75,14 +74,13 @@
     .testimonialdiv3{
       margin-bottom: 56px;
       width: 327px;
+      top: 0;
     }
     .sessionCard1{
       margin-left: 0;
       margin: 17px;
     }
-    .sessionHeading{
-      font-size: 2rem !important;
-    }
+  
   }
   @media(min-width:769px) and (max-width:1024px){
     .testimonialdiv4{

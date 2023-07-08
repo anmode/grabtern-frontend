@@ -38,10 +38,7 @@ export default function MentorForm() {
     internAt: "",
     currentStatus: "",
     description: "",
-    mentorImg: {
-      name: "",
-      image: "",
-    },
+    image: "",
     social: {
       linkedin: "",
       twitter: "",
@@ -70,10 +67,7 @@ export default function MentorForm() {
       ...InitialFormState,
       name: userObject.name,
       email: userObject.email,
-      mentorImg: {
-        name: userObject.name,
-        image: userObject.picture,
-      },
+      image: userObject.picture,
     });
   };
 
@@ -129,9 +123,7 @@ export default function MentorForm() {
     console.log(imgLink);
     setFormData({
       ...formData,
-      mentorImg: {
-        image: imgLink,
-      },
+      image: imgLink,
     });
     console.log(formData);
   };

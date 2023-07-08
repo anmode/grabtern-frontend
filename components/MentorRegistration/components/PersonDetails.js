@@ -83,16 +83,16 @@ function PersonDetails({
             htmlFor="mentorProfile"
             className="mentorFormButton theme-button-color"
           >
-            {formData.mentorImg.image.length > 0
+            {formData.image.length > 0
               ? "Change Image"
               : "Upload Image"}
           </label>
           {validator.current.message(
             "mentorProfileImage",
-            formData.mentorImg.name,
+            formData.image.name,
             "required",
           )}
-          <p className="px-2 ">{formData.mentorImg.name}</p>
+          <p className="px-2 ">{formData.image.name}</p>
           <input
             type="file"
             accept="image/*"

@@ -1,14 +1,11 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
 import Head from "next/head";
 import styles from "../../styles/sessions.module.css";
 
 function Sessions() {
   return (
     <>
-    <Header navbarBackground={true} />
         <br />
         <br />
         <br />
@@ -93,30 +90,6 @@ function Sessions() {
             </div>
          </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-      <Footer/>
     </>
   );
 }

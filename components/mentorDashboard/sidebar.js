@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/sidebar.module.css";
 
@@ -6,6 +6,14 @@ import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 
 const Sidebar = ({ setComponent }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    console.log("toggle clicked ", isSidebarOpen);
+
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   const menuItem = [
     {
       title: "Home",
@@ -28,15 +36,14 @@ const Sidebar = ({ setComponent }) => {
       path: "calendar",
     },
   ];
+
   return (
     <>
       <div>
         <button
-          data-drawer-target="default-sidebar"
-          data-drawer-toggle="default-sidebar"
-          aria-controls="default-sidebar"
           type="button"
-          className="tw-inline-flex tw-items-center tw-p-2 tw-mt-2 tw-ml-3 tw-text-sm tw-text-gray-500 tw-rounded-lg tw-sm:hidden tw-hover:bg-gray-100 tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-gray-200"
+          className="tw-fixed tw-inline-flex md:tw-hidden sm:tw-block tw-items-center tw-p-2 tw-mt-2 tw-ml-3 tw-z-50 tw-text-sm tw-text-gray-500 tw-rounded-lg tw-sm:hidden tw-hover:bg-gray-100 tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-gray-200"
+          onClick={toggleSidebar}
         >
           <span className="tw-sr-only">Open sidebar</span>
           <svg
@@ -55,11 +62,11 @@ const Sidebar = ({ setComponent }) => {
         </button>
 
         <aside
-          id="default-sidebar"
-          className="tw-fixed tw-top-10 tw-left-0 tw-z-40 tw-w-64 tw-h-screen tw-transition-transform tw-translate-x-0 sm:tw-translate-x-0 "
-          aria-label="Sidebar"
+          className={`tw-fixed tw-top-0 tw-left-0 tw-z-40 tw-w-64 tw-h-screen tw-transform tw-transition-transform tw-bg-gradient-to-t tw-to-blue-500 tw-via-purple-500 tw-from-pink-500 lg:tw-translate-x-0 ${
+            isSidebarOpen ? "tw-translate-x-0" : "tw--translate-x-full"
+          }`}
         >
-          <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto tw-bg-gradient-to-t tw-to-blue-500 tw-via-purple-500 tw-from-pink-500">
+          <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
             <ul className="tw-space-y-2 tw-font-medium tw-py-20">
               {menuItem.map((val, key) => (
                 <li key={key} className="tw-group tw-cursor-pointer">

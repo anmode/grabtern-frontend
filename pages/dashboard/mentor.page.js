@@ -13,7 +13,7 @@ function MentorDashboard() {
   return (
     <>
       <div className="">
-        <Header navbarBackground={true} />
+        {/* <Header navbarBackground={true} /> */}
         <Sidebar setComponent={setComponent} />
         <div>
           {component == "profile" && <Profile />}

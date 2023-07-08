@@ -8,15 +8,14 @@ import Calendar from "../../components/mentorDashboard/calendar";
 import Header from "../../components/layout/Header";
 
 function MentorDashboard() {
-  const [component, setComponent] = useState("sessions")
+  const [component, setComponent] = useState("sessions");
 
   return (
     <>
       <div className="">
-      <Header navbarBackground={true} />
-        <Sidebar setComponent={setComponent}/>
+        <Header navbarBackground={true} />
+        <Sidebar setComponent={setComponent} />
         <div>
-
           {component == "profile" && <Profile />}
           {component == "calendar" && <Calendar />}
           {component == "sessions" && <Sessions />}

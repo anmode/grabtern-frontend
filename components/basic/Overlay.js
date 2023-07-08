@@ -36,7 +36,7 @@ const Overlay = ({ callbackFunction }) => {
 
     google.accounts.id.renderButton(
       document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
+      { theme: "outline", size: "large" },
     );
     google.accounts.id.prompt();
   }, []);

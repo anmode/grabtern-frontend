@@ -10,7 +10,7 @@ function ButtonLink({ text, href, className = "", variant = "Primary" ,size = "n
   return (
     <Link
       href={href}
-      className={clsx (`${styles.linkBtn} ${styles[variantClass]} ${className}`, size = "sm" && ["tw-text-xs tw-font-medium"])}
+      className={clsx (`${styles.linkBtn} ${styles[variantClass]} ${className}`, size == "sm" && ["tw-text-xs tw-font-medium"])}
     >
       {text}
     </Link>

@@ -1,115 +1,108 @@
-@media(max-width:768px) {
-    .aboutSection{
-      flex-direction: column;
-    }
-    .about{
-      margin-bottom: 68px;
-      left: 100px;
-      flex-direction: column;
-      margin-top: 8rem;
-    }
-    .mentorDiv1{
-      padding: 12px;
-      margin-top: 20px;
-      margin-right: 81px;
-      padding-bottom: 42px;
-      border-bottom: 2px solid grey;
-     margin-left: 12px;
-     margin-right: 12px;
-     border-right: none;
-     display: flex;
-     justify-content: center;
+@media (max-width: 768px) {
+  .aboutSection {
+    flex-direction: column;
   }
-  .mentorDiv2{
+  .about {
+    margin-bottom: 68px;
+    left: 100px;
+    flex-direction: column;
+    margin-top: 8rem;
+  }
+  .mentorDiv1 {
+    padding: 12px;
+    margin-top: 20px;
+    margin-right: 81px;
+    padding-bottom: 42px;
+    border-bottom: 2px solid grey;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-right: none;
+    display: flex;
+    justify-content: center;
+  }
+  .mentorDiv2 {
     justify-content: center;
     top: 0px;
     margin-top: 26px;
-    
   }
-  .mentorDiv2 p{
-   margin-top: 0px;
-   display: flex;
-   justify-content: center;
+  .mentorDiv2 p {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
   }
-  .mentor-div2 h1{
+  .mentor-div2 h1 {
     top: 0;
-    margin-left:168px;
+    margin-left: 168px;
   }
-  .linkSection{
-    
-    top: 75px ;
-    
+  .linkSection {
+    top: 75px;
   }
-  .description{
+  .description {
     width: 370px;
     margin-left: 6rem;
-   } 
-  .sessions{
+  }
+  .sessions {
     margin-top: 20px;
   }
-  .aboutHeading{
+  .aboutHeading {
     margin-bottom: 40px;
     margin-left: 200px;
     font-size: 2rem;
   }
-  .sessionCard{
+  .sessionCard {
     position: relative;
     top: 36px;
     width: 333px;
   }
-  }
-  
+}
 
-  
-  @media(max-width:768px){
-    .testimonialdiv1{
-      flex-direction: column;
-      justify-content: space-between;
-      margin-top: 44px;
-    }
-    .testimonialdiv2{
-      margin-left: 0;
-      justify-content: space-between;
-    }
-    .testimonialdiv3{
-      margin-bottom: 56px;
-      width: 327px;
-      top: 0;
-    }
-    .sessionCard1{
-      margin-left: 0;
-      margin: 17px;
-    }
-  
+@media (max-width: 768px) {
+  .testimonialdiv1 {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 44px;
   }
-  @media(min-width:769px) and (max-width:1024px){
-    .testimonialdiv4{
-      font-size: 18px !important;
-    }
-    
-    .testimonialdiv3{
-      width: 230px;
-      height: 460px;
-      
-    }
-    .username{
-      position: relative;
-      top: 0.5rem;
-    }
-    .quotes{
-      position: relative;
-      top: 0.4rem;
-    }
-    .testimonialdiv1{
-      width: 100%;
-      margin-top: 20px;
-    }
-    .mentorDiv1{
-      padding-top: 124px;
+  .testimonialdiv2 {
+    margin-left: 0;
+    justify-content: space-between;
+  }
+  .testimonialdiv3 {
+    margin-bottom: 56px;
+    width: 327px;
+    top: 0;
+  }
+  .sessionCard1 {
+    margin-left: 0;
+    margin: 17px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .testimonialdiv4 {
+    font-size: 18px !important;
+  }
+
+  .testimonialdiv3 {
+    width: 230px;
+    height: 460px;
+  }
+  .username {
+    position: relative;
+    top: 0.5rem;
+  }
+  .quotes {
+    position: relative;
+    top: 0.4rem;
+  }
+  .testimonialdiv1 {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .mentorDiv1 {
+    padding-top: 124px;
     padding-right: 50px;
     margin-left: 125px;
-    }
-    .testimonialContent{
-      font-size: 17px !important;
-    }
   }
+  .testimonialContent {
+    font-size: 17px !important;
+  }
+}

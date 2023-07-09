@@ -13,7 +13,9 @@ export default function SessionCard({
   return (
     <>
       {/* session card */}
-      <div className={`${styles1.sessionCard} tw-flex tw-flex-row tw-w-full tw-p-8 tw-bg-white tw-rounded-[36px] tw-shadow-[0px_0px_40px_0px_#00000025] tw-gap-5 tw-border-t-[1px] tw-mb-[30px]`}>
+      <div
+        className={`${styles1.sessionCard} tw-flex tw-flex-row tw-w-full tw-p-8 tw-bg-white tw-rounded-[36px] tw-shadow-[0px_0px_40px_0px_#00000025] tw-gap-5 tw-border-t-[1px] tw-mb-[30px]`}
+      >
         {/* Session card Icon */}
         {type === "video-meeting" ? (
           <MdVideoCameraFront className="tw-text-[36px] tw-text-[#4338CA]" />

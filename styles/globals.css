@@ -67,6 +67,20 @@ a {
 } */
 /*  */
 
+.theme {
+  transition: 1s all ease;
+}
+
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #fdf8f8;
+}
+
 .slider-area .hero__caption.hero__caption2,
 .slider-area2 .hero__caption.hero__caption2 {
   padding-top: 100px;
@@ -1076,15 +1090,19 @@ select {
   border-radius: 10px;
   height: 270px;
   width: 400px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 8px rgba(205, 205, 205, 0.8), 0 0 15px rgb(213, 211, 211);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 8px rgba(205, 205, 205, 0.8),
+    0 0 15px rgb(213, 211, 211);
   transform: all;
   transition-duration: 0.2s;
 }
 .bookSessions li:hover {
   width: 402px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 15px rgba(185, 185, 185, 0.8), 0 0 18px rgb(199, 195, 195);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 15px rgba(185, 185, 185, 0.8),
+    0 0 18px rgb(199, 195, 195);
 }
 
 .bookSessionIcons {

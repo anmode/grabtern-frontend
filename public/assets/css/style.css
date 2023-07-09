@@ -1,4 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Mulish:wght@400;500;600;700&display=swap");
+
+.theme{
+  transition: 1s all ease;
+}
+
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #fdf8f8;
+}
+
 .white-bg {
   background: #ffffff;
 }
@@ -3578,7 +3593,7 @@ p {
 }
 @media (max-width: 575px) {
   .login-form {
-    width: 380px;
+    width: 300px;
     padding: 110px 40px 15px 40px;
     margin: 100px auto 0 auto;
   }

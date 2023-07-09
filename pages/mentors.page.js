@@ -12,8 +12,8 @@ import Section from "../components/UI/Section/Section";
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
 
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  const data = useApi(url);
+  // const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  // const data = useApi(url);
   // const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
 
   // console.log(query)
@@ -72,7 +72,7 @@ export const getStaticProps = async (context) => {
     props: {
       mentorsData: data.filter(
         (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified"
+          mentor.verified === true && mentor.token === "mentorIsVerified",
       ),
     },
     revalidate: 20, // revalidate the data every 20 seconds

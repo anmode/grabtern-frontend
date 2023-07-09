@@ -7,7 +7,7 @@ import { useApi } from "../hook/useAPi.js";
 import { list } from "postcss";
 const Header = dynamic(() => import("../components/layout/Header"));
 const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
-import Section from "../components/UI/Section/Section";
+import {Section} from "../components/UI";
 
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");

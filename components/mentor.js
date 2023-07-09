@@ -1,6 +1,6 @@
 //components/mentor.js
 import React from "react";
-import ProfileCard from "./UI/Card/ProfileCard";
+import {ProfileCard} from "./UI";
 
 const MentorCard = ({ mentor }) => {
   return (

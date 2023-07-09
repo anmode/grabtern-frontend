@@ -16,7 +16,7 @@ function Section({
       <div
         className={clsx(
           "tw-w-full tw-max-w-7xl tw-mx-auto",
-          direction == "row" && ["md:tw-flex tw-items-center tw-py-6"]
+          direction == "row" && ["md:tw-flex tw-items-center tw-py-6"],
         )}
       >
         {/* column */}
@@ -29,7 +29,7 @@ function Section({
             className={clsx(
               "",
               align == "center" && ["tw-text-center tw-mx-auto"],
-              direction == "col" && ["tw-mb-14"]
+              direction == "col" && ["tw-mb-14"],
             )}
           />
           {/* content under header */}

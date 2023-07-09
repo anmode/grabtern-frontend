@@ -52,7 +52,7 @@ function Mentors({ mentorsData }) {
               )
               .map((mentor) => (
                 <a href={`/${mentor.username}`} key={mentor._id}>
-                  {<MentorCard mentor={mentor} />}
+                  {<MentorCard mentor={mentor} link ={`/${mentor.username}`} />}
                 </a>
               ))}
           </div>

@@ -22,7 +22,6 @@ function Mentors({ mentorsData }) {
   return (
     <>
       <Header />
-      <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
         <Section
           kicker="Our Mentors"
@@ -30,6 +29,7 @@ function Mentors({ mentorsData }) {
           subheading="Embark on a Journey of Knowledge,
           Inspiration, and Success"
           align="center"
+          className="tw-mt-10"
         >
           {/* input */}
           <div className="md:tw-w-96 tw-mb-4 tw-ml-auto">

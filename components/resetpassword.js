@@ -29,7 +29,7 @@ const ResetPassword = (props) => {
           newPassword: newPassword,
           confirmPassword: confirmPassword,
           entityType: entityTypeParam,
-        },
+        }
       );
       setIsLoading(false);
       setMessage(response.data.message);

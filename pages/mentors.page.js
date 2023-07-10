@@ -57,7 +57,7 @@ function Mentors({ mentorsData }) {
                   mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
                   mentor.currentStatus
                     .toLowerCase()
-                    .includes(query.toLowerCase()),
+                    .includes(query.toLowerCase())
               )
               .map((mentor) => (
                 <a href={`/${mentor.username}`} key={mentor._id}>
@@ -81,7 +81,7 @@ export const getStaticProps = async (context) => {
     props: {
       mentorsData: data.filter(
         (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified",
+          mentor.verified === true && mentor.token === "mentorIsVerified"
       ),
     },
     revalidate: 20, // revalidate the data every 20 seconds

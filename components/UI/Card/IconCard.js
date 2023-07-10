@@ -18,14 +18,14 @@ function IconCard({
           "tw-bg-base-100",
           "tw-p-6 tw-rounded-lg tw-border tw-border-base-300",
         ],
-        className,
+        className
       )}
     >
       {Icon && (
         <Icon
           className={clsx(
             "tw-text-primary-100 tw-w-7 tw-h-7 tw-mb-2",
-            size == "lg" && ["tw-w-8 tw-h-8"],
+            size == "lg" && ["tw-w-8 tw-h-8"]
           )}
         />
       )}
@@ -33,7 +33,7 @@ function IconCard({
         <h4
           className={clsx(
             "tw-font-light tw-text-lg tw-mb-2",
-            size == "lg" && ["tw-text-xl"],
+            size == "lg" && ["tw-text-xl"]
           )}
         >
           {heading}

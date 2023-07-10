@@ -19,14 +19,14 @@ function ImageCard({
           "tw-group tw-relative",
           "tw-rounded-lg tw-border tw-border-base-300 tw-bg-base-100",
           "tw-p-4",
-          className,
+          className
         )}
       >
         {/* cadd image */}
         <div
           className={clsx(
             "tw-rounded-lg tw-bg-base-300 tw-w-fulltw-p-[1px] tw-relative",
-            imageType == "popUp" && ["tw-h-40"],
+            imageType == "popUp" && ["tw-h-40"]
           )}
         >
           <img
@@ -36,7 +36,7 @@ function ImageCard({
               imageType == "popUp" && [
                 "tw-absolute tw-bottom-0",
                 "tw-inset-x-0 tw-mx-auto tw-w-full tw-max-w-[170px]",
-              ],
+              ]
             )}
           />
         </div>

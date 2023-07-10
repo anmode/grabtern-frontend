@@ -1,7 +1,7 @@
 //components/mentor.js
 import React from "react";
-import {ProfileCard, IconLink, ButtonLink} from "./UI";
-import {RiLinkedinLine, RiTwitterLine} from "react-icons/ri"
+import { ProfileCard, IconLink, ButtonLink } from "./UI";
+import { RiLinkedinLine, RiTwitterLine } from "react-icons/ri";
 
 const MentorCard = ({ mentor, link }) => {
   return (
@@ -18,10 +18,20 @@ const MentorCard = ({ mentor, link }) => {
     >
       <div className="tw-px-2 tw-w-full tw-flex tw-justify-between tw-items-center">
         <div className="tw-flex tw-gap-2">
-          <IconLink href={mentor.social.linkedin} Icon={RiLinkedinLine} variant="secondary"/>
-          <IconLink href={mentor.social.twitter} Icon={RiTwitterLine} variant="secondary"/>
+          <IconLink
+            href={mentor.social.linkedin}
+            Icon={RiLinkedinLine}
+            variant="secondary"
+          />
+          <IconLink
+            href={mentor.social.twitter}
+            Icon={RiTwitterLine}
+            variant="secondary"
+          />
         </div>
-        <div><ButtonLink text="Book Session" href={link} size="sm"/></div>
+        <div>
+          <ButtonLink text="Book Session" href={link} size="sm" />
+        </div>
       </div>
     </ProfileCard>
   );

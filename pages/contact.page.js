@@ -93,7 +93,7 @@ function Contact() {
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONTACT_US_KEY,
           templateParams,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
         )
         .then(
           (result) => {
@@ -129,7 +129,7 @@ function Contact() {
           (values.name = ""),
           (values.email = ""),
           (values.subject = ""),
-          handleChange,
+          handleChange
         );
     }
   };

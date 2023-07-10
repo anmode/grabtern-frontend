@@ -36,7 +36,7 @@ function ProfileCard({
             "tw-aspect-square tw-object-cover",
             size == "sm" && ["tw-w-10 tw-h-10"],
             size == "md" && ["tw-w-14"],
-            size == "lg" && ["tw-w-52"],
+            size == "lg" && ["tw-w-40"],
             rounded == "sm" && ["tw-rounded-xl"],
             rounded == "md" && [" tw-rounded-3xl"],
             rounded == "lg" && ["tw-rounded-full"],
@@ -66,9 +66,9 @@ function ProfileCard({
         </p>
         <p
           className={clsx(
-            "tw-font-sans",
-            (size == "sm" || size == "md") && ["tw-text-sm"],
-            size == "lg" && ["tw-text-base"],
+            "tw-font-sans tw-overflow-hidden tw-text-ellipsis tw-line-clamp-4",
+            (size == "sm" || size == "md") && ["tw-text-sm tw-h-20"],
+            size == "lg" && ["tw-text-base tw-h-24"],
           )}
         >
           {body}

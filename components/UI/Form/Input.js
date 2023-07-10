@@ -23,6 +23,7 @@ function Input({
           "tw-w-full tw-text-sans tw-bg-base-100",
           "tw-rounded-xl tw-border tw-border-muted-300",
           "tw-text-sm tw-text-base-400 tw-py-1 tw-px-4 tw-leading-8 ",
+          "tw-shadow-md",
           "focus:tw-outline-dashed focus:tw-outline-2 focus:tw-outline-offset-1 focus:tw-outline-primary-10",
           Icon && "tw-pl-10",
         )}

@@ -13,7 +13,7 @@ module.exports = {
         $: "jquery",
         jQuery: "jquery",
         "window.jQuery": "jquery",
-      })
+      }),
     );
     return config;
   },

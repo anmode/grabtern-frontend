@@ -11,14 +11,14 @@ function ButtonLink({
   size = "normal",
 }) {
   let variantClass = `link${variant.charAt(0).toUpperCase()}${variant.slice(
-    1
+    1,
   )}`;
   return (
     <Link
       href={href}
       className={clsx(
         `${styles.linkBtn} ${styles[variantClass]} ${className}`,
-        size == "sm" && ["tw-text-xs tw-font-medium"]
+        size == "sm" && ["tw-text-xs tw-font-medium"],
       )}
     >
       {text}

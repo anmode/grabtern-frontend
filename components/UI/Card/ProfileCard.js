@@ -27,7 +27,7 @@ function ProfileCard({
         intent == "bg" && [
           "tw-bg-base-100 tw-rounded-xl  tw-shadow-xl tw-shadow-base-300 tw-p-4",
         ],
-        className
+        className,
       )}
     >
       <div>
@@ -39,7 +39,7 @@ function ProfileCard({
             size == "lg" && ["tw-w-40"],
             rounded == "sm" && ["tw-rounded-xl"],
             rounded == "md" && [" tw-rounded-3xl"],
-            rounded == "lg" && ["tw-rounded-full"]
+            rounded == "lg" && ["tw-rounded-full"],
           )}
           src={image}
         />
@@ -50,7 +50,7 @@ function ProfileCard({
             "tw-font-heading tw-font-medium",
             size == "sm" && ["tw-text-sm tw-leading-5"],
             size == "md" && ["tw-leading-6"],
-            size == "lg" && ["tw-text-2xl tw-leading-8"]
+            size == "lg" && ["tw-text-2xl tw-leading-8"],
           )}
         >
           {heading}
@@ -59,7 +59,7 @@ function ProfileCard({
           className={clsx(
             "tw-font-sans tw-text-300",
             (size == "sm" || size == "md") && ["tw-text-xs tw-mb-2"],
-            size == "lg" && ["tw-text-sm tw-mb-4"]
+            size == "lg" && ["tw-text-sm tw-mb-4"],
           )}
         >
           {subheading}
@@ -68,7 +68,7 @@ function ProfileCard({
           className={clsx(
             "tw-font-sans tw-overflow-hidden tw-text-ellipsis tw-line-clamp-4",
             (size == "sm" || size == "md") && ["tw-text-sm tw-h-20"],
-            size == "lg" && ["tw-text-base tw-h-24"]
+            size == "lg" && ["tw-text-base tw-h-24"],
           )}
         >
           {body}

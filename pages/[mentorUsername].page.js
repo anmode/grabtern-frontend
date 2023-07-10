@@ -45,7 +45,7 @@ function Index({ mentorDetail }) {
         email,
         name,
         sessionMeetingDuration,
-        priceSession
+        priceSession,
       );
     } else {
       const redirectUrl = window.location.href;
@@ -59,12 +59,12 @@ function Index({ mentorDetail }) {
       setIsLoading(true);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        data
+        data,
       );
       setIsLoading(false);
       setModalPopup(false);
       toast.success(
-        "Your session has been booked! Check your inbox for payment details."
+        "Your session has been booked! Check your inbox for payment details.",
       ); // Success toast
     } catch (error) {
       setIsLoading(false);
@@ -84,7 +84,7 @@ function Index({ mentorDetail }) {
     mentorEmail,
     mentorName,
     sessionTime,
-    sessionPrice
+    sessionPrice,
   ) => {
     const userEmail = userData.user_email;
     const userName = userData.user_name;
@@ -212,7 +212,7 @@ export default Index;
 export const getStaticPaths = async () => {
   // Fetch all mentor usernames to generate static pages
   const { data: mentors } = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
   );
 
   const paths = mentors

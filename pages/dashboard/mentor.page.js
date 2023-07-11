@@ -9,12 +9,16 @@ import Header from "../../components/layout/Header";
 
 function MentorDashboard() {
   const [component, setComponent] = useState("sessions");
-
+  const updatePath = (componentName) => {
+    const newPath = `/dashboard/mentor/${componentName}`;
+    window.history.pushState({}, "", newPath);
+    setComponent(componentName);
+  };
   return (
     <>
       <div className="">
         {/* <Header navbarBackground={true} /> */}
-        <Sidebar setComponent={setComponent} />
+        <Sidebar setComponent={updatePath} />
         <div>
           {component == "profile" && <Profile />}
           {component == "calendar" && <Calendar />}

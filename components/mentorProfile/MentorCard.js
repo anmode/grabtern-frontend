@@ -67,11 +67,11 @@ export default function MentorCard({
                   <MdAlternateEmail className="tw-text-[28px] hover:tw-text-[#4338CA]/75 tw-transition-opacity active:tw-scale-75" />
                 </Link>
                 <Link
-                  href={`https://www.linkedin.com/in/${socialLinks.linkedin}`}
+                  href={`${socialLinks.linkedin}`}
                 >
                   <FaLinkedin className="tw-text-[28px] hover:tw-text-[#4338CA]/75 tw-transition-opacity active:tw-scale-75" />
                 </Link>
-                <Link href={`https://www.twitter.com/${socialLinks.twitter}`}>
+                <Link href={`${socialLinks.twitter}`}>
                   <FaTwitter className="tw-text-[28px] hover:tw-text-[#4338CA]/75 tw-transition-opacity active:tw-scale-75" />
                 </Link>
               </div>

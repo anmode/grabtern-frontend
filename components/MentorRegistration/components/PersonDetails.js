@@ -72,9 +72,9 @@ function PersonDetails({
       <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
         <img
           src={
-            formData.mentorImg.image.length === 0
+            formData.image.length === 0
               ? "/assets/img/icon/no-profile-picture.webp"
-              : formData.mentorImg.image
+              : formData.image
           }
           className="mentorPhoto"
         />
@@ -83,16 +83,10 @@ function PersonDetails({
             htmlFor="mentorProfile"
             className="mentorFormButton theme-button-color"
           >
-            {formData.mentorImg.image.length > 0
+            {formData.image.length > 0
               ? "Change Image"
               : "Upload Image"}
           </label>
-          {validator.current.message(
-            "mentorProfileImage",
-            formData.mentorImg.name,
-            "required",
-          )}
-          <p className="px-2 ">{formData.mentorImg.name}</p>
           <input
             type="file"
             accept="image/*"

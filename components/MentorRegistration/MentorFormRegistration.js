@@ -38,10 +38,7 @@ export default function MentorForm() {
     internAt: "",
     currentStatus: "",
     description: "",
-    mentorImg: {
-      name: "",
-      image: "",
-    },
+    image: "",
     social: {
       linkedin: "",
       twitter: "",
@@ -70,10 +67,7 @@ export default function MentorForm() {
       ...InitialFormState,
       name: userObject.name,
       email: userObject.email,
-      mentorImg: {
-        name: userObject.name,
-        image: userObject.picture,
-      },
+      image: userObject.picture,
     });
   };
 
@@ -110,7 +104,7 @@ export default function MentorForm() {
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setFormData({ ...formData, mentorImg: { name: file.name, image: base64 } });
+    setFormData({ ...formData, image: base64 });
   };
 
   // const handleSessionPriceChange = (e) => {

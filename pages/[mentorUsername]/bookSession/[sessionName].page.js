@@ -108,8 +108,11 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         className="container sessionContainer"
         style={{ marginTop: "100px" }}
       >
-        <div className="mentorInfo">
-          <h1>{mentorDetail.name}</h1>
+        <h1>Let's book a session</h1>
+  
+<div className="session">
+<div className="mentorInfo">
+          <h2>{mentorDetail.name}</h2>
           <h3>
             {mentorDetail.internAt} | {mentorDetail.currentStatus}
           </h3>
@@ -119,10 +122,10 @@ function BookSessionPage({ mentorDetail, sessionName }) {
           <div className="bookSesssionInfo">
             <h2>{bookSession.name}</h2>
             <h4>
-              <b>Book Dession type:</b> {bookSession.type}
+              <b>Book Dession type:</b> <p>{bookSession.type}</p>
             </h4>
-            <p>
-              <b>Book Session description:</b> {bookSession.description}
+            <p className="description">
+              <b>Book Session description:</b> <p>{bookSession.description}</p>
             </p>
           </div>
           <div className="bookSessionSchedules">
@@ -163,6 +166,7 @@ function BookSessionPage({ mentorDetail, sessionName }) {
             <button onClick={() => bookedSession()}>Book Session Now</button>
           </div>
         </div>
+</div>
       </div>
     </div>
   );

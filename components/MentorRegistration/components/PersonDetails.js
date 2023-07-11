@@ -83,9 +83,7 @@ function PersonDetails({
             htmlFor="mentorProfile"
             className="mentorFormButton theme-button-color"
           >
-            {formData.image.length > 0
-              ? "Change Image"
-              : "Upload Image"}
+            {formData.image.length > 0 ? "Change Image" : "Upload Image"}
           </label>
           {validator.current.message(
             "mentorProfileImage",

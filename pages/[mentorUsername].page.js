@@ -16,6 +16,7 @@ import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial";
 import styles1 from "../styles/mentorTestimonial.module.css";
+import { Section } from "../components/UI";
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
@@ -114,31 +115,17 @@ function Index({ mentorDetail }) {
         </Head>
         <Header navbarBackground={true} />
         {/* Mentor Page */}
-        <main className="tw-flex tw-flex-col tw-items-center">
-          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start  tw-gap-[60px] tw-flex-wrap">
-            {/* <MentorCard
-              mentorImage={mentorDetail.mentorImg}
-              name={mentorDetail.name}
-              internAt={mentorDetail.internAt}
-              currentStatus={mentorDetail.currentStatus}
-              socialLinks={mentorDetail.social}
-              about={mentorDetail.description}
-              handleSharePage={() => setShowModal(true)}
-            /> */}
-            <MentorAbout mentorDetail={mentorDetail} />
-          </div>
-          {/* Session Cards Container */}
-          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
-            <div
-              className={`${styles1.sessions}  tw-min-w-full  tw-py-11 tw-flex tw-flex-col`}
-            >
-              <div className="  tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center">
-                <div
-                  className={`tw-text-4xl tw-items-center tw-px-8 tw-relative tw-mb-7 `}
-                >
-                  Sessions
-                </div>
-              </div>
+        <main className="tw-pt-4">
+          <MentorAbout mentorDetail={mentorDetail} />
+
+          {/* session section */}
+          <Section
+            kicker="mentor schedule"
+            heading="Available Sessions"
+            subheading="Ignite your inner fire, embrace personalized guidance, and unlock your true potential through transformative mentor sessions."
+            align="center"
+          >
+            <div>
               {/* Session Cards for every session */}
               {mentorDetail?.bookSession?.length !== 0 &&
                 mentorDetail?.bookSession?.map((session, index) => (
@@ -157,9 +144,9 @@ function Index({ mentorDetail }) {
                   />
                 ))}
             </div>
-          </div>
+          </Section>
+
           <MentorTestimonial />
-          <div></div>
 
           {/* Share Mentor Page Modal */}
           {showModal && (

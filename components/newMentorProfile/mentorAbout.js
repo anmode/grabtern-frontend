@@ -38,7 +38,7 @@ function MentorAbout({ mentorDetail }) {
         </div>
       </div>
       <ProfileCard
-        image="https://res.cloudinary.com/grabtern-cloud/image/upload/v1688361691/bk3cdmxgfohtsnslbt4q.png"
+        image={mentorDetail?.mentorImg}
         heading={mentorDetail?.name}
         body={`${mentorDetail?.internAt} | ${mentorDetail?.currentStatus}`}
         size="xl"

@@ -1,0 +1,15 @@
+.btn {
+  @apply tw-px-6 tw-py-2 tw-font-sans tw-bg-primary-100 tw-text-[white] tw-rounded-lg tw-shadow-md tw-capitalize tw-cursor-pointer;
+}
+.btn:hover {
+  @apply tw-scale-[0.99];
+}
+.btn:active {
+  @apply tw-scale-[1.01] tw-shadow-none;
+}
+.btnPrimary {
+  @apply tw-bg-primary-100 tw-text-[white];
+}
+.btnSecondary {
+  @apply tw-bg-base-300 tw-text-base-400;
+}

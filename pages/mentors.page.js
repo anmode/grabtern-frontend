@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import { LuSearch } from "react-icons/lu";
 import MentorCard from "../components/mentor";
 import teamsData from "./data/teamsData";
 import { useApi } from "../hook/useAPi.js";
 import { list } from "postcss";
 const Header = dynamic(() => import("../components/layout/Header"));
 const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
+import { Section, Input } from "../components/UI";
 
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
 
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  const data = useApi(url);
+  // const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  // const data = useApi(url);
   // const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
 
   // console.log(query)
@@ -20,67 +22,50 @@ function Mentors({ mentorsData }) {
   return (
     <>
       <Header />
-      <SimpleBanner bannerTittle="Find Mentors" siteName="mentors" />
       <main>
-        <section className="findMentors">
-          <div className="container">
-            <h1>Find All mentors here</h1>
-
-            <div className="app">
-              <input
-                type="text"
-                placeholder="Search Mentors..."
-                className="search"
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
-
-            {/* <ul className="list">
-              {teamsData.filter((user)=>
-              user.profileName.toLowerCase().includes(query)
-              ).map((user)=>(
-                <li key={user.imageSrc} className="listitem">
-                  {user.profileName}
-                </li>
-                ))}
-            </ul> */}
-
-            <ul className="mentorLists">
-              {mentorsData
-                .filter(
-                  (mentor) =>
-                    mentor.name.toLowerCase().includes(query.toLowerCase()) ||
-                    mentor.internAt
-                      .toLowerCase()
-                      .includes(query.toLowerCase()) ||
-                    mentor.currentStatus
-                      .toLowerCase()
-                      .includes(query.toLowerCase())
-                  //item.
-                )
-                .map((mentor) => (
-                  // <li key={mentor.imageSrc} className="listitem">
-                  //   {mentor.profileName}
-                  // </li>
-                  <a href={`/${mentor.username}`} key={mentor._id}>
-                    {<MentorCard mentor={mentor} />}
-                  </a>
-                ))}
-            </ul>
-
-            {/* {mentorsData.length === 0 ? (
-              <p>There is no mentor right now...</p>
-            ) : (
-              <div className="mentorLists">
-                {mentorsData.map((mentor) => (
-                  <a href={`/${mentor.username}`} key={mentor._id}>
-                    {<MentorCard mentor={mentor} />}
-                  </a>
-                ))}
-              </div>
-            )} */}
+        <Section
+          kicker="Our Mentors"
+          heading="Find all Mentors Here"
+          subheading="Embark on a Journey of Knowledge,
+          Inspiration, and Success"
+          align="center"
+          className="tw-mt-10"
+        >
+          {/* input */}
+          <div className="md:tw-w-96 tw-mb-4 tw-ml-auto">
+            <Input
+              Icon={LuSearch}
+              type="text"
+              placeholder="Search Mentors..."
+              name="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {/* <input
+              type="text"
+              placeholder="Search Mentors..."
+              className="search"
+              onChange={(e) => setQuery(e.target.value)}
+            /> */}
           </div>
-        </section>
+          {/* mentors cards */}
+          <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+            {mentorsData
+              .filter(
+                (mentor) =>
+                  mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+                  mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
+                  mentor.currentStatus
+                    .toLowerCase()
+                    .includes(query.toLowerCase()),
+              )
+              .map((mentor) => (
+                <a href={`/${mentor.username}`} key={mentor._id}>
+                  {<MentorCard mentor={mentor} link={`/${mentor.username}`} />}
+                </a>
+              ))}
+          </div>
+        </Section>
       </main>
     </>
   );
@@ -96,7 +81,7 @@ export const getStaticProps = async (context) => {
     props: {
       mentorsData: data.filter(
         (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified"
+          mentor.verified === true && mentor.token === "mentorIsVerified",
       ),
     },
     revalidate: 20, // revalidate the data every 20 seconds

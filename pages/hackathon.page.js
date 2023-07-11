@@ -121,45 +121,33 @@ export default function Home() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState("");
-
+  const [tagFilter, setTagFilter] = useState(["All"]);
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
-  // console.log(HackathonsData);
+  const [filterHack, setFilterHack] = useState(hackathonsData);
+
   const filteredHackathons = HackathonsData.filter((hackathon) => {
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
-      tag.toLowerCase().includes(tagFilter.toLowerCase())
+      tagFilter.some((filter) =>
+        tag.toLowerCase().includes(filter.toLowerCase()),
+      ),
     );
-    if (tagFilter === "All") {
-      const titleMatch = hackathon.hackathonTitle
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
 
-      return titleMatch && true;
-    } else {
-      // console.log(tagFilter);
-      if (tagFilter !== "" && !tagMatch) {
-        // console.log("hpo");
-        if (tagFilter === "bookmarked") {
-          if (searchQuery != " ") {
-            const titleMatch = hackathon.hackathonTitle
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase());
-
-            return titleMatch && hackathon.bookmarked;
-          }
-          // console.log("hello");
-          return hackathon.bookmarked;
-        }
-        return false;
-      } // Skip the hackathon if it doesn't match the tag filter
+    if (tagMatch) {
+      return hackathon;
     }
-    // console.log("pooh");
-    const titleMatch = hackathon.hackathonTitle
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+  });
 
-    return titleMatch;
+  useEffect(() => {
+    // if (tagFilter.includes("All") && tagFilter.length === 1) {
+    //   setFilterHack(hackathonsData)
+    // }
+    setFilterHack(
+      filteredHackathons.length !== 0 ||
+        (!tagFilter.includes("All") && tagFilter.length < 2)
+        ? filteredHackathons
+        : hackathonsData,
+    );
   });
 
   // console.log(filteredHackathons);
@@ -353,10 +341,11 @@ export default function Home() {
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
+                tagFilter={tagFilter}
               />
             </div>
             <div className="row">
-              {filteredHackathons.map((hackathon, index) => (
+              {filterHack.map((hackathon, index) => (
                 <Hackathon
                   key={index}
                   hackathonImage={hackathon.hackathonImage}

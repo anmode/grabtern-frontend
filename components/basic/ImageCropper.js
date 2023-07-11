@@ -19,7 +19,7 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
     imageSrc,
     pixelCrop,
     rotation = 0,
-    flip = { horizontal: false, vertical: false }
+    flip = { horizontal: false, vertical: false },
   ) => {
     const image = await createImage(imageSrc);
     const canvas = document.createElement("canvas");
@@ -35,7 +35,7 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
     const { width: bBoxWidth, height: bBoxHeight } = rotateSize(
       image.width,
       image.height,
-      rotation
+      rotation,
     );
 
     // set canvas size to match the bounding box
@@ -57,7 +57,7 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
       pixelCrop.x,
       pixelCrop.y,
       pixelCrop.width,
-      pixelCrop.height
+      pixelCrop.height,
     );
 
     // set canvas width to final desired crop size - this will clear existing context

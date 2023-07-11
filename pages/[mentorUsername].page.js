@@ -4,7 +4,7 @@ const Header = React.lazy(() => import("../components/layout/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import SessionCard from "../components/mentorProfile/components/SessionCard";
+import SessionCard from "../components/newMentorProfile/SessionCard";
 import MentorCard from "../components/mentorProfile/components/MentorCard";
 import SharePageModal from "../components/mentorProfile/components/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/components/BookSessionModal";
@@ -13,7 +13,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
-
+import MentorAbout from "../components/newMentorProfile/mentorAbout";
+import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial";
+import styles1 from "../styles/mentorTestimonial.module.css";
 function Index({ mentorDetail, mentorUsername }) {
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
@@ -113,8 +115,8 @@ function Index({ mentorDetail, mentorUsername }) {
         <Header navbarBackground={true} />
         {/* Mentor Page */}
         <main className="tw-flex tw-flex-col tw-items-center">
-          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
-            <MentorCard
+          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start  tw-gap-[60px] tw-flex-wrap">
+            {/* <MentorCard
               mentorImage={mentorDetail.mentorImg}
               name={mentorDetail.name}
               internAt={mentorDetail.internAt}
@@ -122,20 +124,32 @@ function Index({ mentorDetail, mentorUsername }) {
               socialLinks={mentorDetail.social}
               about={mentorDetail.description}
               handleSharePage={() => setShowModal(true)}
-            />
-            {/* Session Cards Container */}
-            <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+            /> */}
+            <MentorAbout mentorDetail={mentorDetail} />
+          </div>
+          {/* Session Cards Container */}
+          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+            <div
+              className={`${styles1.sessions}  tw-min-w-full  tw-py-11 tw-flex tw-flex-col`}
+            >
+              <div className="  tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center">
+                <div
+                  className={`tw-text-4xl tw-items-center tw-px-8 tw-relative tw-mb-7 `}
+                >
+                  Sessions
+                </div>
+              </div>
               {/* Session Cards for every session */}
-              {mentorDetail.sessions[0].sessions.length !== 0 &&
-                mentorDetail.sessions[0].sessions.map((session, index) => (
+              {mentorDetail?.sessions[0]?.sessions?.length !== 0 &&
+                mentorDetail?.sessions[0]?.sessions?.map((session, index) => (
                   <SessionCard
                     key={index}
                     mentorUsername={mentorUsername}
-                    type={session.type}
-                    name={session.name}
-                    description={session.description}
-                    duration={session.duration}
-                    pricePerSession={session.price}
+                    type={session?.type}
+                    name={session?.name}
+                    description={session?.description}
+                    duration={session?.duration}
+                    pricePerSession={session?.price}
                     handleBookSession={() => {
                       setModalPopup(true);
                       setSelectedSession(session);
@@ -144,30 +158,15 @@ function Index({ mentorDetail, mentorUsername }) {
                   />
                 ))}
             </div>
-            <div></div>
-            {/* <Testimonial testimonialUserName={mentorDetail.testimonials.name}
-            testimonialUserHeadline={mentorDetail.testimonials.headline}
-            testimonialUserImage={mentorDetail.testimonials.image}
-            testimonialRate={mentorDetail.testimonials.rate}
-            testimonialDescription={mentorDetail.testimonials.description} /> */}
           </div>
-          <div className="tw-w-22 tw-h-auto tw-flex tw-flex-wrap ">
-            {/* {for testing purpose}  */}
-            <Testimonial
-              testimonialUserName="test_user"
-              testimonialUserHeadline="test headline"
-              testimonialRate="4"
-              testimonialUserImage="/assets/img/icon/no-profile-picture.webp"
-              testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50"
-            />
+          <MentorTestimonial />
+          <div></div>
 
-            {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
-          </div>
           {/* Share Mentor Page Modal */}
           {showModal && (
             <SharePageModal
               handleClose={() => setShowModal(false)}
-              username={mentorDetail.username}
+              username={mentorDetail?.username}
             />
           )}
           {/* Error Display */}
@@ -210,28 +209,6 @@ function Index({ mentorDetail, mentorUsername }) {
 }
 
 export default Index;
-
-// export const getServerSideProps = async (context) => {
-//   const { mentorUsername } = context.params;
-//   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
-//   const { data: res } = await axios.get(url);
-//   if (res.message === "Invalid link") {
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: "/",
-//       },
-//       props: {
-//         mentorDetail: null,
-//       },
-//     };
-//   }
-//   return {
-//     props: {
-//       mentorDetail: res.mentorDetail,
-//     },
-//   };
-// };
 
 export const getStaticPaths = async () => {
   // Fetch all mentor usernames to generate static pages

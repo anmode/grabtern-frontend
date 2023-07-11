@@ -82,33 +82,30 @@ export default function MentorForm() {
     }
   });
 
-  // const handleFileChange = e => {
-  //   setFormData({ ...formData, resume: e.target.files[0] });
+  // const convertBase64 = (file) => {
+  //   return new Promise((resolve, reject) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(file);
+
+  //     fileReader.onload = () => {
+  //       resolve(fileReader.result);
+  //     };
+
+  //     fileReader.onerror = (error) => {
+  //       reject(error);
+  //     };
+  //   });
   // };
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   const uploadToCloudinary = async (file) => {
     const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
     try {
-      const res = await axios.post(url, {
-        file: file,
-        upload_preset: "image_preset",
-      });
-      console.log(res.data.secure_url);
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "image_preset");
+
+      const res = await axios.post(url, formData);
+      // console.log(res.data.secure_url);
       return res.data.secure_url;
     } catch (error) {
       console.log("Couldn't upload image to Cloudinary", error);
@@ -117,9 +114,7 @@ export default function MentorForm() {
 
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
-    const fileData = await convertBase64(file);
-    console.log("The uploaded image is: ", file);
-    const imgLink = await uploadToCloudinary(fileData);
+    const imgLink = await uploadToCloudinary(file);
     console.log(imgLink);
     setFormData({
       ...formData,
@@ -127,16 +122,6 @@ export default function MentorForm() {
     });
     console.log(formData);
   };
-
-  // const handleSessionPriceChange = (e) => {
-  //   let bookSessionCopy = formData.bookSession[0];
-  //   bookSessionCopy.priceSession = e.target.value;
-  //   setFormData({
-  //     ...formData,
-  //     bookSession: [bookSessionCopy],
-  //   });
-  //   console.log(formData);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -13,18 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
   const router = useRouter();
-  //const [modalPopup, setModalPopup] = useState(false);
-  const [waitTime, setWaitTime] = useState(5);
-  // const [isChecked, setIsChecked] = useState(false);
   const [addtoast, setaddToast] = useState(false);
-  const [bookSession, setBookSession] = useState({
-    sessionName: "1 on 1 Mentorship",
-    sessionDescription: "Achieve your goals faster with customized road map",
-    sessionType: "video-meeting",
-    sessionMeetingDuration: "30",
-    // peopleAttend: "",
-    priceSession: "",
-  });
   const [formStep, setFormStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
@@ -70,17 +59,6 @@ export default function MentorForm() {
       image: userObject.picture,
     });
   };
-
-  useEffect(() => {
-    if (addtoast === true && waitTime !== 0) {
-      setTimeout(() => {
-        setWaitTime((value) => (value -= 1));
-      }, 1000);
-    }
-    if (waitTime === 0) {
-      router.push("/");
-    }
-  });
 
   // const convertBase64 = (file) => {
   //   return new Promise((resolve, reject) => {

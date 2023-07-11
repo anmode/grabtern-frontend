@@ -15,6 +15,7 @@ const MentorCard = ({ mentor, link }) => {
       direction="col"
       rounded="lg"
       align="center"
+      bodyHeight = "fixed"
     >
       <div className="tw-px-2 tw-w-full tw-flex tw-justify-between tw-items-center">
         <div className="tw-flex tw-gap-2">

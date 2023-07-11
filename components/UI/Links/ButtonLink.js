@@ -1,15 +1,25 @@
 import React from "react";
 import Link from "next/link";
+import clsx from "clsx";
 import styles from "./Link.module.css";
 
-function ButtonLink({ text, href, className = "", variant = "Primary" }) {
+function ButtonLink({
+  text,
+  href,
+  className = "",
+  variant = "Primary",
+  size = "normal",
+}) {
   let variantClass = `link${variant.charAt(0).toUpperCase()}${variant.slice(
     1,
   )}`;
   return (
     <Link
       href={href}
-      className={`${styles.linkBtn} ${styles[variantClass]} ${className}`}
+      className={clsx(
+        `${styles.linkBtn} ${styles[variantClass]} ${className}`,
+        size == "sm" && ["tw-text-xs tw-font-medium"],
+      )}
     >
       {text}
     </Link>

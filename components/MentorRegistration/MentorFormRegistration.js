@@ -34,7 +34,6 @@ export default function MentorForm() {
     },
     schedules: [],
     sessions: [],
-    verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);
 
@@ -59,21 +58,6 @@ export default function MentorForm() {
       image: userObject.picture,
     });
   };
-
-  // const convertBase64 = (file) => {
-  //   return new Promise((resolve, reject) => {
-  //     const fileReader = new FileReader();
-  //     fileReader.readAsDataURL(file);
-
-  //     fileReader.onload = () => {
-  //       resolve(fileReader.result);
-  //     };
-
-  //     fileReader.onerror = (error) => {
-  //       reject(error);
-  //     };
-  //   });
-  // };
 
   const uploadToCloudinary = async (file) => {
     const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;

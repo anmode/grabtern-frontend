@@ -25,7 +25,7 @@ function Section({
         {/* column */}
         <div
           className={clsx(
-            (direction == "row" || "row-reverse") && ["tw-p-6 md:tw-w-1/2"],
+            (direction == "row" || direction == "row-reverse") && ["tw-p-6 md:tw-w-1/2"],
           )}
         >
           {/* header */}
@@ -45,7 +45,7 @@ function Section({
         {/* column */}
         <div
           className={clsx(
-            (direction == "row" || "row-reverse") && ["tw-p-6 md:tw-w-1/2"],
+            (direction == "row" || direction == "row-reverse") && ["tw-p-6 md:tw-w-1/2"],
           )}
         >
           {children && children.length > 1 && children[1]}

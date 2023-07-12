@@ -122,25 +122,21 @@ function Index({ mentorDetail }) {
           <Section
             kicker="mentor schedule"
             heading="Available Sessions"
-            subheading="Ignite your inner fire, embrace personalized guidance, and unlock your true potential through transformative mentor sessions."
+            subheading="Ignite your inner fire, embrace personalized guidance, and 
+            unlock your true potential through transformative mentor sessions."
             align="center"
           >
-            <div>
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
               {/* Session Cards for every session */}
-              {mentorDetail?.bookSession?.length !== 0 &&
-                mentorDetail?.bookSession?.map((session, index) => (
+              {mentorDetail?.sessions?.length !== 0 &&
+                mentorDetail?.sessions?.map((session, index) => (
                   <SessionCard
                     key={index}
-                    type={session?.sessionType}
-                    name={session?.sessionName}
-                    description={session?.sessionDescription}
-                    duration={session?.sessionMeetingDuration}
-                    pricePerSession={session?.priceSession}
+                    {...session}
                     handleBookSession={() => {
                       setModalPopup(true);
                       setSelectedSession(session);
                     }}
-                    // handleBookSession={() => handleClick(session)}
                   />
                 ))}
             </div>
@@ -212,7 +208,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { mentorUsername } = context.params;
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/rahul2002`;
   const { data: res } = await axios.get(url);
 
   if (res.message === "Invalid link") {

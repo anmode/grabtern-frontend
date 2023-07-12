@@ -5,7 +5,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import SessionCard from "../components/newMentorProfile/SessionCard";
-import MentorCard from "../components/mentorProfile/components/MentorCard";
 import SharePageModal from "../components/mentorProfile/components/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/components/BookSessionModal";
 import { useAuth } from "../context/AuthContext";
@@ -15,7 +14,6 @@ import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial";
-import styles1 from "../styles/mentorTestimonial.module.css";
 import { Section } from "../components/UI";
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -137,6 +135,29 @@ function Index({ mentorDetail }) {
                       setModalPopup(true);
                       setSelectedSession(session);
                     }}
+                  />
+                ))}
+            </div>
+          </Section>
+
+          {/* testimonial section */}
+          <Section
+            kicker="student's review"
+            heading="Testimonials"
+            subheading="Inspiring Testimonials on the Transformative Mentorship Experience"
+            align="center"
+          >
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+              {/* Session Cards for every session */}
+              {mentorDetail?.testimonials?.length !== 0 &&
+                mentorDetail?.testimonials?.map((testimonial, index) => (
+                  <Testimonial
+                    key={index}
+                    testimonialUserName={testimonial.name}
+                    testimonialHeadline={testimonial.headline}
+                    testimonialUserImage={testimonial.image}
+                    testimonialRate={testimonial.rate}
+                    testimonialDescription={testimonial.description}
                   />
                 ))}
             </div>

@@ -13,7 +13,6 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
-import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial";
 import { Section } from "../components/UI";
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -162,8 +161,6 @@ function Index({ mentorDetail }) {
                 ))}
             </div>
           </Section>
-
-          <MentorTestimonial />
 
           {/* Share Mentor Page Modal */}
           {showModal && (

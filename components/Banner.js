@@ -3,7 +3,6 @@ import styles from "../styles/banner.module.css";
 
 function Banner({ isMentorLoggedIn }) {
   return (
-
     <>
       {/* <div className="mt-100  min-h-screen w-full overflow-hidden bg-muted-100 dark:bg-muted-1000 ">
         <div className="min-h-screen w-full max-w-7xl mx-auto flex items-center px-4">
@@ -65,9 +64,8 @@ function Banner({ isMentorLoggedIn }) {
         <div className={styles.text}>
           <h1>Grab your Intern with GrabTern</h1>
           <p>
-            Book a meeting with a past intern to receive one-on-one
-            mentoring and enhance your chances of landing your ideal
-            intern.
+            Book a meeting with a past intern to receive one-on-one mentoring
+            and enhance your chances of landing your ideal intern.
           </p>
           <div className={styles.btn}>
             <button className={styles.btn1}>Find Mentor</button>
@@ -76,32 +74,46 @@ function Banner({ isMentorLoggedIn }) {
         </div>
         <div>
           <img src="/hero.svg" alt="heroImage" class="w-32 h-auto" />
-          <div className={styles.logo1}>
-            📈
-          </div>
-          <div className={styles.logo2}>
-            🚀
-          </div>
-          <div className={styles.logo3}>
-            🎓
-          </div>
-          <div className={styles.logo4}>
-            💡
-          </div>
+          <div className={styles.logo1}>📈</div>
+          <div className={styles.logo2}>🚀</div>
+          <div className={styles.logo3}>🎓</div>
+          <div className={styles.logo4}>💡</div>
           <div className={styles.mentor}>
-                <div className={styles.text2}>
-                  <h3>
-                    Mentors
-                  </h3>
-                  <span>4 New</span>
-                </div>
-                <div className={styles.images}>
-                  <img className="object-cover w-12 h-12 mask mask-blob" src="https://media.cssninja.io/shuriken/avatars/2.svg" alt="Avatar" width="48" height="48" />
-                  <img className="object-cover w-12 h-12 mask mask-blob" src="https://media.cssninja.io/shuriken/avatars/4.svg" alt="Avatar" width="48" height="48"></img>
-                  <img className="object-cover w-12 h-12 mask mask-blob" src="https://media.cssninja.io/shuriken/avatars/3.svg" alt="Avatar" width="48" height="48"></img>
-                  <img class="object-cover w-12 h-12 mask mask-blob" src="https://media.cssninja.io/shuriken/avatars/6.svg" alt="Avatar" width="48" height="48"></img>
-                </div>
-              </div>
+            <div className={styles.text2}>
+              <h3>Mentors</h3>
+              <span>4 New</span>
+            </div>
+            <div className={styles.images}>
+              <img
+                className="object-cover w-12 h-12 mask mask-blob"
+                src="https://media.cssninja.io/shuriken/avatars/2.svg"
+                alt="Avatar"
+                width="48"
+                height="48"
+              />
+              <img
+                className="object-cover w-12 h-12 mask mask-blob"
+                src="https://media.cssninja.io/shuriken/avatars/4.svg"
+                alt="Avatar"
+                width="48"
+                height="48"
+              ></img>
+              <img
+                className="object-cover w-12 h-12 mask mask-blob"
+                src="https://media.cssninja.io/shuriken/avatars/3.svg"
+                alt="Avatar"
+                width="48"
+                height="48"
+              ></img>
+              <img
+                class="object-cover w-12 h-12 mask mask-blob"
+                src="https://media.cssninja.io/shuriken/avatars/6.svg"
+                alt="Avatar"
+                width="48"
+                height="48"
+              ></img>
+            </div>
+          </div>
         </div>
       </div>
     </>

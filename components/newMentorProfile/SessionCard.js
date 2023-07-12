@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, IconCard } from "../UI";
-import { FaUsers } from "react-icons/fa";
+import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
 import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
 export default function SessionCard({
   type,
@@ -10,9 +10,21 @@ export default function SessionCard({
   price,
   handleBookSession,
 }) {
+  let Icon = FaVideo;
+  switch (type) {
+    case "group Call":
+      Icon = FaUsers;
+      break;
+    case "text":
+      Icon = FaMessage;
+      break;
+    default:
+      Icon = FaVideo;
+      break;
+  }
   return (
     <IconCard
-      Icon={FaUsers}
+      Icon={Icon}
       heading={name}
       body={description}
       intent="bg"
@@ -22,11 +34,11 @@ export default function SessionCard({
       <div className="tw-flex tw-gap-4 tw-flex-wrap tw-my-4">
         <div className="tw-flex tw-items-center tw-gap-2">
           <RiTimeFill className="tw-text-2xl tw-text-primary-50" />{" "}
-          <p>{duration}</p>
+          <p>{duration} Minutes</p>
         </div>
         <div className="tw-flex tw-items-center tw-gap-2">
           <RiCoinsFill className="tw-text-2xl tw-text-yellow-400" />{" "}
-          <p>{price}</p>
+          <p>Rs. {price}</p>
         </div>
       </div>
       {/* book session btn */}

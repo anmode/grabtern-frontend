@@ -229,7 +229,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { mentorUsername } = context.params;
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/rahul2002`;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
   const { data: res } = await axios.get(url);
 
   if (res.message === "Invalid link") {

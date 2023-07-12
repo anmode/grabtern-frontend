@@ -5,9 +5,9 @@ import {
   RiTwitterFill,
   RiShareFill,
 } from "react-icons/ri";
-import { IconLink, ProfileCard, Section } from "../UI";
+import { IconLink, ProfileCard, Section, Button } from "../UI";
 
-function MentorAbout({ mentorDetail }) {
+function MentorAbout({ mentorDetail, onShare }) {
   return (
     <Section
       kicker="Know More About our Mentor"
@@ -34,7 +34,7 @@ function MentorAbout({ mentorDetail }) {
           />
         </div>
         <div>
-          <IconLink href="/" Icon={RiShareFill} />
+          <Button onClick={onShare} LeftIcon={RiShareFill} />
         </div>
       </div>
       <ProfileCard

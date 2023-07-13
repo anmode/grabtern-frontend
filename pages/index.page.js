@@ -281,7 +281,7 @@ export default function Home() {
               {carousel === true ? (
                 <OwlCarousel
                   {...testimonialOptions}
-                  //autoplay={true}
+                  autoplay={true}
                   lazyLoad={true}
                   smartSpeed={1000}
                   autoplayTimeout={3500}

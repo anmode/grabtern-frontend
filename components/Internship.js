@@ -23,8 +23,6 @@ function Internship({
       className="tw-w-auto tw-h-full"
       image={internshipImage}
       imageAlt={internshipImageAlt}
-      imageWidth={362}
-      imageHeight={220}
       heading={internshipTitle}
       link={internshipLink}
       subheading="Grabtern"

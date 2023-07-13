@@ -5,8 +5,6 @@ import clsx from "clsx";
 function ImageCard({
   image,
   imageAlt,
-  imageWidth,
-  imageHeight,
   imageType = "cover",
   heading,
   subheading,
@@ -28,8 +26,6 @@ function ImageCard({
         {/* cadd image */}
         <div
           className={clsx(
-            imageWidth && `tw-w-[${imageWidth}px]`,
-            imageHeight && `tw-h-[${imageHeight}px]`,
             "tw-rounded-lg tw-bg-base-300 tw-w-full tw-p-[1px] tw-relative",
             imageType == "popUp" && ["tw-h-40"],
           )}
@@ -38,7 +34,7 @@ function ImageCard({
             alt={imageAlt}
             src={image}
             className={clsx(
-              "tw-w-full tw-h-full tw-object-fit",
+              "tw-w-full tw-aspect-[2] tw-object-fit",
               imageType == "popUp" && [
                 "tw-absolute tw-bottom-0",
                 "tw-inset-x-0 tw-mx-auto tw-w-full tw-max-w-[170px]",

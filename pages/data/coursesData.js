@@ -10,6 +10,7 @@ export default [
     internshipPayed: 450,
     internshipPrice: 1,
     internshipLink: "https://summerofcode.withgoogle.com/",
+    tags: ["Part Time,Web"],
   },
   {
     internshipImage: "/assets/img/gallery/mlhprep.webp",
@@ -22,6 +23,7 @@ export default [
     internshipPayed: 250,
     internshipPrice: 1,
     internshipLink: "https://fellowship.mlh.io/programs/prep",
+    tags: ["Part Time,Major League Hacking"],
   },
   {
     internshipImage: "/assets/img/gallery/mlhfellowship.webp",
@@ -34,6 +36,7 @@ export default [
     internshipPayed: 1200,
     internshipPrice: 1,
     internshipLink: "https://fellowship.mlh.io/",
+    tags: ["Part Time", "Major League Hacking", "MLH"],
   },
   {
     internshipImage: "/assets/img/gallery/adobeshe.webp",
@@ -47,6 +50,7 @@ export default [
     internshipPrice: 1,
     internshipLink:
       "https://careers.adobe.com/us/en/job/R129181/Project-Manager-SheSparks-Intern",
+    tags: ["Female-Centric"],
   },
   {
     internshipImage: "/assets/img/gallery/mitacs.webp",
@@ -60,6 +64,7 @@ export default [
     internshipPrice: 1,
     internshipLink:
       "https://www.mitacs.ca/en/programs/globalink/globalink-research-internship",
+    tags: ["Research"],
   },
   {
     internshipImage: "/assets/img/gallery/grid.webp",
@@ -75,6 +80,7 @@ export default [
     internshipPrice: 1,
     internshipLink:
       "https://unstop.com/hackathons/flipkart-grid-40-software-development-challenge-flipkart-grid-40-flipkart-348170",
+    tags: ["Research"],
   },
   {
     internshipImage: "/assets/img/gallery/step.webp",
@@ -87,6 +93,7 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://buildyourfuture.withgoogle.com/programs/step",
+    tags: ["Google"],
   },
   {
     internshipImage: "/assets/img/gallery/wow.webp",
@@ -99,9 +106,10 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://amazonwowindia.splashthat.com/",
+    tags: ["Female Centric"],
   },
   {
-    internshipImage: "/assets/img/gallery/outreachy.webp",
+    internshipImage: "/assets/img/gallery/Outreachysr.png",
     internshipImageAlt: "OutReachy - Women Only",
     internshipCategories: "GrabTern",
     internshipTitle: "OutReachy - Women Only",
@@ -111,9 +119,10 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://www.outreachy.org/",
+    tags: ["Female Centric"],
   },
   {
-    internshipImage: "/assets/img/gallery/sob.webp",
+    internshipImage: "/assets/img/gallery/sobs.webp",
     internshipImageAlt: "Summer of Bitcoin- Summer Internship Program",
     internshipCategories: "GrabTern",
     internshipTitle: "Summer of Bitcoin- Summer Internship Program",
@@ -123,9 +132,10 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://www.summerofbitcoin.org/",
+    tags: ["Blockchain"],
   },
   {
-    internshipImage: "/assets/img/gallery/sn-bose.webp",
+    internshipImage: "/assets/img/gallery/sn-boses.webp",
     internshipImageAlt: "S.N Bose Scholars Program- Scholars Program",
     internshipCategories: "GrabTern",
     internshipTitle: "S.N Bose Scholars Program- Scholars Program",
@@ -135,5 +145,6 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://iusstf.org/s-n-bose-scholars-program",
+    tags: ["Research"],
   },
 ];

@@ -14,6 +14,7 @@ import Footer from "../components/layout/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { Section } from "../components/UI";
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -29,6 +30,7 @@ import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
 
 const internshipsOptions = {
+  margin: 40,
   items: 3,
   nav: true,
   loop: true,
@@ -140,45 +142,27 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="courses-area section-padding40 fix">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Our Featured Internships</h2>
-                </div>
-              </div>
-            </div>
-            <div className="courses-actives">
-              {carousel === true ? (
-                <OwlCarousel
-                  {...internshipsOptions}
-                  autoplay={true}
-                  lazyLoad={true}
-                  smartSpeed={1000}
-                  autoplayTimeout={3500}
-                  autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
-                >
-                  {internshipsData.map((internship, index) => (
-                    <Internship
-                      key={index}
-                      internshipImage={internship.internshipImage}
-                      internshipImageAlt={internship.internshipImageAlt}
-                      internshipCategories={internship.internshipCategories}
-                      internshipTitle={internship.internshipTitle}
-                      internshipDescription={internship.internshipDescription}
-                      internshipRating={internship.internshipRating}
-                      internshipPayed={internship.internshipPayed}
-                      internshipPrice={internship.internshipPrice}
-                      internshipLink={internship.internshipLink}
-                    />
-                  ))}
-                </OwlCarousel>
-              ) : null}
-            </div>
+        {/* testimonial section */}
+        <Section kicker="internships" heading="Our Featured Internships">
+          <div>
+            {carousel === true ? (
+              <OwlCarousel
+                {...internshipsOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+                {internshipsData.map((internship, index) => (
+                  <Internship key={index} {...internship} />
+                ))}
+              </OwlCarousel>
+            ) : null}
           </div>
-        </div>
+        </Section>
+
         <About />
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">

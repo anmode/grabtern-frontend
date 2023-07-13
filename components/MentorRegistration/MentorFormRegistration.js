@@ -13,7 +13,18 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function MentorForm() {
   const router = useRouter();
+  //const [modalPopup, setModalPopup] = useState(false);
+  const [waitTime, setWaitTime] = useState(5);
+  // const [isChecked, setIsChecked] = useState(false);
   const [addtoast, setaddToast] = useState(false);
+  const [bookSession, setBookSession] = useState({
+    sessionName: "1 on 1 Mentorship",
+    sessionDescription: "Achieve your goals faster with customized road map",
+    sessionType: "video-meeting",
+    sessionMeetingDuration: "30",
+    // peopleAttend: "",
+    priceSession: "",
+  });
   const [formStep, setFormStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
@@ -34,6 +45,7 @@ export default function MentorForm() {
     },
     schedules: [],
     sessions: [],
+    verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);
 
@@ -59,15 +71,44 @@ export default function MentorForm() {
     });
   };
 
-  const uploadToCloudinary = async (file) => {
-    const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "image_preset");
+  useEffect(() => {
+    if (addtoast === true && waitTime !== 0) {
+      setTimeout(() => {
+        setWaitTime((value) => (value -= 1));
+      }, 1000);
+    }
+    if (waitTime === 0) {
+      router.push("/");
+    }
+  });
 
-      const res = await axios.post(url, formData);
-      // console.log(res.data.secure_url);
+  // const handleFileChange = e => {
+  //   setFormData({ ...formData, resume: e.target.files[0] });
+  // };
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const uploadToCloudinary = async (file) => {
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
+    try {
+      const res = await axios.post(url, {
+        file: file,
+        upload_preset: "image_preset",
+      });
+      console.log(res.data.secure_url);
       return res.data.secure_url;
     } catch (error) {
       console.log("Couldn't upload image to Cloudinary", error);
@@ -76,7 +117,9 @@ export default function MentorForm() {
 
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
-    const imgLink = await uploadToCloudinary(file);
+    const fileData = await convertBase64(file);
+    console.log("The uploaded image is: ", file);
+    const imgLink = await uploadToCloudinary(fileData);
     console.log(imgLink);
     setFormData({
       ...formData,
@@ -84,6 +127,16 @@ export default function MentorForm() {
     });
     console.log(formData);
   };
+
+  // const handleSessionPriceChange = (e) => {
+  //   let bookSessionCopy = formData.bookSession[0];
+  //   bookSessionCopy.priceSession = e.target.value;
+  //   setFormData({
+  //     ...formData,
+  //     bookSession: [bookSessionCopy],
+  //   });
+  //   console.log(formData);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

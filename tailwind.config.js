@@ -19,6 +19,13 @@ module.exports = {
       6: "6px",
       8: "8px",
     },
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square:'square',
+      roman: 'upper-roman'
+    }
   },
   plugins: [],
 };

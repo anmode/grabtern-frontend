@@ -1598,8 +1598,11 @@ select {
   font-weight: 550;
   text-transform: normal;
   text-align: left;
-  font-size: 32px;
-  margin-left: 18px;
+  font-size: 28px;
+}
+
+.terms-and-cond{
+  border: 1px solid #c1cacf;
 }
 
 .terms-and-cond-sub {

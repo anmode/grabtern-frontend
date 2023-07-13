@@ -49,6 +49,10 @@ body {
   background-color: var(--base-200);
 }
 
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

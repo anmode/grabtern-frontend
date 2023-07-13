@@ -12,13 +12,15 @@ function Testimonial({
 }) {
   return (
     <IconCard
+      className="tw-w-auto tw-h-full tw-flex tw-flex-col"
       Icon={FaQuoteLeft}
       heading={testimonialHeadline}
       body={testimonialDescription}
       intent="bg"
       size="lg"
     >
-      {/* user details */}
+     <div className="tw-mt-auto">
+        {/* user details */}
       <ProfileCard
         className="tw-mt-4"
         image={testimonialUserImage}
@@ -38,6 +40,7 @@ function Testimonial({
           <i className="fas fa-star-half"></i>
         ) : null}
       </div>
+     </div>
     </IconCard>
   );
 }

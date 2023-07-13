@@ -19,28 +19,28 @@ function Testimonial({
       intent="bg"
       size="lg"
     >
-     <div className="tw-mt-auto">
+      <div className="tw-mt-auto">
         {/* user details */}
-      <ProfileCard
-        className="tw-mt-4"
-        image={testimonialUserImage}
-        heading={testimonialUserName}
-        subheading={testimonialUserHeadline}
-        size="sm"
-      />
-      {/* rating */}
-      <div className="tw-text-yellow-400 tw-ml-12 -tw-mt-2">
-        {Array(Math.floor(testimonialRate))
-          .fill("")
-          .map((_, index) => (
-            <i key={index} className="fas fa-star"></i>
-          ))}
+        <ProfileCard
+          className="tw-mt-4"
+          image={testimonialUserImage}
+          heading={testimonialUserName}
+          subheading={testimonialUserHeadline}
+          size="sm"
+        />
+        {/* rating */}
+        <div className="tw-text-yellow-400 tw-ml-12 -tw-mt-2">
+          {Array(Math.floor(testimonialRate))
+            .fill("")
+            .map((_, index) => (
+              <i key={index} className="fas fa-star"></i>
+            ))}
 
-        {testimonialRate.toString().includes(".") ? (
-          <i className="fas fa-star-half"></i>
-        ) : null}
+          {testimonialRate.toString().includes(".") ? (
+            <i className="fas fa-star-half"></i>
+          ) : null}
+        </div>
       </div>
-     </div>
     </IconCard>
   );
 }

@@ -33,22 +33,22 @@ export default function SessionCard({
     >
       <div className="tw-mt-auto">
         {/* time and price details */}
-      <div className="tw-flex tw-gap-4 tw-flex-wrap tw-my-4">
-        <div className="tw-flex tw-items-center tw-gap-2">
-          <RiTimeFill className="tw-text-2xl tw-text-primary-50" />{" "}
-          <p>{duration} Minutes</p>
+        <div className="tw-flex tw-gap-4 tw-flex-wrap tw-my-4">
+          <div className="tw-flex tw-items-center tw-gap-2">
+            <RiTimeFill className="tw-text-2xl tw-text-primary-50" />{" "}
+            <p>{duration} Minutes</p>
+          </div>
+          <div className="tw-flex tw-items-center tw-gap-2">
+            <RiCoinsFill className="tw-text-2xl tw-text-yellow-400" />{" "}
+            <p>Rs. {price}</p>
+          </div>
         </div>
-        <div className="tw-flex tw-items-center tw-gap-2">
-          <RiCoinsFill className="tw-text-2xl tw-text-yellow-400" />{" "}
-          <p>Rs. {price}</p>
-        </div>
-      </div>
-      {/* book session btn */}
-      <Button
-        className="tw-mt-1"
-        text="Book Session"
-        onClick={handleBookSession}
-      />
+        {/* book session btn */}
+        <Button
+          className="tw-mt-1"
+          text="Book Session"
+          onClick={handleBookSession}
+        />
       </div>
     </IconCard>
   );

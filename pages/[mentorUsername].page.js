@@ -181,29 +181,30 @@ function Index({ mentorDetail }) {
             <div>
               {carousel === true ? (
                 <OwlCarousel
-                {...testimonialOptions}
-                autoplay={true}
-                lazyLoad={true}
-                smartSpeed={1000}
-                autoplayTimeout={3500}
-                nav={true}
-                loop={true}
-                autoplayHoverPause={true}
-                className="owl-carousel owl-theme"
-              >
-              {/* testimonial Cards for every session */}
-              {mentorDetail?.testimonials?.length !== 0 &&
-                mentorDetail?.testimonials?.map((testimonial, index) => (
-                  <Testimonial
-                    key={index}
-                    testimonialUserName={testimonial.name}
-                    testimonialHeadline={testimonial.headline}
-                    testimonialUserImage={testimonial.image}
-                    testimonialRate={testimonial.rate}
-                    testimonialDescription={testimonial.description}
-                  />
-                ))}
-            </OwlCarousel>) : null }
+                  {...testimonialOptions}
+                  autoplay={true}
+                  lazyLoad={true}
+                  smartSpeed={1000}
+                  autoplayTimeout={3500}
+                  nav={true}
+                  loop={true}
+                  autoplayHoverPause={true}
+                  className="owl-carousel owl-theme"
+                >
+                  {/* testimonial Cards for every session */}
+                  {mentorDetail?.testimonials?.length !== 0 &&
+                    mentorDetail?.testimonials?.map((testimonial, index) => (
+                      <Testimonial
+                        key={index}
+                        testimonialUserName={testimonial.name}
+                        testimonialHeadline={testimonial.headline}
+                        testimonialUserImage={testimonial.image}
+                        testimonialRate={testimonial.rate}
+                        testimonialDescription={testimonial.description}
+                      />
+                    ))}
+                </OwlCarousel>
+              ) : null}
             </div>
           </Section>
 

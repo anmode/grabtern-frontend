@@ -7,9 +7,10 @@ const Header = dynamic(() => import("../../../components/layout/Header"));
 function BookSessionPage({ mentorDetail, sessionName }) {
   console.log(mentorDetail);
   const [selectedDay, setSelectedDay] = useState("");
+  const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
-  const bookSession = mentorDetail.sessions[0].sessions.find(
-    (obj) => obj.name === sessionName
+  const bookSession = mentorDetail.sessions.find(
+    (obj) => obj.name === sessionName,
   );
 
   const dayChangeActive = (e) => {
@@ -31,16 +32,18 @@ function BookSessionPage({ mentorDetail, sessionName }) {
 
   const bookedSession = async () => {
     try {
+      setLoading(true);
       console.log("Start....!");
-      const userName = "test1232";
-      const userEmail = "muhammad01317@gmail.com";
+      const user = JSON.parse(localStorage.getItem("userData"));
+      const userName = user.user_name;
+      const userEmail = user.user_email;
 
       if (!userName || !userEmail) {
         return alert("Please login as a user before booking a session!");
       }
 
-      const bookSessionDay = selectedDay.replace("\n", " ");
-      const bookSessionTime = selectedTime.replace("\n", " ");
+      const sessionDay = selectedDay.replace("\n", " ");
+      const sessionTime = selectedTime.replace("\n", " ");
 
       const data = {
         userName,
@@ -49,17 +52,22 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         mentorEmail: mentorDetail.email,
         sessionName: bookSession.name,
         sessionPrice: bookSession.price,
+        sessionDay,
+        sessionTime,
       };
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        data
+        data,
       );
+      setLoading(false);
       alert("You have successfully booked a session!");
       window.location.href = "/";
       console.log(response.data);
       // Add any further logic or redirection based on the response
     } catch (error) {
+      setLoading(false);
+      alert(error.response.data.message);
       console.error("Error booking session:", error);
       // Handle error scenario
     }
@@ -71,7 +79,7 @@ function BookSessionPage({ mentorDetail, sessionName }) {
       return;
     }
     const selectedSchedule = mentorDetail.schedules.find(
-      (schedule) => schedule.day === selectedDay
+      (schedule) => schedule.day === selectedDay,
     );
     if (!selectedSchedule) {
       return [];
@@ -109,64 +117,72 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         style={{ marginTop: "100px" }}
       >
         <h1>Let's book a session</h1>
-  
-<div className="session">
-<div className="mentorInfo">
-          <h2>{mentorDetail.name}</h2>
-          <h3>
-            {mentorDetail.internAt} | {mentorDetail.currentStatus}
-          </h3>
-          <p>{mentorDetail.description}</p>
-        </div>
-        <div className="bookSession">
-          <div className="bookSesssionInfo">
-            <h2>{bookSession.name}</h2>
-            <h4>
-              <b>Book Dession type:</b> <p>{bookSession.type}</p>
-            </h4>
-            <p className="description">
-              <b>Book Session description:</b> <p>{bookSession.description}</p>
-            </p>
+
+        <div className="session">
+          <div className="mentorInfo">
+            <h2>{mentorDetail.name}</h2>
+            <h3>
+              {mentorDetail.internAt} | {mentorDetail.currentStatus}
+            </h3>
+            <p>{mentorDetail.description}</p>
           </div>
-          <div className="bookSessionSchedules">
-            <b>Pick Day:</b>
-            <ul className="day">
-              {mentorDetail.schedules.map((schedule) => (
-                <li
-                  onClick={(e) => {
-                    setSelectedDay(schedule.day);
-                    dayChangeActive(e);
-                  }}
-                >
-                  {schedule.day}
-                </li>
-              ))}
-            </ul>
-            <b>Pick Time:</b>
-            <ul className="time">
-              {selectedDay.length === 0
-                ? "Please select day"
-                : splitTimeRange().map((time) => (
-                    <li
-                      onClick={(e) => {
-                        timeChangeActive(e);
-                        setSelectedTime(time);
-                      }}
-                    >
-                      {time}
-                    </li>
-                  ))}
-            </ul>
-          </div>
-          <div className="bookSesssionPriceAndOrder">
-            <div className="price">
-              <b>Book Session Price:</b>
-              {bookSession.price}
+          <div className="bookSession">
+            <div className="bookSesssionInfo">
+              <h2>{bookSession.name}</h2>
+              <h4>
+                <b>Book Dession type:</b> <p>{bookSession.type}</p>
+              </h4>
+              <p className="description">
+                <b>Book Session description:</b>{" "}
+                <p>{bookSession.description}</p>
+              </p>
             </div>
-            <button onClick={() => bookedSession()}>Book Session Now</button>
+            <div className="bookSessionSchedules">
+              <b>Pick Day:</b>
+              <ul className="day">
+                {mentorDetail.schedules.map((schedule) => (
+                  <li
+                    onClick={(e) => {
+                      setSelectedDay(schedule.day);
+                      dayChangeActive(e);
+                    }}
+                  >
+                    {schedule.day}
+                  </li>
+                ))}
+              </ul>
+              <b>Pick Time:</b>
+              <ul className="time">
+                {selectedDay.length === 0
+                  ? "Please select day"
+                  : splitTimeRange().map((time) => (
+                      <li
+                        onClick={(e) => {
+                          timeChangeActive(e);
+                          setSelectedTime(time);
+                        }}
+                      >
+                        {time}
+                      </li>
+                    ))}
+              </ul>
+            </div>
+            <div className="bookSesssionPriceAndOrder">
+              <div className="price">
+                <b>Book Session Price:</b>
+                {bookSession.price}
+              </div>
+              <div className="button">
+                <button onClick={() => bookedSession()}>
+                  Book Session Now{" "}
+                </button>
+                {loading === true ? (
+                  <img src="/assets/img/gif/Spinner.gif" />
+                ) : null}
+              </div>
+            </div>
           </div>
         </div>
-</div>
       </div>
     </div>
   );

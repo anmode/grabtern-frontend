@@ -3,7 +3,6 @@ import { Button, IconCard } from "../UI";
 import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
 import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
 export default function SessionCard({
-  mentorUsername,
   type,
   name,
   description,
@@ -11,6 +10,13 @@ export default function SessionCard({
   price,
   handleBookSession,
 }) {
+  console.log("Book Sesison", {
+    type,
+    name,
+    description,
+    duration,
+    price,
+  });
   let Icon = FaVideo;
   switch (type) {
     case "group Call":
@@ -43,11 +49,9 @@ export default function SessionCard({
         </div>
       </div>
       {/* book session btn */}
-      <Button
-        className="tw-mt-1"
-        text="Book Session"
-        onClick={handleBookSession}
-      />
+      <a href={handleBookSession}>
+        <Button className="tw-mt-1" text="Book Session" />
+      </a>
     </IconCard>
   );
 }

@@ -15,6 +15,7 @@ import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import { Section } from "../components/UI";
 function Index({ mentorDetail, mentorUsername }) {
+  console.log(mentorDetail.sessions);
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
   const [error, setError] = useState("");
@@ -128,15 +129,16 @@ function Index({ mentorDetail, mentorUsername }) {
           >
             <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
               {/* Session Cards for every session */}
-              {mentorDetail?.sessions[0]?.sessions?.length !== 0 &&
-                mentorDetail?.sessions[0]?.sessions?.map((session, index) => (
+              {mentorDetail?.sessions?.length !== 0 &&
+                mentorDetail?.sessions?.map((session, index) => (
                   <SessionCard
                     key={index}
-                    {...session}
-                    handleBookSession={() => {
-                      setModalPopup(true);
-                      setSelectedSession(session);
-                    }}
+                    type={session.type}
+                    name={session.name}
+                    description={session.description}
+                    duration={session.duration}
+                    price={session.price}
+                    handleBookSession={`/${mentorUsername}/bookSession/${session.name}`}
                   />
                 ))}
             </div>
@@ -237,7 +239,6 @@ export const getStaticProps = async (context) => {
       notFound: true,
     };
   }
-  console.log(res.mentorDetail, res.mentorDetail.sessions[0].sessions);
   return {
     props: {
       mentorDetail: res.mentorDetail,

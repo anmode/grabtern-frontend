@@ -14,7 +14,7 @@ import Footer from "../components/layout/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { Section } from "../components/UI";
+import { ButtonLink, Section } from "../components/UI";
 import MentorSection from "../components/MentorSection";
 
 var $ = require("jquery");
@@ -167,37 +167,22 @@ export default function Home() {
         <About />
 
         {/* hackathon section */}
-        <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Explore Top Hackathons</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              {hackathonsData.slice(0, 4).map((hackathon, index) => (
-                <Hackathon
-                  key={index}
-                  hackathonImage={hackathon.hackathonImage}
-                  hackathonImageAlt={hackathon.hackathonImageAlt}
-                  hackathonLink={hackathon.hackathonLink}
-                  hackathonTitle={hackathon.hackathonTitle}
-                />
-              ))}
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-xl-12">
-                <div className="section-tittle text-center mt-20">
-                  <a href="/hackathon" className="border-btn">
-                    View More Hackathons
-                  </a>
-                </div>
-              </div>
-            </div>
+        <Section
+          kicker="hackathon"
+          heading="Explore Top Hackathons"
+          align="center"
+        >
+          <div className="tw-grid tw-gap-8 sm:tw-grid-cols-2 lg:tw-grid-cols-4">
+            {hackathonsData.slice(0, 4).map((hackathon, index) => (
+              <Hackathon key={index} {...hackathon} />
+            ))}
           </div>
-        </div>
+          <ButtonLink
+            text="View More Hackathons"
+            href="/hackathon"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+          />
+        </Section>
 
         {/* why to be a mentor section */}
         <MentorSection />

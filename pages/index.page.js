@@ -128,21 +128,17 @@ export default function Home() {
 
       <main>
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
-        <div className="services-area">
-          <div className="container">
-            <div className="row justify-content-sm-center">
+
+        {/* services section */}
+        <section className="tw-w-full tw-px-4">
+          <div className="tw-w-full tw-max-w-7xl tw-mx-auto">
+            <div className="tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-3 tw-gap-x-6 tw-gap-y-12 tw-items-center tw-justify-center">
               {servicesData.map((service, index) => (
-                <Service
-                  key={index}
-                  imageSrc={service.imageSrc}
-                  imageAlt={service.imageAlt}
-                  serviceHeading={service.serviceHeading}
-                  serviceDescription={service.serviceDescription}
-                />
+                <Service key={index} {...service} />
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="courses-area section-padding40 fix">
           <div className="container">

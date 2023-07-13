@@ -24,13 +24,15 @@ export default function SessionCard({
   }
   return (
     <IconCard
+      className="tw-flex tw-flex-col"
       Icon={Icon}
       heading={name}
       body={description}
       intent="bg"
       size="lg"
     >
-      {/* time and price details */}
+      <div className="tw-mt-auto">
+        {/* time and price details */}
       <div className="tw-flex tw-gap-4 tw-flex-wrap tw-my-4">
         <div className="tw-flex tw-items-center tw-gap-2">
           <RiTimeFill className="tw-text-2xl tw-text-primary-50" />{" "}
@@ -47,6 +49,7 @@ export default function SessionCard({
         text="Book Session"
         onClick={handleBookSession}
       />
+      </div>
     </IconCard>
   );
 }

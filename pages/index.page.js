@@ -142,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* testimonial section */}
+        {/* internship section */}
         <Section kicker="internships" heading="Our Featured Internships">
           <div>
             {carousel === true ? (
@@ -250,7 +250,6 @@ export default function Home() {
 
         {/* testimonial */}
         <Section
-          kicker=""
           heading="Testimonials"
           subheading="See what our mentor and students say about us"
           align="center"
@@ -284,40 +283,31 @@ export default function Home() {
             ) : null}
           </ul>
         </Section>
-        <section className="team-area section-padding40 fix">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Grabtern Community</h2>
-                </div>
-              </div>
-            </div>
-            <div className="team-active">
-              {carousel === true ? (
-                <OwlCarousel
-                  {...teamsOptions}
-                  autoplay={true}
-                  lazyLoad={true}
-                  smartSpeed={1000}
-                  autoplayTimeout={3500}
-                  autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
-                >
-                  {teamsData.map((profile, index) => (
-                    <TeamProfile
-                      key={index}
-                      imageSrc={profile.imageSrc}
-                      imageAlt={profile.imageAlt}
-                      profileName={profile.profileName}
-                      profileDescription={profile.profileDescription}
-                    />
-                  ))}
-                </OwlCarousel>
-              ) : null}
-            </div>
+
+        {/* team section */}
+        <Section
+          heading="Our Community"
+          subheading="Meet the members of Grabtern Community"
+          align="center"
+        >
+          <div>
+            {carousel === true ? (
+              <OwlCarousel
+                {...teamsOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+                {teamsData.map((profile, index) => (
+                  <TeamProfile key={index} {...profile} />
+                ))}
+              </OwlCarousel>
+            ) : null}
           </div>
-        </section>
+        </Section>
       </main>
       <Footer />
     </div>

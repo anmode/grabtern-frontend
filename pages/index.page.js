@@ -247,48 +247,43 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="team-area section-padding40 fix">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Testimonials</h2>
-                </div>
-              </div>
-            </div>
 
-            <ul className="testimonialsList">
-              {carousel === true ? (
-                <OwlCarousel
-                  {...testimonialOptions}
-                  autoplay={true}
-                  lazyLoad={true}
-                  smartSpeed={1000}
-                  autoplayTimeout={3500}
-                  nav={true}
-                  loop={true}
-                  autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
-                >
-                  {testiomialsData.map((testimonial, index) => (
-                    <Testimonial
-                      key={index}
-                      testimonialUserName={testimonial.testimonialUserName}
-                      testimonialUserHeadline={
-                        testimonial.testimonialUserHeadline
-                      }
-                      testimonialUserImage={testimonial.testimonialUserImage}
-                      testimonialRate={testimonial.testimonialRate}
-                      testimonialDescription={
-                        testimonial.testimonialDescription
-                      }
-                    />
-                  ))}
-                </OwlCarousel>
-              ) : null}
-            </ul>
-          </div>
-        </section>
+        {/* testimonial */}
+        <Section
+          kicker=""
+          heading="Testimonials"
+          subheading="See what our mentor and students say about us"
+          align="center"
+        >
+          <ul className="testimonialsList">
+            {carousel === true ? (
+              <OwlCarousel
+                {...testimonialOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                nav={true}
+                loop={true}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+                {testiomialsData.map((testimonial, index) => (
+                  <Testimonial
+                    key={index}
+                    testimonialUserName={testimonial.testimonialUserName}
+                    testimonialUserHeadline={
+                      testimonial.testimonialUserHeadline
+                    }
+                    testimonialUserImage={testimonial.testimonialUserImage}
+                    testimonialRate={testimonial.testimonialRate}
+                    testimonialDescription={testimonial.testimonialDescription}
+                  />
+                ))}
+              </OwlCarousel>
+            ) : null}
+          </ul>
+        </Section>
         <section className="team-area section-padding40 fix">
           <div className="container">
             <div className="row justify-content-center">

@@ -1,18 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 * {
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
+:root {
+  --primary-10: #cdc2ff;
+  --primary-50: #9d94c6;
+  --primary-100: #845ec2;
+  --primary-200: #6e4fa0;
+  --base-100: #fff;
+  --base-200: #f1f5f9;
+  --base-300: #e2e8f0;
+  --base-400: #64748b;
+  --base-500: #1e293b;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    @apply tw-text-base-500;
+  }
+  p {
+    @apply tw-text-base-400;
+  }
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   overflow-x: hidden;
+  background-color: var(--base-200);
 }
 
 ::-webkit-scrollbar {
@@ -32,6 +66,20 @@ a {
   display: inline;
 } */
 /*  */
+
+.theme {
+  transition: 1s all ease;
+}
+
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #fdf8f8;
+}
 
 .slider-area .hero__caption.hero__caption2,
 .slider-area2 .hero__caption.hero__caption2 {
@@ -1042,15 +1090,19 @@ select {
   border-radius: 10px;
   height: 270px;
   width: 400px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 8px rgba(205, 205, 205, 0.8), 0 0 15px rgb(213, 211, 211);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 8px rgba(205, 205, 205, 0.8),
+    0 0 15px rgb(213, 211, 211);
   transform: all;
   transition-duration: 0.2s;
 }
 .bookSessions li:hover {
   width: 402px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 15px rgba(185, 185, 185, 0.8), 0 0 18px rgb(199, 195, 195);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 15px rgba(185, 185, 185, 0.8),
+    0 0 18px rgb(199, 195, 195);
 }
 
 .bookSessionIcons {

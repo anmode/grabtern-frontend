@@ -16,8 +16,8 @@ function Index() {
     const fetchMentorDetail = async (mentorToken) => {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDashboard/${mentorToken}`;
       const { data: res } = await axios.get(url, { mentorPW: mentorToken });
-      console.log;
       if (res.message == "Invalid link") {
+        console.log("got invaid link in dashboard");
         localStorage.removeItem("mentorData");
         router.push("/");
       }
@@ -26,7 +26,7 @@ function Index() {
     if (mentorData?.mentorToken !== null) {
       fetchMentorDetail(mentorData?.mentorToken);
     }
-  });
+  }, []);
   return (
     <>
       <Head>

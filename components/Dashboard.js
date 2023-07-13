@@ -48,7 +48,7 @@ function Dashboard({ mentorDetail }) {
   };
 
   const removeSession = (sessionIndex) => {
-    let allBookSession = formData.bookSession;
+    let allBookSession = formData?.bookSession;
     allBookSession.splice(sessionIndex, 1);
     setFormData({ ...formData, bookSession: allBookSession });
   };
@@ -56,15 +56,15 @@ function Dashboard({ mentorDetail }) {
   const addBookSession = () => {
     console.log(bookSession);
     setError("");
-    if (bookSession.sessionType === "") {
+    if (bookSession?.sessionType === "") {
       setBookSession({ ...bookSession, sessionType: "video-meeting" });
     }
     if (
-      bookSession.sessionName === "" ||
-      bookSession.sessionDescription === "" ||
-      bookSession.sessionType === "" ||
-      bookSession.sessionMeetingDuration === "" ||
-      bookSession.priceSession === ""
+      bookSession?.sessionName === "" ||
+      bookSession?.sessionDescription === "" ||
+      bookSession?.sessionType === "" ||
+      bookSession?.sessionMeetingDuration === "" ||
+      bookSession?.priceSession === ""
     ) {
       return setError("Please fill all input!");
     }
@@ -83,7 +83,7 @@ function Dashboard({ mentorDetail }) {
   };
 
   const removeSessionId = () => {
-    let allSession = formData.bookSession;
+    let allSession = formData?.bookSession;
     allSession.forEach((session) => {
       delete session._id;
     });
@@ -112,7 +112,7 @@ function Dashboard({ mentorDetail }) {
       delete formDataCopy.confirmPassword;
       delete formDataCopy.verified;
       delete formDataCopy.token;
-      delete formDataCopy.loginToken;
+      delete formDataCopy.mentorToken;
       delete formDataCopy.setupPWId;
       delete formDataCopy.__v;
       setFormData(formDataCopy);
@@ -592,8 +592,8 @@ function Dashboard({ mentorDetail }) {
       <br />
       <h2 style={{ fontSize: "24px" }}>Book Sessions</h2>
       <ul className="bookSessions">
-        {mentorDetail.bookSession.length !== 0 ? (
-          mentorDetail.bookSession.map((session) => (
+        {mentorDetail?.bookSession?.length !== 0 ? (
+          mentorDetail?.bookSession?.map((session) => (
             <li>
               <div
                 className="bookSessionHeader"
@@ -634,7 +634,7 @@ function Dashboard({ mentorDetail }) {
               <button style={{ cursor: "pointer" }}>Book Session</button>
             </li>
           ))
-        ) : mentorDetail.bookSession.length === 0 ? (
+        ) : mentorDetail?.bookSession?.length === 0 ? (
           <p>You not have book sessions yet</p>
         ) : null}
       </ul>

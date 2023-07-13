@@ -28,7 +28,8 @@
 }
 .fgroup {
   margin: 3px;
-  box-shadow: rgb(230, 221, 233) 1px 1px 5px 0px inset,
+  box-shadow:
+    rgb(230, 221, 233) 1px 1px 5px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 /* .csection {
@@ -235,7 +236,7 @@
     margin-top: -80px;
     /* margin-left: 5%;
     margin-right: 8%; */
-    padding: 10px 10px 5px 40px;
+    /* padding: 10px 10px 5px 40px; */
   }
 
   .offsetlg {

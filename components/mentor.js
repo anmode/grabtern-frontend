@@ -1,23 +1,40 @@
 //components/mentor.js
 import React from "react";
+import { ProfileCard, IconLink, ButtonLink } from "./UI";
+import { RiLinkedinLine, RiTwitterLine } from "react-icons/ri";
 
-const MentorCard = ({ mentor }) => {
+const MentorCard = ({ mentor, link }) => {
   return (
-        <div className="card-container tw-flex flex-lg-column tw-justify-center align-center tw-rounded-2xl tw-gap-5">
-         <div className="upper-container tw-bg-[#845ec2] tw-h-1/3 tw-w-full tw-rounded-t-2xl">
-            <div className="tw-w-full tw-h-full d-flex justify-content-center position-relative tw-top-20">
-               <img className='tw-w-48 tw-h-48 tw-rounded-full' src={mentor.mentorImg} alt={mentor.name}/>
-            </div>
-         </div>
-            <div className="lower-container tw-h-2/3 tw-bg-white tw-rounded-2xl">
-              <h1 className="tw-font-bold tw-text-4xl text-center tw-py-12">{mentor.name}</h1>
-              <div className="tw-flex tw-justify-center">
-                <p className="tw-text-center tw-font-medium tw-text-3xl">
-                  Interned at: {mentor.internAt}
-                </p>
-              </div>
-          </div>
+    <ProfileCard
+      image={mentor.image}
+      heading={mentor.name}
+      subheading={mentor.internAt}
+      body={mentor.description}
+      intent="bg"
+      size="lg"
+      direction="col"
+      rounded="lg"
+      align="center"
+      bodyHeight="fixed"
+    >
+      <div className="tw-px-2 tw-w-full tw-flex tw-justify-between tw-items-center">
+        <div className="tw-flex tw-gap-2">
+          <IconLink
+            href={mentor.social.linkedin}
+            Icon={RiLinkedinLine}
+            variant="secondary"
+          />
+          <IconLink
+            href={mentor.social.twitter}
+            Icon={RiTwitterLine}
+            variant="secondary"
+          />
+        </div>
+        <div>
+          <ButtonLink text="Book Session" href={link} size="sm" />
+        </div>
       </div>
+    </ProfileCard>
   );
 };
 export default MentorCard;

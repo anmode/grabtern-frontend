@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
-import { useRouter } from "next/router";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import styles from "../styles/MentorLogin.module.css";
-import Link from "next/link";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const Header = dynamic(() => import("../components/layout/Header"));
+const Footer = dynamic(() => import("../components/layout/Footer"));
+
+import Visibillity from "../public/assets/Visibillity.jsx";
+import VisibillityOff from "../public/assets/VisibillityOff.jsx";
 
 import { useAuth } from "../context/AuthContext";
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,6 +36,10 @@ function mentorLogin() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prevState) => !prevState);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -41,11 +50,11 @@ function mentorLogin() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/auth`;
       const { data: res } = await axios.post(url, formData);
-      // localStorage.setItem("mentorToken", res.loginToken);
+      // localStorage.setItem("mentorToken", res.mentorToken);
       // localStorage.setItem("mentor_name", res.fullName);
       const mentorData = {
         mentor_name: res.fullName,
-        mentorToken: res.loginToken,
+        mentorToken: res.mentorToken,
       };
       localStorage.setItem("mentorData", JSON.stringify(mentorData));
       setIsMentorLoggedIn(true);
@@ -68,11 +77,11 @@ function mentorLogin() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/gloginauth`;
       const { data: res } = await axios.post(url, userObject);
-      // localStorage.setItem("mentorToken", res.loginToken);
+      // localStorage.setItem("mentorToken", res.mentorToken);
       // localStorage.setItem("mentor_name", userObject.name);
       // localStorage.setItem("mentor_picture", userObject.picture);
       const mentorData = {
-        mentorToken: res.loginToken,
+        mentorToken: res.mentorToken,
         mentor_picture: userObject.picture,
         mentor_name: userObject.name,
       };
@@ -100,7 +109,7 @@ function mentorLogin() {
 
     google.accounts.id.renderButton(
       document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" }
+      { theme: "outline", size: "large" },
     );
     google.accounts.id.prompt();
   }, []);
@@ -133,22 +142,18 @@ function mentorLogin() {
             <div className="form-input">
               <label htmlFor="password">Password</label>
               <input
-                type="password"
+                type={isPasswordVisible ? "text" : "password"}
                 name="password"
                 placeholder="Password"
                 onChange={handleChange}
                 value={formData.password}
               />
-            </div>
-            <div className="form-input">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                onChange={handleChange}
-                value={formData.confirmPassword}
-              />
+              <div
+                className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+                onClick={togglePasswordVisibility}
+              >
+                {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+              </div>
             </div>
             <div className="form-input">
               <input

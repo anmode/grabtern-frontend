@@ -250,6 +250,7 @@ export default function Home() {
 
         {/* testimonial */}
         <Section
+          kicker="Glowing Praise"
           heading="Testimonials"
           subheading="See what our mentor and students say about us"
           align="center"
@@ -286,6 +287,7 @@ export default function Home() {
 
         {/* team section */}
         <Section
+          kicker="Grabtern team"
           heading="Our Community"
           subheading="Meet the members of Grabtern Community"
           align="center"

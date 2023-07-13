@@ -8,11 +8,9 @@ import Head from "next/head";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { error } from "jquery";
-import { Section} from "../components/UI";
+import { Section } from "../components/UI";
 const Footer = dynamic(() => import("../components/layout/Footer"));
 const Header = dynamic(() => import("../components/layout/Header"));
-
-
 
 function Contact() {
   const form = useRef(null);
@@ -142,19 +140,17 @@ function Contact() {
       </Head> */}
       <Header />
       <Section
-          kicker="Contact Us"
-          heading="Talk to our management team"
-          
-          align="center"
-          className="tw-mt-10 tw-pb-0"
-        ></Section>
-   
+        kicker="Contact Us"
+        heading="Talk to our management team"
+        align="center"
+        className="tw-mt-10 tw-pb-0"
+      ></Section>
+
       <main className={style.main}>
         <div className={style.mainbody}>
           <div id="both">
-            <section className={style.csection} >
+            <section className={style.csection}>
               <div className="container">
-              
                 <div className="row tw-rlative ">
                   <div className="col-12"></div>
                   <div className={`${style.flexx}`}>

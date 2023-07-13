@@ -11,6 +11,7 @@ import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/layout/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
+import GalleryCard from "../components/GalleryCard";
 
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 
@@ -121,21 +122,46 @@ export default function Home() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState(["All"]);
+  const [tagFilter, setTagFilter] = useState("All");
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
   const [filterHack, setFilterHack] = useState(hackathonsData);
 
   const filteredHackathons = HackathonsData.filter((hackathon) => {
+    console.log(typeof tagFilter);
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
-      tagFilter.some((filter) =>
-        tag.toLowerCase().includes(filter.toLowerCase()),
-      ),
+      tag.toLowerCase().includes(tagFilter.toLowerCase()),
     );
+    if (tagFilter === "All") {
+      const titleMatch = hackathon.hackathonTitle
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
 
-    if (tagMatch) {
-      return hackathon;
+      return titleMatch && true;
+    } else {
+      // console.log(tagFilter);
+      if (tagFilter !== "" && !tagMatch) {
+        // console.log("hpo");
+        if (tagFilter === "bookmarked") {
+          if (searchQuery != " ") {
+            const titleMatch = hackathon.hackathonTitle
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase());
+
+            return titleMatch && hackathon.bookmarked;
+          }
+          // console.log("hello");
+          return hackathon.bookmarked;
+        }
+        return false;
+      } // Skip the hackathon if it doesn't match the tag filter
     }
+    // console.log("pooh");
+    const titleMatch = hackathon.hackathonTitle
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return titleMatch;
   });
 
   useEffect(() => {
@@ -198,6 +224,13 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const HackathonLabels = [
+    "web",
+    "upcoming",
+    "Beginner Friendly",
+    "Programming",
+    "Blockchain",
+  ];
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -342,11 +375,13 @@ export default function Home() {
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
                 tagFilter={tagFilter}
+                HackathonLabels={HackathonLabels}
               />
             </div>
             <div className="row">
               {filterHack.map((hackathon, index) => (
-                <Hackathon
+                <GalleryCard
+                  isInternship={false}
                   key={index}
                   hackathonImage={hackathon.hackathonImage}
                   hackathonImageAlt={hackathon.hackathonImageAlt}

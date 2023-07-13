@@ -50,7 +50,7 @@ export default [
     internshipPrice: 1,
     internshipLink:
       "https://careers.adobe.com/us/en/job/R129181/Project-Manager-SheSparks-Intern",
-    tags: ["Female-Centric"],
+    tags: ["Female Centric", "Web"],
   },
   {
     internshipImage: "/assets/img/gallery/mitacs.webp",
@@ -80,7 +80,7 @@ export default [
     internshipPrice: 1,
     internshipLink:
       "https://unstop.com/hackathons/flipkart-grid-40-software-development-challenge-flipkart-grid-40-flipkart-348170",
-    tags: ["Research"],
+    tags: ["Research", "Web"],
   },
   {
     internshipImage: "/assets/img/gallery/step.webp",
@@ -93,7 +93,7 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://buildyourfuture.withgoogle.com/programs/step",
-    tags: ["Google"],
+    tags: ["Web", "Part Time"],
   },
   {
     internshipImage: "/assets/img/gallery/wow.webp",
@@ -106,7 +106,7 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://amazonwowindia.splashthat.com/",
-    tags: ["Female Centric"],
+    tags: ["Female Centric", "Web"],
   },
   {
     internshipImage: "/assets/img/gallery/Outreachysr.png",
@@ -119,7 +119,7 @@ export default [
     internshipPayed: 670,
     internshipPrice: 1,
     internshipLink: "https://www.outreachy.org/",
-    tags: ["Female Centric"],
+    tags: ["Female Centric", "Web"],
   },
   {
     internshipImage: "/assets/img/gallery/sobs.webp",

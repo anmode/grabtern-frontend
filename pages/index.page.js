@@ -181,6 +181,15 @@ export default function Home() {
                 </OwlCarousel>
               ) : null}
             </div>
+            <div className="row justify-content-center">
+              <div className="col-xl-12">
+                <div className="section-tittle text-center mt-20">
+                  <a href="/internship" className="border-btn">
+                    View More Internships
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <About />

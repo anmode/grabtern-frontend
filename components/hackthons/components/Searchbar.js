@@ -15,6 +15,7 @@ function SearchBar({
   const [selectedTag, setSelectedTag] = useState("All");
 
   const handleTagChange = (value) => {
+    console.log("tagefilter", value);
     console.log(value);
     setSelectedTag(value);
     handleTagFilter(value);
@@ -29,7 +30,9 @@ function SearchBar({
           setSearchQuery(e.target.value);
         }}
         variant="outlined"
-        placeholder="Search Hackathons"
+        placeholder={
+          HackathonLabels ? "Search Hackathons" : "Search Internships"
+        }
         size="Normal"
         sx={{
           color: "#845ec2",

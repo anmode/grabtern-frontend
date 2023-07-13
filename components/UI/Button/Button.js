@@ -3,6 +3,7 @@ import styles from "./Button.module.css";
 
 function Button({
   text,
+  LeftIcon,
   variant = "Primary",
   className,
   type = "button",
@@ -17,6 +18,7 @@ function Button({
       onClick={onClick}
       type={type}
     >
+      {LeftIcon && <LeftIcon className="tw-text-xl" />}
       {text}
     </button>
   );

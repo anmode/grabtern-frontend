@@ -34,6 +34,7 @@ function Hackathon({
             className="tw-cursor-pointer !tw-text-primary-100 hover:!tw-text-primary-50"
             href={hackathonLink}
             target="_blank"
+            rel="noopener noreferrer"
           >
             Know More
           </a>

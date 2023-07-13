@@ -5,7 +5,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import SessionCard from "../components/newMentorProfile/SessionCard";
-import MentorCard from "../components/mentorProfile/components/MentorCard";
 import SharePageModal from "../components/mentorProfile/components/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/components/BookSessionModal";
 import { useAuth } from "../context/AuthContext";
@@ -14,8 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
-import MentorTestimonial from "../components/newMentorProfile/mentorTestimonial";
-import styles1 from "../styles/mentorTestimonial.module.css";
+import { Section } from "../components/UI";
 function Index({ mentorDetail, mentorUsername }) {
   const [modalPopup, setModalPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(6);
@@ -45,7 +43,7 @@ function Index({ mentorDetail, mentorUsername }) {
         email,
         name,
         sessionMeetingDuration,
-        priceSession
+        priceSession,
       );
     } else {
       const redirectUrl = window.location.href;
@@ -59,12 +57,12 @@ function Index({ mentorDetail, mentorUsername }) {
       setIsLoading(true);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        data
+        data,
       );
       setIsLoading(false);
       setModalPopup(false);
       toast.success(
-        "Your session has been booked! Check your inbox for payment details."
+        "Your session has been booked! Check your inbox for payment details.",
       ); // Success toast
     } catch (error) {
       setIsLoading(false);
@@ -84,7 +82,7 @@ function Index({ mentorDetail, mentorUsername }) {
     mentorEmail,
     mentorName,
     sessionTime,
-    sessionPrice
+    sessionPrice,
   ) => {
     const userEmail = userData.user_email;
     const userName = userData.user_name;
@@ -114,53 +112,58 @@ function Index({ mentorDetail, mentorUsername }) {
         </Head>
         <Header navbarBackground={true} />
         {/* Mentor Page */}
-        <main className="tw-flex tw-flex-col tw-items-center">
-          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start  tw-gap-[60px] tw-flex-wrap">
-            {/* <MentorCard
-              mentorImage={mentorDetail.mentorImg}
-              name={mentorDetail.name}
-              internAt={mentorDetail.internAt}
-              currentStatus={mentorDetail.currentStatus}
-              socialLinks={mentorDetail.social}
-              about={mentorDetail.description}
-              handleSharePage={() => setShowModal(true)}
-            /> */}
-            <MentorAbout mentorDetail={mentorDetail} />
-          </div>
-          {/* Session Cards Container */}
-          <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
-            <div
-              className={`${styles1.sessions}  tw-min-w-full  tw-py-11 tw-flex tw-flex-col`}
-            >
-              <div className="  tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center">
-                <div
-                  className={`tw-text-4xl tw-items-center tw-px-8 tw-relative tw-mb-7 `}
-                >
-                  Sessions
-                </div>
-              </div>
+        <main className="tw-pt-4">
+          <MentorAbout
+            mentorDetail={mentorDetail}
+            onShare={() => setShowModal(true)}
+          />
+
+          {/* session section */}
+          <Section
+            kicker="mentor schedule"
+            heading="Available Sessions"
+            subheading="Ignite your inner fire, embrace personalized guidance, and 
+            unlock your true potential through transformative mentor sessions."
+            align="center"
+          >
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
               {/* Session Cards for every session */}
               {mentorDetail?.sessions[0]?.sessions?.length !== 0 &&
                 mentorDetail?.sessions[0]?.sessions?.map((session, index) => (
                   <SessionCard
                     key={index}
-                    mentorUsername={mentorUsername}
-                    type={session?.type}
-                    name={session?.name}
-                    description={session?.description}
-                    duration={session?.duration}
-                    pricePerSession={session?.price}
+                    {...session}
                     handleBookSession={() => {
                       setModalPopup(true);
                       setSelectedSession(session);
                     }}
-                    // handleBookSession={() => handleClick(session)}
                   />
                 ))}
             </div>
-          </div>
-          <MentorTestimonial />
-          <div></div>
+          </Section>
+
+          {/* testimonial section */}
+          <Section
+            kicker="student's review"
+            heading="Testimonials"
+            subheading="Inspiring Testimonials on the Transformative Mentorship Experience"
+            align="center"
+          >
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+              {/* Session Cards for every session */}
+              {mentorDetail?.testimonials?.length !== 0 &&
+                mentorDetail?.testimonials?.map((testimonial, index) => (
+                  <Testimonial
+                    key={index}
+                    testimonialUserName={testimonial.name}
+                    testimonialHeadline={testimonial.headline}
+                    testimonialUserImage={testimonial.image}
+                    testimonialRate={testimonial.rate}
+                    testimonialDescription={testimonial.description}
+                  />
+                ))}
+            </div>
+          </Section>
 
           {/* Share Mentor Page Modal */}
           {showModal && (
@@ -213,7 +216,7 @@ export default Index;
 export const getStaticPaths = async () => {
   // Fetch all mentor usernames to generate static pages
   const { data: mentors } = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
   );
 
   const paths = mentors

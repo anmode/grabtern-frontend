@@ -1,62 +1,53 @@
 import React from "react";
-import { MdVideoCameraFront, MdRingVolume } from "react-icons/md";
-import { BsClock, BsCurrencyRupee, BsPlus } from "react-icons/bs";
-import styles1 from "../../styles/mentorTestimonial.module.css";
+import { Button, IconCard } from "../UI";
+import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
+import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
 export default function SessionCard({
   mentorUsername,
   type,
   name,
   description,
   duration,
-  pricePerSession,
+  price,
   handleBookSession,
 }) {
-  console.log(`${mentorUsername}/bookSession/${name}`);
+  let Icon = FaVideo;
+  switch (type) {
+    case "group Call":
+      Icon = FaUsers;
+      break;
+    case "text":
+      Icon = FaMessage;
+      break;
+    default:
+      Icon = FaVideo;
+      break;
+  }
   return (
-    <>
-      {/* session card */}
-      <div
-        className={`${styles1.sessionCard} tw-flex tw-flex-row tw-w-full tw-p-8 tw-bg-white tw-rounded-[36px] tw-shadow-[0px_0px_40px_0px_#00000025] tw-gap-5 tw-border-t-[1px] tw-mb-[30px]`}
-      >
-        {/* Session card Icon */}
-        {type === "video-meeting" ? (
-          <MdVideoCameraFront className="tw-text-[36px] tw-text-[#4338CA]" />
-        ) : (
-          <MdRingVolume className="tw-text-[36px] tw-text-[#4338CA]" />
-        )}
-        <div className="tw-flex tw-flex-col tw-w-full">
-          {/* Session card title */}
-          <h1 className="tw-text-[36px] tw-font-semibold tw-text-[#4338CA]">
-            {name}
-          </h1>
-          {/* Session card description */}
-          <h3 className="tw-text-[16px] tw-font-semibold tw-text-[#4338CA]/80">
-            {description}
-          </h3>
-          {/* Session card duration */}
-          <p className="tw-flex tw-flex-row tw-items-center tw-gap-3 tw-text-[16px] tw-whitespace-nowrap tw-font-medium tw-text-black/50">
-            <BsClock /> {duration} mins
-          </p>
-          {/* Session card Charge */}
-          <p className="tw-flex tw-flex-row tw-items-center tw-gap-3 tw-text-[16px] tw-whitespace-nowrap tw-font-medium tw-text-black/50">
-            <BsCurrencyRupee /> {pricePerSession}
-          </p>
-          {/* Session Book Button */}
-          <a href={`${mentorUsername}/bookSession/${name}`}>
-            <button
-              type="button"
-              role="button"
-              className="tw-flex tw-flex-row tw-self-end tw-justify-center tw-gap-3 tw-text-white tw-bg-[#4338CA] tw-rounded-[12px] tw-py-2 tw-pr-7 tw-pl-4 tw-mt-4 tw-items-center tw-max-w-[210px] hover:tw-bg-[#322995] active:tw-outline active:tw-outline-2 active:tw-outline-[#4338CA]/80 tw-transition-all"
-            >
-              <BsPlus className="tw-text-[24px]" />
-              <span className="tw-text-[18px] tw-font-normal">
-                {" "}
-                Book Session
-              </span>
-            </button>
-          </a>
+    <IconCard
+      Icon={Icon}
+      heading={name}
+      body={description}
+      intent="bg"
+      size="lg"
+    >
+      {/* time and price details */}
+      <div className="tw-flex tw-gap-4 tw-flex-wrap tw-my-4">
+        <div className="tw-flex tw-items-center tw-gap-2">
+          <RiTimeFill className="tw-text-2xl tw-text-primary-50" />{" "}
+          <p>{duration} Minutes</p>
+        </div>
+        <div className="tw-flex tw-items-center tw-gap-2">
+          <RiCoinsFill className="tw-text-2xl tw-text-yellow-400" />{" "}
+          <p>Rs. {price}</p>
         </div>
       </div>
-    </>
+      {/* book session btn */}
+      <Button
+        className="tw-mt-1"
+        text="Book Session"
+        onClick={handleBookSession}
+      />
+    </IconCard>
   );
 }

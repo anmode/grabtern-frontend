@@ -165,6 +165,8 @@ export default function Home() {
         </Section>
 
         <About />
+
+        {/* hackathon section */}
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
@@ -221,16 +223,7 @@ export default function Home() {
                 className="owl-carousel owl-theme"
               >
                 {testiomialsData.map((testimonial, index) => (
-                  <Testimonial
-                    key={index}
-                    testimonialUserName={testimonial.testimonialUserName}
-                    testimonialUserHeadline={
-                      testimonial.testimonialUserHeadline
-                    }
-                    testimonialUserImage={testimonial.testimonialUserImage}
-                    testimonialRate={testimonial.testimonialRate}
-                    testimonialDescription={testimonial.testimonialDescription}
-                  />
+                  <Testimonial key={index} {...testimonial} />
                 ))}
               </OwlCarousel>
             ) : null}

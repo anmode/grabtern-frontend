@@ -1,4 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Mulish:wght@400;500;600;700&display=swap");
+
+.theme{
+  transition: 1s all ease;
+}
+
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #fdf8f8;
+}
+
 .white-bg {
   background: #ffffff;
 }
@@ -115,21 +130,21 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Josefin Sans", sans-serif;
+  /* font-family: "Josefin Sans", sans-serif; */
   color: #4255a4;
   margin-top: 0px;
   font-style: normal;
   font-weight: 400;
   text-transform: normal;
 }
-p {
+/* p {
   font-family: "Mulish", sans-serif;
   color: #10285d;
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
-}
+} */
 .bg-img-1 {
   background-image: url(../img/slider/slider-img-1.webp);
 }
@@ -3578,7 +3593,7 @@ p {
 }
 @media (max-width: 575px) {
   .login-form {
-    width: 380px;
+    width: 300px;
     padding: 110px 40px 15px 40px;
     margin: 100px auto 0 auto;
   }
@@ -3615,7 +3630,7 @@ p {
 .login-form .form-input input {
   outline: none;
   height: 40px;
-  padding: 10px;
+  padding: 10px 5rem 10px 0;
   box-sizing: border-box;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.5);

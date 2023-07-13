@@ -3,8 +3,7 @@ const webpack = require("webpack");
 module.exports = {
   reactStrictMode: true,
   images: {
-    // domains: ["lh3.googleusercontent.com"],
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "lh3.googleusercontent.com"],
   },
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
   webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {

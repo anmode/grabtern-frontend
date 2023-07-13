@@ -56,13 +56,7 @@ function MyApp({ Component, pageProps }) {
         <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
-        />
-        <meta name="language" content="English" />
         <link rel="icon" href="/assets/img/favicon1.ico" />
-        <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link
           rel="alternate"
@@ -70,42 +64,147 @@ function MyApp({ Component, pageProps }) {
           title="Emupedia"
           href="https://grabtern.com/feed.xml"
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://grabtern.com/" />
-        <meta
-          name="keywords"
-          content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes"
-        />
-        <meta property="og:title" content="GrabTern" />
-        <meta
-          property="og:description"
-          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
-        />
-        <meta
-          property="og:image"
-          content="https://grabtern.com/grabtern_meta_img.webp"
-        />
 
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://grabtern.com/" />
-        <meta property="twitter:title" content="GrabTern" />
-        <meta
-          property="twitter:description"
-          content="With GrabTern you can easily get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+       <!-- SEO ESSENTIALS -->
+        <meta 
+            name="robots" 
+            content="index, follow"
+        />
+        <meta 
+            name="language" 
+            content="en"
+        />
+        <meta 
+            name="revisit-after" 
+            content="7 days"
+        />
+        <meta 
+            name="distribution" 
+            content="global"
+        />
+        <meta 
+            name="geo.region" 
+            content="india"
+        />
+        <meta 
+            name="googlebot" 
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta 
+            http-equiv="content-language" 
+            content="en"
+        />
+        <meta 
+            name="description"
+            content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+        <meta 
+            name="keywords"
+            content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes"
+        />
+        <link 
+            rel="canonical" 
+            href="https://grabtern.com/"
+        />
+        <meta 
+            http-equiv="X-UA-Compatible" 
+            content="IE=edge" 
+        />
+        <meta 
+            name="theme-color" 
+            content="#0000" 
+        />
+        <meta 
+            name="msapplication-navbutton-color" 
+            content="#0000" 
+        />
+        <meta 
+            name="msapplication-TileColor" 
+            content="#ffffff" 
+        />
+        <meta 
+            name="apple-mobile-web-app-capable" 
+            content="yes" 
+        />
+        <meta 
+            name="apple-mobile-web-app-status-bar-style" 
+            content="#0000" 
+        />
+        <meta 
+            name="theme-color" 
+            content="#0000" 
         />
         <meta
-          property="twitter:image"
-          content="https://grabtern.com/grabtern_meta_img.webp"
-        />
-        <meta name="twitter:site" content="@grabtern_twitter_username" />
-        <meta
-          name="linkedin:profile"
-          content="https://www.linkedin.com/company/grabtern/"
+            name="linkedin:profile"
+            content="https://www.linkedin.com/company/grabtern/"
         />
         <meta
-          property="instagram:username"
-          content="https://www.instagram.com/grabtern.guide/"
+            property="instagram:username"
+            content="https://www.instagram.com/grabtern.guide/"
         />
+      
+        <!-- Open Graph Essentials -->
+        <meta 
+            property="og:type" 
+            content="website" 
+        />
+        <meta 
+            name="og:author" 
+            content="anmode"
+        />
+        <meta 
+            name="og:video" 
+            content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/video.mp4"
+        />
+        <meta 
+            property="og:url" 
+            content="https://grabtern.com/" 
+        />
+        <meta 
+             property="og:site_name" 
+             content="GrabTern"
+        />
+        <meta 
+            name="og:title"
+            content="GrabTern | Grab your first Internship."
+        />
+        <meta 
+            name="og:description"
+            content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+        <meta 
+            property="og:image" 
+            content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp" 
+        />
+      
+          <!-- Twitter Essentials -->
+        <meta 
+            name="twitter:card" 
+            content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp"
+        />
+        <meta 
+            name="twitter:site" 
+            content="@grabtern"
+        />
+        <meta 
+            name="twitter:image" 
+            content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp"
+        />
+        <meta 
+            property="twitter:url" 
+            content="https://www.grabtern.com/" 
+        />
+        <meta 
+            property="twitter:title" 
+            content="Grabtern" 
+        />
+        <meta
+            property="twitter:description"
+            content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+      
+        <!-- META END -->
+            
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addProductJsonLd()}

@@ -14,6 +14,34 @@ import styles from "../styles/loader.module.css";
 import Testimonial from "../components/Testimonial";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import { Section } from "../components/UI";
+const OwlCarousel = dynamic(import("react-owl-carousel"), {
+  ssr: false,
+});
+import "owl.carousel/dist/assets/owl.carousel.min.css";
+import "owl.carousel/dist/assets/owl.theme.default.min.css";
+
+// testimonial carousel options
+const testimonialOptions = {
+  margin: 40,
+  items: 4,
+  nav: true,
+  loop: true,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    900: {
+      items: 2,
+    },
+    1170: {
+      items: 3,
+    },
+  },
+};
+
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
@@ -24,6 +52,7 @@ function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState("");
+  const [carousel, setCarousel] = useState(true);
 
   const {
     isMentorLoggedIn,
@@ -149,8 +178,20 @@ function Index({ mentorDetail }) {
             subheading="Inspiring Testimonials on the Transformative Mentorship Experience"
             align="center"
           >
-            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-              {/* Session Cards for every session */}
+            <div>
+              {carousel === true ? (
+                <OwlCarousel
+                {...testimonialOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                nav={true}
+                loop={true}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+              {/* testimonial Cards for every session */}
               {mentorDetail?.testimonials?.length !== 0 &&
                 mentorDetail?.testimonials?.map((testimonial, index) => (
                   <Testimonial
@@ -162,6 +203,7 @@ function Index({ mentorDetail }) {
                     testimonialDescription={testimonial.description}
                   />
                 ))}
+            </OwlCarousel>) : null }
             </div>
           </Section>
 
@@ -229,7 +271,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { mentorUsername } = context.params;
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/rahul2002`;
   const { data: res } = await axios.get(url);
 
   if (res.message === "Invalid link") {

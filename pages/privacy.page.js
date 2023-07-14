@@ -44,13 +44,13 @@ function privacy() {
             This summary provides key points from our privacy notice, but you
             can find out more details about any of these topics by clicking the
             link following each key point or by using our{" "}
-            <a href="#toc">table of contents</a> below to find the section you
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#toc">table of contents</a> below to find the section you
             are looking for.<br></br>
             What personal information do we process? When you visit, use, or
             navigate our Services, we may process personal information depending
             on how you interact with Grabtern and the Services, the choices you
             make, and the products and features you use.{" "}
-            <a href="#1">
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#1">
               Learn more about personal information you disclose to us.
             </a>
             <br></br>
@@ -66,12 +66,12 @@ function privacy() {
             also process your information for other purposes with your consent.
             We process your information only when we have a valid legal reason
             to do so.{" "}
-            <a href="#2">Learn more about how we process your information.</a>
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#2">Learn more about how we process your information.</a>
             <br></br>
             In what situations and with which parties do we share personal
             information? We may share information in specific situations and
             with specific third parties.{" "}
-            <a href="#3">
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#3">
               Learn more about when and with whom we share your personal
               information.
             </a>
@@ -84,16 +84,16 @@ function privacy() {
             cybercriminals, or other unauthorized third parties will not be able
             to defeat our security and improperly collect, access, steal, or
             modify your information.{" "}
-            <a href="#8">Learn more about how we keep your information safe.</a>
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#8">Learn more about how we keep your information safe.</a>
             <br></br>
             What are your rights? Depending on where you are located
             geographically, the applicable privacy law may mean you have certain
             rights regarding your personal information.{" "}
-            <a href="#8">Learn more about your privacy rights.</a>
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#8">Learn more about your privacy rights.</a>
             <br id="1"></br>
             How do you exercise your rights? The easiest way to exercise your
             rights is by submitting a{" "}
-            <a href="https://app.termly.io/notify/c64101d9-760d-43fe-89df-0884d72c12d9">
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="https://app.termly.io/notify/c64101d9-760d-43fe-89df-0884d72c12d9">
               data subject access request
             </a>
             , or by contacting us. We will consider and act upon any request in
@@ -101,11 +101,11 @@ function privacy() {
             <br></br>
             Want to learn more about what Grabtern does with any information we
             collect?{" "}
-            <a href="#tncheading">Review the privacy notice in full.</a>
+            <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#tncheading">Review the privacy notice in full.</a>
           </div>
           <div className="tableofcontents tw-scroll-smooth">
             <div className="tnc" id="toc">
-              <h1>TABLE OF CONTENTS</h1>
+              <h1 className="tw-text-center">TABLE OF CONTENTS</h1>
             </div>
             <div style={{ paddingRight: 10, paddingTop: 10 }}>
               <div>
@@ -159,6 +159,7 @@ function privacy() {
             </div>
           </div>
         </div>
+        
         <div className="terms-and-cond tw-rounded-3xl tw-container tw-mt-16 tw-shadow-2xl tw-p-16">
           <div className="terms-and-cond-sub">
             <div className="tnc-sub-head">

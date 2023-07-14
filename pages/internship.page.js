@@ -1,15 +1,7 @@
-import About from "../components/About";
-import Header from "../components/layout/Header";
-import servicesData from "./data/ServicesData";
-import Service from "../components/Service";
 import internshipsData from "./data/coursesData";
-import Internship from "../components/Internship";
-import hackathonsData from "./data/hackathonsData";
-import Hackathon from "../components/hackthons/Hackathons";
-import teamsData from "./data/teamsData";
-import TeamProfile from "../components/TeamProfile";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import Banner from "../components/Banner";
+
 import dynamic from "next/dynamic";
 import GalleryCard from "../components/GalleryCard";
 
@@ -18,13 +10,10 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/basic/LoginDropdown";
 import Image from "next/image";
-import Head from "next/head";
+
 // import gstyles from "../styles/gridhackathon.module.css";
 import SearchBar from "../components/hackthons/components/Searchbar";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import Tooltip from "@mui/material/Tooltip";
+
 // import Hackathons from "./hackathon.page";
 import Link from "next/link";
 import styles from "../styles/LoginDropdown.module.css";
@@ -108,6 +97,14 @@ const teamsOptions = {
     },
   },
 };
+const InternshipLabels = [
+  "Web",
+  "Blockchain",
+  "Female Centric",
+  "Part Time",
+  "Major League Hacking",
+  "Research",
+];
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -122,18 +119,17 @@ export default function Home() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState("All");
-  const [HackathonsData, setHackathonsData] = useState(hackathonsData);
-  const [filterHack, setFilterHack] = useState(hackathonsData);
+  const [tagFilter, setTagFilter] = useState("");
 
-  const filteredHackathons = HackathonsData.filter((hackathon) => {
-    console.log(typeof tagFilter);
+  const [InternshipsData, setInternshipsData] = useState(internshipsData);
+  // console.log(InternshipsData);
+  const filteredInternships = InternshipsData.filter((hackathon) => {
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
       tag.toLowerCase().includes(tagFilter.toLowerCase()),
     );
     if (tagFilter === "All") {
-      const titleMatch = hackathon.hackathonTitle
+      const titleMatch = hackathon.internshipTitle
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
@@ -144,7 +140,7 @@ export default function Home() {
         // console.log("hpo");
         if (tagFilter === "bookmarked") {
           if (searchQuery != " ") {
-            const titleMatch = hackathon.hackathonTitle
+            const titleMatch = hackathon.internshipTitle
               .toLowerCase()
               .includes(searchQuery.toLowerCase());
 
@@ -157,33 +153,21 @@ export default function Home() {
       } // Skip the hackathon if it doesn't match the tag filter
     }
     // console.log("pooh");
-    const titleMatch = hackathon.hackathonTitle
+    const titleMatch = hackathon.internshipTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
 
     return titleMatch;
   });
 
-  useEffect(() => {
-    // if (tagFilter.includes("All") && tagFilter.length === 1) {
-    //   setFilterHack(hackathonsData)
-    // }
-    setFilterHack(
-      filteredHackathons.length !== 0 ||
-        (!tagFilter.includes("All") && tagFilter.length < 2)
-        ? filteredHackathons
-        : hackathonsData,
-    );
-  });
-
   // console.log(filteredHackathons);
   const handleBookmark = (index) => {
-    const updatedHackathons = [...HackathonsData];
+    const updatedHackathons = [...InternshipsData];
     console.log(updatedHackathons[index]);
     // console.log("hello" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     updatedHackathons[index].bookmarked = !updatedHackathons[index].bookmarked;
     // console.log("ua" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
-    setHackathonsData(updatedHackathons);
+    setInternshipsData(updatedHackathons);
   };
   const [open, setOpen] = useState(false);
 
@@ -224,13 +208,6 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const HackathonLabels = [
-    "web",
-    "upcoming",
-    "Beginner Friendly",
-    "Programming",
-    "Blockchain",
-  ];
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -289,7 +266,7 @@ export default function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-8">
                 <div className="section-tittle text-center mb-55">
-                  <h2 style={{ color: "#845ec2" }}>Explore Top Hackathons</h2>
+                  <h2 style={{ color: "#845ec2" }}>Explore Top Internships</h2>
                 </div>
               </div>
             </div>
@@ -297,19 +274,23 @@ export default function Home() {
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
-                tagFilter={tagFilter}
-                HackathonLabels={HackathonLabels}
+                InternshipLabels={InternshipLabels}
               />
             </div>
             <div className="row">
-              {filterHack.map((hackathon, index) => (
+              {filteredInternships.map((internship, index) => (
                 <GalleryCard
-                  isInternship={false}
+                  isInternship={true}
                   key={index}
-                  hackathonImage={hackathon.hackathonImage}
-                  hackathonImageAlt={hackathon.hackathonImageAlt}
-                  hackathonLink={hackathon.hackathonLink}
-                  hackathonTitle={hackathon.hackathonTitle}
+                  internshipImage={internship.internshipImage}
+                  internshipImageAlt={internship.internshipImageAlt}
+                  internshipCategories={internship.internshipCategories}
+                  internshipTitle={internship.internshipTitle}
+                  internshipDescription={internship.internshipDescription}
+                  internshipRating={internship.internshipRating}
+                  internshipPayed={internship.internshipPayed}
+                  internshipPrice={internship.internshipPrice}
+                  internshipLink={internship.internshipLink}
                 />
               ))}
             </div>

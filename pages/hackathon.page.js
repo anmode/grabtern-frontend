@@ -1,15 +1,6 @@
-import About from "../components/About";
 import Header from "../components/layout/Header";
-import servicesData from "./data/ServicesData";
-import Service from "../components/Service";
-import internshipsData from "./data/coursesData";
-import Internship from "../components/Internship";
 import hackathonsData from "./data/hackathonsData";
-import Hackathon from "../components/hackthons/Hackathons";
-import teamsData from "./data/teamsData";
-import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/layout/Footer";
-import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import GalleryCard from "../components/GalleryCard";
 

@@ -135,7 +135,7 @@ export default function Home() {
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
 
         {/* services section */}
-        <section className="tw-w-full tw-px-4 -tw-mt-24">
+        <section className="tw-w-full tw-px-4 lg:-tw-mt-24">
           <div className="tw-w-full tw-max-w-7xl tw-mx-auto">
             <div className="tw-grid md:tw-grid-cols-3 lg:tw-grid-cols-3 tw-gap-x-6 tw-gap-y-12 tw-items-center tw-justify-center">
               {servicesData.map((service, index) => (

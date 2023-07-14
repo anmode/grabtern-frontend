@@ -5,6 +5,7 @@ import {
   Service,
   TeamProfile,
   Testimonial,
+  Banner,
 } from "../components/homePage";
 import Hackathon from "../components/hackthons/Hackathons";
 import internshipsData from "./data/coursesData";
@@ -14,7 +15,6 @@ import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ButtonLink, Section } from "../components/UI";

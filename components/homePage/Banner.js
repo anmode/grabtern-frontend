@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonLink } from "./UI";
+import { ButtonLink } from "../UI";
 
 function Banner({ isMentorLoggedIn }) {
   return (

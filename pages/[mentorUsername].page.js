@@ -11,7 +11,7 @@ import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
-import Testimonial from "../components/Testimonial";
+import { Testimonial } from "../components/homePage";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import { Section } from "../components/UI";
 const OwlCarousel = dynamic(import("react-owl-carousel"), {

@@ -101,31 +101,8 @@ export default function MentorForm() {
     });
   };
 
-  const uploadToCloudinary = async (file) => {
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
-    try {
-      const res = await axios.post(url, {
-        file: file,
-        upload_preset: "image_preset",
-      });
-      console.log(res.data.secure_url);
-      return res.data.secure_url;
-    } catch (error) {
-      console.log("Couldn't upload image to Cloudinary", error);
-    }
-  };
-
-  const handleUploadImageChange = async (e) => {
-    const file = e.target.files[0];
-    const fileData = await convertBase64(file);
-    console.log("The uploaded image is: ", file);
-    const imgLink = await uploadToCloudinary(fileData);
-    console.log(imgLink);
-    setFormData({
-      ...formData,
-      image: imgLink,
-    });
-    console.log(formData);
+  const handleUploadImageChange = async (fileName, imgUrl) => {
+    setFormData({ ...formData, image: imgUrl });
   };
 
   // const handleSessionPriceChange = (e) => {

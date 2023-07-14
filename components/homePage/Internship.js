@@ -1,6 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import { ImageCard } from "./UI";
+import { ImageCard } from "../UI";
 
 function Internship({
   internshipImage,

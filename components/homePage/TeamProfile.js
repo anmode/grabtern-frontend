@@ -1,6 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import { ProfileCard } from "./UI";
+import { ProfileCard } from "../UI";
 
 function TeamProfile({ imageSrc, imageAlt, profileName, profileDescription }) {
   return (

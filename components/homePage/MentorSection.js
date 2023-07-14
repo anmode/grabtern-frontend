@@ -1,5 +1,5 @@
 import React from "react";
-import { IconCard, ProfileCard, Section } from "../components/UI";
+import { IconCard, ProfileCard, Section } from "../UI";
 import {
   PiUsersThreeDuotone,
   PiCertificateDuotone,

@@ -1,5 +1,5 @@
 import React from "react";
-import { IconCard } from "./UI";
+import { IconCard } from "../UI";
 
 function Service({ ServiceIcon, serviceHeading, serviceDescription }) {
   return (

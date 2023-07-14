@@ -1,6 +1,6 @@
 import React from "react";
 import { FaQuoteLeft } from "react-icons/fa";
-import { IconCard, ProfileCard } from "./UI";
+import { IconCard, ProfileCard } from "../UI";
 
 function Testimonial({
   testimonialUserName,

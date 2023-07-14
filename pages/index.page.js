@@ -1,21 +1,23 @@
-import About from "../components/About";
-import Header from "../components/layout/Header";
-import servicesData from "./data/ServicesData";
-import Service from "../components/Service";
-import internshipsData from "./data/coursesData";
-import Internship from "../components/Internship";
-import hackathonsData from "./data/hackathonsData";
+import {
+  About,
+  Internship,
+  MentorSection,
+  Service,
+  TeamProfile,
+  Testimonial,
+} from "../components/homePage";
 import Hackathon from "../components/hackthons/Hackathons";
+import internshipsData from "./data/coursesData";
+import servicesData from "./data/ServicesData";
+import hackathonsData from "./data/hackathonsData";
 import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
-import Testimonial from "../components/Testimonial.js";
-import TeamProfile from "../components/TeamProfile";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ButtonLink, Section } from "../components/UI";
-import MentorSection from "../components/MentorSection";
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {

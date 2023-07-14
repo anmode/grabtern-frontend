@@ -4,7 +4,7 @@ import {
   PiSneakerMoveDuotone,
   PiLightbulbDuotone,
 } from "react-icons/pi";
-import { IconCard, Section } from "./UI";
+import { IconCard, Section } from "../UI";
 function About() {
   return (
     <Section

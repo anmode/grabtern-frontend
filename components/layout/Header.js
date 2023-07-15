@@ -63,8 +63,8 @@ function Header() {
       className={clsx(
         "tw-w-full tw-px-4 tw-mb-0",
         scrollY
-          ? "tw-bg-white tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-black dark:tw-bg-muted-900 tw-shadow-lg tw-shadow-muted-300/30 dark:tw-shadow-muted-900/40 tw-transition-all tw-duration-300"
-          : "tw-bg-base-200 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 dark:tw-bg-muted-900 tw-shadow-lg tw-shadow-muted-300/30 dark:tw-shadow-muted-900/40 tw-text-black",
+          ? "tw-bg-white tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-black dark:tw-bg-muted-900 tw-transition-all tw-duration-300"
+          : "tw-bg-base-200 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 dark:tw-bg-muted-900 tw-text-black",
       )}
     >
       <nav className="tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-justify-between tw-items-center tw-relative">

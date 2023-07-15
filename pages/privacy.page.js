@@ -16,7 +16,7 @@ function privacy() {
           <div
             className="tnc"
             id="tncheading"
-            style={{ textAlign: "center", fontSize: 45, lineHeight: "1.5" }}
+            style={{ textAlign: "center", fontSize: 35, lineHeight: "1.5" }}
           >
             PRIVACY POLICY
           </div>
@@ -103,9 +103,9 @@ function privacy() {
             collect?{" "}
             <a className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline" href="#tncheading">Review the privacy notice in full.</a>
           </div>
-          <div className="tableofcontents tw-scroll-smooth">
+          <div className="tableofcontents">
             <div className="tnc" id="toc">
-              <h1 className="tw-text-center">TABLE OF CONTENTS</h1>
+              <h1>TABLE OF CONTENTS</h1>
             </div>
             <div style={{ paddingRight: 10, paddingTop: 10 }}>
               <div>

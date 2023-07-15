@@ -1583,10 +1583,9 @@ select {
 .tnc {
   font-family: "Josefin Sans", sans-serif;
   color: #4255a4;
-  margin-top: 0px;
-  margin-bottom: 0px;
   font-style: normal;
-  font-weight: 350;
+  font-weight: 300;
+  text-align: center;
   text-transform: normal;
 }
 
@@ -1620,7 +1619,7 @@ select {
   color: #10285d;
   margin-left: 20px;
   float: left;
-  width: 45%;
+  width: 50%;
   margin-right: 10%;
   font-size: 18px;
 }
@@ -1629,11 +1628,9 @@ select {
   font-family: "Josefin Sans", sans-serif;
   margin-top: 0px;
   float: left;
-  margin-left: 40px;
   width: 35%;
   border: 1px solid #10285d;
   border-radius: 19px;
-  margin-right: 10px;
   padding-right: 0px;
   padding-left: 20px;
   background-color: #d2d8f0;
@@ -1642,8 +1639,8 @@ select {
 }
 
 @media screen and (min-width: 601px) and (max-width: 820px) {
-  .tableofcontents h1{
-    font-size: 38px;
+  .tnc h1{
+    font-size: 30px;
     text-align: center;
   }
   .terms-and-cond{
@@ -1665,11 +1662,9 @@ select {
   font-weight: 400;
   text-transform: normal;
   margin-top: 100px;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   color: #2e4fd5;
-  text-align: left;
-  margin-left: 20px;
   margin-top: 10px;
   padding-top: 10px;
 }
@@ -1712,12 +1707,11 @@ select {
   .maincontent {
     margin-left: 5px;
     margin-right: 5px;
-    text-align: center;
-    width: 89%;
+    width: 95%;
   }
   .tableofcontents {
     margin: auto;
-    width: 94%;
+    width: 100%;
     margin-top: 10px;
   }
   .terms-and-cond{

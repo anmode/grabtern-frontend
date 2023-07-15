@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { FaCopy, FaUpload } from "react-icons/fa";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
@@ -9,9 +11,66 @@ function BookSessionPage({ mentorDetail, sessionName }) {
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
+  const [paymentProof, setPaymentProof] = useState("");
+  const [fileName, setFileName] = useState("");
   const bookSession = mentorDetail.sessions.find(
     (obj) => obj.name === sessionName,
   );
+  const [qrPopup, setQrPopup] = useState(false);
+  const [popupStep, setPopupStep] = useState(1);
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const base64 = await convertBase64(file);
+    setPaymentProof(base64);
+    setFileName(file.name);
+    if (base64.length > 0) {
+      setPopupStep(2);
+    }
+  };
+
+  const bookSessionPaymentStep = () => {
+    const user = JSON.parse(localStorage.getItem("userData"));
+    const userName = user.user_name;
+    const userEmail = user.user_email;
+
+    if (!userName || !userEmail) {
+      return alert("Please login as a user before booking a session!");
+    }
+
+    if (!selectedDay) {
+      return alert("Please select day to book a session");
+    }
+
+    if (!selectedTime) {
+      return alert("Please select time to book a session");
+    }
+
+    setQrPopup(true);
+    setPopupStep(1);
+  };
+
+  const handleCopy = () => {
+    const paymentDetails = "9368086395@paytm";
+    navigator.clipboard.writeText(paymentDetails);
+    alert("Successfully copied!");
+  };
 
   const dayChangeActive = (e) => {
     document.querySelectorAll(".bookSessionSchedules .day li").forEach((el) => {
@@ -38,12 +97,9 @@ function BookSessionPage({ mentorDetail, sessionName }) {
       const userName = user.user_name;
       const userEmail = user.user_email;
 
-      if (!userName || !userEmail) {
-        return alert("Please login as a user before booking a session!");
+      if (paymentProof.length <= 0 || fileName.length <= 0) {
+        return alert("Upload transaction proof first to book a session!");
       }
-
-      const sessionDay = selectedDay.replace("\n", " ");
-      const sessionTime = selectedTime.replace("\n", " ");
 
       const data = {
         userName,
@@ -52,8 +108,10 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         mentorEmail: mentorDetail.email,
         sessionName: bookSession.name,
         sessionPrice: bookSession.price,
-        sessionDay,
-        sessionTime,
+        sessionDay: selectedDay,
+        sessionTime: selectedTime,
+        paymentProof,
+        imageName: fileName,
       };
 
       const response = await axios.post(
@@ -116,6 +174,47 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         className="container sessionContainer"
         style={{ marginTop: "100px" }}
       >
+        {qrPopup && popupStep === 1 ? (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <div className="modal-close" onClick={() => setQrPopup(false)}>
+                <AiFillCloseCircle />
+              </div>
+              <img src="/assets/img/QR.png" alt="QR" className="w-96 h-96" />
+              <span className="p-3">
+                <b>UPI ID</b>: 9368086395@paytm
+              </span>
+              <div className="buttons">
+                <button onClick={handleCopy}>
+                  <FaCopy className="mr-2" />
+                  <span>Copy</span>
+                </button>
+                <button className="fileUpload">
+                  <FaUpload className="mr-2" />
+                  <span>Upload proof</span>
+                  <input type="file" onChange={(e) => handleImageChange(e)} />
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : popupStep === 2 ? (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <div className="modal-close" onClick={() => setPopupStep(0)}>
+                <AiFillCloseCircle />
+              </div>
+              <br />
+              <div className="bookSessionBtn">
+                <button onClick={() => bookedSession()}>
+                  Book Session Now
+                </button>
+                {loading === true ? (
+                  <img src="/assets/img/gif/Spinner.gif" />
+                ) : null}
+              </div>
+            </div>
+          </div>
+        ) : null}
         <h1>Let's book a session</h1>
 
         <div className="session">
@@ -173,12 +272,9 @@ function BookSessionPage({ mentorDetail, sessionName }) {
                 {bookSession.price}
               </div>
               <div className="button">
-                <button onClick={() => bookedSession()}>
+                <button onClick={() => bookSessionPaymentStep()}>
                   Book Session Now{" "}
                 </button>
-                {loading === true ? (
-                  <img src="/assets/img/gif/Spinner.gif" />
-                ) : null}
               </div>
             </div>
           </div>

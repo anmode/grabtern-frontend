@@ -37,7 +37,7 @@ function Banner({ isMentorLoggedIn }) {
           {/* image and decoration */}
           <div className="tw-relative tw-col-span-12 lg:tw-col-span-7">
             <img
-              src="https://grabtern-new-frontend.vercel.app/img/illustrations/hero.svg"
+              src="./hero.svg"
               className="tw-block tw-w-full tw-max-w-[620px] tw-mx-auto"
               alt="Hero image"
             />

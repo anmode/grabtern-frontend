@@ -9,7 +9,7 @@ function Banner({ isMentorLoggedIn }) {
           <div className="tw-col-span-12 lg:tw-col-span-5">
             <div className="tw-h-full tw-flex tw-items-center tw-mb-8 lg:tw-mb-0">
               {/* text box */}
-              <div className="tw-mt-12 tw-text-center lg:tw-text-left tw-font-sans tw-space-y-4">
+              <div className="tw-mt-20 lg:tw-mt-12 tw-text-center lg:tw-text-left tw-font-sans tw-space-y-4">
                 <h1 className="tw-font-medium tw-text-4xl lg:tw-text-5xl !tw-leading-[60px] tw-font-[Poppins]">
                   Grab your Intern with GrabTern
                 </h1>

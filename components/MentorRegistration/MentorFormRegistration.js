@@ -101,10 +101,8 @@ export default function MentorForm() {
     });
   };
 
-  const handleUploadImageChange = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setFormData({ ...formData, image: base64 });
+  const handleUploadImageChange = async (fileName, imgUrl) => {
+    setFormData({ ...formData, image: imgUrl });
   };
 
   // const handleSessionPriceChange = (e) => {

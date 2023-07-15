@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
-    "@heroicons/react": "^2.0.18",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
     "antd": "^5.4.5",
@@ -40,6 +40,7 @@
     "simple-react-validator": "^1.6.2",
     "styled-components": "^5.3.10",
     "swr": "^2.1.5",
+    "webpack": "^5.88.1",
     "yup": "^1.2.0"
   },
   "devDependencies": {

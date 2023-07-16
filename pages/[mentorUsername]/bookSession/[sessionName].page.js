@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiFillInfoCircle } from "react-icons/ai";
 import { FaCopy, FaUpload } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
@@ -18,6 +20,7 @@ function BookSessionPage({ mentorDetail, sessionName }) {
   );
   const [qrPopup, setQrPopup] = useState(false);
   const [popupStep, setPopupStep] = useState(1);
+  const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -34,11 +37,39 @@ function BookSessionPage({ mentorDetail, sessionName }) {
     });
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("paymentIssuePopup") === "0") {
+      setPaymentIssuePopup(false);
+    }
+  });
+
+  const uploadToCloudinary = async (imageSrc) => {
+    if (!imageSrc) {
+      toast.error(
+        "Please select an image first before uploading to our server!",
+      );
+      return;
+    }
+    const res = await fetch(imageSrc);
+    const blob = await res.blob();
+    const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
+    try {
+      const formData = new FormData();
+      formData.append("file", blob);
+      formData.append("upload_preset", "image_preset");
+      const res = await axios.post(url, formData);
+      return res.data.secure_url;
+    } catch (error) {
+      toast.error("Sorry couldn't upload the image to our server", error);
+    }
+  };
+
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
     const base64 = await convertBase64(file);
-    setPaymentProof(base64);
+    const imageClouindaryUrl = await uploadToCloudinary(base64);
+    setPaymentProof(imageClouindaryUrl);
     setFileName(file.name);
     if (base64.length > 0) {
       setPopupStep(2);
@@ -51,15 +82,18 @@ function BookSessionPage({ mentorDetail, sessionName }) {
     const userEmail = user.user_email;
 
     if (!userName || !userEmail) {
-      return alert("Please login as a user before booking a session!");
+      toast.error("Please login as a user before booking a session!");
+      return;
     }
 
     if (!selectedDay) {
-      return alert("Please select day to book a session");
+      toast.error("Please select day to book a session");
+      return;
     }
 
     if (!selectedTime) {
-      return alert("Please select time to book a session");
+      toast.error("Please select time to book a session");
+      return;
     }
 
     setQrPopup(true);
@@ -98,7 +132,8 @@ function BookSessionPage({ mentorDetail, sessionName }) {
       const userEmail = user.user_email;
 
       if (paymentProof.length <= 0 || fileName.length <= 0) {
-        return alert("Upload transaction proof first to book a session!");
+        toast.error("Upload transaction proof first to book a session!");
+        return;
       }
 
       const data = {
@@ -119,13 +154,13 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         data,
       );
       setLoading(false);
-      alert("You have successfully booked a session!");
+      toast.success("You have successfully booked a session!");
       window.location.href = "/";
       console.log(response.data);
       // Add any further logic or redirection based on the response
     } catch (error) {
       setLoading(false);
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
       console.error("Error booking session:", error);
       // Handle error scenario
     }
@@ -174,6 +209,26 @@ function BookSessionPage({ mentorDetail, sessionName }) {
         className="container sessionContainer"
         style={{ marginTop: "100px" }}
       >
+        {paymentIssuePopup === true ? (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <div
+                className="modal-close"
+                onClick={() => {
+                  localStorage.setItem("paymentIssuePopup", "0");
+                  setPaymentIssuePopup(false);
+                }}
+              >
+                <AiFillCloseCircle />
+              </div>
+              <br />
+              <span className="flex">
+                <AiFillInfoCircle /> Currently payment gateway is on hold so we
+                have to do like this
+              </span>
+            </div>
+          </div>
+        ) : null}
         {qrPopup && popupStep === 1 ? (
           <div className="modal-overlay">
             <div className="modal-content">
@@ -279,6 +334,7 @@ function BookSessionPage({ mentorDetail, sessionName }) {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

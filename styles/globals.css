@@ -1958,6 +1958,17 @@ select {
   height: 250px;
   width: fit-content;
 }
+.modal-content span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.modal-content span svg {
+  width: 20px;
+  height: 20px;
+}
+
 .modal-content .buttons {
   display: flex;
   align-items: center;

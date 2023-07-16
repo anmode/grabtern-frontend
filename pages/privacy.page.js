@@ -27,9 +27,15 @@ function privacy() {
             might collect, store, use, and/or share ("<b>Process</b>") your
             information when you use our services ("<b>Services</b>"), such as
             when you: Visit our website at{" "}
-            <a className="hover:tw-text-[#5C18E1]" href="https://www.grabtern.com">https://www.grabtern.com</a>, or
-            any website of ours that links to this privacy notice Engage with us
-            in other related ways, including any sales, marketing, or events.
+            <a
+              className="hover:tw-text-[#5C18E1]"
+              href="https://www.grabtern.com"
+            >
+              https://www.grabtern.com
+            </a>
+            , or any website of ours that links to this privacy notice Engage
+            with us in other related ways, including any sales, marketing, or
+            events.
             <b></b>
             <b>Questions or concerns?</b> Reading this privacy notice will help
             you understand your privacy rights and choices. If you do not agree
@@ -143,49 +149,67 @@ function privacy() {
             </div>
             <div style={{ paddingRight: 10, paddingTop: 10 }}>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#1">1. WHAT INFORMATION DO WE COLLECT?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#1">
+                  1. WHAT INFORMATION DO WE COLLECT?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#2">2. HOW DO WE PROCESS YOUR INFORMATION?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#2">
+                  2. HOW DO WE PROCESS YOUR INFORMATION?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#3">
+                <a className="hover:tw-text-[#5C18E1]" href="#3">
                   3. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
                 </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#4">
+                <a className="hover:tw-text-[#5C18E1]" href="#4">
                   4. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
                 </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#5">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#5">
+                  5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#6">6. HOW LONG DO WE KEEP YOUR INFORMATION?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#6">
+                  6. HOW LONG DO WE KEEP YOUR INFORMATION?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#7">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#7">
+                  7. HOW DO WE KEEP YOUR INFORMATION SAFE?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#8">8. WHAT ARE YOUR PRIVACY RIGHTS?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#8">
+                  8. WHAT ARE YOUR PRIVACY RIGHTS?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#9">9. CONTROLS FOR DO-NOT-TRACK FEATURES</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#9">
+                  9. CONTROLS FOR DO-NOT-TRACK FEATURES
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#10">
+                <a className="hover:tw-text-[#5C18E1]" href="#10">
                   10. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
                 </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#11">11. DO WE MAKE UPDATES TO THIS NOTICE?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#11">
+                  11. DO WE MAKE UPDATES TO THIS NOTICE?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#12">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>
+                <a className="hover:tw-text-[#5C18E1]" href="#12">
+                  12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
+                </a>
               </div>
               <div>
-                <a  className="hover:tw-text-[#5C18E1]" href="#13">
+                <a className="hover:tw-text-[#5C18E1]" href="#13">
                   13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT
                   FROM YOU?
                 </a>

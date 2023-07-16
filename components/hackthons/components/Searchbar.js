@@ -22,7 +22,7 @@ function SearchBar({
   };
 
   return (
-    <form>
+    <form className="tw-w-full tw-max-w-7xl tw-mx-auto">
       <TextField
         id="search-bar"
         className="text"
@@ -42,9 +42,9 @@ function SearchBar({
           borderRadius: 50,
         }}
         InputProps={{
-          sx: { height: 55 },
+          sx: { height: window.innerWidth > 768 ? 55 : 45 },
           style: {
-            fontSize: 20,
+            fontSize: window.innerWidth > 768 ? 20 : 16,
             paddingTop: 5,
             paddingBottom: 5,
             paddingRight: 5,
@@ -55,7 +55,10 @@ function SearchBar({
           startAdornment: (
             <InputAdornment position="start">
               <IconButton aria-label="search">
-                <SearchIcon style={{ fill: "black" }} sx={{ fontSize: 35 }} />
+                <SearchIcon
+                  style={{ fill: "black" }}
+                  sx={{ fontSize: window.innerWidth > 768 ? 35 : 30 }}
+                />
               </IconButton>
             </InputAdornment>
           ),
@@ -66,10 +69,7 @@ function SearchBar({
         InputLabelProps={{ style: { fontSize: 90 } }}
       />
 
-      <div
-        className={`${hackathonStyle.chipfil} `}
-        style={{ marginTop: "20px" }}
-      >
+      <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-4">
         <Chip
           variant={selectedTag === "All" ? "default" : "outlined"}
           // color={selectedTag === "All" ? "primary" : "info"}
@@ -77,9 +77,8 @@ function SearchBar({
           value="All"
           onClick={() => handleTagChange("All")}
           style={{
-            width: "90px",
-            height: "45px",
-            fontSize: "20px",
+            fontSize: window.innerWidth > 768 ? "16px" : "14px",
+            padding: "1rem",
             backgroundColor: selectedTag === "All" ? "#845ec2" : "#fff",
             borderColor: selectedTag === "All" ? "#845ec2" : "#845ec2",
             color: selectedTag === "All" ? "#fff" : "#845ec2",
@@ -95,8 +94,8 @@ function SearchBar({
               label={mylabel}
               onClick={() => handleTagChange(mylabel)}
               style={{
-                height: "45px",
-                fontSize: "20px",
+                fontSize: window.innerWidth > 768 ? "16px" : "14px",
+                padding: "1rem",
                 backgroundColor: selectedTag === mylabel ? "#845ec2" : "#fff",
                 borderColor: selectedTag === mylabel ? "#845ec2" : "#845ec2",
                 color: selectedTag === mylabel ? "#fff" : "#845ec2",
@@ -112,8 +111,8 @@ function SearchBar({
               label={mylabel}
               onClick={() => handleTagChange(mylabel)}
               style={{
-                height: "45px",
-                fontSize: "20px",
+                fontSize: window.innerWidth > 768 ? "16px" : "14px",
+                padding: "1rem",
                 backgroundColor: selectedTag === mylabel ? "#845ec2" : "#fff",
                 borderColor: selectedTag === mylabel ? "#845ec2" : "#845ec2",
                 color: selectedTag === mylabel ? "#fff" : "#845ec2",

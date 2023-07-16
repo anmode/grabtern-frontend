@@ -119,25 +119,21 @@ export default function Home() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState("");
+  const [tagFilter, setTagFilter] = useState([]);
 
   const [InternshipsData, setInternshipsData] = useState(internshipsData);
-  // console.log(InternshipsData);
+
   const filteredInternships = InternshipsData.filter((hackathon) => {
-    // console.log(hackathon.tags);
-    const tagMatch = hackathon.tags.some((tag) =>
-      tag.toLowerCase().includes(tagFilter.toLowerCase()),
-    );
-    if (tagFilter === "All") {
+    const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
+
+    if (tagFilter.toString() === "All") {
       const titleMatch = hackathon.internshipTitle
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
       return titleMatch && true;
     } else {
-      // console.log(tagFilter);
-      if (tagFilter !== "" && !tagMatch) {
-        // console.log("hpo");
+      if (tagFilter.toString() !== "" && !tagMatch) {
         if (tagFilter === "bookmarked") {
           if (searchQuery != " ") {
             const titleMatch = hackathon.internshipTitle
@@ -146,13 +142,11 @@ export default function Home() {
 
             return titleMatch && hackathon.bookmarked;
           }
-          // console.log("hello");
           return hackathon.bookmarked;
         }
         return false;
       } // Skip the hackathon if it doesn't match the tag filter
     }
-    // console.log("pooh");
     const titleMatch = hackathon.internshipTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -187,6 +181,7 @@ export default function Home() {
   const handleTagFilter = (tag) => {
     setTagFilter(tag);
   };
+
   useEffect(() => {
     if (userData?.user_name) {
       setIsUserLoggedIn(true);

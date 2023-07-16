@@ -113,26 +113,21 @@ export default function Home() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState("All");
+  const [tagFilter, setTagFilter] = useState(["All"]);
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
   const [filterHack, setFilterHack] = useState(hackathonsData);
 
   const filteredHackathons = HackathonsData.filter((hackathon) => {
-    console.log(typeof tagFilter);
-    // console.log(hackathon.tags);
-    const tagMatch = hackathon.tags.some((tag) =>
-      tag.toLowerCase().includes(tagFilter.toLowerCase()),
-    );
-    if (tagFilter === "All") {
+    const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
+
+    if (tagFilter.toString() === "All") {
       const titleMatch = hackathon.hackathonTitle
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
       return titleMatch && true;
     } else {
-      // console.log(tagFilter);
-      if (tagFilter !== "" && !tagMatch) {
-        // console.log("hpo");
+      if (tagFilter.toString() !== "" && !tagMatch) {
         if (tagFilter === "bookmarked") {
           if (searchQuery != " ") {
             const titleMatch = hackathon.hackathonTitle
@@ -141,7 +136,6 @@ export default function Home() {
 
             return titleMatch && hackathon.bookmarked;
           }
-          // console.log("hello");
           return hackathon.bookmarked;
         }
         return false;
@@ -293,7 +287,7 @@ export default function Home() {
               />
             </div>
             <div className="row">
-              {filterHack.map((hackathon, index) => (
+              {filteredHackathons.map((hackathon, index) => (
                 <GalleryCard
                   isInternship={false}
                   key={index}

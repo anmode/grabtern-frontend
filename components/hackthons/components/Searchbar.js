@@ -12,13 +12,25 @@ function SearchBar({
   InternshipLabels,
   HackathonLabels,
 }) {
-  const [selectedTag, setSelectedTag] = useState("All");
+  const [selectedTag, setSelectedTag] = useState(["All"]);
 
   const handleTagChange = (value) => {
-    console.log("tagefilter", value);
-    console.log(value);
-    setSelectedTag(value);
-    handleTagFilter(value);
+    const set = new Set(selectedTag);
+    if (value === "All") {
+      set.clear();
+      set.add("All");
+    } else if (set.has(value)) {
+      set.delete(value);
+    } else {
+      set.add(value);
+      set.delete("All");
+    }
+    if (set.size === 0) {
+      set.add("All");
+    }
+    const newValue = [...set];
+    setSelectedTag(newValue);
+    handleTagFilter(newValue);
   };
 
   return (
@@ -79,9 +91,9 @@ function SearchBar({
           style={{
             fontSize: window.innerWidth > 768 ? "16px" : "14px",
             padding: "1rem",
-            backgroundColor: selectedTag === "All" ? "#845ec2" : "#fff",
-            borderColor: selectedTag === "All" ? "#845ec2" : "#845ec2",
-            color: selectedTag === "All" ? "#fff" : "#845ec2",
+            backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
+            borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
+            color: selectedTag[0] === "All" ? "#fff" : "#845ec2",
           }}
         />
 
@@ -96,9 +108,15 @@ function SearchBar({
               style={{
                 fontSize: window.innerWidth > 768 ? "16px" : "14px",
                 padding: "1rem",
-                backgroundColor: selectedTag === mylabel ? "#845ec2" : "#fff",
-                borderColor: selectedTag === mylabel ? "#845ec2" : "#845ec2",
-                color: selectedTag === mylabel ? "#fff" : "#845ec2",
+                backgroundColor: selectedTag.toString().includes(mylabel)
+                  ? "#845ec2"
+                  : "#fff",
+                borderColor: selectedTag.toString().includes(mylabel)
+                  ? "#845ec2"
+                  : "#845ec2",
+                color: selectedTag.toString().includes(mylabel)
+                  ? "#fff"
+                  : "#845ec2",
               }}
             />
           ))}
@@ -113,9 +131,15 @@ function SearchBar({
               style={{
                 fontSize: window.innerWidth > 768 ? "16px" : "14px",
                 padding: "1rem",
-                backgroundColor: selectedTag === mylabel ? "#845ec2" : "#fff",
-                borderColor: selectedTag === mylabel ? "#845ec2" : "#845ec2",
-                color: selectedTag === mylabel ? "#fff" : "#845ec2",
+                backgroundColor: selectedTag.includes(mylabel.toString())
+                  ? "#845ec2"
+                  : "#fff",
+                borderColor: selectedTag.toString().includes(mylabel)
+                  ? "#845ec2"
+                  : "#845ec2",
+                color: selectedTag.toString().includes(mylabel)
+                  ? "#fff"
+                  : "#845ec2",
               }}
             />
           ))}

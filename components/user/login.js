@@ -128,6 +128,7 @@ function Login({ handleLogPageToggle }) {
         action="login-bg.mp4"
         onSubmit={handleSubmit}
         style={{ marginTop: "10vh" }}
+        aria-label="User login form"
       >
         <div className="d-flex flex-column justify-content-start tw-w-full md:tw-py-[5vh] md:tw-px-[3vw] tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
           <div style={{ marginBottom: "20px" }}>
@@ -135,7 +136,7 @@ function Login({ handleLogPageToggle }) {
               Login Here
             </h2>
             <p className=" tw-text-gray-500 tw-mb-5">
-              Enter your credentials to acess your account
+              Enter your credentials to access your account
             </p>
           </div>
           <div
@@ -149,7 +150,7 @@ function Login({ handleLogPageToggle }) {
 
           <div className="tw-flex tw-flex-col tw-mb-10">
             <label
-              for="name"
+              htmlFor="email"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Email
@@ -157,16 +158,19 @@ function Login({ handleLogPageToggle }) {
             <input
               type="email"
               name="email"
+              id="email"
               placeholder="Email"
               onChange={handleChange}
               value={data.email}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              required
+              aria-required="true"
             />
           </div>
 
           <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
             <label
-              for="name"
+              htmlFor="password"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Password
@@ -174,15 +178,18 @@ function Login({ handleLogPageToggle }) {
             <input
               type={isPasswordVisible ? "text" : "password"}
               name="password"
+              id="password"
               placeholder="Password"
               onChange={handleChange}
               value={data.password}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+              required
+              aria-required="true"
             />
 
             <div
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-              onClick={togglePasswordVisibility}
+              onClick={togglePasswordVisibility} aria-label={isPasswordVisible ? "Hide Password" : "Show Password"}
             >
               {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
@@ -204,7 +211,7 @@ function Login({ handleLogPageToggle }) {
             </button>
           </div>
 
-          {error && <div style={{ color: "red" }}>{error}</div>}
+          {error && <div style={{ color: "red" }} role="alert">{error}</div>}
           {localStorage.getItem("new_user") && (
             <div style={{ color: "green" }}>Please register first.</div>
           )}

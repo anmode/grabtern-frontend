@@ -64,8 +64,6 @@ function MyApp({ Component, pageProps }) {
           title="Emupedia"
           href="https://grabtern.com/feed.xml"
         />
-
-       <!-- SEO ESSENTIALS -->
         <meta 
             name="robots" 
             content="index, follow"
@@ -142,8 +140,6 @@ function MyApp({ Component, pageProps }) {
             property="instagram:username"
             content="https://www.instagram.com/grabtern.guide/"
         />
-      
-        <!-- Open Graph Essentials -->
         <meta 
             property="og:type" 
             content="website" 
@@ -176,8 +172,6 @@ function MyApp({ Component, pageProps }) {
             property="og:image" 
             content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp" 
         />
-      
-          <!-- Twitter Essentials -->
         <meta 
             name="twitter:card" 
             content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp"
@@ -202,9 +196,6 @@ function MyApp({ Component, pageProps }) {
             property="twitter:description"
             content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
-      
-        <!-- META END -->
-            
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addProductJsonLd()}

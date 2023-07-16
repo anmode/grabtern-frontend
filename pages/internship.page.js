@@ -260,7 +260,7 @@ export default function Home() {
       ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
 
-      <main>
+      <main className="tw-w-full tw-max-w-7xl tw-mx-auto">
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
@@ -270,7 +270,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="mb-4 p-4">
+            <div className="tw-mb-12">
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}

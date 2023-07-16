@@ -1430,6 +1430,7 @@ select {
 
 /* Terms and condition */
 .TNCcontainer {
+  font-family: "Mulish", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1581,7 +1582,7 @@ select {
 }
 
 .tnc {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   color: #4255a4;
   font-style: normal;
   font-weight: 300;
@@ -1590,7 +1591,7 @@ select {
 }
 
 #tncheading {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   font-style: normal;
   font-weight: 800;
   text-transform: normal;
@@ -1601,7 +1602,7 @@ select {
 }
 
 #tncheading2 {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   font-style: normal;
   font-weight: 400;
   text-transform: normal;
@@ -1625,7 +1626,7 @@ select {
 }
 
 .tableofcontents {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   margin-top: 0px;
   float: left;
   width: 35%;
@@ -1657,7 +1658,7 @@ select {
 }
 
 #toc {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   font-style: normal;
   font-weight: 400;
   text-transform: normal;
@@ -1670,7 +1671,7 @@ select {
 }
 
 .tnc-sub-head {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Mulish", sans-serif;
   color: #4255a4;
   margin-top: 10px;
   font-style: normal;
@@ -1683,6 +1684,7 @@ select {
 .terms-and-cond {
   border: 2px solid #c1cacf;
   padding: 10px 10px;
+  font-family: "Mulish", sans-serif;
 }
 
 .terms-and-cond-sub {

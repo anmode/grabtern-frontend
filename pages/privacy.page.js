@@ -27,7 +27,7 @@ function privacy() {
             might collect, store, use, and/or share ("<b>Process</b>") your
             information when you use our services ("<b>Services</b>"), such as
             when you: Visit our website at{" "}
-            <a href="https://www.grabtern.com">https://www.grabtern.com</a>, or
+            <a className="hover:tw-text-[#5C18E1]" href="https://www.grabtern.com">https://www.grabtern.com</a>, or
             any website of ours that links to this privacy notice Engage with us
             in other related ways, including any sales, marketing, or events.
             <b></b>
@@ -45,7 +45,7 @@ function privacy() {
             can find out more details about any of these topics by clicking the
             link following each key point or by using our{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#toc"
             >
               table of contents
@@ -56,7 +56,7 @@ function privacy() {
             on how you interact with Grabtern and the Services, the choices you
             make, and the products and features you use.{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#1"
             >
               Learn more about personal information you disclose to us.
@@ -75,7 +75,7 @@ function privacy() {
             We process your information only when we have a valid legal reason
             to do so.{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#2"
             >
               Learn more about how we process your information.
@@ -85,7 +85,7 @@ function privacy() {
             information? We may share information in specific situations and
             with specific third parties.{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#3"
             >
               Learn more about when and with whom we share your personal
@@ -101,7 +101,7 @@ function privacy() {
             to defeat our security and improperly collect, access, steal, or
             modify your information.{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#8"
             >
               Learn more about how we keep your information safe.
@@ -111,7 +111,7 @@ function privacy() {
             geographically, the applicable privacy law may mean you have certain
             rights regarding your personal information.{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#8"
             >
               Learn more about your privacy rights.
@@ -120,7 +120,7 @@ function privacy() {
             How do you exercise your rights? The easiest way to exercise your
             rights is by submitting a{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="https://app.termly.io/notify/c64101d9-760d-43fe-89df-0884d72c12d9"
             >
               data subject access request
@@ -131,7 +131,7 @@ function privacy() {
             Want to learn more about what Grabtern does with any information we
             collect?{" "}
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#tncheading"
             >
               Review the privacy notice in full.
@@ -143,49 +143,49 @@ function privacy() {
             </div>
             <div style={{ paddingRight: 10, paddingTop: 10 }}>
               <div>
-                <a href="#1">1. WHAT INFORMATION DO WE COLLECT?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#1">1. WHAT INFORMATION DO WE COLLECT?</a>
               </div>
               <div>
-                <a href="#2">2. HOW DO WE PROCESS YOUR INFORMATION?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#2">2. HOW DO WE PROCESS YOUR INFORMATION?</a>
               </div>
               <div>
-                <a href="#3">
+                <a  className="hover:tw-text-[#5C18E1]" href="#3">
                   3. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
                 </a>
               </div>
               <div>
-                <a href="#4">
+                <a  className="hover:tw-text-[#5C18E1]" href="#4">
                   4. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
                 </a>
               </div>
               <div>
-                <a href="#5">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#5">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</a>
               </div>
               <div>
-                <a href="#6">6. HOW LONG DO WE KEEP YOUR INFORMATION?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#6">6. HOW LONG DO WE KEEP YOUR INFORMATION?</a>
               </div>
               <div>
-                <a href="#7">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#7">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</a>
               </div>
               <div>
-                <a href="#8">8. WHAT ARE YOUR PRIVACY RIGHTS?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#8">8. WHAT ARE YOUR PRIVACY RIGHTS?</a>
               </div>
               <div>
-                <a href="#9">9. CONTROLS FOR DO-NOT-TRACK FEATURES</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#9">9. CONTROLS FOR DO-NOT-TRACK FEATURES</a>
               </div>
               <div>
-                <a href="#10">
+                <a  className="hover:tw-text-[#5C18E1]" href="#10">
                   10. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?
                 </a>
               </div>
               <div>
-                <a href="#11">11. DO WE MAKE UPDATES TO THIS NOTICE?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#11">11. DO WE MAKE UPDATES TO THIS NOTICE?</a>
               </div>
               <div>
-                <a href="#12">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>
+                <a  className="hover:tw-text-[#5C18E1]" href="#12">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>
               </div>
               <div>
-                <a href="#13">
+                <a  className="hover:tw-text-[#5C18E1]" href="#13">
                   13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT
                   FROM YOU?
                 </a>
@@ -221,7 +221,7 @@ function privacy() {
               7. Contact or authentication data<br></br>
               8. Contact preferences<br></br>
               9. Billing addresses<br></br>
-              10. Upi address <b>if mentor</b>
+              10. Upi address if mentor
               <br></br>
             </p>
             <b>Sensitive Information: </b> We do not process sensitive
@@ -233,7 +233,7 @@ function privacy() {
             If you choose to register in this way, we will collect the
             information described in the section called "
             <a
-              className="tw-text-[#10305d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10305d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#5"
             >
               HOW DO WE HANDLE YOUR SOCIAL LOGINS?
@@ -273,7 +273,7 @@ function privacy() {
               opt out of our marketing emails at any time. For more information,
               see "
               <a
-                className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+                className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
                 href="#8"
               >
                 WHAT ARE YOUR PRIVACY RIGHTS?
@@ -390,7 +390,7 @@ function privacy() {
             <br></br>
             If you are located in Switzerland, you may contact the "
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="https://www.edoeb.admin.ch/edoeb/en/home.html"
             >
               Federal Data Protection and Information Commissioner.
@@ -405,7 +405,7 @@ function privacy() {
             at any time by contacting us by using the contact details provided
             in the section "
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="#12"
             >
               HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
@@ -438,7 +438,7 @@ function privacy() {
             choose to remove cookies or reject cookies, this could affect
             certain features or services of our Services. You may also "
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="https://optout.aboutads.info/?c=2&lang=EN"
             >
               opt out of interest-based advertising
@@ -449,7 +449,7 @@ function privacy() {
             email us at{" "}
             <b>
               <a
-                className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+                className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
                 href="mailto:contact.grabtern@gmail.com"
               >
                 {" "}
@@ -524,7 +524,7 @@ function privacy() {
             <b>
               {" "}
               <a
-                className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+                className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
                 href="mailto:contact.grabtern@gmail.com"
               >
                 {" "}
@@ -547,7 +547,7 @@ function privacy() {
             change that information, or delete it. To request to review, update,
             or delete your personal information, please fill out and submit a "
             <a
-              className="tw-text-[#10285d] hover:tw-text-blue-600 hover:tw-underline"
+              className="tw-text-[#10285d] hover:tw-text-[#5C18E1] hover:tw-underline"
               href="https://app.termly.io/notify/c64101d9-760d-43fe-89df-0884d72c12d9"
             >
               data subject access request

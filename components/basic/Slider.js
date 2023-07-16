@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/slider.module.css";
+import styles from "../../styles/slider.module.css";
 
 const Slider = ({ val, setVal, min, max, step }) => {
   return (

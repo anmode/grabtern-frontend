@@ -34,10 +34,12 @@ function Login({ handleLogPageToggle }) {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
       try {
         const res = await axios.post(url, userObject);
+        console.log(res);
         const userData = {
           user_name: userObject.name,
           user_picture: userObject.picture,
           user_email: userObject.email,
+          user_id: res.data.id,
         };
         localStorage.setItem("userData", JSON.stringify(userData));
         const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
@@ -94,6 +96,7 @@ function Login({ handleLogPageToggle }) {
         token: res.data,
         user_name: res.data.fullName,
         user_email: res.data.email,
+        user_id: res.data.id,
         redirectUrl: localStorage.getItem("redirectUrl"),
       };
       localStorage.setItem("userData", JSON.stringify(userData));

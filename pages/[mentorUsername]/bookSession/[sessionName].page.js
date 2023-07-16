@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Header = dynamic(() => import("../../../components/layout/Header"));
 
-function BookSessionPage({ mentorDetail, sessionName }) {
+function BookSessionPage({ mentorDetail, sessionID }) {
   console.log(mentorDetail);
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,11 +16,18 @@ function BookSessionPage({ mentorDetail, sessionName }) {
   const [paymentProof, setPaymentProof] = useState("");
   const [fileName, setFileName] = useState("");
   const bookSession = mentorDetail.sessions.find(
-    (obj) => obj.name === sessionName,
+    (obj) => obj._id === sessionID,
   );
   const [qrPopup, setQrPopup] = useState(false);
   const [popupStep, setPopupStep] = useState(1);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
+
+  //User Info
+  const user = JSON.parse(localStorage.getItem("userData"));
+  const userName = user?.user_name;
+  const userEmail = user?.user_email;
+  const userID = user?.user_id;
+
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -52,7 +59,7 @@ function BookSessionPage({ mentorDetail, sessionName }) {
     }
     const res = await fetch(imageSrc);
     const blob = await res.blob();
-    const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
     try {
       const formData = new FormData();
       formData.append("file", blob);
@@ -77,9 +84,6 @@ function BookSessionPage({ mentorDetail, sessionName }) {
   };
 
   const bookSessionPaymentStep = () => {
-    const user = JSON.parse(localStorage.getItem("userData"));
-    const userName = user.user_name;
-    const userEmail = user.user_email;
 
     if (!userName || !userEmail) {
       toast.error("Please login as a user before booking a session!");
@@ -126,10 +130,6 @@ function BookSessionPage({ mentorDetail, sessionName }) {
   const bookedSession = async () => {
     try {
       setLoading(true);
-      console.log("Start....!");
-      const user = JSON.parse(localStorage.getItem("userData"));
-      const userName = user.user_name;
-      const userEmail = user.user_email;
 
       if (paymentProof.length <= 0 || fileName.length <= 0) {
         toast.error("Upload transaction proof first to book a session!");
@@ -137,16 +137,12 @@ function BookSessionPage({ mentorDetail, sessionName }) {
       }
 
       const data = {
-        userName,
-        userEmail,
-        mentorName: mentorDetail.name,
-        mentorEmail: mentorDetail.email,
-        sessionName: bookSession.name,
-        sessionPrice: bookSession.price,
+        userID,
+        mentorUsername: mentorDetail.username,
+        sessionID:bookSession.ID,
         sessionDay: selectedDay,
         sessionTime: selectedTime,
         paymentProof,
-        imageName: fileName,
       };
 
       const response = await axios.post(
@@ -358,7 +354,7 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       mentorDetail: res.mentorDetail,
-      sessionName,
+      sessionID,
     },
   };
 };

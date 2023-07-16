@@ -49,6 +49,22 @@ body {
   background-color: var(--base-200);
 }
 
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.mask {
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.mask-hexed {
+  -webkit-mask-image: url("../public/Hexagon.svg");
+  mask-image: url("../public/Hexagon.svg");
+}
 ::-webkit-scrollbar {
   display: none;
 }

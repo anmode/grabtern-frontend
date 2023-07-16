@@ -4,6 +4,7 @@ import clsx from "clsx";
 function ProfileCard({
   className,
   image,
+  imageAlt,
   heading,
   subheading,
   body,
@@ -33,20 +34,24 @@ function ProfileCard({
         className,
       )}
     >
-      <div>
+      <div
+        className={clsx(
+          size == "sm" && ["tw-w-10 tw-h-10"],
+          size == "md" && ["tw-w-14 tw-h-14"],
+          size == "lg" && ["tw-w-40 tw-h-40"],
+          size == "xl" && ["tw-w-52 tw-h-52"],
+        )}
+      >
         <img
           className={clsx(
-            "tw-aspect-square tw-object-cover",
-            size == "sm" && ["tw-w-10 tw-h-10"],
-            size == "md" && ["tw-w-14"],
-            size == "lg" && ["tw-w-40"],
-            size == "xl" && ["tw-w-52"],
+            "tw-aspect-square tw-object-cover tw-w-full",
             rounded == "sm" && ["tw-rounded-xl"],
             rounded == "md" && [" tw-rounded-3xl"],
             rounded == "lg" && ["tw-rounded-full"],
             imageShadow == true && ["tw-shadow-xl"],
           )}
           src={image}
+          alt={imageAlt}
         />
       </div>
       <div>

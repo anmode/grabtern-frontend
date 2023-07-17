@@ -25,7 +25,7 @@ const scrollToTop = () =>{
 window.addEventListener('scroll', toggleVisible);
 
 return (
-	<div className='tw-flex tw-flex-col tw-text-center tw-text-[#845ec2] tw-fixed tw-bottom-0 tw-right-0 tw-mr-8 tw-mb-8 tw-cursor-pointer hover:tw-text-blue-500 tw-duration-200'>
+	<div className='tw-flex tw-flex-col tw-z-[1000] tw-text-center tw-text-[#845ec2] tw-fixed tw-bottom-0 tw-right-0 tw-mr-8 tw-mb-8 tw-cursor-pointer hover:tw-text-blue-500 tw-duration-200'>
 	<FaArrowCircleUp onClick={scrollToTop} fontSize={45}
 	style={{display: visible ? 'inline' : 'none'}} />
     <span style={{display: visible ? 'inline' : 'none', transitionDuration:"2s"}}>Top</span>

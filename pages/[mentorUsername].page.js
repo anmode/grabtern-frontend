@@ -16,7 +16,6 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 });
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
-import { encryptData, decryptData } from "../hook/encryptDecrypt";
 // testimonial carousel options
 const testimonialOptions = {
   margin: 40,

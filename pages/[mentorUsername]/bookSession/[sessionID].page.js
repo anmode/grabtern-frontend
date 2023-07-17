@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "next/dynamic";
 import axios from "axios";
+import { encryptData, decryptData } from "../../../hook/encryptDecrypt";
 
 const Header = dynamic(() => import("../../../components/layout/Header"));
 
@@ -23,10 +24,11 @@ function BookSessionPage({ mentorDetail, sessionID }) {
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
 
   //User Info
-  const user = JSON.parse(localStorage.getItem("userData"));
+  const user = decryptData(localStorage.getItem("userData"));
   const userName = user?.user_name;
   const userEmail = user?.user_email;
   const userID = user?.user_id;
+  console.log(user);
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {

@@ -18,12 +18,12 @@ function MentorAbout({ mentorDetail, onShare }) {
       <div className="tw-flex tw-justify-between">
         <div className="tw-flex">
           <IconLink
-            href={mentorDetail.social.linkedin}
+            href={`https://www.linkedin.com/in/${mentorDetail.social.linkedin}`}
             Icon={RiLinkedinFill}
             variant="secondary"
           />
           <IconLink
-            href={mentorDetail.social.twitter}
+            href={`https://twitter.com/${mentorDetail.social.twitter}`}
             Icon={RiTwitterFill}
             variant="secondary"
           />

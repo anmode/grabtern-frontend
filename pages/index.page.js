@@ -1,19 +1,23 @@
-import About from "../components/About";
-import Header from "../components/layout/Header";
-import servicesData from "./data/ServicesData";
-import Service from "../components/Service";
-import internshipsData from "./data/coursesData";
-import Internship from "../components/Internship";
-import hackathonsData from "./data/hackathonsData";
+import {
+  About,
+  Internship,
+  MentorSection,
+  Service,
+  TeamProfile,
+  Testimonial,
+  Banner,
+} from "../components/homePage";
 import Hackathon from "../components/hackthons/Hackathons";
+import internshipsData from "./data/coursesData";
+import servicesData from "./data/ServicesData";
+import hackathonsData from "./data/hackathonsData";
 import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
-import Testimonial from "../components/Testimonial.js";
-import TeamProfile from "../components/TeamProfile";
+import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { ButtonLink, Section } from "../components/UI";
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -29,6 +33,7 @@ import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
 
 const internshipsOptions = {
+  margin: 40,
   items: 3,
   nav: true,
   loop: true,
@@ -128,230 +133,120 @@ export default function Home() {
 
       <main>
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
-        <div className="services-area">
-          <div className="container">
-            <div className="row justify-content-sm-center">
+
+        {/* services section */}
+        <section className="tw-w-full tw-px-4 md: tw-mt-8 lg:-tw-mt-20">
+          <div className="tw-w-full tw-max-w-7xl tw-mx-auto">
+            <div className="tw-grid md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-x-6 tw-gap-y-6 tw-items-stretch tw-justify-center">
               {servicesData.map((service, index) => (
-                <Service
-                  key={index}
-                  imageSrc={service.imageSrc}
-                  imageAlt={service.imageAlt}
-                  serviceHeading={service.serviceHeading}
-                  serviceDescription={service.serviceDescription}
-                />
+                <Service key={index} {...service} />
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="courses-area section-padding40 fix">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Our Featured Internships</h2>
-                </div>
-              </div>
-            </div>
-            <div className="courses-actives">
-              {carousel === true ? (
-                <OwlCarousel
-                  {...internshipsOptions}
-                  autoplay={true}
-                  lazyLoad={true}
-                  smartSpeed={1000}
-                  autoplayTimeout={3500}
-                  autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
-                >
-                  {internshipsData.map((internship, index) => (
-                    <Internship
-                      key={index}
-                      internshipImage={internship.internshipImage}
-                      internshipImageAlt={internship.internshipImageAlt}
-                      internshipCategories={internship.internshipCategories}
-                      internshipTitle={internship.internshipTitle}
-                      internshipDescription={internship.internshipDescription}
-                      internshipRating={internship.internshipRating}
-                      internshipPayed={internship.internshipPayed}
-                      internshipPrice={internship.internshipPrice}
-                      internshipLink={internship.internshipLink}
-                    />
-                  ))}
-                </OwlCarousel>
-              ) : null}
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-xl-12">
-                <div className="section-tittle text-center mt-20">
-                  <a href="/internship" className="border-btn">
-                    View More Internships
-                  </a>
-                </div>
-              </div>
-            </div>
+        {/* internship section */}
+        <Section kicker="internships" heading="Our Featured Internships">
+          <div>
+            {carousel === true ? (
+              <OwlCarousel
+                {...internshipsOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+                {internshipsData.map((internship, index) => (
+                  <Internship key={index} {...internship} />
+                ))}
+              </OwlCarousel>
+            ) : null}
           </div>
-        </div>
+          <ButtonLink
+            text="View More Internships"
+            href="/internship"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+          />
+        </Section>
+
         <About />
-        <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Explore Top Hackathons</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              {hackathonsData.slice(0, 4).map((hackathon, index) => (
-                <Hackathon
-                  key={index}
-                  hackathonImage={hackathon.hackathonImage}
-                  hackathonImageAlt={hackathon.hackathonImageAlt}
-                  hackathonLink={hackathon.hackathonLink}
-                  hackathonTitle={hackathon.hackathonTitle}
-                />
-              ))}
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-xl-12">
-                <div className="section-tittle text-center mt-20">
-                  <a href="/hackathon" className="border-btn">
-                    View More Hackathons
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <section className="about-area3 fix mb-40">
-          <div className="support-wrapper align-items-center">
-            <div className="right-content3">
-              <div className="right-img">
-                <img src="/assets/img/gallery/mentors.avif" alt="about" />
-              </div>
-            </div>
-            <div className="left-content3">
-              <div className="section-tittle section-tittle2 mb-20">
-                <div className="front-text">
-                  <h2>Why to be Mentor at Grabtern?</h2>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
-                  <p>
-                    <b>Professional networking:</b> Mentors can expand their
-                    professional network by connecting with students and other
-                    mentors in the community.
-                  </p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
-                  <p>
-                    <b>Giving back:</b> Mentors can feel a sense of fulfillment
-                    by giving back to the community and contributing to the
-                    development of future professionals.
-                  </p>
-                </div>
-              </div>
-              <div className="single-features">
-                <div className="features-icon">
-                  <img src="/assets/img/icon/right-icon.svg" alt="right-icon" />
-                </div>
-                <div className="features-caption">
-                  <p>
-                    <b>Continued learning:</b> Mentors can continue to learn and
-                    grow by staying up-to-date on the latest industry trends and
-                    knowledge through mentoring students.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="team-area section-padding40 fix">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Testimonials</h2>
-                </div>
-              </div>
-            </div>
 
-            <ul className="testimonialsList">
-              {carousel === true ? (
-                <OwlCarousel
-                  {...testimonialOptions}
-                  autoplay={true}
-                  lazyLoad={true}
-                  smartSpeed={1000}
-                  autoplayTimeout={3500}
-                  nav={true}
-                  loop={true}
-                  autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
-                >
-                  {testiomialsData.map((testimonial, index) => (
-                    <Testimonial
-                      key={index}
-                      testimonialUserName={testimonial.testimonialUserName}
-                      testimonialUserHeadline={
-                        testimonial.testimonialUserHeadline
-                      }
-                      testimonialUserImage={testimonial.testimonialUserImage}
-                      testimonialRate={testimonial.testimonialRate}
-                      testimonialDescription={
-                        testimonial.testimonialDescription
-                      }
-                    />
-                  ))}
-                </OwlCarousel>
-              ) : null}
-            </ul>
+        {/* hackathon section */}
+        <Section
+          kicker="hackathon"
+          heading="Explore Top Hackathons"
+          align="center"
+        >
+          <div className="tw-grid tw-gap-8 sm:tw-grid-cols-2 lg:tw-grid-cols-4">
+            {hackathonsData.slice(0, 4).map((hackathon, index) => (
+              <Hackathon key={index} {...hackathon} />
+            ))}
           </div>
-        </section>
-        <section className="team-area section-padding40 fix">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-7 col-lg-8">
-                <div className="section-tittle text-center mb-55">
-                  <h2>Grabtern Community</h2>
-                </div>
-              </div>
-            </div>
-            <div className="team-active">
-              {carousel === true ? (
-                <OwlCarousel
-                  {...teamsOptions}
-                  autoplay={true}
-                  lazyLoad={true}
-                  smartSpeed={1000}
-                  autoplayTimeout={3500}
-                  autoplayHoverPause={true}
-                  className="owl-carousel owl-theme"
-                >
-                  {teamsData.map((profile, index) => (
-                    <TeamProfile
-                      key={index}
-                      imageSrc={profile.imageSrc}
-                      imageAlt={profile.imageAlt}
-                      profileName={profile.profileName}
-                      profileDescription={profile.profileDescription}
-                    />
-                  ))}
-                </OwlCarousel>
-              ) : null}
-            </div>
+          <ButtonLink
+            text="View More Hackathons"
+            href="/hackathon"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+          />
+        </Section>
+
+        {/* why to be a mentor section */}
+        <MentorSection />
+
+        {/* testimonial */}
+        <Section
+          kicker="Glowing Praise"
+          heading="Testimonials"
+          subheading="See what our mentor and students say about us"
+          align="center"
+        >
+          <ul className="testimonialsList">
+            {carousel === true ? (
+              <OwlCarousel
+                {...testimonialOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                nav={true}
+                loop={true}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+                {testiomialsData.map((testimonial, index) => (
+                  <Testimonial key={index} {...testimonial} />
+                ))}
+              </OwlCarousel>
+            ) : null}
+          </ul>
+        </Section>
+
+        {/* team section */}
+        <Section
+          kicker="Grabtern team"
+          heading="Our Community"
+          subheading="Meet the members of Grabtern Community"
+          align="center"
+        >
+          <div>
+            {carousel === true ? (
+              <OwlCarousel
+                {...teamsOptions}
+                autoplay={true}
+                lazyLoad={true}
+                smartSpeed={1000}
+                autoplayTimeout={3500}
+                autoplayHoverPause={true}
+                className="owl-carousel owl-theme"
+              >
+                {teamsData.map((profile, index) => (
+                  <TeamProfile key={index} {...profile} />
+                ))}
+              </OwlCarousel>
+            ) : null}
           </div>
-        </section>
+        </Section>
       </main>
       <Footer />
     </div>

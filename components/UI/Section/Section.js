@@ -4,6 +4,7 @@ import SectionHeader from "./SectionHeader";
 
 function Section({
   className,
+  divClassName,
   kicker,
   heading,
   subheading,
@@ -20,6 +21,7 @@ function Section({
           direction == "row-reverse" && [
             "tw-flex tw-items-center tw-py-6 tw-flex-col-reverse md:tw-flex-row-reverse",
           ],
+          divClassName,
         )}
       >
         {/* column */}

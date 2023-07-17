@@ -195,6 +195,7 @@ function Contact() {
                       id="contactForm"
                       ref={form}
                       method="post"
+                      aria-label="Contact form"
                     >
                       <ToastContainer limit={1} />
                       <div className={`${style.cf} row`}>
@@ -222,6 +223,8 @@ function Contact() {
                                 outline: "none",
                                 resize: "vertical",
                               }}
+                              aria-required="true"
+                              aria-label="Enter you message"
                               // value={userMessage}
                               // onChange={(e) => setUserMessage(e.value)}
                             />
@@ -251,6 +254,8 @@ function Contact() {
                                 border: "2px solid #e5e7eb",
                                 outline: "none",
                               }}
+                              aria-required="true"
+                              aria-label="Enter you name"
                               // onChange={(e) => setUserName(e.value)}
                             />
                           </div>
@@ -280,6 +285,8 @@ function Contact() {
                                 border: "2px solid #e5e7eb",
                                 outline: "none",
                               }}
+                              aria-required="true"
+                              aria-label="Enter you email"
                               // value={userEmail}
                               // onChange={(e) => setUserEmail(e.value)}
                             />
@@ -309,7 +316,8 @@ function Contact() {
                                 border: "2px solid #e5e7eb",
                                 outline: "none",
                               }}
-
+                              aria-required="true"
+                              aria-label="Enter you subject"
                               // value={userSubject}
                               // onChange={(e) => setUserSubject(e.value)}
                             />

@@ -18,6 +18,7 @@ import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ButtonLink, Section } from "../components/UI";
+import ScrollButton from "../components/MoveToTop";
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -130,10 +131,9 @@ export default function Home() {
         </div>
       ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
-
       <main>
         <Banner isMentorLoggedIn={isMentorLoggedIn} />
-
+        <ScrollButton />
         {/* services section */}
         <section className="tw-w-full tw-px-4 md: tw-mt-8 lg:-tw-mt-20">
           <div className="tw-w-full tw-max-w-7xl tw-mx-auto">

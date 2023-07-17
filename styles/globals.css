@@ -1933,7 +1933,7 @@ select {
 }
 
 .bookSesssionPriceAndOrder button {
-  background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);
+  background-color: #007dd7;
   padding: 7px;
   width: 100%;
   color: white;
@@ -1992,7 +1992,7 @@ select {
 }
 
 .modal-content button {
-  background-color: #005fa3;
+  background-color: #007dd7;
   color: white;
   font-weight: 600;
   padding: 10px 15px;
@@ -2005,6 +2005,17 @@ select {
 .modal-content button.fileUpload {
   position: relative;
   cursor: pointer;
+}
+
+.modal-content button.fileUpload span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-content button.fileUpload span img {
+  width: 25px;
+  height: 25px;
 }
 
 .modal-content button.fileUpload input {

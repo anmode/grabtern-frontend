@@ -18,8 +18,8 @@ function BookSessionPage({ mentorDetail, sessionID }) {
   const bookSession = mentorDetail.sessions.find(
     (obj) => obj._id === sessionID,
   );
+  console.log("Book Session mana maam", sessionID);
   const [qrPopup, setQrPopup] = useState(false);
-  const [popupStep, setPopupStep] = useState(1);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
 
   //User Info
@@ -27,7 +27,6 @@ function BookSessionPage({ mentorDetail, sessionID }) {
   const userName = user?.user_name;
   const userEmail = user?.user_email;
   const userID = user?.user_id;
-
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -65,26 +64,27 @@ function BookSessionPage({ mentorDetail, sessionID }) {
       formData.append("file", blob);
       formData.append("upload_preset", "image_preset");
       const res = await axios.post(url, formData);
+      console.log(res.data.secure_url);
+      bookedSession();
       return res.data.secure_url;
     } catch (error) {
+      console.log(error);
+      setLoading(false);
       toast.error("Sorry couldn't upload the image to our server", error);
     }
   };
 
   const handleImageChange = async (e) => {
+    setLoading(true);
     const file = e.target.files[0];
     if (!file) return;
     const base64 = await convertBase64(file);
     const imageClouindaryUrl = await uploadToCloudinary(base64);
     setPaymentProof(imageClouindaryUrl);
     setFileName(file.name);
-    if (base64.length > 0) {
-      setPopupStep(2);
-    }
   };
 
   const bookSessionPaymentStep = () => {
-
     if (!userName || !userEmail) {
       toast.error("Please login as a user before booking a session!");
       return;
@@ -101,7 +101,6 @@ function BookSessionPage({ mentorDetail, sessionID }) {
     }
 
     setQrPopup(true);
-    setPopupStep(1);
   };
 
   const handleCopy = () => {
@@ -129,9 +128,8 @@ function BookSessionPage({ mentorDetail, sessionID }) {
 
   const bookedSession = async () => {
     try {
-      setLoading(true);
-
       if (paymentProof.length <= 0 || fileName.length <= 0) {
+        setLoading(false);
         toast.error("Upload transaction proof first to book a session!");
         return;
       }
@@ -139,7 +137,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
       const data = {
         userID,
         mentorUsername: mentorDetail.username,
-        sessionID:bookSession.ID,
+        sessionID: bookSession.ID,
         sessionDay: selectedDay,
         sessionTime: selectedTime,
         paymentProof,
@@ -225,7 +223,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
             </div>
           </div>
         ) : null}
-        {qrPopup && popupStep === 1 ? (
+        {qrPopup ? (
           <div className="modal-overlay">
             <div className="modal-content">
               <div className="modal-close" onClick={() => setQrPopup(false)}>
@@ -242,26 +240,14 @@ function BookSessionPage({ mentorDetail, sessionID }) {
                 </button>
                 <button className="fileUpload">
                   <FaUpload className="mr-2" />
-                  <span>Upload proof</span>
+                  <span>
+                    Upload proof{" "}
+                    {loading === true ? (
+                      <img src="/assets/img/gif/Spinner.gif" />
+                    ) : null}
+                  </span>
                   <input type="file" onChange={(e) => handleImageChange(e)} />
                 </button>
-              </div>
-            </div>
-          </div>
-        ) : popupStep === 2 ? (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <div className="modal-close" onClick={() => setPopupStep(0)}>
-                <AiFillCloseCircle />
-              </div>
-              <br />
-              <div className="bookSessionBtn">
-                <button onClick={() => bookedSession()}>
-                  Book Session Now
-                </button>
-                {loading === true ? (
-                  <img src="/assets/img/gif/Spinner.gif" />
-                ) : null}
               </div>
             </div>
           </div>
@@ -337,7 +323,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { mentorUsername, sessionName } = context.params;
+  const { mentorUsername, sessionID } = context.params;
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
   const { data: res } = await axios.get(url);
   if (res.message === "Invalid link") {

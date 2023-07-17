@@ -46,9 +46,25 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   overflow-x: hidden;
-  background-color: #f1f5f9;
+  background-color: var(--base-200);
 }
 
+.owl-carousel .owl-stage {
+  display: flex;
+}
+
+.mask {
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.mask-hexed {
+  -webkit-mask-image: url("../public/Hexagon.svg");
+  mask-image: url("../public/Hexagon.svg");
+}
 ::-webkit-scrollbar {
   display: none;
 }

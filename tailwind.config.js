@@ -41,6 +41,10 @@ module.exports = {
         heading: ["Inter", "sans-serif"],
       },
     },
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+      heading: ["Inter", "sans-serif"],
+    },
     plugins: [],
   },
 };

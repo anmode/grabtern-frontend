@@ -4,15 +4,43 @@ const Header = React.lazy(() => import("../components/layout/Header"));
 import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import SessionCard from "../components/mentorProfile/components/SessionCard";
-import MentorCard from "../components/mentorProfile/components/MentorCard";
+import SessionCard from "../components/newMentorProfile/SessionCard";
 import SharePageModal from "../components/mentorProfile/components/SharePageModal";
 import BookSessionModal from "../components/mentorProfile/components/BookSessionModal";
 import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../styles/loader.module.css";
-import Testimonial from "../components/Testimonial";
+import { Testimonial } from "../components/homePage";
+import MentorAbout from "../components/newMentorProfile/mentorAbout";
+import { Section } from "../components/UI";
+const OwlCarousel = dynamic(import("react-owl-carousel"), {
+  ssr: false,
+});
+import "owl.carousel/dist/assets/owl.carousel.min.css";
+import "owl.carousel/dist/assets/owl.theme.default.min.css";
+
+// testimonial carousel options
+const testimonialOptions = {
+  margin: 40,
+  items: 4,
+  nav: true,
+  loop: true,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    900: {
+      items: 2,
+    },
+    1170: {
+      items: 3,
+    },
+  },
+};
 
 function Index({ mentorDetail }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +52,7 @@ function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState("");
+  const [carousel, setCarousel] = useState(true);
 
   const {
     isMentorLoggedIn,
@@ -112,56 +141,73 @@ function Index({ mentorDetail }) {
         </Head>
         <Header navbarBackground={true} />
         {/* Mentor Page */}
-        <main className="tw-flex tw-flex-col tw-items-center">
-          <div className="tw-flex tw-flex-row tw-justify-center tw-items-start tw-my-44 tw-gap-[60px] tw-flex-wrap">
-            <MentorCard
-              mentorImage={mentorDetail.mentorImg}
-              name={mentorDetail.name}
-              internAt={mentorDetail.internAt}
-              currentStatus={mentorDetail.currentStatus}
-              socialLinks={mentorDetail.social}
-              about={mentorDetail.description}
-              handleSharePage={() => setShowModal(true)}
-            />
-            {/* Session Cards Container */}
-            <div className="tw-flex tw-flex-col tw-items-stretch tw-max-w-[448px]">
+        <main className="tw-pt-4">
+          <MentorAbout
+            mentorDetail={mentorDetail}
+            onShare={() => setShowModal(true)}
+          />
+
+          {/* session section */}
+          <Section
+            kicker="mentor schedule"
+            heading="Available Sessions"
+            subheading="Ignite your inner fire, embrace personalized guidance, and 
+            unlock your true potential through transformative mentor sessions."
+            align="center"
+          >
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
               {/* Session Cards for every session */}
-              {mentorDetail?.bookSession?.length !== 0 &&
-                mentorDetail?.bookSession?.map((session, index) => (
+              {mentorDetail?.sessions?.length !== 0 &&
+                mentorDetail?.sessions?.map((session, index) => (
                   <SessionCard
                     key={index}
-                    type={session?.sessionType}
-                    name={session?.sessionName}
-                    description={session?.sessionDescription}
-                    duration={session?.sessionMeetingDuration}
-                    pricePerSession={session?.priceSession}
+                    {...session}
                     handleBookSession={() => {
                       setModalPopup(true);
                       setSelectedSession(session);
                     }}
-                    // handleBookSession={() => handleClick(session)}
                   />
                 ))}
             </div>
-            <div></div>
-            {/* <Testimonial testimonialUserName={mentorDetail.testimonials.name}
-            testimonialUserHeadline={mentorDetail.testimonials.headline}
-            testimonialUserImage={mentorDetail.testimonials.image}
-            testimonialRate={mentorDetail.testimonials.rate}
-            testimonialDescription={mentorDetail.testimonials.description} /> */}
-          </div>
-          <div className="tw-w-22 tw-h-auto tw-flex tw-flex-wrap ">
-            {/* {for testing purpose}  */}
-            <Testimonial
-              testimonialUserName="test_user"
-              testimonialUserHeadline="test headline"
-              testimonialRate="4"
-              testimonialUserImage="/assets/img/icon/no-profile-picture.webp"
-              testimonialDescription="jdsfkjksadjfkaf askdjflsadkfk kfas kasjdfk sadklfjsd fs dfljsadfkasdl lorem50"
-            />
+          </Section>
 
-            {/* {mentorDetail?.testimonials?.map(data => <Testimonial testimonialUserName={data.name} testimonialUserHeadline={data.headline} testimonialRate={data.rate} testimonialUserImage={data.image} testimonialDescription={data.description} />)} */}
-          </div>
+          {/* testimonial section */}
+          <Section
+            kicker="student's review"
+            heading="Testimonials"
+            subheading="Inspiring Testimonials on the Transformative Mentorship Experience"
+            align="center"
+          >
+            <div>
+              {carousel === true ? (
+                <OwlCarousel
+                  {...testimonialOptions}
+                  autoplay={true}
+                  lazyLoad={true}
+                  smartSpeed={1000}
+                  autoplayTimeout={3500}
+                  nav={true}
+                  loop={true}
+                  autoplayHoverPause={true}
+                  className="owl-carousel owl-theme"
+                >
+                  {/* testimonial Cards for every session */}
+                  {mentorDetail?.testimonials?.length !== 0 &&
+                    mentorDetail?.testimonials?.map((testimonial, index) => (
+                      <Testimonial
+                        key={index}
+                        testimonialUserName={testimonial.name}
+                        testimonialHeadline={testimonial.headline}
+                        testimonialUserImage={testimonial.image}
+                        testimonialRate={testimonial.rate}
+                        testimonialDescription={testimonial.description}
+                      />
+                    ))}
+                </OwlCarousel>
+              ) : null}
+            </div>
+          </Section>
+
           {/* Share Mentor Page Modal */}
           {showModal && (
             <SharePageModal
@@ -209,28 +255,6 @@ function Index({ mentorDetail }) {
 }
 
 export default Index;
-
-// export const getServerSideProps = async (context) => {
-//   const { mentorUsername } = context.params;
-//   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
-//   const { data: res } = await axios.get(url);
-//   if (res.message === "Invalid link") {
-//     return {
-//       redirect: {
-//         permanent: false,
-//         destination: "/",
-//       },
-//       props: {
-//         mentorDetail: null,
-//       },
-//     };
-//   }
-//   return {
-//     props: {
-//       mentorDetail: res.mentorDetail,
-//     },
-//   };
-// };
 
 export const getStaticPaths = async () => {
   // Fetch all mentor usernames to generate static pages

@@ -8,10 +8,9 @@ import Head from "next/head";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { error } from "jquery";
-
+import { Section } from "../components/UI";
 const Footer = dynamic(() => import("../components/layout/Footer"));
 const Header = dynamic(() => import("../components/layout/Header"));
-const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Contact() {
   const form = useRef(null);
@@ -136,18 +135,23 @@ function Contact() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>GrabTern | Contact Us</title>
-      </Head>
+      </Head> */}
       <Header />
-      <SimpleBanner bannerTittle="Contact us" siteName="Contact" />
+      <Section
+        kicker="Contact Us"
+        heading="Talk to our management team"
+        align="center"
+        className="tw-mt-10 tw-pb-0"
+      ></Section>
+
       <main className={style.main}>
         <div className={style.mainbody}>
           <div id="both">
             <section className={style.csection}>
               <div className="container">
-                <div className="d-none d-sm-block mb-5 pb-4"></div>
-                <div className="row">
+                <div className="row tw-rlative ">
                   <div className="col-12"></div>
                   <div className={`${style.flexx}`}>
                     <div className={`${style.offsetlg} col-lg-3 bg-slate-100`}>

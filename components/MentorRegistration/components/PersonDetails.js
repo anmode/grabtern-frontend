@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Input from "./Input";
+import ImageCropper from "../../../components/basic/ImageCropper";
+import axios from "axios";
 
 function PersonDetails({
   formData,
@@ -59,8 +61,65 @@ function PersonDetails({
     },
   ];
 
+  const [showImageCropper, setShowImageCropper] = useState(false);
+  const [imageSrc, setImageSrc] = useState("");
+  const [fileName, setFileName] = useState("");
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setShowImageCropper(true);
+    const base64 = await convertBase64(file);
+    setFileName(file.name);
+    setImageSrc(base64);
+  };
+
+  const handleImageCropperChange = async (imageSrc) => {
+    setShowImageCropper(false);
+    if (!imageSrc) return;
+    setImageSrc(imageSrc);
+    const imageClouindaryUrl = await uploadToCloudinary(imageSrc);
+    handleUploadImageChange(fileName, imageClouindaryUrl);
+  };
+
+  const uploadToCloudinary = async (imageSrc) => {
+    const res = await fetch(imageSrc);
+    const blob = await res.blob();
+    const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
+    try {
+      const formData = new FormData();
+      formData.append("file", blob);
+      formData.append("upload_preset", "image_preset");
+      const res = await axios.post(url, formData);
+      return res.data.secure_url;
+    } catch (error) {
+      console.log("Couldn't upload image to Cloudinary", error);
+    }
+  };
+
   return (
     <>
+      {showImageCropper && (
+        <ImageCropper
+          imageSrc={imageSrc}
+          changeImageSrc={handleImageCropperChange}
+        />
+      )}
       <p className="mentorFormHeading">Tell us about yourself</p>
       {/* google signin button start */}
       <div style={{ gridColumn: "1/3" }}>
@@ -72,10 +131,11 @@ function PersonDetails({
       <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
         <img
           src={
-            formData.mentorImg.image.length === 0
+            !formData.image
               ? "/assets/img/icon/no-profile-picture.webp"
-              : formData.mentorImg.image
+              : formData.image
           }
+          alt="Profile Picture"
           className="mentorPhoto"
         />
         <div>
@@ -83,23 +143,15 @@ function PersonDetails({
             htmlFor="mentorProfile"
             className="mentorFormButton theme-button-color"
           >
-            {formData.mentorImg.image.length > 0
-              ? "Change Image"
-              : "Upload Image"}
+            {formData.image !== null ? "Change Image" : "Upload Image"}
           </label>
-          {validator.current.message(
-            "mentorProfileImage",
-            formData.mentorImg.name,
-            "required",
-          )}
-          <p className="px-2 ">{formData.mentorImg.name}</p>
           <input
             type="file"
             accept="image/*"
             id="mentorProfile"
-            name="mentorProfileImage"
             className="mentorFormInput"
-            onChange={(e) => handleUploadImageChange(e)}
+            name="mentorProfileImage"
+            onChange={(e) => handleImageChange(e)}
             hidden
             required
           />

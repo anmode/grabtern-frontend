@@ -183,7 +183,11 @@ function Register({ handleLogPageToggle }) {
               verify your account.
             </p>
           )}
-          {error && <div style={{ color: "red" }} role="alert">{error}</div>}
+          {error && (
+            <div style={{ color: "red" }} role="alert">
+              {error}
+            </div>
+          )}
           <div>
             <input
               type="submit"

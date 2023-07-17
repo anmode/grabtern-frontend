@@ -189,7 +189,8 @@ function Login({ handleLogPageToggle }) {
 
             <div
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-              onClick={togglePasswordVisibility} aria-label={isPasswordVisible ? "Hide Password" : "Show Password"}
+              onClick={togglePasswordVisibility}
+              aria-label={isPasswordVisible ? "Hide Password" : "Show Password"}
             >
               {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
@@ -211,7 +212,11 @@ function Login({ handleLogPageToggle }) {
             </button>
           </div>
 
-          {error && <div style={{ color: "red" }} role="alert">{error}</div>}
+          {error && (
+            <div style={{ color: "red" }} role="alert">
+              {error}
+            </div>
+          )}
           {localStorage.getItem("new_user") && (
             <div style={{ color: "green" }}>Please register first.</div>
           )}

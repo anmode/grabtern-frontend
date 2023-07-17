@@ -19,7 +19,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
   const bookSession = mentorDetail.sessions.find(
     (obj) => obj._id === sessionID,
   );
-  console.log("Book Session mana maam", sessionID);
+  console.log("Book Session", sessionID);
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
 
@@ -28,7 +28,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
   const userName = user?.user_name;
   const userEmail = user?.user_email;
   const userID = user?.user_id;
-  console.log(user);
+
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -82,8 +82,8 @@ function BookSessionPage({ mentorDetail, sessionID }) {
     if (!file) return;
     const base64 = await convertBase64(file);
     const imageClouindaryUrl = await uploadToCloudinary(base64);
+    console.log(imageClouindaryUrl);
     setPaymentProof(imageClouindaryUrl);
-    setFileName(file.name);
   };
 
   const bookSessionPaymentStep = () => {
@@ -130,7 +130,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
 
   const bookedSession = async () => {
     try {
-      if (paymentProof.length <= 0 || fileName.length <= 0) {
+      if (paymentProof === null) {
         setLoading(false);
         toast.error("Upload transaction proof first to book a session!");
         return;
@@ -139,7 +139,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
       const data = {
         userID,
         mentorUsername: mentorDetail.username,
-        sessionID: bookSession.ID,
+        sessionID: bookSession._id,
         sessionDay: selectedDay,
         sessionTime: selectedTime,
         paymentProof,

@@ -11,6 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Testimonial } from "../components/homePage";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import { Section } from "../components/UI";
+
+
 const OwlCarousel = dynamic(import("react-owl-carousel"), {
   ssr: false,
 });
@@ -42,7 +44,6 @@ function Index({ mentorDetail }) {
   const [error, setError] = useState("");
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const userData = decryptData(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState("");
   const [carousel, setCarousel] = useState(true);
 

@@ -3,7 +3,7 @@ import CryptoJS from "crypto-js";
 const encryptionSecretKey = process.env.NEXT_PUBLIC_ENCRYPTION_SECRET_KEY;
 
 export const encryptData = (userData) => {
-  console.log("encrypt this data ", userData);
+  // console.log("encrypt this data ", userData);
   const encryptedData = CryptoJS.AES.encrypt(
     JSON.stringify(userData),
     encryptionSecretKey,
@@ -15,7 +15,7 @@ export const decryptData = (encryptedData) => {
   if (!encryptedData) {
     return null;
   }
-  console.log("decrypt the data ", encryptedData);
+  // console.log("decrypt the data ", encryptedData);
   try {
     const decryptedBytes = CryptoJS.AES.decrypt(
       encryptedData,

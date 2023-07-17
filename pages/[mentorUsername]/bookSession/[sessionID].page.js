@@ -146,8 +146,9 @@ function BookSessionPage({ mentorDetail, sessionID }) {
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        data,
+        encryptData(data),
       );
+      console.log(encryptData(data));
       setLoading(false);
       toast.success("You have successfully booked a session!");
       window.location.href = "/";
@@ -155,6 +156,8 @@ function BookSessionPage({ mentorDetail, sessionID }) {
       // Add any further logic or redirection based on the response
     } catch (error) {
       setLoading(false);
+      console.log(error);
+      console.log(error.response);
       toast.error(error.response.data.message);
       console.error("Error booking session:", error);
       // Handle error scenario

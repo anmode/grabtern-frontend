@@ -12,7 +12,6 @@ import { Testimonial } from "../components/homePage";
 import MentorAbout from "../components/newMentorProfile/mentorAbout";
 import { Section } from "../components/UI";
 
-
 const OwlCarousel = dynamic(import("react-owl-carousel"), {
   ssr: false,
 });

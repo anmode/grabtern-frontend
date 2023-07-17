@@ -29,7 +29,6 @@ function BookSessionPage({ mentorDetail, sessionID }) {
   const userEmail = user?.user_email;
   const userID = user?.user_id;
 
-
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();

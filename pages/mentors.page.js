@@ -57,7 +57,7 @@ function Mentors({ mentorsData }) {
                   mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
                   mentor.currentStatus
                     .toLowerCase()
-                    .includes(query.toLowerCase())
+                    .includes(query.toLowerCase()),
               )
               .map((mentor) => (
                 <a href={`/${mentor.username}`} key={mentor._id}>

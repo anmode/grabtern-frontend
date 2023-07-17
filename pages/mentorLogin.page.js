@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from "../styles/form.module.css";
 const Header = dynamic(() => import("../components/layout/Header"));
 const Footer = dynamic(() => import("../components/layout/Footer"));
 
@@ -117,101 +118,199 @@ function mentorLogin() {
     google.accounts.id.prompt();
   }, []);
 
+  const [showForm1, setShowForm1] = useState(true); // Show Form1 initially
+
+  const handleUserLoginClick = () => {
+    setShowForm1(true);
+  };
+
+  const handleMentorLoginClick = () => {
+    setShowForm1(false);
+  };
+
   return (
     <>
       <Head>
         <title>GrabTern | Mentors Login Here</title>
       </Head>
+
       <Header navbarBackground={true} />
-      <main className="login-body">
-        <form
-          className="form-default"
-          onSubmit={handleSubmit}
-          aria-label="Mentor login form"
-        >
-          <div className="login-form d-flex flex-column">
-            <div className="logout-login">
-              <a href="/index.html" aria-label="Go to home page">
-                <img src="/assets/img/logo/loder.webp" alt="logo" />
-              </a>
-            </div>
-            <h2>Mentor Login</h2>
-            <div className="form-input">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                onChange={handleChange}
-                value={formData.email}
-                required
-                aria-required="true"
-              />
-            </div>
-            <div className="form-input">
-              <label htmlFor="password">Password</label>
-              <input
-                type={isPasswordVisible ? "text" : "password"}
-                name="password"
-                id="password"
-                placeholder="Password"
-                onChange={handleChange}
-                value={formData.password}
-                required
-                aria-required="true"
-              />
-              <div
-                className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-                onClick={togglePasswordVisibility}
-                aria-label={
-                  isPasswordVisible ? "Hide Password" : "Show Password"
-                }
-              >
-                {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+
+      <div className="login-form d-flex flex-column bg-white tw-mb-10">
+        <div className={styles.btnnContainer}>
+          <button
+            className={`${styles.btnn} ${showForm1 ? styles.btnnActive : ""} ${
+              styles.user
+            }`}
+            onClick={handleUserLoginClick}
+          >
+            User Login
+          </button>
+          <button
+            className={`${styles.btnn} ${showForm1 ? "" : styles.btnnActive} ${
+              styles.mentor
+            }`}
+            onClick={handleMentorLoginClick}
+          >
+            Mentor Login
+          </button>
+        </div>
+        <div>
+          {showForm1 ? (
+            <form className="form-default" onSubmit={handleSubmit}>
+              <div className={styles.headingg}>
+                <img src="/Grabtern2.png"></img>
+                <h2>User Login </h2>
               </div>
-            </div>
-            <div className="form-input">
-              <input
-                type="submit"
-                name="submit"
-                value="Login"
-                style={{
-                  background:
-                    "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
-                }}
-              />
-            </div>
-            <ToastContainer />
-            {error && (
-              <div style={{ color: "red" }} role="alert">
-                {error}
+              <div className="form-input">
+                <label htmlFor="email">Email</label>
+                <div className={styles.Input}>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                    value={formData.email}
+                  />
+                </div>
               </div>
-            )}
-            <Link
-              href="/forgotpass"
-              className="forget align-self-start"
-              style={{ margin: 0 }}
-            >
-              Forgot Password?
-            </Link>
-            <div className="link-div m-3">
-              Don't have an account?
+              <div className="form-input">
+                <label htmlFor="password">Password</label>
+                <div className={styles.Input}>
+                  {" "}
+                  <input
+                    type={isPasswordVisible ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    value={formData.password}
+                  />
+                </div>
+                <div
+                  className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+                  onClick={togglePasswordVisibility}
+                >
+                  {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                </div>
+              </div>
+
+              <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Login"
+                  className={styles.loginInput}
+                />
+              </div>
+
+              <ToastContainer />
+              {error && <div style={{ color: "red" }}>{error}</div>}
               <Link
-                href="/mentorRegister"
-                className="registration d-inline m-2"
-                style={{ textDecoration: "none" }}
+                href="/forgotpass"
+                className="forget align-self-start"
+                style={{ marginTop: 10, marginBottom: 10 }}
               >
-                Register here
+                Forgot Password?
               </Link>
-            </div>
-            <h3 style={{ color: "black", alignSelf: "center", margin: "5px" }}>
-              Or
-            </h3>
-            <div id="googleSignInButton" style={{ alignSelf: "center" }}></div>
-          </div>
-        </form>
-      </main>
+              <div className="link-div">
+                Don't have an account?
+                <Link
+                  href="/userRegister"
+                  className="registration d-inline m-2"
+                  style={{ textDecoration: "none" }}
+                >
+                  Register here
+                </Link>
+              </div>
+              <div className={styles.google}>
+                <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
+              </div>
+              <div
+                id="googleSignInButton"
+                style={{ alignSelf: "center" }}
+                className={styles.google2}
+              ></div>
+            </form>
+          ) : (
+            <form className="form-default" onSubmit={handleSubmit}>
+              <div className={styles.headingg}>
+                <img src="/Grabtern2.png"></img>
+                <h2>Mentor Login </h2>
+              </div>
+              <div className="form-input">
+                <label htmlFor="email">Email</label>
+                <div className={styles.Input}>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={handleChange}
+                    value={formData.email}
+                  />
+                </div>
+              </div>
+              <div className="form-input">
+                <label htmlFor="password">Password</label>
+                <div className={styles.Input}>
+                  <input
+                    type={isPasswordVisible ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    value={formData.password}
+                  />
+                </div>
+                <div
+                  className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+                  onClick={togglePasswordVisibility}
+                >
+                  {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                </div>
+              </div>
+              <div className="mb-14 md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Login"
+                  className={styles.loginInput}
+                />
+              </div>
+
+              <ToastContainer />
+              {error && <div style={{ color: "red" }}>{error}</div>}
+              <Link
+                href="/forgotpass"
+                className="forget align-self-start"
+                style={{ marginTop: 10, marginBottom: 10 }}
+              >
+                Forgot Password?
+              </Link>
+              <div className="link-div">
+                Don't have an account?
+                <Link
+                  href="/mentorRegister"
+                  className="registration d-inline m-2"
+                  style={{ textDecoration: "none" }}
+                >
+                  Register here
+                </Link>
+              </div>
+              <div className={styles.google}>
+                <h3
+                  style={{ color: "black", alignSelf: "center", margin: "5px" }}
+                >
+                  Or
+                </h3>
+              </div>
+              <div
+                id="googleSignInButton"
+                style={{ alignSelf: "center" }}
+                className={styles.google2}
+              ></div>
+            </form>
+          )}
+        </div>
+      </div>
     </>
   );
 }

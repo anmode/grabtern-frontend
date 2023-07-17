@@ -119,7 +119,7 @@ function Header() {
 
             <button
               type="button"
-              onClick=""
+              onClick="/userAuth/#login"
               className="tw-text-white tw-mb-8 tw-bg-[#845ec2] hover:tw-scale-[0.99] active:tw-scale-[1.01] active:tw-shadow-none tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 "
             >
               Sign Up

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../context/AuthContext";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff";
@@ -39,7 +40,9 @@ function Login({ handleLogPageToggle }) {
           user_picture: userObject.picture,
           user_email: userObject.email,
         };
-        localStorage.setItem("userData", JSON.stringify(userData));
+
+        localStorage.setItem("userData", encryptData(userData));
+
         const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
         router.push(redirectUrl);
       } catch (error) {
@@ -67,7 +70,7 @@ function Login({ handleLogPageToggle }) {
 
     initGoogleSignIn();
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = decryptData(localStorage.getItem("userData"));
     if (userData && userData.redirectUrl) {
       const redirectUrl = userData.redirectUrl;
       router.push(redirectUrl);
@@ -84,22 +87,20 @@ function Login({ handleLogPageToggle }) {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const res = await axios.post(url, data);
-      if (!res.verified) {
-        toast.error(
-          "Email not verified, verification link has been sent to your email",
-        );
-      }
       const userData = {
         token: res.data,
         user_name: res.data.fullName,
         user_email: res.data.email,
         redirectUrl: localStorage.getItem("redirectUrl"),
       };
-      localStorage.setItem("userData", JSON.stringify(userData));
+
+      localStorage.setItem("userData", encryptData(userData));
+
       setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
       if (error.response && error.response.status === 405) {
+        console.log("error ", error.response);
         toast.error(
           "Email not verified, verification link has been sent to your email",
         );
@@ -111,6 +112,7 @@ function Login({ handleLogPageToggle }) {
       ) {
         setLogin(true);
       } else {
+        console.log("error ", error);
         toast.error("login failed. please contact us.");
       }
     }

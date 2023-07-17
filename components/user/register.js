@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
 
   useEffect(() => {
-    const userDataString = localStorage.getItem("userData");
+    const userDataString = decryptData(localStorage.getItem("userData"));
     if (userDataString) {
       const userData = JSON.parse(userDataString);
       if (userData.name !== null || userData.token !== null) {

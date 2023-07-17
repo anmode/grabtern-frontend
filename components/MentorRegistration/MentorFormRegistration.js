@@ -193,7 +193,11 @@ export default function MentorForm() {
       <Overlay callbackFunction={callbackFunction} />
       {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
-        <form className="mentorForm" onSubmit={onSubmit}>
+        <form
+          className="mentorForm"
+          onSubmit={onSubmit}
+          aria-label="Mentor registration form"
+        >
           {/* steps tracker start */}
           <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
             <div
@@ -274,7 +278,9 @@ export default function MentorForm() {
           {/* form sections end */}
 
           {error && (
-            <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+            <div style={{ color: "red", gridColumn: "1/3" }} role="alert">
+              {error}
+            </div>
           )}
           <hr
             style={{

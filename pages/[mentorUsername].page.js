@@ -16,7 +16,7 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 });
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
-
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 // testimonial carousel options
 const testimonialOptions = {
   margin: 40,
@@ -43,7 +43,8 @@ function Index({ mentorDetail }) {
   const [error, setError] = useState("");
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userData = decryptData(localStorage.getItem("userData"));
+  const [selectedSession, setSelectedSession] = useState("");
   const [carousel, setCarousel] = useState(true);
 
   // const handleClick = (mentordata) => {
@@ -151,8 +152,10 @@ function Index({ mentorDetail }) {
                     description={session.description}
                     duration={session.duration}
                     price={session.price}
-                    handleBookSession={() => { window.location.href = `/${mentorDetail?.username}/bookSession/${session._id}`; }}
-                    />
+                    handleBookSession={() => {
+                      window.location.href = `/${mentorDetail?.username}/bookSession/${session._id}`;
+                    }}
+                  />
                 ))}
             </div>
           </Section>
@@ -241,7 +244,6 @@ function Index({ mentorDetail }) {
 }
 
 export default Index;
-
 
 export async function getServerSideProps(context) {
   const { mentorUsername } = context.params;

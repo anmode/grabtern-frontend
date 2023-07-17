@@ -14,6 +14,8 @@ import Visibillity from "../public/assets/Visibillity.jsx";
 import VisibillityOff from "../public/assets/VisibillityOff.jsx";
 
 import { useAuth } from "../context/AuthContext";
+import { encryptData, decryptData } from "../hook/encryptDecrypt.js";
+
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -56,7 +58,8 @@ function mentorLogin() {
         mentor_name: res.fullName,
         mentorToken: res.mentorToken,
       };
-      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      z;
+      localStorage.setItem("mentorData", encryptData(mentorData));
       setIsMentorLoggedIn(true);
       router.push("/");
     } catch (error) {
@@ -85,7 +88,7 @@ function mentorLogin() {
         mentor_picture: userObject.picture,
         mentor_name: userObject.name,
       };
-      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      localStorage.setItem("mentorData", encryptData(mentorData));
       setIsMentorLoggedIn(true);
       router.push("/");
     } catch (error) {
@@ -121,11 +124,15 @@ function mentorLogin() {
       </Head>
       <Header navbarBackground={true} />
       <main className="login-body">
-        <form className="form-default" onSubmit={handleSubmit}>
+        <form
+          className="form-default"
+          onSubmit={handleSubmit}
+          aria-label="Mentor login form"
+        >
           <div className="login-form d-flex flex-column">
             <div className="logout-login">
-              <a href="/index.html">
-                <img src="/assets/img/logo/loder.webp" alt="" />
+              <a href="/index.html" aria-label="Go to home page">
+                <img src="/assets/img/logo/loder.webp" alt="logo" />
               </a>
             </div>
             <h2>Mentor Login</h2>
@@ -134,9 +141,12 @@ function mentorLogin() {
               <input
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Email"
                 onChange={handleChange}
                 value={formData.email}
+                required
+                aria-required="true"
               />
             </div>
             <div className="form-input">
@@ -144,13 +154,19 @@ function mentorLogin() {
               <input
                 type={isPasswordVisible ? "text" : "password"}
                 name="password"
+                id="password"
                 placeholder="Password"
                 onChange={handleChange}
                 value={formData.password}
+                required
+                aria-required="true"
               />
               <div
                 className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
                 onClick={togglePasswordVisibility}
+                aria-label={
+                  isPasswordVisible ? "Hide Password" : "Show Password"
+                }
               >
                 {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
               </div>
@@ -167,7 +183,11 @@ function mentorLogin() {
               />
             </div>
             <ToastContainer />
-            {error && <div style={{ color: "red" }}>{error}</div>}
+            {error && (
+              <div style={{ color: "red" }} role="alert">
+                {error}
+              </div>
+            )}
             <Link
               href="/forgotpass"
               className="forget align-self-start"

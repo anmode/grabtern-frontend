@@ -8,6 +8,7 @@ import { SunIcon } from "@heroicons/react/24/solid";
 import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
 import clsx from "clsx";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
 function Header() {
   const {
@@ -16,8 +17,8 @@ function Header() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const userData = decryptData(localStorage.getItem("userData"));
+  const mentorData = decryptData(localStorage.getItem("mentorData"));
   const [scrollY, setScrollY] = useState(0);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");

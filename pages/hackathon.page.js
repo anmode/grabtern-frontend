@@ -32,6 +32,7 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 
 const buttonStyle = {
   width: "200px",
@@ -110,8 +111,8 @@ export default function Home() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const userData = decryptData(localStorage.getItem("userData"));
+  const mentorData = decryptData(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
   const [tagFilter, setTagFilter] = useState("All");
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);

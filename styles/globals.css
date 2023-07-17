@@ -1609,11 +1609,10 @@ select {
 #tncheading {
   font-family: "Mulish", sans-serif;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: normal;
   margin-top: 100px;
   font-size: 60px;
-  text-align: center;
   color: #4255a4;
 }
 
@@ -1640,7 +1639,14 @@ select {
   margin-right: 10%;
   font-size: 18px;
 }
+.maincontent a{
+  font-family: "Mulish", sans-serif;
+}
 
+.maincontent b{
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+}
 .tableofcontents {
   font-family: "Mulish", sans-serif;
   margin-top: 0px;
@@ -1710,6 +1716,15 @@ select {
   font-size: 18px;
   margin-top: 40px;
   margin-right: 20px;
+}
+
+.terms-and-cond-sub b{
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+}
+
+.terms-and-cond-sub a{
+  font-family: "Mulish", sans-serif;
 }
 
 @media only screen and (max-width: 600px) {

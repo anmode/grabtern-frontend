@@ -14,6 +14,8 @@ import Visibillity from "../public/assets/Visibillity.jsx";
 import VisibillityOff from "../public/assets/VisibillityOff.jsx";
 
 import { useAuth } from "../context/AuthContext";
+import { encryptData, decryptData } from "../hook/encryptDecrypt.js";
+
 function mentorLogin() {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -56,7 +58,8 @@ function mentorLogin() {
         mentor_name: res.fullName,
         mentorToken: res.mentorToken,
       };
-      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      z;
+      localStorage.setItem("mentorData", encryptData(mentorData));
       setIsMentorLoggedIn(true);
       router.push("/");
     } catch (error) {
@@ -85,7 +88,7 @@ function mentorLogin() {
         mentor_picture: userObject.picture,
         mentor_name: userObject.name,
       };
-      localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      localStorage.setItem("mentorData", encryptData(mentorData));
       setIsMentorLoggedIn(true);
       router.push("/");
     } catch (error) {

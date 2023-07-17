@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 
 function Dashboard({ mentorDetail }) {
   const [formData, setFormData] = useState(mentorDetail);
@@ -121,7 +122,7 @@ function Dashboard({ mentorDetail }) {
       const url = `${
         process.env.NEXT_PUBLIC_BACKEND_URL
       }/api/mentors/updateMentor/${
-        JSON.parse(localStorage.getItem("mentorData")).mentorToken
+        JSON.parse(decryptData("mentorData")).mentorToken
       }`;
       const { data: res } = await axios.post(url, formData);
       alert(res);

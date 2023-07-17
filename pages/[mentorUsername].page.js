@@ -19,7 +19,7 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), {
 });
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
-
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 // testimonial carousel options
 const testimonialOptions = {
   margin: 40,
@@ -50,7 +50,7 @@ function Index({ mentorDetail }) {
   const [emailSent, setEmailSent] = useState(false); // New state variable
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userData = decryptData(localStorage.getItem("userData"));
   const [selectedSession, setSelectedSession] = useState("");
   const [carousel, setCarousel] = useState(true);
 

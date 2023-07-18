@@ -35,10 +35,12 @@ function Login({ handleLogPageToggle }) {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
       try {
         const res = await axios.post(url, userObject);
+        console.log(res);
         const userData = {
           user_name: userObject.name,
           user_picture: userObject.picture,
           user_email: userObject.email,
+          user_id: res.data.id,
         };
 
         localStorage.setItem("userData", encryptData(userData));
@@ -91,6 +93,7 @@ function Login({ handleLogPageToggle }) {
         token: res.data,
         user_name: res.data.fullName,
         user_email: res.data.email,
+        user_id: res.data.id,
         redirectUrl: localStorage.getItem("redirectUrl"),
       };
 
@@ -99,6 +102,7 @@ function Login({ handleLogPageToggle }) {
       setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
+      console.log(error);
       if (error.response && error.response.status === 405) {
         console.log("error ", error.response);
         toast.error(

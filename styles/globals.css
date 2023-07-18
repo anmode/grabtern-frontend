@@ -1932,19 +1932,6 @@ select {
   width: 100%;
 }
 
-.bookSesssionPriceAndOrder button {
-  background-color: #007dd7;
-  padding: 7px;
-  width: 100%;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease-in;
-}
-
-.bookSesssionPriceAndOrder button:hover {
-  border-radius: 10px;
-}
-
 .modal-overlay {
   width: 100%;
   position: fixed;
@@ -1991,34 +1978,17 @@ select {
   gap: 10px;
 }
 
-.modal-content button {
-  background-color: #007dd7;
-  color: white;
-  font-weight: 600;
-  padding: 10px 15px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.modal-content button.fileUpload {
+.modal-content .buttons .fileUpload {
   position: relative;
   cursor: pointer;
 }
 
-.modal-content button.fileUpload span {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.modal-content button.fileUpload span img {
+.modal-content .buttons .fileUpload img {
   width: 25px;
   height: 25px;
 }
 
-.modal-content button.fileUpload input {
+.modal-content .buttons .fileUpload input {
   position: absolute;
   width: 100%;
   height: 100%;

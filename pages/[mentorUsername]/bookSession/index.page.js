@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { AiFillCloseCircle, AiFillInfoCircle } from "react-icons/ai";
-import { FaCopy, FaUpload } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "next/dynamic";
 import axios from "axios";
 import { encryptData, decryptData } from "../../../hook/encryptDecrypt";
+import ButtonUI from "../../../components/UI/Button/Button";
 
 const Header = dynamic(() => import("../../../components/layout/Header"));
 
-function BookSessionPage({ mentorDetail, sessionID }) {
+function Index({ mentorDetail, bookSession, sessionID }) {
   console.log(mentorDetail);
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
-  const [paymentProof, setPaymentProof] = useState("");
-  const [fileName, setFileName] = useState("");
-  const bookSession = mentorDetail.sessions.find(
-    (obj) => obj._id === sessionID,
-  );
   console.log("Book Session", sessionID);
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
@@ -65,8 +60,6 @@ function BookSessionPage({ mentorDetail, sessionID }) {
       formData.append("file", blob);
       formData.append("upload_preset", "image_preset");
       const res = await axios.post(url, formData);
-      console.log(res.data.secure_url);
-      bookedSession();
       return res.data.secure_url;
     } catch (error) {
       console.log(error);
@@ -82,7 +75,12 @@ function BookSessionPage({ mentorDetail, sessionID }) {
     const base64 = await convertBase64(file);
     const imageClouindaryUrl = await uploadToCloudinary(base64);
     console.log(imageClouindaryUrl);
-    setPaymentProof(imageClouindaryUrl);
+    if (!imageClouindaryUrl) {
+      setLoading(false);
+      toast.error("Sorry couldn't upload the image to our server");
+      return;
+    }
+    bookedSession(imageClouindaryUrl);
   };
 
   const bookSessionPaymentStep = () => {
@@ -127,9 +125,9 @@ function BookSessionPage({ mentorDetail, sessionID }) {
     e.target.classList.add("active");
   };
 
-  const bookedSession = async () => {
+  const bookedSession = async (imageClouindaryUrl) => {
     try {
-      if (paymentProof === null) {
+      if (imageClouindaryUrl === null) {
         setLoading(false);
         toast.error("Upload transaction proof first to book a session!");
         return;
@@ -141,7 +139,7 @@ function BookSessionPage({ mentorDetail, sessionID }) {
         sessionID: bookSession._id,
         sessionDay: selectedDay,
         sessionTime: selectedTime,
-        paymentProof,
+        paymentProof: imageClouindaryUrl,
       };
 
       const response = await axios.post(
@@ -235,20 +233,15 @@ function BookSessionPage({ mentorDetail, sessionID }) {
                 <b>UPI ID</b>: 9368086395@paytm
               </span>
               <div className="buttons">
-                <button onClick={handleCopy}>
-                  <FaCopy className="mr-2" />
-                  <span>Copy</span>
-                </button>
-                <button className="fileUpload">
-                  <FaUpload className="mr-2" />
-                  <span>
-                    Upload proof{" "}
-                    {loading === true ? (
-                      <img src="/assets/img/gif/Spinner.gif" />
-                    ) : null}
-                  </span>
+                <ButtonUI text="Copy" onClick={handleCopy} />
+                <div className="fileUpload">
+                  <ButtonUI text="Upload proof" />
                   <input type="file" onChange={(e) => handleImageChange(e)} />
-                </button>
+
+                  {loading === true ? (
+                    <img src="/assets/img/gif/Spinner.gif" />
+                  ) : null}
+                </div>
               </div>
             </div>
           </div>
@@ -310,9 +303,10 @@ function BookSessionPage({ mentorDetail, sessionID }) {
                 {bookSession.price}
               </div>
               <div className="button">
-                <button onClick={() => bookSessionPaymentStep()}>
-                  Book Session Now{" "}
-                </button>
+                <ButtonUI
+                  text="Book Session Now"
+                  onClick={() => bookSessionPaymentStep()}
+                />
               </div>
             </div>
           </div>
@@ -324,7 +318,8 @@ function BookSessionPage({ mentorDetail, sessionID }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { mentorUsername, sessionID } = context.params;
+  const { mentorUsername } = context.params;
+  const sessionID = context.query.sessionID;
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
   const { data: res } = await axios.get(url);
   if (res.message === "Invalid link") {
@@ -338,12 +333,27 @@ export const getServerSideProps = async (context) => {
       },
     };
   }
+  const bookSession = res.mentorDetail.sessions.find(
+    (obj) => obj._id === sessionID,
+  );
+  if (bookSession === undefined) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {
+        mentorDetail: null,
+      },
+    };
+  }
   return {
     props: {
       mentorDetail: res.mentorDetail,
+      bookSession,
       sessionID,
     },
   };
 };
 
-export default BookSessionPage;
+export default Index;

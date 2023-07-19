@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
 
   useEffect(() => {
-    const userDataString = localStorage.getItem("userData");
+    const userDataString = decryptData(localStorage.getItem("userData"));
     if (userDataString) {
       const userData = JSON.parse(userDataString);
       if (userData.name !== null || userData.token !== null) {
@@ -77,6 +78,7 @@ function Register({ handleLogPageToggle }) {
         action="login-bg.mp4"
         onSubmit={handleSubmit}
         style={{ marginTop: "10vh" }}
+        aria-label="User registration form"
       >
         <div className="d-flex flex-column justify-content-start tw-w-full  md:tw-py-[5vh] md:tw-px-[3vw]  tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
           <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">
@@ -87,7 +89,7 @@ function Register({ handleLogPageToggle }) {
           </p>
           <div className="tw-flex tw-flex-col  tw-mb-10">
             <label
-              for="name"
+              htmlFor="name"
               className="tw-text-3xl tw-text-left tw-font-medium "
             >
               Full name
@@ -96,14 +98,17 @@ function Register({ handleLogPageToggle }) {
               type="text"
               placeholder="Full name"
               name="fullName"
+              id="fullName"
               onChange={handleChange}
               value={data.fullName}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              required
+              aria-required="true"
             />
           </div>
           <div className="tw-flex tw-flex-col  tw-mb-10">
             <label
-              for="name"
+              htmlFor="email"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Email Address
@@ -111,16 +116,19 @@ function Register({ handleLogPageToggle }) {
             <input
               type="email"
               name="email"
+              id="email"
               placeholder="Email Address"
               onChange={handleChange}
               value={data.email}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              required
+              aria-required="true"
             />
           </div>
 
           <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
             <label
-              for="name"
+              htmlFor="password"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Password
@@ -128,14 +136,18 @@ function Register({ handleLogPageToggle }) {
             <input
               type={isPasswordVisible ? "text" : "password"}
               name="password"
+              id="password"
               placeholder="Password"
               onChange={handleChange}
               value={data.password}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+              required
+              aria-required="true"
             />
             <div
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
               onClick={togglePasswordVisibility}
+              aria-label={isPasswordVisible ? "Hide Password" : "Show Password"}
             >
               {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
@@ -143,7 +155,7 @@ function Register({ handleLogPageToggle }) {
 
           <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
             <label
-              for="name"
+              htmlFor="confirmPassword"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Confirm Password
@@ -151,10 +163,13 @@ function Register({ handleLogPageToggle }) {
             <input
               type={isConPasswordVisible ? "text" : "password"}
               name="confirmPassword"
+              id="confirmPassword"
               placeholder="Confirm Password"
               onChange={handleChange}
               value={data.confirmPassword}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+              required
+              aria-required="true"
             />
             <div
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
@@ -169,7 +184,11 @@ function Register({ handleLogPageToggle }) {
               verify your account.
             </p>
           )}
-          {error && <div style={{ color: "red" }}>{error}</div>}
+          {error && (
+            <div style={{ color: "red" }} role="alert">
+              {error}
+            </div>
+          )}
           <div>
             <input
               type="submit"

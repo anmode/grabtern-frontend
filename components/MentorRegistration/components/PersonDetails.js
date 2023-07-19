@@ -15,6 +15,7 @@ function PersonDetails({
       label: "name",
       type: "text",
       name: "name",
+      id: "name",
       className: "mentorFormInput",
       handleChange: handleChange,
       placeholder: "e.g. Peter Parker",
@@ -27,6 +28,7 @@ function PersonDetails({
       label: "username",
       type: "text",
       name: "username",
+      id: "username",
       className: "mentorFormInput",
       onChange: handleChange,
       placeholder: "e.g. peter-parker12",
@@ -39,6 +41,7 @@ function PersonDetails({
       label: "email",
       type: "email",
       name: "email",
+      id: "email",
       className: "mentorFormInput",
       onChange: handleChange,
       placeholder: "e.g. peterparker4321@gmail.com",
@@ -51,6 +54,7 @@ function PersonDetails({
       label: "phone",
       type: "number",
       name: "mobile",
+      id: "mobile",
       className: "mentorFormInput",
       onChange: handleChange,
       placeholder: "0123456789",
@@ -154,6 +158,8 @@ function PersonDetails({
             onChange={(e) => handleImageChange(e)}
             hidden
             required
+            aria-label="Upload your image"
+            aria-required="true"
           />
         </div>
       </div>
@@ -179,11 +185,13 @@ function PersonDetails({
           cols="10"
           rows="7"
           name="description"
+          id="description"
           className="mentorFormInput"
           onChange={(e) => handleChange(e)}
           placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
           required
           value={formData.description}
+          aria-required="true"
         />
       </div>
       {/* bio section ends*/}

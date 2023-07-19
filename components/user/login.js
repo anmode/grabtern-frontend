@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../context/AuthContext";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff";
@@ -34,12 +35,16 @@ function Login({ handleLogPageToggle }) {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
       try {
         const res = await axios.post(url, userObject);
+        console.log(res);
         const userData = {
           user_name: userObject.name,
           user_picture: userObject.picture,
           user_email: userObject.email,
+          user_id: res.data.id,
         };
-        localStorage.setItem("userData", JSON.stringify(userData));
+
+        localStorage.setItem("userData", encryptData(userData));
+
         const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
         router.push(redirectUrl);
       } catch (error) {
@@ -67,7 +72,7 @@ function Login({ handleLogPageToggle }) {
 
     initGoogleSignIn();
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = decryptData(localStorage.getItem("userData"));
     if (userData && userData.redirectUrl) {
       const redirectUrl = userData.redirectUrl;
       router.push(redirectUrl);
@@ -84,22 +89,22 @@ function Login({ handleLogPageToggle }) {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/auth`;
       const res = await axios.post(url, data);
-      if (!res.verified) {
-        toast.error(
-          "Email not verified, verification link has been sent to your email",
-        );
-      }
       const userData = {
         token: res.data,
         user_name: res.data.fullName,
         user_email: res.data.email,
+        user_id: res.data.id,
         redirectUrl: localStorage.getItem("redirectUrl"),
       };
-      localStorage.setItem("userData", JSON.stringify(userData));
+
+      localStorage.setItem("userData", encryptData(userData));
+
       setIsUserLoggedIn(true);
       router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
+      console.log(error);
       if (error.response && error.response.status === 405) {
+        console.log("error ", error.response);
         toast.error(
           "Email not verified, verification link has been sent to your email",
         );
@@ -111,6 +116,7 @@ function Login({ handleLogPageToggle }) {
       ) {
         setLogin(true);
       } else {
+        console.log("error ", error);
         toast.error("login failed. please contact us.");
       }
     }
@@ -128,6 +134,7 @@ function Login({ handleLogPageToggle }) {
         action="login-bg.mp4"
         onSubmit={handleSubmit}
         style={{ marginTop: "10vh" }}
+        aria-label="User login form"
       >
         <div className="d-flex flex-column justify-content-start tw-w-full md:tw-py-[5vh] md:tw-px-[3vw] tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
           <div style={{ marginBottom: "20px" }}>
@@ -135,7 +142,7 @@ function Login({ handleLogPageToggle }) {
               Login Here
             </h2>
             <p className=" tw-text-gray-500 tw-mb-5">
-              Enter your credentials to acess your account
+              Enter your credentials to access your account
             </p>
           </div>
           <div
@@ -149,7 +156,7 @@ function Login({ handleLogPageToggle }) {
 
           <div className="tw-flex tw-flex-col tw-mb-10">
             <label
-              for="name"
+              htmlFor="email"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Email
@@ -157,16 +164,19 @@ function Login({ handleLogPageToggle }) {
             <input
               type="email"
               name="email"
+              id="email"
               placeholder="Email"
               onChange={handleChange}
               value={data.email}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
+              required
+              aria-required="true"
             />
           </div>
 
           <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
             <label
-              for="name"
+              htmlFor="password"
               className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
             >
               Password
@@ -174,15 +184,19 @@ function Login({ handleLogPageToggle }) {
             <input
               type={isPasswordVisible ? "text" : "password"}
               name="password"
+              id="password"
               placeholder="Password"
               onChange={handleChange}
               value={data.password}
               className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+              required
+              aria-required="true"
             />
 
             <div
               className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
               onClick={togglePasswordVisibility}
+              aria-label={isPasswordVisible ? "Hide Password" : "Show Password"}
             >
               {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
             </div>
@@ -204,7 +218,11 @@ function Login({ handleLogPageToggle }) {
             </button>
           </div>
 
-          {error && <div style={{ color: "red" }}>{error}</div>}
+          {error && (
+            <div style={{ color: "red" }} role="alert">
+              {error}
+            </div>
+          )}
           {localStorage.getItem("new_user") && (
             <div style={{ color: "green" }}>Please register first.</div>
           )}

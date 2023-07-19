@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
 import Visibillity from "../public/assets/Visibillity.jsx";
 import VisibillityOff from "../public/assets/VisibillityOff.jsx";
+import Header from "../components/layout/Header";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
@@ -123,6 +123,7 @@ function Register({ handleLogPageToggle }) {
       justifyContent: "center",
     }}
     >
+     <Header navbarBackground={true} />
       <form
         className="form-default mx-5"
         action="login-bg.mp4"

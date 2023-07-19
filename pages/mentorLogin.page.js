@@ -16,18 +16,7 @@ import VisibillityOff from "../public/assets/VisibillityOff.jsx";
 
 import { useAuth } from "../context/AuthContext";
 import { encryptData, decryptData } from "../hook/encryptDecrypt.js";
-//my code
-// const[ismentorLogin,setMentorLogin]=useState(true);
-// const[userLogin,setUserLogin]=useState(false);
 
-// const handleMentorLogin=()=>{
-//   setMentorLogin(true);
-//   setUserLogin(false);
-// }
-// const handleUserLogin=()=>{
-//   setUserLogin(true);
-//   setMentorLogin(false);
-// }
 
 function mentorLogin() {
   const router = useRouter();
@@ -54,7 +43,7 @@ function mentorLogin() {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
-  //
+  
   const [showForm1, setShowForm1] = useState(true); // Show Form1 initially
 
   const handleUserLoginClick = () => {

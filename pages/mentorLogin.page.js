@@ -16,6 +16,18 @@ import VisibillityOff from "../public/assets/VisibillityOff.jsx";
 
 import { useAuth } from "../context/AuthContext";
 import { encryptData, decryptData } from "../hook/encryptDecrypt.js";
+//my code
+// const[ismentorLogin,setMentorLogin]=useState(true);
+// const[userLogin,setUserLogin]=useState(false);
+
+// const handleMentorLogin=()=>{
+//   setMentorLogin(true);
+//   setUserLogin(false);
+// }
+// const handleUserLogin=()=>{
+//   setUserLogin(true);
+//   setMentorLogin(false);
+// }
 
 function mentorLogin() {
   const router = useRouter();
@@ -42,6 +54,17 @@ function mentorLogin() {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
+  //
+  const [showForm1, setShowForm1] = useState(true); // Show Form1 initially
+
+  const handleUserLoginClick = () => {
+    setShowForm1(true);
+  };
+
+  const handleMentorLoginClick = () => {
+    setShowForm1(false);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +74,8 @@ function mentorLogin() {
     }
     console.log(formData);
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/auth`;
+      if(!setShowForm1){
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/auth`;
       const { data: res } = await axios.post(url, formData);
       // localStorage.setItem("mentorToken", res.mentorToken);
       // localStorage.setItem("mentor_name", res.fullName);
@@ -63,6 +87,24 @@ function mentorLogin() {
       localStorage.setItem("mentorData", encryptData(mentorData));
       setIsMentorLoggedIn(true);
       router.push("/");
+      }
+      else{
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
+        const res = await axios.post(url, userObject);
+        console.log(res);
+        const userData = {
+          user_name: userObject.name,
+          user_picture: userObject.picture,
+          user_email: userObject.email,
+          user_id: res.data.id,
+        };
+
+        localStorage.setItem("userData", encryptData(userData));
+
+        const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
+        router.push(redirectUrl);
+      }
+  
     } catch (error) {
       console.log(error);
       if (
@@ -118,16 +160,7 @@ function mentorLogin() {
     google.accounts.id.prompt();
   }, []);
 
-  const [showForm1, setShowForm1] = useState(true); // Show Form1 initially
-
-  const handleUserLoginClick = () => {
-    setShowForm1(true);
-  };
-
-  const handleMentorLoginClick = () => {
-    setShowForm1(false);
-  };
-
+ 
   return (
     <>
       <Head>

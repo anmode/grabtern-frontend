@@ -63,7 +63,7 @@ function Sessions() {
                             <span className={styles.tableColumn}>Topic</span>
                           </th>
                           <th className={styles.antCell}>
-                            <span className={styles.tableColumn}>Mentor</span>
+                            <span className={styles.tableColumn}>User</span>
                           </th>
                           <th className={styles.antCell}>
                             <span className={styles.tableColumn}>Time</span>
@@ -77,6 +77,15 @@ function Sessions() {
                           <th className={styles.antCell}>
                             <span className={styles.tableColumn}>Status</span>
                           </th>
+                        </tr>
+                        <tr>
+                           <td></td>
+                           <td>ABCD</td>
+                           <td>EFGH</td>
+                           <td>IJKL</td>
+                           <td>MNOP</td>
+                           <td>QRST</td>
+                           <td>UVWX</td>
                         </tr>
                       </thead>
                     </table>

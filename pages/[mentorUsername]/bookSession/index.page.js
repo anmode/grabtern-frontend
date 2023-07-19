@@ -23,6 +23,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const userName = user?.user_name;
   const userEmail = user?.user_email;
   const userID = user?.user_id;
+  // console.log(user);
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -126,44 +127,62 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     e.target.classList.add("active");
   };
 
-  const bookedSession = async (imageClouindaryUrl) => {
+  const bookedSession = async (imageCloudinaryUrl) => {
     try {
-      if (imageClouindaryUrl === null) {
+      if (imageCloudinaryUrl === null) {
         setLoading(false);
         toast.error("Upload transaction proof first to book a session!");
         return;
       }
 
-      const data = {
-        userID,
+      const requestData = {
+        userID: userID,
         mentorUsername: mentorDetail.username,
-        sessionName: bookSession.name,
         sessionID: bookSession._id,
         sessionDay: selectedDay,
         sessionTime: selectedTime,
-        sessionPrice: bookSession.Price,
-        paymentProof: imageClouindaryUrl,
+        paymentProof: imageCloudinaryUrl,
       };
+
+      const encryptedToken = encryptData(requestData);
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        data,
+        { token: encryptedToken },
       );
+
       setLoading(false);
-      toast.success("You have successfully booked a session!");
-      window.location.href = "/";
-      console.log(response.data);
-      // Add any further logic or redirection based on the response
+
+      if (response.data) {
+        toast.success("You have successfully booked a session!");
+        window.location.href = "/";
+        console.log(response.data);
+        // Add any further logic or redirection based on the response
+      } else {
+        // Handle the case when the response does not contain expected 'data'
+        toast.error(
+          "Error booking session: Unexpected response from the server.",
+        );
+      }
     } catch (error) {
       setLoading(false);
-      toast.error(error.response.data.message);
-      console.error("Error booking session:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+        console.error("Error booking session:", error.response.data.message);
+      } else {
+        toast.error("Error booking session: An unexpected error occurred.");
+        console.error("Error booking session:", error);
+      }
       // Handle error scenario
     }
   };
 
   function splitTimeRange() {
-    console.log(selectedDay);
+    // console.log(selectedDay);
     if (selectedDay.length < 1) {
       return;
     }
@@ -187,7 +206,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       result.push(formatTime(startTime));
     }
 
-    console.log(result);
+    // console.log(result);
 
     return result;
   }

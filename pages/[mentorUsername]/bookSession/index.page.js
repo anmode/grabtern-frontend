@@ -6,15 +6,15 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 import { encryptData, decryptData } from "../../../hook/encryptDecrypt";
 import ButtonUI from "../../../components/UI/Button/Button";
+import { useRouter } from "next/router";
 
 const Header = dynamic(() => import("../../../components/layout/Header"));
 
 function Index({ mentorDetail, bookSession, sessionID }) {
-  console.log(mentorDetail);
+  const router = useRouter();
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
-  console.log("Book Session", sessionID);
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
 
@@ -86,6 +86,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const bookSessionPaymentStep = () => {
     if (!userName || !userEmail) {
       toast.error("Please login as a user before booking a session!");
+      router.push("/nextAuth#login");
       return;
     }
 
@@ -136,9 +137,11 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       const data = {
         userID,
         mentorUsername: mentorDetail.username,
+        sessionName: bookSession.name,
         sessionID: bookSession._id,
         sessionDay: selectedDay,
         sessionTime: selectedTime,
+        sessionPrice: bookSession.Price,
         paymentProof: imageClouindaryUrl,
       };
 

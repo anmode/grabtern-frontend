@@ -135,6 +135,10 @@ function Header() {
         {/* For Mobile Navigation */}
         <div className="sm:tw-hidden tw-flex" ref={dropdownRef}>
           <div className="tw-flex">
+            {/* profile icon if user logged in */}
+            {(isUserLoggedIn || isMentorLoggedIn) && <UserProfile />}
+
+            {/* hamburger icon */}
             <div
               className="tw-text-3xl tw-font-light tw-mx-2 cursor-pointer tw-text-[#845ec2]"
               onClick={() => {
@@ -164,6 +168,7 @@ function Header() {
                   Contact
                 </Link>
 
+                {/* show signin button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
                   <Link
                     href="/"
@@ -176,10 +181,8 @@ function Header() {
                 {/* theme icon */}
                 <SunIcon className="tw-h-10 tw-bg-white tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer" />
 
-                {/* show profile card if user is logged in else show signup button */}
-                {isUserLoggedIn || isMentorLoggedIn ? (
-                  <UserProfile />
-                ) : (
+                {/* show signup button if user not loggedin */}
+                {!(isUserLoggedIn || isMentorLoggedIn) && (
                   <ButtonLink text="Sign Up" href="/" />
                 )}
 

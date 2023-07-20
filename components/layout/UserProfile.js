@@ -15,7 +15,7 @@ function UserProfile() {
       </div>
       {/* dropdown */}
       {dropDown && (
-        <div className="tw-grid tw-p-2 tw-bg-base-100 tw-rounded-lg tw-shadow-md sm:tw-absolute sm:-tw-left-[100%] sm:tw-top-[120%]">
+        <div className="tw-grid tw-p-2 tw-bg-base-100 tw-rounded-lg tw-shadow-md tw-absolute -tw-left-[100%] tw-top-[120%]">
           <Link
             href="/dashboard"
             className="tw-p-2 tw-pb-1 hover:tw-text-primary-100 tw-border-b tw-font-normal"

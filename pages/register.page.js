@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Visibillity from "../public/assets/Visibillity.jsx";
 import VisibillityOff from "../public/assets/VisibillityOff.jsx";
 import Header from "../components/layout/Header";
-
+import styles from "../styles/userRegistration.module.css"
 function useRedirectIfAuthenticated() {
   const router = useRouter();
 
@@ -114,120 +114,87 @@ function Register({ handleLogPageToggle }) {
     }
   };
   return (
-    <div 
-    style={{
-      display: "flex",
-      alignContent: "center",
-      justifyContent: "center",
-    }}
-    >
+    <>
      <Header navbarBackground={true} />
-      <form
-        className="form-default mx-5"
-        action="login-bg.mp4"
-        onSubmit={handleSubmit}
-        style={{ marginTop: "10vh" }}
-      >
-        <div className="d-flex flex-column justify-content-start tw-w-full  md:tw-py-[5vh] md:tw-px-[3vw]  tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
-        <div style={{ marginBottom: "20px" }}>
-          <h2 className="text-left tw-text-black tw-text-4xl  tw-font-bold">
+     <div className="login-form d-flex flex-column bg-white tw-mb-10">
+     <form className="form-default" onSubmit={handleSubmit}>
+        <div className={styles.heading}>
+        <img src="/Grabtern2.png"></img>
+          <h2 >
           Hey, hello 👋
           </h2>
-          <p className=" tw-text-gray-800 tw-mb-6 tw-mt-3">
+          </div>
+          {/* <p >
           The faster you fill up, the faster you get a internship
-          </p>
-          </div>
-          <div
-            id="signInDiv"
-            style={{ alignSelf: "center" }}
-            className="tw-mb-2 top: -10px;"
-          > </div>
-          <h3 style={{ color: "black", alignSelf: "center", margin: "20px" }}>
-            Or
-          </h3>
+          </p> */}
+          <div className="form-input">
+              <label htmlFor="name">Full name</label>
+              <div className={styles.Input}>
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="Full name"
+                  onChange={handleChange}
+                  value={data.fullName}
+                />
+                </div>
+              </div>
 
-          <div className="tw-flex tw-flex-col  tw-mb-10"  >
-            <label
-              for="name"
-              className="tw-text-lg tw-text-left tw-font-small "
-              style={{ fontSize: '1.3em' }}
-            >
-              Full name
-            </label>
-            <input
-              type="text"
-              placeholder="Full name"
-              name="fullName"
-              onChange={handleChange}
-              value={data.fullName}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
-            />
-          </div>
-          <div className="tw-flex tw-flex-col  tw-mb-10">
-            <label
-              for="name"
-              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
-              style={{ fontSize: '1.3em' }}
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              onChange={handleChange}
-              value={data.email}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
-            />
+          <div className="form-input">
+              <label htmlFor="email">Email</label>
+              <div className={styles.Input}>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  value={data.email}
+                />
+              </div>
           </div>
 
-          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
-            <label
-              for="name"
-              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
-              style={{ fontSize: '1.3em' }}
-            >
-              Password
-            </label>
-            <input
-              type={isPasswordVisible ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              onChange={handleChange}
-              value={data.password}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
-            />
-            <div
-              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-              onClick={togglePasswordVisibility}
-            >
-              {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
-            </div>
-          </div>
+          <div className="form-input">
+                <label htmlFor="password">Password</label>
+                <div className={styles.Input}>
+                  {" "}
+                  <input
+                    type={isPasswordVisible ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    value={data.password}
+                    className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+                  />
+                <div
+                    className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-10"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {isPasswordVisible ? <Visibillity /> : <VisibillityOff />}
+                  </div>
+                 </div>
+               </div>
 
-          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
-            <label
-              for="name"
-              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
-              style={{ fontSize: '1.3em' }}
-            >
-              Confirm Password
-            </label>
-            <input
-              type={isConPasswordVisible ? "text" : "password"}
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              onChange={handleChange}
-              value={data.confirmPassword}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
-            />
-            <div
-              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-              onClick={toggleConPasswordVisibility}
-            >
-              {isConPasswordVisible ? <VisibillityOff /> : <Visibillity />}
-            </div>
-          </div>
+          <div className="form-input">
+                <label htmlFor="password">Confirm Password</label>
+                <div className={styles.Input}>
+                  {" "}
+                  <input
+                    type={isPasswordVisible ? "text" : "password"}
+                    name="confirmPassword"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    value={data.confirmPassword}
+                    className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+                  />
+                <div
+                    className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-10"
+                    onClick={toggleConPasswordVisibility}
+                  >
+                    {isConPasswordVisible ? <Visibillity /> : <VisibillityOff />}
+                  </div>
+                 </div>
+               </div>
+
           {verificationSent && (
             <p style={{ color: "green" }}>
               An email has been sent to {data.email}. Please check your inbox to
@@ -235,7 +202,7 @@ function Register({ handleLogPageToggle }) {
             </p>
           )}
           {error && <div style={{ color: "red" }}>{error}</div>}
-          <div>
+          <div className="tw-mt-[-20px]">
             <input
               type="submit"
               name="submit"
@@ -247,19 +214,29 @@ function Register({ handleLogPageToggle }) {
               className="tw-px-10 tw-font-semibold tw-py-[6px] tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
             />
           </div>
-          <div className="link-div tw-font-medium tw-mt-10">
-            Already have an account?
-            <button
-              className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700"
-              style={{ textDecoration: "none" }}
-              onClick={() => handleLogPageToggle()}
+
+          <div className="link-div">
+             Already have an account?
+             <button
+             className="tw-ml-0 md:tw-ml-2 tw-mt-[20px] hover:tw-text-gray-400 tw-text-blue-700"
+             style={{ textDecoration: "none" }}
+             onClick={() => handleLogPageToggle()}
             >
               Login{" "}
             </button>
-          </div>
-        </div>
+           </div>
+           <div className={styles.google}>
+            <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
+             </div>
+              <div
+                id="signInDiv"
+                style={{ alignSelf: "center" }}
+                className={styles.googlelogin}
+              >
+            </div>
       </form>
-    </div>
+      </div>
+    </>
   );
 }
 

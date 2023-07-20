@@ -73,7 +73,7 @@ function ForgotPassword() {
             <div className="form-input pt-30">
               <input type="submit" name="submit" value="Reset Password" />
             </div>
-            {!isLoading && (
+            {isLoading && (
               <img
                 style={{
                   width: "50px",

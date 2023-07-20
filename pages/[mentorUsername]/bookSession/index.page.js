@@ -84,9 +84,11 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   };
 
   const bookSessionPaymentStep = () => {
-    if (!userName || !userEmail) {
+    console.log("userData", user);
+    if (user === null || user === undefined) {
       toast.error("Please login as a user before booking a session!");
-      router.push("/nextAuth#login");
+      localStorage.setItem("redirectUrl", window.location.pathname);
+      router.push("/userAuth#login");
       return;
     }
 
@@ -99,7 +101,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       toast.error("Please select time to book a session");
       return;
     }
-
     setQrPopup(true);
   };
 
@@ -151,7 +152,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       );
       setLoading(false);
       toast.success("You have successfully booked a session!");
-      window.location.href = "/";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000);
       console.log(response.data);
       // Add any further logic or redirection based on the response
     } catch (error) {

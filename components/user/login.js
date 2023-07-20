@@ -44,8 +44,9 @@ function Login({ handleLogPageToggle }) {
         };
 
         localStorage.setItem("userData", encryptData(userData));
-
-        const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
+        console.log("redirect 1");
+        const redirectUrl = localStorage.getItem("redirectUrl") || "/";
+        console.log(redirectUrl);
         router.push(redirectUrl);
       } catch (error) {
         setError("New user? Register first.");
@@ -74,6 +75,7 @@ function Login({ handleLogPageToggle }) {
 
     const userData = decryptData(localStorage.getItem("userData"));
     if (userData && userData.redirectUrl) {
+      console.log("redirect 2");
       const redirectUrl = userData.redirectUrl;
       router.push(redirectUrl);
     }
@@ -82,6 +84,10 @@ function Login({ handleLogPageToggle }) {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
+
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,11 +102,12 @@ function Login({ handleLogPageToggle }) {
         user_id: res.data.id,
         redirectUrl: localStorage.getItem("redirectUrl"),
       };
+      console.log("redirect 3");
 
       localStorage.setItem("userData", encryptData(userData));
-
+      alert("redirect url", localStorage.getItem("redirectUrl"));
       setIsUserLoggedIn(true);
-      router.push(localStorage.getItem("redirectUrl") || "/");
+      // router.push(localStorage.getItem("redirectUrl") || "/");
     } catch (error) {
       console.log(error);
       if (error.response && error.response.status === 405) {

@@ -24,12 +24,21 @@ function Banner({ isMentorLoggedIn }) {
                     text="Find Mentor"
                     className="tw-min-w-[130px]"
                   />
-                  <ButtonLink
-                    href="/mentor"
-                    text="Be a Mentors"
-                    variant="outline"
-                    className="tw-min-w-[130px]"
-                  />
+                  {isMentorLoggedIn ? (
+                    <ButtonLink
+                      href="/dashboard"
+                      text="Dashboard"
+                      variant="outline"
+                      className="tw-min-w-[130px]"
+                    />
+                  ) : (
+                    <ButtonLink
+                      href="/mentor"
+                      text="Be a Mentors"
+                      variant="outline"
+                      className="tw-min-w-[130px]"
+                    />
+                  )}
                 </div>
               </div>
             </div>

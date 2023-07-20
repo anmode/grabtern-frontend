@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
           content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
         />
         <meta name="language" content="English" />
-        <link rel="icon" href="/assets/img/favicon1.ico" />
+        <link rel="icon" href="/faviconn.png" />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link

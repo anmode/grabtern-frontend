@@ -79,7 +79,8 @@
   content: "";
   position: absolute;
   top: 50%;
-  width: 195px; /* Adjust the width of the lines as needed */
+  /* width: 195px;  */
+  /* Adjust the width of the lines as needed */
   height: 1px;
   background-color: #000; /* You can change this color to your preference */
 }
@@ -106,11 +107,21 @@
   margin-bottom: 6%;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .btnn {
     width: auto;
+    padding:10px;
+    
   }
+  .btnnContainer{
+    width: 272px;
+    height: 58px;
+    position: relative;
+    left: -16px;
 }
+
+  }
+
 
 /* Focus state */
 .btnn:focus {
@@ -121,3 +132,4 @@
 .btnn:hover {
   background-color: #6b21a8;
 }
+

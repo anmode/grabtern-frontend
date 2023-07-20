@@ -4,9 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 // import DropdownCard from "./LoginDropdown";
 // import { AiOutlineSearch } from "react-icons/ai";
+import UserProfile from "./UserProfile";
 import { SunIcon } from "@heroicons/react/24/solid";
 import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
+import { ButtonLink } from "../UI";
 import clsx from "clsx";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
@@ -96,18 +98,24 @@ function Header() {
         {/* For Desktop Navigation*/}
         <div className="sm:tw-flex tw-hidden">
           <div className="tw-flex tw-gap-3 tw-justify-between tw-items-center md:tw-gap-5 tw-cursor-pointer">
-            <Link href="/" className="hover:tw-text-blue-800">
+            <Link href="/" className="hover:tw-text-primary-100">
               Home
             </Link>
-            <Link href="/mentors" className="hover:tw-text-blue-800">
+            <Link href="/mentors" className="hover:tw-text-primary-100">
               Mentor
             </Link>
-            <Link href="/contact" className="hover:tw-text-blue-800">
+            <Link href="/contact" className="hover:tw-text-primary-100">
               Contact
             </Link>
-            <Link href="/" className="hover:tw-text-blue-800">
-              Sign In
-            </Link>
+
+            {/* show profile card if user is logged in else show signin link */}
+            {isUserLoggedIn || isMentorLoggedIn ? (
+              <UserProfile />
+            ) : (
+              <Link href="/" className="hover:tw-text-primary-100">
+                Sign In
+              </Link>
+            )}
 
             {/* <DarkModeToggle /> */}
             <SunIcon className="tw-h-9 tw-bg-white tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer" />
@@ -117,13 +125,10 @@ function Header() {
             isMentorLoggedIn={isMentorLoggedIn}
           /> */}
 
-            <button
-              type="button"
-              onClick=""
-              className="tw-text-white tw-mb-8 tw-bg-[#845ec2] hover:tw-scale-[0.99] active:tw-scale-[1.01] active:tw-shadow-none tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 "
-            >
-              Sign Up
-            </button>
+            {/* signup button appear only if no user logged in*/}
+            {!(isUserLoggedIn || isMentorLoggedIn) && (
+              <ButtonLink text="Sign Up" href="/" />
+            )}
           </div>
         </div>
 
@@ -159,20 +164,24 @@ function Header() {
                   Contact
                 </Link>
 
-                <Link
-                  href="/"
-                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
-                >
-                  Sign In
-                </Link>
+                {!(isUserLoggedIn || isMentorLoggedIn) && (
+                  <Link
+                    href="/"
+                    className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                  >
+                    Sign In
+                  </Link>
+                )}
+
+                {/* theme icon */}
                 <SunIcon className="tw-h-10 tw-bg-white tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer" />
-                <button
-                  type="button"
-                  onClick=""
-                  className=" tw-w-full tw-rounded-lg tw-border btn:hover btn:active tw-bg-[#845ec2] hover:tw-scale-[0.99] active:tw-scale-[1.01] active:tw-shadow-none tw-py-3 tw-text-white tw-transition-all tw-text-center tw-text-md tw-font-inter tw-flex tw-items-center tw-justify-center"
-                >
-                  Signup
-                </button>
+
+                {/* show profile card if user is logged in else show signup button */}
+                {isUserLoggedIn || isMentorLoggedIn ? (
+                  <UserProfile />
+                ) : (
+                  <ButtonLink text="Sign Up" href="/" />
+                )}
 
                 {/* <DropdownCard
                 isUserLoggedIn={isUserLoggedIn}

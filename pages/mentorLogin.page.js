@@ -258,12 +258,12 @@ function mentorLogin() {
                     onChange={handleChange}
                     value={formData.password}
                   />
-                   <div
-                className={styles.eye}
-                  onClick={togglePasswordVisibility}
-                >
-                  {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
-                </div>
+                  <div
+                    className={styles.eye}
+                    onClick={togglePasswordVisibility}
+                  >
+                    {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                  </div>
                 </div>
               </div>
               <div className="mb-14 md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">

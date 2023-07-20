@@ -191,7 +191,7 @@
 
 .eye {
   width: 10%;
-margin: 10px;
+  margin: 10px;
   padding-left: 6px;
   padding-right: 4px;
   color: #6b7280;
@@ -238,7 +238,7 @@ margin: 10px;
   .google h3::after {
     right: -140px; /* Adjust the right position to place the line on the right side */
   }
-  .btnn{
+  .btnn {
     width: 100%;
   }
 }

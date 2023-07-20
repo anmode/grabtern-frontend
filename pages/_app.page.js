@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BreakpointProvider } from "react-socks";
 import Head from "next/head";
 import { AuthProvider } from "../context/AuthContext";
-import ScrollButton from "../components/MoveToTop";
+import ScrollButton from "../components/basic/MoveToTop";
 
 function addProductJsonLd() {
   return {

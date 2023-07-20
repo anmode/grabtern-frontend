@@ -135,8 +135,7 @@ function mentorLogin() {
       </Head>
 
       <Header navbarBackground={true} />
-
-      <div className="login-form d-flex flex-column bg-white tw-mb-10">
+      <div className={styles.loginform}>
         <div className={styles.btnnContainer}>
           <button
             className={`${styles.btnn} ${showForm1 ? styles.btnnActive : ""} ${
@@ -162,7 +161,7 @@ function mentorLogin() {
                 <img src="/Grabtern2.png"></img>
                 <h2>User Login </h2>
               </div>
-              <div className="form-input">
+              <div className={styles.forminput}>
                 <label htmlFor="email">Email</label>
                 <div className={styles.Input}>
                   <input
@@ -174,7 +173,7 @@ function mentorLogin() {
                   />
                 </div>
               </div>
-              <div className="form-input">
+              <div className={styles.forminput}>
                 <label htmlFor="password">Password</label>
                 <div className={styles.Input}>
                   {" "}
@@ -185,12 +184,12 @@ function mentorLogin() {
                     onChange={handleChange}
                     value={formData.password}
                   />
-                </div>
-                <div
-                  className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-                  onClick={togglePasswordVisibility}
-                >
-                  {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                  <div
+                    className={styles.eye}
+                    onClick={togglePasswordVisibility}
+                  >
+                    {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                  </div>
                 </div>
               </div>
 
@@ -207,16 +206,16 @@ function mentorLogin() {
               {error && <div style={{ color: "red" }}>{error}</div>}
               <Link
                 href="/forgotpass"
-                className="forget align-self-start"
+                className={styles.forget}
                 style={{ marginTop: 10, marginBottom: 10 }}
               >
                 Forgot Password?
               </Link>
-              <div className="link-div">
+              <div className={styles.linkdiv}>
                 Don't have an account?
                 <Link
                   href="/userRegister"
-                  className="registration d-inline m-2"
+                  className={styles.registration}
                   style={{ textDecoration: "none" }}
                 >
                   Register here
@@ -237,7 +236,7 @@ function mentorLogin() {
                 <img src="/Grabtern2.png"></img>
                 <h2>Mentor Login </h2>
               </div>
-              <div className="form-input">
+              <div className={styles.forminput}>
                 <label htmlFor="email">Email</label>
                 <div className={styles.Input}>
                   <input
@@ -249,7 +248,7 @@ function mentorLogin() {
                   />
                 </div>
               </div>
-              <div className="form-input">
+              <div className={styles.forminput}>
                 <label htmlFor="password">Password</label>
                 <div className={styles.Input}>
                   <input
@@ -259,12 +258,12 @@ function mentorLogin() {
                     onChange={handleChange}
                     value={formData.password}
                   />
-                </div>
-                <div
-                  className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
+                   <div
+                className={styles.eye}
                   onClick={togglePasswordVisibility}
                 >
                   {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                </div>
                 </div>
               </div>
               <div className="mb-14 md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
@@ -280,16 +279,16 @@ function mentorLogin() {
               {error && <div style={{ color: "red" }}>{error}</div>}
               <Link
                 href="/forgotpass"
-                className="forget align-self-start"
+                className={styles.forget}
                 style={{ marginTop: 10, marginBottom: 10 }}
               >
                 Forgot Password?
               </Link>
-              <div className="link-div">
+              <div className={styles.linkdiv}>
                 Don't have an account?
                 <Link
                   href="/mentorRegister"
-                  className="registration d-inline m-2"
+                  className={styles.registration}
                   style={{ textDecoration: "none" }}
                 >
                   Register here

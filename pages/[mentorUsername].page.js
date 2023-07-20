@@ -152,7 +152,7 @@ function Index({ mentorDetail }) {
                     duration={session.duration}
                     price={session.price}
                     handleBookSession={() => {
-                      window.location.href = `/${mentorDetail?.username}/bookSession/${session._id}`;
+                      window.location.href = `/${mentorDetail?.username}/bookSession?sessionID=${session._id}`;
                     }}
                   />
                 ))}

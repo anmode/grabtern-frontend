@@ -87,7 +87,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const bookSessionPaymentStep = () => {
     if (!userName || !userEmail) {
       toast.error("Please login as a user before booking a session!");
-      router.push("/nextAuth#login");
+      router.push(
+        `/auth/login?entityType=user&redirectURL=${window.location.href}`,
+      );
       return;
     }
 

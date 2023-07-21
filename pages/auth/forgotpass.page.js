@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../../components/layout/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
 
 function ForgotPassword() {
   const router = useRouter();
@@ -23,12 +24,10 @@ function ForgotPassword() {
     try {
       setIsLoading(true);
 
-      const entityTypeParam = entity === "user" ? "user" : "mentor";
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword`;
-      const { data } = await axios.post(url, {
-        email,
-        entityType: entityTypeParam,
-      });
+      const url = new URL(window.location.href);
+      const entityTypeFromUrl = url.searchParams.get("entityType");
+      const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
+      const { data } = await axios.post(backendUrl, { email: email });
 
       setSuccess(true);
       setIsLoading(false);

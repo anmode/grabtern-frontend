@@ -1,16 +1,8 @@
-import About from "../components/About";
 import Header from "../components/layout/Header";
-import servicesData from "./data/ServicesData";
-import Service from "../components/Service";
-import internshipsData from "./data/coursesData";
-import Internship from "../components/Internship";
 import hackathonsData from "./data/hackathonsData";
-import Hackathon from "../components/hackthons/Hackathons";
-import teamsData from "./data/teamsData";
-import TeamProfile from "../components/TeamProfile";
 import Footer from "../components/layout/Footer";
-import Banner from "../components/Banner";
 import dynamic from "next/dynamic";
+import GalleryCard from "../components/GalleryCard";
 
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 
@@ -40,6 +32,7 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 
 const buttonStyle = {
   width: "200px",
@@ -118,24 +111,49 @@ export default function Home() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const userData = decryptData(localStorage.getItem("userData"));
+  const mentorData = decryptData(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState(["All"]);
+  const [tagFilter, setTagFilter] = useState("All");
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
   const [filterHack, setFilterHack] = useState(hackathonsData);
 
   const filteredHackathons = HackathonsData.filter((hackathon) => {
+    console.log(typeof tagFilter);
     // console.log(hackathon.tags);
     const tagMatch = hackathon.tags.some((tag) =>
-      tagFilter.some((filter) =>
-        tag.toLowerCase().includes(filter.toLowerCase()),
-      ),
+      tag.toLowerCase().includes(tagFilter.toLowerCase()),
     );
+    if (tagFilter === "All") {
+      const titleMatch = hackathon.hackathonTitle
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
 
-    if (tagMatch) {
-      return hackathon;
+      return titleMatch && true;
+    } else {
+      // console.log(tagFilter);
+      if (tagFilter !== "" && !tagMatch) {
+        // console.log("hpo");
+        if (tagFilter === "bookmarked") {
+          if (searchQuery != " ") {
+            const titleMatch = hackathon.hackathonTitle
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase());
+
+            return titleMatch && hackathon.bookmarked;
+          }
+          // console.log("hello");
+          return hackathon.bookmarked;
+        }
+        return false;
+      } // Skip the hackathon if it doesn't match the tag filter
     }
+    // console.log("pooh");
+    const titleMatch = hackathon.hackathonTitle
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return titleMatch;
   });
 
   useEffect(() => {
@@ -198,6 +216,13 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const HackathonLabels = [
+    "web",
+    "upcoming",
+    "Beginner Friendly",
+    "Programming",
+    "Blockchain",
+  ];
 
   const menuToggle = () => {
     if (navbarAppear === true) {
@@ -248,85 +273,8 @@ export default function Home() {
           />
         </div>
       ) : null}
+      <Header isUserLoggedIn={isUserLoggedIn} />
 
-      <div className="header-area header-transparent tw-z-[999]">
-        <div className="main-header ">
-          <div
-            className={`header-bottom  header-sticky ${
-              scrollY > 400
-                ? "sticky-bar"
-                : navbarBackground === true
-                ? "sticky-bar"
-                : ""
-            }`}
-            style={{ transition: "all 0.5s ease-in" }}
-          >
-            <div className="container-fluid">
-              <div className="row align-items-center justify-content-between">
-                <div>
-                  <div className="logo">
-                    <a href="/">
-                      <Image
-                        width={80}
-                        height={80}
-                        src="/whitelogo.webp"
-                        style={{ padding: "15px 0" }}
-                        alt="grabtern_logo"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div className="col-xl-10 col-lg-10">
-                  <div className="menu-wrapper d-flex align-items-center justify-content-end">
-                    <div
-                      className={`main-menu d-none d-lg-block ${
-                        navbarAppear === true ? "active" : ""
-                      }`}
-                    >
-                      <nav>
-                        <ul id="navigation" className="navigation">
-                          <li className="active">
-                            <a href="/" className={styles.navLink}>
-                              Home
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/mentors" className={styles.navLink}>
-                              Mentors
-                            </a>
-                          </li>
-                          <li>
-                            <a href="/contact" className={styles.navLink}>
-                              Contact
-                            </a>
-                          </li>
-                          <DropdownCard
-                            isUserLoggedIn={isUserLoggedIn}
-                            isMentorLoggedIn={isMentorLoggedIn}
-                          />
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`menuToggle ${
-                    navbarAppear === true ? "active" : ""
-                  }`}
-                  onClick={() => menuToggle()}
-                >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div className="col-12">
-                  <div className="mobile_menu d-block d-lg-none"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <main>
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
@@ -342,11 +290,13 @@ export default function Home() {
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
                 tagFilter={tagFilter}
+                HackathonLabels={HackathonLabels}
               />
             </div>
             <div className="row">
               {filterHack.map((hackathon, index) => (
-                <Hackathon
+                <GalleryCard
+                  isInternship={false}
                   key={index}
                   hackathonImage={hackathon.hackathonImage}
                   hackathonImageAlt={hackathon.hackathonImageAlt}

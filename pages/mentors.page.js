@@ -73,17 +73,24 @@ function Mentors({ mentorsData }) {
 
 export default Mentors;
 
-export const getStaticProps = async (context) => {
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  const { data } = await axios.get(url);
+export const getServerSideProps = async (context) => {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+    const { data } = await axios.get(url);
+    // console.log(data);
 
-  return {
-    props: {
-      mentorsData: data.filter(
-        (mentor) =>
-          mentor.verified === true && mentor.token === "mentorIsVerified",
-      ),
-    },
-    revalidate: 20, // revalidate the data every 20 seconds
-  };
+    return {
+      props: {
+        mentorsData: data,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      props: {
+        mentorsData: [],
+      },
+    };
+  }
 };

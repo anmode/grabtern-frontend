@@ -1,44 +1,71 @@
-.loginbody {
-  margin: 0;
-  margin-top: 180px;
-  padding: 0;
-  width: 100%;
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 9%;
 }
-.loginform {
-  margin: 130px auto 5px auto;
+
+.heading img {
+  width: 24%;
+}
+
+.RegisterInput {
+  text-align: center;
+  padding-left: 43%;
+}
+
+.google {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+.google h3 {
+  position: relative;
+}
+
+.google h3::before,
+.google h3::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 180px;
+  height: 1px;
+  background-color: #000;
+}
+
+.google h3::before {
+  left: -200px;
+}
+
+.google h3::after {
+  right: -200px;
+}
+.googlelogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 10%;
+}
+.Input {
+  border-bottom: 3px solid #845ec2;
+  border-radius: 9px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  padding-left: 10px;
+  margin-bottom: 6%;
+  display: flex;
+}
+.Registerform {
+  margin: 90px auto 5px auto;
   width: 480px;
-  padding: 90px 45px 12px 45px;
+  padding: 12px 45px 12px 45px;
   color: whitesmoke;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   height: min-content;
+  background-color: white;
 }
-@media (max-width: 575px) {
-  .loginform {
-    width: 90%;
-    padding: 30px 40px 15px 40px;
-    margin: 100px auto 0 auto;
-  }
-}
-.image {
-  width: 100px;
-  height: 95px;
-  position: absolute;
-  top: 130px;
-  left: calc(50% - 50px);
-  margin: 0 auto;
-  border: 15px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
-.image img {
-  width: 69px;
-  height: 60px;
-  margin-top: 8px;
-}
-.loginform h2 {
+.Registerform h2 {
   color: #000;
   font-size: 30px;
   margin: 0;
@@ -46,16 +73,16 @@
   font-weight: 600;
   margin-bottom: 0px;
 }
-.loginform .forminput {
+.Registerform .forminput {
   position: relative;
   margin: 2vh 0;
 }
-.loginform .forminput label {
+.Registerform .forminput label {
   font-size: 18px;
   font-weight: 600;
   color: #000;
 }
-.loginform .forminput input {
+.Registerform .forminput input {
   outline: none;
   height: 40px;
   padding: 10px;
@@ -66,154 +93,41 @@
   font-size: 18px;
   border: none;
   color: gray;
-  border-bottom: 1px solid gray;
 }
-.loginform .forminput input::placeholder {
+.Registerform .forminput input::placeholder {
   color: gray;
 }
-.loginform .forminput input[type="submit"] {
-  background: linear-gradient(
-    to top,
-    rgb(83, 116, 255) 0%,
-    rgb(127, 102, 255) 40%,
-    rgb(187, 85, 255) 95%,
-    rgb(192, 84, 255) 100%
-  );
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  text-transform: capitalize;
-  line-height: 1;
-  font-size: 18px;
-  font-weight: 700;
-  border-radius: 20px;
-  transition: 0.4s;
-}
-.loginform .forminput input[type="submit"]:hover {
-  background: #000;
-  background: #a35cff;
-}
-.loginform .forget {
-  display: block;
+
+.linkdiv {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  color: #000;
   margin-top: 20px;
-  color: #656eff;
-  font-weight: 600;
-  text-decoration: underline;
-  margin-bottom: 5px;
-}
-.loginform .forget:hover {
-  color: gray;
-}
-.loginform .registration {
-  display: block;
-
-  color: #656eff;
-  font-weight: 600;
-  text-decoration: underline;
-  margin-bottom: 5px;
-}
-.link-div {
-  justify-content: center;
-  align-items: center;
-}
-.loginform .registration:hover {
-  color: gray;
-}
-.heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 9%;
-}
-
-.Input {
-  border-bottom: 3px solid #845ec2;
-  border-radius: 7px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  padding-left: 10px;
-  margin-bottom: 10%; 
-}
-
-.google {
-  display: flex;
-  flex-direction: column;
-  margin: 10%;
-}
- .google h3 {
-  position: relative;
-}
-
-.google h3::before,
-.google h3::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 150px;
-   height: 1px;
-  background-color: #000;
-}
-
- .google h3::before {
-  left: -200px; 
-}
-
-.google h3::after {
-  right: -200px;  
-} 
-.googlelogin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0;
-  margin-bottom: 10%;
-}
-.large-icon {
-  font-size: 24px; 
-}
-.heading img {
-  width: 24%;
-}
-
-
-.RegisterInput {
-  text-align: center;
-  padding-left: 43%;
 }
 
 @media (max-width: 575px) {
-  /* .registerform {
+  .Registerform {
     width: 90%;
-    padding: 50px 40px 25px 50px;
-    margin: 100px auto 0 auto;
-  }
-  .registerform h2 {
-    font-size: 27px;
-  } */
-
-  .loginform{
     padding: 30px 40px 15px 40px;
     margin: 100px auto 0 auto;
   }
-  .loginform h2 {
+  .Registerform h2 {
     font-size: 27px;
   }
   .google h3::before,
   .google h3::after {
     content: "";
     top: 50%;
-    width: 100px;
+    width: 135px;
     height: 1px;
     background-color: #000;
   }
   .google h3::before {
-    left: -135px; 
+    left: -140px;
   }
 
   .google h3::after {
-    right: -135px;
+    right: -140px;
   }
-
-  .link-div{
-    margin-top: 30px; 
- }
 }

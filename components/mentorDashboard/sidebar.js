@@ -89,15 +89,15 @@ const Sidebar = ({ setComponent }) => {
   const BookButton = styled.button`
     margin: 5px;
     :hover {
-    background-color: #f0f0f0; 
-    };
+      background-color: #f0f0f0;
+    }
   `;
 
   const HoverListItem = styled.li`
     background-color: transparent;
-   &.hoverList:hover {
-    background-color: rgba(240, 240, 240, 0.5);
-   }
+    &.hoverList:hover {
+      background-color: rgba(240, 240, 240, 0.5);
+    }
   `;
 
   return (
@@ -153,7 +153,10 @@ const Sidebar = ({ setComponent }) => {
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             <ul className="tw-space-y-2 tw-font-medium tw-py-2">
               {menuItem1.map((val, key) => (
-                <HoverListItem key={key} className="tw-group tw-cursor-pointer hoverList">
+                <HoverListItem
+                  key={key}
+                  className="tw-group tw-cursor-pointer hoverList"
+                >
                   <div
                     className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
                     onClick={() => setComponent(val.path)}
@@ -166,7 +169,10 @@ const Sidebar = ({ setComponent }) => {
             </ul>
             <ul className="tw-space-y-2 tw-font-medium tw-py-4">
               {menuItem2.map((val, key) => (
-                <HoverListItem key={key} className="tw-group tw-cursor-pointer hoverList">
+                <HoverListItem
+                  key={key}
+                  className="tw-group tw-cursor-pointer hoverList"
+                >
                   <div
                     className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
                     onClick={() => setComponent(val.path)}
@@ -179,7 +185,10 @@ const Sidebar = ({ setComponent }) => {
             </ul>
             <ul className="tw-space-y-2 tw-font-medium tw-py-4">
               {menuItem3.map((val, key) => (
-                <HoverListItem key={key} className="tw-group tw-cursor-pointer hoverList">
+                <HoverListItem
+                  key={key}
+                  className="tw-group tw-cursor-pointer hoverList"
+                >
                   <div
                     className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
                     onClick={() => setComponent(val.path)}

@@ -125,6 +125,15 @@ function login() {
   }
 
   useEffect(() => {
+    // Use the useRouter hook to get the 'entityType' query parameter from the URL
+    // Use window.location.href to get the URL and extract the query parameters
+    const url = new URL(window.location.href);
+    const entityTypeFromUrl = url.searchParams.get("entityType");
+    console.log(entityTypeFromUrl);
+    // Set the entity type from the URL if it exists
+    if (entityTypeFromUrl) {
+      setEntityType(entityTypeFromUrl);
+    }
     google.accounts.id.initialize({
       client_id:
         "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
@@ -148,18 +157,18 @@ function login() {
       <div className={styles.loginform}>
         <div className={styles.btnnContainer}>
           <button
-            className={`${styles.btnn} ${showForm1 ? styles.btnnActive : ""} ${
-              styles.user
-            }`}
-            onClick={setEntityType("user")}
+            className={`${styles.btnn} ${
+              entityType === "user" ? styles.btnnActive : ""
+            } ${styles.user}`}
+            onClick={() => setEntityType("user")}
           >
             User Login
           </button>
           <button
-            className={`${styles.btnn} ${showForm1 ? "" : styles.btnnActive} ${
-              styles.mentor
-            }`}
-            onClick={setEntityType("mentor")}
+            className={`${styles.btnn} ${
+              entityType === "mentor" ? "" : styles.btnnActive
+            } ${styles.mentor}`}
+            onClick={() => setEntityType("mentor")}
           >
             Mentor Login
           </button>

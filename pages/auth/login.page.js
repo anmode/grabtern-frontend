@@ -47,10 +47,6 @@ function login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if (formData.password !== formData.confirmPassword) {
-      return toast.error("Password does not match!");
-    }
-    console.log(formData);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);
@@ -145,7 +141,30 @@ function login() {
       { theme: "outline", size: "large" },
     );
     google.accounts.id.prompt();
-  }, []);
+
+    // Check if the user or mentor is logged in
+    if (isUserLoggedIn || isMentorLoggedIn) {
+      // Extract redirectURL from query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectURL = urlParams.get("redirectURL");
+
+      // Redirect to redirectURL if it exists
+      if (redirectURL) {
+        router.push(redirectURL);
+      } else {
+        router.push("/");
+      }
+    }
+  }, [isUserLoggedIn, isMentorLoggedIn]);
+
+  // Function to update the URL with the new entityType
+  const updateEntityTypeInUrl = (newEntityType) => {
+    const queryParams = router.query;
+    queryParams.entityType = newEntityType;
+    router.push({ pathname: router.pathname, query: queryParams }, undefined, {
+      shallow: true,
+    });
+  };
 
   return (
     <>
@@ -160,7 +179,10 @@ function login() {
             className={`${styles.btnn} ${
               entityType === "user" ? styles.btnnActive : ""
             } ${styles.user}`}
-            onClick={() => setEntityType("user")}
+            onClick={() => {
+              setEntityType("user");
+              updateEntityTypeInUrl("user");
+            }}
           >
             User Login
           </button>
@@ -168,7 +190,10 @@ function login() {
             className={`${styles.btnn} ${
               entityType === "mentor" ? styles.btnnActive : ""
             } ${styles.mentor}`}
-            onClick={() => setEntityType("mentor")}
+            onClick={() => {
+              setEntityType("mentor");
+              updateEntityTypeInUrl("mentor");
+            }}
           >
             Mentor Login
           </button>

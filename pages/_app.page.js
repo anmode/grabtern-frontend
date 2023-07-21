@@ -142,7 +142,7 @@ function MyApp({ Component, pageProps }) {
 
       <BreakpointProvider>
         <AuthProvider>
-          <ScrollButton/>
+          <ScrollButton />
           <Component {...pageProps} />
         </AuthProvider>
       </BreakpointProvider>

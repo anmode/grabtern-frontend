@@ -57,8 +57,10 @@ function login() {
       let entityData = {};
       if (entityType === "user") {
         entityData = {
-          user_name: res.fullName,
-          userToken: res.userToken,
+          token: res.data,
+          user_name: res.data.fullName,
+          user_email: res.data.email,
+          user_id: res.data.id,
         };
         localStorage.setItem("userData", encryptData(entityData));
         setIsUserLoggedIn(true);
@@ -93,8 +95,10 @@ function login() {
       let entityData = {};
       if (entityType === "user") {
         entityData = {
-          user_name: res.fullName,
-          userToken: res.userToken,
+          user_name: userObject.name,
+          user_picture: userObject.picture,
+          user_email: userObject.email,
+          user_id: res.data.id,
         };
         localStorage.setItem("userData", encryptData(entityData));
         setIsUserLoggedIn(true);

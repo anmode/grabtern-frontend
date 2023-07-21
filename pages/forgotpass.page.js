@@ -83,7 +83,6 @@ function ForgotPassword() {
                 src="/assets/img/gif/Spinner.gif"
                 alt="loading..."
               />
-
             )}
             {error && <div style={{ color: "red" }}>{error}</div>}
             {success && (

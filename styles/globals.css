@@ -743,9 +743,10 @@ select {
 
 .srv-validation-message {
   color: red;
-  font-size: 1rem;
+  font-size: 0.8rem;
   position: absolute;
   top: 100%;
+  line-height: 1.4;
 }
 .srv-validation-message ~ input,
 .srv-validation-message ~ textarea,

@@ -10,12 +10,11 @@ function useRedirectIfAuthenticated() {
   const router = useRouter();
 
   useEffect(() => {
-    const userDataString = decryptData(localStorage.getItem("userData"));
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      if (userData.name !== null || userData.token !== null) {
-        router.push("/");
-      }
+    const userData = decryptData(localStorage.getItem("userData"));
+    // if (userDataString) {
+    //   const userData = JSON.parse(userDataString);
+    if (userData?.name != null || userData?._id != null) {
+      router.push("/");
     }
   }, [router]);
 }

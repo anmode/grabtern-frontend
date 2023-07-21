@@ -130,7 +130,7 @@ function Header() {
 
             {/* signup button appear only if no user logged in*/}
             {!(isUserLoggedIn || isMentorLoggedIn) && (
-              <ButtonLink text="Sign Up" href="/register" />
+              <ButtonLink text="Sign Up" href="/auth/register" />
             )}
           </div>
         </div>
@@ -186,7 +186,7 @@ function Header() {
 
                 {/* show signup button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
-                  <ButtonLink text="Sign Up" href="/" />
+                  <ButtonLink text="Sign Up" href="/auth/register" />
                 )}
 
                 {/* <DropdownCard

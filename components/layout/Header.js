@@ -64,13 +64,14 @@ function Header() {
   return (
     <header
       className={clsx(
-        "tw-w-full tw-px-4 tw-mb-0",
+        "tw-w-full tw-px-4 tw-mb-0  tw-relative",
         scrollY
           ? "tw-bg-white tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-black dark:tw-bg-muted-900 tw-transition-all tw-duration-300"
           : "tw-bg-base-200 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 dark:tw-bg-muted-900 tw-text-black",
+        toggleDropdown ? "tw-bg-white" : "tw-base-200",
       )}
     >
-      <nav className="tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-justify-between tw-items-center tw-relative">
+      <nav className="tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-justify-between tw-items-center">
         <Link
           href="/"
           className="tw-flex tw-gap-2 tw-justify-center tw-items-center"
@@ -148,7 +149,7 @@ function Header() {
               <ion-icon name={toggleDropdown ? "close" : "menu"}></ion-icon>
             </div>
             {toggleDropdown && (
-              <div className="tw-absolute tw-right-0 tw-top-full tw-w-full tw-mt-0 tw-p-6 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
+              <div className="tw-absolute tw-left-0 tw-top-full tw-w-full tw-mt-0 tw-p-6 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
                 <Link
                   href="/"
                   className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"

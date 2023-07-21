@@ -98,7 +98,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta 
             name="keywords"
-            content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Internship, Adobe SHE Codes"
+            content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Mentorship, Mentored Internship, Mentor-Guided Internship, Experienced Mentors, Dedicated Mentors, Mentorship Program, Mentor Support, Mentorship Opportunities, Mentorship Platform."
         />
         <link 
             rel="canonical" 

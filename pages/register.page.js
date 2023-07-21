@@ -202,18 +202,15 @@ function Register({ handleLogPageToggle }) {
             </p>
           )}
           {error && <div style={{ color: "red" }}>{error}</div>}
-          <div className="tw-mt-[-20px]">
-            <input
-              type="submit"
-              name="submit"
-              value="Registration"
-              style={{
-                background:
-                  "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
-              }}
-              className="tw-px-10 tw-font-semibold tw-py-[6px] tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
-            />
-          </div>
+
+          <div className="mb-14 md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Registration"
+                  className={styles.RegisterInput}
+                />
+              </div>
 
           <div className="link-div">
              Already have an account?

@@ -15,8 +15,8 @@
 }
 @media (max-width: 575px) {
   .loginform {
-    width: 380px;
-    padding: 110px 40px 15px 40px;
+    width: 90%;
+    padding: 30px 40px 15px 40px;
     margin: 100px auto 0 auto;
   }
 }
@@ -172,4 +172,48 @@
 }
 .heading img {
   width: 24%;
+}
+
+
+.RegisterInput {
+  text-align: center;
+  padding-left: 43%;
+}
+
+@media (max-width: 575px) {
+  /* .registerform {
+    width: 90%;
+    padding: 50px 40px 25px 50px;
+    margin: 100px auto 0 auto;
+  }
+  .registerform h2 {
+    font-size: 27px;
+  } */
+
+  .loginform{
+    padding: 30px 40px 15px 40px;
+    margin: 100px auto 0 auto;
+  }
+  .loginform h2 {
+    font-size: 27px;
+  }
+  .google h3::before,
+  .google h3::after {
+    content: "";
+    top: 50%;
+    width: 100px;
+    height: 1px;
+    background-color: #000;
+  }
+  .google h3::before {
+    left: -135px; 
+  }
+
+  .google h3::after {
+    right: -135px;
+  }
+
+  .link-div{
+    margin-top: 30px; 
+ }
 }

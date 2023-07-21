@@ -11,7 +11,6 @@ import { useAuth } from "../../context/AuthContext";
 import { ButtonLink } from "../UI";
 import clsx from "clsx";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
-import { ButtonLink } from "../UI";
 
 function Header() {
   const {
@@ -130,14 +129,9 @@ function Header() {
             isMentorLoggedIn={isMentorLoggedIn}
           /> */}
 
-            <ButtonLink
-              href="/register"
-              text="Sign Up"
-              className="tw-text-white tw-mb-8 tw-bg-[#845ec2] hover:tw-scale-[0.99] active:tw-scale-[1.01] active:tw-shadow-none tw-font-medium tw-rounded-xl tw-text-md tw-px-3 tw-py-2 tw-text-center tw-mr-3 sm:tw-mb-0 md:tw-mr-5 "
-             />
             {/* signup button appear only if no user logged in*/}
             {!(isUserLoggedIn || isMentorLoggedIn) && (
-              <ButtonLink text="Sign Up" href="/auth/register" />
+              <ButtonLink text="Sign Up" href="/register" />
             )}
           </div>
         </div>

@@ -7,15 +7,15 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "../styles/form.module.css";
-const Header = dynamic(() => import("../components/layout/Header"));
-const Footer = dynamic(() => import("../components/layout/Footer"));
+import styles from "../../styles/form.module.css";
+const Header = dynamic(() => import("../../components/layout/Header"));
+const Footer = dynamic(() => import("../../components/layout/Footer"));
 
-import Visibillity from "../public/assets/Visibillity.jsx";
-import VisibillityOff from "../public/assets/VisibillityOff.jsx";
+import Visibillity from "../../public/assets/Visibillity.jsx";
+import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
 
-import { useAuth } from "../context/AuthContext";
-import { encryptData, decryptData } from "../hook/encryptDecrypt.js";
+import { useAuth } from "../../context/AuthContext";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
 
 function login() {
   const router = useRouter();

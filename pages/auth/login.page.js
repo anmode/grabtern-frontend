@@ -52,7 +52,7 @@ function login() {
     }
     console.log(formData);
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth?type=${entityType}`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);
       let entityData = {};
       if (entityType === "user") {
@@ -90,7 +90,7 @@ function login() {
     var userObject = jwt_decode(response.credential);
     console.log(userObject);
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/gloginauth`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/gloginauth?entityType=${entityType}`;
       const { data: res } = await axios.post(url, userObject);
       let entityData = {};
       if (entityType === "user") {

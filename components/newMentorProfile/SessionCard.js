@@ -10,6 +10,13 @@ export default function SessionCard({
   price,
   handleBookSession,
 }) {
+  console.log("Book Sesison", {
+    type,
+    name,
+    description,
+    duration,
+    price,
+  });
   let Icon = FaVideo;
   switch (type) {
     case "group Call":

@@ -94,7 +94,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta 
             name="description"
-            content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+            content="GrabTern offers you the opportunity to easily secure your dream internship from renowned programs like GSoc, MLH, Amazon ML Summer Internship, and many others. With mentorship guidance included, all of this is available for just ₹1. So, what are you waiting for? Sign up now with GrabTern to embark on your internship journey with the support of a dedicated mentor and achieve your dream internship sooner!"
         />
         <meta 
             name="keywords"
@@ -166,7 +166,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta 
             name="og:description"
-            content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+            content="GrabTern offers you the opportunity to easily secure your dream internship from renowned programs like GSoc, MLH, Amazon ML Summer Internship, and many others. With mentorship guidance included, all of this is available for just ₹1. So, what are you waiting for? Sign up now with GrabTern to embark on your internship journey with the support of a dedicated mentor and achieve your dream internship sooner!"
         />
         <meta 
             property="og:image" 
@@ -194,7 +194,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
             property="twitter:description"
-            content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+            content="GrabTern offers you the opportunity to easily secure your dream internship from renowned programs like GSoc, MLH, Amazon ML Summer Internship, and many others. With mentorship guidance included, all of this is available for just ₹1. So, what are you waiting for? Sign up now with GrabTern to embark on your internship journey with the support of a dedicated mentor and achieve your dream internship sooner!"
         />
         <script
           type="application/ld+json"

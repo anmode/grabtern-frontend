@@ -40,7 +40,7 @@ function scrap() {
             >
               <strong>
                 <span style={{ fontSize: 36 }}>
-                  <span className="tw-text-[#5C18E1]">RETURN POLICY</span>
+                  <span className="tw-text-[#845ec2]">RETURN POLICY</span>
                 </span>
               </strong>
             </div>
@@ -130,7 +130,7 @@ function scrap() {
           <div className="MsoNormal refund" style={{ lineHeight: "1.5" }}>
             <a name="_qxq7t4ufn5pr" />
             <strong>
-              <span className="tw-text-[#5C18E1]"
+              <span className="tw-text-[#845ec2]"
                 style={{
                   lineHeight: "115%",
                   fontSize: 29,
@@ -246,7 +246,7 @@ function scrap() {
           </div>
           <div className="MsoNormal questions" style={{ lineHeight: "1.5" }}>
             <span style={{ fontSize: 29 }}>
-              <strong className="tw-text-[#5C18E1]">QUESTIONS</strong>
+              <strong className="tw-text-[#845ec2]">QUESTIONS</strong>
             </span>
           </div>
           <div style={{ lineHeight: "1.5" }}>

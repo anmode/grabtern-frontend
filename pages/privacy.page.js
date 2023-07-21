@@ -23,15 +23,15 @@ function privacy() {
           <div className="maincontent" style={{ display: "inline-block" }}>
             {" "}
             This privacy notice for Grabtern ("
-            <b className="tw-text-[#5C18E1]">Company," "we," "us," or "our"</b>), describes how and why we
-            might collect, store, use, and/or share ("<b className="tw-text-[#5C18E1]">Process</b>") your
-            information when you use our services ("<b className="tw-text-[#5C18E1]">Services</b>"), such as
+            <b className="tw-text-[#845ec2]">Company," "we," "us," or "our"</b>), describes how and why we
+            might collect, store, use, and/or share ("<b className="tw-text-[#845ec2]">Process</b>") your
+            information when you use our services ("<b className="tw-text-[#845ec2]">Services</b>"), such as
             when you: Visit our website at{" "}
             <a href="https://www.grabtern.com">https://www.grabtern.com</a>, or
             any website of ours that links to this privacy notice Engage with us
             in other related ways, including any sales, marketing, or events.
-            <b className="tw-text-[#5C18E1]"></b>
-            <b className="tw-text-[#5C18E1]">Questions or concerns?</b> Reading this privacy notice will help
+            <b className="tw-text-[#845ec2]"></b>
+            <b className="tw-text-[#845ec2]">Questions or concerns?</b> Reading this privacy notice will help
             you understand your privacy rights and choices. If you do not agree
             with our policies and practices, please do not use our Services. If
             you still have any questions or concerns, please contact us at
@@ -171,7 +171,7 @@ function privacy() {
             you participate in activities on the Services, or otherwise when you
             contact us.
             <br />
-            <b className="tw-text-[#5C18E1]">Personal Information Provided by You: </b> The personal
+            <b className="tw-text-[#845ec2]">Personal Information Provided by You: </b> The personal
             information that we collect depends on the context of your
             interactions with us and the Services, the choices you make, and the
             products and features you use. The personal information we collect
@@ -188,10 +188,10 @@ function privacy() {
             9. Billing addresses<br></br>
             10. Upi address if mentor<br></br>
             </p>
-            <b className="tw-text-[#5C18E1]">Sensitive Information: </b> We do not process sensitive
+            <b className="tw-text-[#845ec2]">Sensitive Information: </b> We do not process sensitive
             information.
             <br id="2"></br>
-            <b className="tw-text-[#5C18E1]">Social Media Login Data: </b> We may provide you with the option
+            <b className="tw-text-[#845ec2]">Social Media Login Data: </b> We may provide you with the option
             to register with us using your existing social media account
             details, like your Facebook, Twitter, or other social media account.
             If you choose to register in this way, we will collect the
@@ -211,7 +211,7 @@ function privacy() {
             fraud prevention, and to comply with law. We may also process your
             information for other purposes with your consent.
             <br></br>
-            <b className="tw-text-[#5C18E1]">
+            <b className="tw-text-[#845ec2]">
               We process your personal information for a variety of reasons,
               depending on how you interact with our Services, including:
             </b>
@@ -249,7 +249,7 @@ function privacy() {
             described in this section and/or with the following third parties.
             We may need to share your personal information in the following
             situations:<br id="5"></br>
-            <b className="tw-text-[#5C18E1]">Business Transfers. </b>We may share or transfer your information
+            <b className="tw-text-[#845ec2]">Business Transfers. </b>We may share or transfer your information
             in connection with, or during negotiations of, any merger, sale of
             company assets, financing, or acquisition of all or a portion of our
             business to another company.
@@ -350,7 +350,7 @@ function privacy() {
               Federal Data Protection and Information Commissioner.
             </a>"
             <br/><br/>
-            <b className="tw-text-[#5C18E1]">Withdrawing your consent: </b>If we are relying on your consent
+            <b className="tw-text-[#845ec2]">Withdrawing your consent: </b>If we are relying on your consent
             to process your personal information, which may be express and/or
             implied consent depending on the applicable law, you have the right
             to withdraw your consent at any time. You can withdraw your consent
@@ -363,7 +363,7 @@ function privacy() {
             will it affect the processing of your personal information conducted
             in reliance on lawful processing grounds other than consent.
             <br/><br/>
-            <b className="tw-text-[#5C18E1]">Account Information</b><br/>
+            <b className="tw-text-[#845ec2]">Account Information</b><br/>
             If you would at any time like to review or change the
             information in your account or terminate your account, you can:
             <br></br>1. Log in to your account settings and update your user
@@ -387,7 +387,7 @@ function privacy() {
             by advertisers on our Services.
             <br id="10"></br>
             If you have questions or comments about your privacy rights, you may
-            email us at <b className="tw-text-[#5C18E1]"><a className="tw-text-[#5C18E1] hover:tw-text-blue-600 hover:tw-underline" href="mailto:contact.grabtern@gmail.com"> contact.grabtern@gmail.com.</a></b>
+            email us at <b className="tw-text-[#845ec2]"><a className="tw-text-[#845ec2] hover:tw-text-blue-600 hover:tw-underline" href="mailto:contact.grabtern@gmail.com"> contact.grabtern@gmail.com.</a></b>
           </div>
           <div className="terms-and-cond-sub">
             <div className="tnc-sub-head">
@@ -453,7 +453,7 @@ function privacy() {
               12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
             </div>
             If you have questions or comments about this notice, you may email
-            us at <b className="tw-text-[#5C18E1]"> <a className="tw-text-[#5C18E1] hover:tw-text-blue-600 hover:tw-underline" href="mailto:contact.grabtern@gmail.com"> contact.grabtern@gmail.com</a></b> or by post to: <br></br>
+            us at <b className="tw-text-[#845ec2]"> <a className="tw-text-[#845ec2] hover:tw-text-blue-600 hover:tw-underline" href="mailto:contact.grabtern@gmail.com"> contact.grabtern@gmail.com</a></b> or by post to: <br></br>
             Grabtern<br></br>
             Naval Nagar hathras<br></br>
             Hathras, Uttar pradesh 204101<br></br>

@@ -1570,7 +1570,7 @@ select {
 
 .questions {
   font-family: "Josefin Sans", sans-serif;
-  color: #5C18E1;
+  color: #845ec2;
   margin-top: 10px;
   font-style: normal;
   font-weight: 350;
@@ -1596,7 +1596,7 @@ select {
   margin-top: 100px;
   font-size: 60px;
   text-align: center;
-  color: #5C18E1;
+  color: #845ec2;
 }
 
 #tncheading2 {
@@ -1607,7 +1607,7 @@ select {
   margin-top: 100px;
   font-size: 35px;
   text-align: center;
-  color: #5C18E1;
+  color: #845ec2;
   text-align: left;
   margin-left: 40px;
   margin-top: 8px;
@@ -1647,7 +1647,7 @@ select {
   margin-top: 100px;
   font-size: 3rem;
   text-align: center;
-  color: #5C18E1;
+  color: #845ec2;
   text-align: left;
   margin-left: 20px;
   margin-top: 10px;
@@ -1656,7 +1656,7 @@ select {
 
 .tnc-sub-head {
   font-family: "Josefin Sans", sans-serif;
-  color: #5C18E1;
+  color: #845ec2;
   margin-top: 10px;
   font-style: normal;
   font-weight: 550;

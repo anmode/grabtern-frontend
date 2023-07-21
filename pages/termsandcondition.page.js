@@ -26,12 +26,12 @@ function scrap() {
           <div className="maincontent" style={{ display: "inline-block" }}>
             {" "}
             We are Grabtern, doing business as Grabtern (
-            <b className="tw-text-[#5C18E1]">"Company," "we," "us," "our"</b>), a company registered in India
+            <b className="tw-text-[#845ec2]">"Company," "we," "us," "our"</b>), a company registered in India
             at Kishanpur tirah, Aligarh, Aligarh, Uttar Pradesh 202002. We
-            operate the website https://www.grabtern.com/ (the "<b className="tw-text-[#5C18E1]">Site</b>"),
+            operate the website https://www.grabtern.com/ (the "<b className="tw-text-[#845ec2]">Site</b>"),
             as well as any other related products and services that refer or
-            link to these legal terms (the "<b className="tw-text-[#5C18E1]">Legal Terms</b>") (collectively,
-            the "<b className="tw-text-[#5C18E1]">Services</b>"). In our platform, we connect former Mentors
+            link to these legal terms (the "<b className="tw-text-[#845ec2]">Legal Terms</b>") (collectively,
+            the "<b className="tw-text-[#845ec2]">Services</b>"). In our platform, we connect former Mentors
             to student seeking for mentorship and mentor charge for providing
             mentorship and we take 11% of that. Alright, to clarify, there is no
             fixed price for the bookSession. Each mentor can set the price as
@@ -40,7 +40,7 @@ function scrap() {
             at contact.grabtern@gmail.com, or by mail to Naval Nagar hathras,
             Hathras, Uttar pradesh 204101, India. These Legal Terms constitute a
             legally binding agreement made between you, whether personally or on
-            behalf of an entity ("<b className="tw-text-[#5C18E1]">you</b>"), and Grabtern, concerning your
+            behalf of an entity ("<b className="tw-text-[#845ec2]">you</b>"), and Grabtern, concerning your
             access to and use of the Services. You agree that by accessing the
             Services, you have read, understood, and agreed to be bound by all
             of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL
@@ -156,7 +156,7 @@ function scrap() {
           </div>
           <div className="terms-and-cond-sub">
             <div className="tnc-sub-head">2. INTELLECTUAL PROPERTY RIGHTS</div>
-            <strong className="tw-text-[#5C18E1]">Our intellectual property</strong>
+            <strong className="tw-text-[#845ec2]">Our intellectual property</strong>
             <br></br>
             We are the owner or the licensee of all intellectual property rights
             in our Services, including all source code, databases,
@@ -169,7 +169,7 @@ function scrap() {
             United States and around the world. The Content and Marks are
             provided in or through the Services "AS IS" for your personal,
             non-commercial use or internal business purpose only.<br></br>
-            <strong className="tw-text-[#5C18E1]">Your use of our Services</strong>
+            <strong className="tw-text-[#845ec2]">Your use of our Services</strong>
             <br></br>
             Subject to your compliance with these Legal Terms, including the
             "PROHIBITED ACTIVITIES" section below, we grant you a non-exclusive,
@@ -196,14 +196,14 @@ function scrap() {
             of our Legal Terms and your right to use our Services will terminate
             immediately.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Your submissions and contributions</strong>
+            <strong className="tw-text-[#845ec2]">Your submissions and contributions</strong>
             <br></br>
             Please review this section and the "PROHIBITED ACTIVITIES" section
             carefully prior to using our Services to understand the (a) rights
             you give us and (b) obligations you have when you post or upload any
             content through the Services.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Submissions: </strong>By directly sending us any question,
+            <strong className="tw-text-[#845ec2]">Submissions: </strong>By directly sending us any question,
             comment, suggestion, idea, feedback, or other information about the
             Services ("Submissions"), you agree to assign to us all intellectual
             property rights in such Submission. You agree that we shall own this
@@ -211,7 +211,7 @@ function scrap() {
             for any lawful purpose, commercial or otherwise, without
             acknowledgment or compensation to you.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Contributions: </strong>The Services may invite you to chat,
+            <strong className="tw-text-[#845ec2]">Contributions: </strong>The Services may invite you to chat,
             contribute to, or participate in blogs, message boards, online
             forums, and other functionality during which you may create, submit,
             post, display, transmit, publish, distribute, or broadcast content
@@ -223,7 +223,7 @@ function scrap() {
             understand that Contributions may be viewable by other users of the
             Services.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">
+            <strong className="tw-text-[#845ec2]">
               When you post Contributions, you grant us a license (including use
               of your name, trademarks, and logos):{" "}
             </strong>
@@ -243,7 +243,7 @@ function scrap() {
             the trademarks, service marks, trade names, logos, and personal and
             commercial images you provide.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">You are responsible for what you post or upload: </strong>By
+            <strong className="tw-text-[#845ec2]">You are responsible for what you post or upload: </strong>By
             sending us Submissions and/or posting Contributions through any part
             of the Services or making Contributions accessible through the
             Services by linking your account through the Services to any of your
@@ -267,7 +267,7 @@ function scrap() {
             your breach of (a) this section, (b) any third party’s intellectual
             property rights, or (c) applicable law.
             <br id="3"></br>
-            <strong className="tw-text-[#5C18E1]">We may remove or edit your Content: </strong>Although we
+            <strong className="tw-text-[#845ec2]">We may remove or edit your Content: </strong>Although we
             have no obligation to monitor any Contributions, we shall have the
             right to remove or edit any Contributions at any time without notice
             if in our reasonable opinion we consider such Contributions harmful
@@ -275,7 +275,7 @@ function scrap() {
             Contributions, we may also suspend or disable your account and
             report you to the authorities.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Copyright infringement</strong>
+            <strong className="tw-text-[#845ec2]">Copyright infringement</strong>
             We respect the intellectual property rights of others. If you
             believe that any material available on or through the Services
             infringes upon any copyright you own or control, please immediately
@@ -663,7 +663,7 @@ function scrap() {
           <div className="terms-and-cond-sub">
             <div className="tnc-sub-head">15. DISPUTE RESOLUTION</div>
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Informal Negotiations</strong>
+            <strong className="tw-text-[#845ec2]">Informal Negotiations</strong>
             <br></br>
             To expedite resolution and control the cost of any dispute,
             controversy, or claim related to these Legal Terms (each a "Dispute"
@@ -675,7 +675,7 @@ function scrap() {
             negotiations commence upon written notice from one Party to the
             other Party.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Binding Arbitration</strong>
+            <strong className="tw-text-[#845ec2]">Binding Arbitration</strong>
             <br></br>
             Any dispute arising out of or in connection with these Legal Terms,
             including any question regarding its existence, validity, or
@@ -689,7 +689,7 @@ function scrap() {
             shall be English. The governing law of these Legal Terms shall be
             substantive law of India.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Restrictions</strong>
+            <strong className="tw-text-[#845ec2]">Restrictions</strong>
             <br></br>
             The Parties agree that any arbitration shall be limited to the
             Dispute between the Parties individually. To the full extent
@@ -700,7 +700,7 @@ function scrap() {
             to be brought in a purported representative capacity on behalf of
             the general public or any other persons.
             <br></br>
-            <strong className="tw-text-[#5C18E1]">Exceptions to Informal Negotiations and Arbitration</strong>
+            <strong className="tw-text-[#845ec2]">Exceptions to Informal Negotiations and Arbitration</strong>
             <br id="16"></br>
             The Parties agree that the following Disputes are not subject to the
             above provisions concerning informal negotiations binding

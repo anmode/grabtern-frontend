@@ -113,7 +113,10 @@ function Header() {
             {isUserLoggedIn || isMentorLoggedIn ? (
               <UserProfile />
             ) : (
-              <Link href="/" className="hover:tw-text-primary-100">
+              <Link
+                href="/auth/login?entityType=user"
+                className="hover:tw-text-primary-100"
+              >
                 Sign In
               </Link>
             )}
@@ -128,7 +131,7 @@ function Header() {
 
             {/* signup button appear only if no user logged in*/}
             {!(isUserLoggedIn || isMentorLoggedIn) && (
-              <ButtonLink text="Sign Up" href="/" />
+              <ButtonLink text="Sign Up" href="/auth/register" />
             )}
           </div>
         </div>

@@ -245,7 +245,7 @@ function login() {
             <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}
             <Link
-              href="/forgotpass"
+              href={`/auth/forgotpass?entityType=${entityType}`}
               className={styles.forget}
               style={{ marginTop: 10, marginBottom: 10 }}
             >

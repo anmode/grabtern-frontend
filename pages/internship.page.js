@@ -10,6 +10,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/basic/LoginDropdown";
 import Image from "next/image";
+import { MdCreate } from "react-icons/md";
 
 // import gstyles from "../styles/gridhackathon.module.css";
 import SearchBar from "../components/hackthons/components/Searchbar";
@@ -30,6 +31,7 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
+import AddIntership from "../components/AddIntership";
 
 const buttonStyle = {
   width: "200px",
@@ -122,6 +124,8 @@ export default function Home() {
   const [tagFilter, setTagFilter] = useState([]);
 
   const [InternshipsData, setInternshipsData] = useState(internshipsData);
+
+  const [showAddInternshipModal, setShowAddInternshipModal] = useState(false);
 
   const filteredInternships = InternshipsData.filter((hackathon) => {
     const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
@@ -265,13 +269,25 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="tw-mb-12">
+            <div className="tw-mb-4">
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
                 InternshipLabels={InternshipLabels}
               />
             </div>
+            <div
+              onClick={() => setShowAddInternshipModal(true)}
+              className="tw-mb-10 tw-text-sm tw-inline-flex tw-gap-2 tw-max-w-max tw-px-4 tw-py-2 mt-2 tw-items-center tw-justify tw-border tw-border-[#845ec2] tw-text-[#845ec2] tw-rounded hover:tw-text-white hover:tw-bg-[#845ec2] hover:tw-cursor-pointer tw-transition-all tw-duration-300 md:tw-text-base"
+            >
+              <div>
+                <MdCreate />
+              </div>
+              <button className="">Add New</button>
+            </div>
+            {showAddInternshipModal && (
+              <AddIntership handleShow={setShowAddInternshipModal} />
+            )}
             <div className="row">
               {filteredInternships.map((internship, index) => (
                 <GalleryCard

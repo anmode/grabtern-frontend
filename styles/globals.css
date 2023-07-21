@@ -1217,7 +1217,7 @@ select {
   gap: 20px;
   justify-content: center;
 }
-.card-container{
+.card-container {
   margin-bottom: 2rem;
   width: 18.6vw;
   height: 100%;
@@ -1230,7 +1230,7 @@ select {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   color: black;
 }
-.lower-container{
+.lower-container {
   padding-top: 35px;
   text-align: center;
 }
@@ -1270,7 +1270,7 @@ select {
   }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .card-container {
     display: flex;
     justify-content: center;
@@ -1665,7 +1665,7 @@ select {
   font-size: 28px;
 }
 
-.terms-and-cond{
+.terms-and-cond {
   border: 1px solid #c1cacf;
 }
 

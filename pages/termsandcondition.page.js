@@ -26,30 +26,34 @@ function scrap() {
           <div className="maincontent" style={{ display: "inline-block" }}>
             {" "}
             We are Grabtern, doing business as Grabtern (
-            <b className="tw-text-[#845ec2]">"Company," "we," "us," "our"</b>), a company registered in India
-            at Kishanpur tirah, Aligarh, Aligarh, Uttar Pradesh 202002. We
-            operate the website https://www.grabtern.com/ (the "<b className="tw-text-[#845ec2]">Site</b>"),
-            as well as any other related products and services that refer or
-            link to these legal terms (the "<b className="tw-text-[#845ec2]">Legal Terms</b>") (collectively,
-            the "<b className="tw-text-[#845ec2]">Services</b>"). In our platform, we connect former Mentors
-            to student seeking for mentorship and mentor charge for providing
-            mentorship and we take 11% of that. Alright, to clarify, there is no
-            fixed price for the bookSession. Each mentor can set the price as
-            per their own wish. However, we have set a minimum price of Rs. 51
-            for each session. You can contact us by phone at 9368086395, email
-            at contact.grabtern@gmail.com, or by mail to Naval Nagar hathras,
+            <b className="tw-text-[#845ec2]">"Company," "we," "us," "our"</b>),
+            a company registered in India at Kishanpur tirah, Aligarh, Aligarh,
+            Uttar Pradesh 202002. We operate the website
+            https://www.grabtern.com/ (the "
+            <b className="tw-text-[#845ec2]">Site</b>"), as well as any other
+            related products and services that refer or link to these legal
+            terms (the "<b className="tw-text-[#845ec2]">Legal Terms</b>")
+            (collectively, the "<b className="tw-text-[#845ec2]">Services</b>").
+            In our platform, we connect former Mentors to student seeking for
+            mentorship and mentor charge for providing mentorship and we take
+            11% of that. Alright, to clarify, there is no fixed price for the
+            bookSession. Each mentor can set the price as per their own wish.
+            However, we have set a minimum price of Rs. 51 for each session. You
+            can contact us by phone at 9368086395, email at
+            contact.grabtern@gmail.com, or by mail to Naval Nagar hathras,
             Hathras, Uttar pradesh 204101, India. These Legal Terms constitute a
             legally binding agreement made between you, whether personally or on
-            behalf of an entity ("<b className="tw-text-[#845ec2]">you</b>"), and Grabtern, concerning your
-            access to and use of the Services. You agree that by accessing the
-            Services, you have read, understood, and agreed to be bound by all
-            of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL
-            TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND
-            YOU MUST DISCONTINUE USE IMMEDIATELY. We will provide you with prior
-            notice of any scheduled changes to the Services you are using. The
-            modified Legal Terms will become effective upon posting or notifying
-            you by contact.grabtern@gmail.com, as stated in the email message.
-            By continuing to use the Services after the effective date of any
+            behalf of an entity ("<b className="tw-text-[#845ec2]">you</b>"),
+            and Grabtern, concerning your access to and use of the Services. You
+            agree that by accessing the Services, you have read, understood, and
+            agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE
+            WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED
+            FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY. We
+            will provide you with prior notice of any scheduled changes to the
+            Services you are using. The modified Legal Terms will become
+            effective upon posting or notifying you by
+            contact.grabtern@gmail.com, as stated in the email message. By
+            continuing to use the Services after the effective date of any
             changes, you agree to be bound by the modified terms. The Services
             are intended for users who are at least 13 years of age. All users
             who are minors in the jurisdiction in which they reside (generally
@@ -156,7 +160,9 @@ function scrap() {
           </div>
           <div className="terms-and-cond-sub">
             <div className="tnc-sub-head">2. INTELLECTUAL PROPERTY RIGHTS</div>
-            <strong className="tw-text-[#845ec2]">Our intellectual property</strong>
+            <strong className="tw-text-[#845ec2]">
+              Our intellectual property
+            </strong>
             <br></br>
             We are the owner or the licensee of all intellectual property rights
             in our Services, including all source code, databases,
@@ -169,7 +175,9 @@ function scrap() {
             United States and around the world. The Content and Marks are
             provided in or through the Services "AS IS" for your personal,
             non-commercial use or internal business purpose only.<br></br>
-            <strong className="tw-text-[#845ec2]">Your use of our Services</strong>
+            <strong className="tw-text-[#845ec2]">
+              Your use of our Services
+            </strong>
             <br></br>
             Subject to your compliance with these Legal Terms, including the
             "PROHIBITED ACTIVITIES" section below, we grant you a non-exclusive,
@@ -196,32 +204,35 @@ function scrap() {
             of our Legal Terms and your right to use our Services will terminate
             immediately.
             <br></br>
-            <strong className="tw-text-[#845ec2]">Your submissions and contributions</strong>
+            <strong className="tw-text-[#845ec2]">
+              Your submissions and contributions
+            </strong>
             <br></br>
             Please review this section and the "PROHIBITED ACTIVITIES" section
             carefully prior to using our Services to understand the (a) rights
             you give us and (b) obligations you have when you post or upload any
             content through the Services.
             <br></br>
-            <strong className="tw-text-[#845ec2]">Submissions: </strong>By directly sending us any question,
-            comment, suggestion, idea, feedback, or other information about the
-            Services ("Submissions"), you agree to assign to us all intellectual
-            property rights in such Submission. You agree that we shall own this
-            Submission and be entitled to its unrestricted use and dissemination
-            for any lawful purpose, commercial or otherwise, without
-            acknowledgment or compensation to you.
+            <strong className="tw-text-[#845ec2]">Submissions: </strong>By
+            directly sending us any question, comment, suggestion, idea,
+            feedback, or other information about the Services ("Submissions"),
+            you agree to assign to us all intellectual property rights in such
+            Submission. You agree that we shall own this Submission and be
+            entitled to its unrestricted use and dissemination for any lawful
+            purpose, commercial or otherwise, without acknowledgment or
+            compensation to you.
             <br></br>
-            <strong className="tw-text-[#845ec2]">Contributions: </strong>The Services may invite you to chat,
-            contribute to, or participate in blogs, message boards, online
-            forums, and other functionality during which you may create, submit,
-            post, display, transmit, publish, distribute, or broadcast content
-            and materials to us or through the Services, including but not
-            limited to text, writings, video, audio, photographs, music,
-            graphics, comments, reviews, rating suggestions, personal
-            information, or other material ("Contributions"). Any Submission
-            that is publicly posted shall also be treated as a Contribution. You
-            understand that Contributions may be viewable by other users of the
-            Services.
+            <strong className="tw-text-[#845ec2]">Contributions: </strong>The
+            Services may invite you to chat, contribute to, or participate in
+            blogs, message boards, online forums, and other functionality during
+            which you may create, submit, post, display, transmit, publish,
+            distribute, or broadcast content and materials to us or through the
+            Services, including but not limited to text, writings, video, audio,
+            photographs, music, graphics, comments, reviews, rating suggestions,
+            personal information, or other material ("Contributions"). Any
+            Submission that is publicly posted shall also be treated as a
+            Contribution. You understand that Contributions may be viewable by
+            other users of the Services.
             <br></br>
             <strong className="tw-text-[#845ec2]">
               When you post Contributions, you grant us a license (including use
@@ -243,9 +254,11 @@ function scrap() {
             the trademarks, service marks, trade names, logos, and personal and
             commercial images you provide.
             <br></br>
-            <strong className="tw-text-[#845ec2]">You are responsible for what you post or upload: </strong>By
-            sending us Submissions and/or posting Contributions through any part
-            of the Services or making Contributions accessible through the
+            <strong className="tw-text-[#845ec2]">
+              You are responsible for what you post or upload:{" "}
+            </strong>
+            By sending us Submissions and/or posting Contributions through any
+            part of the Services or making Contributions accessible through the
             Services by linking your account through the Services to any of your
             social networking accounts, you: confirm that you have read and
             agree with our "PROHIBITED ACTIVITIES" and will not post, send,
@@ -267,15 +280,19 @@ function scrap() {
             your breach of (a) this section, (b) any third party’s intellectual
             property rights, or (c) applicable law.
             <br id="3"></br>
-            <strong className="tw-text-[#845ec2]">We may remove or edit your Content: </strong>Although we
-            have no obligation to monitor any Contributions, we shall have the
-            right to remove or edit any Contributions at any time without notice
-            if in our reasonable opinion we consider such Contributions harmful
-            or in breach of these Legal Terms. If we remove or edit any such
-            Contributions, we may also suspend or disable your account and
-            report you to the authorities.
+            <strong className="tw-text-[#845ec2]">
+              We may remove or edit your Content:{" "}
+            </strong>
+            Although we have no obligation to monitor any Contributions, we
+            shall have the right to remove or edit any Contributions at any time
+            without notice if in our reasonable opinion we consider such
+            Contributions harmful or in breach of these Legal Terms. If we
+            remove or edit any such Contributions, we may also suspend or
+            disable your account and report you to the authorities.
             <br></br>
-            <strong className="tw-text-[#845ec2]">Copyright infringement</strong>
+            <strong className="tw-text-[#845ec2]">
+              Copyright infringement
+            </strong>
             We respect the intellectual property rights of others. If you
             believe that any material available on or through the Services
             infringes upon any copyright you own or control, please immediately
@@ -700,7 +717,9 @@ function scrap() {
             to be brought in a purported representative capacity on behalf of
             the general public or any other persons.
             <br></br>
-            <strong className="tw-text-[#845ec2]">Exceptions to Informal Negotiations and Arbitration</strong>
+            <strong className="tw-text-[#845ec2]">
+              Exceptions to Informal Negotiations and Arbitration
+            </strong>
             <br id="16"></br>
             The Parties agree that the following Disputes are not subject to the
             above provisions concerning informal negotiations binding

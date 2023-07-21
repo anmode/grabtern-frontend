@@ -130,7 +130,8 @@ function scrap() {
           <div className="MsoNormal refund" style={{ lineHeight: "1.5" }}>
             <a name="_qxq7t4ufn5pr" />
             <strong>
-              <span className="tw-text-[#845ec2]"
+              <span
+                className="tw-text-[#845ec2]"
                 style={{
                   lineHeight: "115%",
                   fontSize: 29,

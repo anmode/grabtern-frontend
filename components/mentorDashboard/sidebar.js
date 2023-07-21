@@ -88,6 +88,16 @@ const Sidebar = ({ setComponent }) => {
 
   const BookButton = styled.button`
     margin: 5px;
+    :hover {
+    background-color: #f0f0f0; 
+    };
+  `;
+
+  const HoverListItem = styled.li`
+    background-color: transparent;
+   &.hoverList:hover {
+    background-color: rgba(240, 240, 240, 0.5);
+   }
   `;
 
   return (
@@ -115,7 +125,7 @@ const Sidebar = ({ setComponent }) => {
         </button>
 
         <aside
-          className={`tw-fixed tw-top-0 tw-left-0 tw-z-40 tw-w-64 tw-h-screen tw-transform tw-transition-transform tw-bg-[#f7f6f2] lg:tw-translate-x-0 ${
+          className={`tw-fixed tw-top-0 tw-left-0 tw-z-40 tw-w-64 tw-h-screen tw-transform tw-transition-transform tw-bg-base-300 lg:tw-translate-x-0 ${
             isSidebarOpen ? "tw-translate-x-0" : "tw--translate-x-full"
           }`}
         >
@@ -140,10 +150,10 @@ const Sidebar = ({ setComponent }) => {
                 </div>
               </BookButton>
             </div>
-            <hr className="tw-h-px tw-my-5 tw-bg-gray-200 tw-border-0 tw-dark:bg-gray-700"></hr>
+            <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             <ul className="tw-space-y-2 tw-font-medium tw-py-2">
               {menuItem1.map((val, key) => (
-                <li key={key} className="tw-group tw-cursor-pointer">
+                <HoverListItem key={key} className="tw-group tw-cursor-pointer hoverList">
                   <div
                     className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
                     onClick={() => setComponent(val.path)}
@@ -151,12 +161,12 @@ const Sidebar = ({ setComponent }) => {
                     <span className="tw-ml-3">{val.icon}</span>
                     <span className="tw-ml-3">{val.title}</span>
                   </div>
-                </li>
+                </HoverListItem>
               ))}
             </ul>
             <ul className="tw-space-y-2 tw-font-medium tw-py-4">
               {menuItem2.map((val, key) => (
-                <li key={key} className="tw-group tw-cursor-pointer hoverList">
+                <HoverListItem key={key} className="tw-group tw-cursor-pointer hoverList">
                   <div
                     className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
                     onClick={() => setComponent(val.path)}
@@ -164,12 +174,12 @@ const Sidebar = ({ setComponent }) => {
                     <span className="tw-ml-3">{val.icon}</span>
                     <span className="tw-ml-3">{val.title}</span>
                   </div>
-                </li>
+                </HoverListItem>
               ))}
             </ul>
             <ul className="tw-space-y-2 tw-font-medium tw-py-4">
               {menuItem3.map((val, key) => (
-                <li key={key} className="tw-group tw-cursor-pointer">
+                <HoverListItem key={key} className="tw-group tw-cursor-pointer hoverList">
                   <div
                     className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
                     onClick={() => setComponent(val.path)}
@@ -177,7 +187,7 @@ const Sidebar = ({ setComponent }) => {
                     <span className="tw-ml-3">{val.icon}</span>
                     <span className="tw-ml-3">{val.title}</span>
                   </div>
-                </li>
+                </HoverListItem>
               ))}
             </ul>
           </div>

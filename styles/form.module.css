@@ -47,6 +47,7 @@
 .btnnContainer {
   margin: 10%;
   display: flex;
+  justify-content: center;
 }
 .loginInput {
   text-align: center;

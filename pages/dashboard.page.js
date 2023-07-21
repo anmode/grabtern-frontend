@@ -6,12 +6,13 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Dashboard from "../components/Dashboard";
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 
 function Index() {
   const [mentorDetail, setMentorDetail] = useState();
   const router = useRouter();
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const userData = decryptData(localStorage.getItem("userData"));
+  const mentorData = decryptData(localStorage.getItem("mentorData"));
   useEffect(() => {
     const fetchMentorDetail = async (mentorToken) => {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDashboard/${mentorToken}`;

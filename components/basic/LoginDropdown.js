@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
 // import styles from "../../styles/LoginDropdown.module.css";
+import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
 const DropdownCard = () => {
   const [loginOption, setLoginOption] = useState(false);
@@ -15,8 +16,8 @@ const DropdownCard = () => {
     setIsUserLoggedIn,
   } = useAuth();
 
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const userData = decryptData(localStorage.getItem("userData"));
+  const mentorData = decryptData(localStorage.getItem("mentorData"));
   const dropdownRef = useRef(null);
 
   const handleLoginClick = () => {

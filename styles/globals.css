@@ -1569,7 +1569,7 @@ select {
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
-  max-width: 60%;
+  max-width: 80%;
   margin: auto;
 }
 
@@ -1682,6 +1682,7 @@ select {
 
 .terms-and-cond {
   border: 1px solid #c1cacf;
+  padding: 2px;
 }
 
 .terms-and-cond-sub {
@@ -1706,7 +1707,7 @@ select {
   .maincontent {
     margin-left: 5px;
     margin-right: 5px;
-    text-align: center;
+    text-align: left;
     width: 89%;
   }
   .tableofcontents {

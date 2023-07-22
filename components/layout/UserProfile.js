@@ -4,17 +4,15 @@ import { FcReadingEbook } from "react-icons/fc";
 import { useRouter } from "next/router";
 
 function UserProfile() {
-  const router = useRouter(); // Move the useRouter hook inside the functional component
-  // drop down state
+  const router = useRouter(); 
   const [dropDown, setDropDown] = useState(false);
-  // function to toggle dropdown state
   const toggleDropdown = () => setDropDown(!dropDown);
 
   function logout() {
     localStorage.clear();
     router.push("/");
     window.location.reload();
-  }
+  };
 
   return (
     <div className="tw-relative" onClick={toggleDropdown}>

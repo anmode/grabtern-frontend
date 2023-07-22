@@ -23,15 +23,12 @@ function useRedirectIfAuthenticated() {
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
-
-      // Prepare the user data to be sent to the backend for registration
       const userData = {
         user_name: userObject.name,
         user_picture: userObject.picture,
         user_email: userObject.email,
       };
 
-      // Call the backend API to register the user
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gsignup`;
       try {
         const res = await axios.post(url, {

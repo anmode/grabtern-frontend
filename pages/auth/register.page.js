@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { decryptData, encryptData } from "../../hook/encryptDecrypt";
 import { useAuth } from "../../context/AuthContext";
+import Link from "next/link";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
@@ -22,6 +23,13 @@ function useRedirectIfAuthenticated() {
 
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
+      // Redirect based on login status only if mentor or user is logged in
+      if (isMentorLoggedIn || isUserLoggedIn) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectURL = urlParams.get("redirectURL");
+        router.replace(redirectURL || "/");
+      }
+
       const userObject = jwt_decode(response.credential);
       const userData = {
         user_name: userObject.name,
@@ -75,17 +83,10 @@ function useRedirectIfAuthenticated() {
     };
 
     initGoogleSignUp();
-    const userDataString = localStorage.getItem("userData");
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      if (userData.name !== null || userData.token !== null) {
-        router.push("/");
-      }
-    }
   }, [router]);
 }
 
-function Register({ handleLogPageToggle }) {
+function Register() {
   useRedirectIfAuthenticated();
 
   const router = useRouter();
@@ -241,13 +242,20 @@ function Register({ handleLogPageToggle }) {
 
           <div className={styles.linkdiv}>
             Already have an account?
-            <button
+            {/* <button
               className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
-              onClick={() => handleLogPageToggle()}
+              onClick={router.push("/auth/login")}
             >
               Login{" "}
-            </button>
+            </button> */}
+            <Link
+              href="/auth/login"
+              className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
+              style={{ textDecoration: "none" }}
+            >
+              Login{" "}
+            </Link>
           </div>
           <div className={styles.google}>
             <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>

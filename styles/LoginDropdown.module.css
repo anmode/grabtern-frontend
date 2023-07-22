@@ -1,0 +1,78 @@
+/* LoginDropdown.module.css */
+
+.navLink:hover {
+  color: rgb(243, 243, 248) !important;
+  transform: scale(1.05);
+  /* text-shadow: 0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.7),
+    0 0 40px rgba(255, 255, 255, 0.6), 0 0 50px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(255, 255, 255, 0.4), 0 0 70px rgba(255, 255, 255, 0.3); */
+}
+
+@media (max-width: 768px) {
+  .navLink {
+    padding: 6px 10px;
+    margin: 6px 8px;
+    font-size: 14px;
+  }
+}
+
+.footLink:hover {
+  color: #fff !important;
+  /* color: #1b44e7 !important; */
+  /* 4664dd */
+  transform: scale(1.05);
+  /* text-shadow: 0 0 10px rgb(153, 138, 176); */
+}
+
+.loginOption {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  position: relative;
+  gap: 1rem;
+  border-radius: 4px;
+  transform: translateZ(-50px);
+  margin-bottom: 70px;
+}
+
+.loginOption a {
+  padding: 0 !important;
+}
+
+.loginOption button {
+  background: none;
+  width: fit-content;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.loginOption {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateZ(-50px);
+}
+
+.loginOption a {
+  padding: 0 !important;
+}
+
+.loginOption button {
+  color: black;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-weight: 600;
+}
+
+.loginOption button:hover {
+  background-color: #9160ec;
+  color: aliceblue;
+}
+
+.loginOption .userPicture:hover {
+  background-color: transparent;
+}

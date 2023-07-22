@@ -58,7 +58,13 @@ function MyApp({ Component, pageProps }) {
         <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/assets/img/favicon1.ico" />
+        <meta
+          name="description"
+          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
+        />
+        <meta name="language" content="English" />
+        <link rel="icon" href="/faviconn.png" />
+        <meta name="robots" content="noindex" />
         <link rel="canonical" href="https://grabtern.com/" />
         <link
           rel="alternate"
@@ -157,9 +163,15 @@ function MyApp({ Component, pageProps }) {
           <div id="preloader-active" style={{ transition: "all 0.5s" }}>
             <div className="preloader d-flex align-items-center justify-content-center">
               <div className="tw-flex tw-items-center tw-justify-center position-relative">
-                <div className="preloader-circle"></div>
-                <div className="preloader-img pere-text">
-                  <img src="/assets/img/logo/loder.webp" alt="" />
+                <div
+                  className="preloader-circle"
+                  style={{ transform: "translateX(-15%) translateY(-55%)" }}
+                ></div>
+                <div
+                  className="preloader-img pere-text"
+                  style={{ transform: "translateX(-15%) translateY(-55%)" }}
+                >
+                  <img src="/faviconn.png" alt="" />
                 </div>
               </div>
             </div>

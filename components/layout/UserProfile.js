@@ -1,12 +1,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FcReadingEbook } from "react-icons/fc";
+import { useRouter } from "next/router";
 
 function UserProfile() {
+  const router = useRouter(); // Move the useRouter hook inside the functional component
   // drop down state
   const [dropDown, setDropDown] = useState(false);
-  // functio to toggle dropdown state
+  // function to toggle dropdown state
   const toggleDropdown = () => setDropDown(!dropDown);
+
+  function logout() {
+    localStorage.clear();
+    router.push("/");
+    window.location.reload();
+  }
+
   return (
     <div className="tw-relative" onClick={toggleDropdown}>
       {/* profile icon */}
@@ -24,7 +33,7 @@ function UserProfile() {
           </Link>
           <button
             className="tw-p-2 tw-pt-1 hover:tw-text-primary-100 tw-font-normal"
-            onClick={() => {}}
+            onClick={logout}
           >
             Logout
           </button>

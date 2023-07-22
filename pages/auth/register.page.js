@@ -5,51 +5,79 @@ import Visibillity from "../../public/assets/Visibillity";
 import VisibillityOff from "../../public/assets/VisibillityOff";
 import Header from "../../components/layout/Header";
 import styles from "../../styles/userRegistration.module.css";
+import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { decryptData, encryptData } from "../../hook/encryptDecrypt";
+import { useAuth } from "../../context/AuthContext";
+
 function useRedirectIfAuthenticated() {
   const router = useRouter();
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
       const userObject = jwt_decode(response.credential);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gloginauth`;
+
+      // Prepare the user data to be sent to the backend for registration
+      const userData = {
+        user_name: userObject.name,
+        user_picture: userObject.picture,
+        user_email: userObject.email,
+      };
+
+      // Call the backend API to register the user
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gsignup`;
       try {
-        const res = await axios.post(url, userObject);
+        const res = await axios.post(url, {
+          registerToken: encryptData(userData),
+        });
         console.log(res);
-        const userData = {
-          user_name: userObject.name,
-          user_picture: userObject.picture,
-          user_email: userObject.email,
-          user_id: res.data.id,
-        };
-
         localStorage.setItem("userData", encryptData(userData));
-
-        const redirectUrl = sessionStorage.getItem("redirectUrl") || "/";
-        router.push(redirectUrl);
+        setIsUserLoggedIn(true);
+        const redirectUrl = new URLSearchParams(window.location.search).get(
+          "redirectUrl",
+        );
+        router.push(redirectUrl || "/");
       } catch (error) {
-        setError("New user? Register first.");
-        console.log(error);
+        if (error.response && error.response.status >= 400) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Failed to sign up. Please try again later.");
+        }
+        if (error.response && error.response.status === 202) {
+          toast.warning(
+            "Registration successful, but there was an issue sending the verification email. Please contact support.",
+          );
+        }
       }
     };
 
-    const initGoogleSignIn = () => {
+    const initGoogleSignUp = () => {
       try {
         google.accounts.id.initialize({
-          client_id:
-            "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
           callback: handleCallBackResponse,
+          context: "signup",
         });
-        google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+        google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
           theme: "outline",
           size: "large",
+          text: "signup_with",
+          shape: "pill",
         });
         google.accounts.id.prompt();
       } catch (error) {
-        console.error("Google sign-in initialization failed:", error);
+        console.error("Google sign-up initialization failed:", error);
       }
     };
 
-    initGoogleSignIn();
+    initGoogleSignUp();
     const userDataString = localStorage.getItem("userData");
     if (userDataString) {
       const userData = JSON.parse(userDataString);
@@ -70,7 +98,6 @@ function Register({ handleLogPageToggle }) {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState("");
   const [verificationSent, setVerificationSent] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
@@ -89,28 +116,38 @@ function Register({ handleLogPageToggle }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     setVerificationSent(false);
 
     if (data.password !== data.confirmPassword) {
-      return setError("Passwords do not match!");
+      return toast.error("Passwords do not match!");
     }
 
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
       setVerificationSent(true);
+      toast.success(
+        "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
+      );
       setTimeout(() => {
         router.push("/");
-      }, 5000); // Redirect after 5 seconds
+      }, 5000);
     } catch (error) {
       if (error.response && error.response.status >= 400) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        setError("An error occurred. Please try again later.");
+        toast.error(
+          "An error occurred during registration. Please try again later.",
+        );
+      }
+      if (error.response && error.response.status === 202) {
+        toast.warning(
+          "Registration successful, but there was an issue sending the verification email. Please contact support.",
+        );
       }
     }
   };
+
   return (
     <>
       <Header navbarBackground={true} />
@@ -190,14 +227,11 @@ function Register({ handleLogPageToggle }) {
               </div>
             </div>
           </div>
-
-          {verificationSent && (
-            <p style={{ color: "green" }}>
-              An email has been sent to {data.email}. Please check your inbox to
-              verify your account.
-            </p>
-          )}
-          {error && <div style={{ color: "red" }}>{error}</div>}
+          <ToastContainer />
+          {verificationSent &&
+            toast.success(
+              "An email has been sent to {data.email}. Please check your inbox toverify your account.",
+            )}
 
           <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
             <input
@@ -222,7 +256,7 @@ function Register({ handleLogPageToggle }) {
             <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
           </div>
           <div
-            id="signInDiv"
+            id="signUpDiv"
             style={{ alignSelf: "center" }}
             className={styles.googlelogin}
           ></div>

@@ -1,0 +1,133 @@
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 9%;
+}
+
+.heading img {
+  width: 24%;
+}
+
+.RegisterInput {
+  text-align: center;
+  padding-left: 43%;
+}
+
+.google {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+.google h3 {
+  position: relative;
+}
+
+.google h3::before,
+.google h3::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 180px;
+  height: 1px;
+  background-color: #000;
+}
+
+.google h3::before {
+  left: -200px;
+}
+
+.google h3::after {
+  right: -200px;
+}
+.googlelogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 10%;
+}
+.Input {
+  border-bottom: 3px solid #845ec2;
+  border-radius: 9px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  padding-left: 10px;
+  margin-bottom: 6%;
+  display: flex;
+}
+.Registerform {
+  margin: 90px auto 5px auto;
+  width: 480px;
+  padding: 12px 45px 12px 45px;
+  color: whitesmoke;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: min-content;
+  background-color: white;
+}
+.Registerform h2 {
+  color: #000;
+  font-size: 30px;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.Registerform .forminput {
+  position: relative;
+  margin: 2vh 0;
+}
+.Registerform .forminput label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+.Registerform .forminput input {
+  outline: none;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: transparent;
+  font-size: 18px;
+  border: none;
+  color: gray;
+}
+.Registerform .forminput input::placeholder {
+  color: gray;
+}
+
+.linkdiv {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  color: #000;
+  margin-top: 20px;
+}
+
+@media (max-width: 575px) {
+  .Registerform {
+    width: 90%;
+    padding: 30px 40px 15px 40px;
+    margin: 100px auto 0 auto;
+  }
+  .Registerform h2 {
+    font-size: 27px;
+  }
+  .google h3::before,
+  .google h3::after {
+    content: "";
+    top: 50%;
+    width: 135px;
+    height: 1px;
+    background-color: #000;
+  }
+  .google h3::before {
+    left: -140px;
+  }
+
+  .google h3::after {
+    right: -140px;
+  }
+}

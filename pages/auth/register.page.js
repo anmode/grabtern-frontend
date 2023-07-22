@@ -200,13 +200,13 @@ function Register({ handleLogPageToggle }) {
           {error && <div style={{ color: "red" }}>{error}</div>}
 
           <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
-          <input
-            type="submit"
-            name="submit"
-            value="Registration"
-            style={{ textAlign: 'center', width: '100%' }}
-          />
-        </div>
+            <input
+              type="submit"
+              name="submit"
+              value="Registration"
+              style={{ textAlign: "center", width: "100%" }}
+            />
+          </div>
 
           <div className={styles.linkdiv}>
             Already have an account?

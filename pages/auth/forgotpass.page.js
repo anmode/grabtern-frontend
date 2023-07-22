@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/layout/Header";
+import Header from "../../components/layout/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
 
 function ForgotPassword() {
   const router = useRouter();
@@ -23,12 +24,10 @@ function ForgotPassword() {
     try {
       setIsLoading(true);
 
-      const entityTypeParam = entity === "user" ? "user" : "mentor";
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword`;
-      const { data } = await axios.post(url, {
-        email,
-        entityType: entityTypeParam,
-      });
+      const url = new URL(window.location.href);
+      const entityTypeFromUrl = url.searchParams.get("entityType");
+      const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
+      const { data } = await axios.post(backendUrl, { email: email });
 
       setSuccess(true);
       setIsLoading(false);
@@ -74,16 +73,7 @@ function ForgotPassword() {
               <input type="submit" name="submit" value="Reset Password" />
             </div>
             {isLoading && (
-              // <img
-              //   style={{
-              //     width: "50px",
-              //     height: "50px",
-              //     border: "none",
-              //   }}
-              //   src="/assets/img/gif/Spinner.gif"
-              //   alt="loading..."
-              // />
-              <Image
+              <img
                 style={{
                   width: "50px",
                   height: "50px",
@@ -91,8 +81,6 @@ function ForgotPassword() {
                 }}
                 src="/assets/img/gif/Spinner.gif"
                 alt="loading..."
-                height={50}
-                width={50}
               />
             )}
             {error && <div style={{ color: "red" }}>{error}</div>}

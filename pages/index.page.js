@@ -106,6 +106,7 @@ export default function Home() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
+  // console.log(isMentorLoggedIn,isUserLoggedIn);
 
   const decryptedData = decryptData(
     localStorage.getItem("userData") || localStorage.getItem("mentorData"),

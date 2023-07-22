@@ -26,13 +26,13 @@ function Header() {
   const dropdownRef = useRef();
 
   useEffect(() => {
-    // if (userData?.user_name) {
-    //   setIsUserLoggedIn(true);
-    // }
+    if (userData?.user_name) {
+      setIsUserLoggedIn(true);
+    }
 
-    // if (mentorData?.mentor_name) {
-    //   setIsMentorLoggedIn(true);
-    // }
+    if (mentorData?.mentor_name) {
+      setIsMentorLoggedIn(true);
+    }
 
     const handleScroll = () => {
       setScrollY(window.scrollY);

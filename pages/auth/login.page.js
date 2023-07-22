@@ -50,22 +50,23 @@ function login() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);
+      const userData = decryptData(res);
+      // console.log(userData);
       let entityData = {};
       if (entityType === "user") {
         entityData = {
-          token: res.data,
-          user_name: res.data.fullName,
-          user_email: res.data.email,
-          user_id: res.data.id,
+          token: userData.token,
+          user_name: userData.fullName,
+          user_email: userData.email,
+          user_id: userData.id,
         };
-        localStorage.setItem("userData", encryptData(entityData));
         setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
+        const mentorData = decryptData(res);
         entityData = {
-          mentor_name: res.fullName,
-          mentorToken: res.mentorToken,
+          mentor_name: mentorData.fullName,
+          mentorToken: mentorData.mentorToken,
         };
-        localStorage.setItem("mentorData", encryptData(entityData));
         setIsMentorLoggedIn(true);
       }
 

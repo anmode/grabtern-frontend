@@ -31,6 +31,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
         <li><a href="#-tech-stack-used">Tech Stacks used 💻</a></li>
       </ul>
     </li>
+   <li><a href="#garbtern-email-feature">Grabtern Email Feature</a></li>
     <li><a href="#-prettier-lint-test-and-how-to-fix-it">Prettier lint Test</a></li>
     <li><a href="#contributing">How to contribute?</a></li>
     <li><a href="#author">Author</a></li>
@@ -95,6 +96,17 @@ This will start server
 ## 🧰 Tech Stack Used
 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+
+---
+
+## Grabtern Email Feature
+
+Login to ethereal mail.com with these login details:
+
+```
+"user": "dexter.waelchi@ethereal.email",
+"password": "MjMfuHFxfjeXttjH8v"
+```
 
 ---
 

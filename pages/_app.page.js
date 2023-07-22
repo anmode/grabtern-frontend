@@ -128,15 +128,15 @@ function MyApp({ Component, pageProps }) {
           <div id="preloader-active" style={{ transition: "all 0.5s" }}>
             <div className="preloader d-flex align-items-center justify-content-center">
               <div className="tw-flex tw-items-center tw-justify-center position-relative">
-              <div
-          className="preloader-circle"
-          style={{ transform: "translateX(-15%) translateY(-55%)" }}
-        ></div>
-        <div
-          className="preloader-img pere-text"
-          style={{ transform: "translateX(-15%) translateY(-55%)" }}
-        >
-          <img src="/faviconn.png" alt="" />
+                <div
+                  className="preloader-circle"
+                  style={{ transform: "translateX(-15%) translateY(-55%)" }}
+                ></div>
+                <div
+                  className="preloader-img pere-text"
+                  style={{ transform: "translateX(-15%) translateY(-55%)" }}
+                >
+                  <img src="/faviconn.png" alt="" />
                 </div>
               </div>
             </div>

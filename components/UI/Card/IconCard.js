@@ -13,7 +13,7 @@ function IconCard({
   return (
     <div
       className={clsx(
-        "tw-font-sans",
+        "tw-font-sans tw-flex tw-items-center tw-gap-2.5 tw-ml-4",
         intent == "bg" && [
           "tw-bg-base-100",
           "tw-p-6 tw-rounded-lg tw-border tw-border-base-300",
@@ -24,8 +24,8 @@ function IconCard({
       {Icon && (
         <Icon
           className={clsx(
-            "tw-text-primary-100 tw-w-7 tw-h-7 tw-mb-2",
-            size == "lg" && ["tw-w-8 tw-h-8"],
+            "tw-text-primary-100 tw-w-8 tw-h-8 tw-mb-2",
+            size == "lg" && ["tw-w-9 tw-h-9"],
           )}
         />
       )}

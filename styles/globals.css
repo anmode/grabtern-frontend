@@ -1569,8 +1569,16 @@ select {
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
-  max-width: 82%;
+  max-width: 90%;
   margin: auto;
+  padding: 0px;
+}
+
+@media screen and (max-width: 600px) {
+  .ret_pol2{
+    width: 100%;
+    padding: 0px;
+  }
 }
 
 .refund {
@@ -1691,6 +1699,11 @@ select {
 }
 
 @media only screen and (max-width: 600px) {
+  .terms-and-cond-sub{
+    padding: 0!important;
+    margin-right: 10px;
+    margin-left: 17px;
+  }
   .front {
     display: block;
   }
@@ -1701,10 +1714,9 @@ select {
     font-size: 27px;
   }
   .maincontent {
-    margin-left: 5px;
     margin-right: 5px;
     text-align: left;
-    width: 89%;
+    width: 93%;
   }
   .tableofcontents {
     margin: auto;

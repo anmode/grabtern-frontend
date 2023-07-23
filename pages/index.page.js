@@ -114,9 +114,11 @@ export default function Home() {
 
   return (
     <div>
-      {localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
+      {(localStorage.getItem("mentorData") !== null ||
+        localStorage.getItem("userData") !== null) &&
+      !hasPlayedGreeting ? (
         <div className="welcomeAfterLoggedIn">
-          Hi 👋🏻 {decryptedData.user_name || decryptedData.mentor_name} <br />{" "}
+          Hi 👋🏻 {decryptedData?.user_name || decryptedData?.mentor_name} <br />{" "}
           Welcome to GrabTern
           <audio
             src="/assets/sound/greet.wav"

@@ -23,7 +23,7 @@ function login() {
   const [entityType, setEntityType] = useState("user");
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -48,9 +48,13 @@ function login() {
     e.preventDefault();
     setError("");
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);
-      console.log(res);
+      setIsLoading(false);
+      const decryptedEntityData = decryptData(res);
+      // console.log(userData);
+      let entityData = {};
       if (entityType === "user") {
         localStorage.setItem("userData", res);
         setIsUserLoggedIn(true);
@@ -60,6 +64,7 @@ function login() {
       }
       // router.push("/");
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
       if (
         error.response &&
@@ -232,6 +237,18 @@ function login() {
                 className={styles.loginInput}
               />
             </div>
+            <div>
+            <ToastContainer />
+            <div>
+              {isLoading && (
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src="/assets/img/gif/Spinner.gif"
+                  alt="...jljk"
+                />
+              )}
+            </div>
+          </div>
 
             <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}

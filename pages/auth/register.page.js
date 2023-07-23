@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 import Visibillity from "../../public/assets/Visibillity";
 import VisibillityOff from "../../public/assets/VisibillityOff";
 import Header from "../../components/layout/Header";
@@ -12,7 +13,10 @@ import { decryptData, encryptData } from "../../hook/encryptDecrypt";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 
+
+
 function useRedirectIfAuthenticated() {
+
   const router = useRouter();
   const {
     isMentorLoggedIn,
@@ -20,7 +24,7 @@ function useRedirectIfAuthenticated() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-
+  
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
       // Redirect based on login status only if mentor or user is logged in
@@ -29,19 +33,22 @@ function useRedirectIfAuthenticated() {
         const redirectURL = urlParams.get("redirectURL");
         router.replace(redirectURL || "/");
       }
-
+    
       const userObject = jwt_decode(response.credential);
       const userData = {
         user_name: userObject.name,
         user_picture: userObject.picture,
         user_email: userObject.email,
       };
-
+     
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gsignup`;
       try {
+        
+        
         const res = await axios.post(url, {
           registerToken: encryptData(userData),
         });
+        
         console.log(res);
         localStorage.setItem("userData", encryptData(userData));
         setIsUserLoggedIn(true);
@@ -53,6 +60,7 @@ function useRedirectIfAuthenticated() {
         }, 2000);
         // router.push(redirectUrl || "/");
       } catch (error) {
+        
         if (error.response && error.response.status >= 400) {
           toast.error(error.response.data.message);
         } else {
@@ -101,7 +109,7 @@ function Register() {
   });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
@@ -122,8 +130,10 @@ function Register() {
     }
 
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
+      setIsLoading(false);
       toast.success(
         "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
       );
@@ -131,6 +141,7 @@ function Register() {
         router.push("/");
       }, 5000);
     } catch (error) {
+      setIsLoading(false);
       if (error.response && error.response.status >= 400) {
         toast.error(error.response.data.message);
       } else {
@@ -145,11 +156,13 @@ function Register() {
       }
     }
   };
-
+  
   return (
     <>
+    
       <Header navbarBackground={true} />
       <div className={styles.Registerform}>
+        
         <form className="form-default" onSubmit={handleSubmit}>
           <div className={styles.heading}>
             <img src="/Grabtern2.png" class="small-image"></img>
@@ -235,7 +248,19 @@ function Register() {
               style={{ textAlign: "center", width: "100%" }}
             />
           </div>
-
+{/* my code */}
+<div>
+            <ToastContainer />
+            <div>
+              {isLoading && (
+                <img
+                  style={{ width: "50px", height: "50px" }}
+                  src="/assets/img/gif/Spinner.gif"
+                  alt="...jljk"
+                />
+              )}
+            </div>
+          </div>
           <div className={styles.linkdiv}>
             Already have an account?
             {/* <button

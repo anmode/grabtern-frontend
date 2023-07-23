@@ -104,7 +104,7 @@ function PersonDetails({
   const uploadToCloudinary = async (imageSrc) => {
     const res = await fetch(imageSrc);
     const blob = await res.blob();
-    const url = `https://api.cloudinary.com/v1_1/grabtern-cloud/image/upload`;
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
     try {
       const formData = new FormData();
       formData.append("file", blob);

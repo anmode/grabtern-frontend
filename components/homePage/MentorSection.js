@@ -36,7 +36,7 @@ function MentorSection() {
       <div className="tw-relative tw-w-full tw-max-w-sm tw-mx-auto tw-space-y-4">
         {/* background image */}
         <div
-          class={clsx(
+          className={clsx(
             "tw-absolute -tw-top-10 -tw-left-10",
             "tw-h-[480px] tw-w-[480px] tw-rotate-45",
             "mask mask-hexed",

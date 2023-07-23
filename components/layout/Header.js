@@ -174,7 +174,7 @@ function Header() {
                 {/* show signin button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
                   <Link
-                    href="/"
+                    href="/auth/login?entityType=user"
                     className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
                   >
                     Sign In

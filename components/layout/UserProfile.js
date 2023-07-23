@@ -31,10 +31,12 @@ function UserProfile() {
   const decryptedData = decryptData(
     localStorage.getItem("userData") || localStorage.getItem("mentorData"),
   );
-  console.log(decryptedData);
+  // console.log(decryptedData);
   //Get the profile picture URL based on login status
-  const userProfilePicture = isUserLoggedIn ? decryptedData.user_picture : null;
-  const mentorProfilePicture = isMentorLoggedIn ? decryptedData.image : null;
+  const userProfilePicture = isUserLoggedIn ? decryptedData?.user_image : null;
+  const mentorProfilePicture = isMentorLoggedIn
+    ? decryptedData?.mentor_image
+    : null;
 
   return (
     <div className="tw-relative" onClick={toggleDropdown}>

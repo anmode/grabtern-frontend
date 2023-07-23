@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Header from "../components/layout/Header";
 import Section from "../components/mentorPage/components/Section";
 import Company from "../components/mentorPage/components/Company";
@@ -6,8 +7,13 @@ import IconCard from "../components/mentorPage/components/IconCard";
 import FAQList from "../components/mentorPage/components/FAQList";
 import Footer from "../components/layout/Footer";
 import Head from "next/head";
-
 import faq from "./data/faq";
+import Link from "next/link";
+
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import PeopleIcon from '@mui/icons-material/People';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import TerminalIcon from '@mui/icons-material/Terminal';
 
 function Mentor() {
   return (
@@ -18,111 +24,106 @@ function Mentor() {
       <Header navbarBackground={true} />
       <main>
         {/* Header */}
-        <Section
-          className="flex-column-reverse flex-lg-row pt-100 mb-50 mt-50"
-          headingText="Build your Community and Monetize💰 your XP"
-          bodyText="Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact. "
-          bodyTextClass="font-weight-bold text-muted"
-          actionButtonText="be a mentor"
-          actionButtonlink="/mentorRegister"
-          imageSrc="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
-        />
 
-        {/* company list */}
-        <section className="testimonial-bg mb-50">
-          <div className="container py-0">
-            <p className="h1 text-muted mb-30 text-center font-weight-bold pt-50">
-              Our Top Mentors Interned at
-            </p>
-            <div className="row pb-50">
-              <div className="col">
-                <Company imgSrc="/assets/img/company/GSoC.svg" name="GSoC" />
-              </div>
-              <div className="col">
-                <Company
-                  imgSrc="/assets/img/company/microsoft.svg"
-                  name="Microsoft"
-                />
-              </div>
-              <div className="col">
-                <Company imgSrc="/assets/img/company/mlh.svg" name="MLH" />
-              </div>
-              <div className="col">
-                <Company
-                  imgSrc="/assets/img/company/hackerRank.svg"
-                  name="Hacker Rank"
-                />
-              </div>
+        <section className="tw-flex max-[990px]:tw-flex-col max-[990px]:tw-flex-wrap max-[990px]:items-center max-[990px]:tw-justify-center tw-items-start tw-mt-48 tw-justify-between tw-px-28 tw-gap-10">
+          <div className="max-[990px]:tw-flex-wrap max-[990px]:tw-items-center max-[990px]:tw-text-center tw-flex tw-flex-col tw-items-start tw-gap-2">
+            <h1 className="tw-font-bold tw-text-5xl">Build your Community and Monetize💰 your XP</h1>
+            <p className="tw-text-lg tw-font-semibold">Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact.</p>
+
+            <button className="tw-bg-primary-100 tw-p-4 tw-transition-all tw-duration-200 tw-ease-in-out tw-mt-6 hover:tw-bg-primary-200 tw-rounded-md">
+              <Link href="/mentorRegister">
+                <h3 className="tw-text-white tw-font-bold">Be a mentor</h3>
+              </Link>
+            </button>
+          </div>
+          <div className="max-[990px]:tw-items-center tw-flex tw-animate-wiggle">
+            <Image
+              src="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
+              alt="mentor"
+              width={1200}
+              height={700}
+            />
+          </div>
+        </section>
+
+
+        {/* Company List */}
+
+        <section className="tw-flex-col tw-justify-center tw-items-center tw-flex tw-px-16 tw-gap-10 tw-mt-20">
+          <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Our Top Mentors Interned at</h1>
+          <div className="tw-flex tw-flex-wrap tw-gap-32 tw-justify-evenly tw-items-baseline">
+            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+              <Image
+                src="/assets/img/company/GSoC.svg"
+                width={150}
+                height={200}
+              />
+              <h2 className="tw-font-bold tw-text-[#64748b]">GSoC</h2>
+            </div>
+            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+              <Image
+                src="/assets/img/company/microsoft.svg"
+                width={150}
+                height={200}
+              />
+              <h2 className="tw-font-bold tw-text-[#64748b]">Microsoft</h2>
+            </div>
+            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+              <Image
+                src="/assets/img/company/mlh.svg"
+                width={150}
+                height={200}
+              />
+              <h2 className="tw-font-bold tw-text-[#64748b]">MLH</h2>
+            </div>
+            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+              <Image
+                src="/assets/img/company/hackerRank.svg"
+                width={150}
+                height={200}
+              />
+              <h2 className="tw-font-bold tw-text-[#64748b]">Hackerrank</h2>
             </div>
           </div>
         </section>
 
-        {/* sections */}
-        <Section
-          className="flex-column-reverse flex-lg-row mb-50 mb-lg-100"
-          headingText="Build your Community and Monetize💰 your XP"
-          bodyText="Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact. "
-          imageSrc="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
-        />
-
-        <Section
-          className="flex-column-reverse flex-lg-row-reverse mb-50 mb-lg-100"
-          headingText="Build your Community and Monetize💰 your XP"
-          bodyText="Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact. "
-          imageSrc="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
-        />
-
-        <Section
-          className="flex-column-reverse flex-lg-row mb-50 mb-lg-100"
-          headingText="Build your Community and Monetize💰 your XP"
-          bodyText="Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact. "
-          imageSrc="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
-        />
-
         {/* Icons Cards row */}
-        <section className="mb-100">
-          <div className="container py-0">
-            <div className="section-tittle text-center mb-30">
-              <h2>Empower Your Expertise, Earn Your Impact</h2>
+
+        <section className="tw-mt-36 tw-px-16 tw-flex tw-flex-col tw-justify-center tw-items-center">
+          <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Empower Your Expertise, Earn Your Impact</h1>
+          <div className="tw-flex max-[990px]:tw-flex-col max-[990px]:tw-w-full tw-gap-10 tw-mt-6 tw-flex-wrap">
+            {/* card1 */}
+            <div className="tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-slate-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200  tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <LiveTvIcon fontSize="" className="hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-cyan-400 tw-p-8 tw-rounded-full" />
+              <h2 className="tw-font-semibold tw-text-lg">LIVE Programs</h2>
+              <p className="tw-text-md">MasterClasses, Bootcamps, and more informative sessions.</p>
             </div>
-            <div className="row">
-              <div className="col col-12 col-sm-6 col-lg-3">
-                <IconCard
-                  iconClass="fas fa-globe"
-                  heading="LIVE Programs"
-                  text="MasterClasses, Bootcamps, and more informative sessions."
-                />
-              </div>
-              <div className="col col-12 col-sm-6 col-lg-3">
-                <IconCard
-                  iconClass="fas fa-user-tie"
-                  heading="Mentorship Session"
-                  text="Resume Reviews, Roadmaps, Interviews, and Doubt sessions."
-                />
-              </div>
-              <div className="col col-12 col-sm-6 col-lg-3">
-                <IconCard
-                  iconClass="fas fa-microphone"
-                  heading="Cohort and Courses"
-                  text="Launch your own cohort or hybrid courses, small or large"
-                />
-              </div>
-              <div className="col col-12 col-sm-6 col-lg-3">
-                <IconCard
-                  iconClass="fas fa-laptop-code"
-                  heading="Webinar and Workshop"
-                  text="Live sessions on topics you choose to educate about"
-                />
-              </div>
+            {/* card2 */}
+            <div className="tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-slate-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <PeopleIcon fontSize="" className="hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-cyan-400 tw-p-8 tw-rounded-full" />
+              <h2 className="tw-font-semibold tw-text-lg">Mentorship Session</h2>
+              <p className="tw-text-md">Resume Reviews, Roadmaps, Interviews, and Doubt sessions.</p>
+            </div>
+            {/* card3 */}
+            <div className="tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-slate-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <AutoStoriesIcon fontSize="" className="hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-cyan-400 tw-p-8 tw-rounded-full" />
+              <h2 className="tw-font-semibold tw-text-lg">Cohort and Courses</h2>
+              <p className="tw-text-md">Launch your own cohort or hybrid courses, small or large</p>
+            </div>
+            {/* card4 */}
+            <div className="tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-slate-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <TerminalIcon fontSize="" className="hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-cyan-400 tw-p-8 tw-rounded-full" />
+              <h2 className="tw-font-semibold tw-text-lg">Webinar and Workshop</h2>
+              <p className="tw-text-md">Live sessions on topics you choose to educate about</p>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="mb-100">
+        <section className="tw-mt-20 tw-p-16">
           <div className="container py-0">
             <div className="section-tittle text-center mb-30">
-              <h2>Frequently Asked Questions</h2>
+              <h2 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Frequently Asked Questions</h2>
             </div>
             <FAQList faq={faq} />
           </div>

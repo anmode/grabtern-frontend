@@ -9,6 +9,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { error } from "jquery";
 import { Section } from "../components/UI";
+import {TfiHome, TfiTablet, TfiEmail} from "react-icons/tfi"
 const Footer = dynamic(() => import("../components/layout/Footer"));
 const Header = dynamic(() => import("../components/layout/Header"));
 
@@ -163,7 +164,7 @@ function Contact() {
                       <div class={style.centerr}>
                         <div className={`${style.contactinfo} media`}>
                           <span className={style.contactinfo__icon}>
-                            <i className="ti-home" />
+                            <TfiHome className="tw-text-[27px]"/>
                           </span>
                           <div className={style.media_body}>
                             <h3>Kishanpur</h3>
@@ -172,7 +173,7 @@ function Contact() {
                         </div>
                         <div className={`${style.contactinfo} media`}>
                           <span className={style.contactinfo__icon}>
-                            <i className="ti-tablet" />
+                            <TfiTablet className="tw-text-[27px]"/>
                           </span>
                           <div className={style.media_body}>
                             <h3>9368086395</h3>
@@ -181,7 +182,7 @@ function Contact() {
                         </div>
                         <div className={`${style.contactinfo} media`}>
                           <span className={style.contactinfo__icon}>
-                            <i className="ti-email" />
+                            <TfiEmail className="tw-text-[27px]"/>
                           </span>
                           <div className={style.media_body}>
                             <h3>contact.grabtern@gmail.com</h3>

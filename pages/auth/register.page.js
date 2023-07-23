@@ -48,7 +48,10 @@ function useRedirectIfAuthenticated() {
         const redirectUrl = new URLSearchParams(window.location.search).get(
           "redirectUrl",
         );
-        router.push(redirectUrl || "/");
+        setTimeout(() => {
+          router.push(redirectUrl || "/");
+        }, 2000);
+        // router.push(redirectUrl || "/");
       } catch (error) {
         if (error.response && error.response.status >= 400) {
           toast.error(error.response.data.message);
@@ -96,7 +99,6 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
-  const [verificationSent, setVerificationSent] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
 
@@ -114,7 +116,6 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setVerificationSent(false);
 
     if (data.password !== data.confirmPassword) {
       return toast.error("Passwords do not match!");
@@ -123,7 +124,6 @@ function Register() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
-      setVerificationSent(true);
       toast.success(
         "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
       );
@@ -226,10 +226,6 @@ function Register() {
             </div>
           </div>
           <ToastContainer />
-          {verificationSent &&
-            toast.success(
-              "An email has been sent to {data.email}. Please check your inbox toverify your account.",
-            )}
 
           <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
             <input

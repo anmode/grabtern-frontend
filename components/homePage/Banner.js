@@ -33,8 +33,8 @@ function Banner({ isMentorLoggedIn }) {
                     />
                   ) : (
                     <ButtonLink
-                      href="/mentor"
-                      text="Be a Mentors"
+                      href="/mentorRegister"
+                      text="Be a Mentor"
                       variant="outline"
                       className="tw-min-w-[130px]"
                     />

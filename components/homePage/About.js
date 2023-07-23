@@ -14,7 +14,7 @@ function About() {
       direction="row-reverse"
     >
       {/* right column */}
-      <div className="tw-grid tw-gap-4">
+      <div className="tw-grid tw-gap-4 tw-mt-6">
         <IconCard
           Icon={PiLightbulbDuotone}
           body="One-to-One Interaction and Doubt Solving"

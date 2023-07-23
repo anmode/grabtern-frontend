@@ -18,6 +18,7 @@ function IconCard({
           "tw-bg-base-100",
           "tw-p-6 tw-rounded-lg tw-border tw-border-base-300",
         ],
+        !!heading && "tw-flex-wrap", // Add flex-wrap class if there's a heading
         className,
       )}
     >

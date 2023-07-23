@@ -245,7 +245,7 @@ function login() {
             <div className={styles.linkdiv}>
               Don't have an account?
               <Link
-                href="/userRegister"
+                href="/auth/register"
                 className={styles.registration}
                 style={{ textDecoration: "none" }}
               >

@@ -101,7 +101,15 @@ This will start server
 
 ## Grabtern Email Feature
 
-Login to ethereal mail.com with these login details:
+> Our platform's email service is seamlessly integrated into various sections, enhancing communication and user interaction.
+
+> While the backend remains concealed for security, accessing emails is easy with specific credentials.
+
+> You can create an account, verify it, and also act as a mentor with verification.
+
+> This way, contributors can fully experience our platform by registering as both mentors and users.
+
+**Login to ethereal mail.com with these credentials:**
 
 ```
 "user": "dexter.waelchi@ethereal.email",

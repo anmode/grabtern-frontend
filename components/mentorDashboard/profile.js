@@ -67,7 +67,7 @@ function Profile({ mentorDetail }) {
     e.preventDefault();
     setError("");
     try {
-      const formDataCopy = formData;
+      const formDataCopy = { ...formData }; // Create a copy of the formData to work with
       delete formDataCopy._id;
       delete formDataCopy.password;
       delete formDataCopy.confirmPassword;
@@ -76,16 +76,20 @@ function Profile({ mentorDetail }) {
       delete formDataCopy.mentorToken;
       delete formDataCopy.setupPWId;
       delete formDataCopy.__v;
-      setFormData(formDataCopy);
-      // console.log(formData);
+
+      // Make the API call to update the mentor data
       const url = `${
         process.env.NEXT_PUBLIC_BACKEND_URL
-      }/api/mentors/updateMentor/${
-        JSON.parse(decryptData("mentorData")).mentorToken
-      }`;
-      const { data: res } = await axios.post(url, formData);
-      alert(res);
+      }/api/mentors/updateMentor/${JSON.parse(
+        decryptData("mentorData")
+      ).mentorToken}`;
+
+      const { data: res } = await axios.post(url, formDataCopy); // Send the updated data to the backend
+
+      alert(res); // Display the response message from the backend
+
       setModalOpen(false);
+      setMsg("Changes saved successfully."); // Set success message
     } catch (error) {
       console.log(error);
       if (
@@ -94,73 +98,36 @@ function Profile({ mentorDetail }) {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
+      } else {
+        setError("An error occurred while saving changes.");
       }
     }
-    console.log(formData);
   };
   return (
     <div className="mentorDetail">
-      <p
-        style={{
-          marginLeft: "300px",
-          fontSize: "25px",
-          fontWeight: "600",
-          color: "black",
-          marginTop: "-100px",
-        }}
-      >
-        Profile
-      </p>
-      {modalOpen === true ? (
-        <div className="modalPopup" style={{ marginRight: "800px" }}>
+        <div  style={{ marginLeft: "250px" }}>
           <div
             className="modalPopupAfterRegistrationDone"
             style={{
               alignItems: "flex-start",
               maxWidth: "800px",
               width: "100%",
-              maxHeight: "76rem",
-              overflow: "auto",
+              marginTop:'-100px',
+              maxHeight: "80rem",
+              // overflow: "auto",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "100%",
-                marginBottom: "-100px",
-              }}
-            >
-              {step === 1 ? (
-                <>
-                  <h2
+            <h2
                     style={{
                       marginBottom: "-100px",
                       lineHeight: "0",
-                      marginTop: "90px",
                       fontWeight: "bolder",
-                      fontSize: "25px",
+                      fontSize: "30px",
+                      marginTop:'5px',
                     }}
                   >
                     Edit your profile
                   </h2>
-                  <i
-                    // class="fas fa-times"
-                    onClick={() => setModalOpen(false)}
-                    style={{
-                      fontSize: "24px",
-                      color: "grey",
-                      marginTop: "180px",
-                      cursor:'pointer',
-                    }}
-                  ></i>
-                 
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
             <form className="mentorFormEdit" onSubmit={handleSubmit}>
               {step === 1 ? (
                 <>
@@ -169,28 +136,33 @@ function Profile({ mentorDetail }) {
                     className="mentorUploudPhotoEdit"
                   >
                     <img
-                      style={{ marginTop: "100px" }}
+                      style={{ marginTop: "120px",borderRadius:'5%',height:'auto' }}
                       src={formData.mentorImg}
                       className="mentorPhoto"
                     />
                     <div>
                       <input
-                        style={{ marginTop: "155px" }}
+                        style={{ marginTop: "140px" }}
                         type="file"
                         name="mentorProfile"
                         onChange={(e) => handleUploadImageChange(e)}
                       />
                     </div>
                   </div>
-                  <div>
+                  <div  style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
+                  <div
+                  >
                     <label for="name">NAME</label>
 
                     <input
                       type="text"
                       name="name"
+                      style={{width:'90%',borderRadius:'5px'}}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      placeholder="e.g. Peter Parker"
+                      // placeholder="e.g. Peter Parker"
+                      placeholder={mentorDetail?.name}
+
                       value={formData.name}
                     />
                   </div>
@@ -200,13 +172,17 @@ function Profile({ mentorDetail }) {
                     <input
                       type="text"
                       name="username"
+                        style={{width:'90%',borderRadius:'5px'}}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      placeholder="e.g. peter-parker12"
+                      // placeholder="e.g. peter-parker12"
+                      placeholder={mentorDetail?.username}
                       value={formData.username}
                     />
                   </div>
-                  <div>
+                  </div>
+                 <div  style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
+                 <div>
                     <label for="email">EMAIL</label>
 
                     <input
@@ -214,8 +190,10 @@ function Profile({ mentorDetail }) {
                       name="email"
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      placeholder="e.g. peterparker4321#gmail.com"
-                      readOnly
+                        style={{width:'90%',borderRadius:'5px'}}
+                      // placeholder="e.g. peterparker4321#gmail.com"
+                      placeholder={mentorDetail?.email}
+                      // readOnly
                       value={formData.email}
                     />
                   </div>
@@ -227,12 +205,15 @@ function Profile({ mentorDetail }) {
                       name="mobile"
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      placeholder="0123456789"
+                        style={{width:'90%',borderRadius:'5px'}}
+                      // placeholder="0123456789"
+                      placeholder={mentorDetail?.mobile}
                       value={formData.mobile}
                     />
                   </div>
-
-                  <div>
+                 </div>
+                 <div style={{display:'flex',flexDirection:'row'}}>
+                 <div>
                     <label for="linkedin">LINKEDIN</label>
 
                     <input
@@ -240,7 +221,9 @@ function Profile({ mentorDetail }) {
                       name="linkedin"
                       className="mentorFormInput"
                       onChange={(e) => handleSocialChange(e)}
-                      placeholder="e.g. https://www.linkedin.com/peterparker"
+                      style={{width:'90%',borderRadius:'5px'}}
+                      // placeholder="e.g. https://www.linkedin.com/peterparker"
+                      placeholder={mentorDetail?.linkedin}
                       value={formData.social.linkedin}
                     />
                   </div>
@@ -252,11 +235,15 @@ function Profile({ mentorDetail }) {
                       name="twitter"
                       className="mentorFormInput"
                       onChange={(e) => handleSocialChange(e)}
-                      placeholder="e.g. https://www.twitter.com/peterparker"
+                        style={{width:'90%',borderRadius:'5px'}}
+                      // placeholder="e.g. https://www.twitter.com/peterparker"
+                      placeholder={mentorDetail?.twitter}
                       value={formData.social.twitter}
-                      // value={formData.social.topmate}
                     />
                   </div>
+                 </div>
+
+                 
                   <div>
                     <label for="description">DESCRIPTION</label>
 
@@ -264,10 +251,11 @@ function Profile({ mentorDetail }) {
                       cols="10"
                       rows="7"
                       name="description"
-                      style={{ border: "1px solid grey" }}
+                      style={{ border: "1px solid grey" , width:'95%',borderRadius:'10px'}}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
+                      // placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
+                      placeholder={mentorDetail?.description}
                       value={formData.description}
                     />
                   </div>
@@ -306,9 +294,12 @@ function Profile({ mentorDetail }) {
                       padding: "15px 25px",
                       backgroundColor: "black",
                       cursor: "pointer",
+                      marginTop:'-50px'
                     }}
                     type="submit"
                     className="mentorFormButotn"
+                    onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
+       
                   >
                     Save changes
                   </button>
@@ -319,149 +310,6 @@ function Profile({ mentorDetail }) {
             </form>
           </div>
         </div>
-      ) : null}
-      <div className="dashboardEdit">
-        <img
-          style={{
-            marginLeft: "280px",
-            borderRadius: "80%",
-            border: "1Fpx solid black",
-            height: "130px",
-            width: "130px",
-            marginTop: "20px",
-          }}
-          src={mentorDetail?.mentorImg}
-        />
-        <i
-          style={{ marginRight: "680px" }}
-          class="fas fa-edit"
-          onClick={() => setModalOpen(true)}
-        ></i>
-      </div>
-      <br />
-      <p
-        style={{
-          marginLeft: "280px",
-          color: "black",
-          border: "1px solid black",
-          width: "35%",
-          padding: "2px",
-        }}
-      >
-        Name : {mentorDetail?.name}
-      </p>
-      <br />
-      <p
-        style={{
-          marginLeft: "280px",
-          color: "black",
-          border: "1px solid black",
-          width: "35%",
-          padding: "2px",
-        }}
-      >
-        UserName : {mentorDetail?.username}
-      </p>
-      <br />
-      <p
-        style={{
-          marginLeft: "280px",
-          color: "black",
-          border: "1px solid black",
-          width: "35%",
-          padding: "2px",
-        }}
-      >
-        Email : {mentorDetail?.email}
-      </p>
-      <br />
-      <p
-        style={{
-          marginLeft: "280px",
-          color: "black",
-          border: "1px solid black",
-          width: "35%",
-          padding: "2px",
-        }}
-      >
-        Phone : {mentorDetail?.mobile}
-      </p>
-      <br />
-      <p
-        style={{
-          marginLeft: "280px",
-          color: "black",
-          border: "1px solid black",
-          width: "35%",
-          padding: "2px",
-        }}
-      >
-        <br /> {mentorDetail?.description}
-      </p>
-      <br />
-      <div style={{ marginLeft: "280px" }}>
-        <ul
-          className="contactLinks"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            width: "35%",
-            marginTop: "25px",
-            // margin: "20px 0",
-            marginLeft: "50px",
-          }}
-        >
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              fontWeight: "600",
-              marginLeft: "300",
-              color: "black",
-            }}
-          >
-            <i class="fas fa-envelope"></i>
-            {mentorDetail?.email}
-          </li>
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              fontWeight: "600",
-              marginLeft: "300",
-              color: "black",
-            }}
-          >
-            <i class="fab fa-linkedin"></i>
-            <a target="_blank" href={mentorDetail?.social.linkedin}>
-              {mentorDetail?.social.linkedin}
-            </a>
-          </li>
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              fontWeight: "600",
-              marginLeft: "300",
-              color: "black",
-            }}
-          >
-            <i class="fab fa-twitter"></i>
-
-            <a target="_blank" href={mentorDetail?.social.twitter}>
-              {mentorDetail?.social.twitter}
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <br />
-      <br />
     </div>
   );
 }

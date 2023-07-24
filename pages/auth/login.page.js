@@ -47,6 +47,11 @@ function login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    if (!formData.email.trim() || !formData.password.trim()) {
+      toast.error("Email and password are required.");
+      return;
+    }
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);

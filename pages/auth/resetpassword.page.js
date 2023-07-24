@@ -18,8 +18,13 @@ const ResetPassword = () => {
     setError("");
     setMessage("");
 
+    if (!newPassword || !confirmPassword) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
     if (newPassword !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Passwords do not match.");
       return;
     }
 

@@ -24,6 +24,11 @@ function ForgotPassword() {
     try {
       setIsLoading(true);
 
+      if (!email.trim()) {
+        toast.error("Email is required.");
+        return;
+      }
+
       const url = new URL(window.location.href);
       const entityTypeFromUrl = url.searchParams.get("entityType");
       const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;

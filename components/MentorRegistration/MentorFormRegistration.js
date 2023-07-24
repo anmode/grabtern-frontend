@@ -118,6 +118,54 @@ export default function MentorForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    if (username.length <= 0) {
+      setError("Please fill Username input!");
+      return;
+    }
+    if (name.length <= 0) {
+      setError("Please fill Name input!");
+      return;
+    }
+    if (email.length <= 0) {
+      setError("Please fill Email input!");
+      return;
+    }
+    if (mobile.length <= 0) {
+      setError("Please fill Mobile input!");
+      return;
+    }
+    if (internAt.length <= 0) {
+      setError("Please fill Intern At input!");
+      return;
+    }
+    if (currentStatus.length <= 0) {
+      setError("Please fill Current Status input!");
+      return;
+    }
+    if (description.length <= 0) {
+      setError("Please fill Description input!");
+      return;
+    }
+    if (image.length <= 0) {
+      setError("Please upload Image!");
+      return;
+    }
+    if (social.linkedin.length <= 0) {
+      setError("Please fill Linkedin input!");
+      return;
+    }
+    if (social.twitter.length <= 0) {
+      setError("Please fill Twitter input!");
+      return;
+    }
+    if (schedules.length <= 0) {
+      setError("Please add schedule!");
+      return;
+    }
+    if (sessions.length <= 0) {
+      setError("Please add session!");
+      return;
+    }
     setError("");
     // if (formData.bookSession.length !== 2) {
     //   return setError(

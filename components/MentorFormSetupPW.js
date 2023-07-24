@@ -16,6 +16,9 @@ function MentorFormSetupPW({ mentorPWCode }) {
 
   const handleSubmitNewPW = async (e) => {
     e.preventDefault();
+    if (formData.newPassword.length <= 0) {
+      return alert("Please fill new password!");
+    }
     if (formData.newPassword !== formData.newConfirmPassword) {
       return alert("Please write match confirm password!");
     }

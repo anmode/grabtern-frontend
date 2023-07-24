@@ -60,6 +60,34 @@ function useRedirectIfAuthenticated() {
   }, [router]);
 }
 
+function validateFormInputs(data) {
+  const errors = {};
+
+  if (!data.fullName.trim()) {
+    errors.fullName = "Full name is required.";
+  }
+
+  if (!data.email.trim()) {
+    errors.email = "Email is required.";
+  } else if (!/\S+@\S+\.\S+/.test(data.email)) {
+    errors.email = "Invalid email address.";
+  }
+
+  if (!data.password.trim()) {
+    errors.password = "Password is required.";
+  } else if (data.password.length < 6) {
+    errors.password = "Password must be at least 6 characters long.";
+  }
+
+  if (!data.confirmPassword.trim()) {
+    errors.confirmPassword = "Confirm Password is required.";
+  } else if (data.password !== data.confirmPassword) {
+    errors.confirmPassword = "Passwords do not match.";
+  }
+
+  return errors;
+}
+
 function Register({ handleLogPageToggle }) {
   useRedirectIfAuthenticated();
 
@@ -91,6 +119,13 @@ function Register({ handleLogPageToggle }) {
     e.preventDefault();
     setError("");
     setVerificationSent(false);
+
+    const validationErrors = validateFormInputs(data);
+    if (Object.keys(validationErrors).length > 0) {
+      // If there are validation errors, display them and stop form submission.
+      alert(validationErrors);
+      return;
+    }
 
     if (data.password !== data.confirmPassword) {
       return setError("Passwords do not match!");

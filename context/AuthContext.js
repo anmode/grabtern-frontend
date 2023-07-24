@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { encryptData, decryptData } from "../hook/encryptDecrypt";
 
 const AuthContext = React.createContext();
 
@@ -12,21 +11,23 @@ export function AuthProvider(props) {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(null);
 
   useEffect(() => {
-    // fetching user from local storage and decrypting it
-    const user =
-      localStorage.getItem("userData") || localStorage.getItem("mentorData");
-    const decryptedData = decryptData(user);
+    // fetching user from local storage
+    const user = localStorage.getItem("userData");
+    const mentor = localStorage.getItem("mentorData");
 
     // setting isMentorLoggedIn and isUserLoggedIn state on based of the role
-    if (decryptedData.role == "user") {
+    if (user) {
       setIsUserLoggedIn(true);
       setIsMentorLoggedIn(false);
-    } else {
+    } else if (mentor) {
       setIsMentorLoggedIn(true);
+      setIsUserLoggedIn(false);
+    } else {
+      setIsMentorLoggedIn(false);
       setIsUserLoggedIn(false);
     }
   }, []);
-  
+
   const value = {
     isMentorLoggedIn,
     setIsMentorLoggedIn,

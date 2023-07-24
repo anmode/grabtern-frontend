@@ -13,12 +13,18 @@ import { Section, Input } from "../components/UI";
 function Mentors({ mentorsData }) {
   const [query, setQuery] = useState("");
 
-  // const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
-  // const data = useApi(url);
-  // const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
+  const filteredMentors = mentorsData.filter(
+    (mentor) =>
+      mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+      mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
+      mentor.currentStatus.toLowerCase().includes(query.toLowerCase()),
+  );
+  //const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`;
+  //const data = useApi(url);
+  //  const mentorsData= data.filter((mentor) =>mentor.verified === true && mentor.token === "mentorIsVerified");
 
   // console.log(query)
-  // console.log(teamsData.filter(user=>user.profileName.toLowerCase().includes("ag")))
+  //  console.log(teamsData.filter(user=>user.profileName.toLowerCase().includes("ag")))
   return (
     <>
       <Header />
@@ -49,21 +55,36 @@ function Mentors({ mentorsData }) {
             /> */}
           </div>
           {/* mentors cards */}
+
           <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-            {mentorsData
-              .filter(
-                (mentor) =>
-                  mentor.name.toLowerCase().includes(query.toLowerCase()) ||
-                  mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
-                  mentor.currentStatus
-                    .toLowerCase()
-                    .includes(query.toLowerCase()),
-              )
-              .map((mentor) => (
-                <a href={`/${mentor.username}`} key={mentor._id}>
-                  {<MentorCard mentor={mentor} link={`/${mentor.username}`} />}
-                </a>
-              ))}
+            {filteredMentors.length === 0 ? (
+              <div className="tw-text-black tw-text-xl ">
+                <h1>No match found</h1>
+              </div>
+            ) : (
+              mentorsData
+                .filter(
+                  (mentor) =>
+                    mentor.name.toLowerCase().includes(query.toLowerCase()) ||
+                    mentor.internAt
+                      .toLowerCase()
+                      .includes(query.toLowerCase()) ||
+                    mentor.currentStatus
+                      .toLowerCase()
+                      .includes(query.toLowerCase()),
+                )
+
+                .map((mentor) => (
+                  <a href={`/${mentor.username}`} key={mentor._id}>
+                    {
+                      <MentorCard
+                        mentor={mentor}
+                        link={`/${mentor.username}`}
+                      />
+                    }
+                  </a>
+                ))
+            )}
           </div>
         </Section>
       </main>

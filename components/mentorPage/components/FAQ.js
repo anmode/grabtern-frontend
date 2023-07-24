@@ -6,13 +6,13 @@ function FAQ({ ques, ans, open, setOpen, index }) {
   };
 
   return (
-    <div className="gray-bg mb-20 rounded container py-5 text-justify">
+    <div className="tw-mb-3 tw-px-8">
       <div
-        className="row justify-content-between align-items-center cursor-pointer"
+        className="tw-justify-between tw-flex tw-mt-4 tw-cursor-pointer"
         onClick={toggleOpen}
       >
-        <p className="h2 col-10 col-sm-11">{ques}</p>
-        <div className="col-1">
+        <p className="tw-text-xl tw-text-slate-900 tw-font-medium max-[990px]:tw-text-sm tw-items-start">{ques}</p>
+        <div className="">
           {open == index ? (
             <i className="fas fa-chevron-up" />
           ) : (
@@ -20,7 +20,7 @@ function FAQ({ ques, ans, open, setOpen, index }) {
           )}
         </div>
       </div>
-      {open == index && <p className="pt-5 col-10 col-sm-11">{ans}</p>}
+      {open == index && <p className="tw-p-2 tw-max-w-[1000px]">{ans}</p>}
     </div>
   );
 }

@@ -25,22 +25,22 @@ function Mentor() {
       <main>
         {/* Header */}
 
-        <section className="tw-flex max-[990px]:tw-flex-col max-[990px]:tw-flex-wrap max-[990px]:items-center max-[990px]:tw-justify-center tw-items-start tw-mt-48 tw-justify-between tw-px-28 tw-gap-10">
-          <div className="max-[990px]:tw-flex-wrap max-[990px]:tw-items-center max-[990px]:tw-text-center tw-flex tw-flex-col tw-items-start tw-gap-2">
+        <section className="tw-flex max-[990px]:tw-flex-col max-[990px]:tw-justify-center tw-items-center tw-mt-44 max-[990px]:tw-mt-48 tw-justify-between tw-px-28 tw-gap-10">
+          <div className="max-[990px]:tw-flex-wrap max-[990px]:tw-items-center  max-[990px]:tw-text-center tw-flex tw-flex-col tw-items-start tw-gap-2 tw-relative tw-bottom-4">
             <h1 className="tw-font-bold tw-text-5xl">Build your Community and Monetize💰 your XP</h1>
             <p className="tw-text-lg tw-font-semibold">Create and share Learning Content of your niche. Start building your Community & be their Mentor today! Be able to monetize with in-house services and Earn as you Impact.</p>
 
-            <button className="tw-bg-primary-100 tw-p-4 tw-transition-all tw-duration-200 tw-ease-in-out tw-mt-6 hover:tw-bg-primary-200 tw-rounded-md">
+            <button className="tw-bg-purple-700 tw-p-6 tw-transition-all tw-duration-200 max-[990px]:tw-max-w-full tw-ease-in-out tw-mt-6 hover:tw-bg-purple-800 tw-rounded-md tw-w-[200px]">
               <Link href="/mentorRegister">
                 <h3 className="tw-text-white tw-font-bold">Be a mentor</h3>
               </Link>
             </button>
           </div>
-          <div className="max-[990px]:tw-items-center tw-flex tw-animate-wiggle">
+          <div className="max-[990px]:tw-items-center tw-justify-start tw-flex max-[990px]:tw-min-w-[320px] tw-bg-purple-700 tw-p-10 tw-rounded-lg">
             <Image
               src="https://mentro.tech/static/mentorsLanding-9b4cec4f30e06613534f11ecccc9f7fc.svg"
               alt="mentor"
-              width={1200}
+              width={700}
               height={700}
             />
           </div>
@@ -49,10 +49,10 @@ function Mentor() {
 
         {/* Company List */}
 
-        <section className="tw-flex-col tw-justify-center tw-items-center tw-flex tw-px-16 tw-gap-10 tw-mt-20">
+        <section className="tw-flex-col tw-justify-center tw-items-center tw-flex tw-px-16 tw-gap-10 tw-mt-32">
           <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Our Top Mentors Interned at</h1>
-          <div className="tw-flex tw-flex-wrap tw-gap-32 tw-justify-evenly tw-items-baseline">
-            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+          <div className="tw-gap-32 tw-justify-evenly tw-items-baseline tw-grid tw-grid-cols-4 max-[990px]:tw-grid-rows-2 max-[990px]:tw-grid-cols-2">
+            <div className="tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
               <Image
                 src="/assets/img/company/GSoC.svg"
                 width={150}
@@ -60,7 +60,7 @@ function Mentor() {
               />
               <h2 className="tw-font-bold tw-text-[#64748b]">GSoC</h2>
             </div>
-            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+            <div className="tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
               <Image
                 src="/assets/img/company/microsoft.svg"
                 width={150}
@@ -68,7 +68,7 @@ function Mentor() {
               />
               <h2 className="tw-font-bold tw-text-[#64748b]">Microsoft</h2>
             </div>
-            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+            <div className="tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
               <Image
                 src="/assets/img/company/mlh.svg"
                 width={150}
@@ -76,7 +76,7 @@ function Mentor() {
               />
               <h2 className="tw-font-bold tw-text-[#64748b]">MLH</h2>
             </div>
-            <div className="tw-flex-1 tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+            <div className="tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
               <Image
                 src="/assets/img/company/hackerRank.svg"
                 width={150}
@@ -121,7 +121,7 @@ function Mentor() {
 
         {/* FAQ */}
         <section className="tw-mt-20 tw-p-16">
-          <div className="container py-0">
+          <div className="tw-flex tw-flex-col">
             <div className="section-tittle text-center mb-30">
               <h2 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Frequently Asked Questions</h2>
             </div>

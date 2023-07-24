@@ -38,7 +38,7 @@ function MentorAbout({ mentorDetail, onShare }) {
         </div>
       </div>
       <ProfileCard
-        image={mentorDetail?.mentorImg}
+        image={mentorDetail?.image}
         heading={mentorDetail?.name}
         body={`${mentorDetail?.internAt} | ${mentorDetail?.currentStatus}`}
         size="xl"

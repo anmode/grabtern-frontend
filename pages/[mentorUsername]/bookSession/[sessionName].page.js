@@ -7,7 +7,7 @@ function bookSessionPage({ mentorDetail, sessionName }) {
   const [time, setTime] = useState();
   const [timezone, setTimeZoneVal] = useState();
   const bookSession = mentorDetail.bookSession.find(
-    (obj) => obj.sessionName === sessionName
+    (obj) => obj.sessionName === sessionName,
   );
   const datePickerDay = bookSession.datePickerDay.join(" ");
   const daysOfWeek = [
@@ -25,7 +25,7 @@ function bookSessionPage({ mentorDetail, sessionName }) {
       const currentDayIndex = daysOfWeek.indexOf(word);
       const daysToAdd = (currentDayIndex - currentDate.getDay() + 7) % 7;
       const nextDate = new Date(
-        currentDate.setDate(currentDate.getDate() + daysToAdd)
+        currentDate.setDate(currentDate.getDate() + daysToAdd),
       );
       const nextDay = nextDate.getDate();
       const nextMonth = nextDate.toLocaleString("default", { month: "long" });
@@ -39,7 +39,7 @@ function bookSessionPage({ mentorDetail, sessionName }) {
     // Retrieve the selected time zone from the dropdown
     var timezone = document.getElementById("timezone").value;
     let datePickerDayTimeLists = document.querySelectorAll(
-      "#datePickerDayTime li"
+      "#datePickerDayTime li",
     );
     datePickerDayTimeLists.forEach((time, index) => {
       let timeToArray = bookSession.datePickerTime[index].split(":");
@@ -113,7 +113,7 @@ function bookSessionPage({ mentorDetail, sessionName }) {
       console.log(data);
       await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSession`,
-        data
+        data,
       );
       alert("You have successfully booked a session");
       window.location.href = "/";

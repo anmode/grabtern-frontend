@@ -27,7 +27,9 @@ function ForgotPassword() {
       const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
       const { data } = await axios.post(backendUrl, { email: email });
       setIsLoading(false);
-      toast.success("Please check your email for instructions to reset your password.");
+      toast.success(
+        "Please check your email for instructions to reset your password.",
+      );
       setTimeout(() => {
         router.push("/");
       }, 5000);
@@ -55,7 +57,7 @@ function ForgotPassword() {
           <div className="forgot-password-form">
             <div className="logout-login">
               <a href="index.html">
-              <img src="/Grabtern2.png" ></img>
+                <img src="/Grabtern2.png"></img>
               </a>
             </div>
             <h2>Forgot Password</h2>
@@ -69,8 +71,11 @@ function ForgotPassword() {
                 value={email}
               />
             </div>
-            <div className="form-input pt-30" style={{ display: 'flex', justifyContent: 'center' }}>
-            <ButtonUI text= "Reset Password" onClick={handleSubmit}/>
+            <div
+              className="form-input pt-30"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <ButtonUI text="Reset Password" onClick={handleSubmit} />
             </div>
             {isLoading && (
               <img
@@ -84,7 +89,7 @@ function ForgotPassword() {
               />
             )}
           </div>
-          <ToastContainer/>
+          <ToastContainer />
         </form>
       </main>
     </>

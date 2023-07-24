@@ -1,45 +1,82 @@
-import { divide } from 'lodash';
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import styles from "../../styles/queries.module.css";
 
-function Queries(){
-    const [pendingQueries, setPendingQueries] = useState([]);
-    const [answeredQueries, setAnsweredQueries] = useState([]);
+const Queries = () => {
+  const [pendingQueries, setPendingQueries] = useState([
+    { id:1, text: "Query 1 - Pending" },
+    { id:2, text: "Query 2 - Pending" },
+    { id:3, text: "Query 3 - Pending" },
+  ]);
+  const [answeredQueries, setAnsweredQueries] = useState([]);
+//   const [currentAnswer, setCurrentAnswer] = useState("");
+  const [answers, setAnswers] = useState({})
+  const [currentView, setCurrentView] = useState("pending");
 
-    function handleSubmit(query){
-        //Add the query to the pending list of pendingQueries
-        setPendingQueries([...pendingQueries, query]);
+  const handleSubmitAnswer = (queryIndex) => {
+    const answer = answers[queryIndex];
+    if (answer && answer.trim() !== "") {
+      const answeredQuery = pendingQueries.find((query) => query.id == queryIndex);
+      answeredQuery.answer = answer;
+      setAnsweredQueries([...answeredQueries, answeredQuery]);
+      setPendingQueries(pendingQueries.filter((query) => query.id !== queryIndex));
+      const updatedAnswers = { ...answers };
+      delete updatedAnswers[queryIndex];
+      setAnswers(updatedAnswers);
     }
-    function handleAnswer(query){
-        //Moves the query from the list of pending queries to the list of answered queries
-        const index = pendingQueries.indexOf(query);
-        pendingQueries.splice(index, 1);
-        answeredQueries.push(query);
+  };
 
-    }
-    return(
-        <div>
-            <h1>Queries</h1>
-            <h2>Pending</h2>
-            {pendingQueries.map((query) => {
-                <div key={query}>
-                    <h3>{query}</h3>
-                    <button onClick={() => handleAnswer(query)}>Answer</button>
-                </div>
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Queries</h1>
+      <div className={styles.buttonGroup}>
+        <button
+          onClick={() => setCurrentView("pending")}
+          className={`${styles.button} ${currentView === "pending" ? styles.active : ""}`}
+        >
+          Pending
+        </button>
+        <button
+          onClick={() => setCurrentView("answered")}
+          className={`${styles.button} ${currentView === "answered" ? styles.active : ""}`}
+        >
+          Answered
+        </button>
+      </div>
 
-            })}
-            <h2>Answered</h2>
-            {answeredQueries.map((query)=>{
-                <div key={query}>
-                    <h3>{query}</h3>
-                </div>
-            })}
-            <form onSubmit={handleSubmit}>
-                <input type='text' placeholder='Enter your query'/>
-                <button type='submit'>Submit</button>
-
-            </form>
+      {currentView === "pending" && (
+        <div className={styles.pendingQueries}>
+          <h2 className={styles.heading}>Pending Queries</h2>
+          {pendingQueries.map((query, index) => (
+            <div key={index} className={styles.query}>
+              <p>{query.text}</p>
+              <input
+                type="text"
+                value={answers[query.id] || ""}
+                placeholder="Enter answer"
+                onChange={(e) => setAnswers({ ...answers, [query.id]: e.target.value })}
+                className={styles.answerInput}
+              />
+              <button onClick={() => handleSubmitAnswer(query.id)} className={styles.submitButton}>
+                submit
+              </button>
+            </div>
+          ))}
         </div>
+      )}
 
-    );
-}
+      {currentView === "answered" && (
+        <div>
+          <h2 className={styles.heading}>Answered Queries</h2>
+          {answeredQueries.map((query, index) => (
+            <div key={query.id} className={styles.query}>
+              <p>{query.text}</p>
+              <p>Answer: {query.answer}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default Queries;

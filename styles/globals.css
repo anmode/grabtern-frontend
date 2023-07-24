@@ -1700,9 +1700,9 @@ select {
 
 @media only screen and (max-width: 600px) {
   .terms-and-cond-sub{
-    padding: 0!important;
+    width: 100%;
     margin-right: 10px;
-    margin-left: 17px;
+    margin-left: 0;
   }
   .front {
     display: block;

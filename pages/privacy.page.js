@@ -161,7 +161,7 @@ function privacy() {
             </div>
           </div>
         </div>
-        <div className="terms-and-cond tw-rounded-3xl tw-container tw-mt-16 tw-shadow-2xl tw-p-16">
+        <div className="terms-and-cond tw-rounded-3xl tw-container tw-mt-16 tw-shadow-2xl tw-p-5">
           <div className="terms-and-cond-sub">
             <div className="tnc-sub-head">
               1. WHAT INFORMATION DO WE COLLECT?

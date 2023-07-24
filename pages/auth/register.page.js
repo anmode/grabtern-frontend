@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { decryptData, encryptData } from "../../hook/encryptDecrypt";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
+import Button from "../../components/UI/Button/Button";
+
 
 
 
@@ -240,15 +242,22 @@ function Register() {
           </div>
           <ToastContainer />
 
-          <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
+          {/* <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
             <input
               type="submit"
               name="submit"
               value="Registration"
               style={{ textAlign: "center", width: "100%" }}
             />
+          </div> */}
+          <div className="tw-flex tw-justify-center"
+           >
+          <Button className="tw-w-44"
+          text="Registration"
+          />
           </div>
-{/* my code */}
+          
+
 <div>
             <ToastContainer />
             <div>

@@ -1575,7 +1575,7 @@ select {
 }
 
 @media screen and (max-width: 600px) {
-  .ret_pol2{
+  .ret_pol2 {
     width: 100%;
     padding: 0px;
   }
@@ -1699,7 +1699,7 @@ select {
 }
 
 @media only screen and (max-width: 600px) {
-  .terms-and-cond-sub{
+  .terms-and-cond-sub {
     width: 100%;
     margin-right: 10px;
     margin-left: 0;

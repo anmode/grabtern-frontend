@@ -26,7 +26,7 @@ function IconCard({
         <Icon
           className={clsx(
             "tw-text-primary-100 tw-w-8 tw-h-8",
-            size == "lg" && ["tw-w-9 tw-h-9"],
+            size == "lg" && ["tw-w-9 tw-h-9 self-start"],
           )}
         />
       )}

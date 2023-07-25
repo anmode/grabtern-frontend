@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard.module.css";
-
+import {BiLinkAlt} from "react-icons/bi";
+import {BsCalendarCheck} from "react-icons/bs";
+import {IoMdTime} from "react-icons/io";
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
 
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedTimes, setSelectedTime] = useState({});
+  const [meetingLink,setMeetingLink]=useState('');
+  const [showSave,setShowSave]=useState(false);
+  
+  const handleMeetingLink=(event)=>{
+    setMeetingLink(event.target.value);
+    setShowSave(true);
+  }
+  const handleSave=()=>{
+    
+    
+  }
+  const handleCancel=()=>{
+    setMeetingLink('');
+    setShowSave(false);
+  }
+
 
   const weekdays = [
     "Sunday",
@@ -31,6 +49,26 @@ const Calender = () => {
     "06:00 PM": "06:00 PM",
     "07:00 PM": "07:00 PM",
   };
+  const bookingPeriod = [
+    "2 weeks",
+    "3 weeks",
+    "4 weeks",
+    "2 months",
+    "3 months"
+  ];
+  const noticePeriod=[
+    "minutes",
+    "hours",
+    "days"
+  ]
+  const [BookingPeriod,setBookingPeriod]=useState(bookingPeriod[0]);
+  const [NoticePeriod,setNoticePeriod]=useState(noticePeriod[0]);
+  const handleBookingPeriod=(event)=>{
+setBookingPeriod(event.target.value);
+  }
+  const handleNoticePeriod=(event)=>{
+    setNoticePeriod(event.target.value);
+  }
   const handleDayChange = (day) => {
     setSelectedTime("");
     if (selectedDays.includes(day)) {
@@ -69,7 +107,71 @@ const Calender = () => {
         Schedule
       </button>
       <div className="content">
-        {calender && <div>hfhddfkbflbrgpkwr;</div>}
+        {calender && (
+          <div className="tw-mt-7 tw-w-[600px]">
+            <hr className="tw-border-t-2 tw-border-[#c0c0c0] tw-mt-14 tw-width-[100%] tw-shadow-lg  tw-text-opacity-50" />
+          <div className={ `${styles.container1} tw-flex-row tw-items-center tw-grid tw-grid-cols-2   tw-gap-2 tw-mt-[6rem]`}>
+            <div className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}>
+              <BiLinkAlt/>
+            <h1 className="tw-mr-4 tw-ml-4">  Enter the meeting link</h1>
+            </div>
+            <div>
+            <input className="tw-h-10 tw-border-2 tw-border-[#E2E8F0] tw-rounded-md tw-mb-8 tw-w-[294px]"
+            type="url"
+            value={meetingLink}
+            onChange={handleMeetingLink}
+            placeholder="enter the meeting link" />
+             
+             {showSave && (
+              <div>
+                <button  className="tw-border-black tw-border-[2px] tw-p-1 tw-rounded-md tw-mr-3 tw-w-16"  onClick={handleSave}>Save</button>
+                <button className="tw-border-black tw-border-[2px] tw-p-1 tw-rounded-md" onClick={handleCancel}>Cancel</button>
+              </div>
+            )}
+            </div>
+           <div className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}>
+            <BsCalendarCheck/>
+            <h1 className="tw-ml-4">Booking period</h1>
+           </div>
+           <div className="tw-mb-8">
+           <select
+        
+        name="BookingPeriod"
+        value={setBookingPeriod}
+        onChange={handleBookingPeriod}
+        className="border border-gray-400 p-2 rounded"
+      >
+          {bookingPeriod.map((period) => (
+          <option key={period} value={period}>
+            {period}
+          </option>
+        ))}
+
+      
+      </select>
+    
+           </div>
+           <div className={`${styles.container}tw-mb-8 tw-flex tw-flex-row`}>
+            <IoMdTime/>
+            <h1 className="tw-ml-4">Notice period</h1>
+           </div>
+           <div className="tw-flex tw-flex-row tw-mb-8">
+            <input 
+            type="number" />
+            <select className="tw-w-[94px] tw-pr-[6px]"
+            value={setNoticePeriod}
+            onChange={handleNoticePeriod}
+
+            >
+              {noticePeriod.map((period)=>(
+                <option key={period} value={period}>{period}</option>
+                 
+              ))}
+            </select>
+           </div>
+          </div>
+          </div>
+        )}
         {schedule && (
           <div className="tw-mt-7">
             <h2 className="tw-font-semibold">Schedule Form</h2>

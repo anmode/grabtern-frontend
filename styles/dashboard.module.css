@@ -3,4 +3,11 @@
     margin-left: 87px;
     margin-top: 56px;
   }
+  .container{
+    flex-direction: column;
+  }
+  .container1{
+    grid-template-columns: 1fr; 
+    margin-top: 4rem;
+  }
 }

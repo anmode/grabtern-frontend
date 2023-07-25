@@ -1,6 +1,5 @@
 import React from "react";
-import { ProfileCard, IconLink } from "../UI";
-import { RiLinkedinLine, RiTwitterLine } from "react-icons/ri";
+import { ProfileCard } from "../UI";
 
 const CommunityCard = ({ image, name, description }) => {
   return (

@@ -69,27 +69,6 @@ const testimonialOptions = {
   },
 };
 
-const teamsOptions = {
-  margin: 40,
-  items: 4,
-  nav: true,
-  loop: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    900: {
-      items: 3,
-    },
-    1170: {
-      items: 4,
-    },
-  },
-};
-
 export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [isMentorLoggedIn, setIsMentorLoggedIn] = useState(false);

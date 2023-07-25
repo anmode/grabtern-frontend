@@ -153,7 +153,7 @@ const AddIntership = ({ handleShow }) => {
 
   return (
     <div className="tw-fixed tw-z-50 tw-bg-[rgba(0,0,0,0.5)] tw-top-0 tw-left-0 tw-w-full tw-h-full tw-flex tw-justify-center tw-items-center">
-      <div className="tw-relative tw-bg-white tw-p-6 tw-w-[30rem] md:tw-w-[35rem] tw-rounded-sm tw-h-screen  min-[480px]:tw-h-[calc(100vh-75px)] tw-overflow-y-auto">
+      <div className="tw-relative tw-bg-white tw-p-6 tw-w-[90%] sm:tw-w-[35rem] tw-rounded-sm tw-h-[calc(100vh-75px)] tw-overflow-y-auto">
         <div
           className="tw-absolute tw-right-3 tw-top-3 tw-p-1 hover:tw-bg-[#845ec2] hover:tw-text-white hover:tw-cursor-pointer tw-rounded"
           onClick={handleCancel}

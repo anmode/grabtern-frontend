@@ -56,25 +56,36 @@ function ForgotPassword() {
       {/* <Header navbarBackground={true} /> */}
       <main className="tw-flex tw-justify-center tw-items-center">
         <form>
-        <div className="tw-flex  tw-items-center tw-mb-10">
-        <Image
-          className="tw-px-3 tw-py-4"
-          src={Logo}
-          alt="icon"
-          width={50}
-          height={50}
-        />
-        <div className="tw-font-inter tw-font-bold tw-text-3xl ">GrabTern</div>
-      </div>
+          <div className="tw-flex  tw-items-center tw-mb-10">
+            <Image
+              className="tw-px-3 tw-py-4"
+              src={Logo}
+              alt="icon"
+              width={50}
+              height={50}
+            />
+            <div className="tw-font-inter tw-font-bold tw-text-3xl ">
+              GrabTern
+            </div>
+          </div>
           <div className="">
-            <div className="tw-pb-5 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">Forgot your <br/>password?</div>
+            <div className="tw-pb-5 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">
+              Forgot your <br />
+              password?
+            </div>
             <div className="tw-pb-5 tw-font-inter tw-font-medium tw-text-base">
               To reset your password, please enter the email address of your
-              <br/>GrabTern account.
+              <br />
+              GrabTern account.
             </div>
             <div className="">
-              <label htmlFor="email" className=" tw-font-inter tw-font-medium tw-text-base">Email</label>
-              <br/>
+              <label
+                htmlFor="email"
+                className=" tw-font-inter tw-font-medium tw-text-base"
+              >
+                Email
+              </label>
+              <br />
               <input
                 type="email"
                 name="email"
@@ -104,7 +115,9 @@ function ForgotPassword() {
           </div>
           <ToastContainer />
           <hr />
-          <div className="tw-pt-5 tw-font-inter tw-font-bold tw-text-xl tw-text-[#4E9F3D]"><a href="#">Contact Us</a></div>
+          <div className="tw-pt-5 tw-font-inter tw-font-bold tw-text-xl tw-text-[#4E9F3D]">
+            <a href="#">Contact Us</a>
+          </div>
         </form>
         <div className="logout-login">
           <div className="image-container">

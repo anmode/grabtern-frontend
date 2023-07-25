@@ -6,6 +6,9 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ButtonUI from "../../components/UI/Button/Button";
+import Image from "next/image";
+import ForgotLogo from "../../public/Grabtern2.png";
+import Logo from "../../public/assets/img/favicon1.ico";
 
 function ForgotPassword() {
   const router = useRouter();
@@ -48,31 +51,41 @@ function ForgotPassword() {
   return (
     <>
       <Head>
-        <title>GrabTern | Frogot Password</title>
+        <title>GrabTern | Forgot Password</title>
       </Head>
-      <Header navbarBackground={true} />
-
-      <main className="forgot-password-body">
-        <form className="login-form">
-          <div className="forgot-password-form">
-            <div className="logout-login">
-              <a href="index.html">
-                <img src="/Grabtern2.png"></img>
-              </a>
+      {/* <Header navbarBackground={true} /> */}
+      <main className="tw-flex tw-justify-center tw-items-center">
+        <form>
+        <div className="tw-flex  tw-items-center tw-mb-10">
+        <Image
+          className="tw-px-3 tw-py-4"
+          src={Logo}
+          alt="icon"
+          width={50}
+          height={50}
+        />
+        <div className="tw-font-inter tw-font-bold tw-text-3xl ">GrabTern</div>
+      </div>
+          <div className="">
+            <div className="tw-pb-5 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">Forgot your <br/>password?</div>
+            <div className="tw-pb-5 tw-font-inter tw-font-medium tw-text-base">
+              To reset your password, please enter the email address of your
+              <br/>GrabTern account.
             </div>
-            <h2>Forgot Password</h2>
-            <div className="form-input">
-              <label htmlFor="email">Email</label>
+            <div className="">
+              <label htmlFor="email" className=" tw-font-inter tw-font-medium tw-text-base">Email</label>
+              <br/>
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
                 onChange={handleChange}
                 value={email}
+                className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20"
               />
             </div>
             <div
-              className="form-input pt-30"
+              className="form-input tw-pt-6 tw-pb-4"
               style={{ display: "flex", justifyContent: "center" }}
             >
               <ButtonUI text="Reset Password" onClick={handleSubmit} />
@@ -90,8 +103,24 @@ function ForgotPassword() {
             )}
           </div>
           <ToastContainer />
+          <hr />
+          <div className="tw-pt-5 tw-font-inter tw-font-bold tw-text-xl tw-text-[#4E9F3D]"><a href="#">Contact Us</a></div>
         </form>
+        <div className="logout-login">
+          <div className="image-container">
+            <Image src={ForgotLogo} width={600} height={600} />
+          </div>
+        </div>
       </main>
+
+      <style jsx>{`
+        /* CSS for hiding the image on small screens */
+        @media (max-width: 1450px) {
+          .image-container {
+            display: none;
+          }
+        }
+      `}</style>
     </>
   );
 }

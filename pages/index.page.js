@@ -18,7 +18,8 @@ import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ButtonLink, Section } from "../components/UI";
-
+import { useAuth } from "../context/AuthContext";
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -93,32 +94,32 @@ const teamsOptions = {
 };
 
 export default function Home() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setIsMentorLoggedIn] = useState(false);
   const [carousel, setCarousel] = useState(false);
   const hasPlayedGreeting = localStorage.getItem("has_played_greeting");
   useEffect(() => {
-    if (
-      localStorage.getItem("user_name") !== null ||
-      localStorage.getItem("token") !== null
-    ) {
-      setIsUserLoggedIn(true);
-    }
-    if (
-      localStorage.getItem("mentor_name") !== null &&
-      localStorage.getItem("mentorToken") !== null
-    ) {
-      setIsMentorLoggedIn(true);
-    }
-    console.log(isUserLoggedIn);
     setCarousel(true);
   }, [carousel]);
 
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
+  // console.log(isMentorLoggedIn,isUserLoggedIn);
+
+  const decryptedData = decryptData(
+    localStorage.getItem("userData") || localStorage.getItem("mentorData"),
+  );
+
   return (
     <div>
-      {localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
+      {(localStorage.getItem("mentorData") !== null ||
+        localStorage.getItem("userData") !== null) &&
+      !hasPlayedGreeting ? (
         <div className="welcomeAfterLoggedIn">
-          Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
+          Hi 👋🏻 {decryptedData?.user_name || decryptedData?.mentor_name} <br />{" "}
+          Welcome to GrabTern
           <audio
             src="/assets/sound/greet.wav"
             autoplay

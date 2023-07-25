@@ -1,25 +1,95 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
-import Visibillity from "../../public/assets/Visibillity.jsx";
-import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
+import Visibillity from "../../public/assets/Visibillity";
+import VisibillityOff from "../../public/assets/VisibillityOff";
+import Header from "../../components/layout/Header";
+import styles from "../../styles/userRegistration.module.css";
+import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { decryptData, encryptData } from "../../hook/encryptDecrypt";
+import { useAuth } from "../../context/AuthContext";
+import Link from "next/link";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
 
   useEffect(() => {
-    const userData = decryptData(localStorage.getItem("userData"));
-    // if (userDataString) {
-    //   const userData = JSON.parse(userDataString);
-    if (userData?.name != null || userData?._id != null) {
-      router.push("/");
-    }
+    const handleCallBackResponse = async (response) => {
+      // Redirect based on login status only if mentor or user is logged in
+      if (isMentorLoggedIn || isUserLoggedIn) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectURL = urlParams.get("redirectURL");
+        router.replace(redirectURL || "/");
+      }
+
+      const userObject = jwt_decode(response.credential);
+      const userData = {
+        user_name: userObject.name,
+        user_picture: userObject.picture,
+        user_email: userObject.email,
+      };
+
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gsignup`;
+      try {
+        const res = await axios.post(url, {
+          registerToken: encryptData(userData),
+        });
+        console.log(res);
+        localStorage.setItem("userData", encryptData(userData));
+        setIsUserLoggedIn(true);
+        const redirectUrl = new URLSearchParams(window.location.search).get(
+          "redirectUrl",
+        );
+        setTimeout(() => {
+          router.push(redirectUrl || "/");
+        }, 2000);
+        // router.push(redirectUrl || "/");
+      } catch (error) {
+        if (error.response && error.response.status >= 400) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Failed to sign up. Please try again later.");
+        }
+        if (error.response && error.response.status === 202) {
+          toast.warning(
+            "Registration successful, but there was an issue sending the verification email. Please contact support.",
+          );
+        }
+      }
+    };
+
+    const initGoogleSignUp = () => {
+      try {
+        google.accounts.id.initialize({
+          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+          callback: handleCallBackResponse,
+          context: "signup",
+        });
+        google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
+          theme: "outline",
+          size: "large",
+          text: "signup_with",
+          shape: "pill",
+        });
+        google.accounts.id.prompt();
+      } catch (error) {
+        console.error("Google sign-up initialization failed:", error);
+      }
+    };
+
+    initGoogleSignUp();
   }, [router]);
 }
 
-function Register({ handleLogPageToggle }) {
+function Register() {
   useRedirectIfAuthenticated();
 
   const router = useRouter();
@@ -29,8 +99,6 @@ function Register({ handleLogPageToggle }) {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState("");
-  const [verificationSent, setVerificationSent] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
 
@@ -48,170 +116,153 @@ function Register({ handleLogPageToggle }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setVerificationSent(false);
 
     if (data.password !== data.confirmPassword) {
-      return setError("Passwords do not match!");
+      return toast.error("Passwords do not match!");
     }
 
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
-      setVerificationSent(true);
+      toast.success(
+        "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
+      );
       setTimeout(() => {
         router.push("/");
-      }, 5000); // Redirect after 5 seconds
+      }, 5000);
     } catch (error) {
       if (error.response && error.response.status >= 400) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        setError("An error occurred. Please try again later.");
+        toast.error(
+          "An error occurred during registration. Please try again later.",
+        );
+      }
+      if (error.response && error.response.status === 202) {
+        toast.warning(
+          "Registration successful, but there was an issue sending the verification email. Please contact support.",
+        );
       }
     }
   };
+
   return (
     <>
-      <form
-        className="form-default mx-5"
-        action="login-bg.mp4"
-        onSubmit={handleSubmit}
-        style={{ marginTop: "10vh" }}
-        aria-label="User registration form"
-      >
-        <div className="d-flex flex-column justify-content-start tw-w-full  md:tw-py-[5vh] md:tw-px-[3vw]  tw-py-[4vh] tw-px-[5vw] tw-shadow-2xl">
-          <h2 className="text-left tw-text-black tw-text-5xl  tw-font-bold">
-            Registration
-          </h2>
-          <p className=" tw-text-gray-500 tw-mb-5">
-            The faster you fill up, the faster you get a internship
-          </p>
-          <div className="tw-flex tw-flex-col  tw-mb-10">
-            <label
-              htmlFor="name"
-              className="tw-text-3xl tw-text-left tw-font-medium "
-            >
-              Full name
-            </label>
-            <input
-              type="text"
-              placeholder="Full name"
-              name="fullName"
-              id="fullName"
-              onChange={handleChange}
-              value={data.fullName}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
-              required
-              aria-required="true"
-            />
+      <Header navbarBackground={true} />
+      <div className={styles.Registerform}>
+        <form className="form-default" onSubmit={handleSubmit}>
+          <div className={styles.heading}>
+            <img src="/Grabtern2.png" class="small-image"></img>
+            <h2>Hey, hello 👋</h2>
           </div>
-          <div className="tw-flex tw-flex-col  tw-mb-10">
-            <label
-              htmlFor="email"
-              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email Address"
-              onChange={handleChange}
-              value={data.email}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 "
-              required
-              aria-required="true"
-            />
-          </div>
-
-          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
-            <label
-              htmlFor="password"
-              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
-            >
-              Password
-            </label>
-            <input
-              type={isPasswordVisible ? "text" : "password"}
-              name="password"
-              id="password"
-              placeholder="Password"
-              onChange={handleChange}
-              value={data.password}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
-              required
-              aria-required="true"
-            />
-            <div
-              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-              onClick={togglePasswordVisibility}
-              aria-label={isPasswordVisible ? "Hide Password" : "Show Password"}
-            >
-              {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+          {/* <p >
+          The faster you fill up, the faster you get a internship
+          </p> */}
+          <div className={styles.forminput}>
+            <label htmlFor="name">Full name</label>
+            <div className={styles.Input}>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full name"
+                onChange={handleChange}
+                value={data.fullName}
+              />
             </div>
           </div>
 
-          <div className="tw-flex tw-flex-col tw-mb-10 tw-relative">
-            <label
-              htmlFor="confirmPassword"
-              className="tw-text-3xl tw-text-left tw-font-medium tw-mr-10"
-            >
-              Confirm Password
-            </label>
-            <input
-              type={isConPasswordVisible ? "text" : "password"}
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="Confirm Password"
-              onChange={handleChange}
-              value={data.confirmPassword}
-              className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
-              required
-              aria-required="true"
-            />
-            <div
-              className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-16"
-              onClick={toggleConPasswordVisibility}
-            >
-              {isConPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+          <div className={styles.forminput}>
+            <label htmlFor="email">Email</label>
+            <div className={styles.Input}>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                value={data.email}
+              />
             </div>
           </div>
-          {verificationSent && (
-            <p style={{ color: "green" }}>
-              An email has been sent to {data.email}. Please check your inbox to
-              verify your account.
-            </p>
-          )}
-          {error && (
-            <div style={{ color: "red" }} role="alert">
-              {error}
+
+          <div className={styles.forminput}>
+            <label htmlFor="password">Password</label>
+            <div className={styles.Input}>
+              {" "}
+              <input
+                type={isPasswordVisible ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+                value={data.password}
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+              />
+              <div
+                className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-10"
+                onClick={togglePasswordVisibility}
+              >
+                {isPasswordVisible ? <Visibillity /> : <VisibillityOff />}
+              </div>
             </div>
-          )}
-          <div>
+          </div>
+
+          <div className={styles.forminput}>
+            <label htmlFor="password">Confirm Password</label>
+            <div className={styles.Input}>
+              {" "}
+              <input
+                type={isPasswordVisible ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="Password"
+                onChange={handleChange}
+                value={data.confirmPassword}
+                className="tw-px-2 tw-border-b-[1px] tw-border-b-black tw-py-3 tw-pr-16"
+              />
+              <div
+                className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-10"
+                onClick={toggleConPasswordVisibility}
+              >
+                {isConPasswordVisible ? <Visibillity /> : <VisibillityOff />}
+              </div>
+            </div>
+          </div>
+          <ToastContainer />
+
+          <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
             <input
               type="submit"
               name="submit"
               value="Registration"
-              style={{
-                background:
-                  "linear-gradient( to top, rgb(83, 116, 255) 0%, rgb(127, 102, 255) 40%, rgb(187, 85, 255) 95%, rgb(192, 84, 255) 100% )",
-              }}
-              className="tw-px-10 tw-font-semibold tw-py-[6px] tw-text-white tw-rounded-3xl tw-cursor-pointer tw-w-full"
+              style={{ textAlign: "center", width: "100%" }}
             />
           </div>
-          <div className="link-div tw-font-medium tw-mt-10">
+
+          <div className={styles.linkdiv}>
             Already have an account?
-            <button
-              className="tw-ml-0 md:tw-ml-2 hover:tw-text-gray-400 tw-text-blue-700"
+            {/* <button
+              className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
-              onClick={() => handleLogPageToggle()}
+              onClick={router.push("/auth/login")}
             >
               Login{" "}
-            </button>
+            </button> */}
+            <Link
+              href="/auth/login"
+              className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
+              style={{ textDecoration: "none" }}
+            >
+              Login{" "}
+            </Link>
           </div>
-        </div>
-      </form>
+          <div className={styles.google}>
+            <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
+          </div>
+          <div
+            id="signUpDiv"
+            style={{ alignSelf: "center" }}
+            className={styles.googlelogin}
+          ></div>
+        </form>
+      </div>
     </>
   );
 }

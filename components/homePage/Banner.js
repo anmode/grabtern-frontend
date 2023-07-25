@@ -33,8 +33,8 @@ function Banner({ isMentorLoggedIn }) {
                     />
                   ) : (
                     <ButtonLink
-                      href="/mentor"
-                      text="Be a Mentors"
+                      href="/mentorRegister"
+                      text="Be a Mentor"
                       variant="outline"
                       className="tw-min-w-[130px]"
                     />
@@ -75,7 +75,7 @@ function Banner({ isMentorLoggedIn }) {
               </div>
               <div className="tw-flex tw-justify-between tw-items-center tw-gap-4">
                 <img
-                  classNameName="tw-object-cover tw-w-12 tw-h-12 tw-rounded"
+                  className="tw-object-cover tw-w-12 tw-h-12 tw-rounded"
                   src="https://media.cssninja.io/shuriken/avatars/2.svg"
                   alt="Avatar"
                   width="48"

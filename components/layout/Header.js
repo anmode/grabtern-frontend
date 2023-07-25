@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -175,7 +174,7 @@ function Header() {
                 {/* show signin button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
                   <Link
-                    href="/"
+                    href="/auth/login?entityType=user"
                     className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
                   >
                     Sign In
@@ -187,7 +186,7 @@ function Header() {
 
                 {/* show signup button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
-                  <ButtonLink text="Sign Up" href="/" />
+                  <ButtonLink text="Sign Up" href="/auth/register" />
                 )}
 
                 {/* <DropdownCard

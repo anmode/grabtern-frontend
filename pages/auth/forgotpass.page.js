@@ -4,14 +4,14 @@ import Header from "../../components/layout/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ButtonUI from "../../components/UI/Button/Button";
 
 function ForgotPassword() {
   const router = useRouter();
   const { entity } = router.query; // 'entity' will contain the entity type ('user' or 'mentor')
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -19,25 +19,27 @@ function ForgotPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setIsLoading(true);
 
     try {
-      setIsLoading(true);
-
       const url = new URL(window.location.href);
       const entityTypeFromUrl = url.searchParams.get("entityType");
       const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
       const { data } = await axios.post(backendUrl, { email: email });
-
-      setSuccess(true);
       setIsLoading(false);
+      toast.success(
+        "Please check your email for instructions to reset your password.",
+      );
+      setTimeout(() => {
+        router.push("/");
+      }, 5000);
     } catch (error) {
       if (
         error.response &&
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
         setIsLoading(false);
       }
     }
@@ -51,11 +53,11 @@ function ForgotPassword() {
       <Header navbarBackground={true} />
 
       <main className="forgot-password-body">
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form">
           <div className="forgot-password-form">
             <div className="logout-login">
               <a href="index.html">
-                <img src="assets/img/logo/loder.webp" alt="" />
+                <img src="/Grabtern2.png"></img>
               </a>
             </div>
             <h2>Forgot Password</h2>
@@ -69,8 +71,11 @@ function ForgotPassword() {
                 value={email}
               />
             </div>
-            <div className="form-input pt-30">
-              <input type="submit" name="submit" value="Reset Password" />
+            <div
+              className="form-input pt-30"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <ButtonUI text="Reset Password" onClick={handleSubmit} />
             </div>
             {isLoading && (
               <img
@@ -83,13 +88,8 @@ function ForgotPassword() {
                 alt="loading..."
               />
             )}
-            {error && <div style={{ color: "red" }}>{error}</div>}
-            {success && (
-              <div style={{ color: "green" }}>
-                Please check your email for instructions to reset your password.
-              </div>
-            )}
           </div>
+          <ToastContainer />
         </form>
       </main>
     </>

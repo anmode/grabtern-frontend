@@ -1540,6 +1540,16 @@ select {
   box-sizing: border-box;
 }
 
+::-moz-selection{
+  color: white;
+  background-color: #845ec2;
+}
+
+::selection{
+  color: white;
+  background-color: #845ec2;
+}
+
 .reset-password-container button {
   display: block;
   width: 100%;

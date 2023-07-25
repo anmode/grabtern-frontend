@@ -1540,12 +1540,12 @@ select {
   box-sizing: border-box;
 }
 
-::-moz-selection{
+::-moz-selection {
   color: white;
   background-color: #845ec2;
 }
 
-::selection{
+::selection {
   color: white;
   background-color: #845ec2;
 }

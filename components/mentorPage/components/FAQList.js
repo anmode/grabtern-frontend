@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import FAQ from "./FAQ";
 
 function FAQList({ faq }) {
-
   const ref = useRef();
 
   const handleClick = (e) => {
@@ -16,7 +15,7 @@ function FAQList({ faq }) {
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [])
+  }, []);
 
   const [open, setOpen] = useState(-1);
   return (

@@ -6,12 +6,12 @@ function FAQ({ ques, ans, open, setOpen, index }) {
   };
 
   return (
-    <div className="tw-mb-3 tw-px-8">
+    <div className={`tw-mb-3 tw-px-8 ${open === index ? "tw-bg-[#FBEAFF]" : ""}`}>
       <div
         className="tw-justify-between tw-flex tw-mt-4 tw-cursor-pointer"
         onClick={toggleOpen}
       >
-        <p className="tw-text-xl tw-text-slate-900 tw-font-medium max-[990px]:tw-text-sm tw-items-start">{ques}</p>
+        <p className={`tw-text-xl tw-text-slate-900 tw-font-medium max-[990px]:tw-text-sm tw-items-start ${open === index ? "tw-text-[#00C9A7]" : ""}`}>{ques}</p>
         <div className="">
           {open == index ? (
             <i className="fas fa-chevron-up" />

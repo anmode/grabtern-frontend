@@ -61,6 +61,11 @@ const ResetPassword = () => {
     setVisibility((prevShowPassword) => !prevShowPassword);
   };
 
+  const [viewPassword, setVisible] = useState(false);
+  const togglePassword = () => {
+    setVisible((prevViewPassword) => !prevViewPassword);
+  };
+
   return (
     <>
       <Head>
@@ -88,11 +93,16 @@ const ResetPassword = () => {
               </label>
               <br />
               <input
-                type="password"
+                type={viewPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
+              {viewPassword ? (
+                <Visibility onClick={togglePassword} />
+              ) : (
+                <VisibilityOff onClick={togglePassword} />
+              )}
             </div>
             <div className="tw-pt-5">
               <label

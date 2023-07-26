@@ -104,10 +104,12 @@ function Header() {
             <Link href="/mentors" className="hover:tw-text-primary-100">
               Mentor
             </Link>
+            <Link href="/community" className="hover:tw-text-primary-100">
+              Community
+            </Link>
             <Link href="/contact" className="hover:tw-text-primary-100">
               Contact
             </Link>
-
             {/* show profile card if user is logged in else show signin link */}
             {isUserLoggedIn || isMentorLoggedIn ? (
               <UserProfile />
@@ -165,6 +167,12 @@ function Header() {
                   Mentor
                 </Link>
                 <Link
+                  href="/community"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                >
+                  Community
+                </Link>
+                <Link
                   href="/contact"
                   className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
                 >
@@ -174,7 +182,7 @@ function Header() {
                 {/* show signin button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
                   <Link
-                    href="/"
+                    href="/auth/login?entityType=user"
                     className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
                   >
                     Sign In

@@ -1,22 +1,22 @@
 export default [
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Who is a mentor?",
+    ans: "A mentor is a person who can support, advise and guide you. They typically take the time to get to know you and the challenges you’re facing and then use their understanding and personal experience to help you improve.",
   },
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Who is a mentor?",
+    ans: "A mentor is a person who can support, advise and guide you. They typically take the time to get to know you and the challenges you’re facing and then use their understanding and personal experience to help you improve.",
   },
   {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    ques: "Who is a mentor?",
+    ans: "A mentor is a person who can support, advise and guide you. They typically take the time to get to know you and the challenges you’re facing and then use their understanding and personal experience to help you improve.",
   },
-  {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    ques: "Lorem ipsum dolor sit amet?",
-    ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
+  // {
+  //   ques: "Who is a mentor?",
+  //   ans: "A mentor is a person who can support, advise and guide you. They typically take the time to get to know you and the challenges you’re facing and then use their understanding and personal experience to help you improve.",
+  // },
+  // {
+  //   ques: "Who is a mentor?",
+  //   ans: "A mentor is a person who can support, advise and guide you. They typically take the time to get to know you and the challenges you’re facing and then use their understanding and personal experience to help you improve.",
+  // },
 ];

@@ -50,27 +50,15 @@ function login() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);
-      const decryptedEntityData = decryptData(res);
-      // console.log(userData);
-      let entityData = {};
+      console.log(res);
       if (entityType === "user") {
-        entityData = {
-          token: decryptedEntityData.token,
-          user_name: decryptedEntityData.fullName,
-          user_email: decryptedEntityData.email,
-          user_id: decryptedEntityData.id,
-        };
+        localStorage.setItem("userData", res);
         setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
-        const mentorData = decryptData(res);
-        entityData = {
-          mentor_name: decryptedEntityData.fullName,
-          mentorToken: decryptedEntityData.mentorToken,
-        };
+        localStorage.setItem("mentorData", res);
         setIsMentorLoggedIn(true);
       }
-
-      router.push("/");
+      // router.push("/");
     } catch (error) {
       console.log(error);
       if (
@@ -125,7 +113,7 @@ function login() {
   }
 
   useEffect(() => {
-    console.log(isMentorLoggedIn, isUserLoggedIn);
+    // console.log(isMentorLoggedIn, isUserLoggedIn);
     // Redirect based on login status only if mentor or user is logged in
     if (isMentorLoggedIn || isUserLoggedIn) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -257,7 +245,7 @@ function login() {
             <div className={styles.linkdiv}>
               Don't have an account?
               <Link
-                href="/userRegister"
+                href="/auth/register"
                 className={styles.registration}
                 style={{ textDecoration: "none" }}
               >

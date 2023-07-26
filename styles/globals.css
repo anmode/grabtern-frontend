@@ -74,6 +74,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #7a9d54;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -128,6 +132,7 @@ a {
   border-radius: 20px;
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
   animation: welcomeAfterLoggedIn 1s 0.8s;
+  z-index: 120;
 }
 
 @keyframes welcomeAfterLoggedIn {
@@ -743,9 +748,10 @@ select {
 
 .srv-validation-message {
   color: red;
-  font-size: 1rem;
+  font-size: 0.8rem;
   position: absolute;
   top: 100%;
+  line-height: 1.4;
 }
 .srv-validation-message ~ input,
 .srv-validation-message ~ textarea,

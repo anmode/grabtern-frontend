@@ -12,6 +12,15 @@ const Header = dynamic(() => import("../../../components/layout/Header"));
 
 function Index({ mentorDetail, bookSession, sessionID }) {
   const router = useRouter();
+  const defaultSchedules = [
+    { day: "Saturday", startsAt: "09:00", endsAt: "21:00" },
+    { day: "Sunday", startsAt: "09:00", endsAt: "21:00" },
+    { day: "Monday", startsAt: "09:00", endsAt: "21:00" },
+    { day: "Tuesday", startsAt: "09:00", endsAt: "21:00" },
+    { day: "Wednesday", startsAt: "09:00", endsAt: "21:00" },
+    { day: "Thursday", startsAt: "09:00", endsAt: "21:00" },
+    { day: "Friday", startsAt: "09:00", endsAt: "21:00" },
+  ];
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
@@ -188,29 +197,54 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     if (selectedDay.length < 1) {
       return;
     }
-    const selectedSchedule = mentorDetail.schedules.find(
-      (schedule) => schedule.day === selectedDay,
-    );
-    if (!selectedSchedule) {
-      return [];
-    }
+    if (mentorDetail.schedules.length === 0) {
+      const selectedSchedule = defaultSchedules.find(
+        (schedule) => schedule.day === selectedDay,
+      );
+      if (!selectedSchedule) {
+        return [];
+      }
 
-    const result = [];
-    const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
-    const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
+      const result = [];
+      const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
+      const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
 
-    // Add the initial time to the result array
-    result.push(formatTime(startTime));
-
-    // Increment the time by 30 minutes until it reaches the end time
-    while (startTime < endTime) {
-      startTime.setMinutes(startTime.getMinutes() + 30);
       result.push(formatTime(startTime));
+
+      while (startTime < endTime) {
+        startTime.setMinutes(startTime.getMinutes() + 30);
+        result.push(formatTime(startTime));
+      }
+
+      return result;
+    } else if (mentorDetail.schedules.length !== 0) {
+      const selectedSchedule = mentorDetail.schedules.find(
+        (schedule) => schedule.day === selectedDay,
+      );
+      // const selectedSchedule = mentorDetail.schedules.find(
+      //   (schedule) => schedule.day === selectedDay,
+      // );
+      if (!selectedSchedule) {
+        return [];
+      }
+
+      const result = [];
+      const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
+      const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
+
+      // Add the initial time to the result array
+      result.push(formatTime(startTime));
+
+      // Increment the time by 30 minutes until it reaches the end time
+      while (startTime < endTime) {
+        startTime.setMinutes(startTime.getMinutes() + 30);
+        result.push(formatTime(startTime));
+      }
+
+      // console.log(result);
+
+      return result;
     }
-
-    // console.log(result);
-
-    return result;
   }
 
   function formatTime(time) {
@@ -294,16 +328,29 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             <div className="bookSessionSchedules">
               <b>Pick Day:</b>
               <ul className="day">
-                {mentorDetail.schedules.map((schedule) => (
-                  <li
-                    onClick={(e) => {
-                      setSelectedDay(schedule.day);
-                      dayChangeActive(e);
-                    }}
-                  >
-                    {schedule.day}
-                  </li>
-                ))}
+                {mentorDetail.schedules.length === 0
+                  ? defaultSchedules.map((schedule) => (
+                      <li
+                        onClick={(e) => {
+                          setSelectedDay(schedule.day);
+                          dayChangeActive(e);
+                        }}
+                      >
+                        {schedule.day}
+                      </li>
+                    ))
+                  : mentorDetail.schedules.length !== 0
+                  ? mentorDetail.schedules.map((schedule) => (
+                      <li
+                        onClick={(e) => {
+                          setSelectedDay(schedule.day);
+                          dayChangeActive(e);
+                        }}
+                      >
+                        {schedule.day}
+                      </li>
+                    ))
+                  : null}
               </ul>
               <b>Pick Time:</b>
               <ul className="time">

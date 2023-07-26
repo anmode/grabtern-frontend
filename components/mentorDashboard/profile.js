@@ -80,9 +80,9 @@ function Profile({ mentorDetail }) {
       // Make the API call to update the mentor data
       const url = `${
         process.env.NEXT_PUBLIC_BACKEND_URL
-      }/api/mentors/updateMentor/${JSON.parse(
-        decryptData("mentorData")
-      ).mentorToken}`;
+      }/api/mentors/updateMentor/${
+        JSON.parse(decryptData("mentorData")).mentorToken
+      }`;
 
       const { data: res } = await axios.post(url, formDataCopy); // Send the updated data to the backend
 
@@ -105,64 +105,84 @@ function Profile({ mentorDetail }) {
   };
   return (
     <div className="mentorDetail">
-        <div  style={{ marginLeft: "250px" }}>
-          <div
-            className="modalPopupAfterRegistrationDone"
+      <div style={{ marginLeft: "250px" }}>
+        <div
+          className="modalPopupAfterRegistrationDone"
+          style={{
+            alignItems: "flex-start",
+            maxWidth: "800px",
+            width: "100%",
+            marginTop: "-100px",
+            maxHeight: "80rem",
+          }}
+        >
+          <h2
             style={{
-              alignItems: "flex-start",
-              maxWidth: "800px",
-              width: "100%",
-              marginTop:'-100px',
-              maxHeight: "80rem",
-              // overflow: "auto",
+              marginBottom: "-100px",
+              lineHeight: "0",
+              fontWeight: "600",
+              fontSize: "32px",
+              textAlign: "center",
+              marginLeft: "230px",
+              alignItems: "center",
+              marginTop: "5px",
+              color: 
+              "#845ec2 ",
+              fontFamily:"sans-serif"
             }}
           >
-            <h2
+            Edit your profile
+          </h2>
+          <form className="mentorFormEdit" onSubmit={handleSubmit}>
+            {step === 1 ? (
+              <>
+                <div
+                  style={{ gridColumn: "1/3", marginLeft: "500" }}
+                  className="mentorUploudPhotoEdit"
+                >
+                  <img
                     style={{
-                      marginBottom: "-100px",
-                      lineHeight: "0",
-                      fontWeight: "bolder",
-                      fontSize: "30px",
-                      marginTop:'5px',
+                      marginTop: "120px",
+                      borderRadius: "5%",
+                      height: "auto",
+                      boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px ",
                     }}
-                  >
-                    Edit your profile
-                  </h2>
-            <form className="mentorFormEdit" onSubmit={handleSubmit}>
-              {step === 1 ? (
-                <>
-                  <div
-                    style={{ gridColumn: "1/3", marginLeft: "500" }}
-                    className="mentorUploudPhotoEdit"
-                  >
-                    <img
-                      style={{ marginTop: "120px",borderRadius:'5%',height:'auto' }}
-                      src={formData.mentorImg}
-                      className="mentorPhoto"
+                    src={formData.mentorImg}
+                    className="mentorPhoto"
+                    height={50}
+                  />
+                  <div>
+                    <input
+                      style={{ marginTop: "150px" }}
+                      type="file"
+                      name="mentorProfile"
+                      onChange={(e) => handleUploadImageChange(e)}
                     />
-                    <div>
-                      <input
-                        style={{ marginTop: "140px" }}
-                        type="file"
-                        name="mentorProfile"
-                        onChange={(e) => handleUploadImageChange(e)}
-                      />
-                    </div>
                   </div>
-                  <div  style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
-                  <div
-                  >
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div>
                     <label for="name">NAME</label>
 
                     <input
                       type="text"
                       name="name"
-                      style={{width:'90%',borderRadius:'5px'}}
+                      style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset", }}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
                       // placeholder="e.g. Peter Parker"
                       placeholder={mentorDetail?.name}
-
                       value={formData.name}
                     />
                   </div>
@@ -172,7 +192,12 @@ function Profile({ mentorDetail }) {
                     <input
                       type="text"
                       name="username"
-                        style={{width:'90%',borderRadius:'5px'}}
+                   style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset", }}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
                       // placeholder="e.g. peter-parker12"
@@ -180,9 +205,15 @@ function Profile({ mentorDetail }) {
                       value={formData.username}
                     />
                   </div>
-                  </div>
-                 <div  style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}}>
-                 <div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div>
                     <label for="email">EMAIL</label>
 
                     <input
@@ -190,7 +221,12 @@ function Profile({ mentorDetail }) {
                       name="email"
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                        style={{width:'90%',borderRadius:'5px'}}
+                   style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset", }}
                       // placeholder="e.g. peterparker4321#gmail.com"
                       placeholder={mentorDetail?.email}
                       // readOnly
@@ -205,15 +241,20 @@ function Profile({ mentorDetail }) {
                       name="mobile"
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                        style={{width:'90%',borderRadius:'5px'}}
+                   style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset", }}
                       // placeholder="0123456789"
                       placeholder={mentorDetail?.mobile}
                       value={formData.mobile}
                     />
                   </div>
-                 </div>
-                 <div style={{display:'flex',flexDirection:'row'}}>
-                 <div>
+                </div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div>
                     <label for="linkedin">LINKEDIN</label>
 
                     <input
@@ -221,7 +262,12 @@ function Profile({ mentorDetail }) {
                       name="linkedin"
                       className="mentorFormInput"
                       onChange={(e) => handleSocialChange(e)}
-                      style={{width:'90%',borderRadius:'5px'}}
+                   style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset", }}
                       // placeholder="e.g. https://www.linkedin.com/peterparker"
                       placeholder={mentorDetail?.linkedin}
                       value={formData.social.linkedin}
@@ -235,81 +281,89 @@ function Profile({ mentorDetail }) {
                       name="twitter"
                       className="mentorFormInput"
                       onChange={(e) => handleSocialChange(e)}
-                        style={{width:'90%',borderRadius:'5px'}}
+                   style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset", }}
                       // placeholder="e.g. https://www.twitter.com/peterparker"
                       placeholder={mentorDetail?.twitter}
                       value={formData.social.twitter}
                     />
                   </div>
-                 </div>
+                </div>
 
-                 
-                  <div>
-                    <label for="description">DESCRIPTION</label>
+                <div>
+                  <label for="description">DESCRIPTION</label>
 
-                    <textarea
-                      cols="10"
-                      rows="7"
-                      name="description"
-                      style={{ border: "1px solid grey" , width:'95%',borderRadius:'10px'}}
-                      className="mentorFormInput"
-                      onChange={(e) => handleChange(e)}
-                      // placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
-                      placeholder={mentorDetail?.description}
-                      value={formData.description}
-                    />
-                  </div>
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "100%",
-                        alignItems: "center",
-                        flexDirection: "row",
-                      }}
-                    ></div>
-                  </div>
-                  {error && (
-                    <div style={{ color: "red", gridColumn: "1/3" }}>
-                      {error}
-                    </div>
-                  )}
-                  <hr
+                  <textarea
+                    cols="10"
+                    rows="7"
+                    name="description"
                     style={{
-                      margin: "10px 0",
-                      borderColor: "grey",
-                      gridColumn: "1/3",
+                      width: "95%",
+                      borderRadius: "5px",
+                      border: "none",
+                      boxShadow:
+                        "#845ec2 1px 1px 5px 0px inset",
                     }}
+                    className="mentorFormInput"
+                    onChange={(e) => handleChange(e)}
+                    // placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
+                    placeholder={mentorDetail?.description}
+                    value={formData.description}
                   />
-                  {msg && (
-                    <div style={{ color: "green", gridColumn: "1/3" }}>
-                      {msg}
-                    </div>
-                  )}
-                  <button
+                </div>
+                <div>
+                  <div
                     style={{
-                      color: "white",
-                      width: "fit-content",
-                      padding: "15px 25px",
-                      backgroundColor: "black",
-                      cursor: "pointer",
-                      marginTop:'-50px'
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "100%",
+                      alignItems: "center",
+                      flexDirection: "row",
                     }}
-                    type="submit"
-                    className="mentorFormButotn"
-                    onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
-       
-                  >
-                    Save changes
-                  </button>
-                </>
-              ) : (
-                <>{error && <div style={{ color: "red" }}>{error}</div>}</>
-              )}
-            </form>
-          </div>
+                  ></div>
+                </div>
+                {error && (
+                  <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+                )}
+                <hr
+                  style={{
+                    margin: "10px 0",
+                    borderColor: "grey",
+                    gridColumn: "1/3",
+                  }}
+                />
+                {msg && (
+                  <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+                )}
+                <button
+                  style={{
+                    color: "white",
+                    width: "fit-content",
+                    padding: "15px 25px",
+                    backgroundColor: "#845ec2",
+                    cursor: "pointer",
+                    marginTop: "-50px",
+                    "&:hover": {
+                      backgroundColor: "#6b21a8",
+                    },
+                  }}
+                  type="submit"
+                  className="mentorFormButotn"
+                  onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
+                >
+                  Save changes
+                </button>
+              </>
+            ) : (
+              <>{error && <div style={{ color: "red" }}>{error}</div>}</>
+            )}
+          </form>
         </div>
+      </div>
     </div>
   );
 }

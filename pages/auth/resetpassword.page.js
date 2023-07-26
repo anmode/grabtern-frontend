@@ -11,6 +11,8 @@ import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
+import { Visibility } from "@mui/icons-material";
+import { VisibilityOff } from "@mui/icons-material";
 
 const ResetPassword = () => {
   const { entityType, resetToken } = router.query;
@@ -54,7 +56,13 @@ const ResetPassword = () => {
     }
   };
 
+  const [showPassword, setVisibility] = useState(false);
+  const togglePasswordisibility = () => {
+     setVisibility((prevShowPassword)=>!prevShowPassword);
+  }
+
   return (
+
     <>
       <Head>
         <title>GrabTern | Reset Password</title>
@@ -77,7 +85,7 @@ const ResetPassword = () => {
                 htmlFor="password"
                 className=" tw-font-inter tw-font-medium tw-text-base"
               >
-                Password
+                New Password
               </label>
               <br />
               <input
@@ -86,6 +94,28 @@ const ResetPassword = () => {
                 placeholder="Password"
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
+            </div>
+            <div className="tw-pt-5">
+              <label
+                htmlFor="confirmPassword"
+                className=" tw-font-inter tw-font-medium tw-text-base"
+              >
+                Confirm Password
+              </label>
+              <br />
+              <input
+                type={showPassword? 'text': 'password'}
+                name="confirmPassword"
+                placeholder="Password"
+                className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
+              />
+              {
+                showPassword ? (
+                  <Visibility onClick={togglePasswordisibility}/>
+                ) : (
+                  <VisibilityOff onClick={togglePasswordisibility}/>
+                )
+                }
             </div>
             <div className="form-input tw-pt-10 tw-pb-12">
               <ButtonUI

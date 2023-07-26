@@ -19,7 +19,6 @@
   background-color: #845ec2;
 }
 
-
 :root {
   --primary-10: #cdc2ff;
   --primary-50: #9d94c6;
@@ -1538,16 +1537,6 @@ select {
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
-}
-
-::-moz-selection {
-  color: white;
-  background-color: #845ec2;
-}
-
-::selection {
-  color: white;
-  background-color: #845ec2;
 }
 
 .reset-password-container button {

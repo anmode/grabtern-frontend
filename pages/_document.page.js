@@ -7,10 +7,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>GrabTern</title>
-        <Script
-          src="https://accounts.google.com/gsi/client"
-          strategy="beforeInteractive"
-        ></Script>
+        <Script src="https://accounts.google.com/gsi/client" strategy="beforeInteractive"></Script>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 

@@ -58,11 +58,10 @@ const ResetPassword = () => {
 
   const [showPassword, setVisibility] = useState(false);
   const togglePasswordisibility = () => {
-     setVisibility((prevShowPassword)=>!prevShowPassword);
-  }
+    setVisibility((prevShowPassword) => !prevShowPassword);
+  };
 
   return (
-
     <>
       <Head>
         <title>GrabTern | Reset Password</title>
@@ -104,18 +103,16 @@ const ResetPassword = () => {
               </label>
               <br />
               <input
-                type={showPassword? 'text': 'password'}
+                type={showPassword ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Password"
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
-              {
-                showPassword ? (
-                  <Visibility onClick={togglePasswordisibility}/>
-                ) : (
-                  <VisibilityOff onClick={togglePasswordisibility}/>
-                )
-                }
+              {showPassword ? (
+                <Visibility onClick={togglePasswordisibility} />
+              ) : (
+                <VisibilityOff onClick={togglePasswordisibility} />
+              )}
             </div>
             <div className="form-input tw-pt-10 tw-pb-12">
               <ButtonUI

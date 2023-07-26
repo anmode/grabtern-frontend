@@ -79,32 +79,32 @@ function Mentor() {
 
         <section className="tw-mt-36 tw-px-16 tw-flex tw-flex-col tw-justify-center tw-items-center">
           <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#B39CD0] tw-text-center">Empower Your Expertise, Earn Your Impact</h1>
-          <div className="tw-flex max-[990px]:tw-w-full tw-gap-10 tw-mt-6 tw-flex-wrap">
+          <div className="tw-flex max-[990px]:tw-w-full tw-gap-10 tw-mt-10 tw-flex-wrap">
             {/* card1 */}
 
-            <div className="tw-flex-wrap tw-group tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-[#FBEAFF] hover:tw-transform hover:tw-ease-in-out tw-duration-200  tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <LiveTvIcon fontSize="" className="group-hover:tw-text-cyan-300 group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
+            <div className="tw-flex-wrap tw-group tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200  tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <LiveTvIcon fontSize="" className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
               <h2 className="tw-font-semibold tw-text-lg">LIVE Programs</h2>
               <p className="tw-text-md">MasterClasses, Bootcamps, and more informative sessions.</p>
             </div>
 
             {/* card2 */}
-            <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-[#FBEAFF] hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <PeopleIcon fontSize="" className="group-hover:tw-text-cyan-300 group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
+            <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <PeopleIcon fontSize="" className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
               <h2 className="tw-font-semibold tw-text-lg">Mentorship Session</h2>
               <p className="tw-text-md">Resume Reviews, Roadmaps, Interviews, and Doubt sessions.</p>
             </div>
 
             {/* card3 */}
-            <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-[#FBEAFF] hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <AutoStoriesIcon fontSize="" className="group-hover:tw-text-cyan-300 group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
+            <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <AutoStoriesIcon fontSize="" className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
               <h2 className="tw-font-semibold tw-text-lg">Cohort and Courses</h2>
               <p className="tw-text-md">Launch your own cohort or hybrid courses, small or large</p>
             </div>
 
             {/* card4 */}
-            <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-[#FBEAFF] hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <TerminalIcon fontSize="" className="group-hover:tw-text-cyan-300 group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-slate-800 tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
+            <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
+              <TerminalIcon fontSize="" className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full" />
               <h2 className="tw-font-semibold tw-text-lg">Webinar and Workshop</h2>
               <p className="tw-text-md">Live sessions on topics you choose to educate about</p>
             </div>

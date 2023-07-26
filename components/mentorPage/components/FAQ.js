@@ -6,12 +6,12 @@ function FAQ({ ques, ans, open, setOpen, index }) {
   };
 
   return (
-    <div className={`tw-mb-3 tw-px-8 ${open === index ? "tw-bg-[#FBEAFF] tw-rounded-md tw-p-4" : ""}`}>
+    <div className={`tw-mb-3 tw-px-8 ${open === index ? "tw-bg-gray-200 tw-rounded-md tw-p-4" : ""}`}>
       <div
         className="tw-justify-between tw-flex tw-mt-4 tw-cursor-pointer"
         onClick={toggleOpen}
       >
-        <p className={`tw-text-xl  tw-font-medium max-[990px]:tw-text-sm tw-items-start ${open === index ? "tw-text-[#00C9A7]" : "tw-text-slate-900"}`}>{ques}</p>
+        <p className={`tw-text-xl  tw-font-medium max-[990px]:tw-text-sm tw-items-start ${open === index ? "tw-text-primary-200" : "tw-text-slate-900"}`}>{ques}</p>
         <div className="">
           {open == index ? (
             <i className="fas fa-chevron-up" />
@@ -20,7 +20,7 @@ function FAQ({ ques, ans, open, setOpen, index }) {
           )}
         </div>
       </div>
-      {open == index && <p className="tw-p-2 tw-max-w-[1000px]">{ans}</p>}
+      {open == index && <p className="tw-transition-all tw-duration-150 tw-ease-in-out tw-p-2 tw-max-w-[1000px]">{ans}</p>}
     </div>
   );
 }

@@ -114,26 +114,21 @@ export default function Home() {
   const userData = decryptData(localStorage.getItem("userData"));
   const mentorData = decryptData(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState("All");
+  const [tagFilter, setTagFilter] = useState(["All"]);
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
   const [filterHack, setFilterHack] = useState(hackathonsData);
 
   const filteredHackathons = HackathonsData.filter((hackathon) => {
-    console.log(typeof tagFilter);
-    // console.log(hackathon.tags);
-    const tagMatch = hackathon.tags.some((tag) =>
-      tag.toLowerCase().includes(tagFilter.toLowerCase()),
-    );
-    if (tagFilter === "All") {
+    const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
+
+    if (tagFilter.toString() === "All") {
       const titleMatch = hackathon.hackathonTitle
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
       return titleMatch && true;
     } else {
-      // console.log(tagFilter);
-      if (tagFilter !== "" && !tagMatch) {
-        // console.log("hpo");
+      if (tagFilter.toString() !== "" && !tagMatch) {
         if (tagFilter === "bookmarked") {
           if (searchQuery != " ") {
             const titleMatch = hackathon.hackathonTitle
@@ -142,7 +137,6 @@ export default function Home() {
 
             return titleMatch && hackathon.bookmarked;
           }
-          // console.log("hello");
           return hackathon.bookmarked;
         }
         return false;
@@ -275,7 +269,7 @@ export default function Home() {
       ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
 
-      <main>
+      <main className="tw-w-full tw-max-w-7xl tw-mx-auto">
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
@@ -285,7 +279,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="mb-4 p-4">
+            <div className="tw-mb-12">
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
@@ -294,7 +288,7 @@ export default function Home() {
               />
             </div>
             <div className="row">
-              {filterHack.map((hackathon, index) => (
+              {filteredHackathons.map((hackathon, index) => (
                 <GalleryCard
                   isInternship={false}
                   key={index}

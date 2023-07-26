@@ -34,6 +34,7 @@
     "react-owl-carousel": "^2.3.3",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.14.1",
+    "react-select": "^5.7.4",
     "react-socks": "^2.2.0",
     "react-toastify": "^9.1.3",
     "redis": "^4.6.5",

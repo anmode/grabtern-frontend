@@ -50,7 +50,7 @@ function Mentor() {
         {/* Company List */}
 
         <section className="tw-flex-col tw-justify-center tw-items-center tw-flex tw-px-16 tw-gap-10 tw-mt-32">
-          <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Our Top Mentors Interned at</h1>
+          <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#B39CD0] tw-text-center">Our Top Mentors Interned at</h1>
           <div className="tw-gap-32 tw-justify-evenly tw-items-baseline tw-grid tw-grid-cols-4 max-[990px]:tw-grid-rows-2 max-[990px]:tw-grid-cols-2">
             <Company imgSrc={GSoC} name="GSoC" />
             <Company imgSrc={microsoft} name="Microsoft" />
@@ -78,7 +78,7 @@ function Mentor() {
         {/* Icons Cards row */}
 
         <section className="tw-mt-36 tw-px-16 tw-flex tw-flex-col tw-justify-center tw-items-center">
-          <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Empower Your Expertise, Earn Your Impact</h1>
+          <h1 className="tw-font-extrabold tw-text-[40px] tw-text-[#B39CD0] tw-text-center">Empower Your Expertise, Earn Your Impact</h1>
           <div className="tw-flex max-[990px]:tw-w-full tw-gap-10 tw-mt-6 tw-flex-wrap">
             {/* card1 */}
 
@@ -115,7 +115,7 @@ function Mentor() {
         <section className="tw-mt-20 tw-p-16">
           <div className="tw-flex tw-flex-col">
             <div className="section-tittle text-center mb-30">
-              <h2 className="tw-font-extrabold tw-text-[40px] tw-text-[#64748b] tw-text-center">Frequently Asked Questions</h2>
+              <h2 className="tw-font-extrabold tw-text-[40px] tw-text-[#B39CD0] tw-text-center">Frequently Asked Questions</h2>
             </div>
             <FAQList faq={faq} />
           </div>

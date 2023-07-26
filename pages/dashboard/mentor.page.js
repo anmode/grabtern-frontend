@@ -5,7 +5,7 @@ import Sidebar from "../../components/mentorDashboard/sidebar";
 import Profile from "../../components/mentorDashboard/profile";
 import Sessions from "../../components/mentorDashboard/sessions";
 import Calendar from "../../components/mentorDashboard/calendar";
-import Queries from "../../components/mentorDashboard/queries"
+import Queries from "../../components/mentorDashboard/queries";
 import Header from "../../components/layout/Header";
 
 function MentorDashboard() {

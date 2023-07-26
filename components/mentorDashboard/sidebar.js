@@ -14,7 +14,7 @@ import { CgProfile } from "react-icons/cg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgMailOpen } from "react-icons/cg";
 import { BiGift } from "react-icons/bi";
-import {CgSearchFound} from "react-icons/cg"
+import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";

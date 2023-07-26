@@ -1,58 +1,68 @@
 .container {
-    padding: 5rem 0 0 20rem;
-    
+  padding: 2rem 0 0 20rem;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.subheading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #6e4fa0;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  border: 2px solid #845ec2;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.active {
+  /* background-color: #1a202c; */
+  background-color: #845ec2;
+  color: #ffffff;
+}
+
+.pendingQueries {
+  margin-bottom: 1rem;
+}
+
+.query {
+  margin-bottom: 1rem;
+}
+
+.answerInput {
+  border: 2px solid #00000050;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.submitButton {
+  background-color: #845ec2;
+  color: white;
+  position: relative;
+  border-radius: 2rem;
+  font-size: small;
+  padding: 5px 5px;
+}
+.submitButton:hover {
+  background-color: #6e4fa0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0;
+    margin-top: 30px;
+    padding-left: 50px;
   }
-  
-  .heading {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-  
-  .buttonGroup {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .button {
-    border: 2px solid black;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-  }
-  
-  .active {
-    background-color: #1a202c;
-    color: #ffffff;
-  }
-  
-  .pendingQueries {
-    margin-bottom: 1rem;
-  }
-  
-  .query {
-    margin-bottom: 1rem;
-  }
-  
-  .answerInput {
-    border: 2px solid #00000050;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    margin-right: 0.5rem;
-  }
-  
-  .submitButton {
-    background-color: #021d36;
-    color: white;
-    position: relative;
-    border-radius: 2rem;
-    font-size: small;
-    padding: 5px 5px;
-  }
-  @media (max-width: 768px) {
-    .container {
-      margin-left: 0;
-      margin-top: 30px;
-      padding-left: 50px;
-    }
-  } 
+}

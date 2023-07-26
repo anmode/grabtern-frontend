@@ -3,7 +3,6 @@ import {
   Internship,
   MentorSection,
   Service,
-  TeamProfile,
   Testimonial,
   Banner,
 } from "../components/homePage";
@@ -11,7 +10,6 @@ import Hackathon from "../components/hackthons/Hackathons";
 import internshipsData from "./data/coursesData";
 import servicesData from "./data/ServicesData";
 import hackathonsData from "./data/hackathonsData";
-import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -68,27 +66,6 @@ const testimonialOptions = {
     },
     1170: {
       items: 3,
-    },
-  },
-};
-
-const teamsOptions = {
-  margin: 40,
-  items: 4,
-  nav: true,
-  loop: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    900: {
-      items: 3,
-    },
-    1170: {
-      items: 4,
     },
   },
 };
@@ -219,32 +196,6 @@ export default function Home() {
               </OwlCarousel>
             ) : null}
           </ul>
-        </Section>
-
-        {/* team section */}
-        <Section
-          kicker="Grabtern team"
-          heading="Our Community"
-          subheading="Meet the members of Grabtern Community"
-          align="center"
-        >
-          <div>
-            {carousel === true ? (
-              <OwlCarousel
-                {...teamsOptions}
-                autoplay={true}
-                lazyLoad={true}
-                smartSpeed={1000}
-                autoplayTimeout={3500}
-                autoplayHoverPause={true}
-                className="owl-carousel owl-theme"
-              >
-                {teamsData.map((profile, index) => (
-                  <TeamProfile key={index} {...profile} />
-                ))}
-              </OwlCarousel>
-            ) : null}
-          </div>
         </Section>
       </main>
       <Footer />

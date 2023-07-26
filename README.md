@@ -2,6 +2,12 @@
 This is the frontend repository for Grabtern, a web application built with Next.js.
 <br>
 
+## Logo
+
+<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link to new Logo</a>
+
+<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>
+
 <div align="center">
  <p>
 
@@ -126,12 +132,6 @@ If you'd like to contribute to Grabtern Frontend:-
 - Please also read through the [Code Of Conduct](https://github.com//anmode/grabtern-frontend/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
 ---
-
-## Logo
-
-<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link to new Logo</a>
-
-<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>
 
 ### Creating A Pull Request
 

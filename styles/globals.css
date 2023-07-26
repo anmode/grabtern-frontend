@@ -74,6 +74,10 @@ a {
   text-decoration: none;
 }
 
+a:hover{
+  color: #7A9D54;
+}
+
 * {
   box-sizing: border-box;
 }

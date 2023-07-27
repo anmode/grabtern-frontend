@@ -126,9 +126,8 @@ function Profile({ mentorDetail }) {
               marginLeft: "230px",
               alignItems: "center",
               marginTop: "5px",
-              color: 
-              "#845ec2 ",
-              fontFamily:"sans-serif"
+              color: "#64748b",
+              fontFamily: "sans-serif",
             }}
           >
             Edit your profile
@@ -143,19 +142,21 @@ function Profile({ mentorDetail }) {
                   <img
                     style={{
                       marginTop: "120px",
-                      borderRadius: "5%",
-                      height: "auto",
+                      borderRadius: "50%",
+                      objectFit: "contain",
+                      width: "100px",
+                      height: "100px",
                       boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px ",
                     }}
                     src={formData.mentorImg}
                     className="mentorPhoto"
-                    height={50}
                   />
                   <div>
                     <input
-                      style={{ marginTop: "150px" }}
+                      style={{ marginTop: "150px" ,width:'110px'}}
                       type="file"
                       name="mentorProfile"
+
                       onChange={(e) => handleUploadImageChange(e)}
                     />
                   </div>
@@ -177,11 +178,10 @@ function Profile({ mentorDetail }) {
                         width: "90%",
                         borderRadius: "5px",
                         border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset", }}
+                        border: "2px solid rgb(220, 220, 220)",
+                      }}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      // placeholder="e.g. Peter Parker"
                       placeholder={mentorDetail?.name}
                       value={formData.name}
                     />
@@ -192,15 +192,14 @@ function Profile({ mentorDetail }) {
                     <input
                       type="text"
                       name="username"
-                   style={{
+                      style={{
                         width: "90%",
                         borderRadius: "5px",
                         border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset", }}
+                        border: "2px solid rgb(220, 220, 220)",
+                      }}
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                      // placeholder="e.g. peter-parker12"
                       placeholder={mentorDetail?.username}
                       value={formData.username}
                     />
@@ -221,12 +220,12 @@ function Profile({ mentorDetail }) {
                       name="email"
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                   style={{
+                      style={{
                         width: "90%",
                         borderRadius: "5px",
                         border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset", }}
+                        border: "2px solid rgb(220, 220, 220)",
+                      }}
                       // placeholder="e.g. peterparker4321#gmail.com"
                       placeholder={mentorDetail?.email}
                       // readOnly
@@ -241,12 +240,12 @@ function Profile({ mentorDetail }) {
                       name="mobile"
                       className="mentorFormInput"
                       onChange={(e) => handleChange(e)}
-                   style={{
+                      style={{
                         width: "90%",
                         borderRadius: "5px",
                         border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset", }}
+                        border: "2px solid rgb(220, 220, 220)",
+                      }}
                       // placeholder="0123456789"
                       placeholder={mentorDetail?.mobile}
                       value={formData.mobile}
@@ -262,12 +261,12 @@ function Profile({ mentorDetail }) {
                       name="linkedin"
                       className="mentorFormInput"
                       onChange={(e) => handleSocialChange(e)}
-                   style={{
+                      style={{
                         width: "90%",
                         borderRadius: "5px",
                         border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset", }}
+                        border: "2px solid rgb(220, 220, 220)",
+                      }}
                       // placeholder="e.g. https://www.linkedin.com/peterparker"
                       placeholder={mentorDetail?.linkedin}
                       value={formData.social.linkedin}
@@ -281,12 +280,12 @@ function Profile({ mentorDetail }) {
                       name="twitter"
                       className="mentorFormInput"
                       onChange={(e) => handleSocialChange(e)}
-                   style={{
+                      style={{
                         width: "90%",
                         borderRadius: "5px",
                         border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset", }}
+                        border: "2px solid rgb(220, 220, 220)",
+                      }}
                       // placeholder="e.g. https://www.twitter.com/peterparker"
                       placeholder={mentorDetail?.twitter}
                       value={formData.social.twitter}
@@ -304,9 +303,7 @@ function Profile({ mentorDetail }) {
                     style={{
                       width: "95%",
                       borderRadius: "5px",
-                      border: "none",
-                      boxShadow:
-                        "#845ec2 1px 1px 5px 0px inset",
+                      border: "2px solid rgb(220, 220, 220)",
                     }}
                     className="mentorFormInput"
                     onChange={(e) => handleChange(e)}
@@ -347,6 +344,9 @@ function Profile({ mentorDetail }) {
                     backgroundColor: "#845ec2",
                     cursor: "pointer",
                     marginTop: "-50px",
+                    marginLeft: "5px",
+                    boxShadow:
+                      "6px 4px 13px -2px rgba(0, 0, 0, 0.2)",
                     "&:hover": {
                       backgroundColor: "#6b21a8",
                     },

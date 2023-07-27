@@ -32,6 +32,7 @@
 
 .nestedLoading {
   position: relative;
+  left: 85px;
 }
 
 .nestedLoading::after {
@@ -58,6 +59,7 @@
   margin: 0;
   padding: 0;
   position: relative;
+  left: 20px;
 }
 
 .antTable::after {
@@ -117,20 +119,24 @@
   color: rgba(66, 66, 89, 0.64);
   overflow-wrap: break-word;
   font-weight: 500;
+  font-size: 20px;
 }
+
 .userSessionParent {
   position: relative;
-  width: 100%;
   padding: 0 1.4em;
-  max-width: 1400px;
   margin: 1em auto;
+  max-width: 1400px;
   left: 130px;
 }
+
 .userSessionParent .head .title {
+  position: relative;
   font-size: 2em;
   font-weight: 500;
   margin-top: 1.4em;
   margin-bottom: 0.7em;
+  left: 120px;
 }
 .userSessionParent .bottom .menubar {
   margin-bottom: 1.4em;
@@ -147,6 +153,8 @@
   margin: 0;
   overflow: hidden;
   padding: 0;
+  position: relative;
+  left: 120px;
 }
 
 .anttabs {
@@ -176,4 +184,91 @@
   font-size: 1.65em;
   font-weight: 500;
   margin-left: 6px;
+}
+
+/* Additional adjustments for laptop screens */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  /* Reduce the space between columns in the table for laptop screens */
+  .infoTable th,
+  .infoTable td {
+    padding: 18px; /* Adjust the padding value as per your preference */
+  }
+}
+
+
+
+/* For screen sizes between 601px and 1024px */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .userSessionParent {
+    left: 50px;
+  }
+  .userSessionParent .head .title {
+    left: 50px;
+    font-size: 1.8em;
+  }
+  .antbar {
+    left: 50px;
+    font-size: 13px;
+  }
+  .ant1 {
+    font-size: 1.6em;
+  }
+  .tableColumn {
+    font-size: 18px;
+  }
+}
+
+/* Additional adjustments for mobile screens */
+@media screen and (max-width: 600px) {
+  .userSessionParent {
+    left: 10px;
+    padding: 0 0.8em;
+  }
+  .userSessionParent .head .title {
+    font-size: 1.5em;
+    text-align: center; /* Center the title on mobile screens */
+    margin: 0; /* Remove any margin for better spacing */
+  }
+  .userSessionParent .bottom .menubar {
+    display: flex;
+    justify-content: center; /* Center the menu bar on mobile screens */
+    margin-bottom: 1.4em;
+  }
+  .antbar {
+    display: flex; /* Display the tabs in a flex container */
+    justify-content: space-between; /* Spread the tabs horizontally */
+    width: 100%;
+    left: 0; /* Reset the left position to align the tabs to the left */
+  }
+  .anttabs {
+    flex: 1; /* Let the tabs take equal space in the container */
+    text-align: center; /* Center the text inside the tabs */
+  }
+
+  /* Adjust the font size for better mobile display */
+  .tableColumn {
+    font-size: 14px;
+  }
+
+  /* Make the table responsive using flexbox */
+  .infoTable {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Shift the table to the left on smaller screens */
+    margin-left: -10px; /* Adjust the left margin to compensate for the shifted position */
+  }
+  .infoTable th,
+  .infoTable td {
+    flex: 1 0 100%; /* Let the table cells take 100% width on smaller screens */
+  }
+
+  /* Show both tabs on mobile screens */
+  .antbar .anttabs {
+    display: block;
+  }
+
+  /* Reduce the space between Pending and Completed tabs */
+  .antbar .anttabs:last-child {
+    margin-left: 5px; /* Adjust the margin value as per your preference */
+  }
 }

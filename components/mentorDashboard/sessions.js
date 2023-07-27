@@ -52,18 +52,15 @@ function Sessions() {
                         <col />
                         <col />
                         <col />
-                        <col />
                       </colgroup>
                       <thead className={styles.antTable}>
                         <tr>
-                          <th className={styles.antCell}>
-                            <span className={styles.tableColumn}></span>
-                          </th>
+                         
                           <th className={styles.antCell}>
                             <span className={styles.tableColumn}>Topic</span>
                           </th>
                           <th className={styles.antCell}>
-                            <span className={styles.tableColumn}>Mentor</span>
+                            <span className={styles.tableColumn}>User</span>
                           </th>
                           <th className={styles.antCell}>
                             <span className={styles.tableColumn}>Time</span>
@@ -77,6 +74,15 @@ function Sessions() {
                           <th className={styles.antCell}>
                             <span className={styles.tableColumn}>Status</span>
                           </th>
+                        </tr>
+                        <tr>
+                           
+                           <td>ABCD</td>
+                           <td>EFGH</td>
+                           <td>IJKL</td>
+                           <td>MNOP</td>
+                           <td>QRST</td>
+                           <td>UVWX</td>
                         </tr>
                       </thead>
                     </table>
@@ -92,3 +98,4 @@ function Sessions() {
 }
 
 export default Sessions;
+

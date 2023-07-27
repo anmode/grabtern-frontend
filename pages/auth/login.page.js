@@ -193,7 +193,7 @@ function login() {
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>
               <img src="/Grabtern2.png"></img>
-              <h2> {entityType} Login </h2>
+              <h2> {entityType.charAt(0).toUpperCase() + entityType.slice(1)} Login </h2>
             </div>
             <div className={styles.forminput}>
               <label htmlFor="email">Email</label>

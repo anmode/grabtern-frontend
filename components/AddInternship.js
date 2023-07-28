@@ -20,7 +20,7 @@ const options = InternshipLabels.map((label) => {
   return { value: label, label: label };
 });
 
-const AddIntership = ({ handleShow }) => {
+const AddInternship = ({ handleShow }) => {
   const [formData, setFormData] = React.useState({
     internshipImage: "",
     internshipImageAlt: "",
@@ -287,4 +287,4 @@ const AddIntership = ({ handleShow }) => {
   );
 };
 
-export default AddIntership;
+export default AddInternship;

@@ -42,6 +42,12 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ---
 
+## Logo
+
+<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link to new Logo</a>
+
+<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>
+
 ## Getting Started
 
 ### How To SetUp

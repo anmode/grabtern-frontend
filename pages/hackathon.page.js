@@ -121,7 +121,6 @@ export default function Home() {
   const [filterHack, setFilterHack] = useState(hackathonsData);
   const [showAddHackathonModal, setShowAddHackathonModal] = useState(false);
 
-
   const filteredHackathons = HackathonsData.filter((hackathon) => {
     const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
 

@@ -39,7 +39,11 @@ const Input = ({
           placeholder={placeholder}
           onChange={(e) => handleChange(e)}
           value={value}
-          onKeyDown={(e) => type.toLowerCase() === "number" && ["e", "E"].includes(e.key) && e.preventDefault()}
+          onKeyDown={(e) =>
+            type.toLowerCase() === "number" &&
+            ["e", "E"].includes(e.key) &&
+            e.preventDefault()
+          }
           {...rest}
         />
       )}

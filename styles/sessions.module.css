@@ -130,6 +130,7 @@
   left: 130px;
 }
 
+
 .userSessionParent .head .title {
   position: relative;
   font-size: 2em;
@@ -186,15 +187,6 @@
   margin-left: 6px;
 }
 
-/* Additional adjustments for laptop screens */
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-  /* Reduce the space between columns in the table for laptop screens */
-  .infoTable th,
-  .infoTable td {
-    padding: 18px; /* Adjust the padding value as per your preference */
-  }
-}
-
 
 
 /* For screen sizes between 601px and 1024px */
@@ -231,18 +223,20 @@
   }
   .userSessionParent .bottom .menubar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center; /* Center the menu bar on mobile screens */
     margin-bottom: 1.4em;
   }
   .antbar {
     display: flex; /* Display the tabs in a flex container */
     justify-content: space-between; /* Spread the tabs horizontally */
-    width: 100%;
+    width: 70%;
     left: 0; /* Reset the left position to align the tabs to the left */
   }
   .anttabs {
     flex: 1; /* Let the tabs take equal space in the container */
     text-align: center; /* Center the text inside the tabs */
+    white-space: nowrap; /* Prevent text wrapping */
   }
 
   /* Adjust the font size for better mobile display */
@@ -265,10 +259,45 @@
   /* Show both tabs on mobile screens */
   .antbar .anttabs {
     display: block;
+    font-size: 12px; /* Adjust the font size for mobile screens */
+  }
+
+  .head{
+    display: flex;
+    justify-content: center;
   }
 
   /* Reduce the space between Pending and Completed tabs */
   .antbar .anttabs:last-child {
-    margin-left: 5px; /* Adjust the margin value as per your preference */
+    margin-left: 0px; /* Adjust the margin value as per your preference */
   }
+}
+
+/* Add smooth hover effect for Pending and Completed tabs */
+.antbar .anttabs:hover {
+  cursor: pointer;
+}
+
+/* Add underline and line height for hover effect */
+.antbar .anttabs span {
+  display: inline-block;
+  position: relative;
+  line-height: 1.5; /* Adjust the line height as per your preference */
+}
+
+.antbar .anttabs span::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Adjust the thickness of the underline */
+  background-color: purple;
+  transform: scaleX(0); /* Initially, the underline is not visible */
+  transform-origin: left; /* Start the underline from the left */
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition */
+}
+
+.antbar .anttabs:hover span::before {
+  transform: scaleX(1); /* On hover, reveal the underline */
 }

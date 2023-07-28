@@ -8,16 +8,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-::-moz-selection {
-   color: white;
-   background-color: #845ec2; 
-  } 
-  
-::selection {
-   color: white;
-   background-color: #845ec2;
-  }
-
 :root {
   --primary-10: #cdc2ff;
   --primary-50: #9d94c6;

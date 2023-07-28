@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import FormModal from "./FormModal";
 
-export const AddHackathon = ({ handleShow }) => {
+const AddHackathon = ({ handleShow }) => {
   const HackathonLabels = [
     "Web",
     "Upcoming",
@@ -113,3 +113,5 @@ export const AddHackathon = ({ handleShow }) => {
     </div>
   );
 };
+
+export default AddHackathon;

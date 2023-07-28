@@ -34,7 +34,7 @@ import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
 import { encryptData, decryptData } from "../hook/encryptDecrypt";
-import { AddHackathon } from "../components/AddHackathon";
+import AddHackathon from "../components/AddHackathon";
 
 const buttonStyle = {
   width: "200px",

@@ -163,9 +163,6 @@ We follow a standardized commit message format using Commitlint to ensure consis
 ```bash
 git commit -m "feat(auth): Implement user signup process (#789)"
 ```
-
-Remember to run `commitlint` before pushing your changes to ensure your commit messages meet the guidelines.
-
 By following these guidelines, we can maintain a clean commit history that is easy to understand and helps us effectively track changes. If you have any questions or need further assistance, feel free to ask! Happy contributing!
 
 By following these guidelines, we aim to create a welcoming community where everyone feels comfortable and empowered to contribute.

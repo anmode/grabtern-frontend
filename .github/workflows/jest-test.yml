@@ -3,8 +3,8 @@ name: Jest Test
 on:
   push:
     branches:
-    - main
-    - develop
+      - main
+      - develop
 
 jobs:
   test:

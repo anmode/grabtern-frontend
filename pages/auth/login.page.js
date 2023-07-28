@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/form.module.css";
 import Button from "../../components/UI/Button/Button";
+import EventLogin from "../../components/eventLogin/EventLogin";
 const Header = dynamic(() => import("../../components/layout/Header"));
 const Footer = dynamic(() => import("../../components/layout/Footer"));
 
@@ -238,21 +239,21 @@ function login() {
                 className={styles.loginInput}
               />
             </div> */}
-             <div className="tw-flex tw-justify-center"
-           >
-          <Button className="tw-w-40"
-          text="Login"
-          />
-          </div>
+            
             <div>
             <ToastContainer />
             <div>
-              {isLoading && (
-                <img
-                  style={{ width: "50px", height: "50px" }}
-                  src="/assets/img/gif/Spinner.gif"
-                  alt="...jljk"
-                />
+              {isLoading ? ( <div className="tw-relative tw-left-[160px]">
+                <EventLogin/>
+              </div>
+            
+              ):(
+                <div className="tw-flex tw-justify-center  tw-h-11"
+                >
+               <Button className=" tw-w-[400px]" onClick={handleSubmit}
+               text="Login"
+               />
+               </div>
               )}
             </div>
           </div>

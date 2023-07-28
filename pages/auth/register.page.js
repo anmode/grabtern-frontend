@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
+import EventLogin from "../../components/eventLogin/EventLogin";
 import Visibillity from "../../public/assets/Visibillity";
 import VisibillityOff from "../../public/assets/VisibillityOff";
 import Header from "../../components/layout/Header";
@@ -250,23 +250,24 @@ function Register() {
               style={{ textAlign: "center", width: "100%" }}
             />
           </div> */}
-          <div className="tw-flex tw-justify-center"
-           >
-          <Button className="tw-w-44"
-          text="Registration"
-          />
-          </div>
+        
+        
           
 
 <div>
             <ToastContainer />
             <div>
-              {isLoading && (
-                <img
-                  style={{ width: "50px", height: "50px" }}
-                  src="/assets/img/gif/Spinner.gif"
-                  alt="...jljk"
-                />
+              {isLoading ? (<div className="tw-relative tw-left-[160px]">
+                <EventLogin/>
+              </div>
+             
+              ):(
+                <div className="tw-flex tw-justify-center tw-h-11"
+                >
+               <Button className="tw-w-[400px]" onClick={handleSubmit}
+               text="Registration"
+               />
+               </div>
               )}
             </div>
           </div>

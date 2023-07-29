@@ -3,7 +3,6 @@ import {
   Internship,
   MentorSection,
   Service,
-  TeamProfile,
   Testimonial,
   Banner,
 } from "../components/homePage";
@@ -11,14 +10,14 @@ import Hackathon from "../components/hackthons/Hackathons";
 import internshipsData from "./data/coursesData";
 import servicesData from "./data/ServicesData";
 import hackathonsData from "./data/hackathonsData";
-import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ButtonLink, Section } from "../components/UI";
-
+import { useAuth } from "../context/AuthContext";
+import { encryptData, decryptData } from "../hook/encryptDecrypt";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");
@@ -71,54 +70,33 @@ const testimonialOptions = {
   },
 };
 
-const teamsOptions = {
-  margin: 40,
-  items: 4,
-  nav: true,
-  loop: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    900: {
-      items: 3,
-    },
-    1170: {
-      items: 4,
-    },
-  },
-};
-
 export default function Home() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  const [isMentorLoggedIn, setIsMentorLoggedIn] = useState(false);
   const [carousel, setCarousel] = useState(false);
   const hasPlayedGreeting = localStorage.getItem("has_played_greeting");
   useEffect(() => {
-    if (
-      localStorage.getItem("user_name") !== null ||
-      localStorage.getItem("token") !== null
-    ) {
-      setIsUserLoggedIn(true);
-    }
-    if (
-      localStorage.getItem("mentor_name") !== null &&
-      localStorage.getItem("mentorToken") !== null
-    ) {
-      setIsMentorLoggedIn(true);
-    }
-    console.log(isUserLoggedIn);
     setCarousel(true);
   }, [carousel]);
 
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
+  // console.log(isMentorLoggedIn,isUserLoggedIn);
+
+  const decryptedData = decryptData(
+    localStorage.getItem("userData") || localStorage.getItem("mentorData"),
+  );
+
   return (
     <div>
-      {localStorage.getItem("user_name") !== null && !hasPlayedGreeting ? (
+      {(localStorage.getItem("mentorData") !== null ||
+        localStorage.getItem("userData") !== null) &&
+      !hasPlayedGreeting ? (
         <div className="welcomeAfterLoggedIn">
-          Hi 👋🏻 {localStorage.getItem("user_name")} <br /> Welcome to GrabTern
+          Hi 👋🏻 {decryptedData?.user_name || decryptedData?.mentor_name} <br />{" "}
+          Welcome to GrabTern
           <audio
             src="/assets/sound/greet.wav"
             autoplay
@@ -165,7 +143,7 @@ export default function Home() {
           <ButtonLink
             text="View More Internships"
             href="/internship"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 
@@ -185,7 +163,7 @@ export default function Home() {
           <ButtonLink
             text="View More Hackathons"
             href="/hackathon"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 
@@ -218,32 +196,6 @@ export default function Home() {
               </OwlCarousel>
             ) : null}
           </ul>
-        </Section>
-
-        {/* team section */}
-        <Section
-          kicker="Grabtern team"
-          heading="Our Community"
-          subheading="Meet the members of Grabtern Community"
-          align="center"
-        >
-          <div>
-            {carousel === true ? (
-              <OwlCarousel
-                {...teamsOptions}
-                autoplay={true}
-                lazyLoad={true}
-                smartSpeed={1000}
-                autoplayTimeout={3500}
-                autoplayHoverPause={true}
-                className="owl-carousel owl-theme"
-              >
-                {teamsData.map((profile, index) => (
-                  <TeamProfile key={index} {...profile} />
-                ))}
-              </OwlCarousel>
-            ) : null}
-          </div>
         </Section>
       </main>
       <Footer />

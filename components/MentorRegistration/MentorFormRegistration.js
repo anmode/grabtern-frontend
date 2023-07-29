@@ -167,21 +167,16 @@ export default function MentorForm() {
       return;
     }
     setError("");
-    // if (formData.bookSession.length !== 2) {
-    //   return setError(
-    //     "The number of book sessions must be more than 2 or equal to 2!"
-    //   );
-    // }
-    // Register mentor
     try {
-      // console.log(formData);
       setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
       console.log(error);
       const { data: res } = await axios.post(url, formData);
       setIsLoading(false);
-      //setModalPopup(true);
-      setaddToast(true);
+      toast.success("Registered successfully");
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -239,7 +234,6 @@ export default function MentorForm() {
   return (
     <div className="mentorFormRegisration">
       <Overlay callbackFunction={callbackFunction} />
-      {addtoast === true ? toast.success("Registered successfully") : null}
       <div className="tw-container tw-mx-auto tw-px-4">
         <form
           className="mentorForm"

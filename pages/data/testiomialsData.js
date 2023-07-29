@@ -23,12 +23,12 @@ export default [
     testimonialDescription:
       "I have had an incredible experience using this platform and the results speak for themselves. I am beyond impressed with the guidance and support they provided, making the process of finding internships stress-free. Their commitment to helping individuals reach their career goals is unparalleled. If you want to take control of your career and reach a new height, GrabTern is the way to go.",
   },
-  {
-    testimonialUserName: "Ankit Kumar",
-    testimonialUserHeadline: "B.Tech(2nd Year) | GSOC 2022",
-    testimonialUserImage: "/assets/img/testimonials/ankit.webp",
-    testimonialRate: 4,
-    testimonialDescription:
-      "I was able to secure an internship that paid $3000, all thanks to the guidance and support of the GrabTern team. The platform is designed to help individuals like me achieve their career aspirations. If you're looking for a paid internship that will boost your resume and give you valuable industry experience, don't waste another moment searching. Use GrabTern and watch your career take off.",
-  },
+  // {
+  //   testimonialUserName: "Ankit Kumar",
+  //   testimonialUserHeadline: "B.Tech(2nd Year) | GSOC 2022",
+  //   testimonialUserImage: "/assets/img/testimonials/ankit.webp",
+  //   testimonialRate: 4,
+  //   testimonialDescription:
+  //     "I was able to secure an internship that paid $3000, all thanks to the guidance and support of the GrabTern team. The platform is designed to help individuals like me achieve their career aspirations. If you're looking for a paid internship that will boost your resume and give you valuable industry experience, don't waste another moment searching. Use GrabTern and watch your career take off.",
+  // },
 ];

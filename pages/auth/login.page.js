@@ -55,26 +55,15 @@ function login() {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData);
-      let entityData = {};
+      console.log(res);
       if (entityType === "user") {
-        entityData = {
-          token: res.data,
-          user_name: res.data.fullName,
-          user_email: res.data.email,
-          user_id: res.data.id,
-        };
-        localStorage.setItem("userData", encryptData(entityData));
+        localStorage.setItem("userData", res);
         setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
-        entityData = {
-          mentor_name: res.fullName,
-          mentorToken: res.mentorToken,
-        };
-        localStorage.setItem("mentorData", encryptData(entityData));
+        localStorage.setItem("mentorData", res);
         setIsMentorLoggedIn(true);
       }
-
-      router.push("/");
+      // router.push("/");
     } catch (error) {
       console.log(error);
       if (
@@ -94,20 +83,23 @@ function login() {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
       const { data: res } = await axios.post(url, userObject);
       let entityData = {};
+      // console.log(res);
+      const decryptedEntityData = decryptData(res);
+
       if (entityType === "user") {
         entityData = {
           user_name: userObject.name,
           user_picture: userObject.picture,
           user_email: userObject.email,
-          user_id: res.data.id,
+          user_id: decryptedEntityData.id,
         };
         localStorage.setItem("userData", encryptData(entityData));
         setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
         entityData = {
           mentor_name: userObject.name,
-          mentorToken: res.mentorToken,
-          mentor_picture: userObject.picture,
+          mentorToken: decryptedEntityData.mentorToken,
+          mentor_picture: decryptedEntityData.image,
         };
         localStorage.setItem("mentorData", encryptData(entityData));
         setIsMentorLoggedIn(true);
@@ -126,18 +118,21 @@ function login() {
   }
 
   useEffect(() => {
-    // Use the useRouter hook to get the 'entityType' query parameter from the URL
-    // Use window.location.href to get the URL and extract the query parameters
+    // console.log(isMentorLoggedIn, isUserLoggedIn);
+    // Redirect based on login status only if mentor or user is logged in
+    if (isMentorLoggedIn || isUserLoggedIn) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectURL = urlParams.get("redirectURL");
+      router.replace(redirectURL || "/");
+    }
     const url = new URL(window.location.href);
     const entityTypeFromUrl = url.searchParams.get("entityType");
-    console.log(entityTypeFromUrl);
-    // Set the entity type from the URL if it exists
+    // console.log(entityTypeFromUrl);
     if (entityTypeFromUrl) {
       setEntityType(entityTypeFromUrl);
     }
     google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       callback: handleCallbackResponse,
     });
 
@@ -147,13 +142,9 @@ function login() {
     );
     google.accounts.id.prompt();
 
-    // Check if the user or mentor is logged in
     if (isUserLoggedIn || isMentorLoggedIn) {
-      // Extract redirectURL from query parameters
       const urlParams = new URLSearchParams(window.location.search);
       const redirectURL = urlParams.get("redirectURL");
-
-      // Redirect to redirectURL if it exists
       if (redirectURL) {
         router.push(redirectURL);
       } else {
@@ -259,7 +250,7 @@ function login() {
             <div className={styles.linkdiv}>
               Don't have an account?
               <Link
-                href="/userRegister"
+                href="/auth/register"
                 className={styles.registration}
                 style={{ textDecoration: "none" }}
               >

@@ -36,7 +36,7 @@ function MentorSection() {
       <div className="tw-relative tw-w-full tw-max-w-sm tw-mx-auto tw-space-y-4">
         {/* background image */}
         <div
-          class={clsx(
+          className={clsx(
             "tw-absolute -tw-top-10 -tw-left-10",
             "tw-h-[480px] tw-w-[480px] tw-rotate-45",
             "mask mask-hexed",
@@ -57,9 +57,9 @@ function MentorSection() {
           <ProfileCard
             className="tw-shadow-none tw-ml-8"
             image="https://media.cssninja.io/shuriken/avatars/2.svg"
-            heading="Anmol Aggarwal"
-            subheading="Google Summer of Code Mentor"
-            body="Great Experience mentoring students on Grabtern"
+            heading="Syed Mohd Abbas"
+            subheading="ISRO Mentor"
+            body="Mentoring students on Grabtern was a fulfilling and rewarding experience."
             intent="bg"
             rounded="sm"
             direction="row-reverse"
@@ -67,9 +67,9 @@ function MentorSection() {
           <ProfileCard
             className="tw-shadow-none tw-mr-8"
             image="https://media.cssninja.io/shuriken/avatars/2.svg"
-            heading="Anmol Aggarwal"
-            subheading="Google Summer of Code Mentor"
-            body="Great Experience mentoring students on Grabtern"
+            heading="Shwetank Maheshwari"
+            subheading="Amazon ML Summer Mentor"
+            body="I gained valuable insights while mentoring students on Grabtern."
             intent="bg"
             rounded="sm"
           />

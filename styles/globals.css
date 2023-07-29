@@ -8,6 +8,16 @@
   font-family: "Poppins", sans-serif;
 }
 
+::-moz-selection {
+   color: white;
+   background-color: #845ec2; 
+  } 
+  
+::selection {
+   color: white;
+   background-color: #845ec2;
+  }
+
 :root {
   --primary-10: #cdc2ff;
   --primary-50: #9d94c6;
@@ -74,6 +84,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #7a9d54;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -128,6 +142,7 @@ a {
   border-radius: 20px;
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
   animation: welcomeAfterLoggedIn 1s 0.8s;
+  z-index: 120;
 }
 
 @keyframes welcomeAfterLoggedIn {
@@ -743,9 +758,10 @@ select {
 
 .srv-validation-message {
   color: red;
-  font-size: 1rem;
+  font-size: 0.8rem;
   position: absolute;
   top: 100%;
+  line-height: 1.4;
 }
 .srv-validation-message ~ input,
 .srv-validation-message ~ textarea,
@@ -1569,8 +1585,16 @@ select {
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
-  max-width: 60%;
+  max-width: 90%;
   margin: auto;
+  padding: 0px;
+}
+
+@media screen and (max-width: 600px) {
+  .ret_pol2 {
+    width: 100%;
+    padding: 0px;
+  }
 }
 
 .refund {
@@ -1611,7 +1635,7 @@ select {
   margin-top: 100px;
   font-size: 60px;
   text-align: center;
-  color: #4255a4;
+  color: #845ec2;
 }
 
 #tncheading2 {
@@ -1622,7 +1646,7 @@ select {
   margin-top: 100px;
   font-size: 35px;
   text-align: center;
-  color: #4255a4;
+  color: #845ec2;
   text-align: left;
   margin-left: 40px;
   margin-top: 8px;
@@ -1662,7 +1686,7 @@ select {
   margin-top: 100px;
   font-size: 3rem;
   text-align: center;
-  color: #2e4fd5;
+  color: #845ec2;
   text-align: left;
   margin-left: 20px;
   margin-top: 10px;
@@ -1671,7 +1695,7 @@ select {
 
 .tnc-sub-head {
   font-family: "Josefin Sans", sans-serif;
-  color: #4255a4;
+  color: #845ec2;
   margin-top: 10px;
   font-style: normal;
   font-weight: 550;
@@ -1691,6 +1715,11 @@ select {
 }
 
 @media only screen and (max-width: 600px) {
+  .terms-and-cond-sub {
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 0;
+  }
   .front {
     display: block;
   }
@@ -1701,10 +1730,9 @@ select {
     font-size: 27px;
   }
   .maincontent {
-    margin-left: 5px;
     margin-right: 5px;
-    text-align: center;
-    width: 89%;
+    text-align: left;
+    width: 93%;
   }
   .tableofcontents {
     margin: auto;

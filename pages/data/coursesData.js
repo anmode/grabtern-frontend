@@ -10,7 +10,7 @@ export default [
     internshipPayed: 450,
     internshipPrice: 1,
     internshipLink: "https://summerofcode.withgoogle.com/",
-    tags: ["Part Time,Web"],
+    tags: ["Part Time", "Web"],
   },
   {
     internshipImage: "/assets/img/gallery/mlhprep.webp",
@@ -23,7 +23,7 @@ export default [
     internshipPayed: 250,
     internshipPrice: 1,
     internshipLink: "https://fellowship.mlh.io/programs/prep",
-    tags: ["Part Time,Major League Hacking"],
+    tags: ["Part Time", "Major League Hacking"],
   },
   {
     internshipImage: "/assets/img/gallery/mlhfellowship.webp",

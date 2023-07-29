@@ -9,11 +9,11 @@ export default [
   },
   {
     ques: "How much time do I need to commit as a mentor?",
-    ans: "The time commitment varies depending on your availability and the mentee's needs. Typically, mentors spend a few hours per month in one-on-one sessions or group interactions."
+    ans: "The time commitment varies depending on your availability and the mentee's needs. Typically, mentors spend a few hours per month in one-on-one sessions or group interactions.",
   },
   {
     ques: "Is prior mentoring experience required?",
-    ans: "While prior mentoring experience can be beneficial, it is not a strict requirement. A genuine willingness to help others and share your knowledge and experiences are more important qualities."
+    ans: "While prior mentoring experience can be beneficial, it is not a strict requirement. A genuine willingness to help others and share your knowledge and experiences are more important qualities.",
   },
   {
     ques: "Can I be a mentor in multiple areas or subjects?",

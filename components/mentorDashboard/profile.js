@@ -153,10 +153,9 @@ function Profile({ mentorDetail }) {
                   />
                   <div>
                     <input
-                      style={{ marginTop: "150px" ,width:'110px'}}
+                      style={{ marginTop: "150px", width: "110px" }}
                       type="file"
                       name="mentorProfile"
-
                       onChange={(e) => handleUploadImageChange(e)}
                     />
                   </div>
@@ -345,8 +344,7 @@ function Profile({ mentorDetail }) {
                     cursor: "pointer",
                     marginTop: "-50px",
                     marginLeft: "5px",
-                    boxShadow:
-                      "6px 4px 13px -2px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "6px 4px 13px -2px rgba(0, 0, 0, 0.2)",
                     "&:hover": {
                       backgroundColor: "#6b21a8",
                     },

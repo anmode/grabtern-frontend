@@ -17,26 +17,26 @@ import { VisibilityOff } from "@mui/icons-material";
 const ResetPassword = () => {
   // initial state
   const initialState = {
-    newPassword : "",
-    confirmPassword: ""
-  }
+    newPassword: "",
+    confirmPassword: "",
+  };
 
   // states
   const { entityType, resetToken } = router.query;
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(initialState);
-  const {newPassword, confirmPassword} = formData;
+  const { newPassword, confirmPassword } = formData;
 
   // onChange function
   const onChange = (e) => {
-    setFormData({...formData, [e.target.name] : e.target.value});
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   // onsubmit function
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
-    if (newPassword !== confirmPassword) {     
+    if (newPassword !== confirmPassword) {
       return toast.error("Passwords do not match");
     }
 
@@ -62,7 +62,7 @@ const ResetPassword = () => {
     } catch (error) {
       setIsLoading(false);
       if (error.response) {
-        toast.error(error.response.data.message)
+        toast.error(error.response.data.message);
       } else {
         toast.error("Internal server error");
       }

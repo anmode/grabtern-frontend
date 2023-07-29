@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useState, useRef } from "react";
+import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
 
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
@@ -18,7 +18,7 @@ import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = ({ setComponent }) => {
+const Sidebar = ({ setComponent, component }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -27,7 +27,29 @@ const Sidebar = ({ setComponent }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const menuItem1 = [
+  const refOne = useRef(null);
+
+  //detects if clicked on outside of element for smaller devices
+
+  const handleClickOutside = (event) => {
+    if (refOne.current && !refOne.current.contains(event.target)) {
+      setIsSidebarOpen(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
+
+  const menuItem = [
+    {
+      title: "Profile",
+      icon: <CgProfile />,
+      path: "profile",
+    },
     {
       title: "Home",
       icon: <AiOutlineHome />,
@@ -43,9 +65,6 @@ const Sidebar = ({ setComponent }) => {
       icon: <BiMessageRoundedDots />,
       path: "queries",
     },
-  ];
-
-  const menuItem2 = [
     {
       title: "Calendar",
       icon: <BiCalendar />,
@@ -61,14 +80,6 @@ const Sidebar = ({ setComponent }) => {
       icon: <MdPayment />,
       path: "payments",
     },
-    {
-      title: "Profile",
-      icon: <CgProfile />,
-      path: "profile",
-    },
-  ];
-
-  const menuItem3 = [
     {
       title: "What's New",
       icon: <IoMdNotificationsOutline />,
@@ -102,105 +113,52 @@ const Sidebar = ({ setComponent }) => {
 
   return (
     <>
-      <div>
-        <button
-          type="button"
-          className="tw-fixed tw-inline-flex md:tw-hidden sm:tw-block tw-items-center tw-p-2 tw-mt-2 tw-ml-3 tw-z-50 tw-text-sm tw-text-gray-500 tw-rounded-lg tw-sm:hidden tw-hover:bg-gray-100 tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-gray-200"
-          onClick={toggleSidebar}
-        >
-          <span className="tw-sr-only">Open sidebar</span>
-          <svg
-            className="tw-w-6 tw-h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-            ></path>
-          </svg>
-        </button>
-
+      <div className="max-[512px]:tw-hidden">
+        {/* For laptops and tablets  */}
         <aside
-          className={`tw-fixed tw-top-0 tw-left-0 tw-z-40 tw-w-64 tw-h-screen tw-transform tw-transition-transform tw-bg-base-300 lg:tw-translate-x-0 ${
-            isSidebarOpen ? "tw-translate-x-0" : "tw--translate-x-full"
-          }`}
+          ref={refOne}
+          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"}`}
+          onMouseOver={() => setIsSidebarOpen(true)}
+          onMouseLeave={() => setIsSidebarOpen(false)}
         >
           <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
-            <div className="tw-flex  tw-items-center">
-              <Image
-                className="tw-px-3 tw-py-4"
-                src={Logo}
-                alt="icon"
-                width={50}
-                height={50}
-              />
-              <div className="tw-font-inter tw-font-bold tw-text-3xl ">
-                GrabTern
-              </div>
+            <div className={`${isSidebarOpen ? "tw-block" : "tw-hidden"} tw-flex tw-justify-center  tw-items-center`}>
+              <Link href="/" className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl">GrabTern</Link>
             </div>
-            <div className="tw-pt-2 tw-pl-1">
-              <BookButton className="tw-text-center tw-font-inter tw-text-xs tw-font-light tw-bg-white tw-hover:bg-gray-100 tw-text-gray-800 tw-font-semibold tw-py-4 tw-px-10 tw-border tw-border-gray-400 tw-rounded-lg tw-shadow">
-                <div className="tw-flex tw-items-center tw-justify-end">
-                  <RxRocket />
-                  <div className="tw-ml-2">Get more bookings</div>
-                </div>
-              </BookButton>
+            <div className={`tw-group tw-p-2 tw-flex ${isSidebarOpen ? "tw-justify-start tw-gap-4" : "tw-justify-center"} tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out hover:tw-bg-[#00C9A7] tw-cursor-pointer`}>
+              <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+              <span className={`${isSidebarOpen ? "tw-block group-hover:tw-text-primary-100" : "tw-hidden"}`}>Get more bookings</span>
             </div>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
-            <ul className="tw-space-y-2 tw-font-medium tw-py-2">
-              {menuItem1.map((val, key) => (
+            <ul className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}>
+              {menuItem.map((val, key) => (
                 <HoverListItem
                   key={key}
                   className="tw-group tw-cursor-pointer hoverList"
                 >
                   <div
-                    className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
+                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"} ${component === val.path ? "tw-bg-[#00C9A7]" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     onClick={() => setComponent(val.path)}
                   >
-                    <span className="tw-ml-3">{val.icon}</span>
-                    <span className="tw-ml-3">{val.title}</span>
-                  </div>
-                </HoverListItem>
-              ))}
-            </ul>
-            <ul className="tw-space-y-2 tw-font-medium tw-py-4">
-              {menuItem2.map((val, key) => (
-                <HoverListItem
-                  key={key}
-                  className="tw-group tw-cursor-pointer hoverList"
-                >
-                  <div
-                    className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
-                    onClick={() => setComponent(val.path)}
-                  >
-                    <span className="tw-ml-3">{val.icon}</span>
-                    <span className="tw-ml-3">{val.title}</span>
-                  </div>
-                </HoverListItem>
-              ))}
-            </ul>
-            <ul className="tw-space-y-2 tw-font-medium tw-py-4">
-              {menuItem3.map((val, key) => (
-                <HoverListItem
-                  key={key}
-                  className="tw-group tw-cursor-pointer hoverList"
-                >
-                  <div
-                    className="tw-flex tw-items-center tw-px-2 tw-py-2 tw-text-gray-900 tw-rounded-lg "
-                    onClick={() => setComponent(val.path)}
-                  >
-                    <span className="tw-ml-3">{val.icon}</span>
-                    <span className="tw-ml-3">{val.title}</span>
+                    <span>{val.icon}</span>
+                    <span className={`tw-ml-3 ${isSidebarOpen ? "tw-block" : "tw-hidden"}`}>{val.title}</span>
                   </div>
                 </HoverListItem>
               ))}
             </ul>
           </div>
         </aside>
+
+        {/* For mobile devices max-w-512px */}
+
+        {/* <aside>
+          <div className="tw-fixed min-[513px]:tw-hidden tw-flex tw-justify-center tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200">
+            <div className="tw-flex tw-justify-between tw-items-center tw-p-4">
+            <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+            </div>
+          </div>
+        </aside> */}
+
       </div>
     </>
   );

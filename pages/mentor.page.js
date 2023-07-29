@@ -9,7 +9,7 @@ import Testimonials from "../components/mentorPage/components/Testimonials";
 import Footer from "../components/layout/Footer";
 import Head from "next/head";
 import faq from "./data/faq";
-import testimonialsData from './data/testiomialsData'
+import testimonialsData from "./data/testiomialsData";
 import Link from "next/link";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import PeopleIcon from "@mui/icons-material/People";
@@ -67,7 +67,7 @@ function Mentor() {
             <Company imgSrc={microsoft} name="Microsoft" />
             <Company imgSrc={mlh} name="MLH" />
             <Company imgSrc={hackerRank} name="HackerRank" />
-          </div> 
+          </div>
         </section>
 
         <section className="tw-flex max-[990px]:tw-flex-col max-[990px]:tw-justify-center tw-items-center tw-mt-44 max-[990px]:tw-mt-24 tw-justify-between tw-px-28 tw-gap-10">
@@ -152,9 +152,10 @@ function Mentor() {
           </div>
         </section>
 
-
         <section className="tw-mt-36 tw-px-16 tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-10">
-          <h1 className="max-[637px]:tw-text-[30px] tw-font-extrabold tw-text-[40px] tw-text-[#B39CD0] tw-text-center">Testimonials </h1>
+          <h1 className="max-[637px]:tw-text-[30px] tw-font-extrabold tw-text-[40px] tw-text-[#B39CD0] tw-text-center">
+            Testimonials{" "}
+          </h1>
           <div className="tw-flex tw-justify-center tw-items-center ">
             <Testimonials data={testimonialsData} />
           </div>

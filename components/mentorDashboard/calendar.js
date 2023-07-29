@@ -3,6 +3,11 @@ import styles from "../../styles/dashboard.module.css";
 import { BiLinkAlt } from "react-icons/bi";
 import { BsCalendarCheck } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
+import {RxLapTimer} from "react-icons/rx";
+import Select from 'react-select';
+import moment from 'moment-timezone';
+
+
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
@@ -10,8 +15,22 @@ const Calender = () => {
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedTimes, setSelectedTime] = useState({});
   const [meetingLink, setMeetingLink] = useState("");
+  const[timezone,setTimezone]=useState(null);
   const [showSave, setShowSave] = useState(false);
+  const getTimezoneOffset = (timezone) => {
+    const now = moment(); // Get the current time
+    return now.tz(timezone).format('Z'); // Get the timezone offset in hours and minutes
+  };
+  const timezones = moment.tz.names().map((timezone) => ({
+    label: `${timezone} (GMT ${getTimezoneOffset(timezone)})`,
+    value: timezone,
+  }));
 
+  const handleTimezoneChange=(timezone)=>{
+  setTimezone(timezone);
+  }
+
+  const selectedTimezone = timezones.find((option) => option.value === timezone);
   const handleMeetingLink = (event) => {
     setMeetingLink(event.target.value);
     setShowSave(true);
@@ -55,9 +74,11 @@ const Calender = () => {
   const noticePeriod = ["minutes", "hours", "days"];
   const [BookingPeriod, setBookingPeriod] = useState(bookingPeriod[0]);
   const [NoticePeriod, setNoticePeriod] = useState(noticePeriod[0]);
+ 
   const handleBookingPeriod = (event) => {
     setBookingPeriod(event.target.value);
   };
+
   const handleNoticePeriod = (event) => {
     setNoticePeriod(event.target.value);
   };
@@ -108,6 +129,26 @@ const Calender = () => {
               <div
                 className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}
               >
+                <RxLapTimer/>
+                <h1 className="tw-mr-4 tw-ml-4"> Select the required timezone</h1>
+              </div>
+              <div className="tw-flex tw-mb-8">
+              <Select
+    options={timezones}
+    value={selectedTimezone}
+    onChange={handleTimezoneChange}
+    placeholder="Select a timezone"
+    />
+       {timezone && (
+        <div>
+ {setTimezone.label}
+        </div>
+      
+      )}
+              </div>
+              <div
+                className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}
+              >
                 <BiLinkAlt />
                 <h1 className="tw-mr-4 tw-ml-4"> Enter the meeting link</h1>
               </div>
@@ -146,7 +187,7 @@ const Calender = () => {
               <div className="tw-mb-8">
                 <select
                   name="BookingPeriod"
-                  value={setBookingPeriod}
+                  value={BookingPeriod}
                   onChange={handleBookingPeriod}
                   className="border border-gray-400 p-2 rounded"
                 >
@@ -165,7 +206,7 @@ const Calender = () => {
                 <input type="number" />
                 <select
                   className="tw-w-[94px] tw-pr-[6px]"
-                  value={setNoticePeriod}
+                  value={NoticePeriod}
                   onChange={handleNoticePeriod}
                 >
                   {noticePeriod.map((period) => (

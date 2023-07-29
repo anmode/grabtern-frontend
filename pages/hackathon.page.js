@@ -10,6 +10,7 @@ import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/basic/LoginDropdown";
 import Image from "next/image";
 import Head from "next/head";
+import { MdCreate } from "react-icons/md";
 // import gstyles from "../styles/gridhackathon.module.css";
 import SearchBar from "../components/hackthons/components/Searchbar";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
@@ -33,6 +34,7 @@ import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
 import { encryptData, decryptData } from "../hook/encryptDecrypt";
+import AddHackathon from "../components/AddHackathon";
 
 const buttonStyle = {
   width: "200px",
@@ -117,6 +119,7 @@ export default function Home() {
   const [tagFilter, setTagFilter] = useState(["All"]);
   const [HackathonsData, setHackathonsData] = useState(hackathonsData);
   const [filterHack, setFilterHack] = useState(hackathonsData);
+  const [showAddHackathonModal, setShowAddHackathonModal] = useState(false);
 
   const filteredHackathons = HackathonsData.filter((hackathon) => {
     const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
@@ -279,7 +282,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="tw-mb-12">
+            <div className="tw-mb-4">
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
@@ -287,6 +290,18 @@ export default function Home() {
                 HackathonLabels={HackathonLabels}
               />
             </div>
+            <div
+              onClick={() => setShowAddHackathonModal(true)}
+              className="tw-mb-10 tw-text-sm tw-inline-flex tw-gap-2 tw-max-w-max tw-px-4 tw-py-2 mt-2 tw-items-center tw-justify tw-border tw-border-[#845ec2] tw-text-[#845ec2] tw-rounded hover:tw-text-white hover:tw-bg-[#845ec2] hover:tw-cursor-pointer tw-transition-all tw-duration-300 md:tw-text-base"
+            >
+              <div>
+                <MdCreate />
+              </div>
+              <button className="">Add New</button>
+            </div>
+            {showAddHackathonModal && (
+              <AddHackathon handleShow={setShowAddHackathonModal} />
+            )}
             <div className="row">
               {filteredHackathons.map((hackathon, index) => (
                 <GalleryCard

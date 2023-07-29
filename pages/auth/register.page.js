@@ -100,14 +100,14 @@ function Register() {
     confirmPassword: "",
   });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
+  const [isConPasswordVisible, setIsConPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
   const toggleConPasswordVisibility = () => {
-    setConIsPasswordVisible((prevState) => !prevState);
+    setIsConPasswordVisible((prevState) => !prevState);
   };
 
   const handleChange = ({ currentTarget: input }) => {
@@ -210,7 +210,7 @@ function Register() {
             <div className={styles.Input}>
               {" "}
               <input
-                type={isPasswordVisible ? "text" : "password"}
+                type={isConPasswordVisible ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Password"
                 onChange={handleChange}

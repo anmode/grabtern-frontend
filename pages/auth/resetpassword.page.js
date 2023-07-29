@@ -56,7 +56,7 @@ const ResetPassword = () => {
       toast.success(response.data.message);
       // redirect to login page after successful passwp=ord reset
       setTimeout(() => {
-        router.push("/auth/login");
+        router.push(`/auth/login?entityType=${entityType}`);
       }, 5000);
     } catch (error) {
       setIsLoading(false);

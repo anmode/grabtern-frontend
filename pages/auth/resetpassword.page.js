@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import router from "next/router";
-const Header = dynamic(() => import("../../components/layout/Header.js"));
 import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
-const Footer = dynamic(() => import("../../components/layout/Footer"));
 import Head from "next/head.js";
 import ButtonUI from "../../components/UI/Button/Button";
 import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Visibility } from "@mui/icons-material";
 import { VisibilityOff } from "@mui/icons-material";
 

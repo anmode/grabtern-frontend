@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect"; // For additional DOM matchers
-import MentorForm from "../../components/MentorRegistration/MentorFormRegistration";
+import MentorForm from "./MentorFormRegistration";
 import axios from 'axios';
 
 // Mock the next/router module

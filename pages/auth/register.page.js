@@ -231,7 +231,7 @@ function Register() {
             <input
               type="submit"
               name="submit"
-              value="Registration"
+              value="Register"
               style={{ textAlign: "center", width: "100%" }}
             />
           </div>

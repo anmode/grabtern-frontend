@@ -15,20 +15,29 @@ import { Visibility } from "@mui/icons-material";
 import { VisibilityOff } from "@mui/icons-material";
 
 const ResetPassword = () => {
+  // initial state
+  const initialState = {
+    newPassword : "",
+    confirmPassword: ""
+  }
+
+  // states
   const { entityType, resetToken } = router.query;
   const [isLoading, setIsLoading] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+  const [formData, setFormData] = useState(initialState);
+  const {newPassword, confirmPassword} = formData;
 
-  const handleResetPassword = async () => {
-    setError("");
-    setMessage("");
+  // onChange function
+  const onChange = (e) => {
+    setFormData({...formData, [e.target.name] : e.target.value});
+  }
 
-    if (newPassword !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
+  // onsubmit function
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+
+    if (newPassword !== confirmPassword) {     
+      return toast.error("Passwords do not match");
     }
 
     try {
@@ -45,17 +54,22 @@ const ResetPassword = () => {
         },
       );
       setIsLoading(false);
-      setMessage(response.data.message);
-      router.push("/");
+      toast.success(response.data.message);
+      // redirect to login page after successful passwp=ord reset
+      setTimeout(() => {
+        router.push("/auth/login");
+      }, 5000);
     } catch (error) {
+      setIsLoading(false);
       if (error.response) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message)
       } else {
-        setError("Internal server error");
+        toast.error("Internal server error");
       }
     }
   };
 
+  // toggle visisbilty of password and confirm password inputs
   const [showPassword, setVisibility] = useState(false);
   const togglePasswordisibility = () => {
     setVisibility((prevShowPassword) => !prevShowPassword);
@@ -76,7 +90,7 @@ const ResetPassword = () => {
         <div className="tw-font-inter tw-font-bold tw-text-xl ">GrabTern</div>
       </div>
       <main className="tw-flex tw-justify-center tw-items-center">
-        <form>
+        <form onSubmit={handleResetPassword}>
           <div className="">
             <div className="tw-pb-12 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">
               Set your password
@@ -94,8 +108,10 @@ const ResetPassword = () => {
               <br />
               <input
                 type={viewPassword ? "text" : "password"}
-                name="password"
+                name="newPassword"
                 placeholder="Password"
+                value={newPassword}
+                onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
               {viewPassword ? (
@@ -116,6 +132,8 @@ const ResetPassword = () => {
                 type={showPassword ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Password"
+                value={confirmPassword}
+                onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
               {showPassword ? (
@@ -128,6 +146,7 @@ const ResetPassword = () => {
               <ButtonUI
                 text="Set Password"
                 className="tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2"
+                type="submit"
               />
             </div>
             {isLoading && (

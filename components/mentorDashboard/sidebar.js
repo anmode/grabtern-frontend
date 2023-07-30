@@ -237,28 +237,29 @@ const Sidebar = ({ setComponent, component }) => {
           <div className="tw-items-center max-[400px]:tw-hidden">
             <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
           </div>
-          <div className={`tw-gap-8 tw-flex tw-font-medium tw-p-2`}>
+          <div className={`tw-gap-4 tw-flex tw-font-medium tw-p-2`}>
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
                 className="tw-flex tw-group tw-cursor-pointer hoverList"
               >
                 <div
-                  className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                   onClick={() => setComponent(val.path)}
                 >
                   <span>{val.icon}</span>
-                  <span className={`tw-ml-3 ${isSidebarOpen ? "tw-block" : "tw-hidden"}`}>{val.title}</span>
+                  <span className="tw-text-xs max-[350px]:tw-hidden">{val.title}</span>
                 </div>
               </HoverListItem>
             ))}
           </div>
           <div className="tw-flex tw-justify-center tw-items-center">
             {/* a button for expanding the remaining buttons */}
-            <button className="tw-flex tw-justify-center tw-items-center">
+            <button className="tw-flex tw-flex-col tw-gap-1 tw-justify-center tw-items-center">
               {
                 <AiOutlineMenu className="tw-text-2xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(true)} />
               }
+              <span className="tw-text-xs max-[350px]:tw-hidden">More</span>
             </button>
           </div>
         </aside>

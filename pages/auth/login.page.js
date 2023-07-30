@@ -192,8 +192,8 @@ function login() {
         <div>
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>
-              <img src="/Grabtern2.png"></img>
-              <h2> {entityType} Login </h2>
+              <img src="/faviconn.png"></img>
+              <h2> {entityType.charAt(0).toUpperCase() + entityType.slice(1)} Login </h2>
             </div>
             <div className={styles.forminput}>
               <label htmlFor="email">Email</label>
@@ -224,7 +224,7 @@ function login() {
               </div>
             </div>
 
-            <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
+            <div className="md:tw-w-auto tw-cursor-pointer tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold">
               <input
                 type="submit"
                 name="submit"

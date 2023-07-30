@@ -219,7 +219,7 @@ function login() {
                   value={formData.password}
                 />
                 <div className={styles.eye} onClick={togglePasswordVisibility}>
-                  {isPasswordVisible ? <VisibillityOff /> : <Visibillity />}
+                  {isPasswordVisible ? <Visibillity /> : <VisibillityOff />}
                 </div>
               </div>
             </div>

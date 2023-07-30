@@ -122,6 +122,61 @@ const Sidebar = ({ setComponent, component }) => {
     },
   ];
 
+  const menuItem1 = [
+    {
+      title: "Profile",
+      icon: <CgProfile />,
+      path: "profile",
+    },
+    {
+      title: "Home",
+      icon: <AiOutlineHome />,
+      path: "sessions",
+    },
+    {
+      title: "Bookings",
+      icon: <LuPhoneCall />,
+      path: "bookings",
+    },
+    {
+      title: "Priority DM",
+      icon: <BiMessageRoundedDots />,
+      path: "queries",
+    },
+    {
+      title: "Calendar",
+      icon: <BiCalendar />,
+      path: "calendar",
+    },
+  ];
+
+  const menuItem2 = [
+    {
+      title: "Services",
+      icon: <PiBookOpenText />,
+      path: "services",
+    },
+    {
+      title: "Payments",
+      icon: <MdPayment />,
+      path: "payments",
+    },
+    {
+      title: "What's New",
+      icon: <IoMdNotificationsOutline />,
+      path: "new",
+    },
+    {
+      title: "Invite & Earn",
+      icon: <CgMailOpen />,
+      path: "referral",
+    },
+    {
+      title: "Rewards",
+      icon: <BiGift />,
+      path: "rewards",
+    },
+  ];
 
   const BookButton = styled.button`
     margin: 5px;
@@ -151,7 +206,7 @@ const Sidebar = ({ setComponent, component }) => {
             <div className={`${isSidebarOpen ? "tw-block" : "tw-hidden"} tw-flex tw-justify-center  tw-items-center`}>
               <Link href="/" className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl">GrabTern</Link>
             </div>
-            <div className={`tw-group tw-p-2 tw-flex ${isSidebarOpen ? "tw-justify-start tw-gap-4" : "tw-justify-center"} tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out hover:tw-bg-[#00C9A7] tw-cursor-pointer`}>
+            <div className={`tw-group tw-p-4 tw-flex ${isSidebarOpen ? "tw-justify-start tw-gap-4" : "tw-justify-center"} tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}>
               <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
               <span className={`${isSidebarOpen ? "tw-block group-hover:tw-text-primary-100" : "tw-hidden"}`}>Get more bookings</span>
             </div>
@@ -163,7 +218,7 @@ const Sidebar = ({ setComponent, component }) => {
                   className="tw-group tw-cursor-pointer hoverList"
                 >
                   <div
-                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"} ${component === val.path ? "tw-bg-[#00C9A7]" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"} ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     onClick={() => setComponent(val.path)}
                   >
                     <span>{val.icon}</span>
@@ -179,20 +234,17 @@ const Sidebar = ({ setComponent, component }) => {
       <div className="min-[513px]:tw-hidden">
         {/* For mobile devices max-w-512px */}
         <aside className="tw-fixed tw-flex tw-justify-around tw-flex-wrap tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200">
-          <div className="tw-flex tw-justify-center tw-items-center tw-mr-10 max-[400px]:tw-hidden">
-            <div className="tw-flex tw-justify-between tw-items-center tw-p-4">
-              <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-            </div>
-            <span className="tw-text-gray-600 tw-text-lg">|</span>
+          <div className="tw-items-center max-[400px]:tw-hidden">
+            <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
           </div>
-          <div className={`tw-gap-8 tw-flex tw-font-medium tw-py-2`}>
+          <div className={`tw-gap-8 tw-flex tw-font-medium tw-p-2`}>
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
                 className="tw-flex tw-group tw-cursor-pointer hoverList"
               >
                 <div
-                  className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7]" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                   onClick={() => setComponent(val.path)}
                 >
                   <span>{val.icon}</span>
@@ -205,12 +257,75 @@ const Sidebar = ({ setComponent, component }) => {
             {/* a button for expanding the remaining buttons */}
             <button className="tw-flex tw-justify-center tw-items-center">
               {
-                isMobileSidebarOpen ? <AiOutlineClose className="tw-text-2xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(false)} /> : <AiOutlineMenu className="tw-text-2xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(true)} />
+                <AiOutlineMenu className="tw-text-2xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(true)} />
               }
             </button>
           </div>
         </aside>
 
+        {/* Modal for opening menu */}
+        <div>
+          <div className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${isMobileSidebarOpen ? "tw-opacity-100" : "tw-opacity-0 tw-pointer-events-none"}`}>
+            <div className="tw-flex tw-justify-end tw-items-center tw-p-4">
+              <button className="tw-flex tw-justify-center tw-items-center">
+                <AiOutlineClose className="tw-text-4xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(false)} />
+              </button>
+            </div>
+            <div className="tw-flex tw-justify-center tw-items-center">
+              <Link href="/" onClick={() => setIsMobileSidebarOpen(false)} className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-xl">GrabTern</Link>
+            </div>
+            <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
+              <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
+                <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+                <span className="tw-font-semibold">Get more bookings</span>
+              </div>
+            </div>
+            <div className={`tw-flex tw-mt-6 tw-justify-around tw-items-center tw-font-medium tw-p-2`}>
+
+              {/* left part */}
+              <div className="tw-flex tw-flex-col tw-gap-10">
+                {menuItem1.map((val, key) => (
+                  <HoverListItem
+                    key={key}
+                    className="tw-flex tw-group tw-cursor-pointer hoverList"
+                  >
+                    <div
+                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      onClick={() => {
+                        setComponent(val.path);
+                        setIsMobileSidebarOpen(false);
+                      }}
+                    >
+                      <span className="tw-text-xl">{val.icon}</span>
+                      <span className="tw-text-sm tw-text-center">{val.title}</span>
+                    </div>
+                  </HoverListItem>
+                ))}
+              </div>
+
+              {/* right part */}
+              <div className="tw-flex tw-flex-col tw-gap-10">
+                {menuItem2.map((val, key) => (
+                  <HoverListItem
+                    key={key}
+                    className="tw-flex tw-group tw-cursor-pointer hoverList"
+                  >
+                    <div
+                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      onClick={() => {
+                        setComponent(val.path);
+                        setIsMobileSidebarOpen(false);
+                      }}
+                    >
+                      <span className="tw-text-xl">{val.icon}</span>
+                      <span className="tw-text-sm tw-text-center">{val.title}</span>
+                    </div>
+                  </HoverListItem>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </>

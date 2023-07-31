@@ -218,7 +218,7 @@ const Sidebar = ({ setComponent, component }) => {
                   className="tw-group tw-cursor-pointer hoverList"
                 >
                   <div
-                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"} ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"} ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     onClick={() => setComponent(val.path)}
                   >
                     <span>{val.icon}</span>
@@ -244,7 +244,7 @@ const Sidebar = ({ setComponent, component }) => {
                 className="tw-flex tw-group tw-cursor-pointer hoverList"
               >
                 <div
-                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                   onClick={() => setComponent(val.path)}
                 >
                   <span>{val.icon}</span>
@@ -291,7 +291,7 @@ const Sidebar = ({ setComponent, component }) => {
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
                     <div
-                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                       onClick={() => {
                         setComponent(val.path);
                         setIsMobileSidebarOpen(false);
@@ -312,7 +312,7 @@ const Sidebar = ({ setComponent, component }) => {
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
                     <div
-                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-[#00C9A7] tw-text-primary-100" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                       onClick={() => {
                         setComponent(val.path);
                         setIsMobileSidebarOpen(false);

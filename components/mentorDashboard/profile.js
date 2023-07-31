@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
+
 function Profile({ mentorDetail }) {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
@@ -14,7 +15,7 @@ function Profile({ mentorDetail }) {
       twitter: mentorDetail?.social?.twitter || "",
     },
     description: mentorDetail?.description || "",
-    mentorImg: mentorDetail?.mentorImg || "",
+    image: mentorDetail?.mentorImg || "",
     bookSession: mentorDetail?.bookSession || [],
   };
 
@@ -81,7 +82,7 @@ function Profile({ mentorDetail }) {
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setFormData({ ...formData, mentorImg: base64 });
+    setFormData({ ...formData, image: base64 });
   };
 
   // form submit function
@@ -89,31 +90,22 @@ function Profile({ mentorDetail }) {
     e.preventDefault();
     setError("");
     try {
-      const formDataCopy = { ...formData }; // Create a copy of the formData to work with
-      delete formDataCopy._id;
-      delete formDataCopy.password;
-      delete formDataCopy.confirmPassword;
-      delete formDataCopy.verified;
-      delete formDataCopy.token;
-      delete formDataCopy.mentorToken;
-      delete formDataCopy.setupPWId;
-      delete formDataCopy.__v;
-
-      // Make the API call to update the mentor data
+      const mentorData = localStorage.getItem("mentorData");
+      const mentorToken = decryptData(mentorData).mentorToken;
       const url = `${
         process.env.NEXT_PUBLIC_BACKEND_URL
-      }/api/mentors/updateMentor/${
-        JSON.parse(decryptData("mentorData")).mentorToken
-      }`;
+      }/api/mentors/updateprofile`;
+      
+      const encryptedData = encryptData({mentorLoginToken: mentorToken, ...formData});
 
-      const { data: res } = await axios.post(url, formDataCopy); // Send the updated data to the backend
+      const response = await axios.put(url, {token : encryptedData}); // Send the updated data to the backend
+      setformData(decryptData(response.data));
 
-      alert(res); // Display the response message from the backend
+      alert(response); // Display the response message from the backend
 
       setModalOpen(false);
       setMsg("Changes saved successfully."); // Set success message
     } catch (error) {
-      console.log(error);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -168,7 +160,7 @@ function Profile({ mentorDetail }) {
                       height: "100px",
                       boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px ",
                     }}
-                    src={formData.mentorImg}
+                    src={formData.image}
                     className="mentorPhoto"
                   />
                   <div>

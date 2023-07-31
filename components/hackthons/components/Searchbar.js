@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import hackathonStyle from "../../../styles/hackathon.module.css";
+
 // import styles from '../styles/Searchbar.module.css'; // Import the CSS file
-import InputAdornment from "@mui/material/InputAdornment";
+
 import Chip from "@mui/material/Chip";
-import { IconButton, MenuItem, Select } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import TextField from "@mui/material/TextField";
+
 function SearchBar({
   setSearchQuery,
   handleTagFilter,
@@ -34,54 +32,49 @@ function SearchBar({
   };
 
   return (
-    <form className="tw-w-full tw-max-w-7xl tw-mx-auto">
-      <TextField
-        id="search-bar"
-        className="text"
-        onInput={(e) => {
-          setSearchQuery(e.target.value);
-        }}
-        variant="outlined"
-        placeholder={
-          HackathonLabels ? "Search Hackathons" : "Search Internships"
-        }
-        size="Normal"
-        sx={{
-          color: "#845ec2",
-        }}
-        style={{
-          borderColor: "#845ec2",
-          borderRadius: 50,
-        }}
-        InputProps={{
-          sx: { height: window.innerWidth > 768 ? 55 : 45 },
-          style: {
-            fontSize: window.innerWidth > 768 ? 20 : 16,
-            paddingTop: 5,
-            paddingBottom: 5,
-            paddingRight: 5,
-            marginTop: 0,
-            borderRadius: 50,
-            color: "#845ec2",
-          },
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton aria-label="search">
-                <SearchIcon
-                  style={{ fill: "black" }}
-                  sx={{ fontSize: window.innerWidth > 768 ? 35 : 30 }}
-                />
-              </IconButton>
-            </InputAdornment>
-          ),
-          "& .MuiFormLabel-root": {
-            fontSize: "0.8rem",
-          },
-        }}
-        InputLabelProps={{ style: { fontSize: 90 } }}
+<>
+<form className="tw-w-full  tw-max-w-[340px] tw-mx-auto ml-0">
+  <label
+    htmlFor="default-search"
+    className="tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 tw-sr-only tw-dark:text-white"
+  >
+    Search
+  </label>
+  <div className="tw-relative">
+    <div className="tw-absolute tw-inset-y-0 tw-left-0 tw-flex tw-items-center tw-pl-6 tw-pointer-events-none">
+      <img
+        className="tw-w-5 tw-h-5"
+        src="/assets/img/hackathons/magnifying-glass.png"
+        alt="Custom Icon"
       />
+    </div>
+    <input
+      type="search"
+      id="default-search"
+      className="tw-block tw-w-full tw-h-full tw-py-4 tw-pl-16 tw-pr-8 tw-text-xl tw-text-purple-500 tw-border tw-border-gray-500  focus:tw-ring-blue-500  focus:tw-ring-1 focus:tw-border-blue-500         tw-rounded-3xl   tw-placeholder-purple-500 "
+      placeholder={
+        HackathonLabels ? "Search Hackathons" : "Search Internships"
+      }
+      onChange={(e) => {
+        setSearchQuery(e.target.value);
+      }}
+      style={{
+        height: window.innerWidth > 768 ? 55 : 45 ,
+        fontSize: window.innerWidth > 768 ? 20 : 16,
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight: 5,
+        marginTop: 0,
+        borderRadius: 50,
+        color: "#845ec2",
+      }}
+      required=""
+    />
 
-      <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-4">
+
+  
+  </div>
+  <div className="tw-mt-8 tw-flex tw-flex-row tw-gap-4">
         <Chip
           variant={selectedTag === "All" ? "default" : "outlined"}
           // color={selectedTag === "All" ? "primary" : "info"}
@@ -143,8 +136,14 @@ function SearchBar({
               }}
             />
           ))}
-      </div>
-    </form>
+</div>
+</form>
+
+
+
+
+  
+    </>
   );
 }
 

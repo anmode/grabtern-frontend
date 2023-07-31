@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 function Profile({ mentorDetail }) {
@@ -19,15 +19,41 @@ function Profile({ mentorDetail }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  // const [formData, setFormData] = useState(mentorDetail);
   const [msg, setMsg] = useState("");
-  const [step, setStep] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
 
+  // normal input onChange function
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // function to fetch mentor profile
+  const getMentorProfile = async() => {
+    const mentorData = localStorage.getItem("mentorData");
+    const mentorToken = decryptData(mentorData).mentorToken;
+    const url = `${
+      process.env.NEXT_PUBLIC_BACKEND_URL
+    }/api/mentors/getprofile/${
+      mentorToken
+    }`;
+
+    try{
+      const response = await axios.get(url);
+      const data = decryptData(response.data);
+      setFormData(data);
+      setError("");
+    }catch(error){
+      setError(error.response.data.message);
+    }
+  }
+
+  //fetching mentor profile onload
+  useEffect(() => {
+    getMentorProfile();
+  }, [])
+
+  // converting image to base64 function
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -42,14 +68,8 @@ function Profile({ mentorDetail }) {
       };
     });
   };
-  const nextStep = () => {
-    setError("");
-    setStep((val) => val + 1);
-  };
-  const previousStep = () => {
-    setError("");
-    setStep((val) => val - 1);
-  };
+
+  // onChange function for socials input
   const handleSocialChange = (e) => {
     setFormData({
       ...formData,
@@ -57,12 +77,14 @@ function Profile({ mentorDetail }) {
     });
   };
 
+  // onChange function for image input
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
     setFormData({ ...formData, mentorImg: base64 });
   };
 
+  // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -133,8 +155,6 @@ function Profile({ mentorDetail }) {
             Edit your profile
           </h2>
           <form className="mentorFormEdit" onSubmit={handleSubmit}>
-            {step === 1 ? (
-              <>
                 <div
                   style={{ gridColumn: "1/3", marginLeft: "500" }}
                   className="mentorUploudPhotoEdit"
@@ -355,10 +375,6 @@ function Profile({ mentorDetail }) {
                 >
                   Save changes
                 </button>
-              </>
-            ) : (
-              <>{error && <div style={{ color: "red" }}>{error}</div>}</>
-            )}
           </form>
         </div>
       </div>

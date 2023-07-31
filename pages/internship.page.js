@@ -31,7 +31,7 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
-import AddIntership from "../components/AddIntership";
+import AddInternship from "../components/AddInternship";
 
 const buttonStyle = {
   width: "200px",
@@ -286,7 +286,7 @@ export default function Home() {
               <button className="">Add New</button>
             </div>
             {showAddInternshipModal && (
-              <AddIntership handleShow={setShowAddInternshipModal} />
+              <AddInternship handleShow={setShowAddInternshipModal} />
             )}
             <div className="row">
               {filteredInternships.map((internship, index) => (

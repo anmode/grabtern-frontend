@@ -12,17 +12,17 @@ function FAQ({ ques, ans, open, setOpen, index }) {
       }`}
     >
       <div
-        className="tw-justify-between tw-flex tw-mt-4 tw-cursor-pointer"
+        className="tw-justify-between tw-flex max-[637px]:tw-gap-4 tw-mt-4 tw-cursor-pointer"
         onClick={toggleOpen}
       >
         <p
-          className={`tw-text-xl  tw-font-medium max-[990px]:tw-text-sm tw-items-start ${
+          className={`tw-text-xl tw-font-medium max-[348px]:tw-text-xs max-[637px]:tw-text-sm max-[990px]:tw-text-lg tw-items-start ${
             open === index ? "tw-text-primary-200" : "tw-text-slate-900"
           }`}
         >
           {ques}
         </p>
-        <div className="">
+        <div className="tw-text-xl tw-font-medium max-[348px]:tw-text-xs max-[637px]:tw-text-sm max-[990px]:tw-text-lg">
           {open == index ? (
             <i className="fas fa-chevron-up" />
           ) : (
@@ -31,7 +31,7 @@ function FAQ({ ques, ans, open, setOpen, index }) {
         </div>
       </div>
       {open == index && (
-        <p className="tw-transition-all tw-duration-150 tw-ease-in-out tw-p-2 tw-max-w-[1000px]">
+        <p className="tw-transition-all tw-text-xl tw-font-medium max-[348px]:tw-text-xs max-[637px]:tw-text-sm max-[990px]:tw-text-lg tw-duration-150 tw-ease-in-out tw-p-2 tw-max-w-[1000px]">
           {ans}
         </p>
       )}

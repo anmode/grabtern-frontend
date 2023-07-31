@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard.module.css";
-
+import { BiLinkAlt } from "react-icons/bi";
+import { BsCalendarCheck } from "react-icons/bs";
+import { IoMdTime } from "react-icons/io";
+import {RxLapTimer} from "react-icons/rx";
+import Select from 'react-select';
+import moment from 'moment-timezone';
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
@@ -59,6 +64,24 @@ const Calender = () => {
     "06:00 PM": "06:00 PM",
     "07:00 PM": "07:00 PM",
   };
+  const bookingPeriod = [
+    "2 weeks",
+    "3 weeks",
+    "4 weeks",
+    "2 months",
+    "3 months",
+  ];
+  const noticePeriod = ["minutes", "hours", "days"];
+  const [BookingPeriod, setBookingPeriod] = useState(bookingPeriod[0]);
+  const [NoticePeriod, setNoticePeriod] = useState(noticePeriod[0]);
+ 
+  const handleBookingPeriod = (event) => {
+    setBookingPeriod(event.target.value);
+  };
+
+  const handleNoticePeriod = (event) => {
+    setNoticePeriod(event.target.value);
+  };
   const handleDayChange = (day) => {
     setSelectedStartTime('');
     setSelectedEndTime('');
@@ -101,7 +124,7 @@ const Calender = () => {
         Schedule
       </button>
       <div className="content">
-        {calender && <div>hfhddfkbflbrgpkwr;</div>}
+        
         {calender && (
           <div className="tw-mt-7 tw-w-[600px]">
             <hr className="tw-border-t-2 tw-border-[#c0c0c0] tw-mt-14 tw-width-[100%] tw-shadow-lg  tw-text-opacity-50" />

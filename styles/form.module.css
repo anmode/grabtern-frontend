@@ -7,10 +7,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 9%;
+  gap: .5rem;
+  margin-bottom: 2.5rem;
 }
 .headingg img {
-  width: 24%;
+  width: 3.5rem;
+  height: 3.5rem;
+  aspect-ratio: 1/1;
+  margin-top: -.25rem;
 }
 .btnnContainer {
   text-align: center;
@@ -85,7 +89,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 0;
-  margin-bottom: 10%;
+  margin-bottom: 1.5rem;
 }
 .Input {
   border-bottom: 3px solid #845ec2;
@@ -96,7 +100,7 @@
   display: flex;
 }
 .loginform {
-  margin: 90px auto 5px auto;
+  margin: 90px auto 20px;
   width: 480px;
   padding: 12px 45px 12px 45px;
   color: whitesmoke;

@@ -143,7 +143,7 @@ export default function Home() {
           <ButtonLink
             text="View More Internships"
             href="/internship"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 
@@ -163,7 +163,7 @@ export default function Home() {
           <ButtonLink
             text="View More Hackathons"
             href="/hackathon"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 

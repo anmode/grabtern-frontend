@@ -1,124 +1,28 @@
-import { rest } from "lodash";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
-import SimpleReactValidator from "simple-react-validator";
 import Select from "react-select";
 import Input from "./basic/Input";
-import { FaPaperclip, FaRegImage } from "react-icons/fa";
+import { FaRegImage } from "react-icons/fa";
 import axios from "axios";
 
-const InternshipLabels = [
-  "Web",
-  "Blockchain",
-  "Female Centric",
-  "Part Time",
-  "Major League Hacking",
-  "Research",
-];
-
-const options = InternshipLabels.map((label) => {
-  return { value: label, label: label };
-});
-
-const AddIntership = ({ handleShow }) => {
-  const [formData, setFormData] = React.useState({
-    internshipImage: "",
-    internshipImageAlt: "",
-    internshipCategories: "GrabTern",
-    internshipTitle: "",
-    internshipDescription: "",
-    internshipRating: 0,
-    internshipPayed: 0,
-    internshipPrice: 0,
-    internshipLink: "",
-    tags: [],
-  });
-
-  // for validation
-  const validator = useRef(new SimpleReactValidator());
-  const [, forceUpdate] = useState();
+const FormModal = ({
+  modalTitle,
+  formData,
+  setFormData,
+  inputs,
+  tagsOptions,
+  handleSubmit,
+  validator,
+  handleCancel,
+}) => {
   const [imageLoading, setImageLoading] = useState(false);
 
-  const inputs = [
-    {
-      label: "title",
-      type: "text",
-      name: "internshipTitle",
-      placeholder: "e.g. MITACS",
-      required: true,
-      value: formData.internshipTitle,
-      validator: validator,
-      validation: "required",
-      column: "span 2",
-    },
-    {
-      label: "price",
-      type: "number",
-      name: "internshipPrice",
-      placeholder: "e.g. 1250",
-      required: true,
-      value: formData.internshipPrice,
-      validator: validator,
-      validation: "required|numeric|min:0,num",
-      column: "span 1",
-    },
-    {
-      label: "description",
-      type: "text",
-      name: "internshipDescription",
-      placeholder:
-        "e.g. Outreachy provides internships to people subject to systemic bias and impacted by underrepresentation in the technical industry where they are living.",
-      element: "textarea",
-      required: true,
-      value: formData.internshipDescription,
-      validator: validator,
-      validation: "required",
-      column: "span 3",
-    },
-    {
-      label: "link",
-      type: "text",
-      name: "internshipLink",
-      placeholder: "e.g. https://www.outreachy.org/",
-      required: true,
-      value: formData.internshipLink,
-      validator: validator,
-      validation: "required|url",
-      column: "span 3",
-    },
-  ];
+  useEffect(() => {
+    setFormData({ ...formData, imageAlt: formData.title });
+  }, [formData.title]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validator.current.allValid()) {
-      validator.current.hideMessages();
-      // handleSubmit(e);
-      console.log(formData);
-      forceUpdate(1);
-    } else {
-      validator.current.showMessages();
-      forceUpdate(2);
-    }
-  };
-
-  const handleCancel = () => {
-    setFormData({
-      internshipImage: "",
-      internshipImageAlt: "",
-      internshipCategories: "GrabTern",
-      internshipTitle: "",
-      internshipDescription: "",
-      internshipRating: 0,
-      internshipPayed: 0,
-      internshipPrice: 0,
-      internshipLink: "",
-      tags: [],
-    });
-    handleShow(false);
   };
 
   const uploadToCloudinary = async (file) => {
@@ -141,8 +45,8 @@ const AddIntership = ({ handleShow }) => {
     const url = await uploadToCloudinary(file);
     setFormData({
       ...formData,
-      internshipImage: url,
-      internshipImageAlt: formData.internshipTitle || "internship",
+      image: url,
+      imageAlt: formData.title,
     });
   };
 
@@ -162,7 +66,7 @@ const AddIntership = ({ handleShow }) => {
         </div>
         <header className="tw-mb-4">
           <h1 className="tw-font-semibold tw-text-xl md:tw-text-2xl">
-            Add Internship
+            {modalTitle}
           </h1>
           <p className="tw-text-xs sm:tw-text-sm">
             Please provide us the following details
@@ -175,7 +79,7 @@ const AddIntership = ({ handleShow }) => {
           >
             <div className="tw-flex tw-flex-col tw-gap-6 sm:tw-grid  sm:tw-grid-cols-3 sm:tw-items-center">
               <div className="tw-col-span-3 tw-flex tw-items-center tw-gap-4">
-                {formData.internshipImage === "" ? (
+                {formData.image === "" ? (
                   <div
                     className={`tw-w-24 tw-h-[3.75rem] tw-flex tw-justify-center tw-items-center tw-border tw-bg-gray-200 tw-text-gray-500 tw-rounded ${
                       imageLoading ? "tw-animate-pulse" : "tw-animate-none"
@@ -185,12 +89,12 @@ const AddIntership = ({ handleShow }) => {
                   </div>
                 ) : (
                   <img
-                    src={formData.internshipImage}
-                    alt={formData.internshipTitle}
+                    src={formData.image}
+                    alt={formData.imageAlt}
                     className={`tw-aspect-[16/10] tw-w-24 tw-rounded tw-object-cover ${
                       imageLoading ? "tw-animate-pulse" : "tw-animate-none"
                     }`}
-                    name="internshipImage"
+                    name="image"
                     onLoad={() => setImageLoading(false)}
                   />
                 )}
@@ -223,7 +127,7 @@ const AddIntership = ({ handleShow }) => {
               <div className="tw-col-span-3">
                 <label>Tags</label>
                 <Select
-                  options={options}
+                  options={tagsOptions}
                   isMulti
                   maxMenuHeight={160}
                   menuPlacement="top"
@@ -250,14 +154,14 @@ const AddIntership = ({ handleShow }) => {
                       },
                     }),
                   }}
-                  value={options.filter((option) =>
+                  value={tagsOptions.filter((option) =>
                     formData.tags.includes(option.value),
                   )}
                 />
                 <div className="tw-relative">
                   {validator.current.message(
                     "tags",
-                    options.filter((option) =>
+                    tagsOptions.filter((option) =>
                       formData.tags.includes(option.value),
                     ),
                     "required",
@@ -287,4 +191,4 @@ const AddIntership = ({ handleShow }) => {
   );
 };
 
-export default AddIntership;
+export default FormModal;

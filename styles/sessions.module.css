@@ -44,6 +44,7 @@
 .spinContainer {
   position: relative;
   transition: opacity 0.3s;
+  
 }
 
 .antTable {
@@ -59,7 +60,7 @@
   margin: 0;
   padding: 0;
   position: relative;
-  left: 20px;
+  left: 200px;
 }
 
 .antTable::after {
@@ -98,8 +99,10 @@
   overflow: hidden;
   top: 0px;
   position: sticky;
-  z-index: 3;
+ 
 }
+
+
 
 .infoTable {
   table-layout: fixed;
@@ -107,7 +110,7 @@
   border-radius: 4px 4px 0 0;
   border-spacing: 0;
   text-align: left;
-  width: 100%;
+  width: 90%;
 }
 
 .antCell {
@@ -137,7 +140,7 @@
   font-weight: 500;
   margin-top: 1.4em;
   margin-bottom: 0.7em;
-  left: 120px;
+  left: 90px;
 }
 .userSessionParent .bottom .menubar {
   margin-bottom: 1.4em;
@@ -155,15 +158,27 @@
   overflow: hidden;
   padding: 0;
   position: relative;
-  left: 120px;
+  left: 90px;
 }
 
 .anttabs {
   align-items: center;
   display: flex;
   flex: none;
+  cursor: pointer;
+  color: rgba(66, 66, 89, 0.64);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
+.anttabs span {
+  line-height: 1.3;
+}
+
 
 .anttabsactive {
   align-items: center;
@@ -176,6 +191,16 @@
   padding: 12px 0;
   position: relative;
 }
+.anttabs.active span::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: purple;
+  transform: scaleX(1);
+}
 .anttabs {
   margin-right: 50px;
 }
@@ -187,6 +212,18 @@
   margin-left: 6px;
 }
 
+
+.infoTable th,
+.infoTable td {
+  flex-basis: 16.66%; /* Let each column take 16.66% width (6 columns) on smaller screens */
+  padding: 8px; /* Add spacing between columns */
+  box-sizing: border-box;
+}
+/* Adjust the first column to align with the content */
+.infoTable th:first-child,
+.infoTable td:first-child {
+  flex-basis: 100%; /* Let the first column take full width on smaller screens */
+}
 
 
 /* For screen sizes between 601px and 1024px */
@@ -208,6 +245,19 @@
   .tableColumn {
     font-size: 18px;
   }
+  .head{
+    display: flex;
+    position: relative;
+    left: 40px;
+  }
+  .userSessionParent .bottom .menubar {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 38px;
+    margin-bottom: 1.4em;
+  }
+
 }
 
 /* Additional adjustments for mobile screens */
@@ -216,23 +266,32 @@
     left: 10px;
     padding: 0 0.8em;
   }
+  .infoTable {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
   .userSessionParent .head .title {
     font-size: 1.5em;
-    text-align: center; /* Center the title on mobile screens */
-    margin: 0; /* Remove any margin for better spacing */
+   
   }
   .userSessionParent .bottom .menubar {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the menu bar on mobile screens */
+    position: relative;
+    right: 14px;
     margin-bottom: 1.4em;
   }
   .antbar {
-    display: flex; /* Display the tabs in a flex container */
-    justify-content: space-between; /* Spread the tabs horizontally */
-    width: 70%;
-    left: 0; /* Reset the left position to align the tabs to the left */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
   }
+  .anttabs span {
+    line-height: 1.3;
+  }
+
   .anttabs {
     flex: 1; /* Let the tabs take equal space in the container */
     text-align: center; /* Center the text inside the tabs */
@@ -264,7 +323,8 @@
 
   .head{
     display: flex;
-    justify-content: center;
+    position: relative;
+    right: 10px;
   }
 
   /* Reduce the space between Pending and Completed tabs */
@@ -298,6 +358,29 @@
   transition: transform 0.3s ease-in-out; /* Add a smooth transition */
 }
 
-.antbar .anttabs:hover span::before {
-  transform: scaleX(1); /* On hover, reveal the underline */
+.antbar .anttabs:hover span::before,
+.antbar .anttabs.active span::before {
+  transform: scaleX(1); /* On hover or active, reveal the underline */
+}
+
+/* Add styles for the active tab */
+.anttabs.active {
+  cursor: pointer;
+  position: relative;
+  color: purple;
+}
+
+.anttabs.active::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: purple;
+  z-index: -1;
+}
+
+.anttabs.active span {
+  line-height: 1.5;
 }

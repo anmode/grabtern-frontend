@@ -16,7 +16,13 @@ function UserProfile() {
     setIsUserLoggedIn,
   } = useAuth();
 
+  function deleteTokenCookie() {
+    const tokenCookieName = 'token';
+    document.cookie = `${tokenCookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  }
+
   function logout() {
+    deleteTokenCookie();
     localStorage.clear();
     setIsMentorLoggedIn(false);
     setIsUserLoggedIn(false);

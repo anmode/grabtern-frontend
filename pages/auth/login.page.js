@@ -10,12 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/form.module.css";
 const Header = dynamic(() => import("../../components/layout/Header"));
 const Footer = dynamic(() => import("../../components/layout/Footer"));
-
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
-
 import { useAuth } from "../../context/AuthContext";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
+import Cookies from "js-cookie";
 
 function login() {
   const router = useRouter();
@@ -27,7 +26,6 @@ function login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
   const {
     isMentorLoggedIn,
@@ -49,16 +47,18 @@ function login() {
     setError("");
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, formData);
-      console.log(res);
+      const { data: res } = await axios.post(url, formData, {withCredentials: true});
+      console.log(res.userData);
+
       if (entityType === "user") {
-        localStorage.setItem("userData", res);
+        localStorage.setItem("userData", JSON.stringify(res.userData));
         setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
-        localStorage.setItem("mentorData", res);
+        localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
         setIsMentorLoggedIn(true);
       }
       // router.push("/");
+      
     } catch (error) {
       console.log(error);
       if (
@@ -112,41 +112,41 @@ function login() {
     }
   }
 
-  useEffect(() => {
-    // console.log(isMentorLoggedIn, isUserLoggedIn);
-    // Redirect based on login status only if mentor or user is logged in
-    if (isMentorLoggedIn || isUserLoggedIn) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const redirectURL = urlParams.get("redirectURL");
-      router.replace(redirectURL || "/");
-    }
-    const url = new URL(window.location.href);
-    const entityTypeFromUrl = url.searchParams.get("entityType");
-    // console.log(entityTypeFromUrl);
-    if (entityTypeFromUrl) {
-      setEntityType(entityTypeFromUrl);
-    }
-    google.accounts.id.initialize({
-      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      callback: handleCallbackResponse,
-    });
+  // useEffect(() => {
+  //   // console.log(isMentorLoggedIn, isUserLoggedIn);
+  //   // Redirect based on login status only if mentor or user is logged in
+  //   if (isMentorLoggedIn || isUserLoggedIn) {
+  //     const urlParams = new URLSearchParams(window.location.search);
+  //     const redirectURL = urlParams.get("redirectURL");
+  //     router.replace(redirectURL || "/");
+  //   }
+  //   const url = new URL(window.location.href);
+  //   const entityTypeFromUrl = url.searchParams.get("entityType");
+  //   // console.log(entityTypeFromUrl);
+  //   if (entityTypeFromUrl) {
+  //     setEntityType(entityTypeFromUrl);
+  //   }
+  //   google.accounts.id.initialize({
+  //     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+  //     callback: handleCallbackResponse,
+  //   });
 
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" },
-    );
-    google.accounts.id.prompt();
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("googleSignInButton"),
+  //     { theme: "outline", size: "large" },
+  //   );
+  //   google.accounts.id.prompt();
 
-    if (isUserLoggedIn || isMentorLoggedIn) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const redirectURL = urlParams.get("redirectURL");
-      if (redirectURL) {
-        router.push(redirectURL);
-      } else {
-        router.push("/");
-      }
-    }
-  }, [isUserLoggedIn, isMentorLoggedIn]);
+  //   if (isUserLoggedIn || isMentorLoggedIn) {
+  //     const urlParams = new URLSearchParams(window.location.search);
+  //     const redirectURL = urlParams.get("redirectURL");
+  //     if (redirectURL) {
+  //       router.push(redirectURL);
+  //     } else {
+  //       router.push("/");
+  //     }
+  //   }
+  // }, [isUserLoggedIn, isMentorLoggedIn]);
 
   // Function to update the URL with the new entityType
   const updateEntityTypeInUrl = (newEntityType) => {

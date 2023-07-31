@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dynamic from "next/dynamic";
 import axios from "axios";
-import { encryptData, decryptData } from "../../../hook/encryptDecrypt";
 import ButtonUI from "../../../components/UI/Button/Button";
 import { useRouter } from "next/router";
 
@@ -28,11 +27,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
 
   //User Info
-  const user = decryptData(localStorage.getItem("userData"));
+  const user = JSON.parse(localStorage.getItem("userData"));
   const userName = user?.user_name;
-  const userEmail = user?.user_email;
-  const userID = user?.user_id;
-  // console.log(user);
+  // const userID = user?.user_id;
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -94,11 +91,12 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   };
 
   const bookSessionPaymentStep = () => {
-    if (!userName || !userEmail) {
+    if (!userName) {
       toast.error("Please login as a user before booking a session!");
+      setTimeout(() => {
       router.push(
         `/auth/login?entityType=user&redirectURL=${window.location.href}`,
-      );
+      )},2000);
       return;
     }
 
@@ -147,7 +145,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       }
 
       const requestData = {
-        userID: userID,
         mentorUsername: mentorDetail.username,
         sessionID: bookSession._id,
         sessionDay: selectedDay,
@@ -155,11 +152,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
         paymentProof: imageCloudinaryUrl,
       };
 
-      const encryptedToken = encryptData(requestData);
-
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        { token: encryptedToken },
+        requestData,{ withCredentials: true},
       );
 
       setLoading(false);

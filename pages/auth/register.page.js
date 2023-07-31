@@ -110,14 +110,16 @@ function Register() {
     confirmPassword: "",
   });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
   const toggleConPasswordVisibility = () => {
-    setConIsPasswordVisible((prevState) => !prevState);
+    setIsConPasswordVisible((prevState) => !prevState);
   };
 
   const handleChange = ({ currentTarget: input }) => {
@@ -225,7 +227,7 @@ function Register() {
             <div className={styles.Input}>
               {" "}
               <input
-                type={isPasswordVisible ? "text" : "password"}
+                type={isConPasswordVisible ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Password"
                 onChange={handleChange}
@@ -246,7 +248,7 @@ function Register() {
             <input
               type="submit"
               name="submit"
-              value="Registration"
+              value="Register"
               style={{ textAlign: "center", width: "100%" }}
             />
           </div> */}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // import styles from '../styles/Searchbar.module.css'; // Import the CSS file
 
-import Chip from "@mui/material/Chip";
+
 
 function SearchBar({
   setSearchQuery,
@@ -15,21 +15,32 @@ function SearchBar({
   const handleTagChange = (value) => {
     const set = new Set(selectedTag);
     if (value === "All") {
+    
       set.clear();
       set.add("All");
     } else if (set.has(value)) {
+
       set.delete(value);
     } else {
+
       set.add(value);
       set.delete("All");
     }
     if (set.size === 0) {
+
       set.add("All");
     }
     const newValue = [...set];
+ 
+
     setSelectedTag(newValue);
     handleTagFilter(newValue);
   };
+
+  if(selectedTag   )
+  {
+    console.log(selectedTag[0] === "web");
+  }
 
   return (
     <>
@@ -72,67 +83,49 @@ function SearchBar({
           />
         </div>
         <div className="tw-mt-8 tw-flex tw-flex-row tw-gap-4">
-          <Chip
-            variant={selectedTag === "All" ? "default" : "outlined"}
-            // color={selectedTag === "All" ? "primary" : "info"}
-            label="ALL"
-            value="All"
+          <button
+          type="button"
+            className={`${selectedTag[0] === "All" ? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+              } tw-p-2 tw-border  tw-cursor-pointer font-medium tw-rounded-full text-sm px-5 py-2.5 text-center mb-2 `}
             onClick={() => handleTagChange("All")}
-            style={{
-              fontSize: window.innerWidth > 768 ? "16px" : "14px",
-              padding: "1rem",
-              backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
-              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
-              color: selectedTag[0] === "All" ? "#fff" : "#845ec2",
-            }}
-          />
+          >
+            ALL
+          </button>
+
 
           {InternshipLabels &&
             InternshipLabels.map((mylabel) => (
-              <Chip
-                key={mylabel}
-                variant={selectedTag === { mylabel } ? "default" : "outlined"}
-                // color={selectedTag === label ? "primary" : "info"}
-                label={mylabel}
-                onClick={() => handleTagChange(mylabel)}
-                style={{
-                  fontSize: window.innerWidth > 768 ? "16px" : "14px",
-                  padding: "1rem",
-                  backgroundColor: selectedTag.toString().includes(mylabel)
-                    ? "#845ec2"
-                    : "#fff",
-                  borderColor: selectedTag.toString().includes(mylabel)
-                    ? "#845ec2"
-                    : "#845ec2",
-                  color: selectedTag.toString().includes(mylabel)
-                    ? "#fff"
-                    : "#845ec2",
-                }}
-              />
+              <button
+              type="button"
+              key={mylabel}
+            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+              } ${window.innerWidth > 768 ? "tw-text-sm" : "tw-text-xs"
+              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2 `}
+              style={{ whiteSpace: "nowrap" }}
+            onClick={() => handleTagChange(mylabel)}
+          >
+            {mylabel}
+          </button>
             ))}
           {HackathonLabels &&
             HackathonLabels.map((mylabel) => (
-              <Chip
+              <>
+          
+              <button
+                type="button"
                 key={mylabel}
-                variant={selectedTag === { mylabel } ? "default" : "outlined"}
-                // color={selectedTag === label ? "primary" : "info"}
-                label={mylabel}
-                onClick={() => handleTagChange(mylabel)}
-                style={{
-                  fontSize: window.innerWidth > 768 ? "16px" : "14px",
-                  padding: "1rem",
-                  backgroundColor: selectedTag.includes(mylabel.toString())
-                    ? "#845ec2"
-                    : "#fff",
-                  borderColor: selectedTag.toString().includes(mylabel)
-                    ? "#845ec2"
-                    : "#845ec2",
-                  color: selectedTag.toString().includes(mylabel)
-                    ? "#fff"
-                    : "#845ec2",
-                }}
-              />
+              className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+                } ${window.innerWidth > 768 ? "tw-text-sm" : "tw-text-xs"
+                } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2 `}
+                style={{ whiteSpace: "nowrap" }}
+              onClick={() => handleTagChange(mylabel)}
+            >
+              {mylabel}
+            </button>
+            </>
             ))}
+          
         </div>
       </form>
     </>

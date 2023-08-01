@@ -1,15 +1,14 @@
-import React from 'react'
+import React from "react";
 import Sidebar from "../../../components/mentorDashboard/sidebar";
 import Calendar from "../../../components/mentorDashboard/calendar";
 
 function calendar() {
   return (
     <>
-        <Sidebar/>
-        <Calendar/>
+      <Sidebar />
+      <Calendar />
     </>
-  )
+  );
 }
 
-export default calendar
-
+export default calendar;

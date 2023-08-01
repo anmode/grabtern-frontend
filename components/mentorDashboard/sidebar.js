@@ -192,12 +192,11 @@ const Sidebar = () => {
     }
   `;
 
-
   // getting page name on load
   const [currentPage, setCurrentPage] = useState("");
   useEffect(() => {
     setCurrentPage(window.location.pathname.split("/")[3] || "");
-  },[])
+  }, []);
 
   return (
     <>
@@ -260,7 +259,6 @@ const Sidebar = () => {
                         ? "tw-bg-primary-100 tw-text-white"
                         : ""
                     } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                    
                   >
                     <span>{val.icon}</span>
                     <span
@@ -297,7 +295,6 @@ const Sidebar = () => {
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
                   } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                  
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">

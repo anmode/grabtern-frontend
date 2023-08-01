@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 import Sidebar from "../../../components/mentorDashboard/sidebar";
 import Profile from "../../../components/mentorDashboard/profile";
 
 function profile() {
   return (
     <>
-      <Sidebar/>
-      <Profile/>
+      <Sidebar />
+      <Profile />
     </>
-  )
+  );
 }
 
-export default profile
+export default profile;

@@ -7,14 +7,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   margin-bottom: 2.5rem;
 }
 .headingg img {
   width: 3.5rem;
   height: 3.5rem;
   aspect-ratio: 1/1;
-  margin-top: -.25rem;
+  margin-top: -0.25rem;
 }
 .btnnContainer {
   text-align: center;
@@ -245,5 +245,11 @@
   }
   .btnn {
     width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .spinner {
+    position: relative;
+    right: 50px;
   }
 }

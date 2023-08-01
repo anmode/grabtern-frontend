@@ -195,9 +195,9 @@ const Sidebar = () => {
   // getting page name on change in tab
   const [currentPage, setCurrentPage] = useState("");
   useEffect(() => {
-    const search = window.location.search
+    const search = window.location.search;
     const params = new URLSearchParams(search);
-    setCurrentPage(params.get('tab') || "");
+    setCurrentPage(params.get("tab") || "");
   }, [window.location.search]);
 
   return (

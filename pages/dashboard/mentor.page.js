@@ -5,13 +5,13 @@ import Sessions from "../../components/mentorDashboard/sessions";
 import Calendar from "../../components/mentorDashboard/calendar";
 
 function MentorDashboard() {
-    // getting page name on change in tab
-    const [component, setComponent] = useState("");
-    useEffect(() => {
-      const search = window.location.search
-      const params = new URLSearchParams(search);
-      setComponent(params.get('tab') || "");
-    }, [window.location.search]);
+  // getting page name on change in tab
+  const [component, setComponent] = useState("");
+  useEffect(() => {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    setComponent(params.get("tab") || "");
+  }, [window.location.search]);
   return (
     <>
       <div className="">

@@ -239,26 +239,24 @@ function login() {
               </div>
             </div>
 
-
-            
             <div>
-            <ToastContainer />
-            <div>
-              {isLoading ? ( <div className="tw-relative tw-left-[160px]">
-                <EventLogin/>
+              <ToastContainer />
+              <div>
+                {isLoading ? (
+                  <div className="tw-relative tw-left-[160px]">
+                    <EventLogin />
+                  </div>
+                ) : (
+                  <div className="tw-flex tw-justify-center  tw-h-11">
+                    <Button
+                      className=" tw-w-[400px]"
+                      onClick={handleSubmit}
+                      text="Login"
+                    />
+                  </div>
+                )}
               </div>
-            
-              ):(
-                <div className="tw-flex tw-justify-center  tw-h-11"
-                >
-               <Button className=" tw-w-[400px]" onClick={handleSubmit}
-               text="Login"
-               />
-               </div>
-              )}
-
             </div>
-          </div>
 
             <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}

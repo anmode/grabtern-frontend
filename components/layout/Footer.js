@@ -75,7 +75,9 @@ function Footer() {
           {/* subscribe form */}
           <div className="tw-flex tw-mb-4 md:tw-mb-0">
             <form className="md:tw-flex md:tw-items-center">
-             <label htmlFor="email" className="tw-sr-only">Please provide your email address to subscribe to our newsletter</label>
+              <label htmlFor="email" className="tw-sr-only">
+                Please provide your email address to subscribe to our newsletter
+              </label>
               <Input
                 name="email"
                 type="email"

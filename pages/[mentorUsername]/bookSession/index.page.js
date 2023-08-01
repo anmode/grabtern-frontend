@@ -94,9 +94,10 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     if (!userName) {
       toast.error("Please login as a user before booking a session!");
       setTimeout(() => {
-      router.push(
-        `/auth/login?entityType=user&redirectURL=${window.location.href}`,
-      )},2000);
+        router.push(
+          `/auth/login?entityType=user&redirectURL=${window.location.href}`,
+        );
+      }, 2000);
       return;
     }
 
@@ -154,7 +155,8 @@ function Index({ mentorDetail, bookSession, sessionID }) {
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        requestData,{ withCredentials: true},
+        requestData,
+        { withCredentials: true },
       );
 
       setLoading(false);

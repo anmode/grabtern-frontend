@@ -13,13 +13,11 @@ const Footer = dynamic(() => import("../../components/layout/Footer"));
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
 import { useAuth } from "../../context/AuthContext";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
-import Cookies from "js-cookie";
 
 function login() {
   const router = useRouter();
   const [error, setError] = useState("");
-  const [entityType, setEntityType] = useState("user");
+  const [entityType, setEntityType] = useState("");
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -47,8 +45,10 @@ function login() {
     setError("");
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, formData, {withCredentials: true});
-      console.log(res.userData);
+      const { data: res } = await axios.post(url, formData, {
+        withCredentials: true,
+      });
+      // console.log(res.userData);
 
       if (entityType === "user") {
         localStorage.setItem("userData", JSON.stringify(res.userData));
@@ -58,7 +58,6 @@ function login() {
         setIsMentorLoggedIn(true);
       }
       // router.push("/");
-      
     } catch (error) {
       console.log(error);
       if (
@@ -71,32 +70,34 @@ function login() {
     }
   };
 
-  async function handleCallbackResponse(response) {
+  async function handleCallbackResponse(response, entityType) {
     var userObject = jwt_decode(response.credential);
     console.log(userObject);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, userObject);
-      let entityData = {};
-      // console.log(res);
-      const decryptedEntityData = decryptData(res);
-
+      const { data: res } = await axios.post(url, userObject, {
+        withCredentials: true,
+      });
+      console.log(res);
       if (entityType === "user") {
-        entityData = {
+        const userData = {
           user_name: userObject.name,
           user_picture: userObject.picture,
           user_email: userObject.email,
-          user_id: decryptedEntityData.id,
+          user_id: res.id,
         };
-        localStorage.setItem("userData", encryptData(entityData));
+        localStorage.setItem("userData", JSON.stringify(userData));
         setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
-        entityData = {
+        const mentorData = {
+          mentor_username: res.username,
           mentor_name: userObject.name,
-          mentorToken: decryptedEntityData.mentorToken,
-          mentor_picture: decryptedEntityData.image,
+          mentor_picture: userObject.picture,
         };
-        localStorage.setItem("mentorData", encryptData(entityData));
+        setTimeout(() => {
+          toast.success(res.message);
+        }, 6000);
+        localStorage.setItem("mentorData", JSON.stringify(mentorData));
         setIsMentorLoggedIn(true);
       }
       router.push("/");
@@ -112,41 +113,43 @@ function login() {
     }
   }
 
-  // useEffect(() => {
-  //   // console.log(isMentorLoggedIn, isUserLoggedIn);
-  //   // Redirect based on login status only if mentor or user is logged in
-  //   if (isMentorLoggedIn || isUserLoggedIn) {
-  //     const urlParams = new URLSearchParams(window.location.search);
-  //     const redirectURL = urlParams.get("redirectURL");
-  //     router.replace(redirectURL || "/");
-  //   }
-  //   const url = new URL(window.location.href);
-  //   const entityTypeFromUrl = url.searchParams.get("entityType");
-  //   // console.log(entityTypeFromUrl);
-  //   if (entityTypeFromUrl) {
-  //     setEntityType(entityTypeFromUrl);
-  //   }
-  //   google.accounts.id.initialize({
-  //     client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-  //     callback: handleCallbackResponse,
-  //   });
+  useEffect(() => {
+    if (isMentorLoggedIn || isUserLoggedIn) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectURL = urlParams.get("redirectURL");
+      router.replace(redirectURL || "/");
+    }
 
-  //   google.accounts.id.renderButton(
-  //     document.getElementById("googleSignInButton"),
-  //     { theme: "outline", size: "large" },
-  //   );
-  //   google.accounts.id.prompt();
+    const url = new URL(window.location.href);
+    const entityTypeFromUrl = url.searchParams.get("entityType");
+    if (entityTypeFromUrl) {
+      setEntityType(entityTypeFromUrl);
+    }
 
-  //   if (isUserLoggedIn || isMentorLoggedIn) {
-  //     const urlParams = new URLSearchParams(window.location.search);
-  //     const redirectURL = urlParams.get("redirectURL");
-  //     if (redirectURL) {
-  //       router.push(redirectURL);
-  //     } else {
-  //       router.push("/");
-  //     }
-  //   }
-  // }, [isUserLoggedIn, isMentorLoggedIn]);
+    // Initialize Google Sign-In with the correct entityType
+    google.accounts.id.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+      callback: (response) =>
+        handleCallbackResponse(response, entityTypeFromUrl),
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleSignInButton"),
+      { theme: "outline", size: "large" },
+    );
+
+    google.accounts.id.prompt();
+
+    if (isUserLoggedIn || isMentorLoggedIn) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectURL = urlParams.get("redirectURL");
+      if (redirectURL) {
+        router.push(redirectURL);
+      } else {
+        router.push("/");
+      }
+    }
+  }, [isUserLoggedIn, isMentorLoggedIn]);
 
   // Function to update the URL with the new entityType
   const updateEntityTypeInUrl = (newEntityType) => {
@@ -193,7 +196,11 @@ function login() {
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>
               <img src="/faviconn.png"></img>
-              <h2> {entityType.charAt(0).toUpperCase() + entityType.slice(1)} Login </h2>
+              <h2>
+                {" "}
+                {entityType.charAt(0).toUpperCase() +
+                  entityType.slice(1)} Login{" "}
+              </h2>
             </div>
             <div className={styles.forminput}>
               <label htmlFor="email">Email</label>

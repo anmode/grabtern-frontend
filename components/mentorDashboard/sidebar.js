@@ -195,8 +195,10 @@ const Sidebar = () => {
   // getting page name on load
   const [currentPage, setCurrentPage] = useState("");
   useEffect(() => {
-    setCurrentPage(window.location.pathname.split("/")[3] || "");
-  }, []);
+    const search = window.location.search
+    const params = new URLSearchParams(search);
+    setCurrentPage(params.get('tab'));
+  }, [window.location.search]);
 
   return (
     <>
@@ -251,7 +253,7 @@ const Sidebar = () => {
                   className="tw-group tw-cursor-pointer hoverList"
                 >
                   <Link
-                    href={`/dashboard/mentor/${val.path}`}
+                    href={`/dashboard/mentor?tab=${val.path}`}
                     className={`tw-flex ${
                       isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
                     } ${
@@ -289,7 +291,7 @@ const Sidebar = () => {
                 className="tw-flex tw-group tw-cursor-pointer hoverList"
               >
                 <Link
-                  href={`/dashboard/mentor/${val.path}`}
+                  href={`/dashboard/mentor?tab=${val.path}`}
                   className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
@@ -361,7 +363,7 @@ const Sidebar = () => {
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
                     <Link
-                      href={`/dashboard/mentor/${val.path}`}
+                      href={`/dashboard/mentor?tab=${val.path}`}
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white"
@@ -385,7 +387,7 @@ const Sidebar = () => {
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
                     <Link
-                      href={`/dashboard/mentor/${val.path}`}
+                      href={`/dashboard/mentor?tab=${val.path}`}
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white"

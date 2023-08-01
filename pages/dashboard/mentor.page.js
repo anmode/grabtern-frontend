@@ -18,10 +18,10 @@ function MentorDashboard() {
   };
   return (
     <>
-      <div className="">
+      <div className="tw-flex">
         {/* <Header navbarBackground={true} /> */}
         <Sidebar setComponent={updatePath} component={component} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-        <div>
+        <div className="">
           {component === "" && <Home />}
           {component === "profile" && <Profile />}
           {component === "calendar" && <Calendar />}

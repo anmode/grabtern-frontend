@@ -18,7 +18,7 @@ function MentorDashboard() {
     <>
       <div className="">
         {/* <Header navbarBackground={true} /> */}
-        <Sidebar setComponent={updatePath} />
+        <Sidebar setComponent={updatePath} component={component} />
         <div>
           {component == "profile" && <Profile />}
           {component == "calendar" && <Calendar />}

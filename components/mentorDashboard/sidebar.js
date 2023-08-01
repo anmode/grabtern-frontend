@@ -198,31 +198,70 @@ const Sidebar = ({ setComponent, component }) => {
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"}`}
+          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+            isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
+          }`}
           onMouseOver={() => setIsSidebarOpen(true)}
           onMouseLeave={() => setIsSidebarOpen(false)}
         >
           <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
-            <div className={`${isSidebarOpen ? "tw-block" : "tw-hidden"} tw-flex tw-justify-center  tw-items-center`}>
-              <Link href="/" className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl">GrabTern</Link>
+            <div
+              className={`${
+                isSidebarOpen ? "tw-block" : "tw-hidden"
+              } tw-flex tw-justify-center  tw-items-center`}
+            >
+              <Link
+                href="/"
+                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl"
+              >
+                GrabTern
+              </Link>
             </div>
-            <div className={`tw-group tw-p-4 tw-flex ${isSidebarOpen ? "tw-justify-start tw-gap-4" : "tw-justify-center"} tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}>
+            <div
+              className={`tw-group tw-p-4 tw-flex ${
+                isSidebarOpen
+                  ? "tw-justify-start tw-gap-4"
+                  : "tw-justify-center"
+              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
+            >
               <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-              <span className={`${isSidebarOpen ? "tw-block group-hover:tw-text-primary-100" : "tw-hidden"}`}>Get more bookings</span>
+              <span
+                className={`${
+                  isSidebarOpen
+                    ? "tw-block group-hover:tw-text-primary-100"
+                    : "tw-hidden"
+                }`}
+              >
+                Get more bookings
+              </span>
             </div>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
-            <ul className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}>
+            <ul
+              className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}
+            >
               {menuItem.map((val, key) => (
                 <HoverListItem
                   key={key}
                   className="tw-group tw-cursor-pointer hoverList"
                 >
                   <div
-                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"} ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                    className={`tw-flex ${
+                      isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
+                    } ${
+                      component === val.path
+                        ? "tw-bg-primary-100 tw-text-white"
+                        : ""
+                    } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     onClick={() => setComponent(val.path)}
                   >
                     <span>{val.icon}</span>
-                    <span className={`tw-ml-3 ${isSidebarOpen ? "tw-block" : "tw-hidden"}`}>{val.title}</span>
+                    <span
+                      className={`tw-ml-3 ${
+                        isSidebarOpen ? "tw-block" : "tw-hidden"
+                      }`}
+                    >
+                      {val.title}
+                    </span>
                   </div>
                 </HoverListItem>
               ))}
@@ -244,11 +283,17 @@ const Sidebar = ({ setComponent, component }) => {
                 className="tw-flex tw-group tw-cursor-pointer hoverList"
               >
                 <div
-                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
+                    component === val.path
+                      ? "tw-bg-primary-100 tw-text-white"
+                      : ""
+                  } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                   onClick={() => setComponent(val.path)}
                 >
                   <span>{val.icon}</span>
-                  <span className="tw-text-xs max-[350px]:tw-hidden">{val.title}</span>
+                  <span className="tw-text-xs max-[350px]:tw-hidden">
+                    {val.title}
+                  </span>
                 </div>
               </HoverListItem>
             ))}
@@ -257,7 +302,10 @@ const Sidebar = ({ setComponent, component }) => {
             {/* a button for expanding the remaining buttons */}
             <button className="tw-flex tw-flex-col tw-gap-1 tw-justify-center tw-items-center">
               {
-                <AiOutlineMenu className="tw-text-2xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(true)} />
+                <AiOutlineMenu
+                  className="tw-text-2xl tw-text-gray-900"
+                  onClick={() => setIsMobileSidebarOpen(true)}
+                />
               }
               <span className="tw-text-xs max-[350px]:tw-hidden">More</span>
             </button>
@@ -266,14 +314,29 @@ const Sidebar = ({ setComponent, component }) => {
 
         {/* Modal for opening menu */}
         <div>
-          <div className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${isMobileSidebarOpen ? "tw-opacity-100" : "tw-opacity-0 tw-pointer-events-none"}`}>
+          <div
+            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${
+              isMobileSidebarOpen
+                ? "tw-opacity-100"
+                : "tw-opacity-0 tw-pointer-events-none"
+            }`}
+          >
             <div className="tw-flex tw-justify-end tw-items-center tw-p-4">
               <button className="tw-flex tw-justify-center tw-items-center">
-                <AiOutlineClose className="tw-text-4xl tw-text-gray-900" onClick={() => setIsMobileSidebarOpen(false)} />
+                <AiOutlineClose
+                  className="tw-text-4xl tw-text-gray-900"
+                  onClick={() => setIsMobileSidebarOpen(false)}
+                />
               </button>
             </div>
             <div className="tw-flex tw-justify-center tw-items-center">
-              <Link href="/" onClick={() => setIsMobileSidebarOpen(false)} className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-xl">GrabTern</Link>
+              <Link
+                href="/"
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-xl"
+              >
+                GrabTern
+              </Link>
             </div>
             <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
               <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
@@ -281,8 +344,9 @@ const Sidebar = ({ setComponent, component }) => {
                 <span className="tw-font-semibold">Get more bookings</span>
               </div>
             </div>
-            <div className={`tw-flex tw-mt-6 tw-justify-around tw-items-center tw-font-medium tw-p-2`}>
-
+            <div
+              className={`tw-flex tw-mt-6 tw-justify-around tw-items-center tw-font-medium tw-p-2`}
+            >
               {/* left part */}
               <div className="tw-flex tw-flex-col tw-gap-10">
                 {menuItem1.map((val, key) => (
@@ -291,14 +355,20 @@ const Sidebar = ({ setComponent, component }) => {
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
                     <div
-                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      className={`tw-flex tw-flex-wrap ${
+                        component === val.path
+                          ? "tw-bg-primary-100 tw-text-white"
+                          : ""
+                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                       onClick={() => {
                         setComponent(val.path);
                         setIsMobileSidebarOpen(false);
                       }}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
-                      <span className="tw-text-sm tw-text-center">{val.title}</span>
+                      <span className="tw-text-sm tw-text-center">
+                        {val.title}
+                      </span>
                     </div>
                   </HoverListItem>
                 ))}
@@ -312,14 +382,20 @@ const Sidebar = ({ setComponent, component }) => {
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
                     <div
-                      className={`tw-flex tw-flex-wrap ${component === val.path ? "tw-bg-primary-100 tw-text-white" : ""} tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      className={`tw-flex tw-flex-wrap ${
+                        component === val.path
+                          ? "tw-bg-primary-100 tw-text-white"
+                          : ""
+                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                       onClick={() => {
                         setComponent(val.path);
                         setIsMobileSidebarOpen(false);
                       }}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
-                      <span className="tw-text-sm tw-text-center">{val.title}</span>
+                      <span className="tw-text-sm tw-text-center">
+                        {val.title}
+                      </span>
                     </div>
                   </HoverListItem>
                 ))}
@@ -328,7 +404,6 @@ const Sidebar = ({ setComponent, component }) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

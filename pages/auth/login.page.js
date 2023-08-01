@@ -51,9 +51,6 @@ function login() {
 
       const { data: res } = await axios.post(url, formData);
       setIsLoading(false);
-      const decryptedEntityData = decryptData(res);
-      // console.log(userData);
-      let entityData = {};
 
       if (entityType === "user") {
         localStorage.setItem("userData", JSON.stringify(res.userData));

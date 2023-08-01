@@ -109,6 +109,7 @@ const ResetPassword = () => {
                 type={viewPassword ? "text" : "password"}
                 name="newPassword"
                 placeholder="Password"
+                required
                 value={newPassword}
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
@@ -131,6 +132,7 @@ const ResetPassword = () => {
                 type={showPassword ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Password"
+                required
                 value={confirmPassword}
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"

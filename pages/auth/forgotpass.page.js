@@ -23,28 +23,30 @@ function ForgotPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (email) {
+      setIsLoading(true);
 
-    try {
-      const url = new URL(window.location.href);
-      const entityTypeFromUrl = url.searchParams.get("entityType");
-      const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
-      const { data } = await axios.post(backendUrl, { email: email });
-      setIsLoading(false);
-      toast.success(
-        "Please check your email for instructions to reset your password.",
-      );
-      setTimeout(() => {
-        router.push("/");
-      }, 5000);
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        toast.error(error.response.data.message);
+      try {
+        const url = new URL(window.location.href);
+        const entityTypeFromUrl = url.searchParams.get("entityType");
+        const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
+        const { data } = await axios.post(backendUrl, { email: email });
         setIsLoading(false);
+        toast.success(
+          "Please check your email for instructions to reset your password.",
+        );
+        setTimeout(() => {
+          router.push("/");
+        }, 5000);
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          toast.error(error.response.data.message);
+          setIsLoading(false);
+        }
       }
     }
   };
@@ -82,6 +84,7 @@ function ForgotPassword() {
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Email"
                 onChange={handleChange}
                 value={email}
@@ -95,7 +98,9 @@ function ForgotPassword() {
               <ButtonUI
                 text="Reset Password"
                 onClick={handleSubmit}
-                className="tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2"
+                className={`tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2 ${
+                  email ? "!tw-cursor-pointer" : "!tw-cursor-not-allowed"
+                }`}
               />
             </div>
             {isLoading && (

@@ -13,14 +13,14 @@ import { PiBookOpenText } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgMailOpen } from "react-icons/cg";
-import { BiGift } from "react-icons/bi";
+import { BiGift, BiTime } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = ({ setComponent, component }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Sidebar = ({ setComponent, component, isSidebarOpen, setIsSidebarOpen }) => {
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -48,14 +48,14 @@ const Sidebar = ({ setComponent, component }) => {
 
   const menuItem = [
     {
+      title: "Home",
+      icon: <AiOutlineHome />,
+      path: "",
+    },
+    {
       title: "Profile",
       icon: <CgProfile />,
       path: "profile",
-    },
-    {
-      title: "Home",
-      icon: <AiOutlineHome />,
-      path: "sessions",
     },
     {
       title: "Bookings",
@@ -71,6 +71,11 @@ const Sidebar = ({ setComponent, component }) => {
       title: "Calendar",
       icon: <BiCalendar />,
       path: "calendar",
+    },
+    {
+      title: "Sessions",
+      icon: <BiTime />,
+      path: "sessions",
     },
     {
       title: "Services",
@@ -106,14 +111,14 @@ const Sidebar = ({ setComponent, component }) => {
       path: "profile",
     },
     {
-      title: "Home",
-      icon: <AiOutlineHome />,
-      path: "sessions",
-    },
-    {
       title: "Bookings",
       icon: <LuPhoneCall />,
       path: "bookings",
+    },
+    {
+      title: "Home",
+      icon: <AiOutlineHome />,
+      path: "",
     },
     {
       title: "Priority DM",
@@ -124,14 +129,14 @@ const Sidebar = ({ setComponent, component }) => {
 
   const menuItem1 = [
     {
+      title: "Home",
+      icon: <AiOutlineHome />,
+      path: "",
+    },
+    {
       title: "Profile",
       icon: <CgProfile />,
       path: "profile",
-    },
-    {
-      title: "Home",
-      icon: <AiOutlineHome />,
-      path: "sessions",
     },
     {
       title: "Bookings",
@@ -160,6 +165,11 @@ const Sidebar = ({ setComponent, component }) => {
       title: "Payments",
       icon: <MdPayment />,
       path: "payments",
+    },
+    {
+      title: "Sessions",
+      icon: <BiTime />,
+      path: "sessions",
     },
     {
       title: "What's New",
@@ -281,7 +291,7 @@ const Sidebar = ({ setComponent, component }) => {
                 <span className="tw-font-semibold">Get more bookings</span>
               </div>
             </div>
-            <div className={`tw-flex tw-mt-6 tw-justify-around tw-items-center tw-font-medium tw-p-2`}>
+            <div className={`tw-flex tw-mt-6 tw-justify-around tw-items-start tw-font-medium tw-p-2`}>
 
               {/* left part */}
               <div className="tw-flex tw-flex-col tw-gap-10">

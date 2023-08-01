@@ -105,7 +105,7 @@ function Profile({ mentorDetail }) {
   };
   return (
     <div className="mentorDetail">
-      <div style={{ marginLeft: "250px" }}>
+      <div>
         <div
           className="modalPopupAfterRegistrationDone"
           style={{

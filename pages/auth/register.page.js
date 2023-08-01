@@ -109,6 +109,7 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
+  const [isValidValues, setIsValidValues] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
@@ -125,6 +126,14 @@ function Register() {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
+
+  useEffect(() => {
+    if (data.fullName && data.email && data.password && data.confirmPassword) {
+      setIsValidValues(true);
+    } else {
+      setIsValidValues(false);
+    }
+  }, [data]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -181,6 +190,7 @@ function Register() {
               <input
                 type="text"
                 name="fullName"
+                required
                 placeholder="Full name"
                 onChange={handleChange}
                 value={data.fullName}
@@ -194,6 +204,7 @@ function Register() {
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Email"
                 onChange={handleChange}
                 value={data.email}
@@ -208,6 +219,7 @@ function Register() {
               <input
                 type={isPasswordVisible ? "text" : "password"}
                 name="password"
+                required
                 placeholder="Password"
                 onChange={handleChange}
                 value={data.password}
@@ -229,6 +241,7 @@ function Register() {
               <input
                 type={isConPasswordVisible ? "text" : "password"}
                 name="confirmPassword"
+                required
                 placeholder="Password"
                 onChange={handleChange}
                 value={data.confirmPassword}
@@ -244,10 +257,16 @@ function Register() {
           </div>
           <ToastContainer />
 
+
           {/* <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
+
             <input
               type="submit"
               name="submit"
+              disabled={!isValidValues}
+              className={`${
+                isValidValues ? "tw-cursor-pointer" : "tw-cursor-not-allowed"
+              }`}
               value="Register"
               style={{ textAlign: "center", width: "100%" }}
             />

@@ -31,12 +31,12 @@ const Sidebar = ({ setComponent }) => {
     {
       title: "Home",
       icon: <AiOutlineHome />,
-      path: "sessions",
+      path: "",
     },
     {
       title: "Bookings",
       icon: <LuPhoneCall />,
-      path: "bookings",
+      path: "sessions",
     },
     {
       title: "Priority DM",

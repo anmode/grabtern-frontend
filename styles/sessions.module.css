@@ -229,7 +229,8 @@
 /* For screen sizes between 601px and 1024px */
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   .userSessionParent {
-    left: 50px;
+    position: relative;
+    left: 0px;
   }
   .userSessionParent .head .title {
     left: 50px;
@@ -245,6 +246,15 @@
   .tableColumn {
     font-size: 18px;
   }
+
+  .infoTable th,
+  .infoTable td {
+  flex-basis: 16.66%; /* Let each column take 16.66% width (6 columns) on smaller screens */
+  padding: 8px; /* Add spacing between columns */
+  box-sizing: border-box;
+  font-size: 18px;
+  
+}
   .head{
     display: flex;
     position: relative;
@@ -257,13 +267,17 @@
     left: 38px;
     margin-bottom: 1.4em;
   }
+  .infoTable {
+    gap: 2px;
+  }
 
 }
 
 /* Additional adjustments for mobile screens */
 @media screen and (max-width: 600px) {
   .userSessionParent {
-    left: 10px;
+    position: relative;
+    left: 0px;
     padding: 0 0.8em;
   }
   .infoTable {
@@ -384,3 +398,34 @@
 .anttabs.active span {
   line-height: 1.5;
 }
+
+/* For screen sizes between 1025px and laptop screen width */
+@media screen and (min-width: 1025px) and (max-width: 1460px) {
+  .userSessionParent .head .title {
+    font-size: 1.8em;
+    padding-left: 23px;
+  }
+
+  .antbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .anttabs span {
+    line-height: 1.3;
+  }
+  
+  .spinContainer{
+    padding-left: 23px;
+  }
+  
+  .menubar{
+    position: relative;
+    left: 20px;
+  }
+
+  
+}
+

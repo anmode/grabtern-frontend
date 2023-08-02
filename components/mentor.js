@@ -23,7 +23,7 @@ const MentorCard = ({ mentor, link }) => {
             href={mentor.social.linkedin}
             aria-label="Follow me on Linkedin"
             title="Linkedin (External Link)"
-            rel="noopener noreferrer" 
+            rel="noopener noreferrer"
             Icon={RiLinkedinLine}
             variant="secondary"
           />
@@ -31,7 +31,7 @@ const MentorCard = ({ mentor, link }) => {
             href={mentor.social.twitter}
             aria-label="Follow me on Twitter"
             title="Twitter (External Link)"
-            rel="noopener noreferrer" 
+            rel="noopener noreferrer"
             Icon={RiTwitterLine}
             variant="secondary"
           />

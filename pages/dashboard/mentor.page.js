@@ -3,6 +3,8 @@ import Sidebar from "../../components/mentorDashboard/sidebar";
 import Profile from "../../components/mentorDashboard/profile";
 import Sessions from "../../components/mentorDashboard/sessions";
 import Calendar from "../../components/mentorDashboard/calendar";
+import Queries from "../../components/mentorDashboard/queries";
+import Header from "../../components/layout/Header";
 
 function MentorDashboard() {
   // getting page name on change in tab
@@ -20,7 +22,8 @@ function MentorDashboard() {
         <div>
           {component == "profile" && <Profile />}
           {component == "calendar" && <Calendar />}
-          {component == "" && <Sessions />}
+          {component == "sessions" && <Sessions />}
+          {component == "queries" && <Queries />}
         </div>
       </div>
     </>

@@ -9,7 +9,6 @@ import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
 import { ButtonLink } from "../UI";
 import clsx from "clsx";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
 function Header() {
   const {
@@ -18,8 +17,8 @@ function Header() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  const userData = decryptData(localStorage.getItem("userData"));
-  const mentorData = decryptData(localStorage.getItem("mentorData"));
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [scrollY, setScrollY] = useState(0);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -104,10 +103,12 @@ function Header() {
             <Link href="/mentors" className="hover:tw-text-primary-100">
               Mentor
             </Link>
+            <Link href="/community" className="hover:tw-text-primary-100">
+              Community
+            </Link>
             <Link href="/contact" className="hover:tw-text-primary-100">
               Contact
             </Link>
-
             {/* show profile card if user is logged in else show signin link */}
             {isUserLoggedIn || isMentorLoggedIn ? (
               <UserProfile />
@@ -163,6 +164,12 @@ function Header() {
                   className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500   hover:tw-text-gray-500 tw-font-medium"
                 >
                   Mentor
+                </Link>
+                <Link
+                  href="/community"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                >
+                  Community
                 </Link>
                 <Link
                   href="/contact"

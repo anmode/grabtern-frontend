@@ -10,12 +10,11 @@
   border: 2px solid whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.form{
+.form {
   padding: 0px 0px 0px 0px;
   margin: 0;
-  
 }
-.description{
+.description {
   padding: 20px 20px 20px 20px;
   margin: 2% 20% 4% 0%;
   border: 2px dashed #ceb8f1;
@@ -33,7 +32,7 @@
   margin-bottom: 2rem;
   color: #6e4fa0;
 }
-.generateTicket{
+.generateTicket {
   padding: 0px 0px 10px;
   font-weight: bolder;
   font-size: 1.5rem;
@@ -50,27 +49,24 @@
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
 }
-.raiseButton{
+.raiseButton {
   /* border: 2px solid #39383b; */
   padding: 0.5rem;
   border-radius: 0.25rem;
   color: #6e4fa0;
-  
-  
 }
-.raiseButton:hover{
+.raiseButton:hover {
   text-decoration: underline;
 }
-.submitTicketButton{
+.submitTicketButton {
   color: white;
   padding: 4px 8px 4px 8px;
   border-radius: 10px;
   background-color: #845ec2;
   margin-top: 10px;
   margin-bottom: 0;
-
 }
-.submitTicketButton:hover{
+.submitTicketButton:hover {
   background-color: #5c30a1;
 }
 

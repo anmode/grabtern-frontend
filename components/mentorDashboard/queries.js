@@ -4,17 +4,15 @@ import TicketForm from "./ticketForm";
 import { CiShoppingTag } from "react-icons/ci";
 import axios from "axios";
 
-
 const Queries = () => {
   const [pendingQueries, setPendingQueries] = useState([]);
   const [answeredQueries, setAnsweredQueries] = useState([]);
   //   const [currentAnswer, setCurrentAnswer] = useState("");
   // const [answers, setAnswers] = useState({});
   const [currentView, setCurrentView] = useState("Pending");
-  const [isTicketFormVisible, setIsTicketFormVisible] = useState(false)
+  const [isTicketFormVisible, setIsTicketFormVisible] = useState(false);
 
-
-  const generateRandomId = () =>{
+  const generateRandomId = () => {
     return "#" + Math.floor(Math.random() * 900 + 100);
   };
 
@@ -39,12 +37,12 @@ const Queries = () => {
     setIsTicketFormVisible(true);
   };
   const handleTicketFormSubmit = (description) => {
-    const newTicket= {
+    const newTicket = {
       id: generateRandomId(),
       description: description,
       status: "Pending",
     };
-    
+
     setPendingQueries([...pendingQueries, newTicket]);
     setIsTicketFormVisible(false);
   };
@@ -73,22 +71,27 @@ const Queries = () => {
   // }
 
   return (
-    
-
     <div className={styles.container}>
       <div className={styles.heading}>
-        <h1>Queries</h1> 
+        <h1>Queries</h1>
       </div>
-      
+
       <div className={styles.buttonGroup}>
-        <p>To ask query, raise a ticket 
-        <CiShoppingTag style={{display:"inline", marginLeft:"5px", color:"#6e4fa0"}}/>
-        <button className={styles.raiseButton} onClick={handleRaiseTicketClick}>Raise Ticket</button>
+        <p>
+          To ask query, raise a ticket
+          <CiShoppingTag
+            style={{ display: "inline", marginLeft: "5px", color: "#6e4fa0" }}
+          />
+          <button
+            className={styles.raiseButton}
+            onClick={handleRaiseTicketClick}
+          >
+            Raise Ticket
+          </button>
         </p>
-        
-        </div>
+      </div>
       {isTicketFormVisible && <TicketForm onSubmit={handleTicketFormSubmit} />}
-      
+
       <p className={styles.generateTicket}>Generated Tickets</p>
       <div className={styles.buttonGroup}>
         <button
@@ -112,31 +115,47 @@ const Queries = () => {
       {currentView === "Pending" && (
         <div className={styles.pendingQueries}>
           {/* <h2 className={styles.subheading}>Pending</h2> */}
-          {pendingQueries.length === 0 ? (<p>No Pending Tickets</p>) : (pendingQueries.map((query) => (
-            <div key={query.id} className={styles.query}>
-              <p><strong>ID:</strong> {query.id}</p>
-              <p>
-                  <strong>Description: </strong>{query.description}
-              </p>
-              <p><strong>Status:</strong> {query.status}</p>
-            
-            </div>
-      )))}
+          {pendingQueries.length === 0 ? (
+            <p>No Pending Tickets</p>
+          ) : (
+            pendingQueries.map((query) => (
+              <div key={query.id} className={styles.query}>
+                <p>
+                  <strong>ID:</strong> {query.id}
+                </p>
+                <p>
+                  <strong>Description: </strong>
+                  {query.description}
+                </p>
+                <p>
+                  <strong>Status:</strong> {query.status}
+                </p>
+              </div>
+            ))
+          )}
         </div>
       )}
 
       {currentView === "answered" && (
         <div>
           {/* <h2 className={styles.subheading}>Answered Queries</h2> */}
-          {answeredQueries.length === 0 ? (<p>No answered tickets yet.</p>) : (answeredQueries.map((query, index) => (
-            <div key={query.id} className={styles.query}>
-            <p><strong>ID:</strong> {query.id}</p>
-              <p>
+          {answeredQueries.length === 0 ? (
+            <p>No answered tickets yet.</p>
+          ) : (
+            answeredQueries.map((query, index) => (
+              <div key={query.id} className={styles.query}>
+                <p>
+                  <strong>ID:</strong> {query.id}
+                </p>
+                <p>
                   <strong>Description:</strong> {query.description}
-              </p>
-              <p><strong>Status:</strong> {query.status}</p>
-            </div>
-      )))}
+                </p>
+                <p>
+                  <strong>Status:</strong> {query.status}
+                </p>
+              </div>
+            ))
+          )}
         </div>
       )}
     </div>

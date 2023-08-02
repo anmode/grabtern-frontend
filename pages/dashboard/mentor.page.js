@@ -23,7 +23,7 @@ function MentorDashboard() {
           {component == "profile" && <Profile />}
           {component == "calendar" && <Calendar />}
           {component == "sessions" && <Sessions />}
-          {component == "queries" && <Queries />} 
+          {component == "queries" && <Queries />}
         </div>
       </div>
     </>

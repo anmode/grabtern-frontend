@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BsXLg, BsClipboard } from "react-icons/bs";
 import { FaTwitter, FaFacebook, FaWhatsapp, FaLinkedin, FaEnvelope, FaTelegram, FaDiscord } from "react-icons/fa";
 
@@ -30,7 +30,6 @@ export default function SharePageModal({ handleClose, username }) {
     const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareLink)}`;
     window.open(url, "_blank");
   };
-  
 
   const handleShareEmail = () => {
     const subject = "Check out this mentor page!";
@@ -44,18 +43,39 @@ export default function SharePageModal({ handleClose, username }) {
     const url = `https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
+  
   const handleShareDiscord = () => {
     const text = `Hey, I found this awesome mentor page:`;
     const url = `https://discord.com/channels/@me?url=${encodeURIComponent(shareLink)}`;
     window.open(url, "_blank");
   };
 
+  const [containerWidth, setContainerWidth] = useState('448px');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setContainerWidth('90%');
+      } else {
+        setContainerWidth('448px');
+      }
+    };
+
+    handleResize(); // Call the function once to set the initial width
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       {/* Share mentor page modal */}
       <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-fixed tw-top-0 tw-left-0 tw-bg-black/25 tw-w-full tw-h-full tw-z-[999]">
         {/* Modal Container */}
-        <div className="tw-flex tw-flex-col tw-items-stretch tw-justify-start tw-bg-white tw-rounded-[36px] tw-p-[30px] tw-w-[448px] tw-gap-4">
+        <div className="tw-flex tw-flex-col tw-items-stretch tw-justify-start tw-bg-white tw-rounded-[36px] tw-p-[30px] tw-gap-4" style={{ width: containerWidth   }}>
           {/* Modal Heading */}
           <div className="tw-flex tw-flex-row tw-items-center tw-justify-between">
             <h1 className="tw-text-[28px] tw-font-semibold tw-text-[#4338CA]">
@@ -74,7 +94,7 @@ export default function SharePageModal({ handleClose, username }) {
             friends:
           </div>
           {/* Social media icons */}
-          <div className="tw-flex tw-mt-2 tw-space-x-7 tw-ml-10">
+          <div className="tw-flex tw-mt-2 tw-space-x-7 sm:tw-ml-5 md:tw-ml-7 lg:tw-ml-8">
             <button
               className="tw-text-[24px] tw-text-blue-500 hover:tw-text-blue-600"
               onClick={handleShareTwitter}

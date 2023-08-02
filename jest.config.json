@@ -1,10 +1,10 @@
 {
-  "testEnvironment": "jsdom", 
-  "testMatch": ["**/Tests/**/*.test.js"], 
+  "testEnvironment": "jsdom",
+  "testMatch": ["**/Tests/**/*.test.js"],
   "moduleNameMapper": {
-    "\\.(css|less|scss)$": "identity-obj-proxy" 
+    "\\.(css|less|scss)$": "identity-obj-proxy"
   },
   "transform": {
-    "^.+\\.(js|jsx)$": "babel-jest" 
+    "^.+\\.(js|jsx)$": "babel-jest"
   }
 }

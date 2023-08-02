@@ -44,7 +44,7 @@ function SearchBar({
 
   return (
     <>
-      <form className="tw-w-full  tw-max-w-[340px] tw-mx-auto ml-0">
+      <form className="tw-w-full  tw-max-w-[340px] tw-mx-auto ml-0 ">
         <label
           htmlFor="default-search"
           className="tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 tw-sr-only tw-dark:text-white"
@@ -82,15 +82,21 @@ function SearchBar({
             required=""
           />
         </div>
-        <div className="tw-mt-8 tw-flex tw-flex-row tw-gap-4">
+      
+      </form>
+      <div className={`tw-mt-8 tw-flex tw-flex-wrap tw-gap-4  `}>
           <button
           type="button"
             className={`${selectedTag[0] === "All" ? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
-              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
-              } tw-p-2 tw-border  tw-cursor-pointer font-medium tw-rounded-full text-sm px-5 py-2.5 text-center mb-2 `}
+              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-base"
+              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5 tw-py-2  tw-mb-2 `}
             onClick={() => handleTagChange("All")}
+            style={{
+              fontSize: window.innerWidth > 768 ? "16px" : "14px",
+              
+            }}  
           >
-            ALL
+            All
           </button>
 
 
@@ -100,9 +106,9 @@ function SearchBar({
               type="button"
               key={mylabel}
             className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
-              } ${window.innerWidth > 768 ? "tw-text-sm" : "tw-text-xs"
-              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2 `}
-              style={{ whiteSpace: "nowrap" }}
+              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5  tw-py-2 tw-mb-2 `}
+              style={{ whiteSpace: "nowrap" ,              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem"}}
             onClick={() => handleTagChange(mylabel)}
           >
             {mylabel}
@@ -111,23 +117,24 @@ function SearchBar({
           {HackathonLabels &&
             HackathonLabels.map((mylabel) => (
               <>
-          
-              <button
+         
+           <button
                 type="button"
                 key={mylabel}
-              className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
-                } ${window.innerWidth > 768 ? "tw-text-sm" : "tw-text-xs"
-                } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2 `}
-                style={{ whiteSpace: "nowrap" }}
+              className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600 " : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+                } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+                } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
+                style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" }}
               onClick={() => handleTagChange(mylabel)}
             >
               {mylabel}
             </button>
+          
+           
             </>
             ))}
           
         </div>
-      </form>
     </>
   );
 }

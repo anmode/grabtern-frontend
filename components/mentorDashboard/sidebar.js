@@ -19,7 +19,7 @@ import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = ({ setComponent, component, isSidebarOpen, setIsSidebarOpen }) => {
+const Sidebar = ({ mentor, setComponent, component, isSidebarOpen, setIsSidebarOpen }) => {
   // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
@@ -54,7 +54,7 @@ const Sidebar = ({ setComponent, component, isSidebarOpen, setIsSidebarOpen }) =
     },
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: <Image src={mentor.image} width={30} height={30} className="tw-rounded-full"/>,
       path: "profile",
     },
     {
@@ -107,7 +107,7 @@ const Sidebar = ({ setComponent, component, isSidebarOpen, setIsSidebarOpen }) =
   const mobileItem = [
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: <Image src={mentor.image} width={30} height={30} className="tw-rounded-full"/>,
       path: "profile",
     },
     {
@@ -135,7 +135,7 @@ const Sidebar = ({ setComponent, component, isSidebarOpen, setIsSidebarOpen }) =
     },
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: <Image src={mentor.image} width={30} height={30} className="tw-rounded-full"/>,
       path: "profile",
     },
     {
@@ -290,7 +290,7 @@ const Sidebar = ({ setComponent, component, isSidebarOpen, setIsSidebarOpen }) =
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
-                className="tw-flex tw-group tw-cursor-pointer hoverList"
+                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer hoverList"
               >
                 <div
                   className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${

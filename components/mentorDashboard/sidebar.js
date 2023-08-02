@@ -1,4 +1,4 @@
-import React, { Component, useState, useRef } from "react";
+import React, { Component, useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
 
@@ -15,11 +15,12 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgMailOpen } from "react-icons/cg";
 import { BiGift } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = ({ setComponent, component }) => {
+const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
@@ -55,7 +56,7 @@ const Sidebar = ({ setComponent, component }) => {
     {
       title: "Home",
       icon: <AiOutlineHome />,
-      path: "sessions",
+      path: "",
     },
     {
       title: "Bookings",
@@ -108,7 +109,7 @@ const Sidebar = ({ setComponent, component }) => {
     {
       title: "Home",
       icon: <AiOutlineHome />,
-      path: "sessions",
+      path: "",
     },
     {
       title: "Bookings",
@@ -124,6 +125,11 @@ const Sidebar = ({ setComponent, component }) => {
 
   const menuItem1 = [
     {
+      title: "Queries",
+      icon: <CgSearchFound />,
+      path: "queries",
+    },
+    {
       title: "Profile",
       icon: <CgProfile />,
       path: "profile",
@@ -131,7 +137,7 @@ const Sidebar = ({ setComponent, component }) => {
     {
       title: "Home",
       icon: <AiOutlineHome />,
-      path: "sessions",
+      path: "",
     },
     {
       title: "Bookings",
@@ -192,6 +198,14 @@ const Sidebar = ({ setComponent, component }) => {
     }
   `;
 
+  // getting page name on change in tab
+  const [currentPage, setCurrentPage] = useState("");
+  useEffect(() => {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    setCurrentPage(params.get("tab") || "");
+  }, [window.location.search]);
+
   return (
     <>
       <div className="max-[512px]:tw-hidden">
@@ -244,15 +258,15 @@ const Sidebar = ({ setComponent, component }) => {
                   key={key}
                   className="tw-group tw-cursor-pointer hoverList"
                 >
-                  <div
+                  <Link
+                    href={`/dashboard/mentor?tab=${val.path}`}
                     className={`tw-flex ${
                       isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
                     } ${
-                      component === val.path
+                      currentPage === val.path
                         ? "tw-bg-primary-100 tw-text-white"
                         : ""
                     } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                    onClick={() => setComponent(val.path)}
                   >
                     <span>{val.icon}</span>
                     <span
@@ -262,7 +276,7 @@ const Sidebar = ({ setComponent, component }) => {
                     >
                       {val.title}
                     </span>
-                  </div>
+                  </Link>
                 </HoverListItem>
               ))}
             </ul>
@@ -282,19 +296,19 @@ const Sidebar = ({ setComponent, component }) => {
                 key={key}
                 className="tw-flex tw-group tw-cursor-pointer hoverList"
               >
-                <div
+                <Link
+                  href={`/dashboard/mentor?tab=${val.path}`}
                   className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
-                    component === val.path
+                    currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
                   } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                  onClick={() => setComponent(val.path)}
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">
                     {val.title}
                   </span>
-                </div>
+                </Link>
               </HoverListItem>
             ))}
           </div>
@@ -354,22 +368,19 @@ const Sidebar = ({ setComponent, component }) => {
                     key={key}
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
-                    <div
+                    <Link
+                      href={`/dashboard/mentor?tab=${val.path}`}
                       className={`tw-flex tw-flex-wrap ${
-                        component === val.path
+                        currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white"
                           : ""
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                      onClick={() => {
-                        setComponent(val.path);
-                        setIsMobileSidebarOpen(false);
-                      }}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">
                         {val.title}
                       </span>
-                    </div>
+                    </Link>
                   </HoverListItem>
                 ))}
               </div>
@@ -381,22 +392,19 @@ const Sidebar = ({ setComponent, component }) => {
                     key={key}
                     className="tw-flex tw-group tw-cursor-pointer hoverList"
                   >
-                    <div
+                    <Link
+                      href={`/dashboard/mentor?tab=${val.path}`}
                       className={`tw-flex tw-flex-wrap ${
-                        component === val.path
+                        currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white"
                           : ""
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                      onClick={() => {
-                        setComponent(val.path);
-                        setIsMobileSidebarOpen(false);
-                      }}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">
                         {val.title}
                       </span>
-                    </div>
+                    </Link>
                   </HoverListItem>
                 ))}
               </div>

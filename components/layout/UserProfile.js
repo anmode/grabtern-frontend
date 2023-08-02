@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FcReadingEbook } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -47,7 +46,7 @@ function UserProfile() {
   }
 
   //Decrypt Data:
-  const decryptedData = decryptData(
+  const decryptedData = JSON.parse(
     localStorage.getItem("userData") || localStorage.getItem("mentorData"),
   );
   // console.log(decryptedData);

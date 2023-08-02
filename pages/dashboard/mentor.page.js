@@ -22,7 +22,7 @@ function MentorDashboard() {
         {/* <Header navbarBackground={true} /> */}
         <Sidebar setComponent={updatePath} component={component} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
         <div className="">
-          {component === "" && <Home />}
+          {component === "" && <Home setComponent={updatePath} setIsSidebarOpen={setIsSidebarOpen} />}
           {component === "profile" && <Profile />}
           {component === "calendar" && <Calendar />}
           {component === "sessions" && <Sessions />}

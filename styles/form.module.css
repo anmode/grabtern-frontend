@@ -252,4 +252,9 @@
     position: relative;
     right: 50px;
   }
+ 
+  .resetForm{
+    margin: 20px;
+    width: 336px;
+  }
 }

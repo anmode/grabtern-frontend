@@ -76,7 +76,7 @@ export default function MentorCard({
               className="tw-flex tw-items-center tw-justify-center tw-bg-[#eceeef] tw-text-[#818a91] tw-w-[30px] tw-h-[30px] tw-rounded-full tw-transition-all tw-duration-[0.2s] tw-ease-linear tw-mr-2 hover:tw-bg-[#ea4c89] hover:tw-text-white"
               aria-label="Mail me on"
               title="Mail (External Link)"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
               href={`mailto:${email}`}
             >
               <MdAlternateEmail className="tw-text-[20px] " />
@@ -85,7 +85,7 @@ export default function MentorCard({
               className="tw-flex tw-items-center tw-justify-center tw-bg-[#eceeef] tw-text-[#818a91] tw-w-[30px] tw-h-[30px] tw-rounded-full tw-transition-all tw-duration-[0.2s] tw-ease-linear tw-mr-2 hover:tw-bg-[#007bb6] hover:tw-text-white"
               aria-label="Follow me on Linkedin"
               title="Linkedin (External Link)"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
               href={`https://www.linkedin.com/in/${socialLinks.linkedin}`}
             >
               <FaLinkedin className="tw-text-[20px] " />
@@ -94,7 +94,7 @@ export default function MentorCard({
               className="tw-flex tw-items-center tw-justify-center tw-bg-[#eceeef] tw-text-[#818a91] tw-w-[30px] tw-h-[30px] tw-rounded-full tw-transition-all tw-duration-[0.2s] tw-ease-linear tw-mr-2 hover:tw-bg-[#00aced] hover:tw-text-white"
               aria-label="Follow me on Twitter"
               title="Twitter (External Link)"
-              rel="noopener noreferrer"               
+              rel="noopener noreferrer"
               href={`https://www.twitter.com/${socialLinks.twitter}`}
             >
               <FaTwitter className="tw-text-[20px] " />

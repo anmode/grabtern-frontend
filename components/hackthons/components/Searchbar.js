@@ -62,7 +62,7 @@ function SearchBar({
           <input
             type="search"
             id="default-search"
-            className="tw-block tw-w-full tw-h-full tw-py-4 tw-pl-16 tw-pr-8 tw-text-xl tw-text-purple-500 tw-border tw-border-gray-500  focus:tw-ring-blue-500  focus:tw-ring-1 focus:tw-border-blue-500         tw-rounded-3xl   tw-placeholder-purple-500 "
+            className="tw-block tw-w-full tw-h-full tw-py-4 tw-pl-16 tw-pr-8 tw-text-xl tw-text-purple-500 tw-border tw-border-gray-500  focus:tw-ring-blue-500  focus:tw-ring-1 focus:tw-border-blue-500         tw-rounded-3xl   tw-placeholder-purple-700 "
             placeholder={
               HackathonLabels ? "Search Hackathons" : "Search Internships"
             }
@@ -87,12 +87,14 @@ function SearchBar({
       <div className={`tw-mt-8 tw-flex tw-flex-wrap tw-gap-4  `}>
           <button
           type="button"
-            className={`${selectedTag[0] === "All" ? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+            className={`${selectedTag[0] === "All" ?"tw-bg-purple-600 tw-text-white  " : "tw-bg-white tw-text-purple-600  "
               } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-base"
               } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5 tw-py-2  tw-mb-2 `}
             onClick={() => handleTagChange("All")}
             style={{
               fontSize: window.innerWidth > 768 ? "16px" : "14px",
+              backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
+              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
               
             }}  
           >
@@ -105,10 +107,13 @@ function SearchBar({
               <button
               type="button"
               key={mylabel}
-            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600 " : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white  " : "tw-bg-white tw-text-purple-600  "
               } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
               } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
-              style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" }}
+              style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" , backgroundColor: selectedTag.toString().includes(mylabel)
+              ? "#845ec2"
+              : "#fff",
+              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",}}
             onClick={() => handleTagChange(mylabel)}
           >
             {mylabel}
@@ -124,7 +129,9 @@ function SearchBar({
               className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600 " : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
                 } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
                 } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
-                style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" }}
+                style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem", backgroundColor: selectedTag.toString().includes(mylabel)
+                ? "#845ec2"
+                : "#fff", borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2" }}
               onClick={() => handleTagChange(mylabel)}
             >
               {mylabel}

@@ -4,7 +4,9 @@ import dynamic from "next/dynamic";
 import router from "next/router";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
 import Head from "next/head.js";
-import ButtonUI from "../../components/UI/Button/Button";
+import styles from "../../styles/form.module.css";
+import Button from "../../components/UI/Button/Button";
+import EventLogin from "../../components/eventLogin/EventLogin";
 import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
@@ -89,7 +91,7 @@ const ResetPassword = () => {
         <div className="tw-font-inter tw-font-bold tw-text-xl ">GrabTern</div>
       </div>
       <main className="tw-flex tw-justify-center tw-items-center">
-        <form onSubmit={handleResetPassword}>
+        <form onSubmit={handleResetPassword} className={styles.resetForm}>
           <div className="">
             <div className="tw-pb-12 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">
               Set your password
@@ -143,7 +145,7 @@ const ResetPassword = () => {
                 <VisibilityOff onClick={togglePasswordisibility} />
               )}
             </div>
-            <div className="form-input tw-pt-10 tw-pb-12">
+            {/* <div className="form-input tw-pt-10 tw-pb-12">
               <ButtonUI
                 text="Set Password"
                 className="tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2"
@@ -160,8 +162,22 @@ const ResetPassword = () => {
                 src="/assets/img/gif/Spinner.gif"
                 alt="loading..."
               />
-            )}
-          </div>
+            )} */}
+                 {isLoading ? (
+                  <div className="tw-relative tw-left-[200px]">
+                    <EventLogin />
+                  </div>
+                ) : (
+                  <div className="tw-flex tw-justify-center  tw-h-11">
+                    <Button
+                      className=" tw-w-[450px]"
+                      onClick={handleResetPassword}
+                      text="Set Password"
+                    />
+                  </div>
+                )}
+              </div>
+          
           <ToastContainer />
           <hr />
           <div className="tw-pt-5 tw-font-inter tw-font-bold tw-text-xl tw-text-[#4E9F3D]">

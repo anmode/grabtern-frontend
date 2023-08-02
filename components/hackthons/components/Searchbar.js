@@ -105,10 +105,10 @@ function SearchBar({
               <button
               type="button"
               key={mylabel}
-            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600" : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600 " : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
               } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
-              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5  tw-py-2 tw-mb-2 `}
-              style={{ whiteSpace: "nowrap" ,              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem"}}
+              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
+              style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" }}
             onClick={() => handleTagChange(mylabel)}
           >
             {mylabel}

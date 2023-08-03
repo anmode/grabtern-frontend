@@ -56,7 +56,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
       heading: "Edit Profile"
     },
     {
-      icon: <BiTime className='tw-w-14 tw-h-14 tw-text-[#FBEAFF]' />,
+      icon: <BiTime className='tw-w-14 tw-h-14 tw-text-[#00C9A7]' />,
       path: "sessions",
       heading: "Your Sessions",
       session: {
@@ -67,7 +67,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
       },
     },
     {
-      icon: <BiCalendar className='tw-w-14 tw-h-14 tw-text-[#FBEAFF]' />,
+      icon: <BiCalendar className='tw-w-14 tw-h-14 tw-text-[#00C9A7]' />,
       path: "calendar",
       heading: "View Calendar",
       schedule: {
@@ -79,7 +79,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
     },
     {
       name: "Payments",
-      icon: <MdPayment className='tw-w-14 tw-h-14 tw-text-[#FBEAFF]' />,
+      icon: <MdPayment className='tw-w-14 tw-h-14 tw-text-[#00C9A7]' />,
       path: "payments",
       heading: "View Payments"
     }
@@ -170,7 +170,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                         <div className='tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center'>
                           <h2 className='tw-font-semibold tw-text-md'>Day: <span className='tw-text-sm tw-text-primary-200'>{card.schedule.day}</span></h2>
                           <div className='tw-flex tw-flex-col tw-items-center tw-gap-1'>
-                            <p className='tw-text-sm tw-font-semibold tw-text-primary-200'>{card.schedule.start} - {card.schedule.end}</p>
+                            <p className='tw-text-sm tw-font-semibold tw-flex tw-gap-2  tw-items-center tw-justify-center tw-text-primary-200'><span><BiTime className='tw-text-slate-900 tw-text-xl' /></span>{card.schedule.start} - {card.schedule.end}</p>
                             <p className='tw-text-sm tw-font-semibold tw-text-primary-200'>{card.schedule.timezone}</p>
                           </div>
                         </div>

@@ -3,13 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "../../styles/sidebar.module.css";
 import Sidebar from "../../components/userDashboard/sidebar";
 import Profile from "../../components/userDashboard/profile";
-// import Sessions from "../../components/userDashboard/sessions";
-import Calendar from "../../components/userDashboard/calendar";
-// import Queries from "../../components/userDashboard/queries";
 import Header from "../../components/layout/Header";
 import Bookings from "../../components/userDashboard/Bookings";
 
-function MentorDashboard() {
+function UserDashboard() {
   // getting page name on change in tab
   const [component, setComponent] = useState("sessions");
   // useEffect(() => {
@@ -28,10 +25,8 @@ function MentorDashboard() {
         {/* <Header navbarBackground={true} /> */}
         <Sidebar setComponent={updatePath} component={component} />
         <div>
+        {/* {component == "" && <Header />} */}
           {component == "profile" && <Profile />}
-          {component == "calendar" && <Calendar />}
-          {/* {component == "sessions" && <Sessions />}
-          {component == "queries" && <Queries />} */}
           {component == "bookings" && <Bookings />}
         </div>
       </div>
@@ -39,4 +34,4 @@ function MentorDashboard() {
   );
 }
 
-export default MentorDashboard;
+export default UserDashboard;

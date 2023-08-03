@@ -1,6 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BsXLg, BsClipboard } from "react-icons/bs";
-import { FaTwitter, FaFacebook, FaWhatsapp, FaLinkedin, FaEnvelope, FaTelegram, FaDiscord } from "react-icons/fa";
+import {
+  FaTwitter,
+  FaFacebook,
+  FaWhatsapp,
+  FaLinkedin,
+  FaEnvelope,
+  FaTelegram,
+  FaDiscord,
+} from "react-icons/fa";
 
 export default function SharePageModal({ handleClose, username }) {
   const shareLink = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/${username}`;
@@ -11,62 +19,76 @@ export default function SharePageModal({ handleClose, username }) {
   };
 
   const handleShareTwitter = () => {
-    const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareLink)}`;
+    const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      shareLink,
+    )}`;
     window.open(url, "_blank");
   };
 
   const handleShareFacebook = () => {
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}`;
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      shareLink,
+    )}`;
     window.open(url, "_blank");
   };
 
   const handleShareWhatsApp = () => {
     const text = `Hey, I found this awesome mentor page: `;
-    const url = `whatsapp://send?text=${encodeURIComponent(text)}${encodeURIComponent(shareLink)}`;
+    const url = `whatsapp://send?text=${encodeURIComponent(
+      text,
+    )}${encodeURIComponent(shareLink)}`;
     window.open(url, "_blank");
   };
 
   const handleShareLinkedIn = () => {
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareLink)}`;
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      shareLink,
+    )}`;
     window.open(url, "_blank");
   };
 
   const handleShareEmail = () => {
     const subject = "Check out this mentor page!";
     const body = `Hey, I found this awesome mentor page: ${shareLink}`;
-    const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const url = `mailto:?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
     window.open(url);
   };
 
   const handleShareTelegram = () => {
     const text = `Hey, I found this awesome mentor page:`;
-    const url = `https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
-  };
-  
-  const handleShareDiscord = () => {
-    const text = `Hey, I found this awesome mentor page:`;
-    const url = `https://discord.com/channels/@me?url=${encodeURIComponent(shareLink)}`;
+    const url = `https://t.me/share/url?url=${encodeURIComponent(
+      shareLink,
+    )}&text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
 
-  const [containerWidth, setContainerWidth] = useState('448px');
+  const handleShareDiscord = () => {
+    const text = `Hey, I found this awesome mentor page:`;
+    const url = `https://discord.com/channels/@me?url=${encodeURIComponent(
+      shareLink,
+    )}`;
+    window.open(url, "_blank");
+  };
+
+  const [containerWidth, setContainerWidth] = useState("448px");
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 600) {
-        setContainerWidth('90%');
+        setContainerWidth("90%");
       } else {
-        setContainerWidth('448px');
+        setContainerWidth("448px");
       }
     };
 
     handleResize(); // Call the function once to set the initial width
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -75,7 +97,10 @@ export default function SharePageModal({ handleClose, username }) {
       {/* Share mentor page modal */}
       <div className="tw-flex tw-flex-row tw-items-center tw-justify-center tw-fixed tw-top-0 tw-left-0 tw-bg-black/25 tw-w-full tw-h-full tw-z-[999]">
         {/* Modal Container */}
-        <div className="tw-flex tw-flex-col tw-items-stretch tw-justify-start tw-bg-white tw-rounded-[36px] tw-p-[30px] tw-gap-4" style={{ width: containerWidth   }}>
+        <div
+          className="tw-flex tw-flex-col tw-items-stretch tw-justify-start tw-bg-white tw-rounded-[36px] tw-p-[30px] tw-gap-4"
+          style={{ width: containerWidth }}
+        >
           {/* Modal Heading */}
           <div className="tw-flex tw-flex-row tw-items-center tw-justify-between">
             <h1 className="tw-text-[28px] tw-font-semibold tw-text-[#4338CA]">
@@ -141,9 +166,7 @@ export default function SharePageModal({ handleClose, username }) {
           {/* Modal Link with copy link button */}
           <div className="tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-between tw-bg-gray-100 tw-pl-6 tw-pr-0 tw-py-0 tw-rounded-2xl">
             {/* Modal Link */}
-            <div className="tw-font-mono">
-              {shareLink}
-            </div>
+            <div className="tw-font-mono">{shareLink}</div>
             {/* Copy link button */}
             <button
               className="tw-text-[18px] tw-text-gray-800 hover:tw-bg-gray-300 active:tw-bg-gray-300 tw-p-4 tw-rounded-lg  tw-transition-all"

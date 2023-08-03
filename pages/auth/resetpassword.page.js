@@ -163,21 +163,21 @@ const ResetPassword = () => {
                 alt="loading..."
               />
             )} */}
-                 {isLoading ? (
-                  <div className="tw-relative tw-left-[200px]">
-                    <EventLogin />
-                  </div>
-                ) : (
-                  <div className="tw-flex tw-justify-center  tw-h-11">
-                    <Button
-                      className=" tw-w-[450px]"
-                      onClick={handleResetPassword}
-                      text="Set Password"
-                    />
-                  </div>
-                )}
+            {isLoading ? (
+              <div className="tw-relative tw-left-[200px]">
+                <EventLogin />
               </div>
-          
+            ) : (
+              <div className="tw-flex tw-justify-center  tw-h-11">
+                <Button
+                  className=" tw-w-[450px]"
+                  onClick={handleResetPassword}
+                  text="Set Password"
+                />
+              </div>
+            )}
+          </div>
+
           <ToastContainer />
           <hr />
           <div className="tw-pt-5 tw-font-inter tw-font-bold tw-text-xl tw-text-[#4E9F3D]">

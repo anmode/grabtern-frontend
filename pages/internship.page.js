@@ -10,6 +10,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useAuth } from "../context/AuthContext";
 import DropdownCard from "../components/basic/LoginDropdown";
 import Image from "next/image";
+import { MdCreate } from "react-icons/md";
 
 // import gstyles from "../styles/gridhackathon.module.css";
 import SearchBar from "../components/hackthons/components/Searchbar";
@@ -30,6 +31,7 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import hackathonStyle from "../styles/hackathon.module.css";
 import { useState, useEffect } from "react";
+import AddInternship from "../components/AddInternship";
 
 const buttonStyle = {
   width: "200px",
@@ -119,25 +121,23 @@ export default function Home() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [searchQuery, setSearchQuery] = useState("");
-  const [tagFilter, setTagFilter] = useState("");
+  const [tagFilter, setTagFilter] = useState([]);
 
   const [InternshipsData, setInternshipsData] = useState(internshipsData);
-  // console.log(InternshipsData);
+
+  const [showAddInternshipModal, setShowAddInternshipModal] = useState(false);
+
   const filteredInternships = InternshipsData.filter((hackathon) => {
-    // console.log(hackathon.tags);
-    const tagMatch = hackathon.tags.some((tag) =>
-      tag.toLowerCase().includes(tagFilter.toLowerCase()),
-    );
-    if (tagFilter === "All") {
+    const tagMatch = tagFilter.every((tag) => hackathon.tags.includes(tag));
+
+    if (tagFilter.toString() === "All") {
       const titleMatch = hackathon.internshipTitle
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
       return titleMatch && true;
     } else {
-      // console.log(tagFilter);
-      if (tagFilter !== "" && !tagMatch) {
-        // console.log("hpo");
+      if (tagFilter.toString() !== "" && !tagMatch) {
         if (tagFilter === "bookmarked") {
           if (searchQuery != " ") {
             const titleMatch = hackathon.internshipTitle
@@ -146,13 +146,11 @@ export default function Home() {
 
             return titleMatch && hackathon.bookmarked;
           }
-          // console.log("hello");
           return hackathon.bookmarked;
         }
         return false;
       } // Skip the hackathon if it doesn't match the tag filter
     }
-    // console.log("pooh");
     const titleMatch = hackathon.internshipTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -187,6 +185,7 @@ export default function Home() {
   const handleTagFilter = (tag) => {
     setTagFilter(tag);
   };
+
   useEffect(() => {
     if (userData?.user_name) {
       setIsUserLoggedIn(true);
@@ -260,7 +259,7 @@ export default function Home() {
       ) : null}
       <Header isUserLoggedIn={isUserLoggedIn} />
 
-      <main>
+      <main className="tw-w-full tw-max-w-7xl tw-mx-auto">
         <div className={`${hackathonStyle.hackathonArea} section-padding40`}>
           <div className="container">
             <div className="row justify-content-center">
@@ -270,13 +269,25 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="mb-4 p-4">
+            <div className="tw-mb-4">
               <SearchBar
                 setSearchQuery={setSearchQuery}
                 handleTagFilter={handleTagFilter}
                 InternshipLabels={InternshipLabels}
               />
             </div>
+            <div
+              onClick={() => setShowAddInternshipModal(true)}
+              className="tw-mb-10 tw-text-sm tw-inline-flex tw-gap-2 tw-max-w-max tw-px-4 tw-py-2 mt-2 tw-items-center tw-justify tw-border tw-border-[#845ec2] tw-text-[#845ec2] tw-rounded hover:tw-text-white hover:tw-bg-[#845ec2] hover:tw-cursor-pointer tw-transition-all tw-duration-300 md:tw-text-base"
+            >
+              <div>
+                <MdCreate />
+              </div>
+              <button className="">Add New</button>
+            </div>
+            {showAddInternshipModal && (
+              <AddInternship handleShow={setShowAddInternshipModal} />
+            )}
             <div className="row">
               {filteredInternships.map((internship, index) => (
                 <GalleryCard

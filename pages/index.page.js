@@ -85,18 +85,16 @@ export default function Home() {
   } = useAuth();
   // console.log(isMentorLoggedIn,isUserLoggedIn);
 
-  const decryptedData = decryptData(
-    localStorage.getItem("userData") || localStorage.getItem("mentorData"),
-  );
-
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   return (
     <div>
       {(localStorage.getItem("mentorData") !== null ||
         localStorage.getItem("userData") !== null) &&
       !hasPlayedGreeting ? (
         <div className="welcomeAfterLoggedIn">
-          Hi 👋🏻 {decryptedData?.user_name || decryptedData?.mentor_name} <br />{" "}
-          Welcome to GrabTern
+          Hi 👋🏻 {userData?.user_name || mentorData?.mentor_name} <br /> Welcome
+          to GrabTern
           <audio
             src="/assets/sound/greet.wav"
             autoplay
@@ -143,7 +141,7 @@ export default function Home() {
           <ButtonLink
             text="View More Internships"
             href="/internship"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 
@@ -163,7 +161,7 @@ export default function Home() {
           <ButtonLink
             text="View More Hackathons"
             href="/hackathon"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 

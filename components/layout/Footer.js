@@ -95,11 +95,46 @@ function Footer() {
           </div>
           {/* social links */}
           <div className="tw-flex tw-gap-1">
-            <IconLink href="#" Icon={RiFacebookFill} variant="secondary" />
-            <IconLink href="#" Icon={RiTwitterFill} variant="secondary" />
-            <IconLink href="#" Icon={RiInstagramFill} variant="secondary" />
-            <IconLink href="#" Icon={RiLinkedinFill} variant="secondary" />
-            <IconLink href="#" Icon={RiGithubFill} variant="secondary" />
+            <IconLink
+              href="#"
+              aria-label="Follow us on Facebook"
+              title="Facebook (External Link)"
+              rel="noopener noreferrer"
+              Icon={RiFacebookFill}
+              variant="secondary"
+            />
+            <IconLink
+              href="#"
+              aria-label="Follow us on Twitter"
+              title="Twitter (External Link)"
+              rel="noopener noreferrer"
+              Icon={RiTwitterFill}
+              variant="secondary"
+            />
+            <IconLink
+              href="#"
+              aria-label="Follow us on Instagram"
+              title="Instagram (External Link)"
+              rel="noopener noreferrer"
+              Icon={RiInstagramFill}
+              variant="secondary"
+            />
+            <IconLink
+              href="#"
+              aria-label="Follow us on Linkedin"
+              title="Linkedin (External Link)"
+              rel="noopener noreferrer"
+              Icon={RiLinkedinFill}
+              variant="secondary"
+            />
+            <IconLink
+              href="#"
+              aria-label="Follow us on Github"
+              title="Github (External Link)"
+              rel="noopener noreferrer"
+              Icon={RiGithubFill}
+              variant="secondary"
+            />
           </div>
         </div>
       </div>

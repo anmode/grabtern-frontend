@@ -13,14 +13,14 @@ import { PiBookOpenText } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CgMailOpen } from "react-icons/cg";
-import { BiGift } from "react-icons/bi";
+import { BiGift, BiTime } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -49,7 +49,14 @@ const Sidebar = () => {
   const menuItem = [
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: (
+        <Image
+          src={mentor.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -61,6 +68,11 @@ const Sidebar = () => {
       title: "Bookings",
       icon: <LuPhoneCall />,
       path: "bookings",
+    },
+    {
+      title: "Sessions",
+      icon: <BiTime />,
+      path: "sessions",
     },
     {
       title: "Priority DM",
@@ -102,7 +114,14 @@ const Sidebar = () => {
   const mobileItem = [
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: (
+        <Image
+          src={mentor.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -124,8 +143,20 @@ const Sidebar = () => {
 
   const menuItem1 = [
     {
+      title: "Queries",
+      icon: <CgSearchFound />,
+      path: "queries",
+    },
+    {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: (
+        <Image
+          src={mentor.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -288,7 +319,7 @@ const Sidebar = () => {
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
-                className="tw-flex tw-group tw-cursor-pointer hoverList"
+                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer hoverList"
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
@@ -353,7 +384,7 @@ const Sidebar = () => {
               </div>
             </div>
             <div
-              className={`tw-flex tw-mt-6 tw-justify-around tw-items-center tw-font-medium tw-p-2`}
+              className={`tw-flex tw-mt-6 tw-justify-around tw-items-start tw-font-medium tw-p-2`}
             >
               {/* left part */}
               <div className="tw-flex tw-flex-col tw-gap-10">

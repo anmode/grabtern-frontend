@@ -136,14 +136,14 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                     setNotification(false);
                     setMobileNotification(false);
                   }}
-                  className="tw-w-7 tw-h-7 tw-text-[#FBEAFF]" />
+                  className="tw-w-[30px] tw-h-[30px] tw-text-[#FBEAFF]" />
               ) : (
                 <MdNotifications
                   onClick={() => {
                     setNotification(true);
                     setMobileNotification(true);
                   }}
-                  className="tw-w-7 tw-h-7 tw-text-[#FBEAFF]" />
+                  className="tw-w-[30px] tw-h-[30px] tw-text-[#FBEAFF]" />
               )
             }
           </div>

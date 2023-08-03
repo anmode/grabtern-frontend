@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/form.module.css";
+import Button from "../../components/UI/Button/Button";
+import EventLogin from "../../components/eventLogin/EventLogin";
 const Header = dynamic(() => import("../../components/layout/Header"));
 const Footer = dynamic(() => import("../../components/layout/Footer"));
 import Visibillity from "../../public/assets/Visibillity.jsx";
@@ -20,7 +22,7 @@ function login() {
   const [entityType, setEntityType] = useState("");
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -44,11 +46,11 @@ function login() {
     e.preventDefault();
     setError("");
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, formData, {
-        withCredentials: true,
-      });
-      // console.log(res.userData);
+
+      const { data: res } = await axios.post(url, formData);
+      setIsLoading(false);
 
       if (entityType === "user") {
         localStorage.setItem("userData", JSON.stringify(res.userData));
@@ -59,6 +61,7 @@ function login() {
       }
       // router.push("/");
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
       if (
         error.response &&
@@ -233,22 +236,23 @@ function login() {
               </div>
             </div>
 
-            <div
-              className={`md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none ${
-                formData.email && formData.password && "hover:tw-bg-[#6b21a8]"
-              } tw-rounded-lg tw-font-semibold`}
-            >
-              <input
-                type="submit"
-                name="submit"
-                value="Login"
-                disabled={!formData.email && !formData.password}
-                className={`${styles.loginInput} ${
-                  formData.email && formData.password
-                    ? "tw-cursor-pointer"
-                    : "tw-cursor-not-allowed"
-                }`}
-              />
+            <div>
+              <ToastContainer />
+              <div>
+                {isLoading ? (
+                  <div className="tw-relative tw-left-[160px]">
+                    <EventLogin />
+                  </div>
+                ) : (
+                  <div className="tw-flex tw-justify-center  tw-h-11">
+                    <Button
+                      className=" tw-w-[400px]"
+                      onClick={handleSubmit}
+                      text="Login"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
 
             <ToastContainer />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 import { divide } from "lodash";
@@ -15,20 +15,42 @@ function Profile({ mentorDetail }) {
       twitter: mentorDetail?.social?.twitter || "",
     },
     description: mentorDetail?.description || "",
-    mentorImg: mentorDetail?.mentorImg || "",
+    image: mentorDetail?.mentorImg || "",
     bookSession: mentorDetail?.bookSession || [],
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  // const [formData, setFormData] = useState(mentorDetail);
   const [msg, setMsg] = useState("");
-  const [step, setStep] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
 
+  // normal input onChange function
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // function to fetch mentor profile
+  const getMentorProfile = async () => {
+    const mentorData = localStorage.getItem("mentorData");
+    const mentorToken = decryptData(mentorData).mentorToken;
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/${mentorToken}`;
+
+    try {
+      const response = await axios.get(url);
+      const data = decryptData(response.data);
+      setFormData(data);
+      setError("");
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+  };
+
+  //fetching mentor profile onload
+  useEffect(() => {
+    getMentorProfile();
+  }, []);
+
+  // converting image to base64 function
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -43,14 +65,8 @@ function Profile({ mentorDetail }) {
       };
     });
   };
-  const nextStep = () => {
-    setError("");
-    setStep((val) => val + 1);
-  };
-  const previousStep = () => {
-    setError("");
-    setStep((val) => val - 1);
-  };
+
+  // onChange function for socials input
   const handleSocialChange = (e) => {
     setFormData({
       ...formData,
@@ -58,41 +74,35 @@ function Profile({ mentorDetail }) {
     });
   };
 
+  // onChange function for image input
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setFormData({ ...formData, mentorImg: base64 });
+    setFormData({ ...formData, image: base64 });
   };
 
+  // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      const formDataCopy = { ...formData }; // Create a copy of the formData to work with
-      delete formDataCopy._id;
-      delete formDataCopy.password;
-      delete formDataCopy.confirmPassword;
-      delete formDataCopy.verified;
-      delete formDataCopy.token;
-      delete formDataCopy.mentorToken;
-      delete formDataCopy.setupPWId;
-      delete formDataCopy.__v;
+      const mentorData = localStorage.getItem("mentorData");
+      const mentorToken = decryptData(mentorData).mentorToken;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;
 
-      // Make the API call to update the mentor data
-      const url = `${
-        process.env.NEXT_PUBLIC_BACKEND_URL
-      }/api/mentors/updateMentor/${
-        JSON.parse(decryptData("mentorData")).mentorToken
-      }`;
+      const encryptedData = encryptData({
+        mentorLoginToken: mentorToken,
+        ...formData,
+      });
 
-      const { data: res } = await axios.post(url, formDataCopy); // Send the updated data to the backend
+      const response = await axios.put(url, { token: encryptedData }); // Send the updated data to the backend
+      setformData(decryptData(response.data));
 
-      alert(res); // Display the response message from the backend
+      alert(response); // Display the response message from the backend
 
       setModalOpen(false);
       setMsg("Changes saved successfully."); // Set success message
     } catch (error) {
-      console.log(error);
       if (
         error.response &&
         error.response.status >= 400 &&

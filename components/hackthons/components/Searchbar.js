@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import hackathonStyle from "../../../styles/hackathon.module.css";
+
 // import styles from '../styles/Searchbar.module.css'; // Import the CSS file
-import InputAdornment from "@mui/material/InputAdornment";
-import Chip from "@mui/material/Chip";
-import { IconButton, MenuItem, Select } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import TextField from "@mui/material/TextField";
+
+
+
 function SearchBar({
   setSearchQuery,
   handleTagFilter,
@@ -17,134 +15,134 @@ function SearchBar({
   const handleTagChange = (value) => {
     const set = new Set(selectedTag);
     if (value === "All") {
+    
       set.clear();
       set.add("All");
     } else if (set.has(value)) {
+
       set.delete(value);
     } else {
+
       set.add(value);
       set.delete("All");
     }
     if (set.size === 0) {
+
       set.add("All");
     }
     const newValue = [...set];
+ 
+
     setSelectedTag(newValue);
     handleTagFilter(newValue);
   };
 
+  if(selectedTag   )
+  {
+    console.log(selectedTag[0] === "web");
+  }
+
   return (
-    <form className="tw-w-full tw-max-w-7xl tw-mx-auto">
-      <TextField
-        id="search-bar"
-        className="text"
-        onInput={(e) => {
-          setSearchQuery(e.target.value);
-        }}
-        variant="outlined"
-        placeholder={
-          HackathonLabels ? "Search Hackathons" : "Search Internships"
-        }
-        size="Normal"
-        sx={{
-          color: "#845ec2",
-        }}
-        style={{
-          borderColor: "#845ec2",
-          borderRadius: 50,
-        }}
-        InputProps={{
-          sx: { height: window.innerWidth > 768 ? 55 : 45 },
-          style: {
-            fontSize: window.innerWidth > 768 ? 20 : 16,
-            paddingTop: 5,
-            paddingBottom: 5,
-            paddingRight: 5,
-            marginTop: 0,
-            borderRadius: 50,
-            color: "#845ec2",
-          },
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton aria-label="search">
-                <SearchIcon
-                  style={{ fill: "black" }}
-                  sx={{ fontSize: window.innerWidth > 768 ? 35 : 30 }}
-                />
-              </IconButton>
-            </InputAdornment>
-          ),
-          "& .MuiFormLabel-root": {
-            fontSize: "0.8rem",
-          },
-        }}
-        InputLabelProps={{ style: { fontSize: 90 } }}
-      />
-
-      <div className="tw-mt-8 tw-flex tw-flex-wrap tw-gap-4">
-        <Chip
-          variant={selectedTag === "All" ? "default" : "outlined"}
-          // color={selectedTag === "All" ? "primary" : "info"}
-          label="ALL"
-          value="All"
-          onClick={() => handleTagChange("All")}
-          style={{
-            fontSize: window.innerWidth > 768 ? "16px" : "14px",
-            padding: "1rem",
-            backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
-            borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
-            color: selectedTag[0] === "All" ? "#fff" : "#845ec2",
-          }}
-        />
-
-        {InternshipLabels &&
-          InternshipLabels.map((mylabel) => (
-            <Chip
-              key={mylabel}
-              variant={selectedTag === { mylabel } ? "default" : "outlined"}
-              // color={selectedTag === label ? "primary" : "info"}
-              label={mylabel}
-              onClick={() => handleTagChange(mylabel)}
-              style={{
-                fontSize: window.innerWidth > 768 ? "16px" : "14px",
-                padding: "1rem",
-                backgroundColor: selectedTag.toString().includes(mylabel)
-                  ? "#845ec2"
-                  : "#fff",
-                borderColor: selectedTag.toString().includes(mylabel)
-                  ? "#845ec2"
-                  : "#845ec2",
-                color: selectedTag.toString().includes(mylabel)
-                  ? "#fff"
-                  : "#845ec2",
-              }}
+    <>
+      <form className="tw-w-full  tw-max-w-[340px] tw-mx-auto ml-0 ">
+        <label
+          htmlFor="default-search"
+          className="tw-mb-2 tw-text-sm tw-font-medium tw-text-gray-900 tw-sr-only tw-dark:text-white"
+        >
+          Search
+        </label>
+        <div className="tw-relative">
+          <div className="tw-absolute tw-inset-y-0 tw-left-0 tw-flex tw-items-center tw-pl-6 tw-pointer-events-none">
+            <img
+              className="tw-w-5 tw-h-5"
+              src="/assets/img/hackathons/magnifying-glass.png"
+              alt="Custom Icon"
             />
-          ))}
-        {HackathonLabels &&
-          HackathonLabels.map((mylabel) => (
-            <Chip
+          </div>
+          <input
+            type="search"
+            id="default-search"
+            className="tw-block tw-w-full tw-h-full tw-py-4 tw-pl-16 tw-pr-8 tw-text-xl tw-text-purple-500 tw-border tw-border-gray-500  focus:tw-ring-blue-500  focus:tw-ring-1 focus:tw-border-blue-500         tw-rounded-3xl   tw-placeholder-purple-700 "
+            placeholder={
+              HackathonLabels ? "Search Hackathons" : "Search Internships"
+            }
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+            }}
+            style={{
+              height: window.innerWidth > 768 ? 55 : 45,
+              fontSize: window.innerWidth > 768 ? 20 : 16,
+              paddingTop: 5,
+              paddingBottom: 5,
+              paddingRight: 5,
+              marginTop: 0,
+              borderRadius: 50,
+              color: "#845ec2",
+            }}
+            required=""
+          />
+        </div>
+      
+      </form>
+      <div className={`tw-mt-8 tw-flex tw-flex-wrap tw-gap-4  `}>
+          <button
+          type="button"
+            className={`${selectedTag[0] === "All" ?"tw-bg-purple-600 tw-text-white  " : "tw-bg-white tw-text-purple-600  "
+              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-base"
+              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5 tw-py-2  tw-mb-2 `}
+            onClick={() => handleTagChange("All")}
+            style={{
+              fontSize: window.innerWidth > 768 ? "16px" : "14px",
+              backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
+              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
+              
+            }}  
+          >
+            All
+          </button>
+
+
+          {InternshipLabels &&
+            InternshipLabels.map((mylabel) => (
+              <button
+              type="button"
               key={mylabel}
-              variant={selectedTag === { mylabel } ? "default" : "outlined"}
-              // color={selectedTag === label ? "primary" : "info"}
-              label={mylabel}
+            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white  " : "tw-bg-white tw-text-purple-600  "
+              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
+              style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" , backgroundColor: selectedTag.toString().includes(mylabel)
+              ? "#845ec2"
+              : "#fff",
+              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",}}
+            onClick={() => handleTagChange(mylabel)}
+          >
+            {mylabel}
+          </button>
+            ))}
+          {HackathonLabels &&
+            HackathonLabels.map((mylabel) => (
+              <>
+         
+           <button
+                type="button"
+                key={mylabel}
+              className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600 " : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+                } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+                } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
+                style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem", backgroundColor: selectedTag.toString().includes(mylabel)
+                ? "#845ec2"
+                : "#fff", borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2" }}
               onClick={() => handleTagChange(mylabel)}
-              style={{
-                fontSize: window.innerWidth > 768 ? "16px" : "14px",
-                padding: "1rem",
-                backgroundColor: selectedTag.includes(mylabel.toString())
-                  ? "#845ec2"
-                  : "#fff",
-                borderColor: selectedTag.toString().includes(mylabel)
-                  ? "#845ec2"
-                  : "#845ec2",
-                color: selectedTag.toString().includes(mylabel)
-                  ? "#fff"
-                  : "#845ec2",
-              }}
-            />
-          ))}
-      </div>
-    </form>
+            >
+              {mylabel}
+            </button>
+          
+           
+            </>
+            ))}
+          
+        </div>
+    </>
   );
 }
 

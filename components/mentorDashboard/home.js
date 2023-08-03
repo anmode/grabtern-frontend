@@ -169,7 +169,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
         mobileNotification && (
           <div
             ref={reference}
-            className="tw-z-50 tw-w-full tw-min-h-screen tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden">
+            className="tw-z-50 tw-w-full tw-h-[600px] tw-bottom-0 tw-fixed tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden">
             <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
               Notifications
             </h2>

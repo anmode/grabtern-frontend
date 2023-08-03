@@ -315,13 +315,12 @@ export default function MentorForm() {
           <div>
             <ToastContainer />
             <div data-testid="loading-spinner">
-              {isLoading &&  (
+              {isLoading && (
                 <img
                   style={{ width: "50px", height: "50px" }}
                   src="/assets/img/gif/Spinner.gif"
                   alt="...jljk"
                 />
-                
               )}
             </div>
           </div>

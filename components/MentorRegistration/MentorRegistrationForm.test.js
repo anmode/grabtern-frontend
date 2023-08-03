@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect"; // For additional DOM matchers
 import MentorForm from "./MentorFormRegistration";
-import axios from 'axios';
+import axios from "axios";
 
 // Mock the next/router module
 jest.mock("next/router", () => ({
@@ -19,7 +19,7 @@ jest.mock("../../components/MentorRegistration/components/PersonDetails");
 jest.mock("../../components/MentorRegistration/components/ContactDetails");
 jest.mock("../../components/MentorRegistration/components/ScheduleDetails");
 jest.mock("../../components/MentorRegistration/components/SessionDetails");
-jest.mock('axios');
+jest.mock("axios");
 
 describe("<MentorForm>", () => {
   beforeEach(() => {
@@ -31,7 +31,9 @@ describe("<MentorForm>", () => {
     render(<MentorForm />);
     // Add your specific assertions here to check if the component renders correctly
     // For example:
-    expect(screen.getByLabelText("Mentor registration form")).toBeInTheDocument();
+    expect(
+      screen.getByLabelText("Mentor registration form"),
+    ).toBeInTheDocument();
     // You should also check if the first step elements are displayed correctly
     expect(screen.getByLabelText("Person Details")).toBeInTheDocument();
   });

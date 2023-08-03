@@ -9,7 +9,7 @@ describe("Button component", () => {
   it("should call onClick when the button is clicked", () => {
     const onClickMock = jest.fn();
     const { getByText } = render(
-      <Button text="Test Button" onClick={onClickMock} />
+      <Button text="Test Button" onClick={onClickMock} />,
     );
 
     const button = getByText("Test Button");
@@ -24,7 +24,7 @@ describe("Button component", () => {
     const LeftIcon = () => <span data-testid="left-icon">Icon</span>;
 
     const { getByTestId, getByText } = render(
-      <Button text="Button with Icon" LeftIcon={LeftIcon} />
+      <Button text="Button with Icon" LeftIcon={LeftIcon} />,
     );
 
     const iconElement = getByTestId("left-icon");
@@ -37,14 +37,14 @@ describe("Button component", () => {
   // Test button variant classes
   it("should have the correct variant class applied", () => {
     const { getByText } = render(
-      <Button text="Primary Button" variant="primary" />
+      <Button text="Primary Button" variant="primary" />,
     );
     const primaryButton = getByText("Primary Button");
 
     expect(primaryButton).toHaveClass("btnPrimary");
 
     const { getByText: getByTextSecondary } = render(
-      <Button text="Secondary Button" variant="secondary" />
+      <Button text="Secondary Button" variant="secondary" />,
     );
     const secondaryButton = getByTextSecondary("Secondary Button");
 

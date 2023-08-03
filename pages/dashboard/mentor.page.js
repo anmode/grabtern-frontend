@@ -23,9 +23,19 @@ function MentorDashboard() {
     <>
       <div className="tw-flex">
         {/* <Header navbarBackground={true} /> */}
-        <Sidebar mentor={mentor} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+        <Sidebar
+          mentor={mentor}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
         <div className="">
-          {component === "" && <Home setIsSidebarOpen={setIsSidebarOpen} mentor={mentor} setMentor={setMentor} />}
+          {component === "" && (
+            <Home
+              setIsSidebarOpen={setIsSidebarOpen}
+              mentor={mentor}
+              setMentor={setMentor}
+            />
+          )}
           {component === "profile" && <Profile />}
           {component === "calendar" && <Calendar />}
           {component === "sessions" && <Sessions />}

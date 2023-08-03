@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 // import styles from '../styles/Searchbar.module.css'; // Import the CSS file
 
-
-
 function SearchBar({
   setSearchQuery,
   handleTagFilter,
@@ -15,30 +13,24 @@ function SearchBar({
   const handleTagChange = (value) => {
     const set = new Set(selectedTag);
     if (value === "All") {
-    
       set.clear();
       set.add("All");
     } else if (set.has(value)) {
-
       set.delete(value);
     } else {
-
       set.add(value);
       set.delete("All");
     }
     if (set.size === 0) {
-
       set.add("All");
     }
     const newValue = [...set];
- 
 
     setSelectedTag(newValue);
     handleTagFilter(newValue);
   };
 
-  if(selectedTag   )
-  {
+  if (selectedTag) {
     console.log(selectedTag[0] === "web");
   }
 
@@ -82,66 +74,82 @@ function SearchBar({
             required=""
           />
         </div>
-      
       </form>
       <div className={`tw-mt-8 tw-flex tw-flex-wrap tw-gap-4  `}>
-          <button
+        <button
           type="button"
-            className={`${selectedTag[0] === "All" ?"tw-bg-purple-600 tw-text-white  " : "tw-bg-white tw-text-purple-600  "
-              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-base"
-              } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5 tw-py-2  tw-mb-2 `}
-            onClick={() => handleTagChange("All")}
-            style={{
-              fontSize: window.innerWidth > 768 ? "16px" : "14px",
-              backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
-              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
-              
-            }}  
-          >
-            All
-          </button>
+          className={`${
+            selectedTag[0] === "All"
+              ? "tw-bg-purple-600 tw-text-white  "
+              : "tw-bg-white tw-text-purple-600  "
+          } ${
+            window.innerWidth > 768 ? "tw-text-base" : "tw-text-base"
+          } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs tw-px-5 tw-py-2  tw-mb-2 `}
+          onClick={() => handleTagChange("All")}
+          style={{
+            fontSize: window.innerWidth > 768 ? "16px" : "14px",
+            backgroundColor: selectedTag[0] === "All" ? "#845ec2" : "#fff",
+            borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
+          }}
+        >
+          All
+        </button>
 
-
-          {InternshipLabels &&
-            InternshipLabels.map((mylabel) => (
-              <button
+        {InternshipLabels &&
+          InternshipLabels.map((mylabel) => (
+            <button
               type="button"
               key={mylabel}
-            className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white  " : "tw-bg-white tw-text-purple-600  "
-              } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+              className={`${
+                selectedTag.includes(mylabel)
+                  ? "tw-bg-purple-600 tw-text-white  "
+                  : "tw-bg-white tw-text-purple-600  "
+              } ${
+                window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
               } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
-              style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem" , backgroundColor: selectedTag.toString().includes(mylabel)
-              ? "#845ec2"
-              : "#fff",
-              borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",}}
-            onClick={() => handleTagChange(mylabel)}
-          >
-            {mylabel}
-          </button>
-            ))}
-          {HackathonLabels &&
-            HackathonLabels.map((mylabel) => (
-              <>
-         
-           <button
-                type="button"
-                key={mylabel}
-              className={`${ selectedTag.includes(mylabel)? "tw-bg-purple-600 tw-text-white tw-border-purple-600 " : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
-                } ${window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
-                } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
-                style={{ whiteSpace: "nowrap",              fontSize: window.innerWidth > 768 ? "16px" : "14px",padding:"0.5rem", backgroundColor: selectedTag.toString().includes(mylabel)
-                ? "#845ec2"
-                : "#fff", borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2" }}
+              style={{
+                whiteSpace: "nowrap",
+                fontSize: window.innerWidth > 768 ? "16px" : "14px",
+                padding: "0.5rem",
+                backgroundColor: selectedTag.toString().includes(mylabel)
+                  ? "#845ec2"
+                  : "#fff",
+                borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
+              }}
               onClick={() => handleTagChange(mylabel)}
             >
               {mylabel}
             </button>
-          
-           
+          ))}
+        {HackathonLabels &&
+          HackathonLabels.map((mylabel) => (
+            <>
+              <button
+                type="button"
+                key={mylabel}
+                className={`${
+                  selectedTag.includes(mylabel)
+                    ? "tw-bg-purple-600 tw-text-white tw-border-purple-600 "
+                    : "tw-bg-white tw-text-purple-600 tw-border-purple-600 "
+                } ${
+                  window.innerWidth > 768 ? "tw-text-base" : "tw-text-sm"
+                } tw-p-0.5 tw-border  tw-cursor-pointer font-small tw-rounded-full text-xs px-5   mb-2  `}
+                style={{
+                  whiteSpace: "nowrap",
+                  fontSize: window.innerWidth > 768 ? "16px" : "14px",
+                  padding: "0.5rem",
+                  backgroundColor: selectedTag.toString().includes(mylabel)
+                    ? "#845ec2"
+                    : "#fff",
+                  borderColor: selectedTag[0] === "All" ? "#845ec2" : "#845ec2",
+                }}
+                onClick={() => handleTagChange(mylabel)}
+              >
+                {mylabel}
+              </button>
             </>
-            ))}
-          
-        </div>
+          ))}
+      </div>
     </>
   );
 }

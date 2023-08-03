@@ -49,7 +49,14 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const menuItem = [
     {
       title: "Profile",
-      icon: <Image src={mentor.image} width={30} height={30} className="tw-rounded-full" />,
+      icon: (
+        <Image
+          src={mentor.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -107,7 +114,14 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const mobileItem = [
     {
       title: "Profile",
-      icon: <Image src={mentor.image} width={30} height={30} className="tw-rounded-full" />,
+      icon: (
+        <Image
+          src={mentor.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -135,7 +149,14 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
     },
     {
       title: "Profile",
-      icon: <Image src={mentor.image} width={30} height={30} className="tw-rounded-full" />,
+      icon: (
+        <Image
+          src={mentor.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -216,15 +237,17 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
-            }`}
+          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+            isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
+          }`}
           onMouseOver={() => setIsSidebarOpen(true)}
           onMouseLeave={() => setIsSidebarOpen(false)}
         >
           <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
-              className={`${isSidebarOpen ? "tw-block" : "tw-hidden"
-                } tw-flex tw-justify-center  tw-items-center`}
+              className={`${
+                isSidebarOpen ? "tw-block" : "tw-hidden"
+              } tw-flex tw-justify-center  tw-items-center`}
             >
               <Link
                 href="/"
@@ -234,17 +257,19 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               </Link>
             </div>
             <div
-              className={`tw-group tw-p-4 tw-flex ${isSidebarOpen
-                ? "tw-justify-start tw-gap-4"
-                : "tw-justify-center"
-                } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
+              className={`tw-group tw-p-4 tw-flex ${
+                isSidebarOpen
+                  ? "tw-justify-start tw-gap-4"
+                  : "tw-justify-center"
+              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
             >
               <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
               <span
-                className={`${isSidebarOpen
-                  ? "tw-block group-hover:tw-text-primary-100"
-                  : "tw-hidden"
-                  }`}
+                className={`${
+                  isSidebarOpen
+                    ? "tw-block group-hover:tw-text-primary-100"
+                    : "tw-hidden"
+                }`}
               >
                 Get more bookings
               </span>
@@ -260,16 +285,19 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 >
                   <Link
                     href={`/dashboard/mentor?tab=${val.path}`}
-                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
-                      } ${currentPage === val.path
+                    className={`tw-flex ${
+                      isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
+                    } ${
+                      currentPage === val.path
                         ? "tw-bg-primary-100 tw-text-white"
                         : ""
-                      } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                    } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                   >
                     <span>{val.icon}</span>
                     <span
-                      className={`tw-ml-3 ${isSidebarOpen ? "tw-block" : "tw-hidden"
-                        }`}
+                      className={`tw-ml-3 ${
+                        isSidebarOpen ? "tw-block" : "tw-hidden"
+                      }`}
                     >
                       {val.title}
                     </span>
@@ -295,10 +323,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
-                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${currentPage === val.path
-                    ? "tw-bg-primary-100 tw-text-white"
-                    : ""
-                    } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
+                    currentPage === val.path
+                      ? "tw-bg-primary-100 tw-text-white"
+                      : ""
+                  } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">
@@ -325,10 +354,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
         {/* Modal for opening menu */}
         <div>
           <div
-            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${isMobileSidebarOpen
-              ? "tw-opacity-100"
-              : "tw-opacity-0 tw-pointer-events-none"
-              }`}
+            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${
+              isMobileSidebarOpen
+                ? "tw-opacity-100"
+                : "tw-opacity-0 tw-pointer-events-none"
+            }`}
           >
             <div className="tw-flex tw-justify-end tw-items-center tw-p-4">
               <button className="tw-flex tw-justify-center tw-items-center">
@@ -365,10 +395,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   >
                     <Link
                       href={`/dashboard/mentor?tab=${val.path}`}
-                      className={`tw-flex tw-flex-wrap ${currentPage === val.path
-                        ? "tw-bg-primary-100 tw-text-white"
-                        : ""
-                        } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      className={`tw-flex tw-flex-wrap ${
+                        currentPage === val.path
+                          ? "tw-bg-primary-100 tw-text-white"
+                          : ""
+                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">
@@ -388,10 +419,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   >
                     <Link
                       href={`/dashboard/mentor?tab=${val.path}`}
-                      className={`tw-flex tw-flex-wrap ${currentPage === val.path
-                        ? "tw-bg-primary-100 tw-text-white"
-                        : ""
-                        } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      className={`tw-flex tw-flex-wrap ${
+                        currentPage === val.path
+                          ? "tw-bg-primary-100 tw-text-white"
+                          : ""
+                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">

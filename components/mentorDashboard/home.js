@@ -16,7 +16,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
     const getMentor = async () => {
       const res = await axios
         .get(
-          `https://grabtern-backend-demo.vercel.app/api/mentors/mentorDetail/rrishu`,
+          `https://grabtern-backend-demo.vercel.app/api/mentors/mentorDetail/anmode`,
         )
         .then((res) => {
           setMentor(res.data.mentorDetail);

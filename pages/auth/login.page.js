@@ -49,7 +49,9 @@ function login() {
       setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
 
-      const { data: res } = await axios.post(url, formData);
+      const { data: res } = await axios.post(url, formData, {
+        withCredentials: true,
+      });
       setIsLoading(false);
 
       if (entityType === "user") {

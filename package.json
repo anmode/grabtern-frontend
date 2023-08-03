@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "prepare": "husky install"
+    "prepare": "husky install",
     "test": "next-jest"
   },
   "dependencies": {

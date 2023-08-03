@@ -2060,3 +2060,6 @@ select {
     max-width: 100%;
   }
 }
+.progress-bar-fill {
+  transition: width 0.3s ease;
+}

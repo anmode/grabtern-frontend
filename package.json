@@ -9,6 +9,7 @@
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "prepare": "husky install"
+    "test": "next-jest"
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",

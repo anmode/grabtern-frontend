@@ -25,7 +25,7 @@ function UserDashboard() {
         {/* <Header navbarBackground={true} /> */}
         <Sidebar setComponent={updatePath} component={component} />
         <div>
-        {/* {component == "" && <Header />} */}
+          {/* {component == "" && <Header />} */}
           {component == "profile" && <Profile />}
           {component == "bookings" && <Bookings />}
         </div>

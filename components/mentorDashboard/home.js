@@ -169,7 +169,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
         mobileNotification && (
           <div
             ref={reference}
-            className="tw-z-50 tw-w-full tw-h-[600px] tw-bottom-0 tw-fixed tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden">
+            className="tw-z-50 tw-w-full tw-h-[500px] tw-bottom-0 tw-fixed tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden">
             <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
               Notifications
             </h2>
@@ -180,7 +180,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
         )
       }
 
-      <main className="max-[512px]:tw-pl-6 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
+      <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
         <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-xl tw-font-semibold">
           Here you can view your sessions, edit your profile, and view your
           calendar.

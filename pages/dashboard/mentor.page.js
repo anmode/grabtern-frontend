@@ -14,11 +14,6 @@ function MentorDashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [mentor, setMentor] = useState({});
 
-  const updatePath = (componentName) => {
-    const newPath = `/dashboard/mentor/${componentName}`;
-    window.history.pushState({}, "", newPath);
-    setComponent(componentName);
-  };
   useEffect(() => {
     const search = window.location.search;
     const params = new URLSearchParams(search);
@@ -28,9 +23,9 @@ function MentorDashboard() {
     <>
       <div className="tw-flex">
         {/* <Header navbarBackground={true} /> */}
-        <Sidebar mentor={mentor} setComponent={updatePath} component={component} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+        <Sidebar mentor={mentor} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
         <div className="">
-          {component === "" && <Home setComponent={updatePath} setIsSidebarOpen={setIsSidebarOpen} mentor={mentor} setMentor={setMentor} />}
+          {component === "" && <Home setIsSidebarOpen={setIsSidebarOpen} mentor={mentor} setMentor={setMentor} />}
           {component === "profile" && <Profile />}
           {component === "calendar" && <Calendar />}
           {component === "sessions" && <Sessions />}

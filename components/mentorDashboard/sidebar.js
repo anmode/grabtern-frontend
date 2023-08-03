@@ -20,7 +20,7 @@ import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = ({ mentor, setComponent, component, isSidebarOpen, setIsSidebarOpen }) => {
+const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {

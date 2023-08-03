@@ -60,10 +60,10 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
       path: "sessions",
       heading: "Your Sessions",
       session: {
-        title: mentor.sessions[0]?.name,
-        type: mentor.sessions[0]?.type,
-        duration: mentor.sessions[0]?.duration,
-        desc: mentor.sessions[0]?.description,
+        title: mentor?.sessions[0]?.name,
+        type: mentor?.sessions[0]?.type,
+        duration: mentor?.sessions[0]?.duration,
+        desc: mentor?.sessions[0]?.description,
       },
     },
     {
@@ -71,10 +71,10 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
       path: "calendar",
       heading: "View Calendar",
       schedule: {
-        day: mentor.schedules[0]?.day,
-        start: mentor.schedules[0]?.startsAt,
-        end: mentor.schedules[0]?.endsAt,
-        timezone: mentor.schedules[0]?.timezone,
+        day: mentor?.schedules[0]?.day,
+        start: mentor?.schedules[0]?.startsAt,
+        end: mentor?.schedules[0]?.endsAt,
+        timezone: mentor?.schedules[0]?.timezone,
       },
     },
     {
@@ -137,7 +137,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
           {
             cards.map((card) => {
               return (
-                <div className='tw-w-[300px] tw-h-[300px] tw-bg-[#00C9A7] tw-gap-2 tw-p-6 tw-flex tw-flex-col tw-justify-around tw-items-center tw-rounded-md hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[763px]:tw-w-[200px] max-[601px]:tw-w-[150px]'>
+                <div className='tw-w-[300px] tw-h-[300px] tw-bg-white tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-flex-col tw-justify-around tw-items-center tw-rounded-md hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[763px]:tw-w-[200px] max-[601px]:tw-w-[150px]'>
                   <div className='tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2'>
                     {card.icon}
                     <h2 className='tw-font-semibold tw-text-xl'>{card.name}</h2>
@@ -178,7 +178,9 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                     }
                   </div>
                   <div className='tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100'>
-                    <p onClick={() => setComponent(card.path)} className='tw-text-white'>{card.heading}</p>
+                    <Link href={`/dashboard/mentor?tab=${card.path}`}>
+                      <p className='tw-text-white'>{card.heading}</p>
+                    </Link>
                   </div>
                 </div>
               )

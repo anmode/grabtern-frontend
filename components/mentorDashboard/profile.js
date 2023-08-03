@@ -105,11 +105,11 @@ function Profile({ mentorDetail }) {
     }
   };
   return (
-    <div className="tw-border-2 tw-h-full tw-flex tw-justify-center">
-      <form className="tw-w-full tw-max-w-2xl" onSubmit={handleSubmit}>
-      <h2 className="tw-text-center tw-font-semibold tw-text-5xl tw-mt-7">Edit your Profile</h2>
+    <div className="tw-border-2 tw-h-full tw-flex tw-justify-center profileRegForm">
+      <form className="md:tw-w-full md:tw-max-w-2xl md:tw-p-0" onSubmit={handleSubmit}>
+      <h2 className="tw-text-center tw-font-medium tw-text-5xl tw-mt-5 tw-text-[#845ec2]">Edit your Profile</h2>
       {step === 1 ? (
-      <><div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
+      <><div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] md:tw-mb-6">
             <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
                 NAME

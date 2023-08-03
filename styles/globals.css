@@ -1115,6 +1115,12 @@ select {
   align-items: center;
 }
 
+@media screen and (max-width: 786px) {
+  .profileRegForm{
+    padding: 4rem;
+  }
+}
+
 .bookSessions li {
   background-color: white;
   border: 1px solid #d3d3d3;

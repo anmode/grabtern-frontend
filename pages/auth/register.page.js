@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import EventLogin from "../../components/eventLogin/EventLogin";
 import Visibillity from "../../public/assets/Visibillity";
 import VisibillityOff from "../../public/assets/VisibillityOff";
 import Header from "../../components/layout/Header";
@@ -11,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { decryptData, encryptData } from "../../hook/encryptDecrypt";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
+import Button from "../../components/UI/Button/Button";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
@@ -42,6 +44,7 @@ function useRedirectIfAuthenticated() {
         const res = await axios.post(url, {
           registerToken: encryptData(userData),
         });
+
         console.log(res);
         localStorage.setItem("userData", encryptData(userData));
         setIsUserLoggedIn(true);
@@ -101,7 +104,9 @@ function Register() {
   });
   const [isValidValues, setIsValidValues] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConPasswordVisible, setIsConPasswordVisible] = useState(false);
+
+  const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
@@ -131,8 +136,10 @@ function Register() {
     }
 
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
+      setIsLoading(false);
       toast.success(
         "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
       );
@@ -140,6 +147,7 @@ function Register() {
         router.push("/");
       }, 5000);
     } catch (error) {
+      setIsLoading(false);
       if (error.response && error.response.status >= 400) {
         toast.error(error.response.data.message);
       } else {
@@ -240,11 +248,8 @@ function Register() {
           </div>
           <ToastContainer />
 
-          <div
-            className={`md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none ${
-              isValidValues && "hover:tw-bg-[#6b21a8]"
-            } tw-rounded-lg tw-font-semibold flex items-center justify-center`}
-          >
+          {/* <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
+
             <input
               type="submit"
               name="submit"
@@ -255,8 +260,26 @@ function Register() {
               value="Register"
               style={{ textAlign: "center", width: "100%" }}
             />
-          </div>
+          </div> */}
 
+          <div>
+            <ToastContainer />
+            <div>
+              {isLoading ? (
+                <div className="tw-relative tw-left-[160px]">
+                  <EventLogin />
+                </div>
+              ) : (
+                <div className="tw-flex tw-justify-center tw-h-11">
+                  <Button
+                    className="tw-w-[400px]"
+                    onClick={handleSubmit}
+                    text="Registration"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
           <div className={styles.linkdiv}>
             Already have an account?
             {/* <button

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, IconCard } from "../UI";
 import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
 import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
+import { BiMessageSquareDetail } from "react-icons/bi";
 export default function SessionCard({
   type,
   name,
@@ -23,7 +24,7 @@ export default function SessionCard({
       Icon = FaUsers;
       break;
     case "text":
-      Icon = FaMessage;
+      Icon = BiMessageSquareDetail;
       break;
     default:
       Icon = FaVideo;

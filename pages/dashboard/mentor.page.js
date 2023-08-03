@@ -6,6 +6,7 @@ import Profile from "../../components/mentorDashboard/profile";
 import Sessions from "../../components/mentorDashboard/sessions";
 import Calendar from "../../components/mentorDashboard/calendar";
 import Queries from "../../components/mentorDashboard/queries";
+import Home from "../../components/mentorDashboard/home";
 import Header from "../../components/layout/Header";
 import Bookings from "../../components/mentorDashboard/Bookings";
 
@@ -24,7 +25,7 @@ function MentorDashboard() {
   };
   return (
     <>
-      <div className="">
+      <div className="tw-flex">
         {/* <Header navbarBackground={true} /> */}
         <Sidebar setComponent={updatePath} component={component} />
         <div>

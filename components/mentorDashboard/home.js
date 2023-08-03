@@ -40,6 +40,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
         !reference.current.contains(e.target)
       ) {
         setNotification(false);
+        setMobileNotification(false);
       }
     };
 
@@ -150,7 +151,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
             // Notification Pop-up for devices with width > 512px
             <div
               ref={reference}
-              className="tw-z-50 tw-absolute tw-top-[90px] tw-right-[47px] tw-w-[300px] tw-h-[500px] tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll max-[512px]:tw-hidden"
+              className="tw-z-50 tw-absolute tw-top-[90px] tw-right-[47px] tw-w-[300px] tw-h-[500px] tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll max-[512px]:tw-hidden max-[696px]:tw-top-[150px] max-[696px]:tw-right-[200px]"
             >
               <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
                 Notifications
@@ -167,6 +168,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
       {
         mobileNotification && (
           <div
+            ref={reference}
             className="tw-z-50 tw-w-full tw-min-h-screen tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden">
             <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
               Notifications
@@ -183,11 +185,11 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
           Here you can view your sessions, edit your profile, and view your
           calendar.
         </p>
-        <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[512px]:tw-hidden">
+        <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
           {cards.map((card) => {
             return (
-              <div className="tw-w-[300px] tw-h-[300px] tw-bg-white tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-flex-col tw-justify-around tw-items-center tw-rounded-md hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[763px]:tw-w-[200px] max-[601px]:tw-w-[150px]">
-                <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2">
+              <div className="tw-w-[300px] tw-flex-wrap tw-bg-white tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-md hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
+                <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                   {card.icon}
                   <h2 className="tw-font-semibold tw-text-xl">{card.name}</h2>
                   {card.socials && (

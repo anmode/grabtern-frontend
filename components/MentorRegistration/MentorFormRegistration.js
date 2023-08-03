@@ -194,6 +194,7 @@ export default function MentorForm() {
           {/* steps tracker start */}
           <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
             <div
+              aria-label="Person Details"
               className={`trackerStep ${
                 formStep == 1 ? "active" : formStep > 1 ? "done" : ""
               }`}
@@ -202,6 +203,7 @@ export default function MentorForm() {
             </div>
             <div className="trackerLine"></div>
             <div
+              aria-label="Contact Details"
               className={`trackerStep ${
                 formStep == 2 ? "active" : formStep > 2 ? "done" : ""
               }`}
@@ -289,6 +291,7 @@ export default function MentorForm() {
           <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
             <button
               type="submit"
+              aria-label="Register"
               className="mentorFormButton theme-button-color"
               onClick={formStep == 4 ? onSubmit : nextStep}
             >
@@ -298,6 +301,7 @@ export default function MentorForm() {
             {formStep != 1 && (
               <button
                 type="button"
+                aria-label="Back"
                 className="mentorFormButton tw-bg-slate-400"
                 onClick={prevStep}
               >
@@ -310,13 +314,14 @@ export default function MentorForm() {
           {/* toast and loading container start */}
           <div>
             <ToastContainer />
-            <div>
-              {isLoading && (
+            <div data-testid="loading-spinner">
+              {isLoading &&  (
                 <img
                   style={{ width: "50px", height: "50px" }}
                   src="/assets/img/gif/Spinner.gif"
                   alt="...jljk"
                 />
+                
               )}
             </div>
           </div>

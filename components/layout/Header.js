@@ -103,6 +103,9 @@ function Header() {
             <Link href="/mentors" className="hover:tw-text-primary-100">
               Mentor
             </Link>
+            <Link href="/blogs" className="hover:tw-text-primary-100">
+              Blogs
+            </Link>
             <Link href="/community" className="hover:tw-text-primary-100">
               Community
             </Link>

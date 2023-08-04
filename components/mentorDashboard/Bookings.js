@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { set } from "js-cookie";
+import React, { useState, useEffect } from "react";
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
@@ -19,68 +21,95 @@ const Bookings = () => {
 
   const tableHeadings = ["Topic", "Mentee", "Day", "Time"];
 
-  const sessions = [
-    {
-      userID: 1,
-      userName: "justin",
-      mentorUsername: "robert",
-      sessionID: 1,
-      sessionName: "Breaking into open source",
-      sessionDay: "monday",
-      sessionTime: "10:30 AM",
-      paymentProof: "https://picsum.photos/200",
-      bookedAt: "2021-12-11T00:00:00.000+00:00",
-      isbooked: true,
-    },
-    {
-      userID: 1,
-      userName: "john",
-      mentorUsername: "roger",
-      sessionID: 2,
-      sessionName: "Blockchain for beginners",
-      sessionDay: "wednesday",
-      sessionTime: "2:45 AM",
-      paymentProof: "https://picsum.photos/200",
-      bookedAt: "2021-09-01T00:00:00.000+00:00",
-      isbooked: false,
-    },
-    {
-      userID: 1,
-      userName: "katie Perry",
-      mentorUsername: "jennifer",
-      sessionID: 3,
-      sessionName: "How to get a job at Google",
-      sessionDay: "friday",
-      sessionTime: "11:00 AM",
-      paymentProof: "https://picsum.photos/200",
-      bookedAt: "2021-09-01T00:00:00.000+00:00",
-      isbooked: true,
-    },
-    {
-      userID: 1,
-      userName: "james bond",
-      mentorUsername: "taylor",
-      sessionID: 4,
-      sessionName: "How to maintain a work-life balance and excel in life",
-      sessionDay: "saturday",
-      sessionTime: "1:10 AM",
-      paymentProof: "https://picsum.photos/200",
-      bookedAt: "2021-01-04T00:00:00.000+00:00",
-      isbooked: true,
-    },
-    {
-      userID: 1,
-      userName: "lisa",
-      mentorUsername: "sarah",
-      sessionID: 5,
-      sessionName: "Designing a website from scratch",
-      sessionDay: "tuesday",
-      sessionTime: "5:30 AM",
-      paymentProof: "https://picsum.photos/200",
-      bookedAt: "2021-09-01T00:00:00.000+00:00",
-      isbooked: false,
-    },
-  ];
+  // const sessions = [
+  //   {
+  //     userID: 1,
+  //     userName: "justin",
+  //     mentorUsername: "robert",
+  //     sessionID: 1,
+  //     sessionName: "Breaking into open source",
+  //     sessionDay: "monday",
+  //     sessionTime: "10:30 AM",
+  //     paymentProof: "https://picsum.photos/200",
+  //     bookedAt: "2021-12-11T00:00:00.000+00:00",
+  //     isbooked: true,
+  //   },
+  //   {
+  //     userID: 1,
+  //     userName: "john",
+  //     mentorUsername: "roger",
+  //     sessionID: 2,
+  //     sessionName: "Blockchain for beginners",
+  //     sessionDay: "wednesday",
+  //     sessionTime: "2:45 AM",
+  //     paymentProof: "https://picsum.photos/200",
+  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
+  //     isbooked: false,
+  //   },
+  //   {
+  //     userID: 1,
+  //     userName: "katie Perry",
+  //     mentorUsername: "jennifer",
+  //     sessionID: 3,
+  //     sessionName: "How to get a job at Google",
+  //     sessionDay: "friday",
+  //     sessionTime: "11:00 AM",
+  //     paymentProof: "https://picsum.photos/200",
+  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
+  //     isbooked: true,
+  //   },
+  //   {
+  //     userID: 1,
+  //     userName: "james bond",
+  //     mentorUsername: "taylor",
+  //     sessionID: 4,
+  //     sessionName: "How to maintain a work-life balance and excel in life",
+  //     sessionDay: "saturday",
+  //     sessionTime: "1:10 AM",
+  //     paymentProof: "https://picsum.photos/200",
+  //     bookedAt: "2021-01-04T00:00:00.000+00:00",
+  //     isbooked: true,
+  //   },
+  //   {
+  //     userID: 1,
+  //     userName: "lisa",
+  //     mentorUsername: "sarah",
+  //     sessionID: 5,
+  //     sessionName: "Designing a website from scratch",
+  //     sessionDay: "tuesday",
+  //     sessionTime: "5:30 AM",
+  //     paymentProof: "https://picsum.photos/200",
+  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
+  //     isbooked: false,
+  //   },
+  // ];
+
+  // session state
+  const [sessions, setSessions] = useState([]);
+
+  // error state
+  const [error, setError] = useState("");
+
+  // function to fetch session
+  const fetchSession = async () => {
+    try {
+      setError("");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/session/me`,
+        {
+          withCredentials: true,
+        },
+      );
+      setSessions(response.data);
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+  };
+
+  // calling fetch function onload
+  useEffect(() => {
+    fetchSession();
+  }, []);
 
   return (
     <div className="min-[512px]:tw-ml-[76px] tw-p-8 tw-py-12 sm:tw-px-8 md:tw-px-12 sm:tw-py-16 lg:tw-p-16">
@@ -88,6 +117,7 @@ const Bookings = () => {
         Your sessions
       </h1>
 
+      {/* pending and completed tab */}
       <nav>
         <ul className="tw-flex tw-gap-8 tw-border-b-2">
           {tabs.map((tab, index) => (
@@ -106,6 +136,12 @@ const Bookings = () => {
         </ul>
       </nav>
 
+      {/* error message */}
+      {error && (
+        <p className="tw-text-red-500 tw-text-center tw-mt-8">{error}</p>
+      )}
+
+      {/* sessions list */}
       <div className="tw-mt-8">
         <ul className="tw-bg-primary-100 tw-text-white  min-[500px]:tw-grid tw-grid-cols-[auto_10rem]  [&>*]:tw-capitalize tw-p-4  sm:tw-grid-cols-[minmax(10rem,auto)_8rem_8rem] md:tw-grid-cols-[minmax(10rem,auto)_8rem_13rem] tw-gap-6 tw-border tw-border-b-0 tw-rounded-t">
           <li className="tw-hidden min-[540px]:tw-inline">topic</li>

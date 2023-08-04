@@ -121,29 +121,31 @@ function Profile({ mentorDetail }) {
       <form className="md:tw-w-full md:tw-max-w-2xl md:tw-p-0 profileForm" onSubmit={handleSubmit}>
       <h2 className="tw-text-center tw-font-medium tw-text-5xl tw-mt-5 tw-text-[#845ec2]">Edit your Profile</h2>
       {step === 1 ? (
-      <><div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
+      <>
+          <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
             <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
                 NAME
               </label>
-              <input
-                type="text"
-                name="name"
-                class="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
-                onChange={(e) => handleChange(e)}
-                placeholder={mentorDetail?.name}
-                value={formData.name} />
+                <input id="name" 
+                type="text" 
+                name="name" 
+                class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3" 
+                placeholder="e.g. Peter Parker" 
+                onChange={(e) => handleChange(e)} 
+                value={formData.name}
+                />
             </div>
             <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
                 USERNAME
               </label>
               <input
-                class="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                 type="text"
                 name="username"
                 onChange={(e) => handleChange(e)}
-                placeholder={mentorDetail?.username}
+                placeholder="e.g. peter-parker12"
                 value={formData.username} />
             </div>
           </div>
@@ -156,8 +158,8 @@ function Profile({ mentorDetail }) {
                   type="email"
                   name="email"
                   onChange={(e) => handleChange(e)}
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
-                  placeholder={mentorDetail?.email}
+                  className="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
+                  placeholder="e.g. peterparker4321@gmail.com"
                   value={formData.email} />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -168,8 +170,8 @@ function Profile({ mentorDetail }) {
                   type="number"
                   name="mobile"
                   onChange={(e) => handleChange(e)}
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
-                  placeholder={mentorDetail?.mobile}
+                  className="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
+                  placeholder="0123456789"
                   value={formData.mobile} />
               </div>
             </div><div className="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem]">
@@ -179,9 +181,9 @@ function Profile({ mentorDetail }) {
                 <input
                   type="text"
                   name="linkedin"
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                  className="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   onChange={(e) => handleSocialChange(e)}
-                  placeholder={mentorDetail?.linkedin}
+                  placeholder="LinkedIn Link"
                   value={formData.social.linkedin} />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -189,9 +191,9 @@ function Profile({ mentorDetail }) {
                 <input
                   type="text"
                   name="twitter"
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                  className="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   onChange={(e) => handleSocialChange(e)}
-                  placeholder={mentorDetail?.twitter}
+                  placeholder="Twitter Link"
                   value={formData.social.twitter} />
               </div>
             </div><div className="tw-grid md:tw-m-[1rem]">
@@ -200,9 +202,9 @@ function Profile({ mentorDetail }) {
                 cols="10"
                 rows="7"
                 name="description"
-                className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                className="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                 onChange={(e) => handleChange(e)}
-                placeholder={mentorDetail?.description}
+                placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
                 value={formData.description} />
             </div>
           </>

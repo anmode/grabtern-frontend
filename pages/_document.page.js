@@ -18,7 +18,7 @@ export default function Document() {
         <link
           rel="shortcut icon"
           type="image/x-icon"
-          href="/aasets/img/favicon1.ico"
+          href="/aasets/img/faviconn.ico"
         />
 
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />

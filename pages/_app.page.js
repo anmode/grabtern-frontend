@@ -58,13 +58,11 @@ function MyApp({ Component, pageProps }) {
         <title>GrabTern | Grab Your Internship</title>
         <meta name="title" content="GrabTern" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="With GrabTern you can easly get your dream Intern from GSoc, MLH, Amazon ML Summer Intern and Many more that will be guide by mentor only just for ₹ 1 Rupee, So What are you waiting for? Sign Up the intern at GrabTern and will be guide by mentor and dream your intern job sooner!"
-        />
-        <meta name="language" content="English" />
         <link rel="icon" href="/faviconn.png" />
-        <meta name="robots" content="noindex" />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         <link rel="canonical" href="https://grabtern.com/" />
         <link
           rel="alternate"
@@ -72,15 +70,10 @@ function MyApp({ Component, pageProps }) {
           title="Emupedia"
           href="https://grabtern.com/feed.xml"
         />
-        <meta name="robots" content="index, follow" />
         <meta name="language" content="en" />
         <meta name="revisit-after" content="7 days" />
         <meta name="distribution" content="global" />
         <meta name="geo.region" content="india" />
-        <meta
-          name="googlebot"
-          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-        />
         <meta http-equiv="content-language" content="en" />
         <meta
           name="description"
@@ -88,7 +81,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           name="keywords"
-          content="Intern, Internships, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Mentorship, Mentored Internship, Mentor-Guided Internship, Experienced Mentors, Dedicated Mentors, Mentorship Program, Mentor Support, Mentorship Opportunities, Mentorship Platform."
+          content="Grabtern, Intern, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Mentorship, Mentored Internship, Mentor-Guided Internship, Experienced Mentors, Dedicated Mentors, Mentorship Program, Mentor Support, Mentorship Opportunities, Mentorship Platform."
         />
         <link rel="canonical" href="https://grabtern.com/" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -122,19 +115,10 @@ function MyApp({ Component, pageProps }) {
           name="og:description"
           content="GrabTern offers you the opportunity to easily secure your dream internship from renowned programs like GSoc, MLH, Amazon ML Summer Internship, and many others. With mentorship guidance included, all of this is available for just ₹1. So, what are you waiting for? Sign up now with GrabTern to embark on your internship journey with the support of a dedicated mentor and achieve your dream internship sooner!"
         />
-        <meta
-          property="og:image"
-          content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp"
-        />
-        <meta
-          name="twitter:card"
-          content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp"
-        />
+        <meta property="og:image" content="/NewLogo.png" />
+        <meta name="twitter:card" content="/NewLogo.png" />
         <meta name="twitter:site" content="@grabtern" />
-        <meta
-          name="twitter:image"
-          content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/whitelogo.webp"
-        />
+        <meta name="twitter:image" content="/NewLogo.png" />
         <meta property="twitter:url" content="https://www.grabtern.com/" />
         <meta property="twitter:title" content="Grabtern" />
         <meta

@@ -23,6 +23,7 @@ function Profile({ mentorDetail }) {
   const [msg, setMsg] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
+  const [step, setStep] = useState(1);
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -32,7 +33,7 @@ function Profile({ mentorDetail }) {
   // function to fetch mentor profile
   const getMentorProfile = async () => {
     const mentorData = localStorage.getItem("mentorData");
-    const mentorToken = decryptData(mentorData).mentorToken;
+    const mentorToken = decryptData(mentorData)?.mentorToken;
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/${mentorToken}`;
 
     try {
@@ -115,9 +116,10 @@ function Profile({ mentorDetail }) {
     }
   };
   return (
-    <div className="tw-border-2 tw-h-full tw-flex tw-justify-center">
-      <form className="tw-w-full tw-max-w-2xl" onSubmit={handleSubmit}>
-      <h2 className="tw-text-center tw-font-semibold tw-text-5xl tw-mt-7">Edit your Profile</h2>
+    <div className="profileWrapper">
+      <div className="tw-border-2 tw-h-full tw-flex tw-justify-center lg:tw-ml-[40rem] profileRegForm">
+      <form className="md:tw-w-full md:tw-max-w-2xl md:tw-p-0 profileForm" onSubmit={handleSubmit}>
+      <h2 className="tw-text-center tw-font-medium tw-text-5xl tw-mt-5 tw-text-[#845ec2]">Edit your Profile</h2>
       {step === 1 ? (
       <><div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
             <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -234,6 +236,7 @@ function Profile({ mentorDetail }) {
       </button>
       </div>
     </form>
+    </div>
     </div>
   );
 }

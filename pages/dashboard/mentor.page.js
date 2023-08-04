@@ -19,6 +19,7 @@ function MentorDashboard() {
     const params = new URLSearchParams(search);
     setComponent(params.get("tab") || "");
   }, [window.location.search]);
+
   return (
     <>
       <div className="tw-flex">

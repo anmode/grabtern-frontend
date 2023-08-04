@@ -90,24 +90,26 @@ const Bookings = () => {
   // error state
   const [error, setError] = useState("");
 
-  // function to fetch session 
+  // function to fetch session
   const fetchSession = async () => {
-    try{
+    try {
       setError("");
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/session/me`, {
-        withCredentials: true,
-      })
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/session/me`,
+        {
+          withCredentials: true,
+        },
+      );
       setSessions(response.data);
-    }
-    catch(error){
+    } catch (error) {
       setError(error.response.data.message);
     }
-  }
+  };
 
   // calling fetch function onload
   useEffect(() => {
     fetchSession();
-  },[])
+  }, []);
 
   return (
     <div className="min-[512px]:tw-ml-[76px] tw-p-8 tw-py-12 sm:tw-px-8 md:tw-px-12 sm:tw-py-16 lg:tw-p-16">
@@ -135,11 +137,9 @@ const Bookings = () => {
       </nav>
 
       {/* error message */}
-      {
-        error && (
-          <p className="tw-text-red-500 tw-text-center tw-mt-8">{error}</p>
-        )
-      }
+      {error && (
+        <p className="tw-text-red-500 tw-text-center tw-mt-8">{error}</p>
+      )}
 
       {/* sessions list */}
       <div className="tw-mt-8">

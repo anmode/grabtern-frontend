@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { BiSolidUser, BiTime, BiCalendar } from "react-icons/bi";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
-import { MdNotifications, MdPayment, MdOutlineNotificationsNone } from "react-icons/md";
+import {
+  MdNotifications,
+  MdPayment,
+  MdOutlineNotificationsNone,
+} from "react-icons/md";
 
 const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
   const [Notification, setNotification] = useState(false);
@@ -129,23 +133,23 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
             title="Notifications"
             className="tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out hover:tw-bg-primary-200 tw-bg-primary-100 tw-justify-center tw-items-center tw-relative tw-p-2 tw-rounded-md"
           >
-            {
-              (Notification || mobileNotification) ? (
-                <MdOutlineNotificationsNone
-                  onClick={() => {
-                    setNotification(false);
-                    setMobileNotification(false);
-                  }}
-                  className="tw-w-[30px] tw-h-[30px] tw-text-[#FBEAFF]" />
-              ) : (
-                <MdNotifications
-                  onClick={() => {
-                    setNotification(true);
-                    setMobileNotification(true);
-                  }}
-                  className="tw-w-[30px] tw-h-[30px] tw-text-[#FBEAFF]" />
-              )
-            }
+            {Notification || mobileNotification ? (
+              <MdOutlineNotificationsNone
+                onClick={() => {
+                  setNotification(false);
+                  setMobileNotification(false);
+                }}
+                className="tw-w-[30px] tw-h-[30px] tw-text-[#FBEAFF]"
+              />
+            ) : (
+              <MdNotifications
+                onClick={() => {
+                  setNotification(true);
+                  setMobileNotification(true);
+                }}
+                className="tw-w-[30px] tw-h-[30px] tw-text-[#FBEAFF]"
+              />
+            )}
           </div>
           {Notification && (
             // Notification Pop-up for devices with width > 512px
@@ -165,20 +169,19 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
       </header>
 
       {/* Nnotification for mobile devices < 512px */}
-      {
-        mobileNotification && (
-          <div
-            ref={reference}
-            className="tw-z-50 tw-w-full tw-h-[500px] tw-bottom-0 tw-fixed tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden">
-            <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
-              Notifications
-            </h2>
-            <p className="tw-text-lg tw-font-medium tw-text-center">
-              Coming Soon...
-            </p>
-          </div>
-        )
-      }
+      {mobileNotification && (
+        <div
+          ref={reference}
+          className="tw-z-50 tw-w-full tw-h-[500px] tw-bottom-0 tw-fixed tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll min-[513px]:tw-hidden"
+        >
+          <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
+            Notifications
+          </h2>
+          <p className="tw-text-lg tw-font-medium tw-text-center">
+            Coming Soon...
+          </p>
+        </div>
+      )}
 
       <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
         <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-xl tw-font-semibold">

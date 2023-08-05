@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
+import { FaUserAlt } from "react-icons/fa";
+import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
+import { mentorImg } from "../../public/assets";
 
 function Profile({ mentorDetail }) {
   const initialFormData = {
@@ -96,7 +101,7 @@ function Profile({ mentorDetail }) {
       });
 
       const response = await axios.put(url, { token: encryptedData }); // Send the updated data to the backend
-      setformData(decryptData(response.data));
+      setFormData(decryptData(response.data));
 
       alert(response); // Display the response message from the backend
 
@@ -115,59 +120,29 @@ function Profile({ mentorDetail }) {
     }
   };
   return (
-    <div className="mentorDetail">
-      <div style={{ marginLeft: "250px" }}>
-        <div
-          className="modalPopupAfterRegistrationDone"
-          style={{
-            alignItems: "flex-start",
-            maxWidth: "800px",
-            width: "100%",
-            marginTop: "-100px",
-            maxHeight: "80rem",
-          }}
-        >
-          <h2
-            style={{
-              marginBottom: "-100px",
-              lineHeight: "0",
-              fontWeight: "600",
-              fontSize: "32px",
-              textAlign: "center",
-              marginLeft: "230px",
-              alignItems: "center",
-              marginTop: "5px",
-              color: "#64748b",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Edit your profile
+    <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+      <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
+        <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+          <h2 className="tw-text-gray-600 tw-text-4xl text-center tw-font-sans ">
+            Edit Your Profile
           </h2>
-          <form className="mentorFormEdit" onSubmit={handleSubmit}>
-            <div
-              style={{ gridColumn: "1/3", marginLeft: "500" }}
-              className="mentorUploudPhotoEdit"
-            >
-              <img
-                style={{
-                  marginTop: "120px",
-                  borderRadius: "50%",
-                  objectFit: "contain",
-                  width: "100px",
-                  height: "100px",
-                  boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px ",
-                }}
-                src={formData.image}
-                className="mentorPhoto"
+          <form
+            className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
+            onSubmit={handleSubmit}
+          >
+            <div className="tw-mt-10 tw-items-center tw-flex tw-justify-center">
+              <Image
+                className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover tw-shadow-lg"
+                src={formData.image ? formData.image : mentorImg}
+                alt="mentor"
+                width={100}
+                height={100}
               />
-              <div>
-                <input
-                  style={{ marginTop: "150px", width: "110px" }}
-                  type="file"
-                  name="mentorProfile"
-                  onChange={(e) => handleUploadImageChange(e)}
-                />
-              </div>
+              <input
+                type="file"
+                name="mentorProfile"
+                onChange={(e) => handleUploadImageChange(e)}
+              />
             </div>
             <div
               style={{
@@ -178,7 +153,6 @@ function Profile({ mentorDetail }) {
             >
               <div>
                 <label for="name">NAME</label>
-
                 <input
                   type="text"
                   name="name"
@@ -187,16 +161,17 @@ function Profile({ mentorDetail }) {
                     borderRadius: "5px",
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
                   }}
                   className="mentorFormInput"
                   onChange={(e) => handleChange(e)}
                   placeholder={mentorDetail?.name}
                   value={formData.name}
                 />
+                <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
               <div>
                 <label for="username">USERNAME</label>
-
                 <input
                   type="text"
                   name="username"
@@ -205,12 +180,14 @@ function Profile({ mentorDetail }) {
                     borderRadius: "5px",
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
                   }}
                   className="mentorFormInput"
                   onChange={(e) => handleChange(e)}
                   placeholder={mentorDetail?.username}
                   value={formData.username}
                 />
+                <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
             </div>
             <div
@@ -233,12 +210,15 @@ function Profile({ mentorDetail }) {
                     borderRadius: "5px",
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
+                    background: "white",
+                    paddingLeft: "35px",
                   }}
                   // placeholder="e.g. peterparker4321#gmail.com"
                   placeholder={mentorDetail?.email}
                   // readOnly
                   value={formData.email}
                 />
+                <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
               <div>
                 <label for="mobile">PHONE</label>
@@ -253,11 +233,13 @@ function Profile({ mentorDetail }) {
                     borderRadius: "5px",
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
                   }}
                   // placeholder="0123456789"
                   placeholder={mentorDetail?.mobile}
                   value={formData.mobile}
                 />
+                <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" />
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "row" }}>
@@ -274,11 +256,13 @@ function Profile({ mentorDetail }) {
                     borderRadius: "5px",
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
                   }}
                   // placeholder="e.g. https://www.linkedin.com/peterparker"
                   placeholder={mentorDetail?.linkedin}
                   value={formData.social.linkedin}
                 />
+                <BiLogoLinkedin className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
               <div>
                 <label for="twitter">TWITTER</label>
@@ -293,11 +277,13 @@ function Profile({ mentorDetail }) {
                     borderRadius: "5px",
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
                   }}
                   // placeholder="e.g. https://www.twitter.com/peterparker"
                   placeholder={mentorDetail?.twitter}
                   value={formData.social.twitter}
                 />
+                <BiLogoTwitter className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
             </div>
 
@@ -359,7 +345,7 @@ function Profile({ mentorDetail }) {
                 },
               }}
               type="submit"
-              className="mentorFormButotn"
+              className="max-[512px]:tw-mb-20"
               onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
             >
               Save changes

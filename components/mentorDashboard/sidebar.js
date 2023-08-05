@@ -251,7 +251,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
             >
               <Link
                 href="/"
-                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl"
+                className="hover:tw-text-[#6E4FA0] tw-font-inter tw-font-bold tw-text-3xl"
               >
                 GrabTern
               </Link>

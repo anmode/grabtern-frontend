@@ -66,7 +66,7 @@ function Header() {
         scrollY
           ? "tw-bg-transparent tw-fixed tw-backdrop-blur-md tw-w-full tw-z-20 tw-top-0 tw-mx-auto tw-text-black dark:tw-bg-muted-900 tw-transition-all tw-duration-300"
           : "tw-bg-base-200 tw-backdrop-blur-md tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-mx-auto dark:tw-bg-muted-900 tw-text-black ",
-        toggleDropdown ? "tw-bg-transparent" : "tw-base-200",
+        toggleDropdown ? "tw-bg-white" : "tw-base-200",
       )}
     >
       <nav className="tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-justify-between tw-items-center">
@@ -155,7 +155,7 @@ function Header() {
               <ion-icon name={toggleDropdown ? "close" : "menu"}></ion-icon>
             </div>
             {toggleDropdown && (
-              <div className="tw-absolute tw-left-0 tw-top-full tw-w-full tw-mt-0 tw-p-6 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
+              <div className="tw-absolute tw-left-0 tw-top-full tw-w-full tw-mt-0 tw-p-6 tw-rounded-lg tw-bg-white tw-bg-base-200 tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
                 <Link
                   href="/"
                   className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"

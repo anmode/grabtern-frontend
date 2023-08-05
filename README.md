@@ -31,6 +31,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
         <li><a href="#-tech-stack-used">Tech Stacks used 💻</a></li>
       </ul>
     </li>
+   <li><a href="#garbtern-email-feature">Grabtern Email Feature</a></li>
     <li><a href="#-prettier-lint-test-and-how-to-fix-it">Prettier lint Test</a></li>
     <li><a href="#contributing">How to contribute?</a></li>
     <li><a href="#author">Author</a></li>
@@ -40,6 +41,12 @@ This is the frontend repository for Grabtern, a web application built with Next.
 </details>
 
 ---
+
+## Logo
+
+<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link to new Logo</a>
+
+<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>
 
 ## Getting Started
 
@@ -95,6 +102,31 @@ This will start server
 ## 🧰 Tech Stack Used
 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+
+---
+
+## Grabtern Email Feature
+
+> Our platform's email service is seamlessly integrated into various sections, enhancing communication and user interaction.
+
+> While the backend remains concealed for security, accessing emails is easy with specific credentials.
+
+> You can create an account, verify it, and also act as a mentor with verification.
+
+> This way, contributors can fully experience our platform by registering as both mentors and users.
+
+**Login to ethereal mail.com with these credentials:**
+
+```
+"user": "dexter.waelchi@ethereal.email",
+"password": "MjMfuHFxfjeXttjH8v"
+```
+
+<div align='center'>
+
+https://github.com/coder12git/grabtern-frontend/assets/108334168/1b03e2a3-c6cb-434f-b096-807967d79a2e
+
+</div>
 
 ---
 

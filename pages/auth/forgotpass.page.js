@@ -6,6 +6,10 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ButtonUI from "../../components/UI/Button/Button";
+import Image from "next/image";
+import ForgotLogo from "../../public/Grabtern2.jpg";
+import Logo from "../../public/logo.png";
+import { red } from "@mui/material/colors";
 
 function ForgotPassword() {
   const router = useRouter();
@@ -19,28 +23,30 @@ function ForgotPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (email) {
+      setIsLoading(true);
 
-    try {
-      const url = new URL(window.location.href);
-      const entityTypeFromUrl = url.searchParams.get("entityType");
-      const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
-      const { data } = await axios.post(backendUrl, { email: email });
-      setIsLoading(false);
-      toast.success(
-        "Please check your email for instructions to reset your password.",
-      );
-      setTimeout(() => {
-        router.push("/");
-      }, 5000);
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        toast.error(error.response.data.message);
+      try {
+        const url = new URL(window.location.href);
+        const entityTypeFromUrl = url.searchParams.get("entityType");
+        const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
+        const { data } = await axios.post(backendUrl, { email: email });
         setIsLoading(false);
+        toast.success(
+          "Please check your email for instructions to reset your password.",
+        );
+        setTimeout(() => {
+          router.push("/");
+        }, 5000);
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          toast.error(error.response.data.message);
+          setIsLoading(false);
+        }
       }
     }
   };
@@ -48,34 +54,54 @@ function ForgotPassword() {
   return (
     <>
       <Head>
-        <title>GrabTern | Frogot Password</title>
+        <title>GrabTern | Forgot Password</title>
       </Head>
-      <Header navbarBackground={true} />
-
-      <main className="forgot-password-body">
-        <form className="login-form">
-          <div className="forgot-password-form">
-            <div className="logout-login">
-              <a href="index.html">
-                <img src="/Grabtern2.png"></img>
-              </a>
+      {/* <Header navbarBackground={true} /> */}
+      <div className="tw-flex  tw-items-center tw-pt-2">
+        <Image className="" src={Logo} alt="icon" width={50} height={50} />
+        <div className="tw-font-inter tw-font-bold tw-text-xl ">GrabTern</div>
+      </div>
+      <main className="tw-flex tw-justify-center tw-items-center">
+        <form>
+          <div className="">
+            <div className="tw-pb-5 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">
+              Forgot your <br />
+              password?
             </div>
-            <h2>Forgot Password</h2>
-            <div className="form-input">
-              <label htmlFor="email">Email</label>
+            <div className="tw-pb-5 tw-font-inter tw-font-medium tw-text-base">
+              To reset your password, please enter the email address of your
+              <br />
+              GrabTern account.
+            </div>
+            <div className="">
+              <label
+                htmlFor="email"
+                className=" tw-font-inter tw-font-medium tw-text-base"
+              >
+                Email
+              </label>
+              <br />
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Email"
                 onChange={handleChange}
                 value={email}
+                className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
             </div>
             <div
-              className="form-input pt-30"
-              style={{ display: "flex", justifyContent: "center" }}
+              className="form-input tw-pt-8 tw-pb-8"
+              // style={{ display: "flex", justifyContent: "center", width:"100%" }}
             >
-              <ButtonUI text="Reset Password" onClick={handleSubmit} />
+              <ButtonUI
+                text="Reset Password"
+                onClick={handleSubmit}
+                className={`tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2 ${
+                  email ? "!tw-cursor-pointer" : "!tw-cursor-not-allowed"
+                }`}
+              />
             </div>
             {isLoading && (
               <img
@@ -90,8 +116,27 @@ function ForgotPassword() {
             )}
           </div>
           <ToastContainer />
+          <hr />
+          <div className="tw-pt-5 tw-font-inter tw-font-bold tw-text-xl tw-text-[#4E9F3D]">
+            <a href="#">Contact Us</a>
+          </div>
         </form>
+        <div className="logout-login">
+          <div className="image-container">
+            <Image src={ForgotLogo} width={700} height={700} />
+          </div>
+        </div>
       </main>
+
+      <style jsx>{`
+        /* CSS for hiding the image on small screens */
+        @media (max-width: 1450px) {
+          .image-container {
+            display: none;
+          }
+        }
+        }
+      `}</style>
     </>
   );
 }

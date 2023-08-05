@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard.module.css";
+import Card from "./CalendarComponent/card";
 
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
@@ -56,20 +57,22 @@ const Calender = () => {
   };
   return (
     <div className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}>
+    <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
       <button
         onClick={handleCalender}
-        className="tw-border-black tw-border-[2px] tw-p-2 tw-rounded-md"
+        className='hover:tw-bg-gray-100 default:tw-bg-gary-100 tw-border-black hover:tw-border-[2px] tw-border-[1px] tw-px-5 tw-py-2 tw-text-black tw-text-center hover:tw-font-semibold tw-rounded-full'
       >
         Calendar
       </button>
       <button
         onClick={handleSchedule}
-        className="tw-ml-9 tw-border-black tw-border-[2px] tw-p-2 tw-rounded-md"
+        className="tw-ml-5  hover:tw-bg-gray-100 tw-border-black hover:tw-border-[2px] tw-border-[1px] tw-px-5 tw-py-2 tw-text-black tw-text-center hover:tw-font-semibold tw-rounded-full"
       >
         Schedule
       </button>
-      <div className="content">
-        {calender && <div>hfhddfkbflbrgpkwr;</div>}
+      <hr className="tw-h-px -tw-ml-[19rem] tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"/>
+      <div className="content tw-pt-5">
+        {calender && <div><Card/></div>}
         {schedule && (
           <div className="tw-mt-7">
             <h2 className="tw-font-semibold">Schedule Form</h2>

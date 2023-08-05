@@ -41,6 +41,7 @@
     "simple-react-validator": "^1.6.2",
     "styled-components": "^5.3.10",
     "swr": "^2.1.5",
+    "tw-elements": "^1.0.0-beta3",
     "webpack": "^5.88.1",
     "yup": "^1.2.0"
   },

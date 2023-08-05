@@ -105,7 +105,7 @@ function Register() {
   const [isValidValues, setIsValidValues] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const [isConPasswordVisible, setConIsPasswordVisible] = useState(false);
+  const [isConPasswordVisible, setIsConPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const togglePasswordVisibility = () => {

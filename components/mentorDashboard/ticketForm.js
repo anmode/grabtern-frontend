@@ -27,20 +27,30 @@ const TicketForm = ({ onSubmit }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.description}>
-        <label htmlFor="description">Description:</label>
+    <form
+      className="tw-flex tw-justify-center tw-items-center tw-border-dashed"
+      onSubmit={handleSubmit}
+    >
+      <div className="tw-flex tw-flex-col tw-gap-2 tw-justify-center tw-items-center tw-border-dashed tw-border-primary-100 tw-border-[2px] tw-p-4 tw-rounded-md">
+        <label
+          htmlFor="description"
+          className="text-slate-800 tw-font-semibold"
+        >
+          Description:
+        </label>
         <textarea
           id="description"
+          className="tw-w-[300px]"
           value={description}
           onChange={handleDescriptionChange}
           required
         />
-        <div className={styles.buttonGroup}>
-          <button className={styles.submitTicketButton} type="submit">
-            Submit Ticket
-          </button>
-        </div>
+        <button
+          className="tw-bg-primary-100 tw-p-2 tw-rounded-md tw-font-semibold tw-text-white hover:tw-bg-primary-200 tw-transition-all tw-ease-in-out tw-duration-150"
+          type="submit"
+        >
+          Submit Ticket
+        </button>
       </div>
     </form>
   );

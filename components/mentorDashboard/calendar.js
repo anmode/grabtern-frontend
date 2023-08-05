@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard.module.css";
 import Schedule from "./Schedule/schedule";
+import Card from "./CalendarComponent/card";
 import styled from "styled-components";
 
 const Calender = () => {
@@ -35,11 +36,15 @@ const Calender = () => {
     "08:00 PM": "08:00 PM",
   };
   const handleDayChange = (day) => {
-    setSelectedTime("");
     if (selectedDays.includes(day)) {
       setSelectedDays(
         selectedDays.filter((selectedDay) => selectedDay !== day),
       );
+      setSelectedTime((prevTimes) => {
+        const updatedTimes = { ...prevTimes };
+        delete updatedTimes[day];
+        return updatedTimes;
+      });
     } else {
       setSelectedDays([...selectedDays, day]);
     }
@@ -64,13 +69,14 @@ const Calender = () => {
 
   const MyDiv = styled.div`
     width: 900px;
-    height: 600px;
+    height: 900px;
   `;
 
   const MyInput = styled.input`
     width: 20px;
     height: 20px;
   `;
+
   return (
     <div className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}>
       <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
@@ -88,7 +94,11 @@ const Calender = () => {
       </button>
       <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
       <div className="content tw-pt-5">
-        {calender && <div></div>}
+        {calender && (
+          <div>
+            <Card />
+          </div>
+        )}
         {schedule && (
           <>
             <Schedule />
@@ -100,7 +110,7 @@ const Calender = () => {
                 </button>
               </div>
               {weekdays.map((day, index) => (
-                <div key={index} className="tw-mt-7 tw-flex">
+                <div key={index} className="tw-mt-7 ">
                   <MyInput
                     type="checkbox"
                     checked={selectedDays.includes(day)}
@@ -113,7 +123,7 @@ const Calender = () => {
                   <div>
                     {selectedDays.includes(day) ? (
                       <div className="tw-flex">
-                        <div>
+                        <div className="">
                           {/* <h3>Select Time:</h3> */}
                           <select
                             value={selectedTimes[day] || ""}

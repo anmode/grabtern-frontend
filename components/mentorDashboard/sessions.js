@@ -6,13 +6,20 @@ import axios from "axios";
 
 function Sessions() {
   const [sessionData, setSessionData] = useState({});
+
   useEffect(() => {
     const { mentor_username } = JSON.parse(localStorage.getItem("mentorData"));
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/session`;
     const res = axios.get(url, { withCredentials: true });
+    // setSessionData(res);
     console.log("res of session detail of mentor: ", res);
   }, []);
 
+  const updateSessions = () => {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/update/sessions`;
+    const res = axios.post(url, sessionData, { withCredentials: true });
+    // setSessionData({res});
+  };
   return (
     <>
       <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">

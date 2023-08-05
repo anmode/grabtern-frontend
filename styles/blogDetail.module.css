@@ -1,0 +1,25 @@
+.main {
+  margin-top: 180px;
+}
+
+.h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.date {
+  color: #888;
+  font-size: 14px;
+}
+
+.p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.main-content {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}

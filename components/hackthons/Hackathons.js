@@ -33,7 +33,7 @@ function Hackathon({
             </h3>
             <a
               className="tw-cursor-pointer !tw-text-primary-100 hover:!tw-text-primary-50"
-              href={hackathonLink}
+              href={hackathonLink || "#"}
               target="_blank"
               rel="noopener noreferrer"
             >

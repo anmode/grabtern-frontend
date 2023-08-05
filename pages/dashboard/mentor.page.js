@@ -19,6 +19,7 @@ function MentorDashboard() {
     const params = new URLSearchParams(search);
     setComponent(params.get("tab") || "");
   }, [window.location.search]);
+
   return (
     <>
       <div className="tw-flex">
@@ -28,7 +29,7 @@ function MentorDashboard() {
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <div className="">
+        <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
           {component === "" && (
             <Home
               setIsSidebarOpen={setIsSidebarOpen}

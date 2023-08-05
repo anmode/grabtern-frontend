@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import AlertBox from '../components/basic/Alertbox'; // Adjust the path to AlertBox.js
+import React, { useState } from "react";
+import AlertBox from "../components/basic/Alertbox"; // Adjust the path to AlertBox.js
 
 const HomePage = () => {
   const [showAlert, setShowAlert] = useState(false);

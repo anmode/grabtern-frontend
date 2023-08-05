@@ -12,8 +12,7 @@ import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Visibility } from "@mui/icons-material";
-import { VisibilityOff } from "@mui/icons-material";
+
 
 const ResetPassword = () => {
   // initial state
@@ -116,11 +115,25 @@ const ResetPassword = () => {
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
-              {viewPassword ? (
-                <Visibility onClick={togglePassword} />
-              ) : (
-                <VisibilityOff onClick={togglePassword} />
-              )}
+{viewPassword ? (
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/2874/2874802.png"
+        alt="Visibility On"
+        width="20"
+        height="20"
+        onClick={togglePassword}
+      />
+    ) : (
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
+        alt="Visibility Off"
+        width="20"
+        height="20"
+        onClick={togglePassword}
+      />
+    )}
+
+
             </div>
             <div className="tw-pt-5">
               <label
@@ -139,11 +152,23 @@ const ResetPassword = () => {
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
-              {showPassword ? (
-                <Visibility onClick={togglePasswordisibility} />
-              ) : (
-                <VisibilityOff onClick={togglePasswordisibility} />
-              )}
+             {viewPassword ? (
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/2874/2874802.png"
+        alt="Visibility On"
+        width="20"
+        height="20"
+        onClick={togglePassword}
+      />
+    ) : (
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
+        alt="Visibility Off"
+        width="20"
+        height="20"
+        onClick={togglePassword}
+      />
+    )}
             </div>
             {/* <div className="form-input tw-pt-10 tw-pb-12">
               <ButtonUI

@@ -29,7 +29,7 @@ function MentorDashboard() {
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <div className="">
+        <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
           {component === "" && (
             <Home
               setIsSidebarOpen={setIsSidebarOpen}

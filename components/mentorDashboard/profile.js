@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 import { encryptData, decryptData } from "../../hook/encryptDecrypt";
-import { divide } from "lodash";
+import { FaUserAlt } from "react-icons/fa";
+import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
+import { mentorImg } from "../../public/assets";
+
 function Profile({ mentorDetail }) {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
@@ -97,7 +102,7 @@ function Profile({ mentorDetail }) {
       });
 
       const response = await axios.put(url, { token: encryptedData }); // Send the updated data to the backend
-      setformData(decryptData(response.data));
+      setFormData(decryptData(response.data));
 
       alert(response); // Display the response message from the backend
 
@@ -116,35 +121,75 @@ function Profile({ mentorDetail }) {
     }
   };
   return (
-    <div className="profileWrapper">
-      <div className="tw-border-2 tw-h-full tw-flex tw-justify-center lg:tw-ml-[40rem] profileRegForm">
-      <form className="md:tw-w-full md:tw-max-w-2xl md:tw-p-0 profileForm" onSubmit={handleSubmit}>
-      <h2 className="tw-text-center tw-font-medium tw-text-5xl tw-mt-5 tw-text-[#845ec2]">Edit your Profile</h2>
-      {step === 1 ? (
-      <><div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
-            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-              <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
-                NAME
-              </label>
+    <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+      <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
+        <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+          <h2 className="tw-text-gray-600 tw-text-4xl text-center tw-font-sans ">
+            Edit Your Profile
+          </h2>
+          <form
+            className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
+            onSubmit={handleSubmit}
+          >
+            <div className="tw-mt-10 tw-items-center tw-flex tw-justify-center">
+              <Image
+                className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover tw-shadow-lg"
+                src={formData.image ? formData.image : mentorImg}
+                alt="mentor"
+                width={100}
+                height={100}
+              />
               <input
-                type="text"
-                name="name"
-                class="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
-                onChange={(e) => handleChange(e)}
-                placeholder={mentorDetail?.name}
-                value={formData.name} />
+                type="file"
+                name="mentorProfile"
+                onChange={(e) => handleUploadImageChange(e)}
+              />
             </div>
-            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-              <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
-                USERNAME
-              </label>
-              <input
-                class="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
-                type="text"
-                name="username"
-                onChange={(e) => handleChange(e)}
-                placeholder={mentorDetail?.username}
-                value={formData.username} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-around",
+              }}
+            >
+              <div>
+                <label for="name">NAME</label>
+                <input
+                  type="text"
+                  name="name"
+                  style={{
+                    width: "90%",
+                    borderRadius: "5px",
+                    border: "none",
+                    border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
+                  }}
+                  className="mentorFormInput"
+                  onChange={(e) => handleChange(e)}
+                  placeholder={mentorDetail?.name}
+                  value={formData.name}
+                />
+                <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
+              </div>
+              <div>
+                <label for="username">USERNAME</label>
+                <input
+                  type="text"
+                  name="username"
+                  style={{
+                    width: "90%",
+                    borderRadius: "5px",
+                    border: "none",
+                    border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
+                  }}
+                  className="mentorFormInput"
+                  onChange={(e) => handleChange(e)}
+                  placeholder={mentorDetail?.username}
+                  value={formData.username}
+                />
+                <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
+              </div>
             </div>
           </div>
           <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem]">
@@ -157,8 +202,20 @@ function Profile({ mentorDetail }) {
                   name="email"
                   onChange={(e) => handleChange(e)}
                   className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                  style={{
+                    width: "90%",
+                    borderRadius: "5px",
+                    border: "none",
+                    border: "2px solid rgb(220, 220, 220)",
+                    background: "white",
+                    paddingLeft: "35px",
+                  }}
+                  // placeholder="e.g. peterparker4321#gmail.com"
                   placeholder={mentorDetail?.email}
-                  value={formData.email} />
+                  // readOnly
+                  value={formData.email}
+                />
+                <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
                 <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
@@ -169,8 +226,18 @@ function Profile({ mentorDetail }) {
                   name="mobile"
                   onChange={(e) => handleChange(e)}
                   className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                  style={{
+                    width: "90%",
+                    borderRadius: "5px",
+                    border: "none",
+                    border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
+                  }}
+                  // placeholder="0123456789"
                   placeholder={mentorDetail?.mobile}
-                  value={formData.mobile} />
+                  value={formData.mobile}
+                />
+                <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" />
               </div>
             </div><div className="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem]">
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -181,8 +248,18 @@ function Profile({ mentorDetail }) {
                   name="linkedin"
                   className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
                   onChange={(e) => handleSocialChange(e)}
+                  style={{
+                    width: "90%",
+                    borderRadius: "5px",
+                    border: "none",
+                    border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
+                  }}
+                  // placeholder="e.g. https://www.linkedin.com/peterparker"
                   placeholder={mentorDetail?.linkedin}
-                  value={formData.social.linkedin} />
+                  value={formData.social.linkedin}
+                />
+                <BiLogoLinkedin className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
                 <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="twitter">TWITTER</label>
@@ -192,7 +269,9 @@ function Profile({ mentorDetail }) {
                   className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
                   onChange={(e) => handleSocialChange(e)}
                   placeholder={mentorDetail?.twitter}
-                  value={formData.social.twitter} />
+                  value={formData.social.twitter}
+                />
+                <BiLogoTwitter className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
             </div><div className="tw-grid md:tw-m-[1rem]">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="description">DESCRIPTION</label>
@@ -205,38 +284,53 @@ function Profile({ mentorDetail }) {
                 placeholder={mentorDetail?.description}
                 value={formData.description} />
             </div>
-          </>
-      ): (
-        <>{error && <div style={{ color: "red" }}>{error}</div>}</>
-      )}
-      {msg && (
-        <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
-      )}
-      <div className="tw-flex tw-justify-center">
-      <button
-        style={{
-          color: "white",
-          width: "fit-content",
-          padding: "15px 25px",
-          backgroundColor: "#845ec2",
-          cursor: "pointer",
-          boxShadow: "6px 4px 13px -2px rgba(0, 0, 0, 0.2)",
-          transition: "background-color 0.3s", // Add a transition for smooth color change
-          // Responsive styles
-          fontSize: "14px", // Adjust font size for mobile view
-          whiteSpace: "nowrap", // Prevent button text from wrapping
-          overflow: "hidden", // Hide overflowing text
-          textOverflow: "ellipsis", // Show ellipsis (...) for overflow
-          maxWidth: "100%", // Ensure the button doesn't exceed container width
-        }}
-        type="submit"
-        onClick={handleSubmit}
-      >
-        Save changes
-      </button>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  alignItems: "center",
+                  flexDirection: "row",
+                }}
+              ></div>
+            </div>
+            {error && (
+              <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
+            )}
+            <hr
+              style={{
+                margin: "10px 0",
+                borderColor: "grey",
+                gridColumn: "1/3",
+              }}
+            />
+            {msg && (
+              <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+            )}
+            <button
+              style={{
+                color: "white",
+                width: "fit-content",
+                padding: "15px 25px",
+                backgroundColor: "#845ec2",
+                cursor: "pointer",
+                marginTop: "-50px",
+                marginLeft: "5px",
+                boxShadow: "6px 4px 13px -2px rgba(0, 0, 0, 0.2)",
+                "&:hover": {
+                  backgroundColor: "#6b21a8",
+                },
+              }}
+              type="submit"
+              className="mentorFormButotn"
+              onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
+            >
+              Save changes
+            </button>
+          </form>
+        </div>
       </div>
-    </form>
-    </div>
     </div>
   );
 }

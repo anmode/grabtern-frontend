@@ -10,7 +10,7 @@
   border: 2px solid whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.form {
+/* .form {
   padding: 0px 0px 0px 0px;
   margin: 0;
 }
@@ -18,7 +18,7 @@
   padding: 20px 20px 20px 20px;
   margin: 2% 20% 4% 0%;
   border: 2px dashed #ceb8f1;
-}
+} */
 
 .heading {
   font-size: 2rem;

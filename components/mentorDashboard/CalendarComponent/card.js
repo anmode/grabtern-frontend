@@ -60,7 +60,7 @@ const Card = () => {
           </select>
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200 tw-mr-[3rem] tw-border-0 tw-dark:bg-gray-700" />
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
       <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
         <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
           <span className="tw-pt-1">
@@ -103,7 +103,7 @@ const Card = () => {
           )}
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200 tw-mr-[3rem] tw-border-0 tw-dark:bg-gray-700" />
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
       <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
         <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
           <span className="tw-pt-1">
@@ -129,7 +129,7 @@ const Card = () => {
           </select>
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200 tw-mr-[3rem] tw-border-0 tw-dark:bg-gray-700" />
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
       <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
         <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
           <span className="tw-pt-1">
@@ -158,7 +158,7 @@ const Card = () => {
           </select>
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200 tw-mr-[3rem] tw-border-0 tw-dark:bg-gray-700" />
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
       <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
         <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
           <span className="tw-pt-1">
@@ -191,7 +191,7 @@ const Card = () => {
           )}
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200 tw-mr-[3rem] tw-border-0 tw-dark:bg-gray-700" />
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
       <div className="tw-pt-5">
         <p className="tw-text-black tw-font-semibold tw-text-3xl">Calendars</p>
         <div className="tw-pt-2 tw-mb-10">

@@ -126,7 +126,10 @@ function Profile({ mentorDetail }) {
           <h2 className="tw-text-gray-600 tw-text-4xl text-center tw-font-sans ">
             Edit Your Profile
           </h2>
-          <form className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col" onSubmit={handleSubmit}>
+          <form
+            className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
+            onSubmit={handleSubmit}
+          >
             <div className="tw-mt-10 tw-items-center tw-flex tw-justify-center">
               <Image
                 className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover tw-shadow-lg"
@@ -185,7 +188,6 @@ function Profile({ mentorDetail }) {
                   value={formData.username}
                 />
                 <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
-
               </div>
             </div>
             <div

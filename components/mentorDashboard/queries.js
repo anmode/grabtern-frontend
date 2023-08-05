@@ -91,21 +91,25 @@ const Queries = () => {
             </button>
           </p>
         </div>
-        {isTicketFormVisible && <TicketForm onSubmit={handleTicketFormSubmit} />}
+        {isTicketFormVisible && (
+          <TicketForm onSubmit={handleTicketFormSubmit} />
+        )}
 
         <p className={styles.generateTicket}>Generated Tickets</p>
         <div className={styles.buttonGroup}>
           <button
             onClick={() => setCurrentView("Pending")}
-            className={`${styles.button} ${currentView === "Pending" ? styles.active : ""
-              }`}
+            className={`${styles.button} ${
+              currentView === "Pending" ? styles.active : ""
+            }`}
           >
             Pending
           </button>
           <button
             onClick={() => setCurrentView("answered")}
-            className={`${styles.button} ${currentView === "answered" ? styles.active : ""
-              }`}
+            className={`${styles.button} ${
+              currentView === "answered" ? styles.active : ""
+            }`}
           >
             Answered
           </button>
@@ -157,7 +161,7 @@ const Queries = () => {
             )}
           </div>
         )}
-      </div >
+      </div>
     </section>
   );
 };

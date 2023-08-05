@@ -105,7 +105,6 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
   return (
     <>
       <section>
-
         <header className="max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col">
           <h1 className="tw-text-4xl tw-font-bold">
             Welcome <span>{mentor.name?.split(" ")[0]}</span>!
@@ -114,7 +113,9 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
           <div className="tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10">
             {mentor ? (
               <p className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center">
-                <h2 className="tw-font-semibold tw-text-white">{mentor.name}</h2>
+                <h2 className="tw-font-semibold tw-text-white">
+                  {mentor.name}
+                </h2>
                 <Image
                   src={mentor?.image}
                   alt="Picture of the mentor"

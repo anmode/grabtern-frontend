@@ -27,9 +27,17 @@ const TicketForm = ({ onSubmit }) => {
   };
 
   return (
-    <form className='tw-flex tw-justify-center tw-items-center tw-border-dashed' onSubmit={handleSubmit}>
-      <div className='tw-flex tw-flex-col tw-gap-2 tw-justify-center tw-items-center tw-border-dashed tw-border-primary-100 tw-border-[2px] tw-p-4 tw-rounded-md'>
-        <label htmlFor="description" className="text-slate-800 tw-font-semibold">Description:</label>
+    <form
+      className="tw-flex tw-justify-center tw-items-center tw-border-dashed"
+      onSubmit={handleSubmit}
+    >
+      <div className="tw-flex tw-flex-col tw-gap-2 tw-justify-center tw-items-center tw-border-dashed tw-border-primary-100 tw-border-[2px] tw-p-4 tw-rounded-md">
+        <label
+          htmlFor="description"
+          className="text-slate-800 tw-font-semibold"
+        >
+          Description:
+        </label>
         <textarea
           id="description"
           className="tw-w-[300px]"
@@ -37,7 +45,10 @@ const TicketForm = ({ onSubmit }) => {
           onChange={handleDescriptionChange}
           required
         />
-        <button className='tw-bg-primary-100 tw-p-2 tw-rounded-md tw-font-semibold tw-text-white hover:tw-bg-primary-200 tw-transition-all tw-ease-in-out tw-duration-150' type="submit">
+        <button
+          className="tw-bg-primary-100 tw-p-2 tw-rounded-md tw-font-semibold tw-text-white hover:tw-bg-primary-200 tw-transition-all tw-ease-in-out tw-duration-150"
+          type="submit"
+        >
           Submit Ticket
         </button>
       </div>

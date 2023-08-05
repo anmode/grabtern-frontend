@@ -1,14 +1,11 @@
 import React from "react";
+import Image from "next/image";
 
 function Company({ imgSrc, name }) {
   return (
-    <div className="row align-items-center">
-      <div className="col text-center text-lg-right p-0 mr-10">
-        <img src={imgSrc} height={30} />
-      </div>
-      <div className="col d-none d-lg-block text-left p-0">
-        <p className="font-weight-bold text-muted m-0">{name}</p>
-      </div>
+    <div className="max-[637px]:tw-w-[50px] tw-flex-col tw-flex tw-justify-center tw-items-center tw-gap-3 tw-transform tw-duration-200 hover:tw-scale-125">
+      <Image src={imgSrc} alt={name} width={150} height={200} />
+      <h2 className="tw-font-bold tw-text-[#64748b]">{name}</h2>
     </div>
   );
 }

@@ -1,0 +1,112 @@
+.container {
+  /* padding: 2rem 0 0 20rem; */
+  padding: 30px 30px 30px 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 2% 20% 4% 20%;
+  border-radius: 25px;
+  border: 2px solid whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+/* .form {
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+.description {
+  padding: 20px 20px 20px 20px;
+  margin: 2% 20% 4% 0%;
+  border: 2px dashed #ceb8f1;
+} */
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  display: flex;
+}
+.subheading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #6e4fa0;
+}
+.generateTicket {
+  padding: 0px 0px 10px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  border: 2px solid #845ec2;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+.raiseButton {
+  /* border: 2px solid #39383b; */
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: #6e4fa0;
+}
+.raiseButton:hover {
+  text-decoration: underline;
+}
+.submitTicketButton {
+  color: white;
+  padding: 4px 8px 4px 8px;
+  border-radius: 10px;
+  background-color: #845ec2;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.submitTicketButton:hover {
+  background-color: #5c30a1;
+}
+
+.active {
+  /* background-color: #1a202c; */
+  background-color: #845ec2;
+  color: #ffffff;
+}
+
+.pendingQueries {
+  margin-bottom: 1rem;
+}
+
+.query {
+  margin-bottom: 1rem;
+}
+
+.answerInput {
+  border: 2px solid #00000050;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+/* .submitButton {
+  background-color: #845ec2;
+  color: white;
+  position: relative;
+  border-radius: 2rem;
+  font-size: small;
+  padding: 5px 5px;
+}
+.submitButton:hover {
+  background-color: #6e4fa0;
+} */
+
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0;
+    margin-top: 30px;
+    padding-left: 50px;
+  }
+}

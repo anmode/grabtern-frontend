@@ -3,7 +3,6 @@ import {
   Internship,
   MentorSection,
   Service,
-  TeamProfile,
   Testimonial,
   Banner,
 } from "../components/homePage";
@@ -11,7 +10,6 @@ import Hackathon from "../components/hackthons/Hackathons";
 import internshipsData from "./data/coursesData";
 import servicesData from "./data/ServicesData";
 import hackathonsData from "./data/hackathonsData";
-import teamsData from "./data/teamsData";
 import testiomialsData from "./data/testiomialsData";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
@@ -72,27 +70,6 @@ const testimonialOptions = {
   },
 };
 
-const teamsOptions = {
-  margin: 40,
-  items: 4,
-  nav: true,
-  loop: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    900: {
-      items: 3,
-    },
-    1170: {
-      items: 4,
-    },
-  },
-};
-
 export default function Home() {
   const [carousel, setCarousel] = useState(false);
   const hasPlayedGreeting = localStorage.getItem("has_played_greeting");
@@ -108,18 +85,16 @@ export default function Home() {
   } = useAuth();
   // console.log(isMentorLoggedIn,isUserLoggedIn);
 
-  const decryptedData = decryptData(
-    localStorage.getItem("userData") || localStorage.getItem("mentorData"),
-  );
-
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   return (
     <div>
       {(localStorage.getItem("mentorData") !== null ||
         localStorage.getItem("userData") !== null) &&
       !hasPlayedGreeting ? (
         <div className="welcomeAfterLoggedIn">
-          Hi 👋🏻 {decryptedData?.user_name || decryptedData?.mentor_name} <br />{" "}
-          Welcome to GrabTern
+          Hi 👋🏻 {userData?.user_name || mentorData?.mentor_name} <br /> Welcome
+          to GrabTern
           <audio
             src="/assets/sound/greet.wav"
             autoplay
@@ -166,7 +141,7 @@ export default function Home() {
           <ButtonLink
             text="View More Internships"
             href="/internship"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 
@@ -186,7 +161,7 @@ export default function Home() {
           <ButtonLink
             text="View More Hackathons"
             href="/hackathon"
-            className="tw-mx-auto tw-block tw-w-max tw-mt-10"
+            className="tw-mx-auto tw-block tw-w-max tw-mt-10 hover:tw-text-white"
           />
         </Section>
 
@@ -219,32 +194,6 @@ export default function Home() {
               </OwlCarousel>
             ) : null}
           </ul>
-        </Section>
-
-        {/* team section */}
-        <Section
-          kicker="Grabtern team"
-          heading="Our Community"
-          subheading="Meet the members of Grabtern Community"
-          align="center"
-        >
-          <div>
-            {carousel === true ? (
-              <OwlCarousel
-                {...teamsOptions}
-                autoplay={true}
-                lazyLoad={true}
-                smartSpeed={1000}
-                autoplayTimeout={3500}
-                autoplayHoverPause={true}
-                className="owl-carousel owl-theme"
-              >
-                {teamsData.map((profile, index) => (
-                  <TeamProfile key={index} {...profile} />
-                ))}
-              </OwlCarousel>
-            ) : null}
-          </div>
         </Section>
       </main>
       <Footer />

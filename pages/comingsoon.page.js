@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router';
 import styles from "../styles/404.module.css";
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -6,23 +7,33 @@ import Image from 'next/image';
 import { comingSoon } from '../public/assets';
 import { FaTwitter } from 'react-icons/fa';
 import { AiFillFacebook, AiFillGithub } from 'react-icons/ai';
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 
 
 const ComingSoon = () => {
+
+    const router = useRouter();
+
+
     return (
         <>
             <section className={styles.boxx}>
                 <div className={styles.mainContainer}>
                     <div className={styles.imageContainer}>
-                    <img src="/Error.svg" alt="bg" />
+                        <img src="/Error.svg" alt="bg" />
                     </div>
                     <div className={`${styles.mainSectionComingSoon}`}>
-                        <Link href="/">
-                            <button className='tw-mt-10 tw-p-2 tw-left-[90px] tw-bg-primary-100 tw-w-[90px] tw-items-center tw-justify-center hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all  tw-rounded-md tw-text-white tw-font-semibold tw-relative tw-flex'>
-                                Home
+                        <div className='tw-flex tw-gap-5'>
+                            <Link href="/">
+                                <button className='tw-mt-10 tw-p-2 tw-left-[90px] tw-bg-primary-100 tw-w-[90px] tw-items-center tw-justify-center hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all  tw-rounded-md tw-text-white tw-font-semibold tw-relative tw-flex'>
+                                    Home
+                                </button>
+                            </Link>
+                            <button onClick={() => router.back()} className='tw-mt-10 tw-p-2 tw-left-[90px] tw-bg-primary-100 tw-w-[90px] tw-items-center tw-justify-center hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all  tw-rounded-md tw-text-white tw-font-semibold tw-relative tw-flex'>
+                                <IoArrowBackOutline className='tw-text-2xl tw-mr-2' />Back
                             </button>
-                        </Link>
+                        </div>
                         <div className='tw-flex'>
                             <div className={styles.text1}>
                                 <div className={styles.text4}>

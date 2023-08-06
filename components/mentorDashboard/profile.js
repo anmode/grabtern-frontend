@@ -28,7 +28,6 @@ function Profile({ mentorDetail }) {
   const [msg, setMsg] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
-  const [step, setStep] = useState(1);
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -38,7 +37,7 @@ function Profile({ mentorDetail }) {
   // function to fetch mentor profile
   const getMentorProfile = async () => {
     const mentorData = localStorage.getItem("mentorData");
-    const mentorToken = decryptData(mentorData)?.mentorToken;
+    const mentorToken = decryptData(mentorData).mentorToken;
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/${mentorToken}`;
 
     try {
@@ -191,17 +190,21 @@ function Profile({ mentorDetail }) {
                 <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
             </div>
-          </div>
-          <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem]">
-              <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
-                  EMAIL
-                </label>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-around",
+              }}
+            >
+              <div>
+                <label for="email">EMAIL</label>
+
                 <input
                   type="email"
                   name="email"
+                  className="mentorFormInput"
                   onChange={(e) => handleChange(e)}
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
                   style={{
                     width: "90%",
                     borderRadius: "5px",
@@ -217,15 +220,14 @@ function Profile({ mentorDetail }) {
                 />
                 <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
-              <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-first-name">
-                  Phone
-                </label>
+              <div>
+                <label for="mobile">PHONE</label>
+
                 <input
                   type="number"
                   name="mobile"
+                  className="mentorFormInput"
                   onChange={(e) => handleChange(e)}
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
                   style={{
                     width: "90%",
                     borderRadius: "5px",
@@ -239,14 +241,15 @@ function Profile({ mentorDetail }) {
                 />
                 <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" />
               </div>
-            </div><div className="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem]">
-              <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="linkedin">LINKEDIN</label>
+            </div>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div>
+                <label for="linkedin">LINKEDIN</label>
 
                 <input
                   type="text"
                   name="linkedin"
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                  className="mentorFormInput"
                   onChange={(e) => handleSocialChange(e)}
                   style={{
                     width: "90%",
@@ -261,28 +264,47 @@ function Profile({ mentorDetail }) {
                 />
                 <BiLogoLinkedin className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
-              <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="twitter">TWITTER</label>
+              <div>
+                <label for="twitter">TWITTER</label>
+
                 <input
                   type="text"
                   name="twitter"
-                  className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                  className="mentorFormInput"
                   onChange={(e) => handleSocialChange(e)}
+                  style={{
+                    width: "90%",
+                    borderRadius: "5px",
+                    border: "none",
+                    border: "2px solid rgb(220, 220, 220)",
+                    paddingLeft: "35px",
+                  }}
+                  // placeholder="e.g. https://www.twitter.com/peterparker"
                   placeholder={mentorDetail?.twitter}
                   value={formData.social.twitter}
                 />
                 <BiLogoTwitter className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
-            </div><div className="tw-grid md:tw-m-[1rem]">
-              <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="description">DESCRIPTION</label>
+            </div>
+
+            <div>
+              <label for="description">DESCRIPTION</label>
+
               <textarea
                 cols="10"
                 rows="7"
                 name="description"
-                className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-[#845ec2] tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+                style={{
+                  width: "95%",
+                  borderRadius: "5px",
+                  border: "2px solid rgb(220, 220, 220)",
+                }}
+                className="mentorFormInput"
                 onChange={(e) => handleChange(e)}
+                // placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
                 placeholder={mentorDetail?.description}
-                value={formData.description} />
+                value={formData.description}
+              />
             </div>
             <div>
               <div
@@ -323,7 +345,7 @@ function Profile({ mentorDetail }) {
                 },
               }}
               type="submit"
-              className="mentorFormButotn"
+              className="max-[512px]:tw-mb-20"
               onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
             >
               Save changes

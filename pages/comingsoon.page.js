@@ -3,7 +3,7 @@ import styles from "../styles/404.module.css";
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
-import { comingBg, comingSoon } from '../public/assets';
+import { comingSoon } from '../public/assets';
 import { FaTwitter } from 'react-icons/fa';
 import { AiFillFacebook, AiFillGithub } from 'react-icons/ai';
 
@@ -15,7 +15,7 @@ const ComingSoon = () => {
             <section className={styles.boxx}>
                 <div className={styles.mainContainer}>
                     <div className={styles.imageContainer}>
-                        <Image src={comingBg} alt="bg" />
+                    <img src="/Error.svg" alt="bg" />
                     </div>
                     <div className={`${styles.mainSectionComingSoon}`}>
                         <Link href="/">
@@ -45,19 +45,19 @@ const ComingSoon = () => {
                                     </div>
                                 </div>
                                 <div className='tw-justify-center tw-items-center tw-relative tw-bottom-20'>
-                                    <p className='tw-text-white tw-font-semibold tw-text-3xl'>Meanwhile Visit: </p>
-                                    <div className='tw-mt-10 tw-justify-center tw-flex tw-items-center tw-gap-5'>
+                                    <p className='tw-text-slate-800 tw-font-semibold tw-text-3xl'>Meanwhile Visit: </p>
+                                    <div className='tw-mt-6 tw-justify-center tw-flex tw-items-center tw-gap-8'>
                                         {/* Twitter link */}
                                         <Link href='#'>
-                                            <FaTwitter className='tw-text-3xl tw-mx-2 tw-text-cyan-300 hover:tw-text-[#1DA1F2] tw-ease-in-out hover:tw-scale-125 tw-transition-all tw-duration-200' />
+                                            <FaTwitter className='tw-text-3xl tw-mx-2 tw-text-slate-600 hover:tw-text-[#1DA1F2] tw-ease-in-out hover:tw-scale-125 tw-transition-all tw-duration-200' />
                                         </Link>
                                         {/* Facebook link */}
                                         <Link href='#'>
-                                            <AiFillFacebook className='tw-text-3xl tw-mx-2 tw-text-cyan-300 hover:tw-text-[#1877F2] hover:tw-scale-125 tw-transition-all tw-duration-200 tw-ease-in-out' />
+                                            <AiFillFacebook className='tw-text-3xl tw-mx-2 tw-text-slate-600 hover:tw-text-[#1877F2] hover:tw-scale-125 tw-transition-all tw-duration-200 tw-ease-in-out' />
                                         </Link>
                                         {/* Github link */}
                                         <Link href='https://github.com/anmode/grabtern-frontend' target='_blank'>
-                                            <AiFillGithub className='tw-text-3xl tw-mx-2 tw-text-cyan-300 hover:tw-text-black hover:tw-scale-125 tw-transition-all tw-duration-200 tw-ease-in-out' />
+                                            <AiFillGithub className='tw-text-3xl tw-mx-2 tw-text-slate-600 hover:tw-text-black hover:tw-scale-125 tw-transition-all tw-duration-200 tw-ease-in-out' />
                                         </Link>
                                     </div>
                                 </div>

@@ -61,7 +61,7 @@
 }
 .text4 {
   position: relative;
-  bottom: 150px;
+  bottom: 100px;
   display: flex;
   flex-direction: column;
 }

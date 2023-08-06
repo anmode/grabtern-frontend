@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard.module.css";
+import Schedule from "./Schedule/schedule";
+import Card from "./CalendarComponent/card";
+import styled from "styled-components";
 
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
-
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedTimes, setSelectedTime] = useState({});
+  const [selectTime, setSelectTime] = useState({});
 
   const weekdays = [
-    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday",
   ];
   const timeOptions = {
     "08:00 AM": "08:00 AM",
@@ -30,13 +33,18 @@ const Calender = () => {
     "05:00 PM": "05:00 PM",
     "06:00 PM": "06:00 PM",
     "07:00 PM": "07:00 PM",
+    "08:00 PM": "08:00 PM",
   };
   const handleDayChange = (day) => {
-    setSelectedTime("");
     if (selectedDays.includes(day)) {
       setSelectedDays(
         selectedDays.filter((selectedDay) => selectedDay !== day),
       );
+      setSelectedTime((prevTimes) => {
+        const updatedTimes = { ...prevTimes };
+        delete updatedTimes[day];
+        return updatedTimes;
+      });
     } else {
       setSelectedDays([...selectedDays, day]);
     }
@@ -44,6 +52,10 @@ const Calender = () => {
 
   const handleTimeChange = (day, time) => {
     setSelectedTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+  };
+
+  const handleTime = (day, time) => {
+    setSelectTime((prevTimes) => ({ ...prevTimes, [day]: time }));
   };
 
   const handleCalender = () => {
@@ -54,61 +66,110 @@ const Calender = () => {
     showSchedule(true);
     showCalender(false);
   };
+
+  const MyDiv = styled.div`
+    width: 900px;
+    height: 900px;
+  `;
+
+  const MyInput = styled.input`
+    width: 20px;
+    height: 20px;
+  `;
+
   return (
     <div className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}>
+      <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
       <button
         onClick={handleCalender}
-        className="tw-border-black tw-border-[2px] tw-p-2 tw-rounded-md"
+        className="hover:tw-bg-gray-100 default:tw-bg-gray-100 tw-border-black hover:tw-border-[2px] tw-border-[1px] tw-px-5 tw-py-2 tw-text-black tw-text-center hover:tw-font-semibold tw-rounded-full"
       >
         Calendar
       </button>
       <button
         onClick={handleSchedule}
-        className="tw-ml-9 tw-border-black tw-border-[2px] tw-p-2 tw-rounded-md"
+        className="tw-ml-5  hover:tw-bg-gray-100 tw-border-black hover:tw-border-[2px] tw-border-[1px] tw-px-5 tw-py-2 tw-text-black tw-text-center hover:tw-font-semibold tw-rounded-full"
       >
         Schedule
       </button>
-      <div className="content">
-        {calender && <div>hfhddfkbflbrgpkwr;</div>}
+      <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
+      <div className="content tw-pt-5">
+        {calender && (
+          <div>
+            <Card />
+          </div>
+        )}
         {schedule && (
-          <div className="tw-mt-7">
-            <h2 className="tw-font-semibold">Schedule Form</h2>
-            <hr className="tw-border-t-2 tw-border-[#c0c0c0] tw-mt-4 tw-width-[90%] tw-shadow-lg  tw-text-opacity-50" />
-            {weekdays.map((day, index) => (
-              <div key={index} className="tw-mt-7">
-                <input
-                  type="checkbox"
-                  checked={selectedDays.includes(day)}
-                  onChange={() => handleDayChange(day)}
-                />
-                <label>{day}</label>
-                {selectedDays.includes(day) && (
+          <>
+            <Schedule />
+            <MyDiv className="tw-mt-8 tw-border tw-rounded-md tw-p-10 tw-border-2 tw-mb-[6rem]">
+              <div className="tw-flex ">
+                <h2 className="tw-font-semibold tw-text-lg">Default</h2>
+                <button className=" tw-ml-[43rem] tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 tw-p-5 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                  Save
+                </button>
+              </div>
+              {weekdays.map((day, index) => (
+                <div key={index} className="tw-mt-7 ">
+                  <MyInput
+                    type="checkbox"
+                    checked={selectedDays.includes(day)}
+                    onChange={() => handleDayChange(day)}
+                    className=""
+                  />
+                  <label className="tw-ml-[0.5rem] tw-font-medium tw-text-base">
+                    {day}
+                  </label>
                   <div>
-                    {/* <h3>Select Time:</h3> */}
-                    <select
-                      value={selectedTimes[day] || ""}
-                      onChange={(e) => handleTimeChange(day, e.target.value)}
-                    >
-                      <option value="" className="tw-text-gray-200">
-                        Select Time
-                      </option>
-                      {Object.values(timeOptions).map((timeOption) => (
-                        <option key={timeOption} value={timeOption}>
-                          {timeOption}
-                        </option>
-                      ))}
-                    </select>
-                    {selectedTimes[day] && (
-                      <div>
-                        <h3>Selected Time:</h3>
-                        <div>{selectedTimes[day]}</div>
+                    {selectedDays.includes(day) ? (
+                      <div className="tw-flex">
+                        <div className="">
+                          {/* <h3>Select Time:</h3> */}
+                          <select
+                            value={selectedTimes[day] || ""}
+                            onChange={(e) =>
+                              handleTimeChange(day, e.target.value)
+                            }
+                            className="tw-font-medium tw-ml-[13rem] tw-rounded-md tw-w-2/3 hover:tw-border-black hover:tw-border-2"
+                          >
+                            <option value="" className="tw-text-gray-200">
+                              9:00 AM
+                            </option>
+                            {Object.values(timeOptions).map((timeOption) => (
+                              <option key={timeOption} value={timeOption}>
+                                {timeOption}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="">
+                          {/* <h3>Select Time:</h3> */}
+                          <select
+                            value={selectTime[day] || ""}
+                            onChange={(e) => handleTime(day, e.target.value)}
+                            className="tw-font-medium tw-ml-[10rem] tw-rounded-md  tw-w-2/3 hover:tw-border-black hover:tw-border-2"
+                          >
+                            <option value="" className="tw-text-gray-200">
+                              8:00 PM
+                            </option>
+                            {Object.values(timeOptions).map((timeOption) => (
+                              <option key={timeOption} value={timeOption}>
+                                {timeOption}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="">
+                        <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
                       </div>
                     )}
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
+                </div>
+              ))}
+            </MyDiv>
+          </>
         )}
       </div>
     </div>

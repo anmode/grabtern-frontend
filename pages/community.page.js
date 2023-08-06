@@ -1,3 +1,4 @@
+// community.page.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
@@ -21,7 +22,6 @@ function Community() {
       });
   }, []);
 
-  // Function to fetch commit count for each contributor
   const fetchCommitCount = (login) => {
     return axios
       .get(`https://api.github.com/repos/anmode/grabtern-frontend/commits`, {

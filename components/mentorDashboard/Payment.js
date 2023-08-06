@@ -19,12 +19,16 @@ const Payments = ({mentorDetail}) => {
     e.preventDefault();
   }
   return (
-    <div>
-      <div className="tw-border-2 tw-h-full tw-flex tw-justify-center lg:tw-ml-[23rem] profileRegForm tw-flex-col">
-      <form className="md:tw-w-full md:tw-max-w-2xl md:tw-p-0 profileForm" onSubmit={handleSubmit}>
-        <h2 className="tw-text-center tw-font-medium tw-text-5xl md:tw-ml-[20rem] tw-mt-5  tw-text-[#845ec2]">Payment</h2>
-          <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
-            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group md:tw-ml-20">
+    <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+      <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
+        <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+          <form
+            className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
+            onSubmit={handleSubmit}
+          >
+            <h2 className="tw-text-center tw-font-medium tw-text-5xl tw-mt-5  tw-text-[#845ec2]">Payment</h2>
+          <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 tw-mb-6">
+            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="account-holder-name">
                 ACCOUNT HOLDER NAME
               </label>
@@ -36,7 +40,7 @@ const Payments = ({mentorDetail}) => {
                 placeholder='e.g. Peter Parker'
                 value={formData.name} />
             </div>
-            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group md:tw-ml-20">
+            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="ifsc-code">
                 IFSC CODE 
               </label>
@@ -48,9 +52,7 @@ const Payments = ({mentorDetail}) => {
                 placeholder='SBINXXXXXX'
                 value={formData.ifsccode} />
             </div>
-          </div>
-          <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 md:tw-m-[1rem] tw-mb-6">
-            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group md:tw-ml-20">
+            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="account-no">
                 ACCOUNT NUMBER
               </label>
@@ -62,7 +64,7 @@ const Payments = ({mentorDetail}) => {
                 placeholder='100XXX100'
                 value={formData.accountno} />
             </div>
-            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group md:tw-ml-20">
+            <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
               <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="name-of-bank">
                 NAME OF BANK 
               </label>
@@ -75,9 +77,15 @@ const Payments = ({mentorDetail}) => {
                 value={formData.nameofbank} />
             </div>
           </div>
-        </form>
-        <hr className='tw-bg-black' />
-        <div>
+          </form>
+          <hr
+              style={{
+                margin: "10px 0",
+                borderColor: "grey",
+                gridColumn: "1/3",
+              }}
+          />
+          <div>
           <h2 className="tw-text-center tw-font-medium tw-text-2xl tw-mt-5 tw-text-[#845ec2]">UPI Payment</h2>
           <input
             class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
@@ -88,10 +96,10 @@ const Payments = ({mentorDetail}) => {
             value={formData.upiID} 
           />
         </div>
+        </div>
       </div>
     </div>
   )
 }
 
 export default Payments
-

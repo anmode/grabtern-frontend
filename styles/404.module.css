@@ -32,15 +32,6 @@
   z-index: 1;
 }
 
-.mainSectionComingSoon {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  position: relative;
-  z-index: 1;
-}
-
 .text1 {
   flex: 1;
   display: flex;
@@ -59,12 +50,7 @@
   position: relative;
   bottom: 100px;
 }
-.text4 {
-  position: relative;
-  bottom: 100px;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .image2 {
   flex: 1;
@@ -137,16 +123,5 @@
 
   .btn {
     margin: 1% 35%;
-  }
-}
-
-@media screen and (max-width: 735px) {
-  .mainSectionComingSoon{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 6rem;
-    gap: 6rem;
   }
 }

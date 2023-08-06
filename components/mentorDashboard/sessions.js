@@ -61,18 +61,6 @@ function Sessions() {
     },
   ];
 
-  const [upcoming, showUpcoming] = useState(true);
-  const [completed, showCompleted] = useState(false);
-
-  const handleUpcoming = () => {
-    showUpcoming(true);
-    showCompleted(false);
-  };
-  const handleCompleted = () => {
-    showUpcoming(false);
-    showCompleted(true);
-  };
-
   return (
     <>
       <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">

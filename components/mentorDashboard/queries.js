@@ -71,20 +71,21 @@ const Queries = () => {
   // }
 
   return (
-    <section className="tw-mt-10 tw-ml-[400px] max-[817px]:tw-ml-[100px] max-[512px]:tw-m-0 max-[512px]:tw-p-4 tw-flex-wrap">
-      <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-bg-white tw-shadow-2xl tw-p-4 max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-justify-start max-[512px]:tw-gap-10">
-        <div className={styles.heading}>
-          <h1>Queries</h1>
+    <section className={`${styles.box} tw-mt-[180px] tw-ml-[400px] max-[817px]:tw-ml-[100px] max-[512px]:tw-m-0 max-[512px]:tw-p-4 tw-flex-wrap`}>
+      <div className={`tw-flex tw-flex-col tw-w-[720px]  tw-bg-white tw-shadow-2xl tw-p-4 max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-justify-start max-[512px]:tw-gap-10`}>
+        <div className="tw-ml-5 ">
+        <div className={`${styles.heading} tw-p-3 tw-border-b tw-border-gray-300`}>
+          <h1 className="tw-font-semibold ">Queries</h1>
         </div>
 
-        <div className={styles.buttonGroup}>
-          <p className="tw-flex tw-justify-center tw-items-center">
+        <div className={`${styles.buttonGroup} tw-flex tw-ml-5`}>
+          <p className="tw-flex tw-justify-center tw-items-center ">
             To ask query, raise a ticket
             <CiShoppingTag
               style={{ display: "inline", marginLeft: "5px", color: "#6e4fa0" }}
             />
             <button
-              className="tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md"
+              className={`${styles.ticket} tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md`}
               onClick={handleRaiseTicketClick}
             >
               Raise Ticket
@@ -95,7 +96,7 @@ const Queries = () => {
           <TicketForm onSubmit={handleTicketFormSubmit} />
         )}
 
-        <p className={styles.generateTicket}>Generated Tickets</p>
+        <p className={`${styles.generateTicket} tw-ml-5`}>Generated Tickets</p>
         <div className={styles.buttonGroup}>
           <button
             onClick={() => setCurrentView("Pending")}
@@ -109,7 +110,7 @@ const Queries = () => {
             onClick={() => setCurrentView("answered")}
             className={`${styles.button} ${
               currentView === "answered" ? styles.active : ""
-            }`}
+            } tw-ml-3`}
           >
             Answered
           </button>
@@ -161,6 +162,7 @@ const Queries = () => {
             )}
           </div>
         )}
+        </div>
       </div>
     </section>
   );

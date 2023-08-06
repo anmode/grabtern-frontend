@@ -84,9 +84,9 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
   color: #7a9d54;
-}
+} */
 
 * {
   box-sizing: border-box;

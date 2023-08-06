@@ -42,6 +42,8 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  margin-left: 1.25rem;
+  margin-top: 1rem;
 }
 
 .button {
@@ -78,6 +80,7 @@
 
 .pendingQueries {
   margin-bottom: 1rem;
+  margin-left: 1.25rem;
 }
 
 .query {
@@ -108,5 +111,13 @@
     margin-left: 0;
     margin-top: 30px;
     padding-left: 50px;
+  }
+  .buttonGroup{
+    margin-left: 0rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px)  {
+  .box {
+    margin-left: 100px;
   }
 }

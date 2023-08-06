@@ -11,6 +11,7 @@ function Sessions() {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/session`;
     const res = axios.get(url, { withCredentials: true });
     console.log("res of session detail of mentor: ", res);
+    console.log(mentor_username);
   }, []);
 
   return (

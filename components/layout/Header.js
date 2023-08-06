@@ -9,7 +9,6 @@ import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
 import { ButtonLink } from "../UI";
 import clsx from "clsx";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 
 function Header() {
   const {
@@ -18,8 +17,8 @@ function Header() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  const userData = decryptData(localStorage.getItem("userData"));
-  const mentorData = decryptData(localStorage.getItem("mentorData"));
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const [scrollY, setScrollY] = useState(0);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -103,6 +102,9 @@ function Header() {
             </Link>
             <Link href="/mentors" className="hover:tw-text-primary-100">
               Mentor
+            </Link>
+            <Link href="/blogs" className="hover:tw-text-primary-100">
+              Blogs
             </Link>
             <Link href="/community" className="hover:tw-text-primary-100">
               Community

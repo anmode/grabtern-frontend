@@ -1,0 +1,15 @@
+/* CommunityCard.module.css */
+
+.cardContainer {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  
+  .cardContainer:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+  }
+  
+  .commitCount {
+    margin-top: 4px; /* Decrease the space between Contributor and No. of Commits */
+  }

@@ -24,7 +24,7 @@ const ComingSoon = () => {
                         <img src="/Error.svg" alt="bg" />
                     </div>
                     <div className={`${styles.mainSectionComingSoon}`}>
-                        <div className='tw-flex tw-gap-5'>
+                        <div className='tw-flex tw-gap-5 tw-flex-wrap'>
                             <Link href="/">
                                 <button className='tw-mt-10 tw-p-2 tw-left-[90px] tw-bg-primary-100 tw-w-[90px] tw-items-center tw-justify-center hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all  tw-rounded-md tw-text-white tw-font-semibold tw-relative tw-flex'>
                                     Home
@@ -55,7 +55,7 @@ const ComingSoon = () => {
                                         </button>
                                     </div>
                                 </div>
-                                <div className='tw-justify-center tw-items-center tw-relative tw-bottom-20'>
+                                <div className='tw-justify-center tw-items-center tw-relative tw-bottom-20 max-[735px]:tw-flex max-[735px]:tw-mt-6 tw-flex-col'>
                                     <p className='tw-text-slate-800 tw-font-semibold tw-text-3xl'>Meanwhile Visit: </p>
                                     <div className='tw-mt-6 tw-justify-center tw-flex tw-items-center tw-gap-8'>
                                         {/* Twitter link */}
@@ -73,7 +73,7 @@ const ComingSoon = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="tw-flex tw-flex-1 tw-w-[400px] tw-h-[400px]">
+                            <div className="tw-flex tw-flex-1 tw-w-[400px] tw-h-[400px] max-[735px]:tw-hidden">
                                 <Image src={comingSoon} width={500} height={500} alt="coming soon" className='tw-bg-blend-hue' />
                             </div>
                         </div>

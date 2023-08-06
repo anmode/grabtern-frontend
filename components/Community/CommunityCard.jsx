@@ -9,33 +9,17 @@ const CommunityCard = ({ image, name, description }) => {
   useEffect(() => {
     const fetchCommitCount = async () => {
       try {
-        let page = 1;
-        let totalCount = 0;
-
-        while (true) {
-          const response = await axios.get(
-            `https://api.github.com/repos/anmode/grabtern-frontend/commits`,
-            {
-              params: {
-                author: name,
-                per_page: 100, // Fetch up to 100 commits per page (maximum allowed by GitHub API).
-                page,
-              },
-            }
-          );
-
-          const pageCommits = response.data.length;
-          totalCount += pageCommits;
-
-          // Break the loop if the current page fetched fewer than 100 commits.
-          if (pageCommits < 100) {
-            break;
+        const response = await axios.get(
+          `https://api.github.com/repos/anmode/grabtern-frontend/commits`,
+          {
+            params: {
+              author: name,
+            },
           }
+        );
 
-          page++;
-        }
-
-        setCommitCount(totalCount);
+        const commitCount = response.data.length;
+        setCommitCount(commitCount);
       } catch (error) {
         console.log(`Error fetching commit count for ${name}: ${error}`);
         setCommitCount(0); // Set commit count to 0 in case of an error.
@@ -45,7 +29,8 @@ const CommunityCard = ({ image, name, description }) => {
     fetchCommitCount();
   }, [name]);
 
-  const contributorLabel = name.toLowerCase() === "anmode" ? "Project Admin" : "Contributor";
+  const contributorLabel =
+    name.toLowerCase() === "anmode" ? "Project Admin" : "Contributor";
 
   return (
     <ProfileCard

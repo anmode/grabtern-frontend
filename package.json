@@ -16,8 +16,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^2.0.18",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.6",
+
     "antd": "^5.4.5",
     "clsx": "^1.2.1",
     "crypto-js": "^4.1.1",

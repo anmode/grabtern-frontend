@@ -1,3 +1,5 @@
+// Community.js
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
@@ -42,8 +44,13 @@ function Community() {
               >
                 <CommunityCard
                   image={data?.avatar_url}
-                  name={data?.login}
+                  name={
+                    data.login === "anmode"
+                      ? `${data.login}`
+                      : `${data.login}`
+                  }
                   description={data?.contributions}
+                  commits={data?.contributions}
                 ></CommunityCard>
               </a>
             ))}

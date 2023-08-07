@@ -249,6 +249,7 @@ export default function MentorForm() {
               1: (
                 <PersonDetails
                   formData={formData}
+                  setFormData={setFormData}
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
                   validator={validator}

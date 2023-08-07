@@ -35,7 +35,7 @@ function ContactDetails({
       validation: "required|alpha_num_dash_space",
     },
     {
-      label: "linkedIn",
+      label: "linkedIn Handle",
       type: "url",
       name: "linkedin",
       id: "linkedin",
@@ -48,15 +48,17 @@ function ContactDetails({
       validator: validator,
       validation: [
         "required",
-        "url",
+        "alpha_num_dash",
+        "min:3", 
+        "max:100",
         {
           regex:
-            "^https://(www.)?linkedin.com/((in/[^/]+/?)|(pub/[^/]+/((w|d)+/?){3}))$",
+            "[a-z, A-Z]+[0-9,a-z,A-Z,-]*",
         },
       ],
     },
     {
-      label: "twitter",
+      label: "twitter Handle",
       type: "url",
       name: "twitter",
       id: "twitter",
@@ -69,10 +71,11 @@ function ContactDetails({
       validator: validator,
       validation: [
         "required",
-        "url",
+        "min:1",
+        "max:15",
         {
           regex:
-            "^https://(www.)?twitter.com/(?![a-zA-Z0-9_]+/)([a-zA-Z0-9_]+)",
+            "[0-9,a-z,A-Z,_]*",
         },
       ],
     },

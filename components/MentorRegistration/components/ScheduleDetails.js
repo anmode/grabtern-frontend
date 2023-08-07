@@ -120,6 +120,10 @@ function ScheduleDetails({ formData, changeArray}) {
         </button>
       </div>
       {/* add schedule button ends */}
+      
+      {/* Disclaimer starts*/}
+        <p className="tw-text-sm tw-text-primary-200 tw-underline"><span className="tw-font-semibold">Note: </span>You can also add or update schedules later using dashboard</p>
+      {/* Disclaimer ends */}
 
       {/* schedule list starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

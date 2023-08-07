@@ -91,11 +91,11 @@ function Footer() {
           </div>
           {/* social links */}
           <div className="tw-flex tw-gap-1">
-            <IconLink href="#" Icon={RiFacebookFill} variant="secondary" />
-            <IconLink href="#" Icon={RiTwitterFill} variant="secondary" />
-            <IconLink href="#" Icon={RiInstagramFill} variant="secondary" />
-            <IconLink href="#" Icon={RiLinkedinFill} variant="secondary" />
-            <IconLink href="#" Icon={RiGithubFill} variant="secondary" />
+          <IconLink href="#" Icon={RiFacebookFill} variant="facebook" />
+            <IconLink href="#" Icon={RiTwitterFill} variant="twitter" />
+            <IconLink href="#" Icon={RiInstagramFill} variant="instagram" />
+            <IconLink href="#" Icon={RiLinkedinFill} variant="linkedin" />
+            <IconLink href="#" Icon={RiGithubFill} variant="github" />
           </div>
         </div>
       </div>

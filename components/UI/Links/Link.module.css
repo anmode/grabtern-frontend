@@ -34,3 +34,30 @@
 .linkText:hover {
   @apply tw-text-primary-50 tw-gap-6;
 }
+
+
+
+/* ... (existing styles) */
+
+/* Add hover styles for individual social media links */
+/* ... (existing styles) */
+
+/* Add hover styles for individual social media links */
+.linkFacebook:hover {
+  color: #3b5998;
+}
+.linkTwitter:hover {
+  color: #1da1f2;
+}
+.linkInstagram:hover {
+  color: #e1306c;
+}
+.linkLinkedin:hover {
+  color: #0a66c2;
+}
+.linkGithub:hover {
+  color: #333333;
+}
+
+
+

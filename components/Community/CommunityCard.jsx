@@ -1,7 +1,7 @@
 import React from "react";
 import { ProfileCard } from "../UI";
 
-const CommunityCard = ({ image, name, description}) => {
+const CommunityCard = ({ image, name, description }) => {
   return (
     <ProfileCard
       image={image}
@@ -12,8 +12,7 @@ const CommunityCard = ({ image, name, description}) => {
       direction="col"
       rounded="lg"
       align="center"
-    >
-    </ProfileCard>
+    ></ProfileCard>
   );
 };
 export default CommunityCard;

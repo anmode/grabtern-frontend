@@ -5,7 +5,7 @@ import TimeZoneInput from "../../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 
-function ScheduleDetails({ formData, changeArray, validator }) {
+function ScheduleDetails({ formData, changeArray}) {
   const initialSchedule = {
     day: "monday",
     timezone: "(GMT-11:00) Pacific/Midway",
@@ -120,15 +120,6 @@ function ScheduleDetails({ formData, changeArray, validator }) {
         </button>
       </div>
       {/* add schedule button ends */}
-
-      {/* error if it does not have any schedule */}
-      {validator.current.message(
-        "schedules",
-        formData.schedules,
-        "required|min:1",
-        { className: "tw-relative tw-text-red-600 tw-text-2xl" },
-      )}
-      {/* error if it does not have any schedule */}
 
       {/* schedule list starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

@@ -28,6 +28,7 @@
     "lodash": "^4.17.21",
     "moment-timezone": "^0.5.43",
     "next": "^13.1.1",
+    "next-pwa": "^5.6.0",
     "next-themes": "^0.2.1",
     "owl.carousel": "^2.3.4",
     "react": "18.2.0",

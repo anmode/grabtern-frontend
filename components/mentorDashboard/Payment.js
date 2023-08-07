@@ -85,7 +85,7 @@ const Payments = ({mentorDetail}) => {
                 gridColumn: "1/3",
               }}
           />
-          <div>
+          <div className='UPIDiv'>
           <h2 className="tw-text-center tw-font-medium tw-text-2xl tw-mt-5 tw-text-[#845ec2]">UPI Payment</h2>
           <input
             class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"

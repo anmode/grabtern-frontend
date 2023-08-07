@@ -1010,7 +1010,11 @@ select {
   align-items: flex-start;
   width: 100%;
 }
-
+@media (max-width: 512px) {
+  .UPIDiv{
+    padding-bottom: 5rem;
+  }
+}
 .mentorUploudPhotoEdit {
   display: flex;
   gap: 20px !important;

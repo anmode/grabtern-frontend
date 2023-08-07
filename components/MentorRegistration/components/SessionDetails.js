@@ -3,7 +3,7 @@ import SimpleReactValidator from "simple-react-validator";
 import Card from "./Card";
 import Input from "./Input";
 
-function SessionDetails({ formData, changeArray}) {
+function SessionDetails({ formData, changeArray }) {
   const initialSession = {
     name: "",
     type: "",
@@ -135,9 +135,12 @@ function SessionDetails({ formData, changeArray}) {
       {/* add session button ends */}
 
       {/* Disclaimer starts*/}
-      <p className="tw-text-sm tw-text-primary-200 tw-underline"><span className="tw-font-semibold">Note: </span>You can also add or update sessions later using dashboard</p>
+      <p className="tw-text-sm tw-text-primary-200 tw-underline">
+        <span className="tw-font-semibold">Note: </span>You can also add or
+        update sessions later using dashboard
+      </p>
       {/* Disclaimer ends */}
-      
+
       {/* session card starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">
         {formData.sessions.map((session, index) => (

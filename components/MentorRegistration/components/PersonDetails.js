@@ -11,45 +11,47 @@ function PersonDetails({
   handleUploadImageChange,
   validator,
 }) {
-
   // state for unique userName
-  const initialIsUnique = {status: "", message: ""};
+  const initialIsUnique = { status: "", message: "" };
   const [isUnique, setIsUnique] = useState(initialIsUnique);
 
   // onchange function for username input
   const checkUserNameAvailability = async (userName) => {
-    try{
-      setIsUnique({status:"loading", message:"Checking for user name availabilty"});
+    try {
+      setIsUnique({
+        status: "loading",
+        message: "Checking for user name availabilty",
+      });
       const value = userName.trim();
 
       // calling api for checking availabilty if value is not empty
-      if(value){
-        await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentor?username=${value}`);
-        setIsUnique({status: true, message: "user name is available"})
+      if (value) {
+        await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentor?username=${value}`,
+        );
+        setIsUnique({ status: true, message: "user name is available" });
+      } else {
+        setIsUnique({ status: false, message: "Enter a valid value" });
       }
-      else {
-        setIsUnique({status: false, message: "Enter a valid value"});
-      }
+    } catch (error) {
+      setIsUnique({ status: false, message: error.response.data.message });
     }
-    catch(error){
-      setIsUnique({status: false, message: error.response.data.message});
-    }
-  }
+  };
 
   // onblur function for name input
   const onNameBlur = (e) => {
-    const name = e.target.value.trim().replaceAll(" ","-");
+    const name = e.target.value.trim().replaceAll(" ", "-");
     const randomNumber = window.crypto.getRandomValues(new Uint32Array(1))[0];
-    const userName = `${name}-${randomNumber}`; 
-    setFormData({...formData, username: userName});
+    const userName = `${name}-${randomNumber}`;
+    setFormData({ ...formData, username: userName });
     checkUserNameAvailability(userName);
-  } 
+  };
 
-  // onChange function for user name input 
+  // onChange function for user name input
   const handleUserNameChange = (e) => {
     handleChange(e);
     checkUserNameAvailability(e.target.value);
-  }
+  };
 
   // inputs list
   const inputs = [
@@ -108,7 +110,7 @@ function PersonDetails({
     },
   ];
 
-  // logic for image input 
+  // logic for image input
   const [showImageCropper, setShowImageCropper] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
   const [fileName, setFileName] = useState("");
@@ -210,11 +212,13 @@ function PersonDetails({
       {/* image section ends */}
 
       {/* user name avialability info start*/}
-      <p className={clsx(
-        "tw-text-sm tw-text-right tw-capitalize",
-        isUnique.status == true && ["tw-text-green-500"],
-        isUnique.status == false && ["tw-text-red-500"]
-      )}>
+      <p
+        className={clsx(
+          "tw-text-sm tw-text-right tw-capitalize",
+          isUnique.status == true && ["tw-text-green-500"],
+          isUnique.status == false && ["tw-text-red-500"],
+        )}
+      >
         {isUnique.message}
       </p>
       {/* user name avialability info end*/}

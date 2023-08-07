@@ -48,9 +48,9 @@ export default function MentorForm() {
         day: "monday",
         endsAt: "11:30",
         startsAt: "10:22",
-        timezone: "(GMT+05:30) Asia/Kolkata"
-    }
-  ],
+        timezone: "(GMT+05:30) Asia/Kolkata",
+      },
+    ],
     sessions: [
       {
         description: "Achieve your goals faster with customized roadmap",
@@ -58,7 +58,7 @@ export default function MentorForm() {
         name: "1 on 1 Mentorship",
         price: "100",
         type: "Video Meeting",
-      }
+      },
     ],
     verified: false,
   };

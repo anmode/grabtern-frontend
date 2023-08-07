@@ -5,7 +5,7 @@ import TimeZoneInput from "../../dateAndTime/TimeZoneInput";
 import Input from "./Input";
 import Card from "./Card";
 
-function ScheduleDetails({ formData, changeArray}) {
+function ScheduleDetails({ formData, changeArray }) {
   const initialSchedule = {
     day: "monday",
     timezone: "(GMT-11:00) Pacific/Midway",
@@ -120,9 +120,12 @@ function ScheduleDetails({ formData, changeArray}) {
         </button>
       </div>
       {/* add schedule button ends */}
-      
+
       {/* Disclaimer starts*/}
-        <p className="tw-text-sm tw-text-primary-200 tw-underline"><span className="tw-font-semibold">Note: </span>You can also add or update schedules later using dashboard</p>
+      <p className="tw-text-sm tw-text-primary-200 tw-underline">
+        <span className="tw-font-semibold">Note: </span>You can also add or
+        update schedules later using dashboard
+      </p>
       {/* Disclaimer ends */}
 
       {/* schedule list starts */}

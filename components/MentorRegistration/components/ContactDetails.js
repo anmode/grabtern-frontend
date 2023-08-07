@@ -49,11 +49,10 @@ function ContactDetails({
       validation: [
         "required",
         "alpha_num_dash",
-        "min:3", 
+        "min:3",
         "max:100",
         {
-          regex:
-            "[a-z, A-Z]+[0-9,a-z,A-Z,-]*",
+          regex: "[a-z, A-Z]+[0-9,a-z,A-Z,-]*",
         },
       ],
     },
@@ -74,8 +73,7 @@ function ContactDetails({
         "min:1",
         "max:15",
         {
-          regex:
-            "[0-9,a-z,A-Z,_]*",
+          regex: "[0-9,a-z,A-Z,_]*",
         },
       ],
     },

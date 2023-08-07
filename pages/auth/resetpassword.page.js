@@ -12,7 +12,7 @@ import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const ResetPassword = () => {
   // initial state
@@ -115,25 +115,17 @@ const ResetPassword = () => {
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
-{viewPassword ? (
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/2874/2874802.png"
-        alt="Visibility On"
-        width="20"
-        height="20"
-        onClick={togglePassword}
-      />
-    ) : (
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
-        alt="Visibility Off"
-        width="20"
-        height="20"
-        onClick={togglePassword}
-      />
-    )}
-
-
+              {viewPassword ? (
+                <FiEye
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
+              ) : (
+                <FiEyeOff
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
+              )}
             </div>
             <div className="tw-pt-5">
               <label
@@ -152,23 +144,17 @@ const ResetPassword = () => {
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
-             {viewPassword ? (
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/2874/2874802.png"
-        alt="Visibility On"
-        width="20"
-        height="20"
-        onClick={togglePassword}
-      />
-    ) : (
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
-        alt="Visibility Off"
-        width="20"
-        height="20"
-        onClick={togglePassword}
-      />
-    )}
+              {viewPassword ? (
+                <FiEye
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
+              ) : (
+                <FiEyeOff
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
+              )}
             </div>
             {/* <div className="form-input tw-pt-10 tw-pb-12">
               <ButtonUI

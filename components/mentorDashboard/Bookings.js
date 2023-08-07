@@ -95,7 +95,7 @@ const Bookings = () => {
     try {
       setError("");
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/session/me`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
         {
           withCredentials: true,
         },

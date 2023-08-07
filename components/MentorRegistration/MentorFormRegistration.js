@@ -43,8 +43,23 @@ export default function MentorForm() {
       linkedin: "",
       twitter: "",
     },
-    schedules: [],
-    sessions: [],
+    schedules: [
+      {
+        day: "monday",
+        endsAt: "11:30",
+        startsAt: "10:22",
+        timezone: "(GMT+05:30) Asia/Kolkata"
+    }
+  ],
+    sessions: [
+      {
+        description: "Achieve your goals faster with customized roadmap",
+        duration: "45",
+        name: "1 on 1 Mentorship",
+        price: "100",
+        type: "Video Meeting",
+      }
+    ],
     verified: false,
   };
   const [formData, setFormData] = useState(InitialFormState);

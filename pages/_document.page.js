@@ -1,6 +1,6 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import { AuthProvider } from "../context/AuthContext";
+import { Head, Html, Main, NextScript } from "next/document";
 import Script from "next/script";
+import { AuthProvider } from "../context/AuthContext";
 
 export default function Document() {
   return (
@@ -20,7 +20,7 @@ export default function Document() {
           type="image/x-icon"
           href="/aasets/img/faviconn.ico"
         />
-
+        <link rel="manifest" href="/manifest.json" />
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
         <link rel="stylesheet" href="/assets/css/progressbar_barfiller.css" />

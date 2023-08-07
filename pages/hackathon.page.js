@@ -163,7 +163,7 @@ export default function Home() {
         ? filteredHackathons
         : hackathonsData,
     );
-  });
+  },[]);
 
   // console.log(filteredHackathons);
   const handleBookmark = (index) => {

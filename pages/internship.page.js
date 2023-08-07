@@ -5,8 +5,6 @@ import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import GalleryCard from "../components/GalleryCard";
 
-
-
 import { useAuth } from "../context/AuthContext";
 
 import { MdCreate } from "react-icons/md";

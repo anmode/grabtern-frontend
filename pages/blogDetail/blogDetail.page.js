@@ -26,14 +26,14 @@ function Index({ blogDetailData }) {
               <p className="tw-text-black tw-font-normal">Nick Hilton</p>
               <p className="tw-font-normal">- &nbsp; Jul 25</p>
             </div>
-            <div className="tw-mt-[3rem] hover:tw-bg-gray-300 hover:tw-border-4 tw-border-black  tw-rounded-lg tw-border-gray-400 tw-border-2 tw-p-5"> 
-            <Image
-              className=""
-              src="/grabtern_meta_img.webp"
-              alt="img"
-              width={700}
-              height={700}
-            />
+            <div className="tw-mt-[3rem] hover:tw-bg-gray-300 hover:tw-border-4 tw-border-black  tw-rounded-lg tw-border-gray-400 tw-border-2 tw-p-5">
+              <Image
+                className=""
+                src="/grabtern_meta_img.webp"
+                alt="img"
+                width={700}
+                height={700}
+              />
             </div>
             {/* Description of blog */}
             <p className="tw-subpixel-antialiased tw-leading-relaxed tw-tracking-normal tw-text-black tw-mt-[5rem]">
@@ -97,10 +97,18 @@ function Index({ blogDetailData }) {
             </p>
             {/* Tags for blog */}
             <div className="sm:tw-flex-row tw-flex tw-gap-5 tw-mt-[3rem]">
-            <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">GrabTern</button>
-            <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">Open Source</button>
-            <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">Contributors</button>
-            <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">Opportunity</button>
+              <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">
+                GrabTern
+              </button>
+              <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">
+                Open Source
+              </button>
+              <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">
+                Contributors
+              </button>
+              <button className="tw-rounded-full tw-py-2 tw-px-4 tw-bg-gray-300 tw-text-center tw-font-medium hover:tw-bg-gray-400 hover:tw-border-4">
+                Opportunity
+              </button>
             </div>
           </div>
         </Section>

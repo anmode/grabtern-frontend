@@ -748,7 +748,7 @@ a {
 .mentorForm div input,
 textarea,
 .scheduleCard,
-select {
+.mentorForm div select {
   width: 100%;
   border: 2px solid rgb(220, 220, 220);
   padding: 6px 10px;

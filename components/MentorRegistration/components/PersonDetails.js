@@ -1,14 +1,58 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import ImageCropper from "../../../components/basic/ImageCropper";
 import axios from "axios";
+import clsx from "clsx";
 
 function PersonDetails({
   formData,
+  setFormData,
   handleChange,
   handleUploadImageChange,
   validator,
 }) {
+  // state for unique userName
+  const initialIsUnique = { status: "", message: "" };
+  const [isUnique, setIsUnique] = useState(initialIsUnique);
+
+  // onchange function for username input
+  const checkUserNameAvailability = async (userName) => {
+    try {
+      setIsUnique({
+        status: "loading",
+        message: "Checking for user name availabilty",
+      });
+      const value = userName.trim();
+
+      // calling api for checking availabilty if value is not empty
+      if (value) {
+        await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentor?username=${value}`,
+        );
+        setIsUnique({ status: true, message: "user name is available" });
+      } else {
+        setIsUnique({ status: false, message: "Enter a valid value" });
+      }
+    } catch (error) {
+      setIsUnique({ status: false, message: error.response.data.message });
+    }
+  };
+
+  // onblur function for name input
+  const onNameBlur = (e) => {
+    const name = e.target.value.trim().replaceAll(" ", "-");
+    const randomNumber = window.crypto.getRandomValues(new Uint32Array(1))[0];
+    const userName = `${name}-${randomNumber}`;
+    setFormData({ ...formData, username: userName });
+    checkUserNameAvailability(userName);
+  };
+
+  // onChange function for user name input
+  const handleUserNameChange = (e) => {
+    handleChange(e);
+    checkUserNameAvailability(e.target.value);
+  };
+
   // inputs list
   const inputs = [
     {
@@ -23,6 +67,7 @@ function PersonDetails({
       value: formData.name,
       validator: validator,
       validation: "required|alpha_space",
+      onBlur: onNameBlur,
     },
     {
       label: "username",
@@ -30,12 +75,12 @@ function PersonDetails({
       name: "username",
       id: "username",
       className: "mentorFormInput",
-      onChange: handleChange,
+      onChange: handleUserNameChange,
       placeholder: "e.g. peter-parker12",
       required: true,
       value: formData.username,
       validator: validator,
-      validation: "required|alpha_num",
+      validation: "required|alpha_num_dash",
     },
     {
       label: "email",
@@ -65,6 +110,7 @@ function PersonDetails({
     },
   ];
 
+  // logic for image input
   const [showImageCropper, setShowImageCropper] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
   const [fileName, setFileName] = useState("");
@@ -164,6 +210,18 @@ function PersonDetails({
         </div>
       </div>
       {/* image section ends */}
+
+      {/* user name avialability info start*/}
+      <p
+        className={clsx(
+          "tw-text-sm tw-text-right tw-capitalize",
+          isUnique.status == true && ["tw-text-green-500"],
+          isUnique.status == false && ["tw-text-red-500"],
+        )}
+      >
+        {isUnique.message}
+      </p>
+      {/* user name avialability info end*/}
 
       {/* inputs start */}
       {inputs.map((input, index) => (

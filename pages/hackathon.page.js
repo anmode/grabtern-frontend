@@ -4,22 +4,15 @@ import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import GalleryCard from "../components/GalleryCard";
 
-import ClickAwayListener from "@mui/material/ClickAwayListener";
+
 
 import { useAuth } from "../context/AuthContext";
-import DropdownCard from "../components/basic/LoginDropdown";
-import Image from "next/image";
-import Head from "next/head";
+
 import { MdCreate } from "react-icons/md";
 // import gstyles from "../styles/gridhackathon.module.css";
 import SearchBar from "../components/hackthons/components/Searchbar";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
-import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import Tooltip from "@mui/material/Tooltip";
-// import Hackathons from "./hackathon.page";
-import Link from "next/link";
-import styles from "../styles/LoginDropdown.module.css";
+
+
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -163,7 +156,7 @@ export default function Home() {
         ? filteredHackathons
         : hackathonsData,
     );
-  });
+  },[]);
 
   // console.log(filteredHackathons);
   const handleBookmark = (index) => {

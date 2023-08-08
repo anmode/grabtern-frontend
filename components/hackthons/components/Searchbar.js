@@ -30,9 +30,7 @@ function SearchBar({
     handleTagFilter(newValue);
   };
 
-  if (selectedTag) {
-    console.log(selectedTag[0] === "web");
-  }
+
 
   return (
     <>

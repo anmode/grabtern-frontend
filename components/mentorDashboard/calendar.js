@@ -67,109 +67,112 @@ const Calender = () => {
     showCalender(false);
   };
 
-  const MyDiv = styled.div`
-    width: 900px;
-    height: 900px;
-  `;
 
-  const MyInput = styled.input`
-    width: 20px;
-    height: 20px;
-  `;
 
   return (
-    <div className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}>
+    <div className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pl-[10rem] tw-pt-10">
       <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
-      <button
-        onClick={handleCalender}
-        className="hover:tw-bg-gray-100 default:tw-bg-gray-100 tw-border-black hover:tw-border-[2px] tw-border-[1px] tw-px-5 tw-py-2 tw-text-black tw-text-center hover:tw-font-semibold tw-rounded-full"
-      >
-        Calendar
-      </button>
-      <button
-        onClick={handleSchedule}
-        className="tw-ml-5  hover:tw-bg-gray-100 tw-border-black hover:tw-border-[2px] tw-border-[1px] tw-px-5 tw-py-2 tw-text-black tw-text-center hover:tw-font-semibold tw-rounded-full"
-      >
-        Schedule
-      </button>
-      <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
-      <div className="content tw-pt-5">
+      <div className="tw-flex tw-gap-6">
+        <button
+          onClick={handleCalender}
+          className="tw-bg-primary-100 hover:tw-bg-primary-200 tw-ease-in-out tw-duration-200 tw-transition-all tw-font-semibold tw-text-white tw-px-5 tw-py-2 tw-text-center hover:tw-font-semibold tw-rounded-md"
+        >
+          Calendar
+        </button>
+        <button
+          onClick={handleSchedule}
+          className="tw-bg-primary-100 hover:tw-bg-primary-200 tw-ease-in-out tw-duration-200 tw-transition-all tw-font-semibold tw-text-white tw-px-5 tw-py-2 tw-text-center hover:tw-font-semibold tw-rounded-md"
+        >
+          Schedule
+        </button>
+      </div>
+      <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-flex tw-justify-center tw-items-center tw-dark:bg-gray-700" />
+      <div className="tw-flex tw-flex-col tw-flex-wrap tw-pt-6">
         {calender && (
           <div>
             <Card />
           </div>
         )}
         {schedule && (
-          <>
+          <div className="">
             <Schedule />
-            <MyDiv className="tw-mt-8 tw-border tw-rounded-md tw-p-10 tw-border-2 tw-mb-[6rem]">
-              <div className="tw-flex ">
+
+            <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 tw-gap-2">
+              <div className="tw-flex tw-justify-between">
                 <h2 className="tw-font-semibold tw-text-lg">Default</h2>
-                <button className=" tw-ml-[43rem] tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 tw-p-5 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                <button className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
                   Save
                 </button>
               </div>
-              {weekdays.map((day, index) => (
-                <div key={index} className="tw-mt-7 ">
-                  <MyInput
-                    type="checkbox"
-                    checked={selectedDays.includes(day)}
-                    onChange={() => handleDayChange(day)}
-                    className=""
-                  />
-                  <label className="tw-ml-[0.5rem] tw-font-medium tw-text-base">
-                    {day}
-                  </label>
-                  <div>
-                    {selectedDays.includes(day) ? (
-                      <div className="tw-flex">
-                        <div className="">
-                          {/* <h3>Select Time:</h3> */}
-                          <select
-                            value={selectedTimes[day] || ""}
-                            onChange={(e) =>
-                              handleTimeChange(day, e.target.value)
-                            }
-                            className="tw-font-medium tw-ml-[13rem] tw-rounded-md tw-w-2/3 hover:tw-border-black hover:tw-border-2"
-                          >
-                            <option value="" className="tw-text-gray-200">
-                              9:00 AM
-                            </option>
-                            {Object.values(timeOptions).map((timeOption) => (
-                              <option key={timeOption} value={timeOption}>
-                                {timeOption}
+
+              {
+                weekdays.map((day, index) => (
+                  <div key={index} className="tw-mt-10 tw-flex tw-justify-between tw-items-center">
+                    <div className="tw-flex tw-items-center tw-gap-2 tw-justify-center tw-text-center">
+                      <input
+                        id={index}
+                        type="checkbox"
+                        checked={selectedDays.includes(day)}
+                        onChange={() => handleDayChange(day)}
+                        className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
+                      />
+                      <label for={index} className="tw-flex tw-justify-center tw-text-center tw-items-center">
+                        <span className="tw-font-medium tw-text-center tw-items-center tw-justify-center tw-flex tw-relative tw-top-1">{day}</span>
+                      </label>
+                    </div>
+
+                    {
+                      selectedDays.includes(day) ? (
+                        <div className="tw-flex tw-gap-5">
+                          <div className="tw-flex tw-justify-center tw-items-center">
+                            {/* <h3>Select Time:</h3> */}
+                            <select
+                              value={selectedTimes[day] || ""}
+                              onChange={(e) =>
+                                handleTimeChange(day, e.target.value)
+                              }
+                              className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
+                            >
+                              <option value="" className="" selected>
+                                9:00 AM
                               </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="">
-                          {/* <h3>Select Time:</h3> */}
-                          <select
-                            value={selectTime[day] || ""}
-                            onChange={(e) => handleTime(day, e.target.value)}
-                            className="tw-font-medium tw-ml-[10rem] tw-rounded-md  tw-w-2/3 hover:tw-border-black hover:tw-border-2"
-                          >
-                            <option value="" className="tw-text-gray-200">
-                              8:00 PM
-                            </option>
-                            {Object.values(timeOptions).map((timeOption) => (
-                              <option key={timeOption} value={timeOption}>
-                                {timeOption}
+                              {Object.values(timeOptions).map((timeOption) => (
+                                <option key={timeOption} value={timeOption}>
+                                  {timeOption}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                          <span className="tw-text-center tw-items-center tw-justify-center tw-flex">-</span>
+                          <div className="tw-flex tw-justify-center tw-items-center">
+                            {/* <h3>Select Time:</h3> */}
+                            <select
+                              value={selectTime[day] || ""}
+                              onChange={(e) => handleTime(day, e.target.value)}
+                              className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
+                            >
+                              <option value="" className="tw-text-gray-200">
+                                8:00 PM
                               </option>
-                            ))}
-                          </select>
+                              {Object.values(timeOptions).map((timeOption) => (
+                                <option key={timeOption} value={timeOption}>
+                                  {timeOption}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                    ) : (
-                      <div className="">
-                        <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
-                      </div>
-                    )}
+                      ) : (
+                        <div className="">
+                          <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
+                        </div>
+                      )
+                    }
                   </div>
-                </div>
-              ))}
-            </MyDiv>
-          </>
+                ))
+              }
+            </div>
+          </div>
         )}
       </div>
     </div>

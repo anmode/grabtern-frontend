@@ -13,58 +13,33 @@ import {
 import { FaEdit } from "react-icons/fa";
 import { GrView } from "react-icons/gr";
 import SessionCard from "../newMentorProfile/SessionCard";
+import { Section } from "../UI";
 
 function Sessions() {
-  const Cards = [
-    {
-      icon: <BiTime className="tw-w-14 tw-h-14 tw-text-[#00C9A7]" />,
-      path: "edit",
-      heading: "Your Sessions",
-      session: {
-        title: "1-1 Mentorship",
-        type: "Call",
-        duration: "30",
-        desc: "Guidance to crack MLH Fellowship",
-        price: "50",
-      },
-    },
-    {
-      icon: <BiTime className="tw-w-14 tw-h-14 tw-text-[#00C9A7]" />,
-      path: "sessions",
-      heading: "Your Sessions",
-      session: {
-        title: "1-1 Coffee Chat",
-        type: "Chat",
-        duration: "15",
-        desc: "How to contribute to open source?",
-        price: "60",
-      },
-    },
-    {
-      icon: <BiTime className="tw-w-14 tw-h-14 tw-text-[#00C9A7]" />,
-      path: "sessions",
-      heading: "Your Sessions",
-      session: {
-        title: "1-1 Mentorship",
-        type: "Call",
-        duration: "45",
-        desc: "Best practices to master DSA",
-        price: "70",
-      },
-    },
-    {
-      icon: <BiTime className="tw-w-14 tw-h-14 tw-text-[#00C9A7]" />,
-      path: "sessions",
-      heading: "Your Sessions",
-      session: {
-        title: "1-1 Mentorship",
-        type: "Video Call",
-        duration: "60",
-        desc: "Master Behavioral interviews",
-        price: "100",
-      },
-    },
-  ];
+  const [data, setData] = useState({});
+
+  const fetchData = async () => {
+    try {
+      const url =
+        "https://grabtern-backend.vercel.app/api/mentors/mentorDetail/anmode";
+      const { data: res } = await axios.get(url);
+      return res.mentorDetail;
+    } catch (err) {
+      console.error("Error in fetching details ", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchData()
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  console.log(data);
 
   return (
     <>
@@ -73,20 +48,22 @@ function Sessions() {
           Sessions
         </p>
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
-        <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
-          {Cards.map((card) => {
-            return (
-              <SessionCard
-                type={card.session.type}
-                name={card.session.title}
-                description={card.session.desc}
-                duration={card.session.duration}
-                price={card.session.price}
-                text="Edit Session"
-                path="/dashboard/editMentorSession"
-              />
-            );
-          })}
+        <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+          {data.sessions &&
+            data.sessions.map((card, index) => {
+              return (
+                <SessionCard
+                  key={index}
+                  type={card.type}
+                  name={card.name}
+                  description={card.description}
+                  duration={card.duration}
+                  price={card.price}
+                  text="Edit Session"
+                  path="/dashboard/editMentorSession"
+                />
+              );
+            })}
         </div>
       </main>
     </>

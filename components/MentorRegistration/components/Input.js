@@ -25,7 +25,7 @@ function Input({
       </label>
       {validator.current.message(name, value, validation)}
       {{
-        "textarea": (
+        textarea: (
           <textarea
             cols="10"
             rows="7"
@@ -39,14 +39,16 @@ function Input({
             {...rest}
           />
         ),
-        "select": (
+        select: (
           <>
             <select
               defaultValue="other"
               id={name}
               name={name}
               onChange={(e) => {
-                (e.target.selectedOptions[0].value == "") ? setIsSelect(false) : setIsSelect(true);
+                e.target.selectedOptions[0].value == ""
+                  ? setIsSelect(false)
+                  : setIsSelect(true);
                 handleChange(e);
               }}
               value={!isSelect && value != defaultValue ? "" : value}
@@ -59,8 +61,8 @@ function Input({
                 </option>
               ))}
             </select>
-            {
-              !isSelect && value != defaultValue && <input
+            {!isSelect && value != defaultValue && (
+              <input
                 id={name}
                 type={type}
                 name={name}
@@ -70,7 +72,7 @@ function Input({
                 value={value}
                 {...rest}
               />
-            }
+            )}
           </>
         ),
       }[element] || (

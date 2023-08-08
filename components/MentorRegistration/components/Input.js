@@ -12,6 +12,7 @@ function Input({
   validator,
   validation,
   element,
+  options = [],
   ...rest
 }) {
   return (
@@ -20,7 +21,47 @@ function Input({
         {label}
       </label>
       {validator.current.message(name, value, validation)}
-      {element == "textarea" ? (
+      {{
+        "textarea" : (
+        <textarea
+          cols="10"
+          rows="7"
+          id={name}
+          type={type}
+          name={name}
+          className={className}
+          onChange={(e) => handleChange(e)}
+          placeholder={placeholder}
+          value={value}
+          {...rest}
+        />
+      ), 
+       "select" : (
+       <select id={name} name={name} onChange={(e) => handleChange(e)} value={value}  className={className} {...rest}>
+         {
+           options.map((option, index) => (
+              <option key={index} value={option.value}>{option.text}</option>
+           ))
+         }
+       </select>
+      )
+      }[element] || (
+      <input
+        id={name}
+        type={type}
+        name={name}
+        className={className}
+        onChange={(e) => handleChange(e)}
+        placeholder={placeholder}
+        value={value}
+        {...rest}
+      />
+    )}  
+
+
+
+      
+      {/* {element == "textarea" ? (
         <textarea
           cols="10"
           rows="7"
@@ -44,7 +85,7 @@ function Input({
           value={value}
           {...rest}
         />
-      )}
+      )} */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Input from "./Input";
 function SessionDetails({ formData, changeArray }) {
   const initialSession = {
     name: "",
-    type: "",
+    type: "video call",
     duration: "",
     price: "",
     description: "",
@@ -59,12 +59,16 @@ function SessionDetails({ formData, changeArray }) {
     },
     {
       label: "Session Type",
-      type: "text",
+      element: "select",
+      options: [
+        {text: "Video Meeting", value: "video call"},
+        {text: "Group Discussion/Call", value:"group Call"},
+        {text: "Text or Messaging", value:"text"},
+      ],
       name: "type",
       id: "type",
       className: "mentorFormInput",
       onChange: onChange,
-      placeholder: "eg. Video Meeting",
       required: true,
       value: newSession.type,
       validator: sessionValidator,

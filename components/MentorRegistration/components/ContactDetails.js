@@ -35,8 +35,8 @@ function ContactDetails({
       validation: "required|alpha_num_dash_space",
     },
     {
-      label: "linkedIn Handle",
-      type: "url",
+      label: "linkedIn Username",
+      type: "text",
       name: "linkedin",
       id: "linkedin",
       className: "mentorFormInput",
@@ -57,8 +57,8 @@ function ContactDetails({
       ],
     },
     {
-      label: "twitter Handle",
-      type: "url",
+      label: "twitter Username",
+      type: "text",
       name: "twitter",
       id: "twitter",
       className: "mentorFormInput",

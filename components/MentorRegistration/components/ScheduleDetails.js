@@ -8,7 +8,7 @@ import Card from "./Card";
 function ScheduleDetails({ formData, changeArray }) {
   const initialSchedule = {
     day: "monday",
-    timezone: "(GMT-11:00) Pacific/Midway",
+    timezone: "(GMT+05:30) Asia/Kolkata",
     startsAt: "",
     endsAt: "",
   };

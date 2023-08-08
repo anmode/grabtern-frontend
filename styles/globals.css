@@ -331,7 +331,7 @@ a {
   background-color: #f5f5f5;
 }
 
-.profileRegForm{
+.profileRegForm {
   background-color: white;
   border: 1px solid #ccc;
   padding: 20px;
@@ -343,7 +343,7 @@ a {
 }
 
 @media screen and (max-width: 786px) {
-  .profileRegForm{
+  .profileRegForm {
     padding: 5rem;
   }
 }
@@ -1011,7 +1011,7 @@ select {
   width: 100%;
 }
 @media (max-width: 512px) {
-  .UPIDiv{
+  .UPIDiv {
     padding-bottom: 5rem;
   }
 }

@@ -44,7 +44,7 @@ function MentorDashboard() {
           {component === "sessions" && <Sessions />}
           {component == "queries" && <Queries />}
           {component == "bookings" && <Bookings />}
-          {component == "payments" && <Payments/>}
+          {component == "payments" && <Payments />}
           {component == "services" && <ComingSoon />}
         </div>
       </div>

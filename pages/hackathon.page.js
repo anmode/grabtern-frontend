@@ -4,15 +4,11 @@ import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import GalleryCard from "../components/GalleryCard";
 
-
-
 import { useAuth } from "../context/AuthContext";
 
 import { MdCreate } from "react-icons/md";
 // import gstyles from "../styles/gridhackathon.module.css";
 import SearchBar from "../components/hackthons/components/Searchbar";
-
-
 
 var $ = require("jquery");
 if (typeof window !== "undefined") {
@@ -156,7 +152,7 @@ export default function Home() {
         ? filteredHackathons
         : hackathonsData,
     );
-  },[]);
+  }, []);
 
   // console.log(filteredHackathons);
   const handleBookmark = (index) => {

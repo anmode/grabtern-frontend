@@ -10,7 +10,6 @@ import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 
-
 function ForgotPassword() {
   const router = useRouter();
   const { entity } = router.query; // 'entity' will contain the entity type ('user' or 'mentor')

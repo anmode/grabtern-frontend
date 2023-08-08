@@ -21,24 +21,29 @@ function ScheduleDetails({ formData, changeArray }) {
   };
 
   // for validator
-  const scheduleValidator = useRef(new SimpleReactValidator({
-    validators: {
-      // rule to check end time is after start time
-      after_time: {
-        message : "The :attribute must be after :startTime and time gap should be of minimum 30 minutes",
-        rule: (val, params) => {
-          const startDateTime = new Date(`2000-01-01 ${params[0]}`);
-          const endDateTime = new Date(`2000-01-01 ${val}`);
+  const scheduleValidator = useRef(
+    new SimpleReactValidator({
+      validators: {
+        // rule to check end time is after start time
+        after_time: {
+          message:
+            "The :attribute must be after :startTime and time gap should be of minimum 30 minutes",
+          rule: (val, params) => {
+            const startDateTime = new Date(`2000-01-01 ${params[0]}`);
+            const endDateTime = new Date(`2000-01-01 ${val}`);
 
-          // difference in time in minutes
-          const diff = (endDateTime.getTime() - startDateTime.getTime()) / (1000 * 60);
+            // difference in time in minutes
+            const diff =
+              (endDateTime.getTime() - startDateTime.getTime()) / (1000 * 60);
 
-          return endDateTime > startDateTime && diff >= 30;
+            return endDateTime > startDateTime && diff >= 30;
+          },
+          messageReplace: (message, params) =>
+            message.replace(":startTime", params[0]),
         },
-        messageReplace: (message, params) => message.replace(':startTime', params[0])
-      }
-    }
-  }));
+      },
+    }),
+  );
   const [, forceUpdate] = useState();
 
   // adding schedule function
@@ -87,7 +92,11 @@ function ScheduleDetails({ formData, changeArray }) {
       required: true,
       value: newSchedule.endsAt,
       validator: scheduleValidator,
-      validation: ["required", { regex: "([01]?[0-9]|2[0-3]):[0-5][0-9]" }, {after_time: newSchedule.startsAt}],
+      validation: [
+        "required",
+        { regex: "([01]?[0-9]|2[0-3]):[0-5][0-9]" },
+        { after_time: newSchedule.startsAt },
+      ],
     },
   ];
   return (

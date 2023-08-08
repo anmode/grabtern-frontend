@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SvgMaker = ({ svgPath }) => {
   const [hovered, setHovered] = useState(false);
-
-
 
   return (
     <svg

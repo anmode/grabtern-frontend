@@ -5,8 +5,8 @@ import Input from "./Input";
 
 function SessionDetails({ formData, changeArray }) {
   const initialSession = {
-    name: "",
-    type: "video call",
+    name: "1 on 1 Mentorship",
+    type: "Video Meeting",
     duration: "",
     price: "",
     description: "",
@@ -46,14 +46,20 @@ function SessionDetails({ formData, changeArray }) {
   const inputs = [
     {
       label: "Session Name",
-      type: "text",
+      element: "select",
+      options: [
+        {text: "1 on 1 Mentorship", value: "1 on 1 Mentorship"},
+        {text: "Resume Review", value:"Resume Review"},
+        {text: "Other", value:""},
+      ],
       name: "name",
       id: "name",
       className: "mentorFormInput",
-      onChange: onChange,
-      placeholder: "eg. 1 on 1 Mentorship",
+      handleChange: onChange,
       required: true,
       value: newSession.name,
+      defaultValue : "1 on 1 Mentorship",
+      placeholder: "eg: Mock Interview",
       validator: sessionValidator,
       validation: "required|alpha_num_dash_space",
     },
@@ -61,18 +67,18 @@ function SessionDetails({ formData, changeArray }) {
       label: "Session Type",
       element: "select",
       options: [
-        {text: "Video Meeting", value: "video call"},
-        {text: "Group Discussion/Call", value:"group Call"},
-        {text: "Text or Messaging", value:"text"},
+        {text: "Video Meeting", value: "Video Meeting"},
+        {text: "Group Discussion/Call", value:"Group Discussion/Call"},
+        {text: "Text or Messaging", value:"Text or Messaging"},
       ],
       name: "type",
       id: "type",
       className: "mentorFormInput",
-      onChange: onChange,
+      handleChange: onChange,
       required: true,
       value: newSession.type,
       validator: sessionValidator,
-      validation: "required|alpha_num_dash_space",
+      validation: "required|string",
     },
     {
       label: "Session Duration (in minutes)",

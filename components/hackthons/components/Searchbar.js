@@ -30,8 +30,6 @@ function SearchBar({
     handleTagFilter(newValue);
   };
 
-
-
   return (
     <>
       <form className="tw-w-full  tw-max-w-[340px] tw-mx-auto ml-0 ">

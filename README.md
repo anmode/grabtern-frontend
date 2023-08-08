@@ -22,24 +22,6 @@ This is the frontend repository for Grabtern, a web application built with Next.
  </div>
  <br>
 
-<details>
-   <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#getting-started">Getting Started 📌</a>
-      <ul>
-        <li><a href="#-tech-stack-used">Tech Stacks used 💻</a></li>
-      </ul>
-    </li>
-   <li><a href="#garbtern-email-feature">Grabtern Email Feature</a></li>
-    <li><a href="#-prettier-lint-test-and-how-to-fix-it">Prettier lint Test</a></li>
-    <li><a href="#contributing">How to contribute?</a></li>
-    <li><a href="#author">Author</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#-thank-you-for-your-contribution">Our Contributors</a></li>
-  </ol>
-</details>
-
 ---
 
 ## Logo
@@ -47,6 +29,18 @@ This is the frontend repository for Grabtern, a web application built with Next.
 <a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link to new Logo</a>
 
 <img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>
+
+<h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#getting-started">Getting Started 📌</a></li>
+    <li><a href="#-tech-stack-used">Tech Stacks used 💻</a></li>
+    <li><a href="#grabtern-email-feature">Grabtern Email Feature 📧</a></li>
+    <li><a href="#-prettier-lint-test-and-how-to-fix-it">Prettier lint Test 🗞️</a></li>
+    <li><a href="#contributing">How to contribute❓</a></li>
+    <li><a href="#author">Author</a></li>
+    <li><a href="#license">License 📰</a></li>
+    <li><a href="#-thank-you-for-your-contribution">Our Contributors 💌</a></li>
+  </ol>
 
 ## Getting Started
 

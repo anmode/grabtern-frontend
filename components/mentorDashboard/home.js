@@ -196,7 +196,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
           <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
             {cards.map((card) => {
               return (
-                <div className="tw-w-[300px] tw-flex-wrap tw-bg-gradient-to-b tw-from-gray-50 tw-to-gray-100 tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-3xl tw-border-8 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
+                <div className="tw-w-[300px] tw-flex-wrap   tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-3xl tw-bg-white hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                     {card.icon}
                     <h2 className="tw-font-semibold tw-text-xl">{card.name}</h2>
@@ -263,7 +263,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                       </div>
                     )}
                   </div>
-                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-gradient-to-r tw-from-violet-300 tw-via-purple-500 tw-to-cyan-500 hover:tw-from-cyan-500 hover:tw-via-purple-700 hover:tw-to-violet-300 ">
+                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
                     <Link href={`/dashboard/mentor?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>

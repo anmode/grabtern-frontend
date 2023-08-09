@@ -3,11 +3,11 @@ import React from "react";
 const Schedule = () => {
   return (
     <>
-      <div>
-        <button className="tw-bg-gray-200 tw-rounded-md tw-px-4 tw-py-3 tw-text-base tw-font-medium">
+      <div className="tw-flex tw-gap-6 max-[512px]:tw-justify-center max-[512px]:tw-items-center">
+        <button className="tw-bg-gray-200 tw-rounded-md tw-p-3 tw-font-semibold hover:tw-bg-gray-300 tw-ease-in-out tw-duration-150 tw-transition-all">
           Default
         </button>
-        <button className="hover:tw-border-2 hover:tw-bg-gray-200 tw-ml-[2rem] tw-border-black tw-text-base tw-font-medium tw-rounded-md tw-px-4 tw-py-3 tw-border">
+        <button className="tw-bg-gray-200 tw-rounded-md tw-p-3 tw-font-semibold hover:tw-bg-gray-300 tw-ease-in-out tw-duration-150 tw-transition-all">
           + New Schedule
         </button>
       </div>

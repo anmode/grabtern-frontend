@@ -3,7 +3,7 @@ import { GrLocation } from "react-icons/gr";
 import { BsLink } from "react-icons/bs";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { LiaToggleOffSolid } from "react-icons/lia";
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 import { event } from "jquery";
 
 const Card = () => {
@@ -16,7 +16,6 @@ const Card = () => {
 
   return (
     <section className="tw-flex tw-flex-col max-[580px]:tw-pl-10">
-
       {/* timezone */}
       <div className="tw-flex tw-items-start tw-justify-between tw-pb-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full">
         <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
@@ -168,10 +167,7 @@ const Card = () => {
           </p>
         </div>
         <div className="">
-          <Switch
-            checked={!toggle}
-            onChange={() => setToggle(!toggle)}
-          />
+          <Switch checked={!toggle} onChange={() => setToggle(!toggle)} />
         </div>
       </div>
 

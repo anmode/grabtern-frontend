@@ -95,7 +95,7 @@ const Calender = () => {
           <div className="tw-flex tw-flex-col tw-justify-start tw-items-start max-[512px]:tw-pl-8 max-[512px]:tw-justify-center max-[512px]:tw-items-center">
             <Schedule />
 
-            <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-w-screen">
+            <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
               <div className="tw-flex tw-justify-between">
                 <h2 className="tw-font-semibold tw-text-lg">Default</h2>
                 <button className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">

@@ -186,15 +186,17 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
           </div>
         )}
 
+        <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
+
         <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
-          <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-xl tw-font-semibold">
+          <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium">
             Here you can view your sessions, edit your profile, and view your
             calendar.
           </p>
           <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
             {cards.map((card) => {
               return (
-                <div className="tw-w-[300px] tw-flex-wrap tw-bg-white tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-md hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
+                <div className="tw-w-[300px] tw-flex-wrap tw-bg-gradient-to-b tw-from-gray-50 tw-to-gray-100 tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-3xl tw-border-8 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                     {card.icon}
                     <h2 className="tw-font-semibold tw-text-xl">{card.name}</h2>
@@ -261,7 +263,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                       </div>
                     )}
                   </div>
-                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100">
+                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-gradient-to-r tw-from-violet-300 tw-via-purple-500 tw-to-cyan-500 hover:tw-from-cyan-500 hover:tw-via-purple-700 hover:tw-to-violet-300 ">
                     <Link href={`/dashboard/mentor?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>
@@ -269,13 +271,13 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                 </div>
               );
             })}
-            <div className="tw-flex tw-justify-center tw-w-[250px] tw-items-center">
-              <h2
+            <div className="-tw-ml-[8rem] tw-pl-28 tw-mb-[5rem] tw-flex tw-justify-center tw-w-[250px] tw-items-center">
+              <button
                 onClick={() => setIsSidebarOpen(true)}
-                className="tw-text-xl tw-font-semibold tw-italic hover:tw-text-primary-100 tw-cursor-pointer tw-transition-all tw-ease-in-out tw-duration-150 max-[707px]:tw-hidden"
+                className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
               >
-                View More...
-              </h2>
+                View More
+              </button>
             </div>
           </div>
         </main>

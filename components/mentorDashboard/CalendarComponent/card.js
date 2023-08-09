@@ -18,22 +18,20 @@ const Card = () => {
   };
   return (
     <>
-      <div className="tw-flex tw-items-center tw-pb-4">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
-            <GrLocation />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Timezone
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              Required for timely communications
-            </p>
-          </div>
+
+      {/* timezone */}
+      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
+            <GrLocation className="" />
+            Timezone
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            Required for timely communications
+          </p>
         </div>
-        <div className="tw-ml-[10rem]">
-          <select className="tw-rounded-lg tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-p-2.5">
+        <div className="">
+          <select className="tw-rounded-md tw-border-primary-200 tw-border-2 tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-py-3 tw-px-2 tw-w-[322px]">
             <option>(GMT-11:00) Midway Island, Samoa</option>
             <option>(GMT-10:00) Hawaii</option>
             <option>(GMT-8:00) Alaska</option>
@@ -60,35 +58,36 @@ const Card = () => {
           </select>
         </div>
       </div>
+
       <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
-      <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
+
+      {/* meeting link */}
+      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-pt-5">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <BsLink />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Personal meeting link
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              All your 1:1 meetings will be redirected to this URL
-            </p>
-          </div>
+            Personal meeting link
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            All your 1:1 meetings will be redirected to this URL
+          </p>
         </div>
-        <div className="tw-ml-[4.5rem]">
-          {link ? (
-            <div>
-              <input
-                type="url"
-                placeholder="Please enter a valid link"
-                className="tw-rounded-lg tw-font-medium tw-text-base tw-border tw-p-2.5 tw-px-12"
-              />
-              <button className="hover:tw-bg-gray-700  tw-ml-[9rem] tw-rounded-full tw-px-7 tw-py-3 tw-font-bold tw-text-normal tw-bg-black tw-text-center tw-text-white ">
-                Save
-              </button>
+        <div className="">
+          { link ? (
+            <div className="tw-flex tw-flex-col tw-justify-center tw-items-start tw-gap-2">
+              <div className="tw-flex tw-justify-center tw-gap-3">
+                <input
+                  type="url"
+                  placeholder="Please enter a valid link"
+                  className="tw-rounded-md tw-font-medium focus:tw-border-primary-100 tw-px-2 tw-text-base tw-border-2"
+                />
+                <button className="hover:tw-bg-primary-200 tw-rounded-md tw-px-6 tw-py-3 tw-font-bold tw-text-normal tw-bg-primary-100 tw-text-center tw-text-white tw-duration-200 tw-ease-in-out tw-transition-all">
+                  Save
+                </button>
+              </div>
               <button
                 onClick={addMeet}
-                className="hover:tw-bg-gray-300 tw-ml-[1rem] tw-rounded-full tw-px-5 tw-py-3  tw-text-normal tw-bg-gray-200 tw-text-center tw-text-black "
+                className="hover:tw-bg-gray-400 tw-rounded-md tw-px-6 tw-py-3 tw-text-normal tw-bg-gray-300 tw-text-center tw-text-black tw-font-semibold"
               >
                 Cancel
               </button>
@@ -103,7 +102,10 @@ const Card = () => {
           )}
         </div>
       </div>
+
       <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
+
+      {/* Booking Period */}
       <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
         <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
           <span className="tw-pt-1">

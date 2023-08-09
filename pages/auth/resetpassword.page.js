@@ -12,8 +12,7 @@ import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Visibility } from "@mui/icons-material";
-import { VisibilityOff } from "@mui/icons-material";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const ResetPassword = () => {
   // initial state
@@ -117,9 +116,15 @@ const ResetPassword = () => {
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
               {viewPassword ? (
-                <Visibility onClick={togglePassword} />
+                <FiEye
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
               ) : (
-                <VisibilityOff onClick={togglePassword} />
+                <FiEyeOff
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
               )}
             </div>
             <div className="tw-pt-5">
@@ -139,10 +144,16 @@ const ResetPassword = () => {
                 onChange={onChange}
                 className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
-              {showPassword ? (
-                <Visibility onClick={togglePasswordisibility} />
+              {viewPassword ? (
+                <FiEye
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
               ) : (
-                <VisibilityOff onClick={togglePasswordisibility} />
+                <FiEyeOff
+                  className="tw-absolute tw-right-3 tw-top-1/3 tw-text-gray-500 tw-cursor-pointer"
+                  onClick={togglePassword}
+                />
               )}
             </div>
             {/* <div className="form-input tw-pt-10 tw-pb-12">
@@ -186,7 +197,7 @@ const ResetPassword = () => {
         </form>
         <div className="logout-login">
           <div className="image-container">
-            <Image src={ForgotLogo} width={700} height={700} />
+            <Image src={ForgotLogo} alt="logout" width={700} height={700} />
           </div>
         </div>
       </main>

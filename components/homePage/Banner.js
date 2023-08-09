@@ -26,7 +26,7 @@ function Banner({ isMentorLoggedIn }) {
                   />
                   {isMentorLoggedIn ? (
                     <ButtonLink
-                      href="/dashboard"
+                      href="/dashboard/mentor"
                       text="Dashboard"
                       variant="outline"
                       className="tw-min-w-[130px]"

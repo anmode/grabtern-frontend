@@ -48,7 +48,9 @@ function TimeZoneInput({ id, name, onChange, value }) {
         (GMT+02:00) Africa/Johannesburg
       </option>
       <option value="(GMT+04:00) Asia/Dubai">(GMT+04:00) Asia/Dubai</option>
-      <option value="(GMT+05:30) Asia/Kolkata">(GMT+05:30) Asia/Kolkata</option>
+      <option value="(GMT+05:30) Asia/Kolkata" selected>
+        (GMT+05:30) Asia/Kolkata
+      </option>
       <option value="(GMT+07:00) Asia/Jakarta">(GMT+07:00) Asia/Jakarta</option>
       <option value="(GMT+09:00) Asia/Tokyo">(GMT+09:00) Asia/Tokyo</option>
       <option value="(GMT+10:00) Australia/Sydney">

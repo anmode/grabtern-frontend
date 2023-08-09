@@ -70,16 +70,124 @@ const Calender = () => {
   };
 
   // create new schedule
-  const [components, setComponents] = useState([]);
-  const [showNewSchedule, setShowNewSchedule] = useState(false);
+  const [components, setComponents] = useState([]);            // array of components (store all schedules)  
+  const [showNewSchedule, setShowNewSchedule] = useState(false); // show new schedule form
 
   const createSchedule = () => {
     const newComp = (
-      <Schedule
-        key={components.length}
-        id={components.length}
-        onDelete={deleteSchedule}
-      />
+      {
+        props: {
+          id: components.length,
+          deleteSchedule: deleteSchedule,
+        },
+        componentHidden: (
+          <div key={components.length} className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
+            <div className="tw-flex tw-justify-between max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items  -start">
+              <h2 className="tw-font-semibold tw-text-lg">Schedule {components.length + 1}</h2>
+              <div className="tw-flex tw-gap-4">
+                <button onClick={() => setShowNewSchedule(true)} className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                  Show
+                </button>
+                <button onClick={() => deleteSchedule(components.length)} className="tw-flex tw-justify-center tw-items-center tw-gap-2 tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                  <BsTrash3Fill /> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ),
+        componentShow: (
+          <div key={components.length} className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
+            <div className="tw-flex tw-justify-between max-[512px]:tw-flex-col">
+              <h2 className="tw-font-semibold tw-text-lg">Schedule {components.length + 1}</h2>
+              <div className="tw-flex tw-gap-4">
+                <button className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                  Save
+                </button>
+                <button onClick={
+                  () => {
+                    setShowNewSchedule(false);
+                  }
+                } className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                  Hide
+                </button>
+              </div>
+            </div>
+
+            {weekdays.map((day, index) => (
+              <div
+                key={index}
+                className="tw-mt-10 tw-flex tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start max-[512px]:tw-gap-2"
+              >
+                <div className="tw-flex tw-items-center tw-gap-2 tw-justify-center tw-text-center">
+                  <input
+                    id={index}
+                    type="checkbox"
+                    checked={selectedDays.includes(day)}
+                    onChange={() => handleDayChange(day)}
+                    className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
+                  />
+                  <label
+                    for={index}
+                    className="tw-flex tw-justify-center tw-text-center tw-items-center"
+                  >
+                    <span className="tw-font-medium tw-text-center tw-items-center tw-justify-center tw-flex tw-relative tw-top-1">
+                      {day}
+                    </span>
+                  </label>
+                </div>
+
+                {selectedDays.includes(day) ? (
+                  <div className="tw-flex tw-gap-5">
+                    <div className="tw-flex tw-justify-center tw-items-center">
+                      {/* <h3>Select Time:</h3> */}
+                      <select
+                        value={selectedTimes[day] || ""}
+                        onChange={(e) =>
+                          handleTimeChange(day, e.target.value)
+                        }
+                        className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                      >
+                        <option value="" className="" selected>
+                          9:00 AM
+                        </option>
+                        {Object.values(timeOptions).map((timeOption) => (
+                          <option key={timeOption} value={timeOption}>
+                            {timeOption}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
+                      -
+                    </span>
+                    <div className="tw-flex tw-justify-center tw-items-center">
+                      {/* <h3>Select Time:</h3> */}
+                      <select
+                        value={selectTime[day] || ""}
+                        onChange={(e) => handleTime(day, e.target.value)}
+                        className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                      >
+                        <option value="" className="tw-text-gray-200">
+                          8:00 PM
+                        </option>
+                        {Object.values(timeOptions).map((timeOption) => (
+                          <option key={timeOption} value={timeOption}>
+                            {timeOption}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="">
+                    <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )
+      }
     )
     setComponents([...components, newComp]);
   }
@@ -88,24 +196,6 @@ const Calender = () => {
     const updatedSchedules = components.filter(schedule => schedule.props.id !== idToDelete);
     setComponents(updatedSchedules);
   };
-
-  const Schedule = ({ id, onDelete }) => {
-    return (
-      <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
-        <div className="tw-flex tw-justify-between">
-          <h2 className="tw-font-semibold tw-text-lg">Schedule {id + 1}</h2>
-          <div className="tw-flex tw-gap-4">
-            <button className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
-              Show
-            </button>
-            <button onClick={() => onDelete(id)} className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
 
   return (
@@ -245,7 +335,15 @@ const Calender = () => {
             }
             {/* New Schedule */}
             <div>
-              {components}
+              {
+                components.map((component, index) => (
+                  <div key={index}>
+                    {
+                      showNewSchedule ? component.componentShow : component.componentHidden
+                    }
+                  </div>
+                ))
+              }
             </div>
           </div>
         )}

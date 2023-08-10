@@ -1,6 +1,7 @@
 import axios from "axios";
 import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
+import Spinner from "../basic/spinner"
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
@@ -156,7 +157,7 @@ const Bookings = () => {
           </li>
         </ul>
         <ul className="tw-bg-white tw-border tw-rounded-b">
-          {sessions
+          {sessions ? sessions
             .filter((session) =>
               activeTab.toLocaleLowerCase() === "pending"
                 ? session.isbooked
@@ -189,7 +190,7 @@ const Bookings = () => {
                   </p>
                 </div>
               </li>
-            ))}
+            )) : <Spinner/>}
         </ul>
       </div>
     </div>

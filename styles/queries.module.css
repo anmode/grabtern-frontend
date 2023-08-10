@@ -32,11 +32,6 @@
   margin-bottom: 2rem;
   color: #6e4fa0;
 }
-.generateTicket {
-  padding: 0px 0px 10px;
-  font-weight: bolder;
-  font-size: 1.5rem;
-}
 
 .buttonGroup {
   display: flex;

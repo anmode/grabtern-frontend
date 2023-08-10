@@ -36,13 +36,13 @@ function Profile({ mentorDetail }) {
 
   // function to fetch mentor profile
   const getMentorProfile = async () => {
-    const mentorData = localStorage.getItem("mentorData");
-    const mentorToken = decryptData(mentorData).mentorToken;
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/${mentorToken}`;
+    // const mentorData = localStorage.getItem("mentorData");
+    // const mentorToken = decryptData(mentorData).mentorToken;
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
-      const response = await axios.get(url);
-      const data = decryptData(response.data);
+      const response = await axios.get(url, { withCredentials: true });
+      const data = response.data;
       setFormData(data);
       setError("");
     } catch (error) {
@@ -91,21 +91,15 @@ function Profile({ mentorDetail }) {
     e.preventDefault();
     setError("");
     try {
-      const mentorData = localStorage.getItem("mentorData");
-      const mentorToken = decryptData(mentorData).mentorToken;
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;
 
-      const encryptedData = encryptData({
-        mentorLoginToken: mentorToken,
-        ...formData,
-      });
+      const response = await axios.put(
+        url,
+        { ...formData },
+        { withCredentials: true },
+      ); // Send the updated data to the backend
+      setFormData(response.data);
 
-      const response = await axios.put(url, { token: encryptedData }); // Send the updated data to the backend
-      setFormData(decryptData(response.data));
-
-      alert(response); // Display the response message from the backend
-
-      setModalOpen(false);
       setMsg("Changes saved successfully."); // Set success message
     } catch (error) {
       if (
@@ -320,6 +314,9 @@ function Profile({ mentorDetail }) {
             {error && (
               <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
             )}
+            {msg && (
+              <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+            )}
             <hr
               style={{
                 margin: "10px 0",
@@ -327,9 +324,6 @@ function Profile({ mentorDetail }) {
                 gridColumn: "1/3",
               }}
             />
-            {msg && (
-              <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
-            )}
             <button
               style={{
                 width: "fit-content",

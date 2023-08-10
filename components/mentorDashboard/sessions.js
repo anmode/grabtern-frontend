@@ -9,11 +9,12 @@ import {
   MdPayment,
   MdOutlineNotificationsNone,
 } from "react-icons/md";
-
 import { FaEdit } from "react-icons/fa";
 import { GrView } from "react-icons/gr";
 import SessionCard from "../newMentorProfile/SessionCard";
 import { Section } from "../UI";
+import Spinner from "../basic/spinner";
+import styled from "styled-components";
 
 function Sessions() {
   const [data, setData] = useState({});
@@ -48,7 +49,7 @@ function Sessions() {
         </p>
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
         <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-          {data.sessions &&
+          {data.sessions ? (
             data.sessions.map((card, index) => {
               return (
                 <SessionCard
@@ -62,7 +63,12 @@ function Sessions() {
                   path={`/dashboard/editMentorSession?username=${username}&sessionId=${card._id}`}
                 />
               );
-            })}
+            })
+          ) : (
+            <div>
+              <Spinner />
+            </div>
+          )}
         </div>
       </main>
     </>

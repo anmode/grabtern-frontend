@@ -1,6 +1,6 @@
 import { Button, IconLink, Input } from "../UI";
 import Image from "next/image";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   RiFacebookFill,
@@ -10,13 +10,12 @@ import {
   RiTwitterFill,
 } from "react-icons/ri";
 import FooterColumn from "./FooterColumn";
-import { FaCheckCircle } from 'react-icons/fa';
-
+import { FaCheckCircle } from "react-icons/fa";
 
 function Footer() {
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscribe`, { email })
       .then((response) => {
@@ -27,7 +26,6 @@ function Footer() {
         console.error(error);
       });
   };
-  
 
   const [email, setEmail] = useState("");
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
@@ -94,36 +92,40 @@ function Footer() {
         <div className="tw-py-8 tw-flex tw-items-center tw-flex-col md:tw-flex-row md:tw-justify-between">
           {/* subscribe form */}
           <div className="tw-flex tw-mb-4 md:tw-mb-0">
-  {subscriptionSuccess ? (
-  <div className="tw-flex tw-items-center tw-justify-center tw-gap-4 tw-h-full tw-animate-fade-in">
-  <FaCheckCircle className="tw-text-primary-100 tw-text-2xl tw-text-center" />
-  <p className="tw-text-xl tw-text-gray-500">
-    Thank you for subscribing!
-  </p>
-</div>
-  ) : (
-    <form className="md:tw-flex md:tw-items-center" onSubmit={handleSubmit}>
-      <label htmlFor="email" className="tw-sr-only">
-        Please provide your email address to subscribe to our newsletter
-      </label>
-      <Input
-        name="email"
-        type="email"
-        id="email"
-        placeholder="Email Address"
-        className="tw-w-full tw-mb-4 md:tw-mb-0 md:tw-mr-2 "
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Button
-        text="Subscribe"
-        type="submit"
-     onSubmit={handleSubmit}
-        className="tw-w-full md:tw-w-max"
-      />
-    </form>
-  )}
-</div>
+            {subscriptionSuccess ? (
+              <div className="tw-flex tw-items-center tw-justify-center tw-gap-4 tw-h-full tw-animate-fade-in">
+                <FaCheckCircle className="tw-text-primary-100 tw-text-2xl tw-text-center" />
+                <p className="tw-text-xl tw-text-gray-500">
+                  Thank you for subscribing!
+                </p>
+              </div>
+            ) : (
+              <form
+                className="md:tw-flex md:tw-items-center"
+                onSubmit={handleSubmit}
+              >
+                <label htmlFor="email" className="tw-sr-only">
+                  Please provide your email address to subscribe to our
+                  newsletter
+                </label>
+                <Input
+                  name="email"
+                  type="email"
+                  id="email"
+                  placeholder="Email Address"
+                  className="tw-w-full tw-mb-4 md:tw-mb-0 md:tw-mr-2 "
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Button
+                  text="Subscribe"
+                  type="submit"
+                  onSubmit={handleSubmit}
+                  className="tw-w-full md:tw-w-max"
+                />
+              </form>
+            )}
+          </div>
           {/* social links */}
           <div className="tw-flex tw-gap-1">
             <IconLink

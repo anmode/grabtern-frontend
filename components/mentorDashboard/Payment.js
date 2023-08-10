@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { AiFillCloseCircle, AiOutlineFieldNumber } from "react-icons/ai";
+import { AiOutlineFieldNumber } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BiSolidBank } from "react-icons/bi";
 import { FaRegMoneyBillAlt } from "react-icons/fa";
 import { MdNumbers } from "react-icons/md";
+import Form from "./PaymentComponent/Form";
+import axios from "axios";
 
 const Payments = ({ mentorDetail }) => {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
-    ifsccode: mentorDetail?.ifsccode || "",
-    accountno: mentorDetail?.accountno || "",
-    nameofbank: mentorDetail?.nameofbank || "",
+    ifscCode: mentorDetail?.ifsccode || "",
+    accountNo: mentorDetail?.accountno || "",
+    nameOfBank: mentorDetail?.nameofbank || "",
     upiID: mentorDetail?.upiID || "",
     amountToBePaid: mentorDetail?.amountToBePaid || "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
   const [editForm, setEditForm] = useState(false);
+  conat [error, setError] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -24,145 +27,39 @@ const Payments = ({ mentorDetail }) => {
     console.log(formData);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent Form from Refreshing
+  // getting account details from backend
+  const getDetails = async() => {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getAccountDetails/`
+    try{
+      setError("");
+      const response = axios.get(url, {withCredentials: true});
+      const data = (await response).data;
+      setFormData(data.account);
+    }
+    catch(error){
+      setError(error.response.data.message);
+    }
+  }
+
+  // getting data on load
+  useEffect(() => {
+    getDetails();
+  }, [])
+
+  const handleSubmit = () => {
+    console.log(formData);
+    setEditForm(false);
   };
+  
   return (
     <>
       {editForm ? (
-        <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0 tw-pb-10">
-          <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
-            <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
-              <AiFillCloseCircle
-                onClick={() => setEditForm(false)}
-                title="cancel"
-                className="tw-font-semibold tw-text-4xl tw-text-black tw-cursor-pointer"
-              />
-              <form
-                className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col tw-flex tw-flex-col"
-                onSubmit={handleSubmit}
-              >
-                <h2 className="tw-flex tw-items-center tw-justify-center tw-text-center tw-font-medium tw-text-5xl tw-mt-5 tw-text-[#845ec2]">
-                  Payment
-                </h2>
-                <div class="tw-grid md:tw-grid-cols-2 md:tw-gap-6 tw-mb-6">
-                  <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                    <label
-                      class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-                      for="account-holder-name"
-                    >
-                      ACCOUNT HOLDER NAME
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
-                      onChange={(e) => handleChange(e)}
-                      placeholder="e.g. Peter Parker"
-                      value={formData.name}
-                    />
-                  </div>
-                  <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                    <label
-                      class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-                      for="ifsc-code"
-                    >
-                      IFSC CODE
-                    </label>
-                    <input
-                      class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
-                      type="text"
-                      name="ifsccode"
-                      onChange={(e) => handleChange(e)}
-                      placeholder="SBINXXXXXX"
-                      value={formData.ifsccode}
-                    />
-                  </div>
-                  <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                    <label
-                      class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-                      for="account-no"
-                    >
-                      ACCOUNT NUMBER
-                    </label>
-                    <input
-                      type="text"
-                      name="accountno"
-                      class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
-                      onChange={(e) => handleChange(e)}
-                      placeholder="100XXX100"
-                      value={formData.accountno}
-                    />
-                  </div>
-                  <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                    <label
-                      class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-                      for="name-of-bank"
-                    >
-                      NAME OF BANK
-                    </label>
-                    <input
-                      class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
-                      type="text"
-                      name="nameofbank"
-                      onChange={(e) => handleChange(e)}
-                      placeholder="e.g. HDFC Bank"
-                      value={formData.nameofbank}
-                    />
-                  </div>
-                  <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                    <label
-                      class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-                      for="amountToBePaid"
-                    >
-                      AMOUNT TO BE PAID
-                    </label>
-                    <input
-                      class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
-                      type="text"
-                      name="amountToBePaid"
-                      onChange={(e) => handleChange(e)}
-                      placeholder="e.g. $100"
-                      value={formData.amountToBePaid}
-                    />
-                  </div>
-                </div>
-              </form>
-              <hr
-                style={{
-                  margin: "10px 0",
-                  borderColor: "grey",
-                  gridColumn: "1/3",
-                }}
-              />
-              <div className="UPIDiv">
-                <h2 className="tw-text-center tw-font-medium tw-text-2xl tw-mt-5 tw-text-[#845ec2]">
-                  UPI Payment
-                </h2>
-                <input
-                  class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4"
-                  type="text"
-                  name="upiID"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. xyz@okicicibank"
-                  value={formData.upiID}
-                />
-              </div>
-              <div className="tw-flex tw-justify-center tw-items-center max-[512px]:tw-pb-20 max-[512px]:tw-pt-0 tw-pt-6">
-                <button
-                  type="submit"
-                  onClick={(e) => {
-                    handleChange(e);
-                    setEditForm(false);
-                  }}
-                  className="tw-text-white tw-font-semibold tw-bg-primary-100 hover:tw-bg-primary-200 tw-px-6 tw-py-3 tw-rounded-md tw-duration-200 tw-ease-in-out tw-transition-all"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Form
+          formData={formData} handleChange ={handleChange}
+          closeForm={() => {setEditForm(false)}}
+          buttonText = "Save Changes"
+          handleSubmit = {handleSubmit}
+        />
       ) : (
         <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
           {/* payments card */}

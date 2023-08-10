@@ -39,7 +39,7 @@ function Sessions() {
       });
   }, []);
 
-  console.log(data)
+  console.log(data);
 
   return (
     <>
@@ -49,7 +49,7 @@ function Sessions() {
         </p>
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
         <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-          {data.sessions ?
+          {data.sessions ? (
             data.sessions.map((card, index) => {
               return (
                 <SessionCard
@@ -63,11 +63,12 @@ function Sessions() {
                   path={`/dashboard/editMentorSession?username=${username}&sessionId=${card._id}`}
                 />
               );
-            }) :
+            })
+          ) : (
             <div>
-             <Spinner/>
+              <Spinner />
             </div>
-            }
+          )}
         </div>
       </main>
     </>

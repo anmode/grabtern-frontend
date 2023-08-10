@@ -1,7 +1,7 @@
 import axios from "axios";
 import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
-import Spinner from "../basic/spinner"
+import Spinner from "../basic/spinner";
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
@@ -157,40 +157,44 @@ const Bookings = () => {
           </li>
         </ul>
         <ul className="tw-bg-white tw-border tw-rounded-b">
-          {sessions ? sessions
-            .filter((session) =>
-              activeTab.toLocaleLowerCase() === "pending"
-                ? session.isbooked
-                : !session.isbooked,
-            )
-            .map((session, index) => (
-              <li
-                key={index}
-                className="min-[540px]:tw-grid min-[540px]:tw-grid-cols-[auto_7rem] min-[540px]:tw-justify-between sm:tw-justify-normal tw-p-4 sm:tw-grid-cols-[auto_8rem] md:tw-grid-cols-[auto_13rem] tw-text-base-400 tw-border-b last:tw-border-b-0 tw-gap-6"
-              >
-                <div className="sm:tw-grid min-[540px]:tw-grid-cols-[auto_8rem] sm:tw-grid-cols-[auto_8rem] tw-gap-6">
-                  <p className="tw-font-medium">{session.sessionName}</p>
-                  <p className="tw-capitalize sm:tw-hidden">
-                    Mentee • {session.userName}
-                  </p>
-                  <p className="tw-capitalize tw-hidden sm:tw-block">
-                    {session.userName}
-                  </p>
-                </div>
-                <div>
-                  <div className="md:tw-grid tw-hidden md:tw-grid-cols-[5rem_5rem] md:tw-justify-between">
-                    <p className="tw-capitalize">{session.sessionDay}</p>
-                    <p className="tw-uppercase tw-text-right">
+          {sessions ? (
+            sessions
+              .filter((session) =>
+                activeTab.toLocaleLowerCase() === "pending"
+                  ? session.isbooked
+                  : !session.isbooked,
+              )
+              .map((session, index) => (
+                <li
+                  key={index}
+                  className="min-[540px]:tw-grid min-[540px]:tw-grid-cols-[auto_7rem] min-[540px]:tw-justify-between sm:tw-justify-normal tw-p-4 sm:tw-grid-cols-[auto_8rem] md:tw-grid-cols-[auto_13rem] tw-text-base-400 tw-border-b last:tw-border-b-0 tw-gap-6"
+                >
+                  <div className="sm:tw-grid min-[540px]:tw-grid-cols-[auto_8rem] sm:tw-grid-cols-[auto_8rem] tw-gap-6">
+                    <p className="tw-font-medium">{session.sessionName}</p>
+                    <p className="tw-capitalize sm:tw-hidden">
+                      Mentee • {session.userName}
+                    </p>
+                    <p className="tw-capitalize tw-hidden sm:tw-block">
+                      {session.userName}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="md:tw-grid tw-hidden md:tw-grid-cols-[5rem_5rem] md:tw-justify-between">
+                      <p className="tw-capitalize">{session.sessionDay}</p>
+                      <p className="tw-uppercase tw-text-right">
+                        {session.sessionTime}
+                      </p>
+                    </div>
+                    <p className="tw-capitalize min-[540px]:tw-text-right md:tw-hidden">
+                      {session.sessionDay.substring(0, 3)},&nbsp;
                       {session.sessionTime}
                     </p>
                   </div>
-                  <p className="tw-capitalize min-[540px]:tw-text-right md:tw-hidden">
-                    {session.sessionDay.substring(0, 3)},&nbsp;
-                    {session.sessionTime}
-                  </p>
-                </div>
-              </li>
-            )) : <Spinner/>}
+                </li>
+              ))
+          ) : (
+            <Spinner />
+          )}
         </ul>
       </div>
     </div>

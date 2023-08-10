@@ -271,14 +271,14 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                 </div>
               );
             })}
-            <div className="-tw-ml-[8rem] tw-pl-28 tw-mb-[5rem] tw-flex tw-justify-center tw-w-[250px] tw-items-center">
-              <button
-                onClick={() => setIsSidebarOpen(true)}
-                className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
-              >
-                View More
-              </button>
-            </div>
+          </div>
+          <div className="tw-mt-[3rem] -tw-ml-[8rem] tw-pl-28 tw-mb-[5rem] tw-flex tw-justify-center tw-w-[250px] tw-items-center">
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+            >
+              View More
+            </button>
           </div>
         </main>
       </section>

@@ -31,21 +31,38 @@ function MentorDashboard() {
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <div className="tw-flex tw-flex-col tw-justify-center tw-items-center">
+        <div
+          className={`tw-flex tw-flex-col tw-justify-center tw-items-center ${
+            isSidebarOpen
+              ? "tw-translate-x-36 tw-duration-200 tw-transition-all tw-ease-in-out"
+              : "tw-translate-0 tw-duration-200 tw-transition-all tw-ease-in-out"
+          }`}
+        >
           {component === "" && (
             <Home
               setIsSidebarOpen={setIsSidebarOpen}
+              isSidebarOpen={isSidebarOpen}
               mentor={mentor}
               setMentor={setMentor}
             />
           )}
-          {component === "profile" && <Profile />}
-          {component === "calendar" && <Calendar />}
-          {component === "sessions" && <Sessions />}
-          {component == "queries" && <Queries />}
-          {component == "bookings" && <Bookings />}
-          {component == "payments" && <Payments />}
-          {component == "services" && <ComingSoon />}
+          {component === "profile" && <Profile isSidebarOpen={isSidebarOpen} />}
+          {component === "calendar" && (
+            <Calendar isSidebarOpen={isSidebarOpen} />
+          )}
+          {component === "sessions" && (
+            <Sessions isSidebarOpen={isSidebarOpen} />
+          )}
+          {component == "queries" && <Queries isSidebarOpen={isSidebarOpen} />}
+          {component == "bookings" && (
+            <Bookings isSidebarOpen={isSidebarOpen} />
+          )}
+          {component == "payments" && (
+            <Payments isSidebarOpen={isSidebarOpen} />
+          )}
+          {component == "services" && (
+            <ComingSoon isSidebarOpen={isSidebarOpen} />
+          )}
         </div>
       </div>
     </>

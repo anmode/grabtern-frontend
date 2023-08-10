@@ -1,7 +1,7 @@
 import React, { Component, useState, useRef, useEffect } from "react";
+import Switch from "react-switch";
 import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
-import Switch from "@mui/material/Switch";
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import { RxRocket } from "react-icons/rx";
@@ -16,14 +16,12 @@ import { CgMailOpen } from "react-icons/cg";
 import { BiGift, BiTime } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { CgSearchFound } from "react-icons/cg";
-import { RiExpandLeftFill, RiExpandRightFill } from "react-icons/ri";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
 const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -231,6 +229,18 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
     setCurrentPage(params.get("tab") || "");
   }, [window.location.search]);
 
+  const BlackSwitch = styled(Switch)(({ theme }) => ({
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      color: "black",
+      "&:hover": {
+        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+      backgroundColor: "black",
+    },
+  }));
+
   return (
     <>
       <div className="max-[512px]:tw-hidden">
@@ -275,16 +285,16 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             {/* expand/collapse button */}
             <div
-              className={`tw-p-4 tw-flex ${
+              className={`tw-p-1 tw-flex tw-w-10 ${
                 isSidebarOpen
                   ? "tw-justify-start tw-gap-4"
                   : "tw-justify-center"
-              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
+              } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
             >
               <div
                 className={`${
                   isSidebarOpen
-                    ? "tw-flex tw-justify-center tw-items-center"
+                    ? "tw-flex tw-justify-center tw-items-center tw-gap-2"
                     : "tw-flex-col tw-flex"
                 }`}
               >
@@ -295,22 +305,15 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   >
                     Collapse
                   </label>
-                ) : (
-                  <label
-                    for="toggle"
-                    className="tw-font-semibold tw-text-slate-700 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
-                  >
-                    Expand
-                  </label>
-                )}
+                ) : null}
                 <Switch
-                  className="tw-items-center tw-justify-center tw-flex"
+                  className="tw-items-center tw-justify-center tw-flex tw-w-10"
                   id="toggle"
-                  checked={checked}
+                  checked={isSidebarOpen ? true : false}
                   onChange={() => {
-                    setChecked(!checked);
                     toggleSidebar();
                   }}
+                  onColor="#000000"
                 />
               </div>
             </div>

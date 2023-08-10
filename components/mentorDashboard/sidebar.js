@@ -313,7 +313,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   onChange={() => {
                     toggleSidebar();
                   }}
-                  onColor="#000000"
+                  onColor="#00C9A7"
                 />
               </div>
             </div>

@@ -1,8 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const Edit = () => {
+  const router = useRouter();
+  const { username, sessionId } = router.query;
+  const [data, setData] = useState({
+    name: "",
+    type: "",
+    duration: 0,
+    description: "",
+  });
+  // console.log(username);
+  const fetchData = async () => {
+    try {
+      const url = `https://grabtern-backend.vercel.app/api/mentors/mentorDetail/${username}`;
+      const { data: res } = await axios.get(url);
+      return res.mentorDetail;
+    } catch (err) {
+      console.error("Error in fetching details ", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchData()
+      .then((response) => {
+        setData(response.sessions.find((session) => session._id === sessionId));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  // console.log(data);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Updated data is \n", data);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
   return (
     <>
@@ -36,7 +78,9 @@ const Edit = () => {
                       paddingLeft: "35px",
                     }}
                     className="mentorFormInput"
-                    placeholder="Enter the title of your session"
+                    value={data.name}
+                    placeholder={data.name}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -52,7 +96,7 @@ const Edit = () => {
 
                   <input
                     type="text"
-                    name="text"
+                    name="type"
                     className="mentorFormInput"
                     style={{
                       width: "90%",
@@ -62,7 +106,9 @@ const Edit = () => {
                       background: "white",
                       paddingLeft: "35px",
                     }}
-                    placeholder="Enter the type (eg: Coffee chat)"
+                    value={data.type}
+                    placeholder={data.type}
+                    onChange={handleInputChange}
                   />
                   {/* <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" /> */}
                 </div>
@@ -71,7 +117,7 @@ const Edit = () => {
 
                   <input
                     type="number"
-                    name="time"
+                    name="duration"
                     className="mentorFormInput"
                     style={{
                       width: "90%",
@@ -80,7 +126,9 @@ const Edit = () => {
                       border: "2px solid rgb(220, 220, 220)",
                       paddingLeft: "35px",
                     }}
-                    placeholder="Duration of your session in minutes"
+                    value={data.duration}
+                    placeholder={data.duration}
+                    onChange={handleInputChange}
                   />
                   {/* <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" /> */}
                 </div>
@@ -98,7 +146,9 @@ const Edit = () => {
                     border: "2px solid rgb(220, 220, 220)",
                   }}
                   className="mentorFormInput"
-                  placeholder="Description"
+                  value={data.description}
+                  placeholder={data.description}
+                  onChange={handleInputChange}
                 />
               </div>
               <div>
@@ -119,6 +169,7 @@ const Edit = () => {
                   gridColumn: "1/3",
                 }}
               />
+
               <button
                 type="submit"
                 className="tw-mb-[2rem] tw-text-white tw-border tw-rounded-md tw-px-4 tw-py-2 tw-text-center tw-font-semibold tw-text-base tw-bg-blue-400 hover:tw-bg-blue-500 hover:tw-border-black hover:tw-border-2"

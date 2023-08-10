@@ -118,9 +118,7 @@ const Home = ({
             Welcome <span>{mentor.name?.split(" ")[0]}</span>!
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
-          <div
-            className='tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10'
-          >
+          <div className="tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10">
             {mentor ? (
               <p className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center">
                 <h2 className="tw-font-semibold tw-text-white">

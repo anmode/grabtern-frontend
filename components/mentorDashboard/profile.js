@@ -41,7 +41,7 @@ function Profile({ mentorDetail }) {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
-      const response = await axios.get(url, {withCredentials: true});
+      const response = await axios.get(url, { withCredentials: true });
       const data = response.data;
       setFormData(data);
       setError("");
@@ -93,7 +93,11 @@ function Profile({ mentorDetail }) {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;
 
-      const response = await axios.put(url, {...formData}, { withCredentials: true}); // Send the updated data to the backend
+      const response = await axios.put(
+        url,
+        { ...formData },
+        { withCredentials: true },
+      ); // Send the updated data to the backend
       setFormData(response.data);
 
       setMsg("Changes saved successfully."); // Set success message

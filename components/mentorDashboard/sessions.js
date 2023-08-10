@@ -1,48 +1,70 @@
-import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import styles from "../../styles/sessions.module.css";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
+import { BiSolidUser, BiTime, BiCalendar } from "react-icons/bi";
+import { BsTwitter, BsLinkedin } from "react-icons/bs";
+import {
+  MdNotifications,
+  MdPayment,
+  MdOutlineNotificationsNone,
+} from "react-icons/md";
+
+import { FaEdit } from "react-icons/fa";
+import { GrView } from "react-icons/gr";
+import SessionCard from "../newMentorProfile/SessionCard";
+import { Section } from "../UI";
 
 function Sessions() {
-  const [sessionData, setSessionData] = useState({});
+  const [data, setData] = useState({});
+  const username = "anmode";
+  const fetchData = async () => {
+    try {
+      const url = `https://grabtern-backend.vercel.app/api/mentors/mentorDetail/${username}`;
+      const { data: res } = await axios.get(url);
+      return res.mentorDetail;
+    } catch (err) {
+      console.error("Error in fetching details ", err);
+    }
+  };
 
   useEffect(() => {
-    const { mentor_username } = JSON.parse(localStorage.getItem("mentorData"));
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/session`;
-    const res = axios.get(url, { withCredentials: true });
-
-    // setSessionData(res);
-    console.log("res of session detail of mentor: ", res);
+    fetchData()
+      .then((response) => {
+        setData(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const updateSessions = () => {
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/update/sessions`;
-    const res = axios.post(url, sessionData, { withCredentials: true });
-    // setSessionData({res});
-  };
+  console.log(data);
 
   return (
     <>
-      <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
-        <h2 className="tw-font-semibold tw-text-md">
-          Title: kjadf
-          <span className="tw-text-sm tw-text-primary-200">
-            {sessionData?.session?.title}
-          </span>
-        </h2>
-        <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
-          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-            {sessionData?.session?.type}
-          </p>
-          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-            {sessionData?.session?.duration} minutes
-          </p>
-          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-            {sessionData?.session?.desc}
-          </p>
+      <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
+        <p className="tw-text-black tw-flex tw-justify-start tw-items-center tw-text-center tw-text-3xl tw-font-semibold">
+          Sessions
+        </p>
+        <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
+        <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+          {data.sessions &&
+            data.sessions.map((card, index) => {
+              return (
+                <SessionCard
+                  key={index}
+                  type={card.type}
+                  name={card.name}
+                  description={card.description}
+                  duration={card.duration}
+                  price={card.price}
+                  text="Edit Session"
+                  path={`/dashboard/editMentorSession?username=${username}&sessionId=${card._id}`}
+                />
+              );
+            })}
         </div>
-      </div>
+      </main>
     </>
   );
 }

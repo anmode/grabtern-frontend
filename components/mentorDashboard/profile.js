@@ -36,13 +36,13 @@ function Profile({ mentorDetail }) {
 
   // function to fetch mentor profile
   const getMentorProfile = async () => {
-    const mentorData = localStorage.getItem("mentorData");
-    const mentorToken = decryptData(mentorData).mentorToken;
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/${mentorToken}`;
+    // const mentorData = localStorage.getItem("mentorData");
+    // const mentorToken = decryptData(mentorData).mentorToken;
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
-      const response = await axios.get(url);
-      const data = decryptData(response.data);
+      const response = await axios.get(url, {withCredentials: true});
+      const data = response.data;
       setFormData(data);
       setError("");
     } catch (error) {

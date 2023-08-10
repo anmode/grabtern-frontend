@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 * {
   padding: 0;
   margin: 0;
@@ -32,7 +31,6 @@
 }
 
 @layer base {
-
   h1,
   h2,
   h3,
@@ -47,12 +45,10 @@
   .h6 {
     @apply tw-text-base-500;
   }
-
   p {
     @apply tw-text-base-400;
   }
 }
-
 html,
 body {
   padding: 0;
@@ -67,11 +63,6 @@ body {
   display: flex;
 }
 
-.hover\:tw-text-primary-100:visited {
-  color: #845ec2;
-
-}
-
 .mask {
   -webkit-mask-size: contain;
   mask-size: contain;
@@ -80,12 +71,10 @@ body {
   -webkit-mask-position: center;
   mask-position: center;
 }
-
 .mask-hexed {
   -webkit-mask-image: url("../public/Hexagon.svg");
   mask-image: url("../public/Hexagon.svg");
 }
-
 ::-webkit-scrollbar {
   display: none;
 }
@@ -126,7 +115,6 @@ a {
 .slider-area2 .hero__caption.hero__caption2 {
   padding-top: 100px;
 }
-
 /*  */
 .loaderBackground {
   animation: loader 1s 0.8s forwards;
@@ -161,7 +149,6 @@ a {
   from {
     transform: translateX(100%);
   }
-
   to {
     transform: translateX(0);
   }
@@ -171,16 +158,13 @@ a {
   10% {
     opacity: 1;
   }
-
   50% {
     opacity: 0.5;
   }
-
   100% {
     opacity: 0;
   }
 }
-
 .owl-nav button:first-child {
   top: 45%;
   position: absolute;
@@ -224,7 +208,6 @@ a {
   .mentorDetail {
     margin: 200px 0 !important;
   }
-
   .courses-actives {
     display: block !important;
   }
@@ -356,7 +339,6 @@ a {
   .menuToggle {
     display: flex;
   }
-
   .header-bottom .container-fluid .row div:nth-child(2) {
     /* padding: 0; */
     position: absolute;
@@ -369,11 +351,9 @@ a {
   .main-menu {
     width: 100%;
   }
-
   .main-menu.active {
     display: block !important;
   }
-
   .main-menu nav ul {
     gap: 40px;
     padding: 60px 35px;
@@ -383,19 +363,15 @@ a {
     display: flex;
     flex-direction: column;
   }
-
   .main-menu nav ul li a {
     padding: 0 !important;
   }
-
   .about-area1 .support-wrapper {
     flex-direction: column;
   }
-
   .services-area {
     margin-top: -120px;
   }
-
   .container {
     padding: 20px;
     max-width: 100% !important;
@@ -423,24 +399,20 @@ a {
   .cat-icon img {
     width: 80% !important;
   }
-
   .owl-nav button:first-child {
     left: -25px;
   }
-
   .owl-nav button:last-child {
     right: -25px;
   }
-
-  .services-area>.container {
+  .services-area > .container {
     margin-top: 120px;
   }
 
-  .services-area>.container>.row .col-lg-4 {
+  .services-area > .container > .row .col-lg-4 {
     flex: unset;
     max-width: 100% !important;
   }
-
   .container {
     padding: 70px 30px;
     max-width: 100% !important;
@@ -453,7 +425,6 @@ a {
   margin: 0 auto;
   padding: 0 60px;
 }
-
 /* 
 .right-content1 {
   padding-top: 0 !important;
@@ -498,14 +469,12 @@ a {
   .team-area {
     padding-top: 0 !important;
   }
-
   /* .testimonialsList{
     -top: 30px;
   } */
   .testimonialsList .box .info .name {
     font-size: 15px !important;
   }
-
   .testimonialsList .box .info .job {
     font-size: 14px !important;
   }
@@ -522,58 +491,46 @@ a {
     width: 65px !important;
     height: 65px !important;
   }
-
   .testimonialsList .owl-nav {
     display: none !important;
   }
-
   .testimonials {
     padding: 0 20px !important;
   }
-
   .owl-nav {
     display: none;
   }
-
   .courses-area .container {
     padding: 100px 10px 0 !important;
   }
-
   /* .single-slider .container {
     padding: 270px 30px 200px !important;
   } */
   .hero__caption .btn {
     margin-bottom: 20px;
   }
-
   .properties__card {
     height: 690px !important;
   }
-
   .mentorUploudPhoto {
     display: block !important;
   }
-
   .mentorUploudPhoto img {
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
     margin: auto;
   }
-
   .mentorForm {
     border: none !important;
     padding: 0 15px !important;
   }
-
-  .mentorFormRegisration>.container {
+  .mentorFormRegisration > .container {
     padding-top: 0 !important;
   }
-
   .mentorForm .mentorFormHeading {
     font-size: 25px;
   }
-
   /* .properties__footer .restaurant-name {
     font-size: 14px !important;
   } */
@@ -586,25 +543,25 @@ a {
   .courseFooter a {
     padding: 10px;
   }
-
   .about-area1 {
     padding: 0 30px;
   }
-
-  .services-area>.container>.row .col-lg-4 .single-services {
+  .services-area > .container > .row .col-lg-4 .single-services {
     display: flex;
     flex-direction: column;
     gap: 30px;
   }
-
-  .services-area>.container>.row .col-lg-4 .single-services .features-caption {
+  .services-area
+    > .container
+    > .row
+    .col-lg-4
+    .single-services
+    .features-caption {
     padding-left: 0;
   }
-
   .services-area {
     margin-top: -220px;
   }
-
   .container {
     padding: 100px 30px 0;
     max-width: 100% !important;
@@ -624,7 +581,7 @@ a {
   font-weight: 700;
 } */
 
-.testimonials>p {
+.testimonials > p {
   text-align: center;
 }
 
@@ -722,16 +679,14 @@ a {
   display: block;
 }
 
-.mentorFormRegisration>.container>.mentorForm {
+.mentorFormRegisration > .container > .mentorForm {
   margin: 0 auto;
 }
-
 @media screen and (max-width: 600px) {
-  .mentorFormRegisration>.container>.mentorForm {
+  .mentorFormRegisration > .container > .mentorForm {
     margin: 67px auto;
   }
 }
-
 .mentorFormSetupPW {
   margin: unset !important;
 }
@@ -808,13 +763,11 @@ select {
   top: 100%;
   line-height: 1.4;
 }
-
-.srv-validation-message~input,
-.srv-validation-message~textarea,
-.srv-validation-message~select {
+.srv-validation-message ~ input,
+.srv-validation-message ~ textarea,
+.srv-validation-message ~ select {
   border: 1px solid red !important;
 }
-
 .scheduleCard div * {
   text-transform: capitalize;
   font-size: small !important;
@@ -860,14 +813,12 @@ select {
   ); */
   box-shadow: 6px 4px 13px -2px rgba(0, 0, 0, 0.2);
 }
-
 .mentorForm .mentorFormHeading {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 10px;
   text-align: center;
 }
-
 .mentorForm .trackerStep {
   height: 30px;
   aspect-ratio: 1;
@@ -879,33 +830,27 @@ select {
   opacity: 0.5;
   margin: auto;
 }
-
 .mentorForm .trackerStep.active {
   opacity: 1;
 }
-
 .mentorForm .trackerStep.done {
   color: white;
   background-color: #845ec2;
   opacity: 1;
 }
-
 .mentorForm .trackerLine {
   border-bottom: 2px solid #845ec2;
   opacity: 0.3;
   flex: 1;
   margin: 0 10px;
 }
-
-.mentorForm .trackerStep.done+.trackerLine {
+.mentorForm .trackerStep.done + .trackerLine {
   opacity: 1;
 }
-
 .mentorForm .mentorFormButton:active {
   transform: scale(1.01);
   box-shadow: unset !important;
 }
-
 .mentorForm .mentorFormButton:hover {
   transform: scale(0.99);
 }
@@ -916,7 +861,7 @@ select {
   margin-bottom: 0;
 }
 
-.mentorForm>a:last-child {
+.mentorForm > a:last-child {
   position: relative;
   top: -20px;
 }
@@ -935,7 +880,6 @@ select {
   padding-left: 15px;
   color: rgb(127, 102, 255);
 }
-
 .mentorCard {
   background-color: white;
   display: flex;
@@ -961,13 +905,11 @@ select {
   .mentorLists a {
     width: 100%;
   }
-
   .mentorCard {
     padding: 30px 0;
     max-width: 100%;
     width: 100%;
   }
-
   .mentorCard img {
     width: 150px !important;
   }
@@ -1004,25 +946,18 @@ select {
 
 .modalPopup {
   transition: all 0.5s ease-in-out;
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modalPopupAfterRegistrationDone {
@@ -1147,7 +1082,6 @@ select {
 .mentorDetail .container {
   max-width: 1600px;
 }
-
 .mentorDetail .container .row1 {
   display: flex;
   align-items: flex-start;
@@ -1156,11 +1090,10 @@ select {
   color: grey;
 }
 
-.mentorDetail .container>.contactLinks li a:hover {
+.mentorDetail .container > .contactLinks li a:hover {
   color: black;
 }
-
-.mentorDetail .container>.contactLinks li:hover {
+.mentorDetail .container > .contactLinks li:hover {
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
@@ -1196,7 +1129,6 @@ select {
   transform: all;
   transition-duration: 0.2s;
 }
-
 .bookSessions li:hover {
   width: 402px;
   box-shadow:
@@ -1221,7 +1153,7 @@ select {
   background-color: rgb(255, 255, 255);
 }
 
-.bookSessions>li button {
+.bookSessions > li button {
   background: linear-gradient(#c054ff, #5274ff);
   padding: 8px 15px;
   font-size: 16px;
@@ -1231,8 +1163,7 @@ select {
   border-radius: 5px;
   transition: transform 0.2s ease;
 }
-
-.bookSessions>li button:hover {
+.bookSessions > li button:hover {
   transform: scale(1.05);
   background: linear-gradient(#b12cfe, #305aff);
 }
@@ -1251,42 +1182,37 @@ select {
 
 /* Mentor registration page styling */
 
-.mentor-register-page .container>img {
+.mentor-register-page .container > img {
   max-width: 992px;
   width: 100%;
 }
 
 @media screen and (min-width: 1200px) {
-  .mentor-register-page .container>img {
+  .mentor-register-page .container > img {
     margin: 0 70px;
   }
 }
-
 .description {
   color: black;
   font-weight: 600;
   font-size: small;
   width: auto;
 }
-
 .login-card {
   background: white;
   padding: 5px;
   border-radius: 14px;
   opacity: 0.5;
 }
-
 .menu-text {
   color: black;
   padding-right: 10px;
   padding-bottom: 8px;
   cursor: pointer;
 }
-
 .menu-text a:hover {
   background: blue;
 }
-
 .login-optionslist {
   position: absolute;
   top: 40px !important;
@@ -1300,17 +1226,17 @@ select {
   width: 100px;
 }
 
-.login-optionslist>.login-buttons {
+.login-optionslist > .login-buttons {
   padding: 10px;
   width: 100%;
   text-align: left;
 }
 
-.login-optionslist>.login-buttons:first-child:hover {
+.login-optionslist > .login-buttons:first-child:hover {
   border-radius: 7px 7px 0px 0px;
 }
 
-.login-optionslist>.login-buttons:nth-child(2):hover {
+.login-optionslist > .login-buttons:nth-child(2):hover {
   border-radius: 0px 0px 7px 7px;
 }
 
@@ -1322,7 +1248,6 @@ select {
   gap: 20px;
   justify-content: center;
 }
-
 .card-container {
   margin-bottom: 2rem;
   width: 18.6vw;
@@ -1336,7 +1261,6 @@ select {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   color: black;
 }
-
 .lower-container {
   padding-top: 35px;
   text-align: center;
@@ -1425,26 +1349,21 @@ select {
   flex-direction: column;
   padding: 20px;
   overflow-y: scroll;
-  scrollbar-width: thin;
-  /* Specify the width of the scrollbar */
+  scrollbar-width: thin; /* Specify the width of the scrollbar */
   scrollbar-color: transparent transparent;
   /* justify-content: space-around; */
   /* height: 100%; */
 }
-
 .mentor-card__info::-webkit-scrollbar {
-  width: 6px;
-  /* Specify the width of the scrollbar */
+  width: 6px; /* Specify the width of the scrollbar */
 }
 
 .mentor-card__info::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  /* Set the color of the scrollbar thumb */
+  background-color: transparent; /* Set the color of the scrollbar thumb */
 }
 
 .mentor-card__info::-webkit-scrollbar-track {
-  background-color: transparent;
-  /* Set the color of the scrollbar track */
+  background-color: transparent; /* Set the color of the scrollbar track */
 }
 
 .mentor-card__name {
@@ -1801,25 +1720,20 @@ select {
     margin-right: 10px;
     margin-left: 0;
   }
-
   .front {
     display: block;
   }
-
   .tnc {
     margin-top: 350px;
   }
-
   #tncheading2 {
     font-size: 27px;
   }
-
   .maincontent {
     margin-right: 5px;
     text-align: left;
     width: 93%;
   }
-
   .tableofcontents {
     margin: auto;
     width: 94%;
@@ -1875,7 +1789,6 @@ select {
   background-color: black;
   color: white;
 }
-
 .datePickerDayTime li:hover,
 .datePickerDayTime li.active {
   background-color: black;
@@ -2003,7 +1916,7 @@ select {
   max-width: 500px;
 }
 
-.bookSessionSchedules>ul.day li {
+.bookSessionSchedules > ul.day li {
   padding: 7px 10px;
   background-color: white;
   color: black;
@@ -2012,21 +1925,18 @@ select {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-
-.bookSessionSchedules>ul.day li.active {
+.bookSessionSchedules > ul.day li.active {
   box-shadow: 0 2px 10px 3px rgba(255, 255, 255, 0.05);
   background-color: black;
   color: white;
 }
-
-.bookSessionSchedules>ul.time li {
+.bookSessionSchedules > ul.time li {
   padding: 7px;
   border: 1px solid black;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-
-.bookSessionSchedules>ul.time li.active {
+.bookSessionSchedules > ul.time li.active {
   background-color: black;
   color: white;
 }
@@ -2079,7 +1989,6 @@ select {
   height: 250px;
   width: fit-content;
 }
-
 .modal-content span {
   display: flex;
   align-items: center;

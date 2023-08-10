@@ -17,11 +17,10 @@ import { Section } from "../UI";
 
 function Sessions() {
   const [data, setData] = useState({});
-
+  const username = "anmode";
   const fetchData = async () => {
     try {
-      const url =
-        "https://grabtern-backend.vercel.app/api/mentors/mentorDetail/anmode";
+      const url = `https://grabtern-backend.vercel.app/api/mentors/mentorDetail/${username}`;
       const { data: res } = await axios.get(url);
       return res.mentorDetail;
     } catch (err) {
@@ -60,7 +59,7 @@ function Sessions() {
                   duration={card.duration}
                   price={card.price}
                   text="Edit Session"
-                  path="/dashboard/editMentorSession"
+                  path={`/dashboard/editMentorSession?username=${username}&sessionId=${card._id}`}
                 />
               );
             })}

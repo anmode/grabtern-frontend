@@ -7,7 +7,7 @@ const Bookings = () => {
 
   const tabs = ["Pending", "Completed"];
 
-  const tableHeadings = ["Topic", "Mentee", "Day", "Time"];
+  const tableHeadings = ["Topic", "Mentor", "Day", "Time"];
 
   // session state
   const [sessions, setSessions] = useState([]);
@@ -71,7 +71,7 @@ const Bookings = () => {
         <ul className="tw-bg-primary-100 tw-text-white  min-[500px]:tw-grid tw-grid-cols-[auto_10rem]  [&>*]:tw-capitalize tw-p-4  sm:tw-grid-cols-[minmax(10rem,auto)_8rem_8rem] md:tw-grid-cols-[minmax(10rem,auto)_8rem_13rem] tw-gap-6 tw-border tw-border-b-0 tw-rounded-t">
           <li className="tw-hidden min-[540px]:tw-inline">topic</li>
           <li className="min-[540px]:tw-hidden">Session List</li>
-          <li className="tw-hidden sm:tw-inline">mentee</li>
+          <li className="tw-hidden sm:tw-inline">Mentor</li>
           <div className="tw-hidden md:tw-grid md:tw-justify-between md:tw-grid-cols-[5rem_5rem]">
             <li>day</li>
             <li className="tw-text-right">time</li>
@@ -95,7 +95,7 @@ const Bookings = () => {
                 <div className="sm:tw-grid min-[540px]:tw-grid-cols-[auto_8rem] sm:tw-grid-cols-[auto_8rem] tw-gap-6">
                   <p className="tw-font-medium">{session.sessionName}</p>
                   <p className="tw-capitalize sm:tw-hidden">
-                    Mentee • {session.userName}
+                    Mentor • {session.userName}
                   </p>
                   <p className="tw-capitalize tw-hidden sm:tw-block">
                     {session.userName}

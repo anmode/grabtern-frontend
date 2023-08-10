@@ -1,7 +1,6 @@
 import clsx from "clsx";
 
-function Switch({checked, onChange}) {
-
+function Switch({ checked, onChange }) {
   // function for toggling button
   const toggle = () => {
     onChange();
@@ -14,7 +13,7 @@ function Switch({checked, onChange}) {
         checked && ["tw-bg-primary-100"],
         !checked && ["tw-bg-primary-10"],
       )}
-      onClick = {toggle}
+      onClick={toggle}
     >
       <div
         className={clsx(

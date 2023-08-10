@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { GrLocation } from "react-icons/gr";
 import { BsLink } from "react-icons/bs";
 import { AiOutlineCalendar } from "react-icons/ai";
-import {Switch} from "../../UI";
+import { Switch } from "../../UI";
 
 const Card = () => {
   const [toggle, setToggle] = useState(false);

@@ -1,5 +1,5 @@
 import Button from "./Button/Button";
-import Switch from "./Button/Switch"
+import Switch from "./Button/Switch";
 import IconCard from "./Card/IconCard";
 import ImageCard from "./Card/ImageCard";
 import ProfileCard from "./Card/ProfileCard";

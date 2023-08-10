@@ -16,6 +16,7 @@ import { CgMailOpen } from "react-icons/cg";
 import { BiGift, BiTime } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { CgSearchFound } from "react-icons/cg";
+import { RiExpandLeftFill, RiExpandRightFill } from "react-icons/ri";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
@@ -240,8 +241,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
           className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
-          onMouseOver={() => setIsSidebarOpen(true)}
-          onMouseLeave={() => setIsSidebarOpen(false)}
         >
           <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
@@ -275,6 +274,28 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               </span>
             </div>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
+            {/* expand/collapse button */}
+            <div
+              className={`tw-p-4 tw-flex ${
+                isSidebarOpen
+                  ? "tw-justify-start tw-gap-4"
+                  : "tw-justify-center"
+              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              {isSidebarOpen ? (
+                <div className="tw-flex  tw-justify-center tw-items-center tw-gap-5">
+                  <RiExpandLeftFill className="tw-text-3xl tw-text-slate-700" />
+                  <span className="tw-font-semibold tw-text-slate-700">
+                    Collapse
+                  </span>
+                </div>
+              ) : (
+                <div>
+                  <RiExpandRightFill className="tw-text-3xl tw-text-slate-700" />
+                </div>
+              )}
+            </div>
             <ul
               className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}
             >

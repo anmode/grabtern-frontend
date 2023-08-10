@@ -1,7 +1,7 @@
 import React, { Component, useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
-
+import Switch from "@mui/material/Switch";
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import { RxRocket } from "react-icons/rx";
@@ -23,10 +23,9 @@ import styled from "styled-components";
 
 const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const toggleSidebar = () => {
-    console.log("toggle clicked ", isSidebarOpen);
-
     setIsSidebarOpen(!isSidebarOpen);
   };
 
@@ -280,21 +279,40 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 isSidebarOpen
                   ? "tw-justify-start tw-gap-4"
                   : "tw-justify-center"
-              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
             >
-              {isSidebarOpen ? (
-                <div className="tw-flex  tw-justify-center tw-items-center tw-gap-5">
-                  <RiExpandLeftFill className="tw-text-3xl tw-text-slate-700" />
-                  <span className="tw-font-semibold tw-text-slate-700">
+              <div
+                className={`${
+                  isSidebarOpen
+                    ? "tw-flex tw-justify-center tw-items-center"
+                    : "tw-flex-col tw-flex"
+                }`}
+              >
+                {isSidebarOpen ? (
+                  <label
+                    className="tw-relative tw-top-1 tw-font-semibold tw-text-slate-700 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
+                    for="toggle"
+                  >
                     Collapse
-                  </span>
-                </div>
-              ) : (
-                <div>
-                  <RiExpandRightFill className="tw-text-3xl tw-text-slate-700" />
-                </div>
-              )}
+                  </label>
+                ) : (
+                  <label
+                    for="toggle"
+                    className="tw-font-semibold tw-text-slate-700 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
+                  >
+                    Expand
+                  </label>
+                )}
+                <Switch
+                  className="tw-items-center tw-justify-center tw-flex"
+                  id="toggle"
+                  checked={checked}
+                  onChange={() => {
+                    setChecked(!checked);
+                    toggleSidebar();
+                  }}
+                />
+              </div>
             </div>
             <ul
               className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}

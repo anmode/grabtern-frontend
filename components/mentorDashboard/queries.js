@@ -72,12 +72,12 @@ const Queries = () => {
 
   return (
     <section
-      className={`${styles.box} tw-mt-[180px] tw-ml-[400px] max-[817px]:tw-ml-[100px] max-[512px]:tw-m-0 max-[512px]:tw-p-4 tw-flex-wrap`}
+      className='tw-pb-[5rem] tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0'
     >
       <div
-        className={`tw-flex tw-flex-col tw-w-[720px]  tw-bg-white tw-shadow-2xl tw-p-4 max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-justify-start max-[512px]:tw-gap-10`}
+        className='tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]'
       >
-        <div className="tw-ml-5 ">
+        <div className="tw-border tw-border-base-300 tw-rounded-md tw-p-4 tw-bg-white max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
           <div
             className={`${styles.heading} tw-p-3 tw-border-b tw-border-gray-300`}
           >
@@ -95,7 +95,7 @@ const Queries = () => {
                 }}
               />
               <button
-                className={`${styles.ticket} tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md`}
+                className={`${styles.ticket} hover:tw-bg-primary-200 tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md`}
                 onClick={handleRaiseTicketClick}
               >
                 Raise Ticket

@@ -120,9 +120,9 @@ function Profile({ mentorDetail }) {
     }
   };
   return (
-    <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+    <div className="tw-pb-[5rem] tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
       <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
-        <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+        <div className="tw-border tw-border-base-300 tw-rounded-md tw-p-4 tw-bg-white max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
           <h2 className="tw-text-gray-600 tw-text-4xl text-center tw-font-sans ">
             Edit Your Profile
           </h2>
@@ -132,7 +132,7 @@ function Profile({ mentorDetail }) {
           >
             <div className="tw-mt-10 tw-items-center tw-flex tw-justify-center">
               <Image
-                className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover tw-shadow-lg"
+                className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover"
                 src={formData.image ? formData.image : mentorImg}
                 alt="mentor"
                 width={100}
@@ -332,20 +332,14 @@ function Profile({ mentorDetail }) {
             )}
             <button
               style={{
-                color: "white",
                 width: "fit-content",
                 padding: "15px 25px",
-                backgroundColor: "#845ec2",
                 cursor: "pointer",
                 marginTop: "-50px",
                 marginLeft: "5px",
-                boxShadow: "6px 4px 13px -2px rgba(0, 0, 0, 0.2)",
-                "&:hover": {
-                  backgroundColor: "#6b21a8",
-                },
               }}
               type="submit"
-              className="max-[512px]:tw-mb-20"
+              className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
               onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
             >
               Save changes

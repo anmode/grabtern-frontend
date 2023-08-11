@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
+function Form({ account, closeForm, buttonText, handleSubmit }) {
+  // initial form state
+  const initialFormData = {
+    name: account?.name || "", // Make sure to handle null/undefined case
+    ifscCode: account?.ifscCode || "",
+    accountNo: account?.accountNo || "",
+    nameOfBank: account?.nameOfBank || "",
+    upiID: account?.upiID || "",
+  };
+  // form state
+  const [formData, setFormData] = useState(initialFormData);
+
+  // handle change
+  const handleChange = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // submit function
   const onSubmit = (e) => {
     e.preventDefault();
-    handleSubmit();
+    handleSubmit(formData);
   };
 
   return (
@@ -37,7 +55,7 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                   class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   onChange={(e) => handleChange(e)}
                   placeholder="e.g. Peter Parker"
-                  value={formData.name}
+                  value={formData?.name}
                 />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -53,7 +71,7 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                   name="ifscCode"
                   onChange={(e) => handleChange(e)}
                   placeholder="SBINXXXXXX"
-                  value={formData.ifscCode}
+                  value={formData?.ifscCode}
                 />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -69,7 +87,7 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                   class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   onChange={(e) => handleChange(e)}
                   placeholder="100XXX100"
-                  value={formData.accountNo}
+                  value={formData?.accountNo}
                 />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -85,23 +103,7 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                   name="nameOfBank"
                   onChange={(e) => handleChange(e)}
                   placeholder="e.g. HDFC Bank"
-                  value={formData.nameOfBank}
-                />
-              </div>
-              <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
-                <label
-                  class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-                  for="amountToBePaid"
-                >
-                  AMOUNT TO BE PAID
-                </label>
-                <input
-                  class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
-                  type="text"
-                  name="amountToBePaid"
-                  onChange={(e) => handleChange(e)}
-                  placeholder="e.g. $100"
-                  value={formData.amountToBePaid}
+                  value={formData?.nameOfBank}
                 />
               </div>
               <hr
@@ -121,7 +123,7 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                   name="upiID"
                   onChange={(e) => handleChange(e)}
                   placeholder="e.g. xyz@okicicibank"
-                  value={formData.upiID}
+                  value={formData?.upiID}
                 />
               </div>
               <div className="tw-flex tw-justify-center tw-items-center max-[512px]:tw-pb-20 max-[512px]:tw-pt-0 tw-pt-6">

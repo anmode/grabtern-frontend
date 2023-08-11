@@ -313,7 +313,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   onChange={() => {
                     toggleSidebar();
                   }}
-                  onColor="#800080"
+                  onColor="#845EC2"
                   activeBoxShadow="0 0 2px 3px #00C9A7"
                   uncheckedIcon={false}
                   checkedIcon={false}
@@ -321,7 +321,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   height={20}
                   handleDiameter={10}
                   onHandleColor="#fff"
-                  offHandleColor="#800080"
+                  offHandleColor="#845EC2"
                 />
               </div>
             </div>

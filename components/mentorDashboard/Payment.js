@@ -19,12 +19,11 @@ const Payments = ({ mentorDetail }) => {
 
   const [formData, setFormData] = useState(initialFormData);
   const [editForm, setEditForm] = useState(false);
-  conat [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
   };
 
   // getting account details from backend
@@ -32,33 +31,63 @@ const Payments = ({ mentorDetail }) => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getAccountDetails/`
     try{
       setError("");
-      const response = axios.get(url, {withCredentials: true});
-      const data = (await response).data;
-      setFormData(data.account);
+      const response = await axios.get(url, {withCredentials: true});
+      const data =  await response.data;
+      setFormData(data);
     }
     catch(error){
       setError(error.response.data.message);
     }
   }
 
-  // getting data on load
+  //getting data on load
   useEffect(() => {
     getDetails();
   }, [])
 
-  const handleSubmit = () => {
-    console.log(formData);
-    setEditForm(false);
+  // edit details function
+  const editDetails = async() => {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateAccountDetails/`
+    try{
+      setError("");
+      const response = await axios.put(url, {...formData}, {withCredentials: true});
+      const data = await response.data;
+      setFormData(data);
+      setEditForm(false);
+    }catch(error){
+      setError(error.response.data.message);
+    }
   };
-  
+
+  // add details function
+  const addDetails = async() => {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addAccountDetails/`
+    try{
+      setError("");
+      const response = await axios.post(url, {...formData} , {withCredentials: true});
+      const data = await response.data;
+      setFormData(data);
+      setAddForm(false);
+    }catch(error){
+      setError(error.response.data.message);
+    }
+  };
+
   return (
-    <>
+    <>  
+    {error && <p className="tw-red-500">{error}</p>}
+        <Form
+          formData={formData} handleChange ={handleChange}
+          closeForm={() => {setEditForm(false)}}
+          buttonText = "Add Account"
+          handleSubmit = {addDetails}
+        />
       {editForm ? (
         <Form
           formData={formData} handleChange ={handleChange}
           closeForm={() => {setEditForm(false)}}
           buttonText = "Save Changes"
-          handleSubmit = {handleSubmit}
+          handleSubmit = {editDetails}
         />
       ) : (
         <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
@@ -109,7 +138,7 @@ const Payments = ({ mentorDetail }) => {
                       </h2>
                     </div>
                     <span className="tw-text-primary-100 tw-font-medium tw-text-lg max-[512px]:tw-text-sm">
-                      {formData?.ifsccode || "Unavailable"}
+                      {formData?.ifscCode || "Unavailable"}
                     </span>
                   </div>
                   {/* account no */}
@@ -121,7 +150,7 @@ const Payments = ({ mentorDetail }) => {
                       </h2>
                     </div>
                     <span className="tw-text-primary-100 tw-font-medium tw-text-lg max-[512px]:tw-text-sm">
-                      {formData?.accountno || "Unavailable"}
+                      {formData?.accountNo || "Unavailable"}
                     </span>
                   </div>
                   {/* bank name */}
@@ -133,7 +162,7 @@ const Payments = ({ mentorDetail }) => {
                       </h2>
                     </div>
                     <span className="tw-text-primary-100 tw-font-medium tw-text-lg max-[512px]:tw-text-sm">
-                      {formData?.nameofbank || "Unavailable"}
+                      {formData?.nameOfBank || "Unavailable"}
                     </span>
                   </div>
                   {/* Amount to be paid */}

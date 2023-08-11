@@ -3,7 +3,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
   const onSubmit = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     handleSubmit();
   };
 
@@ -50,10 +50,10 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                 <input
                   class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   type="text"
-                  name="ifsccode"
+                  name="ifscCode"
                   onChange={(e) => handleChange(e)}
                   placeholder="SBINXXXXXX"
-                  value={formData.ifsccode}
+                  value={formData.ifscCode}
                 />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -65,11 +65,11 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                 </label>
                 <input
                   type="text"
-                  name="accountno"
+                  name="accountNo"
                   class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   onChange={(e) => handleChange(e)}
                   placeholder="100XXX100"
-                  value={formData.accountno}
+                  value={formData.accountNo}
                 />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">
@@ -82,10 +82,10 @@ function Form({ formData, handleChange, closeForm, buttonText, handleSubmit }) {
                 <input
                   class="tw-appearance-none tw-block tw-w-full tw-border-solid tw-border-4 tw-border-[#dcdcdc] tw-rounded tw-py-3 tw-px-4 tw-mb-3"
                   type="text"
-                  name="nameofbank"
+                  name="nameOfBank"
                   onChange={(e) => handleChange(e)}
                   placeholder="e.g. HDFC Bank"
-                  value={formData.nameofbank}
+                  value={formData.nameOfBank}
                 />
               </div>
               <div class="tw-relative tw-z-0 tw-w-full tw-mb-6 tw-group">

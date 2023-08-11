@@ -115,14 +115,12 @@ const Queries = () => {
             Raise Ticket
           </button>
         </div>
-
         <button
           className={`min-[513px]:tw-hidden tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md`}
           onClick={handleRaiseTicketClick}
         >
           Raise Ticket
         </button>
-
         <p
           className={`tw-justify-start tw-text-xl tw-items-start tw-font-semibold min-[513px]:tw-pt-5`}
         >

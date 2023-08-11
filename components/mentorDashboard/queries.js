@@ -98,22 +98,18 @@ const Queries = () => {
         <div className="tw-flex tw-justify-between tw-gap-10 tw-items-center max-[512px]:tw-justify-center max-[512px]:tw-items-center">
           <button
             onClick={() => setCurrentView("Pending")}
-            className={`${styles.button} ${
-              currentView === "Pending" ? styles.active : ""
-            }`}
+            className="tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md tw-px-5 tw-py-3 hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
           >
             Pending
           </button>
           <button
             onClick={() => setCurrentView("answered")}
-            className={`${styles.button} ${
-              currentView === "answered" ? styles.active : ""
-            } tw-ml-3`}
+            className={`tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md tw-px-5 tw-py-3 hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all`}
           >
             Answered
           </button>
           <button
-            className={`${styles.ticket} max-[512px]:tw-hidden tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md`}
+            className={`tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md tw-px-5 tw-py-3 hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all`}
             onClick={handleRaiseTicketClick}
           >
             Raise Ticket
@@ -159,10 +155,8 @@ const Queries = () => {
                     <p>
                       <strong>Status:</strong> {query.status}
                     </p>
-                    <button
-                      onClick={() => setMarkAnswered(true)}
-                      className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
-                    >
+                    <button className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all">
+                      {/* Button to mark a query answered and send it to the answered queries section (yet to be implemented) */}
                       Mark as answered
                     </button>
                   </div>

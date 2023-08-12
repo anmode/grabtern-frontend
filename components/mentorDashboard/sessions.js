@@ -1,29 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Image from "next/image";
-import Link from "next/link";
-import { BiSolidUser, BiTime, BiCalendar } from "react-icons/bi";
-import { BsTwitter, BsLinkedin } from "react-icons/bs";
-import {
-  MdNotifications,
-  MdPayment,
-  MdOutlineNotificationsNone,
-} from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
-import { GrView } from "react-icons/gr";
 import SessionCard from "../newMentorProfile/SessionCard";
-import { Section } from "../UI";
 import Spinner from "../basic/spinner";
-import styled from "styled-components";
 
 function Sessions() {
-  const [data, setData] = useState({});
-  const username = "anmode";
+  const [data, setData] = useState([]);
+
   const fetchData = async () => {
     try {
-      const url = `https://grabtern-backend.vercel.app/api/mentors/mentorDetail/${username}`;
-      const { data: res } = await axios.get(url);
-      return res.mentorDetail;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession`;
+      const response = await axios.get(url, { withCredentials: true });
+      console.log(response.data);
+      return response.data; // Assuming the API returns the data directly
     } catch (err) {
       console.error("Error in fetching details ", err);
     }
@@ -39,8 +27,6 @@ function Sessions() {
       });
   }, []);
 
-  console.log(data);
-
   return (
     <>
       <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
@@ -49,21 +35,19 @@ function Sessions() {
         </p>
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
         <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-          {data.sessions ? (
-            data.sessions.map((card, index) => {
-              return (
-                <SessionCard
-                  key={index}
-                  type={card.type}
-                  name={card.name}
-                  description={card.description}
-                  duration={card.duration}
-                  price={card.price}
-                  text="Edit Session"
-                  path={`/dashboard/editMentorSession?username=${username}&sessionId=${card._id}`}
-                />
-              );
-            })
+          {data.length > 0 ? (
+            data.map((card, index) => (
+              <SessionCard
+                key={index}
+                type={card.type}
+                name={card.name}
+                description={card.description}
+                duration={card.duration}
+                price={card.price}
+                text="Edit Session"
+                path={`/dashboard/editMentorSession?username=${card.username}&sessionId=${card._id}`} // Assuming username is available in card
+              />
+            ))
           ) : (
             <div>
               <Spinner />

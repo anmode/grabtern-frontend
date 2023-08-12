@@ -19,17 +19,18 @@ const Home = ({
 }) => {
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
-
-  // 'https://grabtern-backend-demo.vercel.app/api/mentors/mentorDetail/${mentorUsername}';   // GET request to get mentor details
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
 
   useEffect(() => {
     const getMentor = async () => {
       const res = await axios
         .get(
-          `https://grabtern-backend-demo.vercel.app/api/mentors/mentorDetail/anmode`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
+          { withCredentials: true },
         )
         .then((res) => {
           setMentor(res.data.mentorDetail);
+          console.log(res.data);
           setMentorDetails(res.data.mentorDetail);
         })
         .catch((err) => {

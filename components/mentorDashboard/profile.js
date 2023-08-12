@@ -36,8 +36,6 @@ function Profile({ mentorDetail }) {
 
   // function to fetch mentor profile
   const getMentorProfile = async () => {
-    // const mentorData = localStorage.getItem("mentorData");
-    // const mentorToken = decryptData(mentorData).mentorToken;
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
@@ -175,11 +173,14 @@ function Profile({ mentorDetail }) {
                     border: "none",
                     border: "2px solid rgb(220, 220, 220)",
                     paddingLeft: "35px",
+                    backgroundColor: "#f1f1f1",
                   }}
                   className="mentorFormInput"
                   onChange={(e) => handleChange(e)}
                   placeholder={mentorDetail?.username}
                   value={formData.username}
+                  readOnly
+                  title="This field is not editable"
                 />
                 <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
@@ -273,7 +274,6 @@ function Profile({ mentorDetail }) {
                     border: "2px solid rgb(220, 220, 220)",
                     paddingLeft: "35px",
                   }}
-                  // placeholder="e.g. https://www.twitter.com/peterparker"
                   placeholder={mentorDetail?.twitter}
                   value={formData.social.twitter}
                 />

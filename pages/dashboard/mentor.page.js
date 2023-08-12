@@ -9,18 +9,40 @@ import Header from "../../components/layout/Header";
 import Bookings from "../../components/mentorDashboard/Bookings";
 import Payments from "../../components/mentorDashboard/Payment";
 import ComingSoon from "../../components/basic/ComingSoon";
+import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/router";
 
 function MentorDashboard() {
   // getting page name on change in tab
   const [component, setComponent] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [mentor, setMentor] = useState({});
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
+
+  const router = useRouter();
 
   useEffect(() => {
     const search = window.location.search;
     const params = new URLSearchParams(search);
     setComponent(params.get("tab") || "");
-  }, [window.location.search]);
+
+    const mentorData = localStorage.getItem("mentorData");
+
+    if (mentorData) {
+      setIsMentorLoggedIn(true); // Set mentorLoggedIn to true
+    } else {
+      router.push("/auth/login?entityType=mentor");
+    }
+  }, [window.location.search, history]);
+
+  if (!isMentorLoggedIn) {
+    return null;
+  }
 
   return (
     <>

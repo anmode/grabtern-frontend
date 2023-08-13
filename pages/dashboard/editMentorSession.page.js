@@ -2,42 +2,52 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Spinner from "../../components/basic/spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { redirect } from "next/dist/server/api-utils";
 
 const Edit = () => {
   const router = useRouter();
-  const { username, sessionId } = router.query;
+  const { id, name, duration, price, description, type, redirectURL } =
+    router.query;
+
+  // Initialize state with the extracted data
   const [data, setData] = useState({
-    name: "",
-    type: "",
-    duration: 0,
-    description: "",
+    name: name || "",
+    type: type || "",
+    duration: duration || 0,
+    description: description || "",
+    price: price || 0,
+    _id: id,
   });
-  // console.log(username);
-  const fetchData = async () => {
+
+  // form submit function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const url = `https://grabtern-backend.vercel.app/api/mentors/mentorDetail/${username}`;
-      const { data: res } = await axios.get(url);
-      return res.mentorDetail;
-    } catch (err) {
-      console.error("Error in fetching details ", err);
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateListedSession`;
+      // console.log(data);
+
+      const response = await axios.put(
+        url,
+        { ...data },
+        { withCredentials: true },
+      ); // Send the updated data to the backend
+      setData(response.data);
+
+      toast.success("Changes saved successfully.");
+      router.push(redirectURL);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An error occurred while saving changes.");
+      }
     }
-  };
-
-  useEffect(() => {
-    fetchData()
-      .then((response) => {
-        setData(response.sessions.find((session) => session._id === sessionId));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
-  // console.log(data);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Updated data is \n", data);
   };
 
   const handleInputChange = (event) => {
@@ -47,6 +57,7 @@ const Edit = () => {
       [name]: value,
     }));
   };
+
   return (
     <>
       {data.name ? (
@@ -85,7 +96,26 @@ const Edit = () => {
                       onChange={handleInputChange}
                     />
                   </div>
+                  <div>
+                    <label htmlFor="price">PRICE</label>
+                    <input
+                      type="number"
+                      name="price"
+                      className="mentorFormInput"
+                      style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                        border: "2px solid rgb(220, 220, 220)",
+                        paddingLeft: "35px",
+                      }}
+                      value={data.price}
+                      placeholder={data.price}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                 </div>
+
                 <div
                   style={{
                     display: "flex",
@@ -182,6 +212,7 @@ const Edit = () => {
               </form>
             </div>
           </div>
+          <ToastContainer />
         </div>
       ) : (
         <div className="tw-mt-[5rem]">

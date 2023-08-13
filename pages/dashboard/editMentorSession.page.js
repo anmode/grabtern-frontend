@@ -4,22 +4,35 @@ import axios from "axios";
 import Spinner from "../../components/basic/spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { redirect } from "next/dist/server/api-utils";
 
 const Edit = () => {
   const router = useRouter();
-  const { id, name, duration, price, description, type, redirectURL } =
-    router.query;
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const username = mentorData?.user_name;
+  const { id, redirectURL } = router.query;
 
-  // Initialize state with the extracted data
-  const [data, setData] = useState({
-    name: name || "",
-    type: type || "",
-    duration: duration || 0,
-    description: description || "",
-    price: price || 0,
-    _id: id,
-  });
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Fetch the session data based on id and username
+    const fetchSessionData = async () => {
+      try {
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession/${username}/${id}`;
+        const response = await axios.get(url, {
+          withCredentials: true,
+        });
+        setData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching session data:", error);
+        // Handle error
+      }
+    };
+
+    if (id && username) {
+      fetchSessionData();
+    }
+  }, [id, username]);
 
   // form submit function
   const handleSubmit = async (e) => {

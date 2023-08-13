@@ -8,7 +8,7 @@ function Sessions() {
 
   const fetchData = async () => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
       console.log(response.data);
       return response.data; // Assuming the API returns the data directly
@@ -18,13 +18,18 @@ function Sessions() {
   };
 
   useEffect(() => {
-    fetchData()
-      .then((response) => {
-        setData(response);
-      })
-      .catch((error) => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const response = await fetchData();
+        if (response) {
+          setData(response);
+        }
+      } catch (error) {
         console.error(error);
-      });
+      }
+    };
+
+    fetchDataAndSetState();
   }, []);
 
   return (

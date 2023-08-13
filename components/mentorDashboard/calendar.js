@@ -3,6 +3,7 @@ import styles from "../../styles/dashboard.module.css";
 import Schedule from "./Schedule/schedule";
 import Card from "./CalendarComponent/card";
 import styled from "styled-components";
+import axios from "axios";
 
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
@@ -11,6 +12,7 @@ const Calender = () => {
   const [checkedDays, setCheckedDays] = useState([]);
   const [timeStart, setTimeStart] = useState({});
   const [timeEnd, setTimeEnd] = useState({});
+  const [key, setKey] = useState(0);
 
   const weekdays = [
     "Monday",
@@ -53,6 +55,7 @@ const Calender = () => {
       day,
       startsAt: "09:00",
       endsAt: "20:00",
+      timezone: "(GMT-11:00) Pacific/Midway"
     };
     let currentSchedules = listSchedules;
     currentSchedules.push(newSchedule);
@@ -71,6 +74,7 @@ const Calender = () => {
       startsAt: time,
     };
     listSchedules[findIndexNum] = newSchedule;
+    setKey(key + 1);
   };
 
   const handleTimeEndChange = (day, time) => {
@@ -83,6 +87,25 @@ const Calender = () => {
       endsAt: time,
     };
     listSchedules[findIndexNum] = newSchedule;
+    setKey(key + 1);
+  };
+
+  const updateSchedules = async () => {
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
+      console.log({
+        username: JSON.parse(localStorage.getItem("mentorData")).mentor_username,
+        schedules: listSchedules,
+      })
+      const { data: res } = await axios.put(url, {
+        username: JSON.parse(localStorage.getItem("mentorData")).mentor_username,
+        schedules: listSchedules,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+
+    }
   };
 
   const handleCalender = () => {
@@ -105,7 +128,10 @@ const Calender = () => {
   `;
 
   return (
-    <div className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}>
+    <div
+      className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}
+      key={key}
+    >
       <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
       <button
         onClick={handleCalender}
@@ -132,7 +158,7 @@ const Calender = () => {
             <MyDiv className="tw-mt-8 tw-border tw-rounded-md tw-p-10 tw-border-2 tw-mb-[6rem]">
               <div className="tw-flex ">
                 <h2 className="tw-font-semibold tw-text-lg">Default</h2>
-                <button className=" tw-ml-[43rem] tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 tw-p-5 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                <button className=" tw-ml-[43rem] tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 tw-p-5 hover:tw-bg-gray-700 tw-font-semibold tw-text-base" onClick={() => updateSchedules()}>
                   Save
                 </button>
               </div>
@@ -147,65 +173,64 @@ const Calender = () => {
                     {dayName}
                   </label>
                   <div>
-                    {listSchedules.some(
-                      (schedule) => schedule.day === dayName,
-                    ) ? (
-                      <div className="tw-flex">
-                        <div className="">
-                          {/* <h3>Select Time:</h3> */}
-                          <select
-                            value={
-                              listSchedules[
-                                listSchedules.findIndex(
-                                  (schedule) => schedule.day === dayName,
-                                )
-                              ].startsAt || ""
-                            }
-                            onChange={(e) =>
-                              handleTimeStartChange(dayName, e.target.value)
-                            }
-                            className="tw-font-medium tw-ml-[13rem] tw-rounded-md tw-w-2/3 hover:tw-border-black hover:tw-border-2"
-                          >
-                            <option value="" className="tw-text-gray-200">
-                              9:00 AM
-                            </option>
-                            {Object.values(timeOptions).map((timeOption) => (
-                              <option key={timeOption} value={timeOption}>
-                                {timeOption}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="">
-                          {/* <h3>Select Time:</h3> */}
-                          <select
-                            value={
-                              listSchedules[
-                                listSchedules.findIndex(
-                                  (schedule) => schedule.day === dayName,
-                                )
-                              ].endsAt || ""
-                            }
-                            onChange={(e) =>
-                              handleTimeEndChange(dayName, e.target.value)
-                            }
-                            className="tw-font-medium tw-ml-[10rem] tw-rounded-md  tw-w-2/3 hover:tw-border-black hover:tw-border-2"
-                          >
-                            <option value="" className="tw-text-gray-200">
-                              8:00 PM
-                            </option>
-                            {Object.values(timeOptions).map((timeOption) => (
-                              <option key={timeOption} value={timeOption}>
-                                {timeOption}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
+                    {listSchedules.filter((obj) => obj.day === dayName).length >
+                    0 ? (
+                      listSchedules
+                        .filter((obj) => obj.day === dayName)
+                        .map((schedule) => (
+                          <div className="tw-flex">
+                            <div className="">
+                              {/* <h3>Select Time:</h3> */}
+                              <select
+                                value={schedule.startsAt || ""}
+                                onChange={(e) =>
+                                  handleTimeStartChange(dayName, e.target.value)
+                                }
+                                className="tw-font-medium tw-ml-[13rem] tw-rounded-md tw-w-2/3 hover:tw-border-black hover:tw-border-2"
+                              >
+                                <option value="" className="tw-text-gray-200">
+                                  9:00 AM
+                                </option>
+                                {Object.values(timeOptions).map(
+                                  (timeOption) => (
+                                    <option key={timeOption} value={timeOption}>
+                                      {timeOption}
+                                    </option>
+                                  ),
+                                )}
+                              </select>
+                            </div>
+                            <div className="">
+                              {/* <h3>Select Time:</h3> */}
+                              <select
+                                value={
+                                  listSchedules[
+                                    listSchedules.findIndex(
+                                      (schedule) => schedule.day === dayName,
+                                    )
+                                  ].endsAt || ""
+                                }
+                                onChange={(e) =>
+                                  handleTimeEndChange(dayName, e.target.value)
+                                }
+                                className="tw-font-medium tw-ml-[10rem] tw-rounded-md  tw-w-2/3 hover:tw-border-black hover:tw-border-2"
+                              >
+                                <option value="" className="tw-text-gray-200">
+                                  8:00 PM
+                                </option>
+                                {Object.values(timeOptions).map(
+                                  (timeOption) => (
+                                    <option key={timeOption} value={timeOption}>
+                                      {timeOption}
+                                    </option>
+                                  ),
+                                )}
+                              </select>
+                            </div>
+                          </div>
+                        ))
                     ) : (
-                      <div className="">
-                        <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
-                      </div>
+                      <p>Unavailble</p>
                     )}
                   </div>
                 </div>

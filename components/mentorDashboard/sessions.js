@@ -8,7 +8,7 @@ function Sessions() {
 
   const fetchData = async () => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
       console.log(response.data);
       return response.data; // Assuming the API returns the data directly
@@ -18,13 +18,18 @@ function Sessions() {
   };
 
   useEffect(() => {
-    fetchData()
-      .then((response) => {
-        setData(response);
-      })
-      .catch((error) => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const response = await fetchData();
+        if (response) {
+          setData(response);
+        }
+      } catch (error) {
         console.error(error);
-      });
+      }
+    };
+
+    fetchDataAndSetState();
   }, []);
 
   return (
@@ -45,7 +50,7 @@ function Sessions() {
                 duration={card.duration}
                 price={card.price}
                 text="Edit Session"
-                path={`/dashboard/editMentorSession?username=${card.username}&sessionId=${card._id}`} // Assuming username is available in card
+                path={`/dashboard/editMentorSession?&id=${card._id}&name=${card.name}&duration=${card.duration}&price=${card.price}&description=${card.description}&type=${card.type}&redirectURL=${window.location.href}`}
               />
             ))
           ) : (

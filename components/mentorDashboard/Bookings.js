@@ -1,10 +1,11 @@
 import axios from "axios";
 import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
+import EventLogin from "../eventLogin/EventLogin";
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
-
+  const [isLoading, setIsLoading] = useState(false);
   const tabs = ["Pending", "Completed"];
 
   /* ------------------ schema will be like this ---------------- */
@@ -93,6 +94,7 @@ const Bookings = () => {
   // function to fetch session
   const fetchSession = async () => {
     try {
+      setIsLoading(true);
       setError("");
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
@@ -101,6 +103,7 @@ const Bookings = () => {
         },
       );
       setSessions(response.data);
+      setIsLoading(false);
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -112,6 +115,13 @@ const Bookings = () => {
   }, []);
 
   return (
+    <div>
+      {isLoading? (
+        <div>
+          <EventLogin/>
+        </div>
+      ):(
+        <div>
     <div className="min-[512px]:tw-ml-[76px] tw-p-8 tw-py-12 sm:tw-px-8 md:tw-px-12 sm:tw-py-16 lg:tw-p-16">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
@@ -192,6 +202,10 @@ const Bookings = () => {
             ))}
         </ul>
       </div>
+    </div>
+    </div>
+      )
+      }
     </div>
   );
 };

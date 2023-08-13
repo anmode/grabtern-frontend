@@ -6,8 +6,10 @@ import { FaUserAlt } from "react-icons/fa";
 import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { mentorImg } from "../../public/assets";
+import EventLogin from "../eventLogin/EventLogin";
 
 function Profile({ mentorDetail }) {
+  let name,username;
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
     username: mentorDetail?.username || "",
@@ -28,7 +30,7 @@ function Profile({ mentorDetail }) {
   const [msg, setMsg] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
   // normal input onChange function
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,10 +43,13 @@ function Profile({ mentorDetail }) {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/${mentorToken}`;
 
     try {
+      setIsLoading(true);
       const response = await axios.get(url);
       const data = decryptData(response.data);
       setFormData(data);
       setError("");
+      setIsLoading(false);
+     
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -102,7 +107,7 @@ function Profile({ mentorDetail }) {
 
       const response = await axios.put(url, { token: encryptedData }); // Send the updated data to the backend
       setFormData(decryptData(response.data));
-
+      
       alert(response); // Display the response message from the backend
 
       setModalOpen(false);
@@ -114,12 +119,18 @@ function Profile({ mentorDetail }) {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
-      } else {
+      }
+      else {
         setError("An error occurred while saving changes.");
       }
     }
   };
   return (
+    <div>
+      {isLoading ?(
+        <EventLogin/>
+      ):(
+        <div>
     <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
       <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
         <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
@@ -186,7 +197,9 @@ function Profile({ mentorDetail }) {
                   onChange={(e) => handleChange(e)}
                   placeholder={mentorDetail?.username}
                   value={formData.username}
+                  
                 />
+                
                 <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
               </div>
             </div>
@@ -353,6 +366,9 @@ function Profile({ mentorDetail }) {
           </form>
         </div>
       </div>
+    </div>
+    </div>
+      )}
     </div>
   );
 }

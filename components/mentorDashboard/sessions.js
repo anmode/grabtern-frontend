@@ -3,10 +3,10 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import styles from "../../styles/sessions.module.css";
 import axios from "axios";
-
+import EventLogin from "../eventLogin/EventLogin";
 function Sessions() {
   const [sessionData, setSessionData] = useState({});
-
+  
   useEffect(() => {
     const { mentor_username } = JSON.parse(localStorage.getItem("mentorData"));
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/session`;

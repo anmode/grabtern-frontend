@@ -9,6 +9,7 @@ import ButtonUI from "../../components/UI/Button/Button";
 import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
+//import Logo from "../../public/logo.png";
 
 
 function ForgotPassword() {
@@ -104,15 +105,7 @@ function ForgotPassword() {
               />
             </div>
             {isLoading && (
-              <img
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  border: "none",
-                }}
-                src="/assets/img/gif/Spinner.gif"
-                alt="loading..."
-              />
+             <EventLogin/>
             )}
           </div>
           <ToastContainer />

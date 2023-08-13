@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/dashboard.module.css";
 import Card from "./CalendarComponent/card";
 import styled from "styled-components";
@@ -39,7 +39,29 @@ const Calender = () => {
     "07:00 PM": "07:00 PM",
     "08:00 PM": "08:00 PM",
   };
+
+  const fetchSchedule = async () => {
+    try {
+      setError("");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getSchedule`,
+        {
+          withCredentials: true,
+        },
+      );
+      setListSchedules(response.data);
+    } catch (error) {
+      setError(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchSchedule();
+  }, []);
+
+
   const handleDayChange = (day) => {
+    console.log(listSchedules);
     if (checkedDays.includes(day)) {
       setCheckedDays(checkedDays.filter((d) => d !== day));
       setListSchedules(listSchedules.filter((schedule) => schedule.day !== day));

@@ -7,9 +7,10 @@ import styled from "styled-components";
 const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
-  const [selectedDays, setSelectedDays] = useState([]);
-  const [selectedTimes, setSelectedTime] = useState({});
-  const [selectTime, setSelectTime] = useState({});
+  const [listSchedules, setListSchedules] = useState([]);
+  const [checkedDays, setCheckedDays] = useState([]);
+  const [timeStart, setTimeStart] = useState({});
+  const [timeEnd, setTimeEnd] = useState({});
 
   const weekdays = [
     "Monday",
@@ -36,26 +37,52 @@ const Calender = () => {
     "08:00 PM": "08:00 PM",
   };
   const handleDayChange = (day) => {
-    if (selectedDays.includes(day)) {
-      setSelectedDays(
-        selectedDays.filter((selectedDay) => selectedDay !== day),
-      );
-      setSelectedTime((prevTimes) => {
-        const updatedTimes = { ...prevTimes };
-        delete updatedTimes[day];
-        return updatedTimes;
-      });
-    } else {
-      setSelectedDays([...selectedDays, day]);
+    console.log(listSchedules);
+    if (checkedDays.includes(day)) {
+      setCheckedDays(checkedDays.filter((days) => days !== day));
     }
+    setCheckedDays([...checkedDays, day]);
+    listSchedules.forEach((schedule) => {
+      if (schedule.day === day) {
+        return setListSchedules(
+          listSchedules.filter((schedule) => schedule.day !== day),
+        );
+      }
+    });
+    let newSchedule = {
+      day,
+      startsAt: "09:00",
+      endsAt: "20:00",
+    };
+    let currentSchedules = listSchedules;
+    currentSchedules.push(newSchedule);
+
+    setListSchedules(currentSchedules);
+    console.log(listSchedules.some((schedule) => schedule.day === day));
   };
 
-  const handleTimeChange = (day, time) => {
-    setSelectedTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+  const handleTimeStartChange = (day, time) => {
+    let findShecdule = listSchedules.find((schedule) => schedule.day === day);
+    let findIndexNum = listSchedules.findIndex(
+      (schedule) => schedule.day === day,
+    );
+    let newSchedule = {
+      ...findShecdule,
+      startsAt: time,
+    };
+    listSchedules[findIndexNum] = newSchedule;
   };
 
-  const handleTime = (day, time) => {
-    setSelectTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+  const handleTimeEndChange = (day, time) => {
+    let findShecdule = listSchedules.find((schedule) => schedule.day === day);
+    let findIndexNum = listSchedules.findIndex(
+      (schedule) => schedule.day === day,
+    );
+    let newSchedule = {
+      ...findShecdule,
+      endsAt: time,
+    };
+    listSchedules[findIndexNum] = newSchedule;
   };
 
   const handleCalender = () => {
@@ -109,26 +136,33 @@ const Calender = () => {
                   Save
                 </button>
               </div>
-              {weekdays.map((day, index) => (
+              {weekdays.map((dayName, index) => (
                 <div key={index} className="tw-mt-7 ">
                   <MyInput
                     type="checkbox"
-                    checked={selectedDays.includes(day)}
-                    onChange={() => handleDayChange(day)}
-                    className=""
+                    checked={checkedDays.includes(dayName)}
+                    onChange={() => handleDayChange(dayName)}
                   />
                   <label className="tw-ml-[0.5rem] tw-font-medium tw-text-base">
-                    {day}
+                    {dayName}
                   </label>
                   <div>
-                    {selectedDays.includes(day) ? (
+                    {listSchedules.some(
+                      (schedule) => schedule.day === dayName,
+                    ) ? (
                       <div className="tw-flex">
                         <div className="">
                           {/* <h3>Select Time:</h3> */}
                           <select
-                            value={selectedTimes[day] || ""}
+                            value={
+                              listSchedules[
+                                listSchedules.findIndex(
+                                  (schedule) => schedule.day === dayName,
+                                )
+                              ].startsAt || ""
+                            }
                             onChange={(e) =>
-                              handleTimeChange(day, e.target.value)
+                              handleTimeStartChange(dayName, e.target.value)
                             }
                             className="tw-font-medium tw-ml-[13rem] tw-rounded-md tw-w-2/3 hover:tw-border-black hover:tw-border-2"
                           >
@@ -145,8 +179,16 @@ const Calender = () => {
                         <div className="">
                           {/* <h3>Select Time:</h3> */}
                           <select
-                            value={selectTime[day] || ""}
-                            onChange={(e) => handleTime(day, e.target.value)}
+                            value={
+                              listSchedules[
+                                listSchedules.findIndex(
+                                  (schedule) => schedule.day === dayName,
+                                )
+                              ].endsAt || ""
+                            }
+                            onChange={(e) =>
+                              handleTimeEndChange(dayName, e.target.value)
+                            }
                             className="tw-font-medium tw-ml-[10rem] tw-rounded-md  tw-w-2/3 hover:tw-border-black hover:tw-border-2"
                           >
                             <option value="" className="tw-text-gray-200">

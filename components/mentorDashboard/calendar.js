@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Card from "./CalendarComponent/card";
 import axios from "axios";
 import { BsTrash3Fill } from "react-icons/bs";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Calender = () => {
   const [showDefault, setShowDefault] = useState(false);
@@ -47,7 +49,7 @@ const Calender = () => {
       );
       setListSchedules(response.data);
     } catch (error) {
-      setError(error.response.data.message);
+      console.log(error);
     }
   };
 
@@ -101,15 +103,21 @@ const Calender = () => {
   };
 
   const updateSchedules = async () => {
+
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
-      const { data: res } = await axios.put(url, {
-        username: JSON.parse(localStorage.getItem("mentorData"))
-          .mentor_username,
+      const res = await axios.put(url, {
         schedules: listSchedules,
       });
+      toast.promise(
+        res,
+        {
+          pending: 'updating...',
+          success: 'update successfull 👌'
+        }
+    )
     } catch (error) {
-      console.log(error);
+      toast.error("Sorry! couldn't update");
     }
   };
 
@@ -443,6 +451,7 @@ const Calender = () => {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

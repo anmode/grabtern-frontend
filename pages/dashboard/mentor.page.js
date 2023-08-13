@@ -60,7 +60,7 @@ function MentorDashboard() {
           {component == "payments" && (
             <Payments isSidebarOpen={isSidebarOpen} />
           )}
-          {[ "services", "new", "referral", "rewards"].includes(component) && (
+          {["services", "new", "referral", "rewards"].includes(component) && (
             <ComingSoon isSidebarOpen={isSidebarOpen} />
           )}
         </div>

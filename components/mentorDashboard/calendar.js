@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../styles/dashboard.module.css";
 import Card from "./CalendarComponent/card";
-import styled from "styled-components";
 import axios from "axios";
 import { BsTrash3Fill } from "react-icons/bs";
 
@@ -11,8 +9,6 @@ const Calender = () => {
   const [calender, showCalender] = useState(true);
   const [listSchedules, setListSchedules] = useState([]);
   const [checkedDays, setCheckedDays] = useState([]);
-  const [timeStart, setTimeStart] = useState({});
-  const [timeEnd, setTimeEnd] = useState({});
   const [key, setKey] = useState(0);
 
   const weekdays = [
@@ -61,7 +57,6 @@ const Calender = () => {
 
 
   const handleDayChange = (day) => {
-    console.log(listSchedules);
     if (checkedDays.includes(day)) {
       setCheckedDays(checkedDays.filter((d) => d !== day));
       setListSchedules(listSchedules.filter((schedule) => schedule.day !== day));
@@ -108,17 +103,11 @@ const Calender = () => {
   const updateSchedules = async () => {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
-      console.log({
-        username: JSON.parse(localStorage.getItem("mentorData"))
-          .mentor_username,
-        schedules: listSchedules,
-      });
       const { data: res } = await axios.put(url, {
         username: JSON.parse(localStorage.getItem("mentorData"))
           .mentor_username,
         schedules: listSchedules,
       });
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

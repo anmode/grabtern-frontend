@@ -17,7 +17,6 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ButtonLink, Section } from "../components/UI";
 import { useAuth } from "../context/AuthContext";
-import { encryptData, decryptData } from "../hook/encryptDecrypt";
 var $ = require("jquery");
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery");

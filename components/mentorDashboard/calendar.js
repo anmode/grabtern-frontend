@@ -40,38 +40,30 @@ const Calender = () => {
     "08:00 PM": "08:00 PM",
   };
   const handleDayChange = (day) => {
-    console.log(listSchedules);
     if (checkedDays.includes(day)) {
-      setCheckedDays(checkedDays.filter((days) => days !== day));
+      setCheckedDays(checkedDays.filter((d) => d !== day));
+      setListSchedules(listSchedules.filter((schedule) => schedule.day !== day));
+    } else {
+      setCheckedDays([...checkedDays, day]);
+      setListSchedules([
+        ...listSchedules,
+        {
+          day,
+          startsAt: "09:00",
+          endsAt: "20:00",
+          timezone: "(GMT-11:00) Pacific/Midway",
+        },
+      ]);
     }
-    setCheckedDays([...checkedDays, day]);
-    listSchedules.forEach((schedule) => {
-      if (schedule.day === day) {
-        return setListSchedules(
-          listSchedules.filter((schedule) => schedule.day !== day),
-        );
-      }
-    });
-    let newSchedule = {
-      day,
-      startsAt: "09:00",
-      endsAt: "20:00",
-      timezone: "(GMT-11:00) Pacific/Midway",
-    };
-    let currentSchedules = listSchedules;
-    currentSchedules.push(newSchedule);
-
-    setListSchedules(currentSchedules);
-    console.log(listSchedules.some((schedule) => schedule.day === day));
   };
 
   const handleTimeStartChange = (day, time) => {
-    let findShecdule = listSchedules.find((schedule) => schedule.day === day);
+    let findSchedule = listSchedules.find((schedule) => schedule.day === day);
     let findIndexNum = listSchedules.findIndex(
       (schedule) => schedule.day === day,
     );
     let newSchedule = {
-      ...findShecdule,
+      ...findSchedule,
       startsAt: time,
     };
     listSchedules[findIndexNum] = newSchedule;
@@ -79,12 +71,12 @@ const Calender = () => {
   };
 
   const handleTimeEndChange = (day, time) => {
-    let findShecdule = listSchedules.find((schedule) => schedule.day === day);
+    let findSchedule = listSchedules.find((schedule) => schedule.day === day);
     let findIndexNum = listSchedules.findIndex(
       (schedule) => schedule.day === day,
     );
     let newSchedule = {
-      ...findShecdule,
+      ...findSchedule,
       endsAt: time,
     };
     listSchedules[findIndexNum] = newSchedule;
@@ -335,8 +327,8 @@ const Calender = () => {
                       <input
                         id={index}
                         type="checkbox"
-                        checked={checkedDays.includes(dayName)}
-                        onChange={() => handleDayChange(dayName)}
+                        checked={checkedDays.includes(day)}
+                        onChange={() => handleDayChange(day)}
                         className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
                       />
                       <label
@@ -349,10 +341,10 @@ const Calender = () => {
                       </label>
                     </div>
 
-                    {listSchedules.filter((obj) => obj.day === dayName).length >
+                    {listSchedules.filter((obj) => obj.day === day).length >
                     0 ? (
                       listSchedules
-                        .filter((obj) => obj.day === dayName)
+                        .filter((obj) => obj.day === day)
                         .map((schedule) => (
                           <div className="tw-flex tw-gap-5">
                             <div className="tw-flex tw-justify-center tw-items-center">
@@ -360,7 +352,7 @@ const Calender = () => {
                               <select
                                 value={schedule.startsAt || ""}
                                 onChange={(e) =>
-                                  handleTimeStartChange(dayName, e.target.value)
+                                  handleTimeStartChange(day, e.target.value)
                                 }
                                 className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
                               >
@@ -385,12 +377,12 @@ const Calender = () => {
                                 value={
                                   listSchedules[
                                     listSchedules.findIndex(
-                                      (schedule) => schedule.day === dayName,
+                                      (schedule) => schedule.day === day,
                                     )
                                   ].endsAt || ""
                                 }
                                 onChange={(e) =>
-                                  handleTimeEndChange(dayName, e.target.value)
+                                  handleTimeEndChange(day, e.target.value)
                                 }
                                 className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
                               >

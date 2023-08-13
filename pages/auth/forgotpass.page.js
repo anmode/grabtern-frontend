@@ -9,7 +9,6 @@ import ButtonUI from "../../components/UI/Button/Button";
 import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
-import { red } from "@mui/material/colors";
 
 function ForgotPassword() {
   const router = useRouter();
@@ -123,7 +122,7 @@ function ForgotPassword() {
         </form>
         <div className="logout-login">
           <div className="image-container">
-            <Image src={ForgotLogo} width={700} height={700} />
+            <Image src={ForgotLogo} alt="logout" width={700} height={700} />
           </div>
         </div>
       </main>

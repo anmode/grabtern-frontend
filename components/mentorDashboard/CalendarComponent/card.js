@@ -2,38 +2,31 @@ import React, { useState } from "react";
 import { GrLocation } from "react-icons/gr";
 import { BsLink } from "react-icons/bs";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { LiaToggleOffSolid } from "react-icons/lia";
-import { event } from "jquery";
+import { Switch } from "../../UI";
 
 const Card = () => {
-  const [toggle, setToggleIcon] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [link, setLink] = useState(false);
 
   const addMeet = () => {
     setLink((prevLink) => !prevLink);
   };
 
-  const toggleIcon = () => {
-    setToggleIcon((prevToggle) => !prevToggle);
-  };
   return (
-    <>
-      <div className="tw-flex tw-items-center tw-pb-4">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
-            <GrLocation />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Timezone
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              Required for timely communications
-            </p>
-          </div>
+    <section className="tw-flex tw-flex-col max-[580px]:tw-pl-10">
+      {/* timezone */}
+      <div className="tw-flex tw-items-start tw-justify-between tw-pb-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
+            <GrLocation className="" />
+            Timezone
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            Required for timely communications
+          </p>
         </div>
-        <div className="tw-ml-[10rem]">
-          <select className="tw-rounded-lg tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-p-2.5">
+        <div className="">
+          <select className="tw-rounded-md tw-border-1 tw-outline-none tw-border-black focus:tw-border-primary-200 focus:tw-border-2 tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-py-3 tw-px-2 tw-w-[322px]">
             <option>(GMT-11:00) Midway Island, Samoa</option>
             <option>(GMT-10:00) Hawaii</option>
             <option>(GMT-8:00) Alaska</option>
@@ -60,35 +53,36 @@ const Card = () => {
           </select>
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
-      <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
+
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
+
+      {/* meeting link */}
+      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-start max-[580px]:tw-w-full">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <BsLink />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Personal meeting link
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              All your 1:1 meetings will be redirected to this URL
-            </p>
-          </div>
+            Personal meeting link
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            All your 1:1 meetings will be redirected to this URL
+          </p>
         </div>
-        <div className="tw-ml-[4.5rem]">
+        <div className="">
           {link ? (
-            <div>
-              <input
-                type="url"
-                placeholder="Please enter a valid link"
-                className="tw-rounded-lg tw-font-medium tw-text-base tw-border tw-p-2.5 tw-px-12"
-              />
-              <button className="hover:tw-bg-gray-700  tw-ml-[9rem] tw-rounded-full tw-px-7 tw-py-3 tw-font-bold tw-text-normal tw-bg-black tw-text-center tw-text-white ">
-                Save
-              </button>
+            <div className="tw-flex tw-flex-col tw-justify-center tw-items-start tw-gap-2">
+              <div className="tw-flex tw-justify-center tw-gap-3">
+                <input
+                  type="url"
+                  placeholder="Please enter a valid link"
+                  className="tw-rounded-md tw-font-medium focus:tw-border-primary-100 tw-px-2 tw-text-base tw-border-2"
+                />
+                <button className="hover:tw-bg-primary-200 tw-rounded-md tw-px-6 tw-py-3 tw-font-bold tw-text-normal tw-bg-primary-100 tw-text-center tw-text-white tw-duration-200 tw-ease-in-out tw-transition-all">
+                  Save
+                </button>
+              </div>
               <button
                 onClick={addMeet}
-                className="hover:tw-bg-gray-300 tw-ml-[1rem] tw-rounded-full tw-px-5 tw-py-3  tw-text-normal tw-bg-gray-200 tw-text-center tw-text-black "
+                className="hover:tw-bg-gray-400 tw-rounded-md tw-px-6 tw-py-3 tw-text-normal tw-bg-gray-300 tw-text-center tw-text-black tw-font-semibold"
               >
                 Cancel
               </button>
@@ -103,23 +97,22 @@ const Card = () => {
           )}
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
-      <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
+
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
+
+      {/* Booking Period */}
+      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <AiOutlineCalendar />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Booking Period
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              How far in the future can attendees book
-            </p>
-          </div>
+            Booking Period
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            How far in the future can attendees book
+          </p>
         </div>
-        <div className="tw-ml-[8rem]">
-          <select className="tw-rounded-lg tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-p-2.5">
+        <div className="">
+          <select className="tw-rounded-md tw-border-1 tw-outline-none tw-border-black focus:tw-border-primary-200 focus:tw-border-2 tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-py-3 tw-px-2 tw-w-[322px]">
             <option>1 Week</option>
             <option>2 Weeks</option>
             <option>3 Weeks</option>
@@ -129,28 +122,27 @@ const Card = () => {
           </select>
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
-      <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
+
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
+
+      {/* Notice Period */}
+      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-start max-[580px]:tw-w-full">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <AiOutlineCalendar />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Notice Period
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              Set the minimum amount of notice that is required
-            </p>
-          </div>
+            Notice Period
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            Set the minimum amount of notice that is required
+          </p>
         </div>
-        <div className="tw-ml-[3rem]">
+        <div className="tw-flex tw-gap-0">
           <input
             type="text"
             placeholder="Enter Value in Mins"
-            className="hover:tw-border-black hover:tw-border-2 tw-text-base tw-bg-gray-50 tw-border tw-w-2/3 tw-rounded-l-lg tw-font-normal tw-text-base hover:tw-bg-gray-100 tw-p-2.5"
+            className="tw-rounded-l-md tw-font-medium focus:tw-border-primary-100 tw-px-2 tw-text-base tw-border-2 tw-w-2/3"
           />
-          <select className="tw-rounded-r-lg tw-text-center tw-font-medium tw-w-1/3 tw-text-base hover:tw-bg-gray-100 tw-p-2.5">
+          <select className="hover:tw-bg-gray-400 tw-rounded-r-md tw-outline-none focus:tw-border-primary-200 tw-border-2 tw-py-3 tw-px-0 tw-w-1/3 tw-text-normal tw-bg-gray-300 tw-text-center tw-text-black tw-font-semibold">
             <option>Minutes</option>
             <option>Hours</option>
             <option>Days</option>
@@ -158,50 +150,37 @@ const Card = () => {
           </select>
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
-      <div className="tw-flex tw-items-center tw-pb-4 tw-pt-5">
-        <div className="tw-flex tw-flex-col-1 tw-px-2 tw-py-2">
-          <span className="tw-pt-1">
+
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
+
+      {/* Google meet */}
+      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-gap-4 max-[580px]:tw-items-start max-[580px]:tw-w-full">
+        <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
+          <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <AiOutlineCalendar />
-          </span>
-          <div>
-            <p className="tw-ml-3 tw-text-black tw-font-semibold tw-text-lg">
-              Google meet
-            </p>
-            <p className="tw-ml-3 tw-text-base tw-font-normal">
-              Use google meet for your 1:1 calls
-            </p>
-          </div>
+            Google meet
+          </p>
+          <p className="tw-pl-7 tw-text-base tw-font-normal">
+            Use google meet for your 1:1 calls
+          </p>
         </div>
-        <div className="tw-ml-[10rem]">
-          {toggle ? (
-            <img
-              className="tw-ml-[2rem]"
-              onClick={toggleIcon}
-              src="/toggleOn.png"
-              alt=""
-            />
-          ) : (
-            <img
-              className="tw-ml-[2rem]"
-              onClick={toggleIcon}
-              src="/toggleOff.png"
-              alt=""
-            />
-          )}
+        <div className="">
+          <Switch checked={!toggle} onChange={() => setToggle(!toggle)} />
         </div>
       </div>
-      <hr className="tw-h-px tw-bg-gray-200  tw-border-0 tw-dark:bg-gray-700" />
-      <div className="tw-pt-5">
+
+      <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
+
+      {/* Calender event */}
+      <div className="tw-flex tw-items-start tw-pb-10 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full max-[512px]:tw-pb-24">
         <p className="tw-text-black tw-font-semibold tw-text-3xl">Calendars</p>
-        <div className="tw-pt-2 tw-mb-10">
-          <button className="hover:tw-border-4  hover:tw-border-gray-300 tw-rounded-md tw-bg-gray-200 tw-text-center tw-text-sm tw-font-medium tw-px-4 tw-py-2">
+        <div className="">
+          <button className="hover:tw-bg-primary-200 tw-rounded-md tw-px-6 tw-py-3 tw-font-bold tw-text-normal tw-bg-primary-100 tw-text-center tw-text-white tw-duration-200 tw-ease-in-out tw-transition-all">
             + Add calendar account
           </button>
         </div>
       </div>
-      <div className="tw-pb-10"></div>
-    </>
+    </section>
   );
 };
 

@@ -92,9 +92,8 @@
   margin-bottom: 1.5rem;
 }
 .Input {
-  border-bottom: 3px solid #845ec2;
+  border: 2px solid #845ec2;
   border-radius: 9px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   padding-left: 10px;
   margin-bottom: 6%;
   display: flex;
@@ -167,11 +166,11 @@
 
 .loginform .forget {
   display: block;
-  margin-top: 20px;
   color: #656eff;
   font-weight: 600;
   text-decoration: none;
-  margin-bottom: 5px;
+  text-align: center;
+  margin-top: 25px !important;
 }
 .loginform .forget:hover {
   color: gray;
@@ -185,9 +184,10 @@
   margin-bottom: 5px;
 }
 .linkdiv {
+  margin: auto;
   display: flex;
-  justify-content: left;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
   color: #000;
 }
 .loginform .registration:hover {
@@ -196,10 +196,10 @@
 
 .eye {
   width: 10%;
-  margin: 10px;
   padding-left: 6px;
   padding-right: 4px;
   color: #6b7280;
+  margin-top: 0.2rem;
 }
 
 /* Focus state */

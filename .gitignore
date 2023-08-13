@@ -43,3 +43,12 @@ yarn.lock
 /public/robots.txt
 /public/fonts/
 /public/img/
+
+
+
+# Ignore all .log files
+*.log
+
+# Ignore all files with .tmp extension
+*.tmp
+*.map

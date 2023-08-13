@@ -5,11 +5,8 @@ import Footer from "../components/layout/Footer";
 import dynamic from "next/dynamic";
 import GalleryCard from "../components/GalleryCard";
 
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-
 import { useAuth } from "../context/AuthContext";
-import DropdownCard from "../components/basic/LoginDropdown";
-import Image from "next/image";
+
 import { MdCreate } from "react-icons/md";
 
 // import gstyles from "../styles/gridhackathon.module.css";

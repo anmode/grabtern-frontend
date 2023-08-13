@@ -11,10 +11,8 @@ import Head from "next/head";
 import faq from "./data/faq";
 import testimonialsData from "./data/testiomialsData";
 import Link from "next/link";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
-import PeopleIcon from "@mui/icons-material/People";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
-import TerminalIcon from "@mui/icons-material/Terminal";
+import SvgMaker from "../components/basic/SvgMaker";
+
 import {
   MentorImg,
   BecomeMentor,
@@ -98,10 +96,7 @@ function Mentor() {
             {/* card1 */}
 
             <div className="tw-flex-wrap tw-group tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200  tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <LiveTvIcon
-                fontSize=""
-                className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full"
-              />
+              <SvgMaker svgPath="M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z" />
               <h2 className="tw-font-semibold tw-text-lg">LIVE Programs</h2>
               <p className="tw-text-md">
                 MasterClasses, Bootcamps, and more informative sessions.
@@ -110,10 +105,7 @@ function Mentor() {
 
             {/* card2 */}
             <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <PeopleIcon
-                fontSize=""
-                className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full"
-              />
+              <SvgMaker svgPath="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
               <h2 className="tw-font-semibold tw-text-lg">
                 Mentorship Session
               </h2>
@@ -124,10 +116,8 @@ function Mentor() {
 
             {/* card3 */}
             <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <AutoStoriesIcon
-                fontSize=""
-                className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full"
-              />
+              <SvgMaker svgPath="m19 1-5 5v11l5-4.5V1zM1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5V6c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6zm22 13.5V6c-.6-.45-1.25-.75-2-1v13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5v2c1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5v-1.1z" />
+
               <h2 className="tw-font-semibold tw-text-lg">
                 Cohort and Courses
               </h2>
@@ -138,10 +128,7 @@ function Mentor() {
 
             {/* card4 */}
             <div className="tw-group tw-flex-wrap tw-flex-1 tw-flex tw-justify-center tw-items-center tw-gap-6 tw-flex-col tw-p-12 tw-bg-gray-200 hover:tw-transform hover:tw-ease-in-out tw-duration-200 tw-rounded-md hover:tw-scale-110 tw-text-center">
-              <TerminalIcon
-                fontSize=""
-                className="group-hover:tw-text-[#00C9A7] group-hover:bg-primary-200 group-hover:tw-animate-bounce  tw-text-white tw-text-9xl tw-bg-primary-100 tw-p-8 tw-rounded-full"
-              />
+              <SvgMaker svgPath="M20 4H4c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm0 14H4V8h16v10zm-2-1h-6v-2h6v2zM7.5 17l-1.41-1.41L8.67 13l-2.59-2.59L7.5 9l4 4-4 4z" />
               <h2 className="tw-font-semibold tw-text-lg">
                 Webinar and Workshop
               </h2>

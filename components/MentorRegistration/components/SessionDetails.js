@@ -3,10 +3,10 @@ import SimpleReactValidator from "simple-react-validator";
 import Card from "./Card";
 import Input from "./Input";
 
-function SessionDetails({ formData, changeArray, validator }) {
+function SessionDetails({ formData, changeArray }) {
   const initialSession = {
-    name: "",
-    type: "",
+    name: "1 on 1 Mentorship",
+    type: "Video Meeting",
     duration: "",
     price: "",
     description: "",
@@ -46,29 +46,39 @@ function SessionDetails({ formData, changeArray, validator }) {
   const inputs = [
     {
       label: "Session Name",
-      type: "text",
+      element: "select",
+      options: [
+        { text: "1 on 1 Mentorship", value: "1 on 1 Mentorship" },
+        { text: "Resume Review", value: "Resume Review" },
+        { text: "Other", value: "" },
+      ],
       name: "name",
       id: "name",
       className: "mentorFormInput",
-      onChange: onChange,
-      placeholder: "eg. 1 on 1 Mentorship",
+      handleChange: onChange,
       required: true,
       value: newSession.name,
+      defaultValue: "1 on 1 Mentorship",
+      placeholder: "eg: Mock Interview",
       validator: sessionValidator,
       validation: "required|alpha_num_dash_space",
     },
     {
       label: "Session Type",
-      type: "text",
+      element: "select",
+      options: [
+        { text: "Video Meeting", value: "Video Meeting" },
+        { text: "Group Discussion/Call", value: "Group Discussion/Call" },
+        { text: "Text or Messaging", value: "Text or Messaging" },
+      ],
       name: "type",
       id: "type",
       className: "mentorFormInput",
-      onChange: onChange,
-      placeholder: "eg. Video Meeting",
+      handleChange: onChange,
       required: true,
       value: newSession.type,
       validator: sessionValidator,
-      validation: "required|alpha_num_dash_space",
+      validation: "required|string",
     },
     {
       label: "Session Duration (in minutes)",
@@ -134,14 +144,12 @@ function SessionDetails({ formData, changeArray, validator }) {
       </div>
       {/* add session button ends */}
 
-      {/* error if it does not have any session */}
-      {validator.current.message(
-        "sessions",
-        formData.sessions,
-        "required|min:1",
-        { className: "tw-relative tw-text-red-600 tw-text-2xl" },
-      )}
-      {/* error if it does not have any session */}
+      {/* Disclaimer starts*/}
+      <p className="tw-text-sm tw-text-primary-200 tw-underline">
+        <span className="tw-font-semibold">Note: </span>You can also add or
+        update sessions later using dashboard
+      </p>
+      {/* Disclaimer ends */}
 
       {/* session card starts */}
       <div className="tw-col-span-2 tw-grid lg:tw-grid-cols-2 tw-gap-12">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { FcReadingEbook } from "react-icons/fc";
 import { useRouter } from "next/router";
@@ -10,13 +10,14 @@ import "react-toastify/dist/ReactToastify.css";
 function UserProfile() {
   const router = useRouter();
   const [dropDown, setDropDown] = useState(false);
-  const toggleDropdown = () => setDropDown(!dropDown);
   const {
     isMentorLoggedIn,
     setIsMentorLoggedIn,
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
+  const toggleDropdown = () => setDropDown(!dropDown);
+  const dropdownRef = useRef(null);
 
   async function logout() {
     try {
@@ -43,6 +44,27 @@ function UserProfile() {
     } catch (error) {
       console.error("Logout error:", error);
     }
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // console.log("Clicked outside:", event.target);
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropDown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Determine the dashboard route based on logged-in user type
+  let dashboardRoute = "/dashboard/user";
+  if (isMentorLoggedIn) {
+    dashboardRoute = "/dashboard/mentor";
   }
 
   //Decrypt Data:
@@ -86,9 +108,12 @@ function UserProfile() {
         )}
         {/* dropdown */}
         {dropDown && (
-          <div className="tw-grid tw-p-2 tw-bg-base-100 tw-rounded-lg tw-shadow-md tw-absolute -tw-left-[100%] tw-top-[120%]">
+          <div
+            ref={dropdownRef}
+            className="tw-grid tw-p-2 tw-bg-base-100 tw-rounded-lg tw-shadow-md tw-absolute -tw-left-[100%] tw-top-[120%]"
+          >
             <Link
-              href="/dashboard"
+              href={dashboardRoute}
               className="tw-p-2 tw-pb-1 hover:tw-text-primary-100 tw-border-b tw-font-normal"
             >
               Dashboard

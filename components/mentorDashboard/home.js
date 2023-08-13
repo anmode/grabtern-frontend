@@ -10,20 +10,27 @@ import {
   MdOutlineNotificationsNone,
 } from "react-icons/md";
 
-const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
+const Home = ({
+  setComponent,
+  isSidebarOpen,
+  setIsSidebarOpen,
+  mentor,
+  setMentor,
+}) => {
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
-
-  // 'https://grabtern-backend-demo.vercel.app/api/mentors/mentorDetail/${mentorUsername}';   // GET request to get mentor details
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
 
   useEffect(() => {
     const getMentor = async () => {
       const res = await axios
         .get(
-          `https://grabtern-backend-demo.vercel.app/api/mentors/mentorDetail/anmode`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
+          { withCredentials: true },
         )
         .then((res) => {
           setMentor(res.data.mentorDetail);
+          console.log(res.data);
           setMentorDetails(res.data.mentorDetail);
         })
         .catch((err) => {
@@ -105,17 +112,23 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
   return (
     <>
       <section>
-        <header className="max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col">
+        <header
+          className={`max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
+        >
           <h1 className="tw-text-4xl tw-font-bold">
             Welcome <span>{mentor.name?.split(" ")[0]}</span>!
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
-          <div className="tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10">
+          <div
+            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10 ${
+              isSidebarOpen
+                ? "-tw-translate-x-40 tw-ease-in-out"
+                : "tw-translate-x-0 tw-ease-in-out"
+            }`}
+          >
             {mentor ? (
               <p className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center">
-                <h2 className="tw-font-semibold tw-text-white">
-                  {mentor.name}
-                </h2>
+                <h2 className="tw-font-semibold tw-text-white">Log out</h2>
                 <Image
                   src={mentor?.image}
                   alt="Picture of the mentor"
@@ -186,15 +199,17 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
           </div>
         )}
 
+        <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
+
         <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
-          <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-xl tw-font-semibold">
+          <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium">
             Here you can view your sessions, edit your profile, and view your
             calendar.
           </p>
           <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
             {cards.map((card) => {
               return (
-                <div className="tw-w-[300px] tw-flex-wrap tw-bg-white tw-shadow-xl tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-md hover:tw-scale-110 tw-ease-in-out tw-duration-150 tw-transition-all max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
+                <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-white max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                     {card.icon}
                     <h2 className="tw-font-semibold tw-text-xl">{card.name}</h2>
@@ -261,7 +276,7 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                       </div>
                     )}
                   </div>
-                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100">
+                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
                     <Link href={`/dashboard/mentor?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>
@@ -269,14 +284,14 @@ const Home = ({ setComponent, setIsSidebarOpen, mentor, setMentor }) => {
                 </div>
               );
             })}
-            <div className="tw-flex tw-justify-center tw-w-[250px] tw-items-center">
-              <h2
-                onClick={() => setIsSidebarOpen(true)}
-                className="tw-text-xl tw-font-semibold tw-italic hover:tw-text-primary-100 tw-cursor-pointer tw-transition-all tw-ease-in-out tw-duration-150 max-[707px]:tw-hidden"
-              >
-                View More...
-              </h2>
-            </div>
+          </div>
+          <div className="tw-mt-[3rem] -tw-ml-[8rem] tw-pl-28 tw-mb-[5rem] tw-flex tw-justify-center tw-w-[250px] tw-items-center">
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+            >
+              View More
+            </button>
           </div>
         </main>
       </section>

@@ -26,8 +26,9 @@ function Profile({ mentorDetail }) {
 
   const [formData, setFormData] = useState(initialFormData);
   const [msg, setMsg] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
+  const [fileName, setFileName] = useState("");
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -77,11 +78,32 @@ function Profile({ mentorDetail }) {
     });
   };
 
-  // onChange function for image input
   const handleUploadImageChange = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setFormData({ ...formData, image: base64 });
+
+    try {
+      const imageCloudinaryUrl = await uploadToCloudinary(base64);
+      console.log(imageCloudinaryUrl);
+      setFormData({ ...formData, image: imageCloudinaryUrl });
+    } catch (error) {
+      console.log("Error uploading image to Cloudinary:", error);
+    }
+  };
+
+  const uploadToCloudinary = async (imageSrc) => {
+    const res = await fetch(imageSrc);
+    const blob = await res.blob();
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
+    try {
+      const formData = new FormData();
+      formData.append("file", blob);
+      formData.append("upload_preset", "image_preset");
+      const res = await axios.post(url, formData);
+      return res.data.secure_url;
+    } catch (error) {
+      console.log("Couldn't upload image to Cloudinary", error);
+    }
   };
 
   // form submit function

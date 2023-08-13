@@ -6,44 +6,53 @@ import axios from "axios";
 import EventLogin from "../eventLogin/EventLogin";
 function Sessions() {
   const [sessionData, setSessionData] = useState({});
-  
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     const { mentor_username } = JSON.parse(localStorage.getItem("mentorData"));
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/session`;
     const res = axios.get(url, { withCredentials: true });
-
+    setIsLoading(false);
     // setSessionData(res);
     console.log("res of session detail of mentor: ", res);
   }, []);
 
   const updateSessions = () => {
+    setIsLoading(true);
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/update/sessions`;
     const res = axios.post(url, sessionData, { withCredentials: true });
     // setSessionData({res});
+    setIsLoading(false);
   };
 
   return (
-    <>
-      <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
-        <h2 className="tw-font-semibold tw-text-md">
-          Title: kjadf
-          <span className="tw-text-sm tw-text-primary-200">
-            {sessionData?.session?.title}
-          </span>
-        </h2>
-        <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
-          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-            {sessionData?.session?.type}
-          </p>
-          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-            {sessionData?.session?.duration} minutes
-          </p>
-          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-            {sessionData?.session?.desc}
-          </p>
+    <div>
+      {isLoading ? (
+        <EventLogin />
+      ) : (
+        <div>
+          <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
+            <h2 className="tw-font-semibold tw-text-md">
+              Title: kjadf
+              <span className="tw-text-sm tw-text-primary-200">
+                {sessionData?.session?.title}
+              </span>
+            </h2>
+            <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
+              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                {sessionData?.session?.type}
+              </p>
+              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                {sessionData?.session?.duration} minutes
+              </p>
+              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                {sessionData?.session?.desc}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
 

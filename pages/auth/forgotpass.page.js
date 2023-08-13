@@ -11,7 +11,6 @@ import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
 //import Logo from "../../public/logo.png";
 
-
 function ForgotPassword() {
   const router = useRouter();
   const { entity } = router.query; // 'entity' will contain the entity type ('user' or 'mentor')
@@ -104,9 +103,7 @@ function ForgotPassword() {
                 }`}
               />
             </div>
-            {isLoading && (
-             <EventLogin/>
-            )}
+            {isLoading && <EventLogin />}
           </div>
           <ToastContainer />
           <hr />

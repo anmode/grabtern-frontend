@@ -11,6 +11,7 @@ import {
   MdOutlineNotificationsNone,
 } from "react-icons/md";
 import { logout } from "../layout/UserProfile";
+import { useAuth } from "../../context/AuthContext";
 
 const Home = ({
   setComponent,
@@ -19,6 +20,12 @@ const Home = ({
   mentor,
   setMentor,
 }) => {
+  const {
+    isMentorLoggedIn,
+    setIsMentorLoggedIn,
+    isUserLoggedIn,
+    setIsUserLoggedIn,
+  } = useAuth();
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));

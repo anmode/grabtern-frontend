@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { BiSolidUser, BiTime, BiCalendar } from "react-icons/bi";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
 import {
@@ -9,6 +10,7 @@ import {
   MdPayment,
   MdOutlineNotificationsNone,
 } from "react-icons/md";
+import { logout } from "../layout/UserProfile";
 
 const Home = ({
   setComponent,
@@ -20,6 +22,23 @@ const Home = ({
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const router = useRouter();
+
+  async function handleLogout() {
+    const success = await logout(router);
+
+    if (success) {
+      localStorage.clear();
+      setIsMentorLoggedIn(false);
+      setIsUserLoggedIn(false);
+
+      if (router.pathname === "/") {
+        router.reload(); // You can use router.reload() instead of window.location.reload()
+      } else {
+        router.push("/");
+      }
+    }
+  }
 
   useEffect(() => {
     const getMentor = async () => {
@@ -127,7 +146,10 @@ const Home = ({
             }`}
           >
             {mentor ? (
-              <p className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center">
+              <p
+                className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
+                onClick={handleLogout}
+              >
                 <h2 className="tw-font-semibold tw-text-white">Log out</h2>
                 <Image
                   src={mentor?.image}

@@ -56,12 +56,12 @@ const Home = ({
         )
         .then((res) => {
           setMentor(res.data.mentorDetail);
-          setMentorDetails(res.data.mentorDetail);
+          // setMentorDetails(res.data.mentorDetail);
           setLoadingState({status: false})
         })
         .catch((error) => {
           setLoadingState({status: false})
-          setErrorState({status: true, message:error.response.data.message});
+          setErrorState({status: true, message: error.response.data.message});
         });
     };
     getMentor();

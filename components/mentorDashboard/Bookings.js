@@ -27,7 +27,6 @@ const Bookings = ({setLoadingState, setErrorState}) => {
     try {
       setLoadingState({status: true})
       setErrorState({status: false})
-      setError("");
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
         {

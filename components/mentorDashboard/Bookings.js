@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Spinner from "../basic/spinner";
 
-const Bookings = ({setLoadingState, setErrorState}) => {
+const Bookings = ({ setLoadingState, setErrorState }) => {
   const [activeTab, setActiveTab] = useState("Pending");
 
   const tabs = ["Pending", "Completed"];
@@ -25,8 +25,8 @@ const Bookings = ({setLoadingState, setErrorState}) => {
   // function to fetch session
   const fetchSession = async () => {
     try {
-      setLoadingState({status: true})
-      setErrorState({status: false})
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
         {
@@ -34,17 +34,17 @@ const Bookings = ({setLoadingState, setErrorState}) => {
         },
       );
       setSessions(response.data);
-      setLoadingState({status: false})
+      setLoadingState({ status: false });
     } catch (error) {
-      setLoadingState({status: false})
+      setLoadingState({ status: false });
       if (
         error.response &&
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setErrorState({status: true, message:error.response.data.message});
+        setErrorState({ status: true, message: error.response.data.message });
       } else {
-        setErrorState({status: true});
+        setErrorState({ status: true });
       }
     }
   };

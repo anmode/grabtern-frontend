@@ -9,7 +9,7 @@ import { Button } from "../UI";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const Payments = ({setLoadingState, setErrorState}) => {
+const Payments = ({ setLoadingState, setErrorState }) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
   const [editForm, setEditForm] = useState(false);
@@ -19,22 +19,22 @@ const Payments = ({setLoadingState, setErrorState}) => {
   const getDetails = async () => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getAccountDetails/`;
     try {
-      setLoadingState({status: true})
-      setErrorState({status: false})
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const response = await axios.get(url, { withCredentials: true });
       const data = await response.data;
       setAccount(data);
-      setLoadingState({status: false})
+      setLoadingState({ status: false });
     } catch (error) {
-      setLoadingState({status: false})
+      setLoadingState({ status: false });
       if (
         error.response &&
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setErrorState({status: true, message:error.response.data.message});
+        setErrorState({ status: true, message: error.response.data.message });
       } else {
-        setErrorState({status: true});
+        setErrorState({ status: true });
       }
     }
   };

@@ -66,10 +66,9 @@ function MentorDashboard() {
               : "tw-translate-0 tw-duration-200 tw-transition-all tw-ease-in-out tw-pl-5"
           }`}
         >
-          {(loadingState.status ||
-            errorState.status) && (
-              <PreLoader loadingState={loadingState} errorState={errorState} />
-            )}
+          {(loadingState.status || errorState.status) && (
+            <PreLoader loadingState={loadingState} errorState={errorState} />
+          )}
           {component === "" && (
             <Home
               setIsSidebarOpen={setIsSidebarOpen}

@@ -59,7 +59,7 @@ const Home = ({
           setMentorDetails(res.data.mentorDetail);
           setLoadingState({status: false})
         })
-        .catch((err) => {
+        .catch((error) => {
           setLoadingState({status: false})
           setErrorState({status: true, message:error.response.data.message});
         });

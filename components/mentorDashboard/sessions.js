@@ -14,7 +14,7 @@ function Sessions({setLoadingState, setErrorState}) {
       const response = await axios.get(url, { withCredentials: true });
       setLoadingState({status: false})
       return response.data; // Assuming the API returns the data directly
-    } catch (err) {
+    } catch (error) {
       setLoadingState({status: false})
       setErrorState({status: true, message:error.response.data.message});
       console.error("Error in fetching details ", err);

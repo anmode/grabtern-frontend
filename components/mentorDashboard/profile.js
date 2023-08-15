@@ -5,6 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { mentorImg } from "../../public/assets";
+import { ToastContainer, toast } from "react-toastify";
 
 function Profile({ mentorDetail, setLoadingState, setErrorState}) {
   const initialFormData = {
@@ -24,8 +25,6 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [msg, setMsg] = useState("");
-  const [error, setError] = useState("");
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -42,12 +41,10 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
       const response = await axios.get(url, { withCredentials: true });
       const data = response.data;
       setFormData(data);
-      setError("");
       setLoadingState({status: false})
     } catch (error) {
       setLoadingState({status: false})
       setErrorState({status: true, message:error.response.data.message});
-      setError(error.response.data.message);
     }
   };
 
@@ -111,7 +108,6 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;
 
@@ -122,20 +118,22 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
       ); // Send the updated data to the backend
       setFormData(response.data);
 
-      setMsg("Changes saved successfully."); // Set success message
+      toast.success("Changes Saved Successfully");
     } catch (error) {
       if (
         error.response &&
         error.response.status >= 400 &&
         error.response.status <= 500
       ) {
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        setError("An error occurred while saving changes.");
+        toast.error("An error occurred while saving changes.");
       }
     }
   };
   return (
+    <>
+    <ToastContainer/>
     <div className="tw-pb-[5rem] tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
       <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
         <div className="tw-border tw-border-base-300 tw-rounded-md tw-p-4 tw-bg-white max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
@@ -335,12 +333,6 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
                 }}
               ></div>
             </div>
-            {error && (
-              <div style={{ color: "red", gridColumn: "1/3" }}>{error}</div>
-            )}
-            {msg && (
-              <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
-            )}
             <hr
               style={{
                 margin: "10px 0",
@@ -366,6 +358,7 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
         </div>
       </div>
     </div>
+  </>
   );
 }
 

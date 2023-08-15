@@ -14,18 +14,14 @@ import { logout } from "../layout/UserProfile";
 import { useAuth } from "../../context/AuthContext";
 
 const Home = ({
-  setComponent,
   isSidebarOpen,
   setIsSidebarOpen,
   mentor,
   setMentor,
+  setLoadingState,
+  setErrorState,
 }) => {
-  const {
-    isMentorLoggedIn,
-    setIsMentorLoggedIn,
-    isUserLoggedIn,
-    setIsUserLoggedIn,
-  } = useAuth();
+  const { setIsMentorLoggedIn, setIsUserLoggedIn } = useAuth();
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
@@ -49,23 +45,30 @@ const Home = ({
 
   useEffect(() => {
     const getMentor = async () => {
-      const res = await axios
-        .get(
+      try {
+        setLoadingState({ status: true });
+        setErrorState({ status: false });
+        const res = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
           { withCredentials: true },
-        )
-        .then((res) => {
-          setMentor(res.data.mentorDetail);
-          console.log(res.data);
-          setMentorDetails(res.data.mentorDetail);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        );
+        setMentor(res.data.mentorDetail);
+        setLoadingState({ status: false });
+      } catch (error) {
+        setLoadingState({ status: false });
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setErrorState({ status: true, message: error.response.data.message });
+        } else {
+          setErrorState({ status: true });
+        }
+      }
     };
     getMentor();
   }, []);
-  // console.log(mentor);
 
   const reference = useRef(null);
 

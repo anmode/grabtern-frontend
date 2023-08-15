@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/queries.module.css";
-import TicketForm from "./ticketForm";
+import TicketForm from "./QueriesComponent/ticketForm";
 import { CiShoppingTag } from "react-icons/ci";
 import axios from "axios";
 

@@ -5,14 +5,21 @@ import Sessions from "../../components/mentorDashboard/sessions";
 import Calendar from "../../components/mentorDashboard/calendar";
 import Queries from "../../components/mentorDashboard/queries";
 import Home from "../../components/mentorDashboard/home";
-import Header from "../../components/layout/Header";
 import Bookings from "../../components/mentorDashboard/Bookings";
 import Payments from "../../components/mentorDashboard/Payment";
 import ComingSoon from "../../components/basic/ComingSoon";
 import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
+import PreLoader from "../../components/mentorDashboard/PreLoader";
 
 function MentorDashboard() {
+  // loading and error state
+  const initialState = {
+    status: false,
+    message: "",
+  };
+  const [loadingState, setLoadingState] = useState(initialState);
+  const [errorState, setErrorState] = useState(initialState);
   // getting page name on change in tab
   const [component, setComponent] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -47,7 +54,6 @@ function MentorDashboard() {
   return (
     <>
       <div className="tw-flex">
-        {/* <Header navbarBackground={true} /> */}
         <Sidebar
           mentor={mentor}
           isSidebarOpen={isSidebarOpen}
@@ -60,27 +66,60 @@ function MentorDashboard() {
               : "tw-translate-0 tw-duration-200 tw-transition-all tw-ease-in-out tw-pl-5"
           }`}
         >
+          {(loadingState.status || errorState.status) && (
+            <PreLoader loadingState={loadingState} errorState={errorState} />
+          )}
           {component === "" && (
             <Home
               setIsSidebarOpen={setIsSidebarOpen}
               isSidebarOpen={isSidebarOpen}
               mentor={mentor}
               setMentor={setMentor}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
             />
           )}
-          {component === "profile" && <Profile isSidebarOpen={isSidebarOpen} />}
+          {component === "profile" && (
+            <Profile
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+            />
+          )}
           {component === "calendar" && (
-            <Calendar isSidebarOpen={isSidebarOpen} />
+            <Calendar
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+            />
           )}
           {component === "sessions" && (
-            <Sessions isSidebarOpen={isSidebarOpen} />
+            <Sessions
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+            />
           )}
-          {component == "queries" && <Queries isSidebarOpen={isSidebarOpen} />}
+          {component == "queries" && (
+            <Queries
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+            />
+          )}
           {component == "bookings" && (
-            <Bookings isSidebarOpen={isSidebarOpen} />
+            <Bookings
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+            />
           )}
           {component == "payments" && (
-            <Payments isSidebarOpen={isSidebarOpen} />
+            <Payments
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+            />
           )}
           {["services", "new", "referral", "rewards"].includes(component) && (
             <ComingSoon isSidebarOpen={isSidebarOpen} />

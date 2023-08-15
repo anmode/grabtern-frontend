@@ -7,13 +7,13 @@ import { MdNumbers } from "react-icons/md";
 import Form from "./PaymentComponent/Form";
 import { Button } from "../UI";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const Payments = ({setLoadingState, setErrorState}) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
   const [editForm, setEditForm] = useState(false);
   const [addForm, setAddForm] = useState(false);
-  const [error, setError] = useState("");
 
   // getting account details from backend
   const getDetails = async () => {
@@ -21,7 +21,6 @@ const Payments = ({setLoadingState, setErrorState}) => {
     try {
       setLoadingState({status: true})
       setErrorState({status: false})
-      setError("");
       const response = await axios.get(url, { withCredentials: true });
       const data = await response.data;
       setAccount(data);
@@ -29,7 +28,6 @@ const Payments = ({setLoadingState, setErrorState}) => {
     } catch (error) {
       setLoadingState({status: false})
       setErrorState({status: true, message:error.response.data.message});
-      setError(error.response.data.message);
     }
   };
 
@@ -42,7 +40,6 @@ const Payments = ({setLoadingState, setErrorState}) => {
   const editDetails = async (formData) => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateAccountDetails/`;
     try {
-      setError("");
       const response = await axios.put(
         url,
         { ...formData },
@@ -51,8 +48,9 @@ const Payments = ({setLoadingState, setErrorState}) => {
       const data = await response.data;
       setAccount(data);
       setEditForm(false);
+      toast.success("Changes Saved Successfully");
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -60,7 +58,6 @@ const Payments = ({setLoadingState, setErrorState}) => {
   const addDetails = async (formData) => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addAccountDetails/`;
     try {
-      setError("");
       const response = await axios.post(
         url,
         { ...formData },
@@ -69,15 +66,15 @@ const Payments = ({setLoadingState, setErrorState}) => {
       const data = await response.data;
       setAccount(data);
       setAddForm(false);
+      toast.success("Account added sucessfully");
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
   return (
     <>
-      {error && <p className="tw-text-red-500">{error}</p>}
-
+      <ToastContainer />
       {!account ? (
         <>
           {" "}

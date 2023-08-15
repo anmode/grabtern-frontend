@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt";
 import { FaUserAlt } from "react-icons/fa";
 import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { mentorImg } from "../../public/assets";
 
-function Profile({ mentorDetail }) {
+function Profile({ mentorDetail, setLoadingState, setErrorState}) {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
     username: mentorDetail?.username || "",
@@ -40,11 +39,15 @@ function Profile({ mentorDetail }) {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
+      setLoadingState({status: true})
       const response = await axios.get(url, { withCredentials: true });
       const data = response.data;
       setFormData(data);
       setError("");
+      setLoadingState({status: false})
     } catch (error) {
+      setLoadingState({status: false})
+      setErrorState({status: true, message:error.response.data.message});
       setError(error.response.data.message);
     }
   };

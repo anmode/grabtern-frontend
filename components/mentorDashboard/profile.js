@@ -6,7 +6,7 @@ import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { mentorImg } from "../../public/assets";
 
-function Profile({ mentorDetail, setLoadingState, setErrorState}) {
+function Profile({ mentorDetail, setLoadingState, setErrorState }) {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
     username: mentorDetail?.username || "",
@@ -37,16 +37,16 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
-      setLoadingState({status: true})
-      setErrorState({status: false})
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const response = await axios.get(url, { withCredentials: true });
       const data = response.data;
       setFormData(data);
       setError("");
-      setLoadingState({status: false})
+      setLoadingState({ status: false });
     } catch (error) {
-      setLoadingState({status: false})
-      setErrorState({status: true, message:error.response.data.message});
+      setLoadingState({ status: false });
+      setErrorState({ status: true, message: error.response.data.message });
       setError(error.response.data.message);
     }
   };

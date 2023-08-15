@@ -18,12 +18,10 @@ const Home = ({
   setIsSidebarOpen,
   mentor,
   setMentor,
-  setLoadingState, setErrorState
+  setLoadingState,
+  setErrorState,
 }) => {
-  const {
-    setIsMentorLoggedIn,
-    setIsUserLoggedIn,
-  } = useAuth();
+  const { setIsMentorLoggedIn, setIsUserLoggedIn } = useAuth();
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
@@ -47,8 +45,8 @@ const Home = ({
 
   useEffect(() => {
     const getMentor = async () => {
-      setLoadingState({status: true})
-      setErrorState({status: false})
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const res = await axios
         .get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
@@ -57,11 +55,11 @@ const Home = ({
         .then((res) => {
           setMentor(res.data.mentorDetail);
           setMentorDetails(res.data.mentorDetail);
-          setLoadingState({status: false})
+          setLoadingState({ status: false });
         })
         .catch((err) => {
-          setLoadingState({status: false})
-          setErrorState({status: true, message:error.response.data.message});
+          setLoadingState({ status: false });
+          setErrorState({ status: true, message: error.response.data.message });
         });
     };
     getMentor();

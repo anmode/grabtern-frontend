@@ -3,20 +3,20 @@ import axios from "axios";
 import SessionCard from "../newMentorProfile/SessionCard";
 import Spinner from "../basic/spinner";
 
-function Sessions({setLoadingState, setErrorState}) {
+function Sessions({ setLoadingState, setErrorState }) {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
-      setLoadingState({status: true})
-      setErrorState({status: false})
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
-      setLoadingState({status: false})
+      setLoadingState({ status: false });
       return response.data; // Assuming the API returns the data directly
     } catch (err) {
-      setLoadingState({status: false})
-      setErrorState({status: true, message:error.response.data.message});
+      setLoadingState({ status: false });
+      setErrorState({ status: true, message: error.response.data.message });
       console.error("Error in fetching details ", err);
     }
   };

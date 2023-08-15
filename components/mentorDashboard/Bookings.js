@@ -22,9 +22,6 @@ const Bookings = ({setLoadingState, setErrorState}) => {
   // session state
   const [sessions, setSessions] = useState([]);
 
-  // error state
-  const [error, setError] = useState("");
-
   // function to fetch session
   const fetchSession = async () => {
     try {
@@ -41,8 +38,15 @@ const Bookings = ({setLoadingState, setErrorState}) => {
       setLoadingState({status: false})
     } catch (error) {
       setLoadingState({status: false})
-      setErrorState({status: true, message:error.response.data.message});
-      setError(error.response.data.message);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({status: true, message:error.response.data.message});
+      } else {
+        setErrorState({status: true});
+      }
     }
   };
 
@@ -75,11 +79,6 @@ const Bookings = ({setLoadingState, setErrorState}) => {
           ))}
         </ul>
       </nav>
-
-      {/* error message */}
-      {error && (
-        <p className="tw-text-red-500 tw-text-center tw-mt-8">{error}</p>
-      )}
 
       {/* sessions list */}
       <div className="tw-mt-8">

@@ -44,7 +44,15 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
       setLoadingState({status: false})
     } catch (error) {
       setLoadingState({status: false})
-      setErrorState({status: true, message:error.response.data.message});
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({status: true, message:error.response.data.message});
+      } else {
+        setErrorState({status: true});
+      }
     }
   };
 

@@ -16,8 +16,15 @@ function Sessions({setLoadingState, setErrorState}) {
       return response.data; // Assuming the API returns the data directly
     } catch (error) {
       setLoadingState({status: false})
-      setErrorState({status: true, message:error.response.data.message});
-      console.error("Error in fetching details ", err);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({status: true, message:error.response.data.message});
+      } else {
+        setErrorState({status: true});
+      }
     }
   };
 

@@ -1,9 +1,8 @@
 import axios from "axios";
-import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
 import Spinner from "../basic/spinner";
 
-const Bookings = () => {
+const Bookings = ({setLoadingState, setErrorState}) => {
   const [activeTab, setActiveTab] = useState("Pending");
 
   const tabs = ["Pending", "Completed"];
@@ -20,71 +19,6 @@ const Bookings = () => {
   //   isbooked: { type: Boolean, default: false },
   // });
 
-  const tableHeadings = ["Topic", "Mentee", "Day", "Time"];
-
-  // const sessions = [
-  //   {
-  //     userID: 1,
-  //     userName: "justin",
-  //     mentorUsername: "robert",
-  //     sessionID: 1,
-  //     sessionName: "Breaking into open source",
-  //     sessionDay: "monday",
-  //     sessionTime: "10:30 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-12-11T00:00:00.000+00:00",
-  //     isbooked: true,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "john",
-  //     mentorUsername: "roger",
-  //     sessionID: 2,
-  //     sessionName: "Blockchain for beginners",
-  //     sessionDay: "wednesday",
-  //     sessionTime: "2:45 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
-  //     isbooked: false,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "katie Perry",
-  //     mentorUsername: "jennifer",
-  //     sessionID: 3,
-  //     sessionName: "How to get a job at Google",
-  //     sessionDay: "friday",
-  //     sessionTime: "11:00 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
-  //     isbooked: true,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "james bond",
-  //     mentorUsername: "taylor",
-  //     sessionID: 4,
-  //     sessionName: "How to maintain a work-life balance and excel in life",
-  //     sessionDay: "saturday",
-  //     sessionTime: "1:10 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-01-04T00:00:00.000+00:00",
-  //     isbooked: true,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "lisa",
-  //     mentorUsername: "sarah",
-  //     sessionID: 5,
-  //     sessionName: "Designing a website from scratch",
-  //     sessionDay: "tuesday",
-  //     sessionTime: "5:30 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
-  //     isbooked: false,
-  //   },
-  // ];
-
   // session state
   const [sessions, setSessions] = useState([]);
 
@@ -94,6 +28,8 @@ const Bookings = () => {
   // function to fetch session
   const fetchSession = async () => {
     try {
+      setLoadingState({status: true})
+      setErrorState({status: false})
       setError("");
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
@@ -102,7 +38,10 @@ const Bookings = () => {
         },
       );
       setSessions(response.data);
+      setLoadingState({status: false})
     } catch (error) {
+      setLoadingState({status: false})
+      setErrorState({status: true, message:error.response.data.message});
       setError(error.response.data.message);
     }
   };

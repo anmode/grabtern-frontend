@@ -8,7 +8,7 @@ import Form from "./PaymentComponent/Form";
 import { Button } from "../UI";
 import axios from "axios";
 
-const Payments = () => {
+const Payments = ({setLoadingState, setErrorState}) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
   const [editForm, setEditForm] = useState(false);
@@ -19,11 +19,16 @@ const Payments = () => {
   const getDetails = async () => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getAccountDetails/`;
     try {
+      setLoadingState({status: true})
+      setErrorState({status: false})
       setError("");
       const response = await axios.get(url, { withCredentials: true });
       const data = await response.data;
       setAccount(data);
+      setLoadingState({status: false})
     } catch (error) {
+      setLoadingState({status: false})
+      setErrorState({status: true, message:error.response.data.message});
       setError(error.response.data.message);
     }
   };

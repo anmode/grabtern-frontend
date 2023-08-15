@@ -26,8 +26,6 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
   const [formData, setFormData] = useState(initialFormData);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  const [imageSrc, setImageSrc] = useState("");
-  const [fileName, setFileName] = useState("");
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -40,6 +38,7 @@ function Profile({ mentorDetail, setLoadingState, setErrorState}) {
 
     try {
       setLoadingState({status: true})
+      setErrorState({status: false})
       const response = await axios.get(url, { withCredentials: true });
       const data = response.data;
       setFormData(data);

@@ -20,13 +20,13 @@ function Banner({ isMentorLoggedIn }) {
                 </p>
                 <div className="tw-w-full tw-flex tw-items-center tw-justify-center lg:tw-justify-start tw-gap-2">
                   <ButtonLink
-                    href="/mentors"
+                    href="/mentorList"
                     text="Find Mentor"
                     className="tw-min-w-[130px]"
                   />
                   {isMentorLoggedIn ? (
                     <ButtonLink
-                      href="/dashboard"
+                      href="/dashboard/mentor"
                       text="Dashboard"
                       variant="outline"
                       className="tw-min-w-[130px]"

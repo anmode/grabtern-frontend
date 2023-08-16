@@ -84,9 +84,9 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
   color: #7a9d54;
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -321,6 +321,31 @@ a:hover {
 
 .single-slider {
   width: 100% !important;
+}
+
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the form is centered vertically */
+  background-color: #f5f5f5;
+}
+
+.profileRegForm {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+}
+
+@media screen and (max-width: 786px) {
+  .profileRegForm {
+    padding: 5rem;
+  }
 }
 
 @media (max-width: 1199px) {
@@ -748,7 +773,7 @@ a:hover {
 .mentorForm div input,
 textarea,
 .scheduleCard,
-select {
+.mentorForm div select {
   width: 100%;
   border: 2px solid rgb(220, 220, 220);
   padding: 6px 10px;
@@ -985,7 +1010,11 @@ select {
   align-items: flex-start;
   width: 100%;
 }
-
+@media (max-width: 512px) {
+  .UPIDiv {
+    padding-bottom: 5rem;
+  }
+}
 .mentorUploudPhotoEdit {
   display: flex;
   gap: 20px !important;

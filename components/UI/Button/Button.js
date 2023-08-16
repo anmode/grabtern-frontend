@@ -9,7 +9,6 @@ function Button({
   type = "button",
   onClick,
 }) {
-  console.log("variant", variant);
   let variantClass = `btn${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
   return (
     <button

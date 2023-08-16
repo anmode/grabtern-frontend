@@ -1,55 +1,25 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard.module.css";
-import { BiLinkAlt } from "react-icons/bi";
-import { BsCalendarCheck } from "react-icons/bs";
-//import { IoMdTime } from "react-icons/io";
-import { RxLapTimer } from "react-icons/rx";
-import Select from "react-select";
-import moment from "moment-timezone";
+import Card from "./CalendarComponent/card";
+import styled from "styled-components";
+import { BsTrash3Fill } from "react-icons/bs";
+
 const Calender = () => {
+  const [showDefault, setShowDefault] = useState(false);
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
-
   const [selectedDays, setSelectedDays] = useState([]);
-  const [selectedStartTime, setSelectedStartTime] = useState({});
-  const [selectedEndTime, setSelectedEndTime] = useState({});
-  const [meetingLink, setMeetingLink] = useState("");
-  const [timezone, setTimezone] = useState(null);
-  const [showSave, setShowSave] = useState(false);
-  const getTimezoneOffset = (timezone) => {
-    const now = moment(); // Get the current time
-    return now.tz(timezone).format("Z"); // Get the timezone offset in hours and minutes
-  };
-  const timezones = moment.tz.names().map((timezone) => ({
-    label: `${timezone} (GMT ${getTimezoneOffset(timezone)})`,
-    value: timezone,
-  }));
-
-  const handleTimezoneChange = (timezone) => {
-    setTimezone(timezone);
-  };
-
-  const selectedTimezone = timezones.find(
-    (option) => option.value === timezone,
-  );
-  const handleMeetingLink = (event) => {
-    setMeetingLink(event.target.value);
-    setShowSave(true);
-  };
-  const handleSave = () => {};
-  const handleCancel = () => {
-    setMeetingLink("");
-    setShowSave(false);
-  };
+  const [selectedTimes, setSelectedTime] = useState({});
+  const [selectTime, setSelectTime] = useState({});
 
   const weekdays = [
-    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday",
   ];
   const timeOptions = {
     "08:00 AM": "08:00 AM",
@@ -64,42 +34,29 @@ const Calender = () => {
     "05:00 PM": "05:00 PM",
     "06:00 PM": "06:00 PM",
     "07:00 PM": "07:00 PM",
+    "08:00 PM": "08:00 PM",
   };
-  const bookingPeriod = [
-    "2 weeks",
-    "3 weeks",
-    "4 weeks",
-    "2 months",
-    "3 months",
-  ];
-  const noticePeriod = ["minutes", "hours", "days"];
-  const [BookingPeriod, setBookingPeriod] = useState(bookingPeriod[0]);
-  //const [NoticePeriod, setNoticePeriod] = useState(noticePeriod[0]);
-
-  const handleBookingPeriod = (event) => {
-    setBookingPeriod(event.target.value);
-  };
-
-  // const handleNoticePeriod = (event) => {
-  //   setNoticePeriod(event.target.value);
-  // };
   const handleDayChange = (day) => {
-    setSelectedStartTime("");
-    setSelectedEndTime("");
     if (selectedDays.includes(day)) {
       setSelectedDays(
         selectedDays.filter((selectedDay) => selectedDay !== day),
       );
+      setSelectedTime((prevTimes) => {
+        const updatedTimes = { ...prevTimes };
+        delete updatedTimes[day];
+        return updatedTimes;
+      });
     } else {
       setSelectedDays([...selectedDays, day]);
     }
   };
 
-  const handleStartTime = (day, time) => {
-    setSelectedStartTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+  const handleTimeChange = (day, time) => {
+    setSelectedTime((prevTimes) => ({ ...prevTimes, [day]: time }));
   };
-  const handleEndTime = (day, time) => {
-    setSelectedEndTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+
+  const handleTime = (day, time) => {
+    setSelectTime((prevTimes) => ({ ...prevTimes, [day]: time }));
   };
 
   const handleCalender = () => {
@@ -110,187 +67,304 @@ const Calender = () => {
     showSchedule(true);
     showCalender(false);
   };
-  return (
-    <div className={`${styles.schedule} tw-text-black tw-ml-[19rem]  tw-mt-10`}>
-      <button
-        onClick={handleCalender}
-        className="tw-border-black tw-border-[2px] tw-p-2 tw-rounded-md"
-      >
-        Calendar
-      </button>
-      <button
-        onClick={handleSchedule}
-        className="tw-ml-9 tw-border-black tw-border-[2px] tw-p-2 tw-rounded-md"
-      >
-        Schedule
-      </button>
-      <div className="content">
-        {calender && (
-          <div className="tw-mt-7 tw-w-[600px]">
-            <hr className="tw-border-t-2 tw-border-[#c0c0c0] tw-mt-14 tw-width-[100%] tw-shadow-lg  tw-text-opacity-50" />
-            <div
-              className={`${styles.container1} tw-flex-row tw-items-center tw-grid tw-grid-cols-2   tw-gap-2 tw-mt-[6rem]`}
-            >
-              <div
-                className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}
-              >
-                <RxLapTimer />
-                <h1 className="tw-mr-4 tw-ml-4">
-                  {" "}
-                  Select the required timezone
-                </h1>
-              </div>
-              <div className="tw-flex tw-mb-8 tw-w-[300px] ">
-                <Select
-                  className="tw-w-[293px]"
-                  options={timezones}
-                  value={selectedTimezone}
-                  onChange={handleTimezoneChange}
-                  placeholder="Select a timezone"
-                />
-                {timezone && (
-                  <div className="tw-w-[300px]">{setTimezone.label}</div>
-                )}
-              </div>
-              <div
-                className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}
-              >
-                <BiLinkAlt />
-                <h1 className="tw-mr-4 tw-ml-4"> Enter the meeting link</h1>
-              </div>
-              <div>
-                <input
-                  className="tw-h-10 tw-border-2 tw-border-[#E2E8F0] tw-rounded-md tw-mb-8 tw-w-[294px]"
-                  type="url"
-                  value={meetingLink}
-                  onChange={handleMeetingLink}
-                  placeholder="enter the meeting link"
-                />
 
-                {showSave && (
-                  <div>
-                    <button
-                      className="tw-border-black tw-border-[2px] tw-p-1 tw-rounded-md tw-mr-3 tw-w-16"
-                      onClick={handleSave}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="tw-border-black tw-border-[2px] tw-p-1 tw-rounded-md"
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                )}
-              </div>
-              <div
-                className={`${styles.container} tw-mb-8 tw-flex tw-flex-row`}
+  // create new schedule
+  const [components, setComponents] = useState([]); // array of components (store all schedules)
+  const [showNewSchedule, setShowNewSchedule] = useState(false); // show new schedule form
+
+  const createSchedule = () => {
+    const newComp = {
+      props: {
+        id: components.length,
+        deleteSchedule: deleteSchedule,
+      },
+      componentHidden: (
+        <div
+          key={components.length}
+          className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen"
+        >
+          <div className="tw-flex tw-justify-between max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items  -start">
+            <h2 className="tw-font-semibold tw-text-lg">
+              Schedule {components.length + 1}
+            </h2>
+            <div className="tw-flex tw-gap-4">
+              <button
+                onClick={() => setShowNewSchedule(true)}
+                className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
               >
-                <BsCalendarCheck />
-                <h1 className="tw-ml-4">Booking period</h1>
-              </div>
-              <div className="tw-mb-8">
-                <select
-                  name="BookingPeriod"
-                  value={BookingPeriod}
-                  onChange={handleBookingPeriod}
-                  className="border border-gray-400 p-2 rounded"
-                >
-                  {bookingPeriod.map((period) => (
-                    <option key={period} value={period}>
-                      {period}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {/* <div className={`${styles.container}tw-mb-8 tw-flex tw-flex-row`}>
-                <IoMdTime />
-                <h1 className="tw-ml-4">Notice period</h1>
-              </div> */}
-              {/* <div className="tw-flex tw-flex-row tw-mb-8">
-                <input type="number" />
-                <select
-                  className="tw-w-[94px] tw-pr-[6px]"
-                  value={NoticePeriod}
-                  onChange={handleNoticePeriod}
-                >
-                  {noticePeriod.map((period) => (
-                    <option key={period} value={period}>
-                      {period}
-                    </option>
-                  ))}
-                </select>
-              </div> */}
+                Show
+              </button>
+              <button
+                onClick={() => deleteSchedule(components.length)}
+                className="tw-flex tw-justify-center tw-items-center tw-gap-2 tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+              >
+                <BsTrash3Fill /> Delete
+              </button>
             </div>
           </div>
-        )}
-        {schedule && (
-          <div className="tw-mt-7">
-            <h2 className="tw-font-semibold">Schedule Form</h2>
-            <hr className="tw-border-t-2 tw-border-[#c0c0c0] tw-mt-4 tw-width-[90%] tw-shadow-lg  tw-text-opacity-50" />
-            {weekdays.map((day, index) => (
-              <div key={index} className="tw-mt-7">
+        </div>
+      ),
+      componentShow: (
+        <div
+          key={components.length}
+          className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen"
+        >
+          <div className="tw-flex tw-justify-between max-[512px]:tw-flex-col">
+            <h2 className="tw-font-semibold tw-text-lg">
+              Schedule {components.length + 1}
+            </h2>
+            <div className="tw-flex tw-gap-4">
+              <button className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                Save
+              </button>
+              <button
+                onClick={() => {
+                  setShowNewSchedule(false);
+                }}
+                className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+              >
+                Hide
+              </button>
+            </div>
+          </div>
+
+          {weekdays.map((day, index) => (
+            <div
+              key={index}
+              className="tw-mt-10 tw-flex tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start max-[512px]:tw-gap-2"
+            >
+              <div className="tw-flex tw-items-center tw-gap-2 tw-justify-center tw-text-center">
                 <input
+                  id={index}
                   type="checkbox"
                   checked={selectedDays.includes(day)}
                   onChange={() => handleDayChange(day)}
+                  className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
                 />
-                <label>{day}</label>
-                {selectedDays.includes(day) && (
-                  <div className="tw-flex tw-flex-row">
-                    <div>
-                      {/* <h3>Select Time:</h3> */}
-                      <select
-                        className="tw-w-36"
-                        value={selectedStartTime[day] || ""}
-                        onChange={(e) => handleStartTime(day, e.target.value)}
-                      >
-                        <option value="" className="tw-text-gray-200">
-                          start Time
-                        </option>
-                        {Object.values(timeOptions).map((timeOption) => (
-                          <option key={timeOption} value={timeOption}>
-                            {timeOption}
-                          </option>
-                        ))}
-                      </select>
-                      {selectedStartTime[day] && (
-                        <div>
-                          <h3>Selected Time:</h3>
-                          <div>{selectedStartTime[day]}</div>
-                        </div>
-                      )}
-                    </div>
-                    <div className="tw-m-2">-</div>
-
-                    <div>
-                      {/* <h3>Select Time:</h3> */}
-                      <select
-                        className="tw-w-36"
-                        value={selectedEndTime[day] || ""}
-                        onChange={(e) => handleEndTime(day, e.target.value)}
-                      >
-                        <option value="8:00AM" className="tw-text-gray-200">
-                          end time
-                        </option>
-                        {Object.values(timeOptions).map((timeOption) => (
-                          <option key={timeOption} value={timeOption}>
-                            {timeOption}
-                          </option>
-                        ))}
-                      </select>
-                      {selectedEndTime[day] && (
-                        <div>
-                          <h3>Selected Time:</h3>
-                          <div>{selectedEndTime[day]}</div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
+                <label
+                  for={index}
+                  className="tw-flex tw-justify-center tw-text-center tw-items-center"
+                >
+                  <span className="tw-font-medium tw-text-center tw-items-center tw-justify-center tw-flex tw-relative tw-top-1">
+                    {day}
+                  </span>
+                </label>
               </div>
-            ))}
+
+              {selectedDays.includes(day) ? (
+                <div className="tw-flex tw-gap-5">
+                  <div className="tw-flex tw-justify-center tw-items-center">
+                    {/* <h3>Select Time:</h3> */}
+                    <select
+                      value={selectedTimes[day] || ""}
+                      onChange={(e) => handleTimeChange(day, e.target.value)}
+                      className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                    >
+                      <option value="" className="" selected>
+                        9:00 AM
+                      </option>
+                      {Object.values(timeOptions).map((timeOption) => (
+                        <option key={timeOption} value={timeOption}>
+                          {timeOption}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
+                    -
+                  </span>
+                  <div className="tw-flex tw-justify-center tw-items-center">
+                    {/* <h3>Select Time:</h3> */}
+                    <select
+                      value={selectTime[day] || ""}
+                      onChange={(e) => handleTime(day, e.target.value)}
+                      className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                    >
+                      <option value="" className="tw-text-gray-200">
+                        8:00 PM
+                      </option>
+                      {Object.values(timeOptions).map((timeOption) => (
+                        <option key={timeOption} value={timeOption}>
+                          {timeOption}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              ) : (
+                <div className="">
+                  <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ),
+    };
+    setComponents([...components, newComp]);
+  };
+
+  const deleteSchedule = (idToDelete) => {
+    const updatedSchedules = components.filter(
+      (schedule) => schedule.props.id !== idToDelete,
+    );
+    setComponents(updatedSchedules);
+  };
+
+  return (
+    <div className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pl-[10rem] tw-pt-10 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[800px]:tw-pl-20 max-[708px]:tw-w-[370px] max-[512px]:tw-w-[300px] max-[512px]:tw-pl-10 max-[375px]:tw-pl-14 max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[375px]:tw-w-[250px]">
+      <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
+      <div className="tw-flex tw-gap-6">
+        <button
+          onClick={handleCalender}
+          className="tw-bg-primary-100 hover:tw-bg-primary-200 tw-ease-in-out tw-duration-200 tw-transition-all tw-font-semibold tw-text-white tw-px-5 tw-py-2 tw-text-center hover:tw-font-semibold tw-rounded-md"
+        >
+          Calendar
+        </button>
+        <button
+          onClick={handleSchedule}
+          className="tw-bg-primary-100 hover:tw-bg-primary-200 tw-ease-in-out tw-duration-200 tw-transition-all tw-font-semibold tw-text-white tw-px-5 tw-py-2 tw-text-center hover:tw-font-semibold tw-rounded-md"
+        >
+          Schedule
+        </button>
+      </div>
+      <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-flex tw-justify-center tw-items-center tw-dark:bg-gray-700 tw-flex-wrap" />
+      <div className="tw-flex tw-flex-col tw-flex-wrap tw-pt-6">
+        {calender && (
+          <div>
+            <Card />
+          </div>
+        )}
+        {schedule && (
+          <div className="tw-flex tw-flex-col tw-justify-start tw-items-start max-[512px]:tw-pl-8 max-[512px]:tw-justify-center max-[512px]:tw-items-center">
+            <div className="tw-flex tw-gap-6 max-[512px]:tw-justify-center max-[512px]:tw-items-center">
+              <button
+                onClick={() => setShowDefault(true)}
+                className="tw-bg-gray-200 tw-rounded-md tw-p-3 tw-font-semibold hover:tw-bg-gray-300 tw-ease-in-out tw-duration-150 tw-transition-all"
+              >
+                Default
+              </button>
+              <button
+                onClick={createSchedule}
+                className="tw-bg-gray-200 tw-rounded-md tw-p-3 tw-font-semibold hover:tw-bg-gray-300 tw-ease-in-out tw-duration-150 tw-transition-all"
+              >
+                + New Schedule
+              </button>
+            </div>
+
+            {showDefault ? (
+              <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
+                <div className="tw-flex tw-justify-between">
+                  <h2 className="tw-font-semibold tw-text-lg">Default</h2>
+                  <div className="tw-flex tw-gap-4">
+                    <button className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                      Save
+                    </button>
+                    <button
+                      onClick={() => setShowDefault(false)}
+                      className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+                    >
+                      Hide
+                    </button>
+                  </div>
+                </div>
+
+                {weekdays.map((day, index) => (
+                  <div
+                    key={index}
+                    className="tw-mt-10 tw-flex tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start max-[512px]:tw-gap-2"
+                  >
+                    <div className="tw-flex tw-items-center tw-gap-2 tw-justify-center tw-text-center">
+                      <input
+                        id={index}
+                        type="checkbox"
+                        checked={selectedDays.includes(day)}
+                        onChange={() => handleDayChange(day)}
+                        className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
+                      />
+                      <label
+                        for={index}
+                        className="tw-flex tw-justify-center tw-text-center tw-items-center"
+                      >
+                        <span className="tw-font-medium tw-text-center tw-items-center tw-justify-center tw-flex tw-relative tw-top-1">
+                          {day}
+                        </span>
+                      </label>
+                    </div>
+
+                    {selectedDays.includes(day) ? (
+                      <div className="tw-flex tw-gap-5">
+                        <div className="tw-flex tw-justify-center tw-items-center">
+                          {/* <h3>Select Time:</h3> */}
+                          <select
+                            value={selectedTimes[day] || ""}
+                            onChange={(e) =>
+                              handleTimeChange(day, e.target.value)
+                            }
+                            className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                          >
+                            <option value="" className="" selected>
+                              9:00 AM
+                            </option>
+                            {Object.values(timeOptions).map((timeOption) => (
+                              <option key={timeOption} value={timeOption}>
+                                {timeOption}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
+                          -
+                        </span>
+                        <div className="tw-flex tw-justify-center tw-items-center">
+                          {/* <h3>Select Time:</h3> */}
+                          <select
+                            value={selectTime[day] || ""}
+                            onChange={(e) => handleTime(day, e.target.value)}
+                            className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                          >
+                            <option value="" className="tw-text-gray-200">
+                              8:00 PM
+                            </option>
+                            {Object.values(timeOptions).map((timeOption) => (
+                              <option key={timeOption} value={timeOption}>
+                                {timeOption}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="">
+                        <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
+                <div className="tw-flex tw-justify-between">
+                  <h2 className="tw-font-semibold tw-text-lg">Default</h2>
+                  <button
+                    onClick={() => setShowDefault(true)}
+                    className="tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+                  >
+                    Show
+                  </button>
+                </div>
+              </div>
+            )}
+            {/* New Schedule */}
+            <div>
+              {components.map((component, index) => (
+                <div key={index}>
+                  {showNewSchedule
+                    ? component.componentShow
+                    : component.componentHidden}
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

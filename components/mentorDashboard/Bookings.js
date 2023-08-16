@@ -1,8 +1,8 @@
 import axios from "axios";
-import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
+import Spinner from "../basic/spinner";
 
-const Bookings = () => {
+const Bookings = ({ setLoadingState, setErrorState }) => {
   const [activeTab, setActiveTab] = useState("Pending");
 
   const tabs = ["Pending", "Completed"];
@@ -19,90 +19,33 @@ const Bookings = () => {
   //   isbooked: { type: Boolean, default: false },
   // });
 
-  const tableHeadings = ["Topic", "Mentee", "Day", "Time"];
-
-  // const sessions = [
-  //   {
-  //     userID: 1,
-  //     userName: "justin",
-  //     mentorUsername: "robert",
-  //     sessionID: 1,
-  //     sessionName: "Breaking into open source",
-  //     sessionDay: "monday",
-  //     sessionTime: "10:30 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-12-11T00:00:00.000+00:00",
-  //     isbooked: true,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "john",
-  //     mentorUsername: "roger",
-  //     sessionID: 2,
-  //     sessionName: "Blockchain for beginners",
-  //     sessionDay: "wednesday",
-  //     sessionTime: "2:45 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
-  //     isbooked: false,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "katie Perry",
-  //     mentorUsername: "jennifer",
-  //     sessionID: 3,
-  //     sessionName: "How to get a job at Google",
-  //     sessionDay: "friday",
-  //     sessionTime: "11:00 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
-  //     isbooked: true,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "james bond",
-  //     mentorUsername: "taylor",
-  //     sessionID: 4,
-  //     sessionName: "How to maintain a work-life balance and excel in life",
-  //     sessionDay: "saturday",
-  //     sessionTime: "1:10 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-01-04T00:00:00.000+00:00",
-  //     isbooked: true,
-  //   },
-  //   {
-  //     userID: 1,
-  //     userName: "lisa",
-  //     mentorUsername: "sarah",
-  //     sessionID: 5,
-  //     sessionName: "Designing a website from scratch",
-  //     sessionDay: "tuesday",
-  //     sessionTime: "5:30 AM",
-  //     paymentProof: "https://picsum.photos/200",
-  //     bookedAt: "2021-09-01T00:00:00.000+00:00",
-  //     isbooked: false,
-  //   },
-  // ];
-
   // session state
   const [sessions, setSessions] = useState([]);
-
-  // error state
-  const [error, setError] = useState("");
 
   // function to fetch session
   const fetchSession = async () => {
     try {
-      setError("");
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/session/me`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
         {
           withCredentials: true,
         },
       );
       setSessions(response.data);
+      setLoadingState({ status: false });
     } catch (error) {
-      setError(error.response.data.message);
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
     }
   };
 
@@ -136,11 +79,6 @@ const Bookings = () => {
         </ul>
       </nav>
 
-      {/* error message */}
-      {error && (
-        <p className="tw-text-red-500 tw-text-center tw-mt-8">{error}</p>
-      )}
-
       {/* sessions list */}
       <div className="tw-mt-8">
         <ul className="tw-bg-primary-100 tw-text-white  min-[500px]:tw-grid tw-grid-cols-[auto_10rem]  [&>*]:tw-capitalize tw-p-4  sm:tw-grid-cols-[minmax(10rem,auto)_8rem_8rem] md:tw-grid-cols-[minmax(10rem,auto)_8rem_13rem] tw-gap-6 tw-border tw-border-b-0 tw-rounded-t">
@@ -156,40 +94,44 @@ const Bookings = () => {
           </li>
         </ul>
         <ul className="tw-bg-white tw-border tw-rounded-b">
-          {sessions
-            .filter((session) =>
-              activeTab.toLocaleLowerCase() === "pending"
-                ? session.isbooked
-                : !session.isbooked,
-            )
-            .map((session, index) => (
-              <li
-                key={index}
-                className="min-[540px]:tw-grid min-[540px]:tw-grid-cols-[auto_7rem] min-[540px]:tw-justify-between sm:tw-justify-normal tw-p-4 sm:tw-grid-cols-[auto_8rem] md:tw-grid-cols-[auto_13rem] tw-text-base-400 tw-border-b last:tw-border-b-0 tw-gap-6"
-              >
-                <div className="sm:tw-grid min-[540px]:tw-grid-cols-[auto_8rem] sm:tw-grid-cols-[auto_8rem] tw-gap-6">
-                  <p className="tw-font-medium">{session.sessionName}</p>
-                  <p className="tw-capitalize sm:tw-hidden">
-                    Mentee • {session.userName}
-                  </p>
-                  <p className="tw-capitalize tw-hidden sm:tw-block">
-                    {session.userName}
-                  </p>
-                </div>
-                <div>
-                  <div className="md:tw-grid tw-hidden md:tw-grid-cols-[5rem_5rem] md:tw-justify-between">
-                    <p className="tw-capitalize">{session.sessionDay}</p>
-                    <p className="tw-uppercase tw-text-right">
+          {sessions ? (
+            sessions
+              .filter((session) =>
+                activeTab.toLocaleLowerCase() === "pending"
+                  ? session.isbooked
+                  : !session.isbooked,
+              )
+              .map((session, index) => (
+                <li
+                  key={index}
+                  className="min-[540px]:tw-grid min-[540px]:tw-grid-cols-[auto_7rem] min-[540px]:tw-justify-between sm:tw-justify-normal tw-p-4 sm:tw-grid-cols-[auto_8rem] md:tw-grid-cols-[auto_13rem] tw-text-base-400 tw-border-b last:tw-border-b-0 tw-gap-6"
+                >
+                  <div className="sm:tw-grid min-[540px]:tw-grid-cols-[auto_8rem] sm:tw-grid-cols-[auto_8rem] tw-gap-6">
+                    <p className="tw-font-medium">{session.sessionName}</p>
+                    <p className="tw-capitalize sm:tw-hidden">
+                      Mentee • {session.userName}
+                    </p>
+                    <p className="tw-capitalize tw-hidden sm:tw-block">
+                      {session.userName}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="md:tw-grid tw-hidden md:tw-grid-cols-[5rem_5rem] md:tw-justify-between">
+                      <p className="tw-capitalize">{session.sessionDay}</p>
+                      <p className="tw-uppercase tw-text-right">
+                        {session.sessionTime}
+                      </p>
+                    </div>
+                    <p className="tw-capitalize min-[540px]:tw-text-right md:tw-hidden">
+                      {session.sessionDay.substring(0, 3)},&nbsp;
                       {session.sessionTime}
                     </p>
                   </div>
-                  <p className="tw-capitalize min-[540px]:tw-text-right md:tw-hidden">
-                    {session.sessionDay.substring(0, 3)},&nbsp;
-                    {session.sessionTime}
-                  </p>
-                </div>
-              </li>
-            ))}
+                </li>
+              ))
+          ) : (
+            <Spinner />
+          )}
         </ul>
       </div>
     </div>

@@ -10,14 +10,16 @@ export default function SessionCard({
   duration,
   price,
   handleBookSession,
+  text,
+  path,
 }) {
-  console.log("Book Sesison", {
-    type,
-    name,
-    description,
-    duration,
-    price,
-  });
+  // console.log("Book Sesison", {
+  //   type,
+  //   name,
+  //   description,
+  //   duration,
+  //   price,
+  // });
   let Icon = FaVideo;
   switch (type) {
     case "group Call":
@@ -30,6 +32,12 @@ export default function SessionCard({
       Icon = FaVideo;
       break;
   }
+  const handleClick = () => {
+    if (handleBookSession) {
+      handleBookSession();
+    }
+  };
+
   return (
     <IconCard
       className="tw-flex tw-flex-col"
@@ -54,8 +62,8 @@ export default function SessionCard({
         {/* book session btn */}
         <Button
           className="tw-mt-1"
-          text="Book Session"
-          onClick={handleBookSession}
+          text={text ? text : "Book Session"}
+          onClick={handleClick}
         />
       </div>
     </IconCard>

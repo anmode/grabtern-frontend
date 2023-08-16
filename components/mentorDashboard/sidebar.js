@@ -1,7 +1,7 @@
 import React, { Component, useState, useRef, useEffect } from "react";
+import Switch from "react-switch";
 import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
-
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import { RxRocket } from "react-icons/rx";
@@ -24,8 +24,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    console.log("toggle clicked ", isSidebarOpen);
-
     setIsSidebarOpen(!isSidebarOpen);
   };
 
@@ -51,7 +49,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor.image}
+          src={mentor?.image}
           width={30}
           height={30}
           className="tw-rounded-full"
@@ -231,6 +229,18 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
     setCurrentPage(params.get("tab") || "");
   }, [window.location.search]);
 
+  const BlackSwitch = styled(Switch)(({ theme }) => ({
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      color: "black",
+      "&:hover": {
+        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+      backgroundColor: "black",
+    },
+  }));
+
   return (
     <>
       <div className="max-[512px]:tw-hidden">
@@ -240,8 +250,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
           className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
-          onMouseOver={() => setIsSidebarOpen(true)}
-          onMouseLeave={() => setIsSidebarOpen(false)}
         >
           <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
@@ -251,7 +259,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
             >
               <Link
                 href="/"
-                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl"
+                className="hover:tw-text-[#6E4FA0] tw-font-inter tw-font-bold tw-text-3xl"
               >
                 GrabTern
               </Link>
@@ -275,6 +283,48 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               </span>
             </div>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
+            {/* expand/collapse button */}
+            <div
+              className={`tw-p-1 tw-flex tw-w-10 ${
+                isSidebarOpen
+                  ? "tw-justify-start tw-gap-4"
+                  : "tw-justify-center"
+              } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
+            >
+              <div
+                className={`${
+                  isSidebarOpen
+                    ? "tw-flex tw-justify-center tw-items-center tw-gap-2"
+                    : "tw-flex-col tw-flex"
+                }`}
+              >
+                {isSidebarOpen ? (
+                  <label
+                    className="tw-relative tw-top-1 tw-font-semibold tw-text-slate-700 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
+                    for="toggle"
+                  >
+                    Collapse
+                  </label>
+                ) : null}
+                <Switch
+                  className="tw-items-center tw-justify-center tw-flex tw-w-10"
+                  id="toggle"
+                  checked={isSidebarOpen ? true : false}
+                  onChange={() => {
+                    toggleSidebar();
+                  }}
+                  onColor="#845EC2"
+                  activeBoxShadow="0 0 2px 3px #00C9A7"
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  width={40}
+                  height={20}
+                  handleDiameter={10}
+                  onHandleColor="#fff"
+                  offHandleColor="#845EC2"
+                />
+              </div>
+            </div>
             <ul
               className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}
             >

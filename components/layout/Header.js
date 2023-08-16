@@ -100,7 +100,7 @@ function Header() {
             <Link href="/" className="hover:tw-text-primary-100">
               Home
             </Link>
-            <Link href="/mentors" className="hover:tw-text-primary-100">
+            <Link href="/mentorList" className="hover:tw-text-primary-100">
               Mentor
             </Link>
             <Link href="/blogs" className="hover:tw-text-primary-100">

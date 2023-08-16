@@ -45,6 +45,11 @@
 .text2 {
   margin-bottom: 2rem;
 }
+.text3 {
+  margin-bottom: 2rem;
+  position: relative;
+  bottom: 100px;
+}
 
 .image2 {
   flex: 1;

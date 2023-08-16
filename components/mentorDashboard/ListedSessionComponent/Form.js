@@ -1,54 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
-import Spinner from "../../components/basic/spinner";
+import Spinner from "../../basic/spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Edit = () => {
-  const router = useRouter();
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
-  const username = mentorData?.user_name;
-  const { id, redirectURL } = router.query;
-
+const EditSessionComponent = ({ sessionID, redirectURL }) => {
   const [data, setData] = useState(null);
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const username = mentorData?.mentor_username;
 
   useEffect(() => {
-    // Fetch the session data based on id and username
-    const fetchSessionData = async () => {
-      try {
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession/${username}/${id}`;
-        const response = await axios.get(url, {
-          withCredentials: true,
-        });
-        setData(response.data);
-        // console.log(response.data);
-        console.log(data.name);
-      } catch (error) {
-        console.error("Error fetching session data:", error);
-        // Handle error
-      }
-    };
+    console.log(sessionID, username);
 
-    if (id && username) {
+    // Fetch session data only if data hasn't been fetched yet
+    if (!data) {
+      const fetchSessionData = async () => {
+        try {
+          const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession/${username}/${sessionID}`;
+          const response = await axios.get(url, { withCredentials: true });
+          setData(response.data);
+        } catch (error) {
+          console.error("Error fetching session data:", error);
+        }
+      };
+
       fetchSessionData();
     }
-  }, [id, username]);
+  }, [sessionID, username, data]);
 
-  // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateListedSession`;
-      // console.log(data);
-
-      const response = await axios.put(
-        url,
-        { ...data },
-        { withCredentials: true },
-      ); // Send the updated data to the backend
+      const response = await axios.put(url, data, { withCredentials: true });
       setData(response.data);
-
       toast.success("Changes saved successfully.");
       router.push(redirectURL);
     } catch (error) {
@@ -237,4 +222,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default EditSessionComponent;

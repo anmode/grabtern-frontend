@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SessionCard from "../newMentorProfile/SessionCard";
 import Spinner from "../basic/spinner";
+import Form from "./ListedSessionComponent/Form";
 
 function Sessions({ setLoadingState, setErrorState }) {
   const [data, setData] = useState([]);
+  const [editSessionID, setEditSessionID] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -13,7 +15,7 @@ function Sessions({ setLoadingState, setErrorState }) {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
       setLoadingState({ status: false });
-      return response.data; // Assuming the API returns the data directly
+      return response.data;
     } catch (error) {
       setLoadingState({ status: false });
       if (
@@ -53,16 +55,23 @@ function Sessions({ setLoadingState, setErrorState }) {
         <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
           {data.length > 0 ? (
             data.map((card, index) => (
-              <SessionCard
-                key={index}
-                type={card.type}
-                name={card.name}
-                description={card.description}
-                duration={card.duration}
-                price={card.price}
-                text="Edit Session"
-                path={`/dashboard/editMentorSession?&id=${card._id}&name=${card.name}&duration=${card.duration}&price=${card.price}&description=${card.description}&type=${card.type}&redirectURL=${window.location.href}`}
-              />
+              <div key={index}>
+                {editSessionID === card._id ? (
+                  <Form sessionID={editSessionID} />
+                ) : (
+                  <SessionCard
+                    type={card.type}
+                    name={card.name}
+                    description={card.description}
+                    duration={card.duration}
+                    price={card.price}
+                    text="Edit Session"
+                    handleBookSession={() => {
+                      setEditSessionID(card._id);
+                    }}
+                  />
+                )}
+              </div>
             ))
           ) : (
             <div>

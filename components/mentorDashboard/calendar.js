@@ -10,6 +10,7 @@ const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
   const [listSchedules, setListSchedules] = useState([]);
+  const [meetLink, setMeetLink] = ("");
   const [checkedDays, setCheckedDays] = useState([]);
   const [key, setKey] = useState(0);
 
@@ -47,7 +48,8 @@ const Calender = () => {
           withCredentials: true,
         },
       );
-      setListSchedules(response.data);
+      setMeetLink(response.data.meetLink);
+      setListSchedules(response.data.schedules);
     } catch (error) {
       console.log(error);
     }
@@ -57,6 +59,10 @@ const Calender = () => {
     fetchSchedule();
   }, []);
 
+  const handleLinkUpdate = (link) => {
+    console.log("link ", link);
+    setMeetLink(link);
+  }
 
   const handleDayChange = (day) => {
     if (checkedDays.includes(day)) {
@@ -107,6 +113,7 @@ const Calender = () => {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
       const res = await axios.put(url, {
+        link: meetLink,
         schedules: listSchedules,
       });
       toast.promise(
@@ -115,7 +122,7 @@ const Calender = () => {
           pending: 'updating...',
           success: 'update successfull 👌'
         }
-    )
+      )
     } catch (error) {
       toast.error("Sorry! couldn't update");
     }
@@ -297,7 +304,7 @@ const Calender = () => {
       <div className="tw-flex tw-flex-col tw-flex-wrap tw-pt-6">
         {calender && (
           <div>
-            <Card />
+            <Card updateMeetLink={handleLinkUpdate} />
           </div>
         )}
         {schedule && (
@@ -361,7 +368,7 @@ const Calender = () => {
                     </div>
 
                     {listSchedules.filter((obj) => obj.day === day).length >
-                    0 ? (
+                      0 ? (
                       listSchedules
                         .filter((obj) => obj.day === day)
                         .map((schedule) => (

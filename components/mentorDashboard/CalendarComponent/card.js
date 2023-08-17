@@ -4,9 +4,10 @@ import { BsLink } from "react-icons/bs";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { Switch } from "../../UI";
 
-const Card = () => {
+const Card = ({updateMeetLink}) => {
   const [toggle, setToggle] = useState(false);
   const [link, setLink] = useState(false);
+  const [meetLink, setMeetLink] = useState("");
 
   const addMeet = () => {
     setLink((prevLink) => !prevLink);
@@ -73,10 +74,12 @@ const Card = () => {
               <div className="tw-flex tw-justify-center tw-gap-3">
                 <input
                   type="url"
+                  onChange={(e)=>setMeetLink(e.target.value)}
+                  value={meetLink}
                   placeholder="Please enter a valid link"
                   className="tw-rounded-md tw-font-medium focus:tw-border-primary-100 tw-px-2 tw-text-base tw-border-2"
                 />
-                <button className="hover:tw-bg-primary-200 tw-rounded-md tw-px-6 tw-py-3 tw-font-bold tw-text-normal tw-bg-primary-100 tw-text-center tw-text-white tw-duration-200 tw-ease-in-out tw-transition-all">
+                <button onClick={()=>updateMeetLink(meetLink)} className="hover:tw-bg-primary-200 tw-rounded-md tw-px-6 tw-py-3 tw-font-bold tw-text-normal tw-bg-primary-100 tw-text-center tw-text-white tw-duration-200 tw-ease-in-out tw-transition-all">
                   Save
                 </button>
               </div>
@@ -91,6 +94,7 @@ const Card = () => {
             <button
               onClick={addMeet}
               className="hover:tw-bg-gray-100 tw-border-dashed tw-border-gray-700 tw-rounded-md tw-text-center tw-px-4 tw-py-3 tw-p-5 tw-text-sm tw-font-medium tw-border-2"
+              disabled
             >
               + Add meeting link
             </button>
@@ -112,7 +116,7 @@ const Card = () => {
           </p>
         </div>
         <div className="">
-          <select className="tw-rounded-md tw-border-1 tw-outline-none tw-border-black focus:tw-border-primary-200 focus:tw-border-2 tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-py-3 tw-px-2 tw-w-[322px]">
+          <select className="tw-rounded-md tw-border-1 tw-outline-none tw-border-black focus:tw-border-primary-200 focus:tw-border-2 tw-font-medium tw-text-base hover:tw-bg-gray-100 tw-py-3 tw-px-2 tw-w-[322px]" disabled>
             <option>1 Week</option>
             <option>2 Weeks</option>
             <option>3 Weeks</option>
@@ -142,7 +146,7 @@ const Card = () => {
             placeholder="Enter Value in Mins"
             className="tw-rounded-l-md tw-font-medium focus:tw-border-primary-100 tw-px-2 tw-text-base tw-border-2 tw-w-2/3"
           />
-          <select className="hover:tw-bg-gray-400 tw-rounded-r-md tw-outline-none focus:tw-border-primary-200 tw-border-2 tw-py-3 tw-px-0 tw-w-1/3 tw-text-normal tw-bg-gray-300 tw-text-center tw-text-black tw-font-semibold">
+          <select className="hover:tw-bg-gray-400 tw-rounded-r-md tw-outline-none focus:tw-border-primary-200 tw-border-2 tw-py-3 tw-px-0 tw-w-1/3 tw-text-normal tw-bg-gray-300 tw-text-center tw-text-black tw-font-semibold" disabled>
             <option>Minutes</option>
             <option>Hours</option>
             <option>Days</option>

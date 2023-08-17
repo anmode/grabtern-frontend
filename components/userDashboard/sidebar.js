@@ -1,32 +1,21 @@
 import React, { Component, useState, useRef, useEffect } from "react";
+import Switch from "react-switch";
 import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
-
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 import { RxRocket } from "react-icons/rx";
 import { LuPhoneCall } from "react-icons/lu";
-import { BiMessageRoundedDots } from "react-icons/bi";
-import { BiCalendar } from "react-icons/bi";
-import { MdPayment } from "react-icons/md";
-import { PiBookOpenText } from "react-icons/pi";
-import { CgProfile } from "react-icons/cg";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { CgMailOpen } from "react-icons/cg";
-import { BiGift } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    console.log("toggle clicked ", isSidebarOpen);
-
     setIsSidebarOpen(!isSidebarOpen);
   };
 
@@ -50,7 +39,14 @@ const Sidebar = () => {
   const menuItem = [
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: (
+        <Image
+          src={user?.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -68,7 +64,14 @@ const Sidebar = () => {
   const mobileItem = [
     {
       title: "Profile",
-      icon: <CgProfile />,
+      icon: (
+        <Image
+          src={user?.image}
+          width={30}
+          height={30}
+          className="tw-rounded-full"
+        />
+      ),
       path: "profile",
     },
     {
@@ -82,52 +85,6 @@ const Sidebar = () => {
       path: "bookings",
     },
   ];
-
-  const menuItem1 = [
-    {
-      title: "Profile",
-      icon: <CgProfile />,
-      path: "profile",
-    },
-    {
-      title: "Home",
-      icon: <AiOutlineHome />,
-      path: "",
-    },
-    {
-      title: "Bookings",
-      icon: <LuPhoneCall />,
-      path: "bookings",
-    },
-  ];
-
-  // const menuItem2 = [
-  //   {
-  //     title: "Services",
-  //     icon: <PiBookOpenText />,
-  //     path: "services",
-  //   },
-  //   {
-  //     title: "Payments",
-  //     icon: <MdPayment />,
-  //     path: "payments",
-  //   },
-  //   {
-  //     title: "What's New",
-  //     icon: <IoMdNotificationsOutline />,
-  //     path: "new",
-  //   },
-  //   {
-  //     title: "Invite & Earn",
-  //     icon: <CgMailOpen />,
-  //     path: "referral",
-  //   },
-  //   {
-  //     title: "Rewards",
-  //     icon: <BiGift />,
-  //     path: "rewards",
-  //   },
-  // ];
 
   const BookButton = styled.button`
     margin: 5px;
@@ -151,6 +108,18 @@ const Sidebar = () => {
     setCurrentPage(params.get("tab") || "");
   }, [window.location.search]);
 
+  const BlackSwitch = styled(Switch)(({ theme }) => ({
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      color: "black",
+      "&:hover": {
+        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+      backgroundColor: "black",
+    },
+  }));
+
   return (
     <>
       <div className="max-[512px]:tw-hidden">
@@ -160,8 +129,6 @@ const Sidebar = () => {
           className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
-          onMouseOver={() => setIsSidebarOpen(true)}
-          onMouseLeave={() => setIsSidebarOpen(false)}
         >
           <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
@@ -171,30 +138,54 @@ const Sidebar = () => {
             >
               <Link
                 href="/"
-                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-3xl"
+                className="hover:tw-text-[#6E4FA0] tw-font-inter tw-font-bold tw-text-3xl"
               >
                 GrabTern
               </Link>
             </div>
+            <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
+            {/* expand/collapse button */}
             <div
-              className={`tw-group tw-p-4 tw-flex ${
+              className={`tw-p-1 tw-flex tw-w-10 ${
                 isSidebarOpen
                   ? "tw-justify-start tw-gap-4"
                   : "tw-justify-center"
-              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
+              } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
             >
-              <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-              <span
+              <div
                 className={`${
                   isSidebarOpen
-                    ? "tw-block group-hover:tw-text-primary-100"
-                    : "tw-hidden"
+                    ? "tw-flex tw-justify-center tw-items-center tw-gap-2"
+                    : "tw-flex-col tw-flex"
                 }`}
               >
-                Get more bookings
-              </span>
+                {isSidebarOpen ? (
+                  <label
+                    className="tw-relative tw-top-1 tw-font-semibold tw-text-slate-700 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
+                    for="toggle"
+                  >
+                    Collapse
+                  </label>
+                ) : null}
+                <Switch
+                  className="tw-items-center tw-justify-center tw-flex tw-w-10"
+                  id="toggle"
+                  checked={isSidebarOpen ? true : false}
+                  onChange={() => {
+                    toggleSidebar();
+                  }}
+                  onColor="#845EC2"
+                  activeBoxShadow="0 0 2px 3px #00C9A7"
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  width={40}
+                  height={20}
+                  handleDiameter={10}
+                  onHandleColor="#fff"
+                  offHandleColor="#845EC2"
+                />
+              </div>
             </div>
-            <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             <ul
               className={`tw-gap-4 tw-flex tw-flex-col tw-font-medium tw-py-2`}
             >
@@ -204,7 +195,7 @@ const Sidebar = () => {
                   className="tw-group tw-cursor-pointer hoverList"
                 >
                   <Link
-                    href={`/dashboard/mentor?tab=${val.path}`}
+                    href={`/dashboard/user?tab=${val.path}`}
                     className={`tw-flex ${
                       isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
                     } ${
@@ -239,7 +230,7 @@ const Sidebar = () => {
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
-                className="tw-flex tw-group tw-cursor-pointer hoverList"
+                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer hoverList"
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
@@ -304,56 +295,8 @@ const Sidebar = () => {
               </div>
             </div>
             <div
-              className={`tw-flex tw-mt-6 tw-justify-around tw-items-center tw-font-medium tw-p-2`}
-            >
-              {/* left part */}
-              <div className="tw-flex tw-flex-col tw-gap-10">
-                {menuItem1.map((val, key) => (
-                  <HoverListItem
-                    key={key}
-                    className="tw-flex tw-group tw-cursor-pointer hoverList"
-                  >
-                    <Link
-                      href={`/dashboard/mentor?tab=${val.path}`}
-                      className={`tw-flex tw-flex-wrap ${
-                        currentPage === val.path
-                          ? "tw-bg-primary-100 tw-text-white"
-                          : ""
-                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                    >
-                      <span className="tw-text-xl">{val.icon}</span>
-                      <span className="tw-text-sm tw-text-center">
-                        {val.title}
-                      </span>
-                    </Link>
-                  </HoverListItem>
-                ))}
-              </div>
-
-              {/* right part
-              <div className="tw-flex tw-flex-col tw-gap-10">
-                {menuItem2.map((val, key) => (
-                  <HoverListItem
-                    key={key}
-                    className="tw-flex tw-group tw-cursor-pointer hoverList"
-                  >
-                    <Link
-                      href={`/dashboard/mentor?tab=${val.path}`}
-                      className={`tw-flex tw-flex-wrap ${
-                        currentPage === val.path
-                          ? "tw-bg-primary-100 tw-text-white"
-                          : ""
-                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
-                    >
-                      <span className="tw-text-xl">{val.icon}</span>
-                      <span className="tw-text-sm tw-text-center">
-                        {val.title}
-                      </span>
-                    </Link>
-                  </HoverListItem>
-                ))}
-              </div> */}
-            </div>
+              className={`tw-flex tw-mt-6 tw-justify-around tw-items-start tw-font-medium tw-p-2`}
+            ></div>
           </div>
         </div>
       </div>

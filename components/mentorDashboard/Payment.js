@@ -7,24 +7,35 @@ import { MdNumbers } from "react-icons/md";
 import Form from "./PaymentComponent/Form";
 import { Button } from "../UI";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
-const Payments = () => {
+const Payments = ({ setLoadingState, setErrorState }) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
   const [editForm, setEditForm] = useState(false);
   const [addForm, setAddForm] = useState(false);
-  const [error, setError] = useState("");
 
   // getting account details from backend
   const getDetails = async () => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getAccountDetails/`;
     try {
-      setError("");
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const response = await axios.get(url, { withCredentials: true });
       const data = await response.data;
       setAccount(data);
+      setLoadingState({ status: false });
     } catch (error) {
-      setError(error.response.data.message);
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
     }
   };
 
@@ -37,7 +48,6 @@ const Payments = () => {
   const editDetails = async (formData) => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateAccountDetails/`;
     try {
-      setError("");
       const response = await axios.put(
         url,
         { ...formData },
@@ -46,8 +56,17 @@ const Payments = () => {
       const data = await response.data;
       setAccount(data);
       setEditForm(false);
+      toast.success("Changes Saved Successfully");
     } catch (error) {
-      setError(error.response.data.message);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Some Error occur, please try again later");
+      }
     }
   };
 
@@ -55,7 +74,6 @@ const Payments = () => {
   const addDetails = async (formData) => {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addAccountDetails/`;
     try {
-      setError("");
       const response = await axios.post(
         url,
         { ...formData },
@@ -64,15 +82,23 @@ const Payments = () => {
       const data = await response.data;
       setAccount(data);
       setAddForm(false);
+      toast.success("Account added sucessfully");
     } catch (error) {
-      setError(error.response.data.message);
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Some Error occur, please try again later");
+      }
     }
   };
 
   return (
     <>
-      {error && <p className="tw-text-red-500">{error}</p>}
-
+      <ToastContainer />
       {!account ? (
         <>
           {" "}

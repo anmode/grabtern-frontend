@@ -3,7 +3,6 @@ import { Button, IconCard } from "../UI";
 import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
 import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import Link from "next/link";
 export default function SessionCard({
   type,
   name,
@@ -14,13 +13,13 @@ export default function SessionCard({
   text,
   path,
 }) {
-  console.log("Book Sesison", {
-    type,
-    name,
-    description,
-    duration,
-    price,
-  });
+  // console.log("Book Sesison", {
+  //   type,
+  //   name,
+  //   description,
+  //   duration,
+  //   price,
+  // });
   let Icon = FaVideo;
   switch (type) {
     case "group Call":
@@ -33,6 +32,12 @@ export default function SessionCard({
       Icon = FaVideo;
       break;
   }
+  const handleClick = () => {
+    if (handleBookSession) {
+      handleBookSession();
+    }
+  };
+
   return (
     <IconCard
       className="tw-flex tw-flex-col"
@@ -55,13 +60,11 @@ export default function SessionCard({
           </div>
         </div>
         {/* book session btn */}
-        <Link href={path}>
-          <Button
-            className="tw-mt-1"
-            text={text ? text : "Book Session"}
-            onClick={handleBookSession}
-          />
-        </Link>
+        <Button
+          className="tw-mt-1"
+          text={text ? text : "Book Session"}
+          onClick={handleClick}
+        />
       </div>
     </IconCard>
   );

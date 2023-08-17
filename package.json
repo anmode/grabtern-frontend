@@ -20,6 +20,7 @@
     "antd": "^5.4.5",
     "clsx": "^1.2.1",
     "crypto-js": "^4.1.1",
+    "dom-to-image": "^2.6.0",
     "formik": "^2.4.2",
     "html2canvas": "^1.4.1",
     "jquery": "^3.6.3",

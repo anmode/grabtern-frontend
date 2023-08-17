@@ -1,43 +1,52 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
-import Spinner from "../../components/basic/spinner";
+import Spinner from "../../basic/spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Edit = () => {
-  const router = useRouter();
-  const { username, sessionId } = router.query;
-  const [data, setData] = useState({
-    name: "",
-    type: "",
-    duration: 0,
-    description: "",
-  });
-  // console.log(username);
-  const fetchData = async () => {
-    try {
-      const url = `https://grabtern-backend.vercel.app/api/mentors/mentorDetail/${username}`;
-      const { data: res } = await axios.get(url);
-      return res.mentorDetail;
-    } catch (err) {
-      console.error("Error in fetching details ", err);
-    }
-  };
+const EditSessionComponent = ({ sessionID, redirectURL }) => {
+  const [data, setData] = useState(null);
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  const username = mentorData?.mentor_username;
 
   useEffect(() => {
-    fetchData()
-      .then((response) => {
-        setData(response.sessions.find((session) => session._id === sessionId));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    console.log(sessionID, username);
 
-  // console.log(data);
+    // Fetch session data only if data hasn't been fetched yet
+    if (!data) {
+      const fetchSessionData = async () => {
+        try {
+          const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession/${username}/${sessionID}`;
+          const response = await axios.get(url, { withCredentials: true });
+          setData(response.data);
+        } catch (error) {
+          console.error("Error fetching session data:", error);
+        }
+      };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Updated data is \n", data);
+      fetchSessionData();
+    }
+  }, [sessionID, username, data]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateListedSession`;
+      const response = await axios.put(url, data, { withCredentials: true });
+      setData(response.data);
+      toast.success("Changes saved successfully.");
+      router.push(redirectURL);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An error occurred while saving changes.");
+      }
+    }
   };
 
   const handleInputChange = (event) => {
@@ -47,9 +56,10 @@ const Edit = () => {
       [name]: value,
     }));
   };
+
   return (
     <>
-      {data.name ? (
+      {data?.name ? (
         <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pb-[5rem] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
           <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
             <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
@@ -85,7 +95,26 @@ const Edit = () => {
                       onChange={handleInputChange}
                     />
                   </div>
+                  <div>
+                    <label htmlFor="price">PRICE</label>
+                    <input
+                      type="number"
+                      name="price"
+                      className="mentorFormInput"
+                      style={{
+                        width: "90%",
+                        borderRadius: "5px",
+                        border: "none",
+                        border: "2px solid rgb(220, 220, 220)",
+                        paddingLeft: "35px",
+                      }}
+                      value={data.price}
+                      placeholder={data.price}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                 </div>
+
                 <div
                   style={{
                     display: "flex",
@@ -182,6 +211,7 @@ const Edit = () => {
               </form>
             </div>
           </div>
+          <ToastContainer />
         </div>
       ) : (
         <div className="tw-mt-[5rem]">
@@ -192,4 +222,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default EditSessionComponent;

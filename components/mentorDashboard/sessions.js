@@ -2,29 +2,47 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SessionCard from "../newMentorProfile/SessionCard";
 import Spinner from "../basic/spinner";
+import Form from "./ListedSessionComponent/Form";
 
-function Sessions() {
+function Sessions({ setLoadingState, setErrorState }) {
   const [data, setData] = useState([]);
+  const [editSessionID, setEditSessionID] = useState(null);
 
   const fetchData = async () => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSession`;
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
-      console.log(response.data);
-      return response.data; // Assuming the API returns the data directly
-    } catch (err) {
-      console.error("Error in fetching details ", err);
+      setLoadingState({ status: false });
+      return response.data;
+    } catch (error) {
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
     }
   };
 
   useEffect(() => {
-    fetchData()
-      .then((response) => {
-        setData(response);
-      })
-      .catch((error) => {
+    const fetchDataAndSetState = async () => {
+      try {
+        const response = await fetchData();
+        if (response) {
+          setData(response);
+        }
+      } catch (error) {
         console.error(error);
-      });
+      }
+    };
+
+    fetchDataAndSetState();
   }, []);
 
   return (
@@ -37,16 +55,23 @@ function Sessions() {
         <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
           {data.length > 0 ? (
             data.map((card, index) => (
-              <SessionCard
-                key={index}
-                type={card.type}
-                name={card.name}
-                description={card.description}
-                duration={card.duration}
-                price={card.price}
-                text="Edit Session"
-                path={`/dashboard/editMentorSession?username=${card.username}&sessionId=${card._id}`} // Assuming username is available in card
-              />
+              <div key={index}>
+                {editSessionID === card._id ? (
+                  <Form sessionID={editSessionID} />
+                ) : (
+                  <SessionCard
+                    type={card.type}
+                    name={card.name}
+                    description={card.description}
+                    duration={card.duration}
+                    price={card.price}
+                    text="Edit Session"
+                    handleBookSession={() => {
+                      setEditSessionID(card._id);
+                    }}
+                  />
+                )}
+              </div>
             ))
           ) : (
             <div>

@@ -49,7 +49,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor.image}
+          src={mentor?.image}
           width={30}
           height={30}
           className="tw-rounded-full"

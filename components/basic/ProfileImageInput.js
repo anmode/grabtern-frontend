@@ -83,7 +83,7 @@ function ProfileImageInput({image, setImage, className}) {
         <div>
           <label
             htmlFor="mentorProfile"
-            className="mentorFormButton theme-button-color"
+            className="mentorFormButton theme-button-color !tw-font-medium"
           >
             {!image ? "Upload Image" : "Change Image"}
           </label>

@@ -15,13 +15,13 @@ const Calender = () => {
   const [key, setKey] = useState(0);
 
   const weekdays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
   ];
   const timeOptions = {
     "08:00 AM": "08:00 AM",
@@ -49,6 +49,8 @@ const Calender = () => {
       );
       console.log("calendar data ", response.data);
       setMeetLink(response.data.meetLink);
+      setCheckedDays(response.data.schedules.map(data=>data.day));
+      console.log("checkedDays ",checkedDays);
       setListSchedules(response.data.schedules);
       return;
     } catch (error) {

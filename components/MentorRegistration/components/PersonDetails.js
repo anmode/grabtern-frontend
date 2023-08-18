@@ -113,7 +113,7 @@ function PersonDetails({
 
   return (
     <>
-      <ToastContainer/>
+      <ToastContainer />
       <p className="mentorFormHeading">Tell us about yourself</p>
       {/* google signin button start */}
       <div style={{ gridColumn: "1/3" }}>
@@ -122,11 +122,11 @@ function PersonDetails({
       {/* google signin button ends */}
 
       {/* image section start */}
-        <ProfileImageInput 
-          image={formData.image} 
-          setImage={handleUploadImageChange} 
-          className="mentorUploudPhoto tw-col-start-1 tw-col-span-2"
-        />
+      <ProfileImageInput
+        image={formData.image}
+        setImage={handleUploadImageChange}
+        className="mentorUploudPhoto tw-col-start-1 tw-col-span-2"
+      />
       {/* image section ends */}
 
       {/* user name avialability info start*/}

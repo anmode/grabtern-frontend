@@ -820,7 +820,8 @@ textarea,
   color: #303030;
 }
 
-.mentorForm .mentorFormButton, .mentorFormButton {
+.mentorForm .mentorFormButton,
+.mentorFormButton {
   /* max-width: 150px; */
   color: white;
   text-align: center;

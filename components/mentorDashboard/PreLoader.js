@@ -1,8 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import Image from "next/image";
-import errorImage from "../../public/assets/img/RequestState/error.png"
-import loadingImage from "../../public/assets/img/RequestState/loading.png"
+import errorImage from "../../public/assets/img/RequestState/error.png";
+import loadingImage from "../../public/assets/img/RequestState/loading.png";
 
 function PreLoader({ loadingState, errorState }) {
   return (
@@ -23,9 +23,14 @@ function PreLoader({ loadingState, errorState }) {
             "tw-p-6",
             "tw-shadow",
           )}
-        > 
-        {/* image */}
-          <Image src={loadingImage} width={250} height={250} className="tw-block tw-m-auto tw-mb-4"/>
+        >
+          {/* image */}
+          <Image
+            src={loadingImage}
+            width={250}
+            height={250}
+            className="tw-block tw-m-auto tw-mb-4"
+          />
           {/* heading */}
           <h4
             className={clsx(
@@ -64,7 +69,12 @@ function PreLoader({ loadingState, errorState }) {
           )}
         >
           {/* image */}
-          <Image src={errorImage} width={300} height={300} className="tw-block tw-m-auto tw-mb-5"/>
+          <Image
+            src={errorImage}
+            width={300}
+            height={300}
+            className="tw-block tw-m-auto tw-mb-5"
+          />
           {/* heading */}
           <h4
             className={clsx(
@@ -81,7 +91,7 @@ function PreLoader({ loadingState, errorState }) {
               ? errorState.message
               : "Something went wrong, on the way !"}
           </p>
-            {/* reload button style link */}
+          {/* reload button style link */}
           <a
             className={clsx(
               "tw-bg-red-600 tw-text-[white] tw-cursor-pointer tw-shadow-sm",

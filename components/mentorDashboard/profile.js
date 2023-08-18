@@ -107,11 +107,13 @@ function Profile({ mentorDetail, setLoadingState, setErrorState }) {
               className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
               onSubmit={handleSubmit}
             >
-                <ProfileImageInput
-                  image={formData.image}
-                  setImage={(newImage) => {setFormData({ ...formData, image: newImage })}}
-                  className="tw-mt-10 tw-items-center tw-flex tw-justify-center"
-                />
+              <ProfileImageInput
+                image={formData.image}
+                setImage={(newImage) => {
+                  setFormData({ ...formData, image: newImage });
+                }}
+                className="tw-mt-10 tw-items-center tw-flex tw-justify-center"
+              />
               <div
                 style={{
                   display: "flex",

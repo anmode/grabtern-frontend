@@ -21,6 +21,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
+  console.log("mentor ", mentor);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -114,7 +115,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor.image}
+          src={mentor.mentor_image}
           width={30}
           height={30}
           className="tw-rounded-full"
@@ -149,7 +150,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor.image}
+          src={mentor.mentor_image}
           width={30}
           height={30}
           className="tw-rounded-full"

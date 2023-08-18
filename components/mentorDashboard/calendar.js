@@ -10,7 +10,7 @@ const Calender = () => {
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
   const [listSchedules, setListSchedules] = useState([]);
-  const [meetLink, setMeetLink] = ("");
+  const [meetLink, setMeetLink] = useState("");
   const [checkedDays, setCheckedDays] = useState([]);
   const [key, setKey] = useState(0);
 
@@ -41,15 +41,16 @@ const Calender = () => {
 
   const fetchSchedule = async () => {
     try {
-      setError("");
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getSchedule`,
         {
           withCredentials: true,
         },
       );
+      console.log("calendar data ", response.data);
       setMeetLink(response.data.meetLink);
       setListSchedules(response.data.schedules);
+      return;
     } catch (error) {
       console.log(error);
     }

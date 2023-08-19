@@ -97,38 +97,9 @@ export default function MentorForm() {
     }
   });
 
-  // const handleFileChange = e => {
-  //   setFormData({ ...formData, resume: e.target.files[0] });
-  // };
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
-  const handleUploadImageChange = async (fileName, imgUrl) => {
+  const handleUploadImageChange = (imgUrl) => {
     setFormData({ ...formData, image: imgUrl });
   };
-
-  // const handleSessionPriceChange = (e) => {
-  //   let bookSessionCopy = formData.bookSession[0];
-  //   bookSessionCopy.priceSession = e.target.value;
-  //   setFormData({
-  //     ...formData,
-  //     bookSession: [bookSessionCopy],
-  //   });
-  //   console.log(formData);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -155,10 +126,6 @@ export default function MentorForm() {
       }
     }
   };
-
-  function hideitems(className) {
-    document.querySelector(className).style.display = "none";
-  }
 
   const changeArray = (name, newValue) => {
     setFormData({ ...formData, [name]: newValue });

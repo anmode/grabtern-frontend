@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import ProfileImageInput from "../basic/ProfileImageInput";
 
-function Profile({ setLoadingState, setErrorState, user }) {
+function Profile({ setLoadingState, setErrorState, user, setUser }) {
   const initialFormData = {
     name: user?.fullName || "",
     email: user?.email || "",
@@ -44,10 +44,24 @@ function Profile({ setLoadingState, setErrorState, user }) {
     getMentorProfile();
   }, []);
 
+  // onChnage function for inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // save to local storage function
+  const saveToLocalStorage = (userData) => {
+    const {_id, fullName, email, image} =  userData;
+    const userObj = {
+      user_id: _id,
+      user_email: email,
+      user_name: fullName,
+      user_image: image
+    }
+    localStorage.setItem("userData", JSON.stringify(userObj));
+  }
+
+  // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -59,7 +73,8 @@ function Profile({ setLoadingState, setErrorState, user }) {
         { withCredentials: true },
       );
       setFormData(response.data);
-
+      setUser(response.data);
+      saveToLocalStorage(response.data);
       toast.success("Changes Saved Successfully");
     } catch (error) {
       if (

@@ -86,6 +86,7 @@ function userDashboard() {
               setLoadingState={setLoadingState}
               setErrorState={setErrorState}
               user={user}
+              setUser={setuser}
             />
           )}
           {component == "bookings" && (

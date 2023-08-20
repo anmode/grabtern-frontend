@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Image from "next/image";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import ProfileImageInput from "../basic/ProfileImageInput";
 
 function Profile({ setLoadingState, setErrorState, user }) {
   const initialFormData = {
@@ -16,48 +16,6 @@ function Profile({ setLoadingState, setErrorState, user }) {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
-  const handleUploadImageChange = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-
-    try {
-      const imageCloudinaryUrl = await uploadToCloudinary(base64);
-      setFormData({ ...formData, image: imageCloudinaryUrl });
-    } catch (error) {
-      console.log("Error uploading image to Cloudinary:", error);
-    }
-  };
-
-  const uploadToCloudinary = async (imageSrc) => {
-    const res = await fetch(imageSrc);
-    const blob = await res.blob();
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
-    try {
-      const formData = new FormData();
-      formData.append("file", blob);
-      formData.append("upload_preset", "image_preset");
-      const res = await axios.post(url, formData);
-      return res.data.secure_url;
-    } catch (error) {
-      console.log("Couldn't upload image to Cloudinary", error);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -98,20 +56,7 @@ function Profile({ setLoadingState, setErrorState, user }) {
               className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
               onSubmit={handleSubmit}
             >
-              <div className="tw-mt-10 tw-items-center tw-flex tw-justify-center">
-                <Image
-                  className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover"
-                  src={formData.image ? formData.image : ""}
-                  alt="mentor"
-                  width={100}
-                  height={100}
-                />
-                <input
-                  type="file"
-                  name="mentorProfile"
-                  onChange={(e) => handleUploadImageChange(e)}
-                />
-              </div>
+              <ProfileImageInput image={formData.image} setImage={(newImage) => setFormData({...formData, image: newImage})}/>
               <div
                 style={{
                   display: "flex",

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from "./Input";
-import ImageCropper from "../../../components/basic/ImageCropper";
 import axios from "axios";
 import clsx from "clsx";
+import { ToastContainer } from "react-toastify";
+import ProfileImageInput from "../../basic/ProfileImageInput";
 
 function PersonDetails({
   formData,
@@ -110,66 +111,9 @@ function PersonDetails({
     },
   ];
 
-  // logic for image input
-  const [showImageCropper, setShowImageCropper] = useState(false);
-  const [imageSrc, setImageSrc] = useState("");
-  const [fileName, setFileName] = useState("");
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
-  const handleImageChange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setShowImageCropper(true);
-    const base64 = await convertBase64(file);
-    setFileName(file.name);
-    setImageSrc(base64);
-  };
-
-  const handleImageCropperChange = async (imageSrc) => {
-    setShowImageCropper(false);
-    if (!imageSrc) return;
-    setImageSrc(imageSrc);
-    const imageClouindaryUrl = await uploadToCloudinary(imageSrc);
-    handleUploadImageChange(fileName, imageClouindaryUrl);
-  };
-
-  const uploadToCloudinary = async (imageSrc) => {
-    const res = await fetch(imageSrc);
-    const blob = await res.blob();
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
-    try {
-      const formData = new FormData();
-      formData.append("file", blob);
-      formData.append("upload_preset", "image_preset");
-      const res = await axios.post(url, formData);
-      return res.data.secure_url;
-    } catch (error) {
-      console.log("Couldn't upload image to Cloudinary", error);
-    }
-  };
-
   return (
     <>
-      {showImageCropper && (
-        <ImageCropper
-          imageSrc={imageSrc}
-          changeImageSrc={handleImageCropperChange}
-        />
-      )}
+      <ToastContainer />
       <p className="mentorFormHeading">Tell us about yourself</p>
       {/* google signin button start */}
       <div style={{ gridColumn: "1/3" }}>
@@ -178,37 +122,11 @@ function PersonDetails({
       {/* google signin button ends */}
 
       {/* image section start */}
-      <div style={{ gridColumn: "1/3" }} className="mentorUploudPhoto">
-        <img
-          src={
-            !formData.image
-              ? "/assets/img/icon/no-profile-picture.webp"
-              : formData.image
-          }
-          alt="Profile Picture"
-          className="mentorPhoto"
-        />
-        <div>
-          <label
-            htmlFor="mentorProfile"
-            className="mentorFormButton theme-button-color"
-          >
-            {formData.image !== null ? "Change Image" : "Upload Image"}
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            id="mentorProfile"
-            className="mentorFormInput"
-            name="mentorProfileImage"
-            onChange={(e) => handleImageChange(e)}
-            hidden
-            required
-            aria-label="Upload your image"
-            aria-required="true"
-          />
-        </div>
-      </div>
+      <ProfileImageInput
+        image={formData.image}
+        setImage={handleUploadImageChange}
+        className="mentorUploudPhoto tw-col-start-1 tw-col-span-2"
+      />
       {/* image section ends */}
 
       {/* user name avialability info start*/}

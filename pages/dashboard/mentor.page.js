@@ -83,6 +83,7 @@ function MentorDashboard() {
           )}
           {component === "profile" && (
             <Profile
+              setMentor={setMentor}
               isSidebarOpen={isSidebarOpen}
               setLoadingState={setLoadingState}
               setErrorState={setErrorState}

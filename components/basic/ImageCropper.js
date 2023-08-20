@@ -12,7 +12,6 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
-    console.log(croppedArea, croppedAreaPixels);
   }, []);
 
   const getCroppedImg = async (
@@ -140,6 +139,7 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
         <div className="tw-flex tw-justify-between tw-items-center tw-border-b tw-px-8 tw-py-4 tw-font-medium">
           <div>Edit Image</div>
           <button
+            type="button"
             className="tw-text-gray-500 hover:tw-text-gray-800"
             onClick={handleCancel}
           >
@@ -162,12 +162,16 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
         </div>
         <div className="tw-flex tw-flex-col tw-gap-4 tw-items-center tw-p-8 tw-border-b">
           <div className="tw-flex tw-items-center tw-gap-6">
-            <button onClick={decreaseZoom}>-</button>
+            <button type="button" onClick={decreaseZoom}>
+              -
+            </button>
             <Slider min={1} max={3} step={0.1} val={zoom} setVal={setZoom} />
-            <button onClick={increaseZoom}>+</button>
+            <button type="button" onClick={increaseZoom}>
+              +
+            </button>
           </div>
           <div className="tw-flex tw-items-center tw-gap-6">
-            <button onClick={decreaseRotation}>
+            <button type="button" onClick={decreaseRotation}>
               <FiRotateCcw />
             </button>
             <Slider
@@ -177,19 +181,21 @@ const ImageCropper = ({ imageSrc, changeImageSrc }) => {
               val={rotation}
               setVal={setRotation}
             />
-            <button onClick={increaseRotation}>
+            <button type="button" onClick={increaseRotation}>
               <FiRotateCw />
             </button>
           </div>
         </div>
         <div className="tw-flex tw-p-4 tw-justify-end tw-gap-4">
           <button
+            type="button"
             className="tw-border tw-rounded-md tw-border-gray-400 px-4 py-2 tw-text-gray-500 hover:tw-text-[#7f66ff] hover:tw-border-[#7f66ff]"
             onClick={handleCancel}
           >
             Cancel
           </button>
           <button
+            type="button"
             className="tw-border tw-rounded-md px-4 py-2 tw-bg-[#7f66ff] tw-text-white"
             onClick={handleOK}
           >

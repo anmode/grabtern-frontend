@@ -7,6 +7,7 @@ import Home from "../../components/userDashboard/home";
 import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 import ComingSoon from "../../components/basic/ComingSoon";
+import PreLoader from "../../components/mentorDashboard/PreLoader";
 
 function userDashboard() {
   // loading and error state
@@ -85,6 +86,7 @@ function userDashboard() {
               setLoadingState={setLoadingState}
               setErrorState={setErrorState}
               user={user}
+              setUser={setuser}
             />
           )}
           {component == "bookings" && (

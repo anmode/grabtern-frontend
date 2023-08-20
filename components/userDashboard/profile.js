@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Image from "next/image";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import ProfileImageInput from "../basic/ProfileImageInput";
 
-function Profile({ setLoadingState, setErrorState, user }) {
+function Profile({ setLoadingState, setErrorState, user, setUser }) {
   const initialFormData = {
     name: user?.fullName || "",
     email: user?.email || "",
@@ -14,52 +14,54 @@ function Profile({ setLoadingState, setErrorState, user }) {
 
   const [formData, setFormData] = useState(initialFormData);
 
+  // function to fetch user profile
+  const getMentorProfile = async () => {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/profile/fetch`;
+
+    try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
+      const response = await axios.get(url, { withCredentials: true });
+      const data = response.data;
+      setFormData(data);
+      setLoadingState({ status: false });
+    } catch (error) {
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
+    }
+  };
+
+  //fetching user profile onload
+  useEffect(() => {
+    getMentorProfile();
+  }, []);
+
+  // onChnage function for inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
+  // save to local storage function
+  const saveToLocalStorage = (userData) => {
+    const { _id, fullName, email, image } = userData;
+    const userObj = {
+      user_id: _id,
+      user_email: email,
+      user_name: fullName,
+      user_image: image,
+    };
+    localStorage.setItem("userData", JSON.stringify(userObj));
   };
 
-  const handleUploadImageChange = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-
-    try {
-      const imageCloudinaryUrl = await uploadToCloudinary(base64);
-      setFormData({ ...formData, image: imageCloudinaryUrl });
-    } catch (error) {
-      console.log("Error uploading image to Cloudinary:", error);
-    }
-  };
-
-  const uploadToCloudinary = async (imageSrc) => {
-    const res = await fetch(imageSrc);
-    const blob = await res.blob();
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
-    try {
-      const formData = new FormData();
-      formData.append("file", blob);
-      formData.append("upload_preset", "image_preset");
-      const res = await axios.post(url, formData);
-      return res.data.secure_url;
-    } catch (error) {
-      console.log("Couldn't upload image to Cloudinary", error);
-    }
-  };
-
+  // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -71,7 +73,8 @@ function Profile({ setLoadingState, setErrorState, user }) {
         { withCredentials: true },
       );
       setFormData(response.data);
-
+      setUser(response.data);
+      saveToLocalStorage(response.data);
       toast.success("Changes Saved Successfully");
     } catch (error) {
       if (
@@ -98,20 +101,12 @@ function Profile({ setLoadingState, setErrorState, user }) {
               className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
               onSubmit={handleSubmit}
             >
-              <div className="tw-mt-10 tw-items-center tw-flex tw-justify-center">
-                <Image
-                  className="tw-w-[100px] tw-h-[100px] tw-rounded-full tw-object-cover"
-                  src={formData.image ? formData.image : ""}
-                  alt="mentor"
-                  width={100}
-                  height={100}
-                />
-                <input
-                  type="file"
-                  name="mentorProfile"
-                  onChange={(e) => handleUploadImageChange(e)}
-                />
-              </div>
+              <ProfileImageInput
+                image={formData.image}
+                setImage={(newImage) =>
+                  setFormData({ ...formData, image: newImage })
+                }
+              />
               <div
                 style={{
                   display: "flex",
@@ -123,7 +118,7 @@ function Profile({ setLoadingState, setErrorState, user }) {
                   <label for="name">NAME</label>
                   <input
                     type="text"
-                    name="name"
+                    name="fullName"
                     style={{
                       width: "90%",
                       borderRadius: "5px",
@@ -133,7 +128,7 @@ function Profile({ setLoadingState, setErrorState, user }) {
                     }}
                     className="mentorFormInput"
                     placeholder={user?.fullName}
-                    value={formData.name}
+                    value={formData.fullName}
                     onChange={(e) => handleChange(e)}
                   />
                   <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />

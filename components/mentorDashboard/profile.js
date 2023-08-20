@@ -6,7 +6,7 @@ import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 
-function Profile({ mentorDetail, setLoadingState, setErrorState }) {
+function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
     username: mentorDetail?.username || "",
@@ -68,6 +68,17 @@ function Profile({ mentorDetail, setLoadingState, setErrorState }) {
     });
   };
 
+  // save to local storage function
+  const saveToLocalStorage = (mentorData) => {
+    const {username, name, image} =  mentorData;
+    const mentorObj = {
+      mentor_name: name,
+      mentor_username: username,
+      mentor_image: image,
+    }
+    localStorage.setItem("mentorData", JSON.stringify(mentorObj));
+  }
+
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,7 +91,8 @@ function Profile({ mentorDetail, setLoadingState, setErrorState }) {
         { withCredentials: true },
       ); // Send the updated data to the backend
       setFormData(response.data);
-
+      setMentor(response.data);
+      saveToLocalStorage(response.data);
       toast.success("Changes Saved Successfully");
     } catch (error) {
       if (

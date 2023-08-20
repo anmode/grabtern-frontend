@@ -70,14 +70,14 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
 
   // save to local storage function
   const saveToLocalStorage = (mentorData) => {
-    const {username, name, image} =  mentorData;
+    const { username, name, image } = mentorData;
     const mentorObj = {
       mentor_name: name,
       mentor_username: username,
       mentor_image: image,
-    }
+    };
     localStorage.setItem("mentorData", JSON.stringify(mentorObj));
-  }
+  };
 
   // form submit function
   const handleSubmit = async (e) => {

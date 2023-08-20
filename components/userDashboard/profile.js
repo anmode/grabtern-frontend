@@ -51,15 +51,15 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
 
   // save to local storage function
   const saveToLocalStorage = (userData) => {
-    const {_id, fullName, email, image} =  userData;
+    const { _id, fullName, email, image } = userData;
     const userObj = {
       user_id: _id,
       user_email: email,
       user_name: fullName,
-      user_image: image
-    }
+      user_image: image,
+    };
     localStorage.setItem("userData", JSON.stringify(userObj));
-  }
+  };
 
   // form submit function
   const handleSubmit = async (e) => {
@@ -101,7 +101,12 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
               className="mentorFormEdit max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[512px]:tw-flex max-[512px]:tw-flex-col"
               onSubmit={handleSubmit}
             >
-              <ProfileImageInput image={formData.image} setImage={(newImage) => setFormData({...formData, image: newImage})}/>
+              <ProfileImageInput
+                image={formData.image}
+                setImage={(newImage) =>
+                  setFormData({ ...formData, image: newImage })
+                }
+              />
               <div
                 style={{
                   display: "flex",

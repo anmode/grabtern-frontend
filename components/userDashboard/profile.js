@@ -14,6 +14,36 @@ function Profile({ setLoadingState, setErrorState, user }) {
 
   const [formData, setFormData] = useState(initialFormData);
 
+  // function to fetch user profile
+  const getMentorProfile = async () => {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/profile/fetch`;
+
+    try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
+      const response = await axios.get(url, { withCredentials: true });
+      const data = response.data;
+      setFormData(data);
+      setLoadingState({ status: false });
+    } catch (error) {
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
+    }
+  };
+
+  //fetching user profile onload
+  useEffect(() => {
+    getMentorProfile();
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -68,7 +98,7 @@ function Profile({ setLoadingState, setErrorState, user }) {
                   <label for="name">NAME</label>
                   <input
                     type="text"
-                    name="name"
+                    name="fullName"
                     style={{
                       width: "90%",
                       borderRadius: "5px",
@@ -78,7 +108,7 @@ function Profile({ setLoadingState, setErrorState, user }) {
                     }}
                     className="mentorFormInput"
                     placeholder={user?.fullName}
-                    value={formData.name}
+                    value={formData.fullName}
                     onChange={(e) => handleChange(e)}
                   />
                   <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />

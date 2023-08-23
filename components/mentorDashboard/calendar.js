@@ -117,16 +117,23 @@ const Calender = () => {
   const updateSchedules = async () => {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
-      const res = await axios.put(url, {
-        link: meetLink,
-        schedules: listSchedules,
-      });
-      toast.promise(res, {
-        pending: "updating...",
-        success: "update successfull 👌",
-      });
+      const res = await axios.put(
+        url,
+        {
+          link: meetLink,
+          schedules: listSchedules,
+        },
+        { withCredentials: true },
+      );
+
+      // Check if the response indicates success
+      if (res.status === 200) {
+        toast.success("Update successful 👌");
+      } else {
+        toast.error("Sorry! Couldn't update");
+      }
     } catch (error) {
-      toast.error("Sorry! couldn't update");
+      toast.error("An error occurred while updating schedules.");
     }
   };
 

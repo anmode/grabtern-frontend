@@ -376,59 +376,61 @@ const Calender = () => {
                       listSchedules
                         .filter((obj) => obj.day === day)
                         .map((schedule) => {
-                         return (<div className="tw-flex tw-gap-5">
-                            <div className="tw-flex tw-justify-center tw-items-center">
-                              {/* <h3>Select Time:</h3> */}
-                              <select
-                                value={schedule.startsAt}
-                                onChange={(e) =>
-                                  handleTimeStartChange(day, e.target.value)
-                                }
-                                className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
-                              >
-                                {Object.values(timeOptions).map(
-                                  (timeOption) => (
-                                    <option
-                                      key={timeOption}
-                                      value={timeOption}
-                                      selected={
-                                        schedule.startsAt === timeOption
-                                      }
-                                    >
-                                      {timeOption}
-                                    </option>
-                                  ),
-                                )}
-                              </select>
+                          return (
+                            <div className="tw-flex tw-gap-5">
+                              <div className="tw-flex tw-justify-center tw-items-center">
+                                {/* <h3>Select Time:</h3> */}
+                                <select
+                                  value={schedule.startsAt}
+                                  onChange={(e) =>
+                                    handleTimeStartChange(day, e.target.value)
+                                  }
+                                  className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                                >
+                                  {Object.values(timeOptions).map(
+                                    (timeOption) => (
+                                      <option
+                                        key={timeOption}
+                                        value={timeOption}
+                                        selected={
+                                          schedule.startsAt === timeOption
+                                        }
+                                      >
+                                        {timeOption}
+                                      </option>
+                                    ),
+                                  )}
+                                </select>
+                              </div>
+                              <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
+                                -
+                              </span>
+                              <div className="tw-flex tw-justify-center tw-items-center">
+                                {/* <h3>Select Time:</h3> */}
+                                <select
+                                  value={schedule.endsAt || ""}
+                                  onChange={(e) =>
+                                    handleTimeEndChange(day, e.target.value)
+                                  }
+                                  className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                                >
+                                  {Object.values(timeOptions).map(
+                                    (timeOption) => (
+                                      <option
+                                        key={timeOption}
+                                        value={timeOption}
+                                        selected={
+                                          schedule.endsAt === timeOption
+                                        }
+                                      >
+                                        {timeOption}
+                                      </option>
+                                    ),
+                                  )}
+                                </select>
+                              </div>
                             </div>
-                            <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
-                              -
-                            </span>
-                            <div className="tw-flex tw-justify-center tw-items-center">
-                              {/* <h3>Select Time:</h3> */}
-                              <select
-                                value={schedule.endsAt || ""}
-                                onChange={(e) =>
-                                  handleTimeEndChange(day, e.target.value)
-                                }
-                                className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
-                              >
-                                {Object.values(timeOptions).map(
-                                  (timeOption) => (
-                                    <option
-                                      key={timeOption}
-                                      value={timeOption}
-                                      selected={
-                                        schedule.endsAt === timeOption
-                                      }
-                                    >
-                                      {timeOption}
-                                    </option>
-                                  ),
-                                )}
-                              </select>
-                            </div>
-                          </div>)
+                          );
                         })
                     ) : (
                       <p>Unavailble</p>

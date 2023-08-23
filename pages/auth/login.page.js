@@ -18,21 +18,18 @@ import { useAuth } from "../../context/AuthContext";
 
 function login() {
   const router = useRouter();
-  const [error, setError] = useState("");
-  const [entityType, setEntityType] = useState("");
-
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
   const {
     isMentorLoggedIn,
     setIsMentorLoggedIn,
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
+
+  const [error, setError] = useState("");
+  const [entityType, setEntityType] = useState("user");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,129 +39,117 @@ function login() {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
+  const handleCallbackResponse = async (response) => {
+    try {
+      const userObject = jwt_decode(response.credential);
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
+      const { data: res } = await axios.post(url, userObject, {
+        withCredentials: true,
+      });
+
+      console.log(res);
+
+      if (entityType === "user") {
+        const userData = {
+          user_name: userObject.name,
+          user_image: res.user_image,
+          user_email: userObject.email,
+          user_id: res.user_id,
+        };
+        setIsUserLoggedIn(true);
+        localStorage.setItem("userData", JSON.stringify(userData));
+      } else if (entityType === "mentor") {
+        const mentorData = {
+          mentor_username: res.mentor_username,
+          mentor_name: res.mentor_name,
+          mentor_image: res.mentor_image,
+        };
+        setIsMentorLoggedIn(true);
+        toast.success(res.message);
+        localStorage.setItem("mentorData", JSON.stringify(mentorData));
+      }
+      router.push("/");
+    } catch (error) {
+      handleErrorResponse(error);
+    }
+  };
+
+  const handleErrorResponse = (error) => {
+    console.log(error);
+    if (
+      error.response &&
+      error.response.status >= 400 &&
+      error.response.status <= 500
+    ) {
+      toast.error(error.response.data.message);
+    }
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    // Function to update the URL with the new entityType
+    const updateEntityTypeInUrl = (newEntityType) => {
+      const queryParams = { ...router.query, entityType: newEntityType };
+      router.push(
+        { pathname: router.pathname, query: queryParams },
+        undefined,
+        {
+          shallow: true,
+        },
+      );
+    };
+
+    updateEntityTypeInUrl(entityType);
+
+    google.accounts.id.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+      callback: (response) => handleCallbackResponse(response),
+    });
+  }, [entityType]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectURL = urlParams.get("redirectURL");
+    const entityTypeFromUrl = urlParams.get("entityType");
+
+    if (isMentorLoggedIn || isUserLoggedIn) {
+      router.replace(redirectURL || "/");
+      return;
+    }
+
+    setEntityType(entityTypeFromUrl);
+
+    const googleSignInButton = document.getElementById("googleSignInButton");
+    if (googleSignInButton) {
+      google.accounts.id.renderButton(googleSignInButton, {
+        theme: "outline",
+        size: "large",
+      });
+      google.accounts.id.prompt();
+    }
+  }, [isUserLoggedIn, isMentorLoggedIn, router]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
       setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
-
       const { data: res } = await axios.post(url, formData, {
         withCredentials: true,
       });
       setIsLoading(false);
 
       if (entityType === "user") {
+        setIsUserLoggedIn(true);
         localStorage.setItem("userData", JSON.stringify(res.userData));
-        setIsUserLoggedIn(true);
       } else if (entityType === "mentor") {
+        setIsMentorLoggedIn(true);
         localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
-        setIsMentorLoggedIn(true);
       }
-      // router.push("/");
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        toast.error(error.response.data.message);
-      }
+      handleErrorResponse(error);
     }
   };
-
-  async function handleCallbackResponse(response, entityType) {
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, userObject, {
-        withCredentials: true,
-      });
-      console.log(res);
-      if (entityType === "user") {
-        const userData = {
-          user_name: userObject.name,
-          user_picture: userObject.picture,
-          user_email: userObject.email,
-          user_id: res.id,
-        };
-        localStorage.setItem("userData", JSON.stringify(userData));
-        setIsUserLoggedIn(true);
-      } else if (entityType === "mentor") {
-        const mentorData = {
-          mentor_username: res.username,
-          mentor_name: userObject.name,
-          mentor_picture: userObject.picture,
-        };
-        setTimeout(() => {
-          toast.success(res.message);
-        }, 6000);
-        localStorage.setItem("mentorData", JSON.stringify(mentorData));
-        setIsMentorLoggedIn(true);
-      }
-      router.push("/");
-    } catch (error) {
-      console.log(error);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        toast.error(error.response.data.message);
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (isMentorLoggedIn || isUserLoggedIn) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const redirectURL = urlParams.get("redirectURL");
-      router.replace(redirectURL || "/");
-    }
-
-    const url = new URL(window.location.href);
-    const entityTypeFromUrl = url.searchParams.get("entityType");
-    if (entityTypeFromUrl) {
-      setEntityType(entityTypeFromUrl);
-    }
-
-    // Initialize Google Sign-In with the correct entityType
-    google.accounts.id.initialize({
-      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      callback: (response) =>
-        handleCallbackResponse(response, entityTypeFromUrl),
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("googleSignInButton"),
-      { theme: "outline", size: "large" },
-    );
-
-    google.accounts.id.prompt();
-
-    if (isUserLoggedIn || isMentorLoggedIn) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const redirectURL = urlParams.get("redirectURL");
-      if (redirectURL) {
-        router.push(redirectURL);
-      } else {
-        router.push("/");
-      }
-    }
-  }, [isUserLoggedIn, isMentorLoggedIn]);
-
-  // Function to update the URL with the new entityType
-  const updateEntityTypeInUrl = (newEntityType) => {
-    const queryParams = router.query;
-    queryParams.entityType = newEntityType;
-    router.push({ pathname: router.pathname, query: queryParams }, undefined, {
-      shallow: true,
-    });
-  };
-
   return (
     <>
       <Head>
@@ -180,7 +165,6 @@ function login() {
             } ${styles.user}`}
             onClick={() => {
               setEntityType("user");
-              updateEntityTypeInUrl("user");
             }}
           >
             User Login
@@ -191,12 +175,12 @@ function login() {
             } ${styles.mentor}`}
             onClick={() => {
               setEntityType("mentor");
-              updateEntityTypeInUrl("mentor");
             }}
           >
             Mentor Login
           </button>
         </div>
+
         <div>
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>

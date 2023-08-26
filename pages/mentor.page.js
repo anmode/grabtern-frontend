@@ -61,7 +61,7 @@ function Mentor() {
             Our Top Mentors Interned at
           </h1>
           <div className="tw-flex tw-flex-wrap tw-gap-32 max-[637px]:tw-max-gap-6 tw-justify-center tw-items-center">
-            <Company imgSrc={GSoC} name="GSoC" />
+            <Company imgSrc={GSoC} name="Google Summer of Code" />
             <Company imgSrc={microsoft} name="Microsoft" />
             <Company imgSrc={mlh} name="MLH" />
             <Company imgSrc={hackerRank} name="HackerRank" />

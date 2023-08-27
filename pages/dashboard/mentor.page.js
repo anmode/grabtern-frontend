@@ -41,6 +41,8 @@ function MentorDashboard() {
     const mentorData = localStorage.getItem("mentorData");
 
     if (mentorData) {
+      console.log("mentorData ", mentorData);
+      setMentor(mentorData);
       setIsMentorLoggedIn(true); // Set mentorLoggedIn to true
     } else {
       router.push("/auth/login?entityType=mentor");

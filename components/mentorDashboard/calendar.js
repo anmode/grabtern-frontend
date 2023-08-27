@@ -1,62 +1,140 @@
-import React, { useState } from "react";
-import styles from "../../styles/dashboard.module.css";
+import React, { useState, useEffect } from "react";
 import Card from "./CalendarComponent/card";
-import styled from "styled-components";
+import axios from "axios";
 import { BsTrash3Fill } from "react-icons/bs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Calender = () => {
   const [showDefault, setShowDefault] = useState(false);
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
-  const [selectedDays, setSelectedDays] = useState([]);
-  const [selectedTimes, setSelectedTime] = useState({});
-  const [selectTime, setSelectTime] = useState({});
+  const [listSchedules, setListSchedules] = useState([]);
+  const [meetLink, setMeetLink] = useState("");
+  const [checkedDays, setCheckedDays] = useState([]);
+  const [key, setKey] = useState(0);
 
   const weekdays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
   ];
   const timeOptions = {
-    "08:00 AM": "08:00 AM",
-    "09:00 AM": "09:00 AM",
-    "10:00 AM": "10:00 AM",
-    "11:00 AM": "11:00 AM",
-    "12:00 PM": "12:00 PM",
-    "01:00 PM": "01:00 PM",
-    "02:00 PM": "02:00 PM",
-    "03:00 PM": "03:00 PM",
-    "04:00 PM": "04:00 PM",
-    "05:00 PM": "05:00 PM",
-    "06:00 PM": "06:00 PM",
-    "07:00 PM": "07:00 PM",
-    "08:00 PM": "08:00 PM",
+    "07:00 AM": "08:00 AM",
+    "08:00 AM": "09:00 AM",
+    "09:00 AM": "10:00 AM",
+    "10:00 AM": "11:00 AM",
+    "11:00 AM": "12:00 PM",
+    "12:00 PM": "01:00 PM",
+    "01:00 PM": "02:00 PM",
+    "02:00 PM": "03:00 PM",
+    "03:00 PM": "04:00 PM",
+    "04:00 PM": "05:00 PM",
+    "05:00 PM": "06:00 PM",
+    "06:00 PM": "07:00 PM",
+    "07:00 PM": "08:00 PM",
+    "08:00 PM": "09:00 PM",
+    "09:00 PM": "10:00 PM",
+    "10:00 PM": "11:00 PM",
+    "11:00 PM": "12:00 AM",
   };
-  const handleDayChange = (day) => {
-    if (selectedDays.includes(day)) {
-      setSelectedDays(
-        selectedDays.filter((selectedDay) => selectedDay !== day),
+
+  const fetchSchedule = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getSchedule`,
+        {
+          withCredentials: true,
+        },
       );
-      setSelectedTime((prevTimes) => {
-        const updatedTimes = { ...prevTimes };
-        delete updatedTimes[day];
-        return updatedTimes;
-      });
-    } else {
-      setSelectedDays([...selectedDays, day]);
+      setMeetLink(response.data.meetLink);
+      setCheckedDays(response.data.schedules.map((data) => data.day));
+      setListSchedules(response.data.schedules);
+      return;
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const handleTimeChange = (day, time) => {
-    setSelectedTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+  useEffect(() => {
+    fetchSchedule();
+  }, []);
+
+  const handleLinkUpdate = (link) => {
+    setMeetLink(link);
   };
 
-  const handleTime = (day, time) => {
-    setSelectTime((prevTimes) => ({ ...prevTimes, [day]: time }));
+  const handleDayChange = (day) => {
+    if (checkedDays.includes(day)) {
+      setCheckedDays(checkedDays.filter((d) => d !== day));
+      setListSchedules(
+        listSchedules.filter((schedule) => schedule.day !== day),
+      );
+    } else {
+      setCheckedDays([...checkedDays, day]);
+      setListSchedules([
+        ...listSchedules,
+        {
+          day,
+          startsAt: "09:00",
+          endsAt: "20:00",
+          timezone: "(GMT-11:00) Pacific/Midway",
+        },
+      ]);
+    }
+  };
+
+  const handleTimeStartChange = (day, time) => {
+    let findSchedule = listSchedules.find((schedule) => schedule.day === day);
+    let findIndexNum = listSchedules.findIndex(
+      (schedule) => schedule.day === day,
+    );
+    let newSchedule = {
+      ...findSchedule,
+      startsAt: time,
+    };
+    listSchedules[findIndexNum] = newSchedule;
+    setKey(key + 1);
+  };
+
+  const handleTimeEndChange = (day, time) => {
+    let findSchedule = listSchedules.find((schedule) => schedule.day === day);
+    let findIndexNum = listSchedules.findIndex(
+      (schedule) => schedule.day === day,
+    );
+    let newSchedule = {
+      ...findSchedule,
+      endsAt: time,
+    };
+    listSchedules[findIndexNum] = newSchedule;
+    setKey(key + 1);
+  };
+
+  const updateSchedules = async () => {
+    try {
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
+      const res = await axios.put(
+        url,
+        {
+          link: meetLink,
+          schedules: listSchedules,
+        },
+        { withCredentials: true },
+      );
+
+      // Check if the response indicates success
+      if (res.status === 200) {
+        toast.success("Update successful 👌");
+      } else {
+        toast.error("Sorry! Couldn't update");
+      }
+    } catch (error) {
+      toast.error("An error occurred while updating schedules.");
+    }
   };
 
   const handleCalender = () => {
@@ -137,7 +215,7 @@ const Calender = () => {
                 <input
                   id={index}
                   type="checkbox"
-                  checked={selectedDays.includes(day)}
+                  checked={checkedDays.includes(day)}
                   onChange={() => handleDayChange(day)}
                   className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
                 />
@@ -151,13 +229,15 @@ const Calender = () => {
                 </label>
               </div>
 
-              {selectedDays.includes(day) ? (
+              {checkedDays.includes(day) ? (
                 <div className="tw-flex tw-gap-5">
                   <div className="tw-flex tw-justify-center tw-items-center">
                     {/* <h3>Select Time:</h3> */}
                     <select
                       value={selectedTimes[day] || ""}
-                      onChange={(e) => handleTimeChange(day, e.target.value)}
+                      onChange={(e) =>
+                        handleTimeStartChange(day, e.target.value)
+                      }
                       className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
                     >
                       <option value="" className="" selected>
@@ -177,7 +257,7 @@ const Calender = () => {
                     {/* <h3>Select Time:</h3> */}
                     <select
                       value={selectTime[day] || ""}
-                      onChange={(e) => handleTime(day, e.target.value)}
+                      onChange={(e) => handleTimeEndChange(day, e.target.value)}
                       className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
                     >
                       <option value="" className="tw-text-gray-200">
@@ -212,7 +292,10 @@ const Calender = () => {
   };
 
   return (
-    <div className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pl-[10rem] tw-pt-10 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[800px]:tw-pl-20 max-[708px]:tw-w-[370px] max-[512px]:tw-w-[300px] max-[512px]:tw-pl-10 max-[375px]:tw-pl-14 max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[375px]:tw-w-[250px]">
+    <div
+      key={key}
+      className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pl-[10rem] tw-pt-10 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[800px]:tw-pl-20 max-[708px]:tw-w-[370px] max-[512px]:tw-w-[300px] max-[512px]:tw-pl-10 max-[375px]:tw-pl-14 max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[375px]:tw-w-[250px]"
+    >
       <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
       <div className="tw-flex tw-gap-6">
         <button
@@ -232,7 +315,7 @@ const Calender = () => {
       <div className="tw-flex tw-flex-col tw-flex-wrap tw-pt-6">
         {calender && (
           <div>
-            <Card />
+            <Card updateMeetLink={handleLinkUpdate} />
           </div>
         )}
         {schedule && (
@@ -257,7 +340,10 @@ const Calender = () => {
                 <div className="tw-flex tw-justify-between">
                   <h2 className="tw-font-semibold tw-text-lg">Default</h2>
                   <div className="tw-flex tw-gap-4">
-                    <button className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base">
+                    <button
+                      className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+                      onClick={() => updateSchedules()}
+                    >
                       Save
                     </button>
                     <button
@@ -278,7 +364,7 @@ const Calender = () => {
                       <input
                         id={index}
                         type="checkbox"
-                        checked={selectedDays.includes(day)}
+                        checked={checkedDays.includes(day)}
                         onChange={() => handleDayChange(day)}
                         className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
                       />
@@ -292,52 +378,69 @@ const Calender = () => {
                       </label>
                     </div>
 
-                    {selectedDays.includes(day) ? (
-                      <div className="tw-flex tw-gap-5">
-                        <div className="tw-flex tw-justify-center tw-items-center">
-                          {/* <h3>Select Time:</h3> */}
-                          <select
-                            value={selectedTimes[day] || ""}
-                            onChange={(e) =>
-                              handleTimeChange(day, e.target.value)
-                            }
-                            className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
-                          >
-                            <option value="" className="" selected>
-                              9:00 AM
-                            </option>
-                            {Object.values(timeOptions).map((timeOption) => (
-                              <option key={timeOption} value={timeOption}>
-                                {timeOption}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
-                          -
-                        </span>
-                        <div className="tw-flex tw-justify-center tw-items-center">
-                          {/* <h3>Select Time:</h3> */}
-                          <select
-                            value={selectTime[day] || ""}
-                            onChange={(e) => handleTime(day, e.target.value)}
-                            className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
-                          >
-                            <option value="" className="tw-text-gray-200">
-                              8:00 PM
-                            </option>
-                            {Object.values(timeOptions).map((timeOption) => (
-                              <option key={timeOption} value={timeOption}>
-                                {timeOption}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
+                    {listSchedules.filter((obj) => obj.day === day).length >
+                    0 ? (
+                      listSchedules
+                        .filter((obj) => obj.day === day)
+                        .map((schedule) => {
+                          return (
+                            <div className="tw-flex tw-gap-5">
+                              <div className="tw-flex tw-justify-center tw-items-center">
+                                {/* <h3>Select Time:</h3> */}
+                                <select
+                                  value={schedule.startsAt}
+                                  onChange={(e) =>
+                                    handleTimeStartChange(day, e.target.value)
+                                  }
+                                  className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                                >
+                                  {Object.values(timeOptions).map(
+                                    (timeOption) => (
+                                      <option
+                                        key={timeOption}
+                                        value={timeOption}
+                                        selected={
+                                          schedule.startsAt === timeOption
+                                        }
+                                      >
+                                        {timeOption}
+                                      </option>
+                                    ),
+                                  )}
+                                </select>
+                              </div>
+                              <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
+                                -
+                              </span>
+                              <div className="tw-flex tw-justify-center tw-items-center">
+                                {/* <h3>Select Time:</h3> */}
+                                <select
+                                  value={schedule.endsAt || ""}
+                                  onChange={(e) =>
+                                    handleTimeEndChange(day, e.target.value)
+                                  }
+                                  className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
+                                >
+                                  {Object.values(timeOptions).map(
+                                    (timeOption) => (
+                                      <option
+                                        key={timeOption}
+                                        value={timeOption}
+                                        selected={
+                                          schedule.endsAt === timeOption
+                                        }
+                                      >
+                                        {timeOption}
+                                      </option>
+                                    ),
+                                  )}
+                                </select>
+                              </div>
+                            </div>
+                          );
+                        })
                     ) : (
-                      <div className="">
-                        <p> &nbsp; &nbsp; &nbsp; Unavailable</p>
-                      </div>
+                      <p>Unavailble</p>
                     )}
                   </div>
                 ))}
@@ -368,6 +471,7 @@ const Calender = () => {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

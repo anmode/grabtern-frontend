@@ -12,21 +12,35 @@ function Index() {
   const [mentorDetail, setMentorDetail] = useState();
   const router = useRouter();
   const userData = decryptData(localStorage.getItem("userData"));
-  const mentorData = decryptData(localStorage.getItem("mentorData"));
+  const mentorData = {
+    username: "muhammad5558",
+    name: "Muhammad",
+    email: "sayyidmuhammad5352@gmail.com",
+    mobile: 123465798,
+    internAt: "test",
+    currentStatus: "test",
+    description: "test",
+    image:
+      "https://res.cloudinary.com/grabtern-demo/image/upload/v1690267757/blob_usommc.jpg",
+    social: {
+      linkedin: "https://linkedin.com/in/muhammad-jufry",
+      twitter: "https://twitter.com/test",
+    },
+  };
   useEffect(() => {
-    const fetchMentorDetail = async (mentorToken) => {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDashboard/${mentorToken}`;
-      const { data: res } = await axios.get(url, { mentorPW: mentorToken });
-      if (res.message == "Invalid link") {
-        console.log("got invaid link in dashboard");
-        localStorage.removeItem("mentorData");
-        router.push("/");
-      }
-      setMentorDetail(res.mentorDetail);
-    };
-    if (mentorData?.mentorToken !== null) {
-      fetchMentorDetail(mentorData?.mentorToken);
-    }
+    // const fetchMentorDetail = async (mentorToken) => {
+    //   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDashboard/${mentorToken}`;
+    //   const { data: res } = await axios.get(url, { mentorPW: mentorToken });
+    //   if (res.message == "Invalid link") {
+    //     console.log("got invaid link in dashboard");
+    //     localStorage.removeItem("mentorData");
+    //     router.push("/");
+    //   }
+    //   setMentorDetail(res.mentorDetail);
+    // };
+    // if (mentorData?.mentorToken !== null) {
+    //   fetchMentorDetail(mentorData?.mentorToken);
+    // }
   }, []);
   return (
     <>
@@ -36,12 +50,12 @@ function Index() {
       <Header navbarBackground={true} />
       <main style={{ marginTop: "118px" }}>
         <div className="container">
-          {!mentorDetail ? (
+          {!mentorData ? (
             <p style={{ margin: "100px 0" }}>
               We still fetching your profile data wait...
             </p>
           ) : (
-            <Dashboard mentorDetail={mentorDetail} />
+            <Dashboard mentorDetail={mentorData} />
           )}
         </div>
       </main>

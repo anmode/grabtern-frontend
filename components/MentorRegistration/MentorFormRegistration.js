@@ -10,10 +10,11 @@ import ContactDetails from "./components/ContactDetails";
 import ScheduleDetails from "./components/ScheduleDetails";
 import SessionDetails from "./components/SessionDetails";
 import "react-toastify/dist/ReactToastify.css";
+import MagicUrlPopUp from "./components/MagicUrlPopUp";
 
 export default function MentorForm() {
   const router = useRouter();
-  //const [modalPopup, setModalPopup] = useState(false);
+  const [margicUrlPopup, setMagicUrlPopup] = useState(false);
   const [waitTime, setWaitTime] = useState(5);
   // const [isChecked, setIsChecked] = useState(false);
   const [addtoast, setaddToast] = useState(false);
@@ -166,7 +167,16 @@ export default function MentorForm() {
   };
   return (
     <div className="mentorFormRegisration">
-      <Overlay callbackFunction={callbackFunction} />
+      {margicUrlPopup && (
+        <MagicUrlPopUp
+          isOpen={margicUrlPopup}
+          setIsOpen={setMagicUrlPopup}
+          intialData={
+            (formData.email, formData.mobile, formData.social.linkedin)
+          }
+        />
+      )}
+      <Overlay callbackFunction={callbackFunction} onDisappear={() => setMagicUrlPopup(true)}/>
       <div className="tw-container tw-mx-auto tw-px-4">
         <form
           className="mentorForm"

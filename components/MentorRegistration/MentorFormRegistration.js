@@ -166,181 +166,181 @@ export default function MentorForm() {
     }
   };
   return (
-    <div className="mentorFormRegisration">
-      {margicUrlPopup && (
-        <MagicUrlPopUp
-          isOpen={margicUrlPopup}
-          setIsOpen={setMagicUrlPopup}
-          intialData={
-            (formData.email, formData.mobile, formData.social.linkedin)
-          }
-        />
-      )}
-      <Overlay callbackFunction={callbackFunction} onDisappear={() => setMagicUrlPopup(true)}/>
-      <div className="tw-container tw-mx-auto tw-px-4">
-        <form
-          className="mentorForm"
-          onSubmit={onSubmit}
-          aria-label="Mentor registration form"
-        >
-          {/* steps tracker start */}
-          <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
-            <div
-              aria-label="Person Details"
-              className={`trackerStep ${
-                formStep == 1 ? "active" : formStep > 1 ? "done" : ""
-              }`}
-            >
-              ✔
+    <>
+      <MagicUrlPopUp
+        isOpen={margicUrlPopup}
+        setIsOpen={setMagicUrlPopup}
+        intialData={
+          (formData.email, formData.mobile, formData.social.linkedin)
+        }
+      />
+      <div className="mentorFormRegisration">
+        <Overlay callbackFunction={callbackFunction} onDisappear={() => setMagicUrlPopup(true)}/>
+        <div className="tw-container tw-mx-auto tw-px-4">
+          <form
+            className="mentorForm"
+            onSubmit={onSubmit}
+            aria-label="Mentor registration form"
+          >
+            {/* steps tracker start */}
+            <div className="tw-col-span-2 tw-flex tw-justify-between tw-items-center tw-mb-8">
+              <div
+                aria-label="Person Details"
+                className={`trackerStep ${
+                  formStep == 1 ? "active" : formStep > 1 ? "done" : ""
+                }`}
+              >
+                ✔
+              </div>
+              <div className="trackerLine"></div>
+              <div
+                aria-label="Contact Details"
+                className={`trackerStep ${
+                  formStep == 2 ? "active" : formStep > 2 ? "done" : ""
+                }`}
+              >
+                ✔
+              </div>
+              <div className="trackerLine"></div>
+              <div
+                className={`trackerStep ${
+                  formStep == 3 ? "active" : formStep > 3 ? "done" : ""
+                }`}
+              >
+                ✔
+              </div>
+              <div className="trackerLine"></div>
+              <div
+                className={`trackerStep ${
+                  formStep == 4 ? "active" : formStep > 3 ? "done" : ""
+                }`}
+              >
+                ✔
+              </div>
             </div>
-            <div className="trackerLine"></div>
-            <div
-              aria-label="Contact Details"
-              className={`trackerStep ${
-                formStep == 2 ? "active" : formStep > 2 ? "done" : ""
-              }`}
-            >
-              ✔
-            </div>
-            <div className="trackerLine"></div>
-            <div
-              className={`trackerStep ${
-                formStep == 3 ? "active" : formStep > 3 ? "done" : ""
-              }`}
-            >
-              ✔
-            </div>
-            <div className="trackerLine"></div>
-            <div
-              className={`trackerStep ${
-                formStep == 4 ? "active" : formStep > 3 ? "done" : ""
-              }`}
-            >
-              ✔
-            </div>
-          </div>
-          {/* steps tracker end */}
-          {/* form sections start */}
-          <>
-            {{
-              1: (
+            {/* steps tracker end */}
+            {/* form sections start */}
+            <>
+              {{
+                1: (
+                  <PersonDetails
+                    formData={formData}
+                    setFormData={setFormData}
+                    handleChange={handleChange}
+                    handleUploadImageChange={handleUploadImageChange}
+                    validator={validator}
+                  />
+                ),
+                2: (
+                  <ContactDetails
+                    formData={formData}
+                    handleChange={handleChange}
+                    handleSocialChange={handleSocialChange}
+                    validator={validator}
+                  />
+                ),
+                3: (
+                  <ScheduleDetails
+                    formData={formData}
+                    changeArray={changeArray}
+                    validator={validator}
+                  />
+                ),
+                4: (
+                  <SessionDetails
+                    formData={formData}
+                    changeArray={changeArray}
+                    validator={validator}
+                  />
+                ),
+              }[formStep] || (
                 <PersonDetails
                   formData={formData}
-                  setFormData={setFormData}
                   handleChange={handleChange}
                   handleUploadImageChange={handleUploadImageChange}
-                  validator={validator}
-                />
-              ),
-              2: (
-                <ContactDetails
-                  formData={formData}
-                  handleChange={handleChange}
-                  handleSocialChange={handleSocialChange}
-                  validator={validator}
-                />
-              ),
-              3: (
-                <ScheduleDetails
-                  formData={formData}
-                  changeArray={changeArray}
-                  validator={validator}
-                />
-              ),
-              4: (
-                <SessionDetails
-                  formData={formData}
-                  changeArray={changeArray}
-                  validator={validator}
-                />
-              ),
-            }[formStep] || (
-              <PersonDetails
-                formData={formData}
-                handleChange={handleChange}
-                handleUploadImageChange={handleUploadImageChange}
-                handleCallbackResponse={handleCallbackResponse}
-              />
-            )}
-          </>
-          {/* form sections end */}
-
-          {error && (
-            <div style={{ color: "red", gridColumn: "1/3" }} role="alert">
-              {error}
-            </div>
-          )}
-          <hr
-            style={{
-              margin: "10px 0",
-              borderColor: "grey",
-              gridColumn: "1/3",
-            }}
-          />
-          {msg && (
-            <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
-          )}
-          {/* prev next and submit buttons start */}
-          <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
-            <button
-              type="submit"
-              aria-label="Register"
-              className="mentorFormButton theme-button-color"
-              onClick={formStep == 4 ? onSubmit : nextStep}
-            >
-              {formStep == 4 ? "Register" : "Next"}
-            </button>
-
-            {formStep != 1 && (
-              <button
-                type="button"
-                aria-label="Back"
-                className="mentorFormButton tw-bg-slate-400"
-                onClick={prevStep}
-              >
-                Back
-              </button>
-            )}
-          </div>
-          {/* prev next and submit buttons end */}
-
-          {/* toast and loading container start */}
-          <div>
-            <ToastContainer />
-            <div data-testid="loading-spinner">
-              {isLoading && (
-                <img
-                  style={{ width: "50px", height: "50px" }}
-                  src="/assets/img/gif/Spinner.gif"
-                  alt="...jljk"
+                  handleCallbackResponse={handleCallbackResponse}
                 />
               )}
-            </div>
-          </div>
-          {/* toast and loading container end */}
+            </>
+            {/* form sections end */}
 
-          {/* bottom link start */}
-          <p>
-            Already have mentor account?{" "}
-            <a
-              className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
-              href="/mentorLogin"
-            >
-              Login
-            </a>
-          </p>
-          <p>
-            Facing difficulties?{" "}
-            <a
-              className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
-              href="/mentorRegisterSendCV"
-            >
-              Send your CV/Resume to us!
-            </a>
-          </p>
-          {/* bottom links end */}
-        </form>
+            {error && (
+              <div style={{ color: "red", gridColumn: "1/3" }} role="alert">
+                {error}
+              </div>
+            )}
+            <hr
+              style={{
+                margin: "10px 0",
+                borderColor: "grey",
+                gridColumn: "1/3",
+              }}
+            />
+            {msg && (
+              <div style={{ color: "green", gridColumn: "1/3" }}>{msg}</div>
+            )}
+            {/* prev next and submit buttons start */}
+            <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
+              <button
+                type="submit"
+                aria-label="Register"
+                className="mentorFormButton theme-button-color"
+                onClick={formStep == 4 ? onSubmit : nextStep}
+              >
+                {formStep == 4 ? "Register" : "Next"}
+              </button>
+
+              {formStep != 1 && (
+                <button
+                  type="button"
+                  aria-label="Back"
+                  className="mentorFormButton tw-bg-slate-400"
+                  onClick={prevStep}
+                >
+                  Back
+                </button>
+              )}
+            </div>
+            {/* prev next and submit buttons end */}
+
+            {/* toast and loading container start */}
+            <div>
+              <ToastContainer />
+              <div data-testid="loading-spinner">
+                {isLoading && (
+                  <img
+                    style={{ width: "50px", height: "50px" }}
+                    src="/assets/img/gif/Spinner.gif"
+                    alt="...jljk"
+                  />
+                )}
+              </div>
+            </div>
+            {/* toast and loading container end */}
+
+            {/* bottom link start */}
+            <p>
+              Already have mentor account?{" "}
+              <a
+                className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
+                href="/mentorLogin"
+              >
+                Login
+              </a>
+            </p>
+            <p>
+              Facing difficulties?{" "}
+              <a
+                className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
+                href="/mentorRegisterSendCV"
+              >
+                Send your CV/Resume to us!
+              </a>
+            </p>
+            {/* bottom links end */}
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

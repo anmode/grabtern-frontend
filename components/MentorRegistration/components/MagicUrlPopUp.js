@@ -4,7 +4,8 @@ import Input from "./Input";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import styles from "../../../styles/Overlay.module.css";
+import clsx from "clsx";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
@@ -20,6 +21,11 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   // for validator
   const validator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
+
+  // toogle magic url popup
+  const toggleMagicUrlPopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   // onChange for inputs
   const onChange = (e) => {
@@ -70,8 +76,8 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       type: "email",
       name: "email",
       id: "email",
-      className: "mentorFormInput",
       onChange: onChange,
+      divClassName: "tw-col-start-1 tw-col-span-2",
       placeholder: "e.g. peterparker4321@gmail.com",
       required: true,
       value: formData.email,
@@ -83,9 +89,9 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       type: "number",
       name: "mobile",
       id: "mobile",
-      className: "mentorFormInput",
       onChange: onChange,
       placeholder: "0123456789",
+      divClassName: "tw-col-start-1 tw-col-span-2",
       required: true,
       value: formData.mobile,
       validator: validator,
@@ -96,9 +102,9 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       type: "text",
       name: "linkedin",
       id: "linkedin",
-      className: "mentorFormInput",
       onChange: onChange,
       placeholder: "peter-parker-001",
+      divClassName: "tw-col-start-1 tw-col-span-2",
       required: true,
       pattern: "https://www.linkedin.com/in/*",
       value: formData.linkedin,
@@ -116,24 +122,57 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   ];
 
   return (
-    <div className="mentorFormRegisration">
-      {/* <div className={styles.overlay} onClick={() => {setIsOpen(false)}} /> */}
-      <form className="mentorForm" onSubmit={onSubmit} disabled={isLoading}>
-        <p className="mentorFormHeading">Register with Magic Url</p>
-        {inputs.map((input) => (
-          <Input {...input} key={input.name} />
-        ))}
-        <div className="tw-flex tw-items-center tw-justify-between tw-col-span-2">
+    <div
+      className={clsx(
+        "tw-z-[2] tw-fixed -tw-bottom-0 tw-right-5",
+        "tw-max-w-[450px] tw-border",
+        "tw-shadow-xl tw-bg-[white] tw-rounded-xl",
+      )}
+    >
+      {/* header */}
+      <div
+        className={clsx(
+          "tw-flex tw-justify-between tw-items-center ",
+          "tw-px-10 tw-py-5 tw-border-bottom",
+          "tw-border-b-2",
+        )}
+      >
+        <p className="tw-text-lg tw-font-medium">Register Using Magic Url</p>
+        <div onClick={toggleMagicUrlPopup} className="tw-cursor-pointer">
+          {isOpen ? <MdKeyboardArrowDown className="tw-text-2xl" /> : <MdKeyboardArrowUp className="tw-text-2xl" />}
+        </div>
+      </div>
+
+      {/* form */}
+      <div className={clsx("tw-overflow-hidden", !isOpen && "tw-h-0")}>
+        <form
+          className={clsx(
+            "mentorForm",
+            "!tw-grid-cols-1 !tw-rounded-none !tw-shadow-none",
+            "!tw-px-10 !tw-py-5",
+          )}
+          onSubmit={onSubmit}
+          disabled={isLoading}
+        >
+          {/* inputs */}
+          {inputs.map((input) => (
+            <Input {...input} key={input.name} />
+          ))}
+          {/* register button */}
           <button
             type="submit"
-            className="mentorFormButton theme-button-color disabled:tw-cursor-wait disabled:!tw-bg-primary-10"
+            className={clsx(
+              "mentorFormButton theme-button-color",
+              "disabled:tw-cursor-wait disabled:!tw-bg-primary-10",
+              "tw-col-start-1 tw-col-span-2 tw-mt-2",
+            )}
             onClick={onSubmit}
             disabled={isLoading}
           >
             Register
           </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

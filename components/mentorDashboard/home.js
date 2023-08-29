@@ -12,7 +12,8 @@ import {
 } from "react-icons/md";
 import { logout } from "../layout/UserProfile";
 import { useAuth } from "../../context/AuthContext";
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = ({
   isSidebarOpen,
   setIsSidebarOpen,
@@ -26,7 +27,7 @@ const Home = ({
   const [mobileNotification, setMobileNotification] = useState(false);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const router = useRouter();
-
+  const [loading, setLoading] = useState({ status: false });
   async function handleLogout() {
     const success = await logout(router);
 
@@ -48,12 +49,29 @@ const Home = ({
       try {
         setLoadingState({ status: true });
         setErrorState({ status: false });
+        const toastId = toast.promise(
+          axios.get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
+            {
+              withCredentials: true,
+            }
+          ),
+          {
+            pending: 'Loading...',
+            success: 'API fetched successfully!',
+            error: 'Error fetching API',
+          }
+        );
+        setLoading({ status: true });
         const res = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
           { withCredentials: true },
         );
         setMentor(res.data.mentorDetail);
         setLoadingState({ status: false });
+        setLoading({ status: false });
+      toast.dismiss(toastId);
+        
       } catch (error) {
         setLoadingState({ status: false });
         if (
@@ -141,8 +159,9 @@ const Home = ({
   return (
     <>
       <section>
+        <ToastContainer/>
         <header
-          className={`max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
+          className={` ${loading.status ? 'blurred' : ''}  max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
         >
           <h1 className="tw-text-4xl tw-font-bold">
             Welcome <span>{mentor.name?.split(" ")[0]}</span>!

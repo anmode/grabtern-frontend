@@ -6,6 +6,7 @@ import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 
+import 'react-toastify/dist/ReactToastify.css';
 function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   const initialFormData = {
     name: mentorDetail?.name || "", // Make sure to handle null/undefined case
@@ -24,7 +25,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-
+  const [loading,setLoading] = useState({status:false})
   // normal input onChange function
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,12 +36,29 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`;
 
     try {
+      
       setLoadingState({ status: true });
       setErrorState({ status: false });
+      const toastId = toast.promise(
+        axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getprofile/`,
+          {
+            withCredentials: true,
+          }
+        ),
+        {
+          pending: 'Fetching data...',
+          success: 'Data fetched successfully!',
+          error: 'Error fetching data.',
+        }
+      );
+      setLoading({status:true})
       const response = await axios.get(url, { withCredentials: true });
       const data = response.data;
       setFormData(data);
       setLoadingState({ status: false });
+      setLoading({ status: false });
+      toast.dismiss(toastId);
     } catch (error) {
       setLoadingState({ status: false });
       if (
@@ -108,8 +126,8 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
   return (
     <>
-      <ToastContainer />
-      <div className="tw-pb-[5rem] tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+     
+      <div className={`${loading.status ? 'blurred' : ''} tw-pb-[5rem] tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0`}>
         <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
           <div className="tw-border tw-border-base-300 tw-rounded-md tw-p-4 tw-bg-white max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
             <h2 className="tw-text-gray-600 tw-text-4xl text-center tw-font-sans ">
@@ -325,6 +343,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
             </form>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

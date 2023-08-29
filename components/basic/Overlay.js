@@ -4,9 +4,10 @@ import styles from "../../styles/Overlay.module.css";
 import Image from "next/image";
 import jwt_decode from "jwt-decode";
 
-const Overlay = ({ callbackFunction }) => {
+const Overlay = ({ callbackFunction, onDisappear }) => {
   const [show, setShow] = useState(true);
   const disappearOverlay = () => {
+    onDisappear();
     setShow(false);
   };
 

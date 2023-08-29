@@ -8,7 +8,8 @@ import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 import ComingSoon from "../../components/basic/ComingSoon";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function userDashboard() {
   // loading and error state
   const initialState = {
@@ -22,7 +23,7 @@ function userDashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [user, setuser] = useState({});
   const { isUserLoggedIn, setIsUserLoggedIn } = useAuth();
-
+  const [loding,setLoading] = useState({status:false});
   const router = useRouter();
 
   useEffect(() => {
@@ -41,12 +42,30 @@ function userDashboard() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        
+        
+        const toastId = toast.promise(
+          axios.get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/profile/fetch`,
+            {
+              withCredentials: true,
+            }
+          ),
+          {
+            pending: 'Fetching sessions...',
+            success: 'Sessions fetched successfully!',
+            error: 'Error fetching sessions.',
+          }
+        );
+        setLoading({success:true})
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/profile/fetch`,
           { withCredentials: true },
         );
         const userData = response.data;
         setuser(userData);
+        setLoading({success:true});
+        toast.dismiss(toastId);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -57,7 +76,8 @@ function userDashboard() {
 
   return (
     <>
-      <div className="tw-flex">
+      <div className={`${loadingState.status ? 'blurred' : ''} tw-flex`}>
+        <ToastContainer/>
         <Sidebar
           user={user}
           isSidebarOpen={isSidebarOpen}

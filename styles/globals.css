@@ -2090,3 +2090,7 @@ select {
     max-width: 100%;
   }
 }
+.blurred {
+  filter: blur(5px); /* Adjust the amount of blur as needed */
+  pointer-events: none; /* Prevent interactions with blurred content */
+}

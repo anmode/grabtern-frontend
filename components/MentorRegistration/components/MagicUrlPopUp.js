@@ -139,7 +139,11 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       >
         <p className="tw-text-lg tw-font-medium">Register Using Magic Url</p>
         <div onClick={toggleMagicUrlPopup} className="tw-cursor-pointer">
-          {isOpen ? <MdKeyboardArrowDown className="tw-text-2xl" /> : <MdKeyboardArrowUp className="tw-text-2xl" />}
+          {isOpen ? (
+            <MdKeyboardArrowDown className="tw-text-2xl" />
+          ) : (
+            <MdKeyboardArrowUp className="tw-text-2xl" />
+          )}
         </div>
       </div>
 

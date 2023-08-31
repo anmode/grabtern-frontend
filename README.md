@@ -142,8 +142,8 @@ To enable automatic code formatting upon saving in Visual Studio Code, you can i
 
 In case you prefer not to install the Prettier extension, there are two helpful commands you can use:
 
-1. `npx prettier --check `.: This command checks your codebase for any formatting issues without making any changes. It identifies areas where the formatting may not align with the defined rules.
-2. `npx prettier --write ` .: This command automatically fixes the formatting issues in your codebase. It applies the appropriate formatting changes to ensure consistency and adherence to the defined style guidelines.
+1. `npx prettier --check .`.: This command checks your codebase for any formatting issues without making any changes. It identifies areas where the formatting may not align with the defined rules.
+2. `npx prettier --write .` .: This command automatically fixes the formatting issues in your codebase. It applies the appropriate formatting changes to ensure consistency and adherence to the defined style guidelines.
    By utilizing these commands, you can easily verify the formatting of your codebase and address any inconsistencies or style violations, even without having the Prettier extension installed.
 
 ---

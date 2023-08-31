@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Spinner from "../basic/spinner";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 const Bookings = ({ setLoadingState, setErrorState }) => {
   const [activeTab, setActiveTab] = useState("Pending");
-  const[loading,setLoading] = useState({ status: false })
+
   const tabs = ["Pending", "Completed"];
 
   /* ------------------ schema will be like this ---------------- */
@@ -26,20 +25,6 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
   // function to fetch session
   const fetchSession = async () => {
     try {
-      const toastId = toast.promise(
-        axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
-          {
-            withCredentials: true,
-          }
-        ),
-        {
-          pending: 'Fetching data...',
-          success: 'Data fetched successfully!',
-          error: 'Error fetching data.',
-        }
-      );
-      setLoading({ status: true });
       setLoadingState({ status: true });
       setErrorState({ status: false });
       const response = await axios.get(
@@ -50,7 +35,6 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
       );
       setSessions(response.data);
       setLoadingState({ status: false });
-      toast.dismiss(toastId);
     } catch (error) {
       setLoadingState({ status: false });
       if (
@@ -71,11 +55,11 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
   }, []);
 
   return (
-    <div className={`${loading.status ? 'blurred' : ''} min-[512px]:tw-ml-[76px] tw-p-8 tw-py-12 sm:tw-px-8 md:tw-px-12 sm:tw-py-16 lg:tw-p-16`}>
+    <div className="min-[512px]:tw-ml-[76px] tw-p-8 tw-py-12 sm:tw-px-8 md:tw-px-12 sm:tw-py-16 lg:tw-p-16">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
       </h1>
-        <ToastContainer/>
+
       {/* pending and completed tab */}
       <nav>
         <ul className="tw-flex tw-gap-8 tw-border-b-2">
@@ -96,7 +80,7 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
       </nav>
 
       {/* sessions list */}
-      <div className={`${loadingState.status ? 'blurred' : ''}  tw-mt-8`}>
+      <div className="tw-mt-8">
         <ul className="tw-bg-primary-100 tw-text-white  min-[500px]:tw-grid tw-grid-cols-[auto_10rem]  [&>*]:tw-capitalize tw-p-4  sm:tw-grid-cols-[minmax(10rem,auto)_8rem_8rem] md:tw-grid-cols-[minmax(10rem,auto)_8rem_13rem] tw-gap-6 tw-border tw-border-b-0 tw-rounded-t">
           <li className="tw-hidden min-[540px]:tw-inline">topic</li>
           <li className="min-[540px]:tw-hidden">Session List</li>

@@ -24,14 +24,12 @@ function login() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
- 
+
   const [error, setError] = useState("");
   const [entityType, setEntityType] = useState("user");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
-
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +38,6 @@ function login() {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
-
 
   const handleCallbackResponse = async (response) => {
     try {
@@ -137,7 +134,6 @@ function login() {
     try {
       setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
-
       const { data: res } = await axios.post(url, formData, {
         withCredentials: true,
       });
@@ -150,7 +146,6 @@ function login() {
         setIsMentorLoggedIn(true);
         localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
       }
-    
     } catch (error) {
       handleErrorResponse(error);
     }
@@ -246,7 +241,7 @@ function login() {
               </div>
             </div>
 
-         
+            <ToastContainer />
             {error && <div style={{ color: "red" }}>{error}</div>}
             <Link
               href={`/auth/forgotpass?entityType=${entityType}`}

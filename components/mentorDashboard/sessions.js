@@ -3,38 +3,19 @@ import axios from "axios";
 import SessionCard from "../newMentorProfile/SessionCard";
 import Spinner from "../basic/spinner";
 import Form from "./ListedSessionComponent/Form";
-import { ToastContainer } from "react-toastify";
 
 function Sessions({ setLoadingState, setErrorState }) {
   const [data, setData] = useState([]);
   const [editSessionID, setEditSessionID] = useState(null);
-  const [loading,setLoading] = useState({status:false});
+
   const fetchData = async () => {
     try {
-      
       setLoadingState({ status: true });
       setErrorState({ status: false });
-      const toastId = toast.promise(
-        axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`,
-          {
-            withCredentials: true,
-          }
-        ),
-        {
-          pending: 'Fetching data...',
-          success: 'Data fetched successfully!',
-          error: 'Error fetching data.',
-        }
-      );
-      setLoading({status:true});
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
       setLoadingState({ status: false });
-      setLoading({status:false})
-      toast.dismiss(toastId);
       return response.data;
-      
     } catch (error) {
       setLoadingState({ status: false });
       if (
@@ -66,7 +47,7 @@ function Sessions({ setLoadingState, setErrorState }) {
 
   return (
     <>
-      <main className={`${loading.status ? 'blurred' : ''} max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]`}>
+      <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
         <p className="tw-text-black tw-flex tw-justify-start tw-items-center tw-text-center tw-text-3xl tw-font-semibold">
           Sessions
         </p>
@@ -97,7 +78,6 @@ function Sessions({ setLoadingState, setErrorState }) {
               <Spinner />
             </div>
           )}
-          <ToastContainer/>
         </div>
       </main>
     </>

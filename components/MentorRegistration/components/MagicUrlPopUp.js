@@ -6,11 +6,18 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { checkUserNameAvailability } from "../services/userAvailabilityService.js";
+import debounce from "lodash.debounce";
 
 const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
+  // state for unique userName
+  const initialIsUnique = { status: "", message: "" };
+  const [isUnique, setIsUnique] = useState(initialIsUnique);
+
   // for form state
   const initialState = {
+    username: "",
     email: "",
     mobile: "",
     linkedin: "",
@@ -27,9 +34,20 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     setIsOpen(!isOpen);
   };
 
-  // onChange for inputs
+  const debouncedUsernameCheck = debounce(async (username) => {
+    const result = await checkUserNameAvailability(username);
+    setIsUnique(result);
+  }, 500); // Adjust the debounce delay (in milliseconds) as needed
+
   const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Update formData with the new value
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    if (name === "username") {
+      debouncedUsernameCheck(value);
+    }
   };
 
   // handleSubmit
@@ -71,6 +89,19 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
 
   // inputs
   const inputs = [
+    {
+      label: "username",
+      type: "username",
+      name: "username",
+      id: "username",
+      onChange: onChange,
+      divClassName: "tw-col-start-1 tw-col-span-2",
+      placeholder: "e.g. anmode",
+      required: true,
+      value: formData.username,
+      validator: validator,
+      validation: "required|alpha_num_dash",
+    },
     {
       label: "email",
       type: "email",
@@ -139,9 +170,25 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       >
         <p className="tw-text-lg tw-font-medium">Register Using Magic Url</p>
         <div onClick={toggleMagicUrlPopup} className="tw-cursor-pointer">
-          {isOpen ? <MdKeyboardArrowDown className="tw-text-2xl" /> : <MdKeyboardArrowUp className="tw-text-2xl" />}
+          {isOpen ? (
+            <MdKeyboardArrowDown className="tw-text-2xl" />
+          ) : (
+            <MdKeyboardArrowUp className="tw-text-2xl" />
+          )}
         </div>
       </div>
+
+      {/* user name avialability info start*/}
+      <p
+        className={clsx(
+          "tw-text-sm tw-text-right tw-capitalize",
+          isUnique.status == true && ["tw-text-green-500"],
+          isUnique.status == false && ["tw-text-red-500"],
+        )}
+      >
+        {isUnique.message}
+      </p>
+      {/* user name avialability info end*/}
 
       {/* form */}
       <div className={clsx("tw-overflow-hidden", !isOpen && "tw-h-0")}>

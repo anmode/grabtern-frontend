@@ -171,11 +171,17 @@ export default function MentorForm() {
         isOpen={margicUrlPopup}
         setIsOpen={setMagicUrlPopup}
         intialData={
-          (formData.email, formData.mobile, formData.social.linkedin)
+          (formData.username,
+          formData.email,
+          formData.mobile,
+          formData.social.linkedin)
         }
       />
       <div className="mentorFormRegisration">
-        <Overlay callbackFunction={callbackFunction} onDisappear={() => setMagicUrlPopup(true)}/>
+        <Overlay
+          callbackFunction={callbackFunction}
+          onDisappear={() => setMagicUrlPopup(true)}
+        />
         <div className="tw-container tw-mx-auto tw-px-4">
           <form
             className="mentorForm"

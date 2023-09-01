@@ -21,13 +21,14 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
-  console.log("mentor ", mentor);
+  // console.log("mentor ", mentor);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const refOne = useRef(null);
 
   //detects if clicked on outside of element for smaller devices
@@ -50,7 +51,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor?.image}
+          src={mentorData?.mentor_image}
           width={30}
           height={30}
           className="tw-rounded-full"
@@ -115,7 +116,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor.mentor_image}
+          src={mentorData?.mentor_image}
           width={30}
           height={30}
           className="tw-rounded-full"
@@ -280,7 +281,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                     : "tw-hidden"
                 }`}
               >
-                Get more bookings
+                Publish your Profile
               </span>
             </div>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>

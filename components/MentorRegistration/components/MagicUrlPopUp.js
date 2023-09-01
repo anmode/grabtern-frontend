@@ -54,6 +54,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
+      console.log(formData);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegisterWithMagicUrl`;
       const res = await axios.post(url, formData);
       setIsLoading(false);

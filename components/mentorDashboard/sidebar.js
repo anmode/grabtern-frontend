@@ -51,7 +51,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentorData?.mentor_image}
+          src={
+            !mentorData?.mentor_image
+              ? "/assets/img/icon/no-profile-picture.webp"
+              : mentorData?.mentor_image
+          }
           width={30}
           height={30}
           className="tw-rounded-full"

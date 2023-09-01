@@ -161,7 +161,7 @@ function Footer() {
               variant="secondary"
             />
             <IconLink
-              href="#"
+              href="https://github.com/anmode/grabtern-frontend"
               aria-label="Follow us on Github"
               title="Github (External Link)"
               rel="noopener noreferrer"

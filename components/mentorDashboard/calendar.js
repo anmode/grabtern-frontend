@@ -80,8 +80,8 @@ const Calender = () => {
         ...listSchedules,
         {
           day,
-          startsAt: "09:00",
-          endsAt: "20:00",
+          startsAt: "09:00AM",
+          endsAt: "10:00AM",
           timezone: "(GMT-11:00) Pacific/Midway",
         },
       ]);
@@ -241,7 +241,7 @@ const Calender = () => {
                       className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
                     >
                       <option value="" className="" selected>
-                        9:00 AM
+                        9:00AM
                       </option>
                       {Object.values(timeOptions).map((timeOption) => (
                         <option key={timeOption} value={timeOption}>
@@ -261,7 +261,7 @@ const Calender = () => {
                       className="tw-w-28 tw-h-10 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 max-[512px]:tw-w-20 max-[512px]:tw-h-8 max-[512px]:tw-text-xs max-[512px]:tw-px-1 max-[512px]:tw-py-1 max-[512px]:tw-text-center max-[512px]:tw-rounded-sm max-[512px]:tw-border-2 max-[512px]:tw-border-gray-400"
                     >
                       <option value="" className="tw-text-gray-200">
-                        8:00 PM
+                        8:00PM
                       </option>
                       {Object.values(timeOptions).map((timeOption) => (
                         <option key={timeOption} value={timeOption}>
@@ -387,7 +387,7 @@ const Calender = () => {
                             <div className="tw-flex tw-gap-5">
                               <div className="tw-flex tw-justify-center tw-items-center">
                                 {/* <h3>Select Time:</h3> */}
-                                <select
+                                {/* <select
                                   value={schedule.startsAt}
                                   onChange={(e) =>
                                     handleTimeStartChange(day, e.target.value)
@@ -407,14 +407,52 @@ const Calender = () => {
                                       </option>
                                     ),
                                   )}
-                                </select>
+                                </select> */}
+                                <div className="tw-flex tw-gap-5">
+                                  <div className="tw-flex tw-justify-center tw-items-center">
+                                    {/* <h3>Select Time:</h3> */}
+                                    <div className="tw-flex tw-items-center">
+                                      <input
+                                        type="text"
+                                        value={schedule.startsAt}
+                                        onChange={(e) =>
+                                          handleTimeStartChange(
+                                            day,
+                                            e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-20 tw-h-10 tw-rounded-l-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
+                                      />
+                                      <select
+                                        value={
+                                          schedule.startsAt.endsWith("AM")
+                                            ? "AM"
+                                            : "PM"
+                                        }
+                                        onChange={(e) =>
+                                          handleTimeStartChange(
+                                            day,
+                                            schedule.startsAt.replace(
+                                              /AM|PM/g,
+                                              "",
+                                            ) + e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-8 tw-h-10 tw-rounded-r-md tw-border-2 tw-border-l-0 tw-border-gray-400 tw-text-xs tw-px-1 tw-py-1 tw-rounded-sm"
+                                      >
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                               <span className="tw-text-center tw-items-center tw-justify-center tw-flex">
                                 -
                               </span>
-                              <div className="tw-flex tw-justify-center tw-items-center">
+                              <div className="tw-flex tw-justify-center tw-items-center tw-text-center">
                                 {/* <h3>Select Time:</h3> */}
-                                <select
+                                {/* <select
                                   value={schedule.endsAt || ""}
                                   onChange={(e) =>
                                     handleTimeEndChange(day, e.target.value)
@@ -434,7 +472,45 @@ const Calender = () => {
                                       </option>
                                     ),
                                   )}
-                                </select>
+                                </select> */}
+                                <div className="tw-flex tw-gap-5">
+                                  <div className="tw-flex tw-justify-center tw-items-center">
+                                    {/* <h3>Select Time:</h3> */}
+                                    <div className="tw-flex tw-items-center">
+                                      <input
+                                        type="text"
+                                        value={schedule.endsAt}
+                                        onChange={(e) =>
+                                          handleTimeEndChange(
+                                            day,
+                                            e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-20 tw-h-10 tw-rounded-l-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
+                                      />
+                                      <select
+                                        value={
+                                          schedule.endsAt.endsWith("AM")
+                                            ? "AM"
+                                            : "PM"
+                                        }
+                                        onChange={(e) =>
+                                          handleTimeEndChange(
+                                            day,
+                                            schedule.endsAt.replace(
+                                              /AM|PM/g,
+                                              "",
+                                            ) + e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-8 tw-h-10 tw-rounded-r-md tw-border-2 tw-border-l-0 tw-border-gray-400 tw-text-xs tw-px-1 tw-py-1 tw-rounded-sm"
+                                      >
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           );

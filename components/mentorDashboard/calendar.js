@@ -423,26 +423,6 @@ const Calender = () => {
                                         }
                                         className="tw-w-20 tw-h-10 tw-rounded-l-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
                                       />
-                                      <select
-                                        value={
-                                          schedule.startsAt.endsWith("AM")
-                                            ? "AM"
-                                            : "PM"
-                                        }
-                                        onChange={(e) =>
-                                          handleTimeStartChange(
-                                            day,
-                                            schedule.startsAt.replace(
-                                              /AM|PM/g,
-                                              "",
-                                            ) + e.target.value,
-                                          )
-                                        }
-                                        className="tw-w-8 tw-h-10 tw-rounded-r-md tw-border-2 tw-border-l-0 tw-border-gray-400 tw-text-xs tw-px-1 tw-py-1 tw-rounded-sm"
-                                      >
-                                        <option value="AM">AM</option>
-                                        <option value="PM">PM</option>
-                                      </select>
                                     </div>
                                   </div>
                                 </div>
@@ -488,26 +468,6 @@ const Calender = () => {
                                         }
                                         className="tw-w-20 tw-h-10 tw-rounded-l-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
                                       />
-                                      <select
-                                        value={
-                                          schedule.endsAt.endsWith("AM")
-                                            ? "AM"
-                                            : "PM"
-                                        }
-                                        onChange={(e) =>
-                                          handleTimeEndChange(
-                                            day,
-                                            schedule.endsAt.replace(
-                                              /AM|PM/g,
-                                              "",
-                                            ) + e.target.value,
-                                          )
-                                        }
-                                        className="tw-w-8 tw-h-10 tw-rounded-r-md tw-border-2 tw-border-l-0 tw-border-gray-400 tw-text-xs tw-px-1 tw-py-1 tw-rounded-sm"
-                                      >
-                                        <option value="AM">AM</option>
-                                        <option value="PM">PM</option>
-                                      </select>
                                     </div>
                                   </div>
                                 </div>

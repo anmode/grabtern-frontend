@@ -253,7 +253,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
-      <div className="max-[512px]:tw-hidden tw-shrink-0">
+      <div className="max-[512px]:tw-hidden tw-shrink-0 tw-z-30">
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}

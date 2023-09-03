@@ -19,7 +19,6 @@ import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
 import PublishProfile from "./SideBarComponent/PublishProfile";
-import { ToastContainer } from "react-toastify";
 
 const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   // console.log("mentor ", mentor);
@@ -254,7 +253,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
-      <ToastContainer/>
       <div className="max-[512px]:tw-hidden">
         {/* For laptops and tablets  */}
         <aside

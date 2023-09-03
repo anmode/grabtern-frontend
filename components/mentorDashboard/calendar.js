@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./CalendarComponent/card";
 import axios from "axios";
 import { BsTrash3Fill } from "react-icons/bs";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Calender = () => {
@@ -507,7 +507,6 @@ const Calender = () => {
           </div>
         )}
       </div>
-      <ToastContainer />
     </div>
   );
 };

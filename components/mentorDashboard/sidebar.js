@@ -1,6 +1,7 @@
 import React, { Component, useState, useRef, useEffect } from "react";
-import Switch from "react-switch";
+// import Switch from "react-switch";
 import Link from "next/link";
+import { Switch } from "../UI";
 import styles from "../../styles/sidebar.module.css";
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
@@ -217,13 +218,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
     },
   ];
 
-  const BookButton = styled.button`
-    margin: 5px;
-    :hover {
-      background-color: #f0f0f0;
-    }
-  `;
-
   const HoverListItem = styled.li`
     background-color: transparent;
     &.hoverList:hover {
@@ -239,18 +233,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
     setCurrentPage(params.get("tab") || "");
   }, [window.location.search]);
 
-  const BlackSwitch = styled(Switch)(({ theme }) => ({
-    "& .MuiSwitch-switchBase.Mui-checked": {
-      color: "black",
-      "&:hover": {
-        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
-      },
-    },
-    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
-      backgroundColor: "black",
-    },
-  }));
-
   return (
     <>
       <div className="max-[512px]:tw-hidden tw-shrink-0 tw-z-30">
@@ -261,7 +243,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
         >
-          <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
+          <div className="tw-h-full tw-px-5 tw-py-4 tw-overflow-y-auto">
             <div
               className={`${
                 isSidebarOpen ? "tw-block" : "tw-hidden"
@@ -274,7 +256,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 GrabTern
               </Link>
             </div>
-            <PublishProfile isSidebarOpen={isSidebarOpen} />
+            <PublishProfile isSidebarOpen={isSidebarOpen} className="!tw-p-1.5"/>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             {/* expand/collapse button */}
             <div
@@ -299,23 +281,12 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                     Collapse
                   </label>
                 ) : null}
-                <Switch
-                  className="tw-items-center tw-justify-center tw-flex tw-w-10"
-                  id="toggle"
-                  checked={isSidebarOpen ? true : false}
-                  onChange={() => {
+                <Switch 
+                 checked={isSidebarOpen ? true : false}
+                onChange={() => {
                     toggleSidebar();
-                  }}
-                  onColor="#845EC2"
-                  activeBoxShadow="0 0 2px 3px #00C9A7"
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  width={40}
-                  height={20}
-                  handleDiameter={10}
-                  onHandleColor="#fff"
-                  offHandleColor="#845EC2"
-                />
+                  }}/> 
+
               </div>
             </div>
             <ul

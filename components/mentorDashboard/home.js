@@ -95,7 +95,11 @@ const Home = ({
       name: mentor?.name,
       icon: (
         <Image
-          src={mentor?.image}
+          src={
+            !mentor.image
+              ? "/assets/img/icon/no-profile-picture.webp"
+              : mentor.image
+          }
           width={100}
           height={100}
           className="tw-rounded-full"
@@ -162,7 +166,11 @@ const Home = ({
               >
                 <h2 className="tw-font-semibold tw-text-white">Log out</h2>
                 <Image
-                  src={mentor?.image}
+                  src={
+                    !mentor.image
+                      ? "/assets/img/icon/no-profile-picture.webp"
+                      : mentor.image
+                  }
                   alt="Picture of the mentor"
                   width={30}
                   height={30}

@@ -253,11 +253,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
-      <div className="max-[512px]:tw-hidden">
+      <div className="max-[512px]:tw-hidden tw-shrink-0">
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+          className={`max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
         >

@@ -45,7 +45,6 @@ const ComingSoon = () => {
               placeholder="Your Email"
               value=""
               handleChange={() => {}}
-              
             />
             <Button
               text="Subscribe"

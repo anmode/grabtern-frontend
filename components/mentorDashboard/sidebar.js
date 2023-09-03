@@ -256,7 +256,10 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 GrabTern
               </Link>
             </div>
-            <PublishProfile isSidebarOpen={isSidebarOpen} className="!tw-p-1.5"/>
+            <PublishProfile
+              isSidebarOpen={isSidebarOpen}
+              className="!tw-p-1.5"
+            />
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             {/* expand/collapse button */}
             <div
@@ -281,12 +284,12 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                     Collapse
                   </label>
                 ) : null}
-                <Switch 
-                 checked={isSidebarOpen ? true : false}
-                onChange={() => {
+                <Switch
+                  checked={isSidebarOpen ? true : false}
+                  onChange={() => {
                     toggleSidebar();
-                  }}/> 
-
+                  }}
+                />
               </div>
             </div>
             <ul

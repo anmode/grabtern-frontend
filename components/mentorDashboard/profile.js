@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProfileImageInput from "../basic/ProfileImageInput";
 import { FaUserAlt } from "react-icons/fa";
-import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter } from "react-icons/bi";
+import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter, BiSolidBriefcaseAlt2 } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { toast } from "react-toastify";
 
@@ -125,6 +125,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 }}
                 className="tw-mt-10 tw-items-center tw-flex tw-justify-center"
               />
+              {/* name and user name */}
               <div
                 style={{
                   display: "flex",
@@ -174,6 +175,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
                 </div>
               </div>
+              {/* email and phone */}
               <div
                 style={{
                   display: "flex",
@@ -226,6 +228,51 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" />
                 </div>
               </div>
+              {/* intern at and current status */}
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div>
+                  <label for="internAt">Intern At</label>
+
+                  <input
+                    type="text" 
+                    name="internAt"
+                    className="mentorFormInput"
+                    onChange={(e) => handleChange(e)}
+                    style={{
+                      width: "90%",
+                      borderRadius: "5px",
+                      border: "none",
+                      border: "2px solid rgb(220, 220, 220)",
+                      paddingLeft: "35px",
+                    }}
+                    // placeholder="e.g. https://www.linkedin.com/peterparker"
+                    placeholder={mentorDetail?.internAt}
+                    value={formData.internAt}
+                  />
+                  <BiSolidBriefcaseAlt2 className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
+                </div>
+                <div>
+                  <label for="currentStatus">Current Status</label>
+
+                  <input
+                    type="text"
+                    name="currentStatus"
+                    className="mentorFormInput"
+                    onChange={(e) => handleChange(e)}
+                    style={{
+                      width: "90%",
+                      borderRadius: "5px",
+                      border: "none",
+                      border: "2px solid rgb(220, 220, 220)",
+                      paddingLeft: "35px",
+                    }}
+                    placeholder={mentorDetail?.currentStatus}
+                    value={formData.currentStatus}
+                  />
+                  <BiSolidBriefcaseAlt2 className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
+                </div>
+              </div>
+              {/* linked in and twitter */}
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
                   <label for="linkedin">LINKEDIN</label>

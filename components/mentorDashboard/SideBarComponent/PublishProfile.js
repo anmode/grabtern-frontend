@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { RxRocket } from "react-icons/rx";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const PublishProfile = ({ isSidebarOpen, className }) => {
@@ -75,16 +75,15 @@ const PublishProfile = ({ isSidebarOpen, className }) => {
   // getting state of profile on load
   useEffect(() => {
     getIsPublished();
-  }, [])
+  }, []);
 
   return (
     <div
-      onClick={
-        () => {
-          if(!isLoading) 
-            {isPublished ? UnPublish() : Publish()}
+      onClick={() => {
+        if (!isLoading) {
+          isPublished ? UnPublish() : Publish();
         }
-      }
+      }}
       className={`tw-group tw-p-4 tw-flex tw-justify-center ${
         isSidebarOpen && "tw-gap-4"
       } ${className} tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}

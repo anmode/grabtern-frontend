@@ -274,7 +274,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 GrabTern
               </Link>
             </div>
-            <PublishProfile isSidebarOpen = {isSidebarOpen}/>
+            <PublishProfile isSidebarOpen={isSidebarOpen} />
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             {/* expand/collapse button */}
             <div
@@ -355,7 +355,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       <div className="min-[513px]:tw-hidden">
         {/* For mobile devices max-w-512px */}
         <aside className="tw-fixed tw-flex tw-justify-around tw-flex-wrap tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200">
-          <PublishProfile isSidebarOpen={false} className="!tw-mt-0 "/>
+          <PublishProfile isSidebarOpen={false} className="!tw-mt-0 " />
           <div className={`tw-gap-4 tw-flex tw-font-medium tw-p-2`}>
             {mobileItem.map((val, key) => (
               <HoverListItem
@@ -418,7 +418,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 GrabTern
               </Link>
             </div>
-            <PublishProfile isSidebarOpen={true} className="tw-items-center"/>
+            <PublishProfile isSidebarOpen={true} className="tw-items-center" />
             <div
               className={`tw-flex tw-mt-6 tw-justify-around tw-items-start tw-font-medium tw-p-2`}
             >

@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProfileImageInput from "../basic/ProfileImageInput";
 import { FaUserAlt } from "react-icons/fa";
-import { BiSolidPhone, BiLogoLinkedin, BiLogoTwitter, BiSolidBriefcaseAlt2 } from "react-icons/bi";
+import {
+  BiSolidPhone,
+  BiLogoLinkedin,
+  BiLogoTwitter,
+  BiSolidBriefcaseAlt2,
+} from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { toast } from "react-toastify";
 
@@ -234,7 +239,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   <label for="internAt">Intern At</label>
 
                   <input
-                    type="text" 
+                    type="text"
                     name="internAt"
                     className="mentorFormInput"
                     onChange={(e) => handleChange(e)}

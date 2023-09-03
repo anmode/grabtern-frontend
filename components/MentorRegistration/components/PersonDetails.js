@@ -4,6 +4,7 @@ import axios from "axios";
 import clsx from "clsx";
 import { ToastContainer } from "react-toastify";
 import ProfileImageInput from "../../basic/ProfileImageInput";
+import { checkUserNameAvailability } from "../services/userAvailabilityService.js";
 
 function PersonDetails({
   formData,
@@ -17,41 +18,26 @@ function PersonDetails({
   const [isUnique, setIsUnique] = useState(initialIsUnique);
 
   // onchange function for username input
-  const checkUserNameAvailability = async (userName) => {
-    try {
-      setIsUnique({
-        status: "loading",
-        message: "Checking for user name availabilty",
-      });
-      const value = userName.trim();
-
-      // calling api for checking availabilty if value is not empty
-      if (value) {
-        await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentor?username=${value}`,
-        );
-        setIsUnique({ status: true, message: "user name is available" });
-      } else {
-        setIsUnique({ status: false, message: "Enter a valid value" });
-      }
-    } catch (error) {
-      setIsUnique({ status: false, message: error.response.data.message });
-    }
-  };
-
-  // onblur function for name input
   const onNameBlur = (e) => {
     const name = e.target.value.trim().replaceAll(" ", "-");
     const randomNumber = window.crypto.getRandomValues(new Uint32Array(1))[0];
     const userName = `${name}-${randomNumber}`;
     setFormData({ ...formData, username: userName });
-    checkUserNameAvailability(userName);
+
+    // Use the imported function to check user name availability
+    checkUserNameAvailability(userName).then((result) => {
+      setIsUnique(result);
+    });
   };
 
   // onChange function for user name input
   const handleUserNameChange = (e) => {
     handleChange(e);
-    checkUserNameAvailability(e.target.value);
+
+    // Use the imported function to check user name availability
+    checkUserNameAvailability(e.target.value).then((result) => {
+      setIsUnique(result);
+    });
   };
 
   // inputs list

@@ -6,11 +6,18 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { checkUserNameAvailability } from "../services/userAvailabilityService.js";
+import debounce from "lodash.debounce";
 
 const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   const router = useRouter();
+  // state for unique userName
+  const initialIsUnique = { status: "", message: "" };
+  const [isUnique, setIsUnique] = useState(initialIsUnique);
+
   // for form state
   const initialState = {
+    username: "",
     email: "",
     mobile: "",
     linkedin: "",
@@ -27,15 +34,27 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     setIsOpen(!isOpen);
   };
 
-  // onChange for inputs
+  const debouncedUsernameCheck = debounce(async (username) => {
+    const result = await checkUserNameAvailability(username);
+    setIsUnique(result);
+  }, 500); // Adjust the debounce delay (in milliseconds) as needed
+
   const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Update formData with the new value
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    if (name === "username") {
+      debouncedUsernameCheck(value);
+    }
   };
 
   // handleSubmit
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
+      console.log(formData);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegisterWithMagicUrl`;
       const res = await axios.post(url, formData);
       setIsLoading(false);
@@ -71,6 +90,19 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
 
   // inputs
   const inputs = [
+    {
+      label: "username",
+      type: "username",
+      name: "username",
+      id: "username",
+      onChange: onChange,
+      divClassName: "tw-col-start-1 tw-col-span-2",
+      placeholder: "e.g. anmode",
+      required: true,
+      value: formData.username,
+      validator: validator,
+      validation: "required|alpha_num_dash",
+    },
     {
       label: "email",
       type: "email",
@@ -146,6 +178,18 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
           )}
         </div>
       </div>
+
+      {/* user name avialability info start*/}
+      <p
+        className={clsx(
+          "tw-text-sm tw-text-right tw-capitalize",
+          isUnique.status == true && ["tw-text-green-500"],
+          isUnique.status == false && ["tw-text-red-500"],
+        )}
+      >
+        {isUnique.message}
+      </p>
+      {/* user name avialability info end*/}
 
       {/* form */}
       <div className={clsx("tw-overflow-hidden", !isOpen && "tw-h-0")}>

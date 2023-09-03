@@ -7,7 +7,7 @@ import { MdNumbers } from "react-icons/md";
 import Form from "./PaymentComponent/Form";
 import { Button } from "../UI";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Payments = ({ setLoadingState, setErrorState }) => {
   // const [formData, setFormData] = useState(initialFormData);
@@ -98,7 +98,6 @@ const Payments = ({ setLoadingState, setErrorState }) => {
 
   return (
     <>
-      <ToastContainer />
       {!account ? (
         <>
           {" "}

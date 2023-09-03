@@ -20,7 +20,7 @@ const MentorCard = ({ mentor, link }) => {
       <div className="tw-px-2 tw-w-full tw-flex tw-justify-between tw-items-center">
         <div className="tw-flex tw-gap-2">
           <IconLink
-            href={mentor.social.linkedin}
+            href={`https://www.linkedin.com/in/${mentor.social.linkedin}`}
             aria-label="Follow me on Linkedin"
             title="Linkedin (External Link)"
             rel="noopener noreferrer"
@@ -28,7 +28,7 @@ const MentorCard = ({ mentor, link }) => {
             variant="secondary"
           />
           <IconLink
-            href={mentor.social.twitter}
+            href={`https://twitter.com/${mentor.social.twitter}`}
             aria-label="Follow me on Twitter"
             title="Twitter (External Link)"
             rel="noopener noreferrer"

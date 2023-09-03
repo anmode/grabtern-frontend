@@ -4,7 +4,6 @@ import Link from "next/link";
 import styles from "../../styles/sidebar.module.css";
 import { FaTh, FaUserAlt, FaCalendar } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
-import { RxRocket } from "react-icons/rx";
 import { LuPhoneCall } from "react-icons/lu";
 import { BiMessageRoundedDots } from "react-icons/bi";
 import { BiCalendar } from "react-icons/bi";
@@ -19,6 +18,8 @@ import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
+import PublishProfile from "./SideBarComponent/PublishProfile";
+import { ToastContainer } from "react-toastify";
 
 const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
   // console.log("mentor ", mentor);
@@ -155,7 +156,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentor.mentor_image}
+          src={
+            !mentorData?.mentor_image
+              ? "/assets/img/icon/no-profile-picture.webp"
+              : mentorData?.mentor_image
+          }
           width={30}
           height={30}
           className="tw-rounded-full"
@@ -249,6 +254,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
+      <ToastContainer/>
       <div className="max-[512px]:tw-hidden">
         {/* For laptops and tablets  */}
         <aside
@@ -270,24 +276,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 GrabTern
               </Link>
             </div>
-            <div
-              className={`tw-group tw-p-4 tw-flex ${
-                isSidebarOpen
-                  ? "tw-justify-start tw-gap-4"
-                  : "tw-justify-center"
-              } tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
-            >
-              <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-              <span
-                className={`${
-                  isSidebarOpen
-                    ? "tw-block group-hover:tw-text-primary-100"
-                    : "tw-hidden"
-                }`}
-              >
-                Publish your Profile
-              </span>
-            </div>
+            <PublishProfile isSidebarOpen = {isSidebarOpen}/>
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             {/* expand/collapse button */}
             <div
@@ -368,14 +357,12 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       <div className="min-[513px]:tw-hidden">
         {/* For mobile devices max-w-512px */}
         <aside className="tw-fixed tw-flex tw-justify-around tw-flex-wrap tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200">
-          <div className="tw-items-center max-[400px]:tw-hidden">
-            <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-          </div>
+          <PublishProfile isSidebarOpen={false} className="!tw-mt-0 "/>
           <div className={`tw-gap-4 tw-flex tw-font-medium tw-p-2`}>
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
-                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer hoverList"
+                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer"
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
@@ -383,7 +370,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
-                  } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">
@@ -433,12 +420,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 GrabTern
               </Link>
             </div>
-            <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
-              <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
-                <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-                <span className="tw-font-semibold">Get more bookings</span>
-              </div>
-            </div>
+            <PublishProfile isSidebarOpen={true} className="tw-items-center"/>
             <div
               className={`tw-flex tw-mt-6 tw-justify-around tw-items-start tw-font-medium tw-p-2`}
             >

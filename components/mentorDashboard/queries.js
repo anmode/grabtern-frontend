@@ -16,7 +16,6 @@ const Queries = () => {
     return "#" + Math.floor(Math.random() * 900 + 100);
   };
 
-
   const handleRaiseTicketClick = () => {
     setIsTicketFormVisible(true);
   };
@@ -31,14 +30,14 @@ const Queries = () => {
         // Assuming you have already fetched the data and stored it in 'data'
         const { pendingQueries, answeredQueries } = data.reduce(
           (acc, query) => {
-            if (query.status === 'Pending') {
+            if (query.status === "Pending") {
               acc.pendingQueries.push(query);
-            } else if (query.status === 'Answered') {
+            } else if (query.status === "Answered") {
               acc.answeredQueries.push(query);
             }
             return acc;
           },
-          { pendingQueries: [], answeredQueries: [] }
+          { pendingQueries: [], answeredQueries: [] },
         );
 
         // 'pendingQueries' and 'answeredQueries' now contain the separated queries
@@ -48,7 +47,6 @@ const Queries = () => {
         // Update your state with the separated queries
         setPendingQueries(pendingQueries);
         setAnsweredQueries(answeredQueries);
-
       } else {
         console.log("Error fetching queries");
       }
@@ -69,7 +67,7 @@ const Queries = () => {
           status: "Pending",
           ticketId: ticketId,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       if (response.status === 201) {
         const newTicket = {
@@ -93,24 +91,23 @@ const Queries = () => {
       console.log(queryId);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/update`,
-        { id: queryId }
+        { id: queryId },
       );
 
       if (response.status === 200) {
         // Handle success
-        console.log('Ticket has been answered!');
+        console.log("Ticket has been answered!");
         window.location.reload();
         // Refresh the list of queries or update the state as needed
       } else {
-        console.log('Error updating query');
+        console.log("Error updating query");
         // Handle error
       }
     } catch (error) {
-      console.error('Error updating query:', error);
+      console.error("Error updating query:", error);
       // Handle error
     }
   };
-
 
   useEffect(() => {
     // Fetch queries when the component mounts
@@ -200,7 +197,8 @@ const Queries = () => {
                     <p>
                       <strong>Status:</strong> {query.status}
                     </p>
-                    <button className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
+                    <button
+                      className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
                       onClick={() => handleUpdateQuery(query.id)}
                     >
                       {/* Button to mark a query answered and send it to the answered queries section (yet to be implemented) */}

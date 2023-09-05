@@ -68,6 +68,24 @@ const Calender = () => {
     setMeetLink(link);
   };
 
+  const generateTimeOptions = () => {
+    const options = [];
+    options.push(
+      <option key="default" value="▼">
+        ▼
+      </option>,
+    );
+    for (let i = 1; i <= 24; i++) {
+      const time = i < 10 ? `0${i}:00` : `${i}:00`;
+      options.push(
+        <option key={time} value={time}>
+          {time}
+        </option>,
+      );
+    }
+    return options;
+  };
+
   const handleDayChange = (day) => {
     if (checkedDays.includes(day)) {
       setCheckedDays(checkedDays.filter((d) => d !== day));
@@ -408,9 +426,8 @@ const Calender = () => {
                                     ),
                                   )}
                                 </select> */}
-                                <div className="tw-flex tw-gap-5">
+                                {/* <div className="tw-flex tw-gap-5">
                                   <div className="tw-flex tw-justify-center tw-items-center">
-                                    {/* <h3>Select Time:</h3> */}
                                     <div className="tw-flex tw-items-center">
                                       <input
                                         type="text"
@@ -422,6 +439,35 @@ const Calender = () => {
                                           )
                                         }
                                         className="tw-w-20 tw-h-10 tw-rounded-l-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
+                                      />
+                                    </div>
+                                  </div>
+                                </div> */}
+                                <div className="tw-flex tw-gap-5">
+                                  <div className="tw-flex tw-justify-center tw-items-center">
+                                    <div className="tw-flex tw-items-center">
+                                      <select
+                                        value="▼"
+                                        onChange={(e) =>
+                                          handleTimeStartChange(
+                                            day,
+                                            e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-7 tw-h-10 tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
+                                      >
+                                        {generateTimeOptions()}
+                                      </select>
+                                      <input
+                                        type="text"
+                                        value={schedule.startsAt}
+                                        onChange={(e) =>
+                                          handleTimeStartChange(
+                                            day,
+                                            e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-14 tw-h-10 tw-border-2 tw-border-l-0 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
                                       />
                                     </div>
                                   </div>
@@ -453,9 +499,8 @@ const Calender = () => {
                                     ),
                                   )}
                                 </select> */}
-                                <div className="tw-flex tw-gap-5">
+                                {/* <div className="tw-flex tw-gap-5">
                                   <div className="tw-flex tw-justify-center tw-items-center">
-                                    {/* <h3>Select Time:</h3> */}
                                     <div className="tw-flex tw-items-center">
                                       <input
                                         type="text"
@@ -467,6 +512,35 @@ const Calender = () => {
                                           )
                                         }
                                         className="tw-w-20 tw-h-10 tw-rounded-l-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
+                                      />
+                                    </div>
+                                  </div>
+                                </div> */}
+                                                                <div className="tw-flex tw-gap-5">
+                                  <div className="tw-flex tw-justify-center tw-items-center">
+                                    <div className="tw-flex tw-items-center">
+                                      <select
+                                        value="▼"
+                                        onChange={(e) =>
+                                          handleTimeEndChange(
+                                            day,
+                                            e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-7 tw-h-10 tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
+                                      >
+                                        {generateTimeOptions()}
+                                      </select>
+                                      <input
+                                        type="text"
+                                        value={schedule.endsAt}
+                                        onChange={(e) =>
+                                          handleTimeEndChange(
+                                            day,
+                                            e.target.value,
+                                          )
+                                        }
+                                        className="tw-w-14 tw-h-10 tw-border-2 tw-border-l-0 tw-flex tw-justify-center tw-items-center tw-border-gray-400 tw-text-xs tw-px-1 tw-text-center tw-rounded-sm"
                                       />
                                     </div>
                                   </div>

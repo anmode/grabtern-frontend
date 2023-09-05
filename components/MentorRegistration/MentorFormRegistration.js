@@ -170,7 +170,12 @@ export default function MentorForm() {
       <MagicUrlPopUp
         isOpen={margicUrlPopup}
         setIsOpen={setMagicUrlPopup}
-        intialData={(formData.email, formData.mobile, formData.social.linkedin)}
+        intialData={
+          (formData.username,
+          formData.email,
+          formData.mobile,
+          formData.social.linkedin)
+        }
       />
       <div className="mentorFormRegisration">
         <Overlay

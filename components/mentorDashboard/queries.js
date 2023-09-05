@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/queries.module.css";
 import TicketForm from "./QueriesComponent/ticketForm";
 import { CiShoppingTag } from "react-icons/ci";
@@ -16,59 +16,103 @@ const Queries = () => {
     return "#" + Math.floor(Math.random() * 900 + 100);
   };
 
-  const handleSubmitAnswer = (queryIndex) => {
-    const answer = answers[queryIndex];
-    if (answer && answer.trim() !== "") {
-      const answeredQuery = pendingQueries.find(
-        (query) => query.id == queryIndex,
-      );
-      answeredQuery.answer = answer;
-      setAnsweredQueries([...answeredQueries, answeredQuery]);
-      setPendingQueries(
-        pendingQueries.filter((query) => query.id !== queryIndex),
-      );
-      const updatedAnswers = { ...answers };
-      delete updatedAnswers[queryIndex];
-      setAnswers(updatedAnswers);
-    }
-  };
-
   const handleRaiseTicketClick = () => {
     setIsTicketFormVisible(true);
   };
-  const handleTicketFormSubmit = (description) => {
-    const newTicket = {
-      id: generateRandomId(),
-      description: description,
-      status: "Pending",
-    };
 
-    setPendingQueries([...pendingQueries, newTicket]);
-    setIsTicketFormVisible(false);
+  const fetchQueries = async () => {
+    try {
+      // Fetch queries from the server based on isAnswered flag
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/fetch`;
+      const response = await axios.get(url, { withCredentials: true });
+      if (response.status === 200) {
+        const data = response.data;
+        // Assuming you have already fetched the data and stored it in 'data'
+        const { pendingQueries, answeredQueries } = data.reduce(
+          (acc, query) => {
+            if (query.status === "Pending") {
+              acc.pendingQueries.push(query);
+            } else if (query.status === "Answered") {
+              acc.answeredQueries.push(query);
+            }
+            return acc;
+          },
+          { pendingQueries: [], answeredQueries: [] },
+        );
+
+        // 'pendingQueries' and 'answeredQueries' now contain the separated queries
+        // console.log('Pending Queries:', pendingQueries);
+        // console.log('Answered Queries:', answeredQueries);
+
+        // Update your state with the separated queries
+        setPendingQueries(pendingQueries);
+        setAnsweredQueries(answeredQueries);
+      } else {
+        console.log("Error fetching queries");
+      }
+    } catch (error) {
+      console.error("Error fetching queries:", error);
+    }
   };
 
-  //API implementation
-  // const handleTicketFormSubmit = async(description)=>{
-  //   try{
-  //     const response = await axios.post(
-  //       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentorDashboard/queries`,
-  //       {
-  //         description: description,
-  //         status: "Pending",
-  //       }
-  //     );
-  //     const newTicket= {
-  //           id: generateRandomId(),
-  //           description: description,
-  //           status: "pending",
-  //     };
-  //     setPendingQueries([...pendingQueries, newTicket]);
-  //     setIsTicketFormVisible(false);
-  //   } catch (error){
-  //     console.log("Error in creating ticket", error);
+  const handleTicketFormSubmit = async (description) => {
+    try {
+      // console.log(description);
+      const ticketId = generateRandomId();
+      // Create a new ticket with the generated ticket ID
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/create`,
+        {
+          description: description,
+          status: "Pending",
+          ticketId: ticketId,
+        },
+        { withCredentials: true },
+      );
+      if (response.status === 201) {
+        const newTicket = {
+          id: ticketId,
+          description: description,
+          status: "Pending",
+        };
+        setPendingQueries([...pendingQueries, newTicket]);
+        setIsTicketFormVisible(false);
+      } else {
+        console.log("Error creating ticket");
+      }
+    } catch (error) {
+      console.error("Error creating ticket:", error);
+    }
+  };
 
-  //   }
-  // }
+  // Update a ticket
+  const handleUpdateQuery = async (queryId) => {
+    try {
+      console.log(queryId);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/update`,
+        { id: queryId },
+      );
+
+      if (response.status === 200) {
+        // Handle success
+        console.log("Ticket has been answered!");
+        window.location.reload();
+        // Refresh the list of queries or update the state as needed
+      } else {
+        console.log("Error updating query");
+        // Handle error
+      }
+    } catch (error) {
+      console.error("Error updating query:", error);
+      // Handle error
+    }
+  };
+
+  useEffect(() => {
+    // Fetch queries when the component mounts
+    fetchQueries();
+  }, []);
 
   return (
     <section
@@ -137,10 +181,10 @@ const Queries = () => {
         {currentView === "Pending" && (
           <div className="tw-flex tw-flex-wrap min-[513px]:tw-pt-2 tw-justify-start max-[512px]:tw-justify-center max-[512px]:tw-items-center ">
             {/* <h2 className={styles.subheading}>Pending</h2> */}
-            {pendingQueries.length === 0 ? (
+            {pendingQueries?.length === 0 ? (
               <p>No Pending Tickets</p>
             ) : (
-              pendingQueries.map((query) => (
+              pendingQueries?.map((query) => (
                 <div key={query.id} className="tw-flex tw-p-4">
                   <div className="tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-rounded-sm tw-p-10">
                     <p>
@@ -153,7 +197,10 @@ const Queries = () => {
                     <p>
                       <strong>Status:</strong> {query.status}
                     </p>
-                    <button className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all">
+                    <button
+                      className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
+                      onClick={() => handleUpdateQuery(query.id)}
+                    >
                       {/* Button to mark a query answered and send it to the answered queries section (yet to be implemented) */}
                       Mark as answered
                     </button>
@@ -167,10 +214,10 @@ const Queries = () => {
         {currentView === "answered" && (
           <div>
             {/* <h2 className={styles.subheading}>Answered Queries</h2> */}
-            {answeredQueries.length === 0 ? (
+            {answeredQueries?.length === 0 ? (
               <p>No answered tickets yet.</p>
             ) : (
-              answeredQueries.map((query, index) => (
+              answeredQueries?.map((query, index) => (
                 <div key={query.id} className="tw-bg-white">
                   <p>
                     <strong>ID:</strong> {query.id}

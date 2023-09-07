@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import styles from "./Link.module.css";
@@ -19,22 +19,26 @@ function ButtonLink({
       href={href}
       className={clsx(
         `${styles.linkBtn} ${styles[variantClass]} ${className}`,
-        size == "sm" && ["tw-text-xs tw-font-medium tw-items-center tw-flex tw-content-center"],
+        size == "sm" && [
+          "tw-text-xs tw-font-medium tw-items-center tw-flex tw-content-center",
+        ],
       )}
-      onClick={()=>{setIsLoading(true);setTimeout(()=>setIsLoading(false), 60000)}}
+      onClick={() => {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 60000);
+      }}
     >
-      {isLoading? 
-      <div className="tw-flex tw-justify-center tw-items-center">
-
-      <img
-                    style={{ maxWidth:"100%", height:"20px"}}
-                    src="/assets/img/gif/Spinner.gif"
-                    alt="...loader"
-                    />
-                    </div>
-                    :text      
-
-                }
+      {isLoading ? (
+        <div className="tw-flex tw-justify-center tw-items-center">
+          <img
+            style={{ maxWidth: "100%", height: "20px" }}
+            src="/assets/img/gif/Spinner.gif"
+            alt="...loader"
+          />
+        </div>
+      ) : (
+        text
+      )}
     </Link>
   );
 }

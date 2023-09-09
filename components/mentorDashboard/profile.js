@@ -29,6 +29,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [isLoading, setIsLoading] = useState(false);
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -87,6 +88,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;
 
@@ -98,8 +100,10 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
       setFormData(response.data);
       setMentor(response.data);
       saveToLocalStorage(response.data);
+      setIsLoading(false);
       toast.success("Changes Saved Successfully");
     } catch (error) {
+      setIsLoading(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -371,7 +375,9 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
                 onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
               >
-                Save changes
+                {isLoading ? "Loading..." : (
+                  "Save changes"
+                )}
               </button>
             </form>
           </div>

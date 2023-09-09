@@ -13,6 +13,7 @@ const Calender = () => {
   const [meetLink, setMeetLink] = useState("");
   const [checkedDays, setCheckedDays] = useState([]);
   const [key, setKey] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const weekdays = [
     "monday",
@@ -133,6 +134,7 @@ const Calender = () => {
   };
 
   const updateSchedules = async () => {
+    setIsLoading(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
       const res = await axios.put(
@@ -150,7 +152,9 @@ const Calender = () => {
       } else {
         toast.error("Sorry! Couldn't update");
       }
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       toast.error("An error occurred while updating schedules.");
     }
   };
@@ -358,12 +362,19 @@ const Calender = () => {
                 <div className="tw-flex tw-justify-between">
                   <h2 className="tw-font-semibold tw-text-lg">Default</h2>
                   <div className="tw-flex tw-gap-4">
-                    <button
+                  {isLoading?<div className="tw-flex tw-justify-center tw-items-center">
+      <img
+      className="tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+        style={{ maxWidth: "100%", height: "40px", padding:"0 15px" }}
+        src="/assets/img/gif/Spinner.gif"
+        alt="...loader"
+      />
+    </div>: <button
                       className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
                       onClick={() => updateSchedules()}
                     >
                       Save
-                    </button>
+                    </button>}
                     <button
                       onClick={() => setShowDefault(false)}
                       className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"

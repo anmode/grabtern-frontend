@@ -9,7 +9,7 @@ function PreLoader({ loadingState, errorState }) {
     <div
       className={clsx(
         "tw-fixed tw-top-0 tw-z-10",
-        "tw-w-full tw-h-screen",
+        "tw-left-0 tw-right-0 tw-bottom-0",
         "tw-bg-base-200",
         "tw-text-center",
         "tw-flex tw-items-center tw-justify-center",

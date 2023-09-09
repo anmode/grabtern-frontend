@@ -146,17 +146,18 @@ const Home = ({
     <>
       <section>
         <header
-          className={`max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
+          className={`max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
         >
           <h1 className="tw-text-4xl tw-font-bold">
             Welcome <span>{mentor.name?.split(" ")[0]}</span>!
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
           <div
-            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10 ${
-              isSidebarOpen
-                ? "-tw-translate-x-40 tw-ease-in-out"
-                : "tw-translate-x-0 tw-ease-in-out"
+            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${
+              // isSidebarOpen
+              //   ? "-tw-translate-x-40 tw-ease-in-out"
+              //   : "tw-translate-x-0 tw-ease-in-out"
+              ""
             }`}
           >
             {mentor ? (
@@ -241,7 +242,7 @@ const Home = ({
 
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
 
-        <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
+        <main className="tw-pb-14 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
           <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium">
             Here you can view your sessions, edit your profile, and view your
             calendar.

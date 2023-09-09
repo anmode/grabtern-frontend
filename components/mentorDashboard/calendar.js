@@ -316,7 +316,7 @@ const Calender = () => {
   return (
     <div
       key={key}
-      className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pl-[10rem] tw-pt-10 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[800px]:tw-pl-20 max-[708px]:tw-w-[370px] max-[512px]:tw-w-[300px] max-[512px]:tw-pl-10 max-[375px]:tw-pl-14 max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[375px]:tw-w-[250px]"
+      className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pt-10 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-w-[300px] max-[375px]:tw-pl-14 max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[375px]:tw-w-[250px]"
     >
       <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
       <div className="tw-flex tw-gap-6">

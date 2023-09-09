@@ -57,19 +57,13 @@ function MentorDashboard() {
   return (
     <>
       <ToastContainer />
-      <div className="tw-flex">
+      <div className="tw-flex tw-h-screen tw-overflow-hidden">
         <Sidebar
           mentor={mentor}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
-        <div
-          className={`tw-flex tw-flex-col tw-justify-center tw-items-center ${
-            isSidebarOpen
-              ? "tw-translate-x-36 tw-duration-200 tw-transition-all tw-ease-in-out"
-              : "tw-translate-0 tw-duration-200 tw-transition-all tw-ease-in-out tw-pl-5"
-          }`}
-        >
+        <div className="tw-duration-200 tw-transition-all tw-ease-in-out tw-flex-1 tw-h-full tw-overflow-y-auto tw-overflow-x-hidden tw-px-5 sm:tw-px-10">
           {(loadingState.status || errorState.status) && (
             <PreLoader loadingState={loadingState} errorState={errorState} />
           )}

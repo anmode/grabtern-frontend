@@ -10,8 +10,7 @@ function Sessions({ setLoadingState, setErrorState }) {
 
   const fetchData = async () => {
     try {
-      setLoadingState({ status: true });
-      setErrorState({ status: false });
+      c;
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
       setLoadingState({ status: false });

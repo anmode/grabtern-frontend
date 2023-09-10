@@ -5,7 +5,7 @@ import { BsTrash3Fill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Calender = () => {
+const Calender = ({ setLoadingState }) => {
   const [showDefault, setShowDefault] = useState(false);
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
@@ -46,6 +46,8 @@ const Calender = () => {
 
   const fetchSchedule = async () => {
     try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getSchedule`,
         {
@@ -55,8 +57,11 @@ const Calender = () => {
       setMeetLink(response.data.meetLink);
       setCheckedDays(response.data.schedules.map((data) => data.day));
       setListSchedules(response.data.schedules);
+      setLoadingState({ status: false });
       return;
     } catch (error) {
+      setErrorState({ status: true });
+      setLoadingState(false);
       console.log(error);
     }
   };
@@ -362,19 +367,27 @@ const Calender = () => {
                 <div className="tw-flex tw-justify-between">
                   <h2 className="tw-font-semibold tw-text-lg">Default</h2>
                   <div className="tw-flex tw-gap-4">
-                  {isLoading?<div className="tw-flex tw-justify-center tw-items-center">
-      <img
-      className="tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
-        style={{ maxWidth: "100%", height: "40px", padding:"0 15px" }}
-        src="/assets/img/gif/Spinner.gif"
-        alt="...loader"
-      />
-    </div>: <button
-                      className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
-                      onClick={() => updateSchedules()}
-                    >
-                      Save
-                    </button>}
+                    {isLoading ? (
+                      <div className="tw-flex tw-justify-center tw-items-center">
+                        <img
+                          className="tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+                          style={{
+                            maxWidth: "100%",
+                            height: "40px",
+                            padding: "0 15px",
+                          }}
+                          src="/assets/img/gif/Spinner.gif"
+                          alt="...loader"
+                        />
+                      </div>
+                    ) : (
+                      <button
+                        className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
+                        onClick={() => updateSchedules()}
+                      >
+                        Save
+                      </button>
+                    )}
                     <button
                       onClick={() => setShowDefault(false)}
                       className=" tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
@@ -527,7 +540,7 @@ const Calender = () => {
                                     </div>
                                   </div>
                                 </div> */}
-                                                                <div className="tw-flex tw-gap-5">
+                                <div className="tw-flex tw-gap-5">
                                   <div className="tw-flex tw-justify-center tw-items-center">
                                     <div className="tw-flex tw-items-center">
                                       <select

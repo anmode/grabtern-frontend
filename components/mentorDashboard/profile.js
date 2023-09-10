@@ -375,9 +375,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
                 onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
               >
-                {isLoading ? "Loading..." : (
-                  "Save changes"
-                )}
+                {isLoading ? "Loading..." : "Save changes"}
               </button>
             </form>
           </div>

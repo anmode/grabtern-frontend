@@ -4,7 +4,7 @@ import TicketForm from "./QueriesComponent/ticketForm";
 import { CiShoppingTag } from "react-icons/ci";
 import axios from "axios";
 
-const Queries = () => {
+const Queries = ({ setLoadingState }) => {
   const [pendingQueries, setPendingQueries] = useState([]);
   const [answeredQueries, setAnsweredQueries] = useState([]);
   //   const [currentAnswer, setCurrentAnswer] = useState("");
@@ -22,6 +22,8 @@ const Queries = () => {
 
   const fetchQueries = async () => {
     try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
       // Fetch queries from the server based on isAnswered flag
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/fetch`;
       const response = await axios.get(url, { withCredentials: true });
@@ -39,7 +41,7 @@ const Queries = () => {
           },
           { pendingQueries: [], answeredQueries: [] },
         );
-
+        setLoadingState({ status: false });
         // 'pendingQueries' and 'answeredQueries' now contain the separated queries
         // console.log('Pending Queries:', pendingQueries);
         // console.log('Answered Queries:', answeredQueries);
@@ -51,6 +53,7 @@ const Queries = () => {
         console.log("Error fetching queries");
       }
     } catch (error) {
+      setLoadingState({ status: false });
       console.error("Error fetching queries:", error);
     }
   };

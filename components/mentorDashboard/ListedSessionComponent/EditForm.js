@@ -7,7 +7,6 @@ import { Button } from "../../UI";
 const EditSessionComponent = ({
   sessionID,
   setSessionID,
-  sessions,
   setSessions,
 }) => {
   const [data, setData] = useState(null);
@@ -42,7 +41,6 @@ const EditSessionComponent = ({
       setSessionID(null);
       toast.success("Changes saved successfully.");
     } catch (error) {
-      console.log(error);
       if (
         error.response &&
         error.response.status >= 400 &&

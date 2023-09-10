@@ -356,6 +356,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
               <button
                 onClick={createSchedule}
                 className="tw-bg-gray-200 tw-rounded-md tw-p-3 tw-font-semibold hover:tw-bg-gray-300 tw-ease-in-out tw-duration-150 tw-transition-all"
+                disabled
               >
                 + New Schedule
               </button>

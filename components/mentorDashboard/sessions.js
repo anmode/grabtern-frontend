@@ -5,17 +5,19 @@ import Spinner from "../basic/spinner";
 import Form from "./ListedSessionComponent/Form";
 
 function Sessions({ setLoadingState, setErrorState }) {
-  const [data, setData] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [editSessionID, setEditSessionID] = useState(null);
+  const [addSession, setAddSession] = useState(false);
 
+  // function to fetch all sessions
   const fetchData = async () => {
     try {
       setLoadingState({ status: true });
       setErrorState({ status: false });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
+      setSessions(response.data);
       setLoadingState({ status: false });
-      return response.data;
     } catch (error) {
       setLoadingState({ status: false });
       if (
@@ -30,19 +32,9 @@ function Sessions({ setLoadingState, setErrorState }) {
     }
   };
 
+  // fetching all sessions on load
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const response = await fetchData();
-        if (response) {
-          setData(response);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchDataAndSetState();
+    fetchData();
   }, []);
 
   return (
@@ -53,11 +45,11 @@ function Sessions({ setLoadingState, setErrorState }) {
         </p>
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
         <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-          {data.length > 0 ? (
-            data.map((card, index) => (
+          {sessions.length > 0 ? (
+            sessions.map((card, index) => (
               <div key={index}>
                 {editSessionID === card._id ? (
-                  <Form sessionID={editSessionID} />
+                  <Form sessionID={editSessionID} setSessionID={setEditSessionID} sessions={sessions} setSessions={setSessions}/>
                 ) : (
                   <SessionCard
                     type={card.type}

@@ -12,6 +12,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MentorDashboard() {
   // loading and error state
@@ -42,7 +43,6 @@ function MentorDashboard() {
     const mentorData = localStorage.getItem("mentorData");
 
     if (mentorData) {
-      console.log("mentorData ", mentorData);
       setMentor(mentorData);
       setIsMentorLoggedIn(true); // Set mentorLoggedIn to true
     } else {

@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../../basic/spinner";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { Button } from "../../UI";
 
-const EditSessionComponent = ({ sessionID, redirectURL }) => {
+const EditSessionComponent = ({
+  sessionID,
+  setSessionID,
+  sessions,
+  setSessions,
+}) => {
   const [data, setData] = useState(null);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const username = mentorData?.mentor_username;
 
+  // fetching session on load
   useEffect(() => {
-    console.log(sessionID, username);
-
     // Fetch session data only if data hasn't been fetched yet
     if (!data) {
       const fetchSessionData = async () => {
@@ -28,15 +32,17 @@ const EditSessionComponent = ({ sessionID, redirectURL }) => {
     }
   }, [sessionID, username, data]);
 
+  // on submit funxtion for edit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateListedSession`;
       const response = await axios.put(url, data, { withCredentials: true });
-      setData(response.data);
+      setSessions(response.data.updatedSessions);
+      setSessionID(null);
       toast.success("Changes saved successfully.");
-      router.push(redirectURL);
     } catch (error) {
+      console.log(error);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -49,6 +55,7 @@ const EditSessionComponent = ({ sessionID, redirectURL }) => {
     }
   };
 
+  // onchange function for inputs
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setData((prevData) => ({
@@ -59,8 +66,8 @@ const EditSessionComponent = ({ sessionID, redirectURL }) => {
 
   return (
     <>
-      {data?.name ? (
-        <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pb-[5rem] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+      {data ? (
+        <div className="tw-flex tw-justify-center tw-items-center tw-pb-[5rem] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
           <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
             <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
               <h2 className="tw-pb-[2rem] tw-text-gray-600 tw-font-semibold tw-text-4xl tw-text-center tw-font-sans ">
@@ -201,17 +208,14 @@ const EditSessionComponent = ({ sessionID, redirectURL }) => {
                   }}
                 />
 
-                <button
+                <Button
+                  text="Save Changes"
                   type="submit"
-                  className="tw-mb-[2rem] tw-text-white tw-border tw-rounded-md tw-px-4 tw-py-2 tw-text-center tw-font-semibold tw-text-base tw-bg-blue-400 hover:tw-bg-blue-500 hover:tw-border-black hover:tw-border-2"
-                  onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
-                >
-                  Save Changes
-                </button>
+                  onClick={handleSubmit}
+                />
               </form>
             </div>
           </div>
-          <ToastContainer />
         </div>
       ) : (
         <div className="tw-mt-[5rem]">

@@ -151,6 +151,7 @@ const Card = ({ updateMeetLink }) => {
             type="text"
             placeholder="Enter Value in Mins"
             className="tw-rounded-l-md tw-font-medium focus:tw-border-primary-100 tw-px-2 tw-text-base tw-border-2 tw-w-2/3"
+            disabled
           />
           <select
             className="hover:tw-bg-gray-400 tw-rounded-r-md tw-outline-none focus:tw-border-primary-200 tw-border-2 tw-py-3 tw-px-0 tw-w-1/3 tw-text-normal tw-bg-gray-300 tw-text-center tw-text-black tw-font-semibold"

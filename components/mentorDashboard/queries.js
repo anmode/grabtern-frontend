@@ -4,7 +4,7 @@ import TicketForm from "./QueriesComponent/ticketForm";
 import { CiShoppingTag } from "react-icons/ci";
 import axios from "axios";
 
-const Queries = ({ setLoadingState }) => {
+const Queries = ({ setLoadingState, setErrorState }) => {
   const [pendingQueries, setPendingQueries] = useState([]);
   const [answeredQueries, setAnsweredQueries] = useState([]);
   //   const [currentAnswer, setCurrentAnswer] = useState("");

@@ -5,7 +5,7 @@ import { BsTrash3Fill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Calender = ({ setLoadingState }) => {
+const Calender = ({ setLoadingState, setErrorState }) => {
   const [showDefault, setShowDefault] = useState(false);
   const [schedule, showSchedule] = useState(false);
   const [calender, showCalender] = useState(true);
@@ -60,7 +60,6 @@ const Calender = ({ setLoadingState }) => {
       setLoadingState({ status: false });
       return;
     } catch (error) {
-      setErrorState({ status: true });
       setLoadingState(false);
       console.log(error);
     }

@@ -31,7 +31,7 @@ function ButtonLink({
       {isLoading ? (
         <div className="tw-flex tw-justify-center tw-items-center">
           <img
-            style={{ maxWidth: "100%", height: "20px" }}
+            style={{ maxWidth: "100%", height: "25px" }}
             src="/assets/img/gif/Spinner.gif"
             alt="...loader"
           />

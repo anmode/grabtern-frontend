@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SessionCard from "../newMentorProfile/SessionCard";
 import Spinner from "../basic/spinner";
-import Form from "./ListedSessionComponent/Form";
+import EditForm from "./ListedSessionComponent/EditForm";
+import AddForm from "./ListedSessionComponent/AddForm";
+import { Button, Section } from "../UI";
 
 function Sessions({ setLoadingState, setErrorState }) {
-  const [data, setData] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [editSessionID, setEditSessionID] = useState(null);
+  const [addSession, setAddSession] = useState(false);
 
+  // function to fetch all sessions
   const fetchData = async () => {
     try {
       setLoadingState({ status: true });
       setErrorState({ status: false });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
+      setSessions(response.data);
       setLoadingState({ status: false });
-      return response.data;
     } catch (error) {
       setLoadingState({ status: false });
       if (
@@ -30,54 +34,122 @@ function Sessions({ setLoadingState, setErrorState }) {
     }
   };
 
+  // fetching all sessions on load
   useEffect(() => {
-    const fetchDataAndSetState = async () => {
-      try {
-        const response = await fetchData();
-        if (response) {
-          setData(response);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchDataAndSetState();
+    fetchData();
   }, []);
 
   return (
     <>
       <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
-        <p className="tw-text-black tw-flex tw-justify-start tw-items-center tw-text-center tw-text-3xl tw-font-semibold">
-          Sessions
-        </p>
+        <div className="tw-flex tw-justify-between">
+          <p className="tw-text-black tw-flex tw-justify-start tw-items-center tw-text-center tw-text-3xl tw-font-semibold">
+            Sessions
+          </p>
+          {!addSession && (
+            <Button
+              text="Add Session"
+              onClick={() => {
+                setAddSession(true);
+              }}
+            />
+          )}
+        </div>
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0" />
-        <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-          {data.length > 0 ? (
-            data.map((card, index) => (
-              <div key={index}>
-                {editSessionID === card._id ? (
-                  <Form sessionID={editSessionID} />
-                ) : (
-                  <SessionCard
-                    type={card.type}
-                    name={card.name}
-                    description={card.description}
-                    duration={card.duration}
-                    price={card.price}
-                    text="Edit Session"
-                    handleBookSession={() => {
-                      setEditSessionID(card._id);
+        <div>
+          {addSession ? (
+            <AddForm setSessions={setSessions} setAddSession={setAddSession} />
+          ) : editSessionID ? (
+            <EditForm
+              sessionID={editSessionID}
+              setSessionID={setEditSessionID}
+              setSessions={setSessions}
+            />
+          ) : sessions.length > 0 ? (
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+              {sessions.map((card, index) => (
+                <SessionCard
+                  key={index}
+                  type={card.type}
+                  name={card.name}
+                  description={card.description}
+                  duration={card.duration}
+                  price={card.price}
+                  text="Edit Session"
+                  handleBookSession={() => {
+                    setEditSessionID(card._id);
+                  }}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+              <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
+                <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+                  <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">
+                    Add Session
+                  </h2>
+                  <p className="tw-my-5">
+                    It seems like you don't have any session yet!
+                  </p>
+                  <Button
+                    text="Add Session"
+                    onClick={() => {
+                      setAddSession(true);
                     }}
                   />
-                )}
+                </div>
               </div>
-            ))
-          ) : (
-            <div>
-              <Spinner />
             </div>
           )}
+          {/* {addSession && (
+            <AddForm setSessions={setSessions} setAddSession={setAddSession} />
+          )}
+          {editSessionID && (
+            <EditForm
+              sessionID={editSessionID}
+              setSessionID={setEditSessionID}
+              setSessions={setSessions}
+            />
+          )} */}
+
+          {/* {sessions.length > 0 ? (
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+              {sessions.map((card, index) => (
+                <SessionCard
+                  key={index}
+                  type={card.type}
+                  name={card.name}
+                  description={card.description}
+                  duration={card.duration}
+                  price={card.price}
+                  text="Edit Session"
+                  handleBookSession={() => {
+                    setEditSessionID(card._id);
+                  }}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+              <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
+                <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+                  <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">
+                    Add Session
+                  </h2>
+                  <p className="tw-my-5">
+                    It seems like you don't have any session yet!
+                  </p>
+                  <Button
+                    text="Add Session"
+                    onClick={() => {
+                      setAddSession(true);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          )} */}
         </div>
       </main>
     </>

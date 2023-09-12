@@ -1,20 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-export const useApi = (url) => {
+export const useApi = (url, loadingStatus) => {
   const [apidata, setApiData] = useState([]);
+  const [isLoading, setIsLoading] = useState(loadingStatus);
   const isCachePresent = useRef(false); // Initialize as false
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const { data } = await axios.get(url);
         if (data) {
           setApiData(data);
         }
+        setIsLoading(false);
       } catch (err) {
+        setIsLoading(false);
         console.error("Error fetching data:", err);
-        // Handle the error (e.g., display an error message)
       }
     };
 
@@ -54,5 +57,5 @@ export const useApi = (url) => {
     }
   }, [url]);
 
-  return apidata;
+  return { apidata, isLoading };
 };

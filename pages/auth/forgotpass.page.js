@@ -44,8 +44,8 @@ function ForgotPassword() {
           error.response.status <= 500
         ) {
           toast.error(error.response.data.message);
-          setIsLoading(false);
         }
+        setIsLoading(false);
       }
     }
   };

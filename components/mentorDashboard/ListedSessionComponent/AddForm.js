@@ -188,11 +188,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                 }}
               />
 
-              <Button
-                text="Add Session"
-                type="submit"
-                onClick={handleSubmit}
-              />
+              <Button text="Add Session" type="submit" onClick={handleSubmit} />
             </form>
           </div>
         </div>

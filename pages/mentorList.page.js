@@ -10,13 +10,13 @@ const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Mentors() {
   const [query, setQuery] = useState("");
-
   // Use the useApi hook to fetch and cache data
-  const mentorsData = useApi(
+  const { apidata, isLoading } = useApi(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
+    true,
   );
 
-  const filteredMentors = mentorsData.filter(
+  const filteredMentors = apidata.filter(
     (mentor) =>
       mentor.name.toLowerCase().includes(query.toLowerCase()) ||
       mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
@@ -48,7 +48,11 @@ function Mentors() {
           </div>
           {/* mentors cards */}
           <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-            {filteredMentors.length === 0 ? (
+            {isLoading ? (
+              <div className="tw-text-black tw-text-xl ">
+                <h1>Loading data...</h1>
+              </div>
+            ) : filteredMentors.length === 0 ? (
               <div className="tw-text-black tw-text-xl ">
                 <h1>No match found</h1>
               </div>

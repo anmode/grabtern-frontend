@@ -4,11 +4,7 @@ import Spinner from "../../basic/spinner";
 import { toast } from "react-toastify";
 import { Button } from "../../UI";
 
-const EditSessionComponent = ({
-  sessionID,
-  setSessionID,
-  setSessions,
-}) => {
+const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
   const [data, setData] = useState(null);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const username = mentorData?.mentor_username;

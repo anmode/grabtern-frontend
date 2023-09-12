@@ -77,7 +77,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                     }}
                     className="mentorFormInput"
                     value={data.name}
-                    placeholder={data.name}
+                    placeholder="Enter Title (e.g., Resume Review)"
                     onChange={handleInputChange}
                   />
                 </div>
@@ -95,7 +95,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                       paddingLeft: "35px",
                     }}
                     value={data.price}
-                    placeholder={data.price}
+                    placeholder="Price in rupee (eg: 30)"
                     onChange={handleInputChange}
                   />
                 </div>
@@ -108,26 +108,27 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                   justifyContent: "space-around",
                 }}
               >
-                <div>
-                  <label for="type">TYPE</label>
 
-                  <input
-                    type="text"
+                <div>
+                  <label htmlFor="type">TYPE</label>
+                  <select
                     name="type"
                     className="mentorFormInput"
                     style={{
                       width: "90%",
                       borderRadius: "5px",
-                      border: "none",
                       border: "2px solid rgb(220, 220, 220)",
-                      background: "white",
                       paddingLeft: "35px",
                     }}
                     value={data.type}
-                    placeholder={data.type}
                     onChange={handleInputChange}
-                  />
-                  {/* <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" /> */}
+                  >
+                    <option value="">Select Type</option>
+                    <option value="voice">Voice Call</option>
+                    <option value="video">Video Call</option>
+                    <option value="text">Text Query</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
                 <div>
                   <label for="time">TIME</label>
@@ -144,7 +145,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                       paddingLeft: "35px",
                     }}
                     value={data.duration}
-                    placeholder={data.duration}
+                    placeholder="Enter Time in min ( eg: 50 )"
                     onChange={handleInputChange}
                   />
                   {/* <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" /> */}

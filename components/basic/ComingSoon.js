@@ -1,13 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 import { RiFacebookFill, RiTwitterFill, RiLinkedinFill } from "react-icons/ri";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Button, Section, Input, IconLink } from "../UI";
 import clsx from "clsx";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ComingSoon = () => {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
+        email,
+      })
+      .then((response) => {
+        // console.log(response.data);
+        // setTimeout(() => {
+        //   toast.success(response.data.message);
+        // }, 2000);
+        setSubscriptionSuccess(true);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setTimeout(() => {
+          toast.error(error.response.data.error);
+        }, 2000);
+        window.location.reload();
+      });
+  };
+
   return (
     <main>
       <div
@@ -34,25 +64,35 @@ const ComingSoon = () => {
           align="center"
         >
           {/* subscription form */}
-          <form
-            className={clsx(
-              "sm:tw-flex sm:tw-gap-4",
-              "tw-bg-base-300 tw-rounded-lg tw-shadow",
-              "tw-p-10 tw-max-w-[600px] tw-mx-auto",
-            )}
-          >
-            <Input
-              name="email"
-              placeholder="Your Email"
-              value=""
-              handleChange={() => {}}
-            />
-            <Button
-              text="Subscribe"
-              type="submit"
-              className="tw-w-full tw-mt-4 sm:tw-mt-0 sm:tw-w-fit"
-            />
-          </form>
+          {subscriptionSuccess ? (
+            <div className="tw-flex tw-items-center tw-justify-center tw-gap-4 tw-h-full tw-animate-fade-in">
+              <FaCheckCircle className="tw-text-primary-100 tw-text-2xl tw-text-center" />
+              <p className="tw-text-xl tw-text-gray-500">
+                Thank you for subscribing!
+              </p>
+            </div>
+          ) : (
+            <form
+              className={clsx(
+                "sm:tw-flex sm:tw-gap-4",
+                "tw-bg-base-300 tw-rounded-lg tw-shadow",
+                "tw-p-10 tw-max-w-[600px] tw-mx-auto",
+              )}
+            >
+              <Input
+                name="email"
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button
+                text="Subscribe"
+                type="submit"
+                onClick={handleSubmit}
+                className="tw-w-full tw-mt-4 sm:tw-mt-0 sm:tw-w-fit"
+              />
+            </form>
+          )}
 
           {/* socials */}
           <div className={clsx("tw-flex tw-justify-center tw-gap-2 tw-mt-10")}>
@@ -62,6 +102,7 @@ const ComingSoon = () => {
           </div>
         </Section>
       </div>
+      <ToastContainer />
     </main>
   );
 };

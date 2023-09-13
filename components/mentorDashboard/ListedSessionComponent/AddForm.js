@@ -108,7 +108,6 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                   justifyContent: "space-around",
                 }}
               >
-
                 <div>
                   <label htmlFor="type">TYPE</label>
                   <select

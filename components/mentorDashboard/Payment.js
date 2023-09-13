@@ -8,12 +8,14 @@ import Form from "./PaymentComponent/Form";
 import { Button } from "../UI";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const Payments = ({ setLoadingState, setErrorState }) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
   const [editForm, setEditForm] = useState(false);
   const [addForm, setAddForm] = useState(false);
+  const router = useRouter();
 
   // getting account details from backend
   const getDetails = async () => {

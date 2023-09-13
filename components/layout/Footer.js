@@ -17,7 +17,9 @@ function Footer() {
     e.preventDefault();
 
     axios
-      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscribe`, { email })
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
+        email,
+      })
       .then((response) => {
         console.log(response.data);
         setSubscriptionSuccess(true);
@@ -102,7 +104,7 @@ function Footer() {
             ) : (
               <form
                 className="md:tw-flex md:tw-items-center"
-                onSubmit={handleSubmit}
+                onClick={handleSubmit}
               >
                 <label htmlFor="email" className="tw-sr-only">
                   Please provide your email address to subscribe to our
@@ -120,7 +122,7 @@ function Footer() {
                 <Button
                   text="Subscribe"
                   type="submit"
-                  onSubmit={handleSubmit}
+                  onClick={handleSubmit}
                   className="tw-w-full md:tw-w-max"
                 />
               </form>

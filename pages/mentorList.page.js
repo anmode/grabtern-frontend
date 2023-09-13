@@ -50,7 +50,7 @@ function Mentors() {
           <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
             {isLoading ? (
               <div className="tw-text-black tw-text-xl ">
-                <h1>Loading data...</h1>
+                <h1>Loading Mentor...</h1>
               </div>
             ) : filteredMentors.length === 0 ? (
               <div className="tw-text-black tw-text-xl ">

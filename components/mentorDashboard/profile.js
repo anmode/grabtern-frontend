@@ -10,6 +10,7 @@ import {
 } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { toast } from "react-toastify";
+import Loader from "../UI/Loader";
 
 function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   const initialFormData = {
@@ -29,7 +30,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -363,20 +364,24 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   gridColumn: "1/3",
                 }}
               />
-              <button
-                style={{
-                  width: "fit-content",
-                  padding: "15px 25px",
-                  cursor: "pointer",
-                  marginTop: "-50px",
-                  marginLeft: "5px",
-                }}
-                type="submit"
-                className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
-                onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
-              >
-                {isLoading ? "Loading..." : "Save changes"}
-              </button>
+              {isLoading ? (
+                <Loader width="30px" />
+              ) : (
+                <button
+                  style={{
+                    width: "fit-content",
+                    padding: "15px 25px",
+                    cursor: "pointer",
+                    marginTop: "-50px",
+                    marginLeft: "5px",
+                  }}
+                  type="submit"
+                  className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
+                  onClick={handleSubmit} // Call the handleSubmit function when the button is clicked
+                >
+                  Save changes
+                </button>
+              )}
             </form>
           </div>
         </div>

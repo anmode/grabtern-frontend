@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import styles from "./Link.module.css";
@@ -10,7 +10,6 @@ function ButtonLink({
   variant = "Primary",
   size = "normal",
 }) {
-  const [isLoading, setIsLoading] = useState(false);
   let variantClass = `link${variant.charAt(0).toUpperCase()}${variant.slice(
     1,
   )}`;
@@ -28,17 +27,7 @@ function ButtonLink({
         setTimeout(() => setIsLoading(false), 60000);
       }}
     >
-      {isLoading ? (
-        <div className="tw-flex tw-justify-center tw-items-center">
-          <img
-            style={{ maxWidth: "100%", height: "25px" }}
-            src="/assets/img/gif/Spinner.gif"
-            alt="...loader"
-          />
-        </div>
-      ) : (
-        text
-      )}
+      {text}
     </Link>
   );
 }

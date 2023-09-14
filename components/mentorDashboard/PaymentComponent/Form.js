@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import Loader from "../../UI/Loader";
 
-function Form({ account, closeForm, buttonText, handleSubmit }) {
+function Form({ account, closeForm, buttonText, handleSubmit, Loading }) {
   // initial form state
   const initialFormData = {
     name: account?.name || "", // Make sure to handle null/undefined case
@@ -127,12 +128,16 @@ function Form({ account, closeForm, buttonText, handleSubmit }) {
                 />
               </div>
               <div className="tw-flex tw-justify-center tw-items-center max-[512px]:tw-pb-20 max-[512px]:tw-pt-0 tw-pt-6">
-                <button
-                  type="submit"
-                  className="tw-text-white tw-font-semibold tw-bg-primary-100 hover:tw-bg-primary-200 tw-px-6 tw-py-3 tw-rounded-md tw-duration-200 tw-ease-in-out tw-transition-all"
-                >
-                  {buttonText}
-                </button>
+                {Loading ? (
+                  <Loader width="20px" />
+                ) : (
+                  <button
+                    type="submit"
+                    className="tw-text-white tw-font-semibold tw-bg-primary-100 hover:tw-bg-primary-200 tw-px-6 tw-py-3 tw-rounded-md tw-duration-200 tw-ease-in-out tw-transition-all"
+                  >
+                    {buttonText}
+                  </button>
+                )}
               </div>
             </div>
           </form>

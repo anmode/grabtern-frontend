@@ -9,10 +9,12 @@ import { Button } from "../UI";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import Loader from "../UI/Loader";
 
 const Payments = ({ setLoadingState, setErrorState }) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [editForm, setEditForm] = useState(false);
   const [addForm, setAddForm] = useState(false);
   const router = useRouter();
@@ -48,6 +50,7 @@ const Payments = ({ setLoadingState, setErrorState }) => {
 
   // edit details function
   const editDetails = async (formData) => {
+    setIsLoading(true);
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateAccountDetails/`;
     try {
       const response = await axios.put(
@@ -58,8 +61,10 @@ const Payments = ({ setLoadingState, setErrorState }) => {
       const data = await response.data;
       setAccount(data);
       setEditForm(false);
+      setIsLoading(false);
       toast.success("Changes Saved Successfully");
     } catch (error) {
+      setIsLoading(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -74,6 +79,7 @@ const Payments = ({ setLoadingState, setErrorState }) => {
 
   // add details function
   const addDetails = async (formData) => {
+    setIsLoading(true);
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addAccountDetails/`;
     try {
       const response = await axios.post(
@@ -84,8 +90,10 @@ const Payments = ({ setLoadingState, setErrorState }) => {
       const data = await response.data;
       setAccount(data);
       setAddForm(false);
+      setIsLoading(false);
       toast.success("Account added sucessfully");
     } catch (error) {
+      setIsLoading(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -124,12 +132,16 @@ const Payments = ({ setLoadingState, setErrorState }) => {
                   <p className="tw-my-5">
                     It seems like you have not added your account yet!
                   </p>
-                  <Button
-                    text="Add Account"
-                    onClick={() => {
-                      setAddForm(true);
-                    }}
-                  />
+                  {isLoading ? (
+                    <Loader width="20px" />
+                  ) : (
+                    <Button
+                      text="Add Account"
+                      onClick={() => {
+                        setAddForm(true);
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -146,6 +158,7 @@ const Payments = ({ setLoadingState, setErrorState }) => {
               }}
               buttonText="Save Changes"
               handleSubmit={editDetails}
+              Loading={isLoading}
             />
           ) : (
             <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">

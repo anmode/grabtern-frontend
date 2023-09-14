@@ -9,15 +9,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { Button, Section, Input, IconLink } from "../UI";
 import clsx from "clsx";
 import { FaCheckCircle } from "react-icons/fa";
+import Loader from "../UI/Loader";
 
 const ComingSoon = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
         email,
@@ -28,9 +30,11 @@ const ComingSoon = () => {
         //   toast.success(response.data.message);
         // }, 2000);
         setSubscriptionSuccess(true);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error.response);
+        setIsLoading(false);
         setTimeout(() => {
           toast.error(error.response.data.error);
         }, 2000);
@@ -85,12 +89,16 @@ const ComingSoon = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Button
-                text="Subscribe"
-                type="submit"
-                onClick={handleSubmit}
-                className="tw-w-full tw-mt-4 sm:tw-mt-0 sm:tw-w-fit"
-              />
+              {isLoading ? (
+                <Loader width="20px" />
+              ) : (
+                <Button
+                  text="Subscribe"
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="tw-w-full tw-mt-4 sm:tw-mt-0 sm:tw-w-fit"
+                />
+              )}
             </form>
           )}
 

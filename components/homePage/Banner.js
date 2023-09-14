@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonLink } from "../UI";
+import Loader from "../UI/Loader";
 
 function Banner({ isMentorLoggedIn }) {
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="tw-min-h-screen tw-w-full tw-overflow-hidden">
       <div className="tw-min-h-screen tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-items-center tw-px-4">
@@ -24,20 +26,26 @@ function Banner({ isMentorLoggedIn }) {
                     text="Find Mentor"
                     className="tw-min-w-[130px]"
                   />
-                  {isMentorLoggedIn ? (
-                    <ButtonLink
-                      href="/dashboard/mentor"
-                      text="Dashboard"
-                      variant="outline"
-                      className="tw-min-w-[130px]"
-                    />
+                  {isLoading ? (
+                    <Loader width="25px" />
+                  ) : isMentorLoggedIn ? (
+                    <div onClick={() => setIsLoading(true)}>
+                      <ButtonLink
+                        href="/dashboard/mentor"
+                        text="Dashboard"
+                        variant="outline"
+                        className="tw-min-w-[130px]"
+                      />
+                    </div>
                   ) : (
-                    <ButtonLink
-                      href="/mentorRegister"
-                      text="Be a Mentor"
-                      variant="outline"
-                      className="tw-min-w-[130px]"
-                    />
+                    <div onClick={() => setIsLoading(true)}>
+                      <ButtonLink
+                        href="/mentorRegister"
+                        text="Be a Mentor"
+                        variant="outline"
+                        className="tw-min-w-[130px]"
+                      />
+                    </div>
                   )}
                 </div>
               </div>

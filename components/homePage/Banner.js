@@ -21,17 +21,18 @@ function Banner({ isMentorLoggedIn }) {
                   intern.
                 </p>
                 <div className="tw-w-full tw-flex tw-items-center tw-justify-center lg:tw-justify-start tw-gap-2">
-                  {isLoading==1?<Loader width="25px" />:
-                  <div onClick={()=>setIsLoading(1)}>
-
-                  <ButtonLink
-                    href="/mentorList"
-                    text="Find Mentor"
-                    className="tw-min-w-[130px]"
-                    />
+                  {isLoading == 1 ? (
+                    <Loader width="25px" />
+                  ) : (
+                    <div onClick={() => setIsLoading(1)}>
+                      <ButtonLink
+                        href="/mentorList"
+                        text="Find Mentor"
+                        className="tw-min-w-[130px]"
+                      />
                     </div>
-                    }
-                  {isLoading ==2 ? (
+                  )}
+                  {isLoading == 2 ? (
                     <Loader width="25px" />
                   ) : isMentorLoggedIn ? (
                     <div onClick={() => setIsLoading(2)}>

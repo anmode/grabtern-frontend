@@ -275,44 +275,66 @@ const Home = ({
                     )}
                     {card.session && (
                       <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
-                        <h2 className="tw-font-semibold tw-text-md">
-                          Title:{" "}
-                          <span className="tw-text-sm tw-text-primary-200">
-                            {card.session.title}
-                          </span>
-                        </h2>
-                        <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
-                          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-                            {card.session.type}
-                          </p>
-                          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-                            {card.session.duration} minutes
-                          </p>
-                          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-                            {card.session.desc}
-                          </p>
-                        </div>
+                        {card.session.length > 0 ? (
+                          <div>
+                            <h2 className="tw-font-semibold tw-text-md">
+                              Title:{" "}
+                              <span className="tw-text-sm tw-text-primary-200">
+                                {card.session.title}
+                              </span>
+                            </h2>
+                            <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.session.type}
+                              </p>
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.session.duration} minutes
+                              </p>
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.session.desc}
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          <h2>No Session found</h2>
+                        )}
                       </div>
                     )}
                     {card.schedule && (
                       <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
+                        {card.schedule?.day?.length > 0 ? (
+                          <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
+                            <h2 className="tw-font-semibold tw-text-md">
+                              Day:{" "}
+                              <span className="tw-text-sm tw-text-primary-200">
+                                {card.schedule.day}
+                              </span>
+                            </h2>
+                            <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
+                              <p className="tw-text-sm tw-font-semibold tw-flex tw-gap-2  tw-items-center tw-justify-center tw-text-primary-200">
+                                <span>
+                                  <BiTime className="tw-text-slate-900 tw-text-xl" />
+                                </span>
+                                {card.schedule.start} - {card.schedule.end}
+                              </p>
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.schedule.timezone}
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          <h2>No Schedule found</h2>
+                        )}
+                      </div>
+                    )}
+                    {card.payment && (
+                      <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
                         <h2 className="tw-font-semibold tw-text-md">
-                          Day:{" "}
+                          Payment:{" "}
                           <span className="tw-text-sm tw-text-primary-200">
-                            {card.schedule.day}
+                            {card.payment}
                           </span>
                         </h2>
-                        <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
-                          <p className="tw-text-sm tw-font-semibold tw-flex tw-gap-2  tw-items-center tw-justify-center tw-text-primary-200">
-                            <span>
-                              <BiTime className="tw-text-slate-900 tw-text-xl" />
-                            </span>
-                            {card.schedule.start} - {card.schedule.end}
-                          </p>
-                          <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
-                            {card.schedule.timezone}
-                          </p>
-                        </div>
                       </div>
                     )}
                   </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
-
 import styles from "../../../styles/queries.module.css";
 
 const TicketForm = ({ setIsTicketFormVisible, onSubmit }) => {

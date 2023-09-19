@@ -128,7 +128,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
 
   return (
     <section
-      className={`${styles.box} min-[513px]:tw-pl-28 max-[512px]:tw-pl-5 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]`}
+      className={`${styles.box} tw-w-full tw-pl-8 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]`}
     >
       {/* header */}
       <div className="tw-flex tw-flex-col tw-gap-3 tw-justify-start tw-items-start max-[512px]:tw-justify-center max-[512px]:tw-items-center">

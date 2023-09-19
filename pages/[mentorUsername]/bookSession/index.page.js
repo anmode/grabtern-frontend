@@ -13,23 +13,64 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const router = useRouter();
   const defaultSchedules = [
     { day: "Saturday", startsAt: "09:00", endsAt: "21:00" },
-    { day: "Sunday", startsAt: "09:00", endsAt: "21:00" },
-    { day: "Monday", startsAt: "09:00", endsAt: "21:00" },
-    { day: "Tuesday", startsAt: "09:00", endsAt: "21:00" },
-    { day: "Wednesday", startsAt: "09:00", endsAt: "21:00" },
-    { day: "Thursday", startsAt: "09:00", endsAt: "21:00" },
-    { day: "Friday", startsAt: "09:00", endsAt: "21:00" },
+    // { day: "Monday", startsAt: "09:00", endsAt: "21:00" },
   ];
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
-
+  const [listDates, setListDates] = useState([]);
   //User Info
   const user = JSON.parse(localStorage.getItem("userData"));
   const userName = user?.user_name;
   // const userID = user?.user_id;
+
+  function getDateByDayName() {
+    const targetDays =
+      mentorDetail.schedules.length !== 0
+        ? defaultSchedules.map((v) => v.day.toLowerCase())
+        : mentorDetail.schedules.length !== 0
+        ? mentorDetail.scheduleslistDays.map((v) => v.day.toLowerCase())
+        : [];
+    const daysOfWeek = [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+    ];
+    const currentDayIndex = new Date().getDay(); // 0 for Sunday, 1 for Monday, etc.
+    const currentDate = new Date();
+    const nextOccurrences = [];
+
+    if (!Array.isArray(targetDays) || targetDays.length === 0) {
+      return null; // Invalid input
+    }
+
+    // Calculate the number of occurrences based on the length of targetDays array
+    const numberOfOccurrences = targetDays.length;
+
+    while (nextOccurrences.length < numberOfOccurrences) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      const dayIndex = currentDate.getDay();
+
+      if (targetDays.includes(daysOfWeek[dayIndex])) {
+        // Check if the current day is in the targetDays array
+        // If yes, add it to the nextOccurrences array
+        const options = { month: "short", day: "2-digit" };
+        nextOccurrences.push(currentDate.toLocaleDateString("en-US", options));
+
+        // Increment the date by 7 days to move to the next occurrence in the next week
+        currentDate.setDate(currentDate.getDate() + 6);
+      }
+    }
+
+    setListDates(nextOccurrences);
+    console.log(listDates);
+  }
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -50,6 +91,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     if (localStorage.getItem("paymentIssuePopup") === "0") {
       setPaymentIssuePopup(false);
     }
+    getDateByDayName();
   });
 
   const uploadToCloudinary = async (imageSrc) => {
@@ -325,29 +367,31 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             <div className="bookSessionSchedules">
               <b>Pick Day:</b>
               <ul className="day">
-                {mentorDetail.schedules.length === 0
-                  ? defaultSchedules.map((schedule) => (
+                {mentorDetail.schedules.length !== 0
+                  ? defaultSchedules.map((schedule, index) => (
                       <li
                         onClick={(e) => {
                           setSelectedDay(schedule.day);
                           dayChangeActive(e);
                         }}
                       >
+                        <span>{listDates[index]}</span>
                         {schedule.day}
                       </li>
                     ))
-                  : mentorDetail.schedules.length !== 0
-                  ? mentorDetail.schedules.map((schedule) => (
-                      <li
-                        onClick={(e) => {
-                          setSelectedDay(schedule.day);
-                          dayChangeActive(e);
-                        }}
-                      >
-                        {schedule.day}
-                      </li>
-                    ))
-                  : null}
+                  : // : mentorDetail.schedules.length !== 0
+                    // ? mentorDetail.schedules.map((schedule, index) => (
+                    //     <li
+                    //       onClick={(e) => {
+                    //         setSelectedDay(schedule.day);
+                    //         dayChangeActive(e);
+                    //       }}
+                    //     >
+                    //       <span>{listDates[index]}</span>
+                    //       {schedule.day}
+                    //     </li>
+                    //   ))
+                    null}
               </ul>
               <b>Pick Time:</b>
               <ul className="time">

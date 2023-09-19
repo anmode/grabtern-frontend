@@ -1941,25 +1941,39 @@ select {
 .bookSessionSchedules ul {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   flex-wrap: wrap;
   max-width: 500px;
+  margin-bottom: 10px;
 }
 
 .bookSessionSchedules > ul.day li {
-  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 1px solid grey;
+  align-items: center;
   border-radius: 3px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  text-transform: capitalize;
+}
+
+.bookSessionSchedules > ul.day li span {
+  font-size: 14px;
+  color: grey;
 }
 .bookSessionSchedules > ul.day li.active {
   box-shadow: 0 2px 10px 3px rgba(255, 255, 255, 0.05);
   background-color: black;
   color: white;
 }
+.bookSessionSchedules > ul.day li.active span {
+  color: white;
+}
+
 .bookSessionSchedules > ul.time li {
   padding: 7px;
   border: 1px solid black;
@@ -2089,4 +2103,24 @@ select {
     width: 100%;
     max-width: 100%;
   }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 6px solid #3498db;
+  border-top: 6px solid #f0f0f0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

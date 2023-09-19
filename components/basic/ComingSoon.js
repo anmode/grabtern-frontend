@@ -47,8 +47,8 @@ const ComingSoon = () => {
       <div
         className={clsx(
           "tw-flex tw-justify-center tw-items-center tw-flex-col",
-          "tw-h-screen sm:tw-w-screen ",
-          "tw-pl-12 tw-pr-8",
+          "tw-h-screen tw-w-full",
+          "tw-p-8",
         )}
       >
         {/* back button */}

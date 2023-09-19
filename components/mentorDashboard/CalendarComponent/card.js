@@ -14,9 +14,9 @@ const Card = ({ updateMeetLink }) => {
   };
 
   return (
-    <section className="tw-flex tw-flex-col max-[580px]:tw-pl-10">
+    <section className="tw-flex tw-flex-col">
       {/* timezone */}
-      <div className="tw-flex tw-items-start tw-justify-between tw-pb-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full">
+      <div className="tw-flex tw-items-start tw-justify-between tw-pb-10 tw-w-full tw-flex-wrap tw-gap-6">
         <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
           <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <GrLocation className="" />
@@ -58,7 +58,7 @@ const Card = ({ updateMeetLink }) => {
       <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
 
       {/* meeting link */}
-      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-start max-[580px]:tw-w-full">
+      <div className="tw-mt-8 tw-flex tw-items-start tw-justify-between tw-pb-10 tw-w-full tw-flex-wrap tw-gap-6">
         <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
           <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <BsLink />
@@ -108,7 +108,7 @@ const Card = ({ updateMeetLink }) => {
       <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
 
       {/* Booking Period */}
-      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full">
+      <div className="tw-mt-8 tw-flex tw-items-start tw-justify-between tw-pb-10 tw-w-full tw-flex-wrap tw-gap-6">
         <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
           <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <AiOutlineCalendar />
@@ -136,7 +136,7 @@ const Card = ({ updateMeetLink }) => {
       <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
 
       {/* Notice Period */}
-      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-start max-[580px]:tw-w-full">
+      <div className="tw-mt-8 tw-flex tw-items-start tw-justify-between tw-pb-10 tw-w-full tw-flex-wrap tw-gap-6">
         <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
           <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <AiOutlineCalendar />
@@ -168,7 +168,7 @@ const Card = ({ updateMeetLink }) => {
       <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
 
       {/* Google meet */}
-      <div className="tw-flex tw-items-start tw-pb-4 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-gap-4 max-[580px]:tw-items-start max-[580px]:tw-w-full">
+      <div className="tw-mt-8 tw-flex tw-items-start tw-justify-between tw-pb-10 tw-w-full tw-flex-wrap tw-gap-6">
         <div className="tw-flex tw-flex-col tw-justify-start tw-items-start">
           <p className="tw-flex tw-items-center tw-justify-start tw-gap-2 tw-text-black tw-font-semibold tw-text-lg">
             <AiOutlineCalendar />
@@ -186,7 +186,7 @@ const Card = ({ updateMeetLink }) => {
       <hr className="tw-h-px tw-bg-gray-200  tw-border-1 tw-dark:bg-gray-700" />
 
       {/* Calender event */}
-      <div className="tw-flex tw-items-start tw-pb-10 tw-justify-between tw-py-10 tw-gap-10 max-[580px]:tw-flex-col max-[580px]:tw-gap-4 max-[580px]:tw-justify-center max-[580px]:tw-items-center max-[580px]:tw-w-full max-[512px]:tw-pb-24">
+      <div className="tw-mt-8 tw-flex tw-items-start tw-justify-between tw-pb-10 tw-w-full tw-flex-wrap tw-gap-6">
         <p className="tw-text-black tw-font-semibold tw-text-3xl">Calendars</p>
         <div className="">
           <button className="hover:tw-bg-primary-200 tw-rounded-md tw-px-6 tw-py-3 tw-font-bold tw-text-normal tw-bg-primary-100 tw-text-center tw-text-white tw-duration-200 tw-ease-in-out tw-transition-all">

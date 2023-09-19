@@ -123,8 +123,8 @@ const Payments = ({ setLoadingState, setErrorState }) => {
             />
           ) : (
             // add account card
-            <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
-              <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
+            <div className="tw-flex tw-w-full tw-justify-center tw-items-center tw-p-12 tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+              <div className="tw-w-full flex tw-flex-wrap">
                 <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
                   <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">
                     Add Your Account

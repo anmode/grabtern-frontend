@@ -4,6 +4,7 @@ import axios from "axios";
 import { BsTrash3Fill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "../loader";
 
 const Calender = ({ setLoadingState, setErrorState }) => {
   const [showDefault, setShowDefault] = useState(false);
@@ -235,7 +236,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
           {weekdays.map((day, index) => (
             <div
               key={index}
-              className="tw-mt-10 tw-flex tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start max-[512px]:tw-gap-2"
+              className="tw-mt-10 tw-flex tw-flex-wrap tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start max-[512px]:tw-gap-2"
             >
               <div className="tw-flex tw-items-center tw-gap-2 tw-justify-center tw-text-center">
                 <input
@@ -320,7 +321,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
   return (
     <div
       key={key}
-      className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pl-[10rem] tw-pt-10 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[800px]:tw-pl-20 max-[708px]:tw-w-[370px] max-[512px]:tw-w-[300px] max-[512px]:tw-pl-10 max-[375px]:tw-pl-14 max-[512px]:tw-justify-center max-[512px]:tw-items-center max-[375px]:tw-w-[250px]"
+      className="tw-text-black tw-flex tw-justify-start tw-items-cnter tw-flex-col tw-pt-10 tw-w-full max-[512px]:tw-justify-center max-[512px]:tw-items-center tw-px-8"
     >
       <div className="tw-font-semibold tw-text-4xl tw-pb-6">Availability</div>
       <div className="tw-flex tw-gap-6">
@@ -363,23 +364,12 @@ const Calender = ({ setLoadingState, setErrorState }) => {
             </div>
 
             {showDefault ? (
-              <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-[900px] max-[960px]:tw-w-[800px] max-[800px]:tw-w-[700px] max-[708px]:tw-w-[370px] max-[512px]:tw-max-w-screen">
+              <div className="tw-mt-8 tw-flex tw-flex-col tw-rounded-md tw-p-10 tw-border-2 max-[512px]:tw-border-0 tw-gap-2 tw-w-full">
                 <div className="tw-flex tw-justify-between">
                   <h2 className="tw-font-semibold tw-text-lg">Default</h2>
                   <div className="tw-flex tw-gap-4">
                     {isLoading ? (
-                      <div className="tw-flex tw-justify-center tw-items-center">
-                        <img
-                          className="tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
-                          style={{
-                            maxWidth: "100%",
-                            height: "40px",
-                            padding: "0 15px",
-                          }}
-                          src="/assets/img/gif/Spinner.gif"
-                          alt="...loader"
-                        />
-                      </div>
+                      <Loader />
                     ) : (
                       <button
                         className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
@@ -400,7 +390,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
                 {weekdays.map((day, index) => (
                   <div
                     key={index}
-                    className="tw-mt-10 tw-flex tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start max-[512px]:tw-gap-2"
+                    className="tw-mt-10 tw-flex tw-flex-wrap tw-justify-between tw-items-center max-[708px]:tw-flex-col max-[708px]:tw-items-start tw-gap-4"
                   >
                     <div className="tw-flex tw-items-center tw-gap-2 tw-justify-center tw-text-center">
                       <input
@@ -408,7 +398,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
                         type="checkbox"
                         checked={checkedDays.includes(day)}
                         onChange={() => handleDayChange(day)}
-                        className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400"
+                        className="tw-w-5 tw-h-5 tw-rounded-md tw-border-2 tw-flex tw-justify-center tw-items-center tw-border-gray-400 "
                       />
                       <label
                         for={index}

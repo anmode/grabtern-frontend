@@ -253,15 +253,15 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
-      <div className="max-[512px]:tw-hidden">
+      <div className="max-md:tw-hidden">
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+          className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
         >
-          <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
+          <div className="tw-h-screen tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
               className={`${
                 isSidebarOpen ? "tw-block" : "tw-hidden"
@@ -352,11 +352,12 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
         </aside>
       </div>
 
-      <div className="min-[513px]:tw-hidden">
-        {/* For mobile devices max-w-512px */}
-        <aside className="tw-fixed tw-flex tw-justify-around tw-flex-wrap tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200">
+      <div className="md:tw-hidden w-full">
+        <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4">
           <PublishProfile isSidebarOpen={false} className="!tw-mt-0 " />
-          <div className={`tw-gap-4 tw-flex tw-font-medium tw-p-2`}>
+          <div
+            className={`tw-w-full tw-flex tw-font-medium tw-p-2 tw-items-center tw-justify-center tw-gap-4 tw-py-4`}
+          >
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}

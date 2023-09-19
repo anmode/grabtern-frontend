@@ -40,7 +40,7 @@ export default function SessionCard({
 
   return (
     <IconCard
-      className="tw-flex tw-flex-col"
+      className="tw-flex tw-flex-col tw-w-full tw-max-w-[400px] tw-bg-white tw-shadow-lg tw-rounded-xl"
       Icon={Icon}
       heading={name}
       body={description}

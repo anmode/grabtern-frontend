@@ -3,7 +3,7 @@ import { ButtonLink } from "../UI";
 import Loader from "../UI/Loader";
 
 function Banner({ isMentorLoggedIn }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(0);
   return (
     <div className="tw-min-h-screen tw-w-full tw-overflow-hidden">
       <div className="tw-min-h-screen tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-items-center tw-px-4">
@@ -21,15 +21,21 @@ function Banner({ isMentorLoggedIn }) {
                   intern.
                 </p>
                 <div className="tw-w-full tw-flex tw-items-center tw-justify-center lg:tw-justify-start tw-gap-2">
-                  <ButtonLink
-                    href="/mentorList"
-                    text="Find Mentor"
-                    className="tw-min-w-[130px]"
-                  />
-                  {isLoading ? (
+                  {isLoading == 1 ? (
+                    <Loader width="25px" />
+                  ) : (
+                    <div onClick={() => setIsLoading(1)}>
+                      <ButtonLink
+                        href="/mentorList"
+                        text="Find Mentor"
+                        className="tw-min-w-[130px]"
+                      />
+                    </div>
+                  )}
+                  {isLoading == 2 ? (
                     <Loader width="25px" />
                   ) : isMentorLoggedIn ? (
-                    <div onClick={() => setIsLoading(true)}>
+                    <div onClick={() => setIsLoading(2)}>
                       <ButtonLink
                         href="/dashboard/mentor"
                         text="Dashboard"
@@ -38,7 +44,7 @@ function Banner({ isMentorLoggedIn }) {
                       />
                     </div>
                   ) : (
-                    <div onClick={() => setIsLoading(true)}>
+                    <div onClick={() => setIsLoading(2)}>
                       <ButtonLink
                         href="/mentorRegister"
                         text="Be a Mentor"

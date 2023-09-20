@@ -30,7 +30,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // normal input onChange function
   const handleChange = (e) => {

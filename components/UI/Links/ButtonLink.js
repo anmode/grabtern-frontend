@@ -22,10 +22,6 @@ function ButtonLink({
           "tw-text-xs tw-font-medium tw-items-center tw-flex tw-content-center",
         ],
       )}
-      onClick={() => {
-        setIsLoading(true);
-        setTimeout(() => setIsLoading(false), 60000);
-      }}
     >
       {text}
     </Link>

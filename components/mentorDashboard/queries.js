@@ -3,6 +3,8 @@ import styles from "../../styles/queries.module.css";
 import TicketForm from "./QueriesComponent/ticketForm";
 import { CiShoppingTag } from "react-icons/ci";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const Queries = ({ setLoadingState, setErrorState }) => {
   const [pendingQueries, setPendingQueries] = useState([]);
@@ -60,6 +62,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
 
   const handleTicketFormSubmit = async (description) => {
     try {
+      toast.info("Creating ticket...");
       // console.log(description);
       const ticketId = generateRandomId();
       // Create a new ticket with the generated ticket ID
@@ -80,10 +83,13 @@ const Queries = ({ setLoadingState, setErrorState }) => {
         };
         setPendingQueries([...pendingQueries, newTicket]);
         setIsTicketFormVisible(false);
+        toast.success("Ticket created successfully!");
       } else {
+        toast.error("Error creating ticket");
         console.log("Error creating ticket");
       }
     } catch (error) {
+      toast.error("Error creating ticket");
       console.error("Error creating ticket:", error);
     }
   };
@@ -99,14 +105,17 @@ const Queries = ({ setLoadingState, setErrorState }) => {
 
       if (response.status === 200) {
         // Handle success
+        toast.success("Ticket has been answered!");
         console.log("Ticket has been answered!");
         window.location.reload();
         // Refresh the list of queries or update the state as needed
       } else {
         console.log("Error updating query");
+        toast.error("Error updating query");
         // Handle error
       }
     } catch (error) {
+      toast.error("Error updating query");
       console.error("Error updating query:", error);
       // Handle error
     }

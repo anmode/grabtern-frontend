@@ -57,17 +57,17 @@ function userDashboard() {
 
   return (
     <>
-      <div className="tw-flex">
+      <div className="tw-flex tw-w-full">
         <Sidebar
           user={user}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
         <div
-          className={`tw-flex tw-flex-col tw-justify-center tw-items-center ${
+          className={`tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center ${
             isSidebarOpen
-              ? "tw-translate-x-36 tw-duration-200 tw-transition-all tw-ease-in-out"
-              : "tw-translate-0 tw-duration-200 tw-transition-all tw-ease-in-out tw-pl-5"
+              ? "tw-transition-all tw-ease-in-out md:tw-ml-[176px]"
+              : "tw-duration-200 tw-transition-all tw-ease-in-out md:tw-ml-[70px]"
           }`}
         >
           {(loadingState.status || errorState.status) && (

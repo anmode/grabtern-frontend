@@ -37,7 +37,7 @@ const Bookings = () => {
   }, []);
 
   return (
-    <div className="min-[512px]:tw-ml-[76px] tw-p-8 tw-py-12 sm:tw-px-8 md:tw-px-12 sm:tw-py-16 lg:tw-p-16">
+    <div className="tw-p-8 tw-w-full">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
       </h1>
@@ -67,14 +67,14 @@ const Bookings = () => {
       )}
 
       {/* sessions list */}
-      <div className="tw-mt-8">
-        <ul className="tw-bg-primary-100 tw-text-white  min-[500px]:tw-grid tw-grid-cols-[auto_10rem]  [&>*]:tw-capitalize tw-p-4  sm:tw-grid-cols-[minmax(10rem,auto)_8rem_8rem] md:tw-grid-cols-[minmax(10rem,auto)_8rem_13rem] tw-gap-6 tw-border tw-border-b-0 tw-rounded-t">
-          <li className="tw-hidden min-[540px]:tw-inline">topic</li>
+      <div className="tw-mt-8 tw-w-full">
+        <ul className="tw-bg-primary-100 tw-text-white tw-flex tw-gap-8 tw-items-center tw-w-full tw-py-4 tw-px-8">
+          <li className="tw-hidden min-[540px]:tw-inline">Topic</li>
           <li className="min-[540px]:tw-hidden">Session List</li>
           <li className="tw-hidden sm:tw-inline">Mentor</li>
           <div className="tw-hidden md:tw-grid md:tw-justify-between md:tw-grid-cols-[5rem_5rem]">
-            <li>day</li>
-            <li className="tw-text-right">time</li>
+            <li>Day</li>
+            <li className="tw-text-right">Time</li>
           </div>
           <li className="tw-hidden min-[540px]:tw-inline tw-text-right md:tw-hidden">
             Mentoring On

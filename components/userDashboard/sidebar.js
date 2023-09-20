@@ -122,15 +122,15 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
-      <div className="max-[512px]:tw-hidden">
+      <div className="max-md:tw-hidden">
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed  max-[768px]:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+          className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
         >
-          <div className="tw-h-full tw-px-3 tw-py-4 tw-overflow-y-auto">
+          <div className="tw-h-screen tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
               className={`${
                 isSidebarOpen ? "tw-block" : "tw-hidden"
@@ -220,17 +220,19 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         </aside>
       </div>
 
-      <div className="min-[513px]:tw-hidden">
+      <div className="md:tw-hidden w-full">
         {/* For mobile devices max-w-512px */}
-        <aside className="tw-fixed tw-flex tw-justify-around tw-flex-wrap tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200">
+        <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4">
           <div className="tw-items-center max-[400px]:tw-hidden">
             <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
           </div>
-          <div className={`tw-gap-4 tw-flex tw-font-medium tw-p-2`}>
+          <div
+            className={`tw-w-full tw-flex tw-font-medium tw-p-2 tw-items-center tw-justify-center tw-gap-4 tw-py-4`}
+          >
             {mobileItem.map((val, key) => (
               <HoverListItem
                 key={key}
-                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer hoverList"
+                className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer"
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
@@ -238,7 +240,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
-                  } tw-p-2 hover:tw-bg-[#00C9A7] group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">

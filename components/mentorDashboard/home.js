@@ -211,7 +211,7 @@ const Home = ({
               // Notification Pop-up for devices with width > 512px
               <div
                 ref={reference}
-                className="tw-z-50 tw-absolute tw-top-[90px] tw-right-[47px] tw-w-[300px] tw-h-[500px] tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll max-[512px]:tw-hidden max-[696px]:tw-top-[150px] max-[696px]:tw-right-[200px]"
+                className="tw-z-50 tw-absolute tw-top-[70px] tw-right-0 tw-w-[300px] tw-h-[500px] tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll max-[512px]:tw-hidden"
               >
                 <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
                   Notifications
@@ -338,7 +338,7 @@ const Home = ({
                       </div>
                     )}
                   </div>
-                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
+                  <div className="tw-p-2 tw-text-center tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
                     <Link href={`/dashboard/mentor?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>

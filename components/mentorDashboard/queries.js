@@ -127,9 +127,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
   }, []);
 
   return (
-    <section
-      className={`${styles.box} tw-w-full tw-pl-8 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]`}
-    >
+    <section className="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center md:tw-justify-start md:tw-items-start tw-p-6">
       {/* header */}
       <div className="tw-flex tw-flex-col tw-gap-3 tw-justify-start tw-items-start max-[512px]:tw-justify-center max-[512px]:tw-items-center">
         <p className="tw-text-black tw-flex tw-items-center tw-text-center tw-text-3xl tw-font-semibold">
@@ -150,7 +148,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
       <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0" />
       {/* generated tickets */}
 
-      <div className="tw-flex tw-flex-col tw-justify-start tw-items-start tw-gap-10 max-[512px]:tw-justify-center max-[512px]:tw-items-center">
+      <div className="tw-flex tw-flex-col tw-justify-start tw-items-start tw-gap-10 md:tw-justify-center md:tw-items-center">
         <div className="tw-flex tw-justify-between tw-gap-10 tw-items-center max-[512px]:tw-justify-center max-[512px]:tw-items-center">
           <button
             onClick={() => setCurrentView("Pending")}
@@ -171,12 +169,6 @@ const Queries = ({ setLoadingState, setErrorState }) => {
             Raise Ticket
           </button>
         </div>
-        <button
-          className={`min-[513px]:tw-hidden tw-bg-primary-100 tw-p-1 text-white tw-justify-center tw-items-center tw-font-semibold tw-rounded-md`}
-          onClick={handleRaiseTicketClick}
-        >
-          Raise Ticket
-        </button>
         <p
           className={`tw-justify-start tw-text-xl tw-items-start tw-font-semibold min-[513px]:tw-pt-5`}
         >
@@ -191,7 +183,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
         )}
 
         {currentView === "Pending" && (
-          <div className="tw-flex tw-flex-wrap min-[513px]:tw-pt-2 tw-justify-start max-[512px]:tw-justify-center max-[512px]:tw-items-center ">
+          <div className="tw-flex tw-flex-wrap tw-justify-center tw-items-center md:tw-justify-start md:tw-items-start">
             {/* <h2 className={styles.subheading}>Pending</h2> */}
             {pendingQueries?.length === 0 ? (
               <p>No Pending Tickets</p>
@@ -230,7 +222,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
               <p>No answered tickets yet.</p>
             ) : (
               answeredQueries?.map((query, index) => (
-                <div key={query.id} className="tw-bg-white">
+                <div key={query.id} className="tw-bg-white p-4">
                   <p>
                     <strong>ID:</strong> {query.id}
                   </p>

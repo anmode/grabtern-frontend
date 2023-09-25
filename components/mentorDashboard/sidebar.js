@@ -226,9 +226,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
   const HoverListItem = styled.li`
     background-color: transparent;
-    &.hoverList:hover {
-      background-color: rgba(240, 240, 240, 0.5);
-    }
   `;
 
   // getting page name on change in tab
@@ -434,9 +431,9 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                       href={`/dashboard/mentor?tab=${val.path}`}
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
-                          ? "tw-bg-primary-100 tw-text-white"
-                          : ""
-                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                          ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
+                          : "hover:tw-text-gray-900"
+                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg hover:tw-text-gray-900`}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">
@@ -452,14 +449,14 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 {menuItem2.map((val, key) => (
                   <HoverListItem
                     key={key}
-                    className="tw-flex tw-group tw-cursor-pointer hoverList"
+                    className="tw-flex tw-group tw-cursor-pointer"
                   >
                     <Link
                       href={`/dashboard/mentor?tab=${val.path}`}
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
-                          ? "tw-bg-primary-100 tw-text-white"
-                          : ""
+                          ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
+                          : "hover:tw-text-gray-900"
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                     >
                       <span className="tw-text-xl">{val.icon}</span>

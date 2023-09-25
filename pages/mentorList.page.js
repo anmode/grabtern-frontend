@@ -4,6 +4,7 @@ import { LuSearch } from "react-icons/lu";
 import MentorCard from "../components/mentor";
 import { useApi } from "../hook/useAPi";
 import { Section, Input } from "../components/UI";
+import Loader from "../components/loader";
 
 const Header = dynamic(() => import("../components/layout/Header"));
 const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
@@ -49,9 +50,7 @@ function Mentors() {
           {/* mentors cards */}
           <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
             {isLoading ? (
-              <div className="tw-text-black tw-text-xl ">
-                <h1>Loading Mentor...</h1>
-              </div>
+              <Loader />
             ) : filteredMentors.length === 0 ? (
               <div className="tw-text-black tw-text-xl ">
                 <h1>No match found</h1>

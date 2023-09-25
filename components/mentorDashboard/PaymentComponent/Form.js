@@ -27,9 +27,9 @@ function Form({ account, closeForm, buttonText, handleSubmit, Loading }) {
   };
 
   return (
-    <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0 tw-pb-10">
-      <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
-        <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+    <div className="tw-flex tw-justify-center tw-items-center md:tw-p-16 tw-p-8 tw-w-full">
+      <div className="tw-flex tw-flex-wrap tw-w-full">
+        <div className="tw-p-4 tw-bg-white tw-shadow-xl tw-w-full">
           <AiFillCloseCircle
             onClick={closeForm}
             title="cancel"

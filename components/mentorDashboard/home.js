@@ -146,14 +146,14 @@ const Home = ({
     <>
       <section>
         <header
-          className={`max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
+          className={`tw-items-center tw-p-8 tw-flex tw-justify-between tw-flex-wrap tw-gap-4`}
         >
           <h1 className="tw-text-4xl tw-font-bold">
             Welcome <span>{mentor.name?.split(" ")[0]}</span>!
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
           <div
-            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10 ${
+            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${
               isSidebarOpen
                 ? "-tw-translate-x-40 tw-ease-in-out"
                 : "tw-translate-x-0 tw-ease-in-out"
@@ -211,7 +211,7 @@ const Home = ({
               // Notification Pop-up for devices with width > 512px
               <div
                 ref={reference}
-                className="tw-z-50 tw-absolute tw-top-[90px] tw-right-[47px] tw-w-[300px] tw-h-[500px] tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll max-[512px]:tw-hidden max-[696px]:tw-top-[150px] max-[696px]:tw-right-[200px]"
+                className="tw-z-50 tw-absolute tw-top-[70px] tw-right-0 tw-w-[300px] tw-h-[500px] tw-bg-[#FBEAFF] tw-rounded-md tw-shadow-xl tw-p-4 tw-flex tw-flex-col tw-gap-2 tw-overflow-y-scroll max-[512px]:tw-hidden"
               >
                 <h2 className="tw-text-2xl tw-font-semibold tw-text-center tw-mb-5">
                   Notifications
@@ -241,12 +241,12 @@ const Home = ({
 
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
 
-        <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
-          <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium">
+        <main className="w-pb-14 tw-flex tw-flex-col">
+          <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium tw-px-8">
             Here you can view your sessions, edit your profile, and view your
             calendar.
           </p>
-          <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
+          <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col tw-px-8">
             {cards.map((card) => {
               return (
                 <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-white max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
@@ -338,7 +338,7 @@ const Home = ({
                       </div>
                     )}
                   </div>
-                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
+                  <div className="tw-p-2 tw-text-center tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
                     <Link href={`/dashboard/mentor?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>
@@ -347,7 +347,7 @@ const Home = ({
               );
             })}
           </div>
-          <div className="tw-mt-[3rem] -tw-ml-[8rem] tw-pl-28 tw-mb-[5rem] tw-flex tw-justify-center tw-w-[250px] tw-items-center">
+          <div className="tw-w-fit tw-mx-auto tw-my-8 tw-mb-20">
             <button
               onClick={() => setIsSidebarOpen(true)}
               className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "

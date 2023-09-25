@@ -41,7 +41,7 @@ function Sessions({ setLoadingState, setErrorState }) {
 
   return (
     <>
-      <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
+      <main className="tw-p-12 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
         <div className="tw-flex tw-justify-between">
           <p className="tw-text-black tw-flex tw-justify-start tw-items-center tw-text-center tw-text-3xl tw-font-semibold">
             Sessions
@@ -66,7 +66,7 @@ function Sessions({ setLoadingState, setErrorState }) {
               setSessions={setSessions}
             />
           ) : sessions.length > 0 ? (
-            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+            <div className="tw-flex tw-gap-6 tw-flex-wrap">
               {sessions.map((card, index) => (
                 <SessionCard
                   key={index}
@@ -83,7 +83,7 @@ function Sessions({ setLoadingState, setErrorState }) {
               ))}
             </div>
           ) : (
-            <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+            <div className="tw-flex tw-justify-center tw-items-center tw-flex-wrap tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
               <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
                 <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
                   <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">

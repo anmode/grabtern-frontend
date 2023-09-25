@@ -107,9 +107,9 @@ const Payments = ({ setLoadingState, setErrorState }) => {
   };
 
   return (
-    <>
+    <div className="tw-w-full">
       {!account ? (
-        <>
+        <div className="tw-py-4 tw-w-full">
           {" "}
           {addForm ? (
             //  add account form
@@ -123,9 +123,9 @@ const Payments = ({ setLoadingState, setErrorState }) => {
             />
           ) : (
             // add account card
-            <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
-              <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
-                <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+            <div className="tw-flex tw-w-full tw-justify-center tw-items-center tw-p-4">
+              <div className="tw-w-full flex tw-flex-wrap">
+                <div className="tw-p-4 tw-bg-white tw-flex tw-flex-col tw-gap-4">
                   <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">
                     Add Your Account
                   </h2>
@@ -146,7 +146,7 @@ const Payments = ({ setLoadingState, setErrorState }) => {
               </div>
             </div>
           )}{" "}
-        </>
+        </div>
       ) : (
         <>
           {editForm ? (
@@ -161,16 +161,16 @@ const Payments = ({ setLoadingState, setErrorState }) => {
               Loading={isLoading}
             />
           ) : (
-            <div className="tw-flex tw-justify-center tw-items-center tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+            <div className="tw-flex tw-justify-center tw-items-center tw-p-4">
               {/* payments card */}
-              <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
-                <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+              <div className="tw-flex tw-flex-wrap tw-w-full">
+                <div className="tw-p-4 tw-bg-white tw-w-full">
                   <div className="tw-flex tw-justify-between tw-items-center">
                     <h2 className="tw-text-center tw-font-medium tw-text-5xl tw-mt-5  tw-text-[#845ec2]">
                       Payment
                     </h2>
                     <button
-                      className="tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base max-[512px]:tw-hidden"
+                      className="tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
                       onClick={() => setEditForm(true)}
                     >
                       Edit
@@ -183,8 +183,8 @@ const Payments = ({ setLoadingState, setErrorState }) => {
                       gridColumn: "1/3",
                     }}
                   />
-                  <div className="tw-flex tw-flex-col tw-justify-start tw-items-start max-[512px]:tw-justify-center max-[512px]:tw-items-center">
-                    <div className="tw-flex tw-flex-col tw-justify-center tw-items-start tw-gap-5 tw-flex-wrap max-[512px]:tw-gap-12 ">
+                  <div className="tw-flex tw-items-center">
+                    <div className="tw-flex tw-flex-col tw-justify-center tw-items-start tw-gap-5">
                       <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">
                         Bank Details
                       </h2>
@@ -249,14 +249,6 @@ const Payments = ({ setLoadingState, setErrorState }) => {
                         </span>
                       </div>
                     </div>
-                    <div className="tw-flex tw-items-center tw-justify-center tw-pt-7 min-[513px]:tw-hidden">
-                      <button
-                        className="tw-bg-black tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base min-[513px]:tw-hidden"
-                        onClick={() => setEditForm(true)}
-                      >
-                        Edit
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -264,7 +256,7 @@ const Payments = ({ setLoadingState, setErrorState }) => {
           )}{" "}
         </>
       )}
-    </>
+    </div>
   );
 };
 

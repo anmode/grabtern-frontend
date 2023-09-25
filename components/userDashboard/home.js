@@ -73,19 +73,17 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
 
   return (
     <>
-      <section>
-        <header
-          className={`max-[762px]:tw-justify-center max-[762px]:tw-items-center tw-gap-4 tw-py-10 min-[513px]:tw-pl-28 min-[513px]:tw-pr-12 tw-flex tw-justify-between tw-flex-wrap max-[512px]:tw-flex-col`}
-        >
+      <section className="tw-w-full">
+        <header className="tw-flex tw-items-center tw-flex-col md:tw-flex-row tw-justify-between tw-gap-4 tw-w-full tw-p-8">
           <h1 className="tw-text-4xl tw-font-bold">
             Welcome <span>{user.fullName?.split(" ")[0]}</span>!
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
           <div
-            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 min-[513px]:tw-pl-10 ${
+            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${
               isSidebarOpen
-                ? "-tw-translate-x-40 tw-ease-in-out"
-                : "tw-translate-x-0 tw-ease-in-out"
+                ? "tw-ml-[40px] tw-ease-in-out"
+                : "tw-ml-0 tw-ease-in-out"
             }`}
           >
             {user ? (
@@ -93,7 +91,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
                 className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
                 onClick={handleLogout}
               >
-                <h2 className="tw-font-semibold tw-text-white">Log out</h2>
+                <h2 className="tw-font-semibold tw-text-white">Log&nbsp;out</h2>
                 <Image
                   src={user?.image}
                   alt="Picture of the mentor"
@@ -166,7 +164,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
 
         <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
 
-        <main className="max-[512px]:tw-pl-6 tw-pb-14 tw-pl-28 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center">
+        <main className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-p-8">
           <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium">
             Here you can, edit your profile, and view your booked Sessions
           </p>

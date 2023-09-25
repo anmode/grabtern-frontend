@@ -130,6 +130,7 @@ function login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("called", process.env.NEXT_PUBLIC_BACKEND_URL);
     setError("");
     try {
       setIsLoading(true);

@@ -19,7 +19,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addListedSession`;
       const response = await axios.put(url, data, { withCredentials: true });
-  
+
       if (!response.data.session) {
         // Handle null session here
         toast.error("Session creation failed. Please check your input.");
@@ -40,7 +40,6 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
       }
     }
   };
-  
 
   // onchange function for inputs
   const handleInputChange = (event) => {

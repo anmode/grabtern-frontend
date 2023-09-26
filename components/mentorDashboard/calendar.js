@@ -142,6 +142,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
     setIsLoading(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
+      console.log(listSchedules);
       const res = await axios.put(
         url,
         {

@@ -203,8 +203,8 @@ export default function Home() {
     };
   }, []);
   const HackathonLabels = [
-    "web",
-    "upcoming",
+    "Web",
+    "Upcoming",
     "Beginner Friendly",
     "Programming",
     "Blockchain",

@@ -45,8 +45,7 @@ function useRedirectIfAuthenticated() {
           registerToken: encryptData(userData),
         });
 
-        console.log(res);
-        localStorage.setItem("userData", encryptData(userData));
+        localStorage.setItem("userData", JSON.stringify(userData));
         setIsUserLoggedIn(true);
         const redirectUrl = new URLSearchParams(window.location.search).get(
           "redirectUrl",

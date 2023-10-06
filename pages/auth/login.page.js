@@ -46,8 +46,8 @@ function login() {
       const { data: res } = await axios.post(url, userObject, {
         withCredentials: true,
       });
-      
-      toast.info('redirecting to home page');
+
+      toast.info("redirecting to home page");
       if (entityType === "user") {
         const userData = {
           user_name: userObject.name,

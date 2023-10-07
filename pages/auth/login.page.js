@@ -47,8 +47,7 @@ function login() {
         withCredentials: true,
       });
 
-      console.log(res);
-
+      toast.info("redirecting to home page");
       if (entityType === "user") {
         const userData = {
           user_name: userObject.name,

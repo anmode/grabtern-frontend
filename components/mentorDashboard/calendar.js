@@ -104,8 +104,8 @@ const Calender = ({ setLoadingState, setErrorState }) => {
         ...listSchedules,
         {
           day,
-          startsAt: "09:00AM",
-          endsAt: "10:00AM",
+          startsAt: "09:00",
+          endsAt: "10:00",
           timezone: "(GMT-11:00) Pacific/Midway",
         },
       ]);

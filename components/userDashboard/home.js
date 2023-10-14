@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { BiSolidUser, BiTime, BiCalendar } from "react-icons/bi";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
+import { userIcon } from "../../public/assets";
 import {
   MdNotifications,
   MdPayment,
@@ -48,6 +49,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
         setMobileNotification(false);
       }
     };
+    console.log(user);
 
     document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
@@ -57,17 +59,32 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
 
   const cards = [
     {
-      name: user?.name,
+      name: user?.fullName,
       icon: (
-        <Image
-          src={user?.image}
-          width={100}
-          height={100}
-          className="tw-rounded-full"
-        />
+        user?.image ? (
+          <Image
+            src={user?.image}
+            width={100}
+            height={100}
+            className={`tw-rounded-full tw-bg-slate-300`}
+          />
+        ) : (
+          <Image
+            src={userIcon}
+            width={100}
+            height={100}
+            className={`tw-rounded-full tw-bg-slate-300 tw-p-3`}
+          />
+        )
       ),
       path: "profile",
       heading: "Edit Profile",
+    },
+    {
+      name: "Bookings",
+      icon: <BiTime className="tw-w-20 tw-h-20 tw-text-slate-600" />,
+      path: "bookings",
+      heading: "View Bookings",
     },
   ];
 
@@ -80,11 +97,10 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
           <div
-            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${
-              isSidebarOpen
-                ? "tw-ml-[40px] tw-ease-in-out"
-                : "tw-ml-0 tw-ease-in-out"
-            }`}
+            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${isSidebarOpen
+              ? "tw-ml-[40px] tw-ease-in-out"
+              : "tw-ml-0 tw-ease-in-out"
+              }`}
           >
             {user ? (
               <p
@@ -93,8 +109,8 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
               >
                 <h2 className="tw-font-semibold tw-text-white">Log&nbsp;out</h2>
                 <Image
-                  src={user?.image}
-                  alt="Picture of the mentor"
+                  src={user?.image || userIcon}
+                  alt="Picture of the user"
                   width={30}
                   height={30}
                   className="tw-rounded-full"
@@ -174,6 +190,11 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
                 <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-white max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                     {card.icon}
+                  </div>
+                  <div className="tw-flex tw-flex-col tw-gap-2 tw-w-full">
+                    <h2 className="tw-text-2xl tw-font-semibold tw-text-center">
+                      {card.name}
+                    </h2>
                   </div>
                   <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
                     <Link href={`/dashboard/user?tab=${card.path}`}>

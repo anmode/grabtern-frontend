@@ -1,6 +1,7 @@
 import axios from "axios";
 import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
@@ -41,6 +42,16 @@ const Bookings = () => {
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
       </h1>
+
+      {/* Find mentors */}
+      <div className="tw-flex tw-items-center tw-gap-4 tw-mb-8">
+        <p className="tw-text-base-600 tw-font-semibold">Find mentors</p>
+        <Link href="/mentorList">
+          <button className="tw-bg-primary-100 tw-text-white tw-p-2 tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-duration-150 tw-ease-in-out">
+            here
+          </button>
+        </Link>
+      </div>
 
       {/* pending and completed tab */}
       <nav>

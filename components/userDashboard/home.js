@@ -49,7 +49,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
         setMobileNotification(false);
       }
     };
-    console.log(user);
+    // console.log(user);
 
     document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
@@ -60,22 +60,20 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
   const cards = [
     {
       name: user?.fullName,
-      icon: (
-        user?.image ? (
-          <Image
-            src={user?.image}
-            width={100}
-            height={100}
-            className={`tw-rounded-full tw-bg-slate-300`}
-          />
-        ) : (
-          <Image
-            src={userIcon}
-            width={100}
-            height={100}
-            className={`tw-rounded-full tw-bg-slate-300 tw-p-3`}
-          />
-        )
+      icon: user?.image ? (
+        <Image
+          src={user?.image}
+          width={100}
+          height={100}
+          className={`tw-rounded-full tw-bg-slate-300`}
+        />
+      ) : (
+        <Image
+          src={userIcon}
+          width={100}
+          height={100}
+          className={`tw-rounded-full tw-bg-slate-300 tw-p-3`}
+        />
       ),
       path: "profile",
       heading: "Edit Profile",
@@ -97,10 +95,11 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
           <div
-            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${isSidebarOpen
-              ? "tw-ml-[40px] tw-ease-in-out"
-              : "tw-ml-0 tw-ease-in-out"
-              }`}
+            className={`tw-flex tw-justify-center tw-items-center tw-gap-2 ${
+              isSidebarOpen
+                ? "tw-ml-[40px] tw-ease-in-out"
+                : "tw-ml-0 tw-ease-in-out"
+            }`}
           >
             {user ? (
               <p

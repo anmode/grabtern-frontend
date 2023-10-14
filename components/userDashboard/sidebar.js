@@ -40,22 +40,20 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const menuItem = [
     {
       title: "Profile",
-      icon: (
-        user?.image ? (
-          <Image
-            src={user?.image}
-            width={30}
-            height={30}
-            className={`tw-rounded-full tw-bg-slate-300`}
-          />
-        ) : (
-          <Image
-            src={userIcon}
-            width={30}
-            height={30}
-            className={`tw-rounded-full tw-bg-slate-300`}
-          />
-        )
+      icon: user?.image ? (
+        <Image
+          src={user?.image}
+          width={30}
+          height={30}
+          className={`tw-rounded-full tw-bg-slate-300`}
+        />
+      ) : (
+        <Image
+          src={userIcon}
+          width={30}
+          height={30}
+          className={`tw-rounded-full tw-bg-slate-300`}
+        />
       ),
       path: "profile",
     },
@@ -136,13 +134,15 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
-            }`}
+          className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+            isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
+          }`}
         >
           <div className="tw-h-screen tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
-              className={`${isSidebarOpen ? "tw-block" : "tw-hidden"
-                } tw-flex tw-justify-center  tw-items-center`}
+              className={`${
+                isSidebarOpen ? "tw-block" : "tw-hidden"
+              } tw-flex tw-justify-center  tw-items-center`}
             >
               <Link
                 href="/"
@@ -154,16 +154,18 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             <hr className="tw-h-px tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700"></hr>
             {/* expand/collapse button */}
             <div
-              className={`tw-p-1 tw-flex tw-w-10 ${isSidebarOpen
+              className={`tw-p-1 tw-flex tw-w-10 ${
+                isSidebarOpen
                   ? "tw-justify-start tw-gap-4"
                   : "tw-justify-center"
-                } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
+              } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
             >
               <div
-                className={`${isSidebarOpen
+                className={`${
+                  isSidebarOpen
                     ? "tw-flex tw-justify-center tw-items-center tw-gap-2"
                     : "tw-flex-col tw-flex"
-                  }`}
+                }`}
               >
                 {isSidebarOpen ? (
                   <label
@@ -202,16 +204,19 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 >
                   <Link
                     href={`/dashboard/user?tab=${val.path}`}
-                    className={`tw-flex ${isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
-                      } ${currentPage === val.path
+                    className={`tw-flex ${
+                      isSidebarOpen ? "tw-justify-start" : "tw-justify-center"
+                    } ${
+                      currentPage === val.path
                         ? "tw-bg-primary-100 tw-text-white"
                         : ""
-                      } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                    } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                   >
                     <span>{val.icon}</span>
                     <span
-                      className={`tw-ml-3 ${isSidebarOpen ? "tw-block" : "tw-hidden"
-                        }`}
+                      className={`tw-ml-3 ${
+                        isSidebarOpen ? "tw-block" : "tw-hidden"
+                      }`}
                     >
                       {val.title}
                     </span>
@@ -227,7 +232,9 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         {/* For mobile devices max-w-512px */}
         <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4">
           <div className="tw-items-center max-[400px]:tw-hidden">
-            <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+            <Link href="/mentorList">
+              <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+            </Link>
           </div>
           <div
             className={`tw-w-full tw-flex tw-font-medium tw-p-2 tw-items-center tw-justify-center tw-gap-4 tw-py-4`}
@@ -238,11 +245,12 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer"
               >
                 <Link
-                  href={`/dashboard/mentor?tab=${val.path}`}
-                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${currentPage === val.path
+                  href={`/dashboard/user?tab=${val.path}`}
+                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
+                    currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
-                    } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">
@@ -269,10 +277,11 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         {/* Modal for opening menu */}
         <div>
           <div
-            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${isMobileSidebarOpen
+            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${
+              isMobileSidebarOpen
                 ? "tw-opacity-100"
                 : "tw-opacity-0 tw-pointer-events-none"
-              }`}
+            }`}
           >
             <div className="tw-flex tw-justify-end tw-items-center tw-p-4">
               <button className="tw-flex tw-justify-center tw-items-center">
@@ -293,8 +302,10 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             </div>
             <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
               <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
-                <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-                <span className="tw-font-semibold">Get more bookings</span>
+                <Link href="/mentorList">
+                  <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+                </Link>
+                <span className="tw-font-semibold">Book a session</span>
               </div>
             </div>
             <div

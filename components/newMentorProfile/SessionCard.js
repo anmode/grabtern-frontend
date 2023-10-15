@@ -13,7 +13,6 @@ export default function SessionCard({
   text,
   path,
 }) {
-
   let Icon = FaVideo;
   switch (type) {
     case "group Call":

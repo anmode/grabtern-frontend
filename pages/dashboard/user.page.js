@@ -102,7 +102,7 @@ function userDashboard() {
             <ComingSoon isSidebarOpen={isSidebarOpen} />
           )}
         </div>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </>
   );

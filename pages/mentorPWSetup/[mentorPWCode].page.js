@@ -24,24 +24,23 @@ export default Index;
 export const getServerSideProps = async (context) => {
   const { mentorPWCode } = context.params;
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/verify/checkPW/${mentorPWCode}`;
-  try{
-
+  try {
     const { data: res } = await axios.get(url);
     if (res.message == "Invalid link") {
       return {
-      redirect: {
-        permanent: false,
-        destination: "/",
-      },
-      props: {
-        checkPW: "BAD",
-        mentorPWCode: null,
-      },
-    };
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+        props: {
+          checkPW: "BAD",
+          mentorPWCode: null,
+        },
+      };
+    }
+  } catch (error) {
+    console.error("Server side props error ", error);
   }
-}catch(error){
-  console.error("Server side props error ", error);
-}
   return {
     props: {
       checkPW: "OK",

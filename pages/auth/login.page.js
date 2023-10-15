@@ -74,7 +74,7 @@ function login() {
   };
 
   const handleErrorResponse = (error) => {
-    console.error("Error in callback of google sign in ",error);
+    console.error("Error in callback of google sign in ", error);
     if (
       error.response &&
       error.response.status >= 400 &&

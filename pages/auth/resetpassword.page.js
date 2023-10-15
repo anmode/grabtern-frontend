@@ -67,7 +67,7 @@ const ResetPassword = () => {
       } else {
         toast.error("Internal server error");
       }
-      console.error("Error in reseting password ",error)
+      console.error("Error in reseting password ", error);
     }
   };
 

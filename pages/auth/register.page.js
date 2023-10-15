@@ -83,7 +83,7 @@ function useRedirectIfAuthenticated() {
         });
         google.accounts.id.prompt();
       } catch (error) {
-        toast.error("Google sign-up initialization failed.")
+        toast.error("Google sign-up initialization failed.");
         console.error("Google sign-up initialization failed:", error);
       }
     };

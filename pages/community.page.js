@@ -18,7 +18,7 @@ function Community() {
         setContributors(response.data);
       })
       .catch((error) => {
-        console.error("Got error in fetching contributors detail ",error);
+        console.error("Got error in fetching contributors detail ", error);
       });
   }, []);
 

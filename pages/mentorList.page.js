@@ -13,15 +13,15 @@ const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 function Mentors() {
   const [query, setQuery] = useState("");
 
-  try{
+  try {
     // Use the useApi hook to fetch and cache data
     const { apidata, isLoading } = useApi(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
       true,
-      );
-  }catch(error){
+    );
+  } catch (error) {
     toast.error("Error in fetching mentorslist");
-    console.error("Error in fetching mentorslist ",error);
+    console.error("Error in fetching mentorslist ", error);
   }
 
   const filteredMentors = apidata.filter(
@@ -71,7 +71,7 @@ function Mentors() {
             )}
           </div>
         </Section>
-        <ToastContainer/>
+        <ToastContainer />
       </main>
     </>
   );

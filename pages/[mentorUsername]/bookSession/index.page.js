@@ -110,7 +110,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       const res = await axios.post(url, formData);
       return res.data.secure_url;
     } catch (error) {
-      console.error("Error in uploading to cloudinary ",error);
+      console.error("Error in uploading to cloudinary ", error);
       setLoading(false);
       toast.error("Sorry couldn't upload the image to our server", error);
     }

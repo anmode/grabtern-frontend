@@ -123,7 +123,6 @@ function Contact() {
           (values.subject = ""),
           handleChange,
         );
-
     }
   };
 
@@ -350,6 +349,5 @@ function Contact() {
     </>
   );
 }
-
 
 export default Contact;

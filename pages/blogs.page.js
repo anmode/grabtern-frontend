@@ -92,7 +92,7 @@ export async function getServerSideProps() {
       },
     };
   } catch (error) {
-    console.error("Error in fetching blogs ",error);
+    console.error("Error in fetching blogs ", error);
     return {
       props: {
         blogsData: [],

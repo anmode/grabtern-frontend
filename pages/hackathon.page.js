@@ -134,7 +134,6 @@ export default function Home() {
         return false;
       } // Skip the hackathon if it doesn't match the tag filter
     }
-    // console.log("pooh");
     const titleMatch = hackathon.hackathonTitle
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -154,13 +153,9 @@ export default function Home() {
     );
   }, []);
 
-  // console.log(filteredHackathons);
   const handleBookmark = (index) => {
     const updatedHackathons = [...HackathonsData];
-    console.log(updatedHackathons[index]);
-    // console.log("hello" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     updatedHackathons[index].bookmarked = !updatedHackathons[index].bookmarked;
-    // console.log("ua" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     setHackathonsData(updatedHackathons);
   };
   const [open, setOpen] = useState(false);
@@ -240,7 +235,6 @@ export default function Home() {
     ) {
       setIsMentorLoggedIn(true);
     }
-    console.log(isUserLoggedIn);
     setCarousel(true);
   }, []);
 

@@ -85,7 +85,6 @@ export default Blogs;
 export async function getServerSideProps() {
   try {
     const URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/fetchAllBlogs`;
-    console.log("URL", URL);
     const { data } = await axios.get(URL);
     return {
       props: {
@@ -93,7 +92,7 @@ export async function getServerSideProps() {
       },
     };
   } catch (error) {
-    console.log(error);
+    console.error("Error in fetching blogs ",error);
     return {
       props: {
         blogsData: [],

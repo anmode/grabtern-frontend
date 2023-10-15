@@ -15,11 +15,10 @@ function Community() {
     axios
       .get("https://api.github.com/repos/anmode/grabtern-frontend/contributors")
       .then((response) => {
-        console.log(response.data);
         setContributors(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Got error in fetching contributors detail ",error);
       });
   }, []);
 

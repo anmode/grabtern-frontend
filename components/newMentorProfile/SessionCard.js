@@ -13,13 +13,7 @@ export default function SessionCard({
   text,
   path,
 }) {
-  // console.log("Book Sesison", {
-  //   type,
-  //   name,
-  //   description,
-  //   duration,
-  //   price,
-  // });
+
   let Icon = FaVideo;
   switch (type) {
     case "group Call":

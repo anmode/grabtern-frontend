@@ -5,17 +5,24 @@ import MentorCard from "../components/mentor";
 import { useApi } from "../hook/useAPi";
 import { Section, Input } from "../components/UI";
 import Loader from "../components/loader";
+import { ToastContainer, toast } from "react-toastify";
 
 const Header = dynamic(() => import("../components/layout/Header"));
 const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Mentors() {
   const [query, setQuery] = useState("");
-  // Use the useApi hook to fetch and cache data
-  const { apidata, isLoading } = useApi(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
-    true,
-  );
+
+  try{
+    // Use the useApi hook to fetch and cache data
+    const { apidata, isLoading } = useApi(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
+      true,
+      );
+  }catch(error){
+    toast.error("Error in fetching mentorslist");
+    console.error("Error in fetching mentorslist ",error);
+  }
 
   const filteredMentors = apidata.filter(
     (mentor) =>
@@ -64,6 +71,7 @@ function Mentors() {
             )}
           </div>
         </Section>
+        <ToastContainer/>
       </main>
     </>
   );

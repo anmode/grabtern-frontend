@@ -56,6 +56,7 @@ const ResetPassword = () => {
       setIsLoading(false);
       toast.success(response.data.message);
       // redirect to login page after successful passwp=ord reset
+      toast.info("Redirecting to login page");
       setTimeout(() => {
         router.push(`/auth/login?entityType=${entityType}`);
       }, 5000);
@@ -66,6 +67,7 @@ const ResetPassword = () => {
       } else {
         toast.error("Internal server error");
       }
+      console.error("Error in reseting password ",error)
     }
   };
 

@@ -34,7 +34,7 @@ const FormModal = ({
       const res = await axios.post(url, formData);
       return res.data.secure_url;
     } catch (error) {
-      console.log("Couldn't upload image to Cloudinary", error);
+      console.log("Couldn't upload image to Cloudinary ", error);
     }
   };
 

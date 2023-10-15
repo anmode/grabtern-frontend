@@ -74,7 +74,7 @@ function login() {
   };
 
   const handleErrorResponse = (error) => {
-    console.log(error);
+    console.error("Error in callback of google sign in ",error);
     if (
       error.response &&
       error.response.status >= 400 &&
@@ -129,7 +129,6 @@ function login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("called", process.env.NEXT_PUBLIC_BACKEND_URL);
     setError("");
     try {
       setIsLoading(true);

@@ -83,7 +83,6 @@ export default function Home() {
     isUserLoggedIn,
     setIsUserLoggedIn,
   } = useAuth();
-  // console.log(isMentorLoggedIn,isUserLoggedIn);
 
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));

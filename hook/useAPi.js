@@ -34,7 +34,6 @@ export const useApi = (url, loadingStatus) => {
         }
       } catch (err) {
         console.error("Error retrieving data from cache:", err);
-        // Handle the error (e.g., display an error message)
       }
     };
 
@@ -45,7 +44,6 @@ export const useApi = (url, loadingStatus) => {
         isCachePresent.current = true;
       } catch (err) {
         console.error("Error caching data:", err);
-        // Handle the error (e.g., display an error message)
       }
     };
 

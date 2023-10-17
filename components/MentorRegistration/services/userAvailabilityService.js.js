@@ -3,7 +3,6 @@ import axios from "axios";
 export async function checkUserNameAvailability(userName) {
   try {
     const value = userName.trim();
-    // console.log(value);
 
     if (value) {
       await axios.get(

@@ -155,13 +155,9 @@ export default function Home() {
     return titleMatch;
   });
 
-  // console.log(filteredHackathons);
   const handleBookmark = (index) => {
     const updatedHackathons = [...InternshipsData];
-    console.log(updatedHackathons[index]);
-    // console.log("hello" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     updatedHackathons[index].bookmarked = !updatedHackathons[index].bookmarked;
-    // console.log("ua" + updatedHackathons[index] + updatedHackathons[index].bookmarked);
     setInternshipsData(updatedHackathons);
   };
   const [open, setOpen] = useState(false);
@@ -235,7 +231,6 @@ export default function Home() {
     ) {
       setIsMentorLoggedIn(true);
     }
-    console.log(isUserLoggedIn);
     setCarousel(true);
   }, []);
 

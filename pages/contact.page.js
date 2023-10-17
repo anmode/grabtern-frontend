@@ -1,13 +1,11 @@
 import React, { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import emailjs, { send } from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import dynamic from "next/dynamic";
 import style from "../styles/contact.module.css";
-import Head from "next/head";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { error } from "jquery";
 import { Section } from "../components/UI";
 import { TfiHome, TfiTablet, TfiEmail } from "react-icons/tfi";
 const Footer = dynamic(() => import("../components/layout/Footer"));
@@ -47,7 +45,6 @@ function Contact() {
   });
 
   function showToast(message) {
-    // console.log("called");
     toast(message, {
       position: "top-right",
       autoClose: 5000,
@@ -61,15 +58,12 @@ function Contact() {
     });
   }
 
-  //console.log(errors);
   //send mail after validation
   const sendEmail = async (e) => {
     e.preventDefault();
 
     handleSubmit;
-    console.log(errors);
 
-    //console.log("mail called");
     if (values.message === "") {
       showToast("Please enter a message!");
     } else if (values.name === "") {
@@ -80,14 +74,12 @@ function Contact() {
       showToast("Please enter a subject!");
     } else {
       const templateParams = {
-        //  name: values.name,
         name: document.querySelector("#name").value,
         email: document.querySelector("#email").value,
         message: document.querySelector("#message").value,
         subject: document.querySelector("#subject").value,
       };
 
-      console.log(templateParams);
       emailjs
         .send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY,
@@ -111,7 +103,7 @@ function Contact() {
             console.log(result.text);
           },
           (error) => {
-            toast("Contact form sent successfully !", {
+            toast("Failed to send contact !", {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
@@ -122,7 +114,7 @@ function Contact() {
               theme: "light",
               type: "error",
             });
-            console.log(error.text);
+            console.error(error.text);
           },
 
           (values.message = ""),
@@ -136,9 +128,6 @@ function Contact() {
 
   return (
     <>
-      {/* <Head>
-        <title>GrabTern | Contact Us</title>
-      </Head> */}
       <Header />
       <Section
         kicker="Contact Us"
@@ -360,7 +349,5 @@ function Contact() {
     </>
   );
 }
-
-const PASSWORD = "!@SayyidMuhammad878@!";
 
 export default Contact;

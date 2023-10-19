@@ -56,7 +56,7 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   overflow-x: hidden;
-  background-color: var(--base-200);
+  /* background-color: var(--base-200); */
 }
 
 .owl-carousel .owl-stage {
@@ -101,7 +101,7 @@ a {
   transition: 1s all ease;
 }
 
-.light {
+/* .light {
   background-color: white;
   color: #111;
 }
@@ -109,7 +109,7 @@ a {
 .dark {
   background-color: #111;
   color: #fdf8f8;
-}
+} */
 
 .slider-area .hero__caption.hero__caption2,
 .slider-area2 .hero__caption.hero__caption2 {

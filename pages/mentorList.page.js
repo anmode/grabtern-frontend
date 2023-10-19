@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { LuSearch } from "react-icons/lu";
 import MentorCard from "../components/mentor";
@@ -12,23 +12,23 @@ const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
 
 function Mentors() {
   const [query, setQuery] = useState("");
+  const { apidata, isLoading } = useApi(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
+    true
+  );
 
-  try {
-    // Use the useApi hook to fetch and cache data
-    const { apidata, isLoading } = useApi(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
-      true,
-    );
-  } catch (error) {
-    toast.error("Error in fetching mentorslist");
-    console.error("Error in fetching mentorslist ", error);
-  }
+  useEffect(() => {
+    // You can handle errors and show a toast message here
+    if (!isLoading && !apidata) {
+      toast.error("Error in fetching mentors list");
+    }
+  }, [isLoading, apidata]);
 
-  const filteredMentors = apidata.filter(
+  const filteredMentors = apidata?.filter(
     (mentor) =>
       mentor.name.toLowerCase().includes(query.toLowerCase()) ||
       mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
-      mentor.currentStatus.toLowerCase().includes(query.toLowerCase()),
+      mentor.currentStatus.toLowerCase().includes(query.toLowerCase())
   );
 
   return (

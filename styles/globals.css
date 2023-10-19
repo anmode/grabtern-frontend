@@ -2028,6 +2028,14 @@ select {
   border-radius: 4px;
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .modal-content img {
   width: 250px;
   height: 250px;
@@ -2081,6 +2089,23 @@ select {
   font-weight: bold;
 }
 
+.modal-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.modal-buttons li button {
+  padding: 10px 15px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.modal-buttons li button:hover {
+  color: black !important;
+}
+
 .bookSessionBtn {
   display: flex;
   align-items: center;
@@ -2127,4 +2152,9 @@ select {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 23px;
 }

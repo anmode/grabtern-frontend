@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "../../components/Modal";
 
 function MentorDashboard() {
   // loading and error state
@@ -20,6 +21,8 @@ function MentorDashboard() {
     status: false,
     message: "",
   };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [loadingState, setLoadingState] = useState(initialState);
   const [errorState, setErrorState] = useState(initialState);
   // getting page name on change in tab
@@ -41,6 +44,15 @@ function MentorDashboard() {
     setComponent(params.get("tab") || "");
 
     const mentorData = localStorage.getItem("mentorData");
+    const isMentorModalHadOppenedBefore = localStorage.getItem(
+      "isMentorModalHadOppenedBefore",
+    );
+
+    if (isMentorModalHadOppenedBefore == "true") {
+      setIsModalOpen(false);
+    } else {
+      setIsModalOpen(true);
+    }
 
     if (mentorData) {
       setMentor(mentorData);
@@ -57,6 +69,7 @@ function MentorDashboard() {
   return (
     <>
       <ToastContainer />
+      <Modal isModalOpen={isModalOpen} />
       <div className="tw-flex tw-w-full">
         <Sidebar
           mentor={mentor}

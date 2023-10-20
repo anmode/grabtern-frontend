@@ -90,7 +90,7 @@ export default function Home() {
     <div>
       {(localStorage.getItem("mentorData") !== null ||
         localStorage.getItem("userData") !== null) &&
-      !hasPlayedGreeting ? (
+        !hasPlayedGreeting ? (
         <div className="welcomeAfterLoggedIn">
           Hi 👋🏻 {userData?.user_name || mentorData?.mentor_name} <br /> Welcome
           to GrabTern

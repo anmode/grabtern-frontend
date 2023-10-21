@@ -6,7 +6,6 @@ import { MdSend } from "react-icons/md";
 import { BiSolidImageAdd } from "react-icons/bi";
 import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
-import Link from "next/link";
 
 const SupportChat = () => {
 
@@ -34,16 +33,41 @@ const SupportChat = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [imageValue, setImageValue] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const toggleChat = () => {
     setIsOpen(true);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setMessages([...messages, { text: inputValue, sender: userData?.user_name || mentorData?.mentor_name ? "user" : "support", time: new Date(), images: imageValue }]);
-    setInputValue("");
-  };
+  const handleImageChange = (e) => {
+    e.preventDefault();
+    const file = (e.target.files[0]);
+    setImageValue(file);
+
+    const reader = new FileReader();
+    reader.onloadend = (e) => {
+      setImagePreview(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  const handleTextSubmit = (e) => {
+    e.preventDefault();
+    if (inputValue) {
+      const newMessage = {
+        text: inputValue,
+        // sender: (userData?.user_name || mentorData?.mentor_name) ? "user" : "support",
+        sender: "user",
+        time: new Date(),
+        image: imageValue
+      };
+
+      setMessages([...messages, newMessage]);
+      setInputValue("");
+      setImageValue(null);
+      setImagePreview(null);
+    }
+  }
 
   return (
     <div className="tw-flex tw-z-[1000] tw-text-center tw-fixed tw-bottom-0 tw-right-0 tw-mr-8 tw-mb-32 tw-cursor-pointer">
@@ -64,6 +88,22 @@ const SupportChat = () => {
           </div>
           <div>
             {messages.map((message, index) => (
+              <div key={index} className={`tw-relative ${message.sender === "support" ? "tw-text-left tw-justify-start" : "tw-text-right tw-justify-end tw-items-end"}`}>
+                {message.image && (
+                  <Image src={URL.createObjectURL(message.image)} alt="Uploaded Image" width={100} height={100} />
+                )}
+                <div
+                  className={`tw-bg-indigo-400 ${message.text && message.text.length > 20 ? "tw-w-[200px]" : "tw-w-[100px]"
+                    } tw-rounded-md tw-p-2 tw-m-1 tw-text-white tw-text-sm tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${isOpen ? "tw-opacity-100" : "tw-opacity-80"
+                    }`}
+                >
+                  {message.text}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* <div>
+            {messages.map((message, index) => (
               <div key={index}>
                 {message.sender === ("user" || "mentor") ? (
                   <div
@@ -71,16 +111,11 @@ const SupportChat = () => {
                       } tw-rounded-md tw-p-2 tw-m-1 tw-text-white tw-text-sm tw-ml-auto tw-break-words tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${isOpen ? "tw-opacity-100" : "tw-opacity-80"
                       }`}
                   >
-                    {message.image ? (
-                      <div className="tw-flex tw-items-center tw-justify-center">
-                        <Image
-                          src={URL.createObjectURL(message.images[0])}
-                          alt="image"
-                          width={100}
-                          height={100}
-                        />
-                      </div>
-                    ) : null}
+                    {
+                      imagePreview && (
+                        <Image src={imagePreview} alt="preview" width={50} height={50} className="tw-rounded-sm" />
+                      )
+                    }
                     {message.text}
                   </div>
                 ) : (
@@ -94,27 +129,34 @@ const SupportChat = () => {
                 )}
               </div>
             ))}
-          </div>
+          </div> */}
 
           <form
-            onSubmit={handleSubmit}
-            className="tw-flex tw-justify-between tw-items-center tw-m-2 tw-sticky tw-bottom-0 tw-bg-cyan-200 tw-z-40 tw-gap-2 tw-text-center"
+            onSubmit={handleTextSubmit}
+            className="tw-flex tw-flex-col tw-justify-between tw-items-center tw-m-2 tw-sticky tw-bottom-0 tw-bg-cyan-200 tw-z-40 tw-gap-2 tw-text-center"
           >
-            <label htmlFor="imageValue" className="tw-relative">
-              <BiSolidImageAdd className="tw-w-6 tw-h-6 tw-text-indigo-400 hover:tw-text-indigo-500 tw-ease-in-out tw-transition-all tw-cursor-pointer tw-items-center tw-text-center" />
-            </label>
-            <input className="tw-hidden" id="imageValue" type="file" onChange={e => {
-              setImageValue(e.target.files[0]);
-              handleSubmit(e);
-            }} />
-            <input
-              className="tw-w-full tw-p-1 tw-rounded-md tw-border tw-border-gray-300 tw-placeholder-gray-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-400 focus:tw-border-transparent"
-              type="text"
-              value={inputValue}
-              onChange={(event) => setInputValue(event.target.value)}
-            />
-            {/* Only when mentor or user is logged in, can send the message */}
-            {/* {
+            {imagePreview && (
+              <div className="tw-rounded-sm tw-flex tw-bg-cyan-500 tw-p-1 tw-w-full">
+                <Image src={imagePreview} alt="Image Preview" width={100} height={100} />
+              </div>
+            )}
+            <div className="tw-flex tw-justify-center tw-items-center tw-text-center">
+              <label htmlFor="imageValue" className="tw-relative">
+                <BiSolidImageAdd className="tw-w-6 tw-h-6 tw-text-indigo-400 hover:tw-text-indigo-500 tw-ease-in-out tw-transition-all tw-cursor-pointer tw-items-center tw-text-center" />
+              </label>
+              <input
+                className="tw-hidden"
+                id="imageValue" type="file"
+                onChange={handleImageChange}
+              />
+              <input
+                className="tw-w-full tw-p-1 tw-rounded-md tw-border tw-border-gray-300 tw-placeholder-gray-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-400 focus:tw-border-transparent"
+                type="text"
+                value={inputValue}
+                onChange={(event) => setInputValue(event.target.value)}
+              />
+              {/* Only when mentor or user is logged in, can send the message */}
+              {/* {
               isMentorLoggedIn || isUserLoggedIn ? (
                 <button type="submit" className="tw-relative">
                   <MdSend className="tw-w-6 tw-h-6 tw-text-indigo-400" />
@@ -124,10 +166,12 @@ const SupportChat = () => {
               )
             } */}
 
-            {/* can be changed later, until fully functional */}
-            <button type="submit" className="tw-relative">
-              <MdSend className="tw-w-6 tw-h-6 tw-text-indigo-400" />
-            </button>
+              {/* can be changed later, until fully functional */}
+              <button type="submit" className="tw-relative">
+                <MdSend className="tw-w-6 tw-h-6 tw-text-indigo-400" />
+              </button>
+            </div>
+
           </form>
         </div>
       ) : (

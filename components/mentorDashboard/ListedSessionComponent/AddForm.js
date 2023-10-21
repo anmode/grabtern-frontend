@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Button } from "../../UI";
@@ -11,16 +11,17 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
     duration: "",
     price: "",
   };
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(initialData);
 
   // on submit funxtion for add form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addListedSession`;
       const response = await axios.put(url, data, { withCredentials: true });
-
-      if (!response.data.session) {
+      if (!response.data.sessions) {
         // Handle null session here
         toast.error("Session creation failed. Please check your input.");
       } else {
@@ -28,7 +29,9 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
         setAddSession(false);
         toast.success("New Session added successfully.");
       }
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -49,6 +52,8 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
       [name]: value,
     }));
   };
+
+  useEffect(()=>{}, [isLoading])
 
   return (
     <>
@@ -193,7 +198,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                 }}
               />
 
-              <Button text="Add Session" type="submit" onClick={handleSubmit} />
+              <Button text="Add Session" type="submit" onClick={handleSubmit} loading={isLoading}/>
             </form>
           </div>
         </div>

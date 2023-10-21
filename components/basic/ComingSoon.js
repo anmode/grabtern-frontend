@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { RiFacebookFill, RiTwitterFill, RiLinkedinFill } from "react-icons/ri";
@@ -16,6 +16,8 @@ const ComingSoon = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
+
+  useEffect(()=>{}, [isLoading]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +60,7 @@ const ComingSoon = () => {
           LeftIcon={MdKeyboardArrowLeft}
           text="back"
           className="tw-flex tw-items-center"
+          loading={true}
         />
 
         {/* header and form section */}
@@ -97,6 +100,7 @@ const ComingSoon = () => {
                   type="submit"
                   onClick={handleSubmit}
                   className="tw-w-full tw-mt-4 sm:tw-mt-0 sm:tw-w-fit"
+                  loading={isLoading}
                 />
               )}
             </form>

@@ -14,7 +14,7 @@ function Mentors() {
   const [query, setQuery] = useState("");
   const { apidata, isLoading } = useApi(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorLists`,
-    true
+    true,
   );
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Mentors() {
     (mentor) =>
       mentor.name.toLowerCase().includes(query.toLowerCase()) ||
       mentor.internAt.toLowerCase().includes(query.toLowerCase()) ||
-      mentor.currentStatus.toLowerCase().includes(query.toLowerCase())
+      mentor.currentStatus.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (

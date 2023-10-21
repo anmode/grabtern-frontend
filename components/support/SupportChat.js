@@ -52,8 +52,8 @@ const SupportChat = () => {
     e.preventDefault();
     const newMessage = {
       text: inputValue,
-      // sender: (userData?.user_name || mentorData?.mentor_name) ? "user" : "support",
-      sender: "support",
+      sender:
+        userData?.user_name || mentorData?.mentor_name ? "user" : "support",
       time: new Date(),
       image: imageValue,
     };

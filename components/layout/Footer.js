@@ -13,7 +13,6 @@ import FooterColumn from "./FooterColumn";
 import { FaCheckCircle } from "react-icons/fa";
 
 function Footer() {
-  
   const [email, setEmail] = useState("");
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

@@ -8,12 +8,14 @@ function Button({
   className,
   type = "button",
   onClick,
-  loading=false
+  loading = false,
 }) {
   const [isLoading, setIsLoading] = useState(loading);
   let variantClass = `btn${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
 
-  useEffect(()=>{setIsLoading(loading)}, [loading])
+  useEffect(() => {
+    setIsLoading(loading);
+  }, [loading]);
   return isLoading ? (
     <div className="tw-flex tw-justify-center tw-items-center">
       <img

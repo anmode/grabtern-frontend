@@ -53,7 +53,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
     }));
   };
 
-  useEffect(()=>{}, [isLoading])
+  useEffect(() => {}, [isLoading]);
 
   return (
     <>
@@ -198,7 +198,12 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                 }}
               />
 
-              <Button text="Add Session" type="submit" onClick={handleSubmit} loading={isLoading}/>
+              <Button
+                text="Add Session"
+                type="submit"
+                onClick={handleSubmit}
+                loading={isLoading}
+              />
             </form>
           </div>
         </div>

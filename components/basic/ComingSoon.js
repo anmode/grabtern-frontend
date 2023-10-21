@@ -17,7 +17,7 @@ const ComingSoon = () => {
   const [email, setEmail] = useState("");
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
 
-  useEffect(()=>{}, [isLoading]);
+  useEffect(() => {}, [isLoading]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -24,13 +24,23 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Social Links
 
-`<a href="www.grabtern.com"><img src="./public/icon-384x384.png"/></a>`
 
-`<a href="https://www.linkedin.com/company/grabtern/"><img src="./public/linkedin.png"/></a>`
+<a href="https://www.grabtern.com">
+    <img src="./public/icon-384x384.png" style="height:200px" alt="Grabtern Website"/>
+</a>
 
-`<a href="https://discord.gg/9zRCUmUtA2"><img src="./public/discord.png"/></a>`
+<a href="https://www.linkedin.com/company/grabtern/">
+    <img src="./public/linkedin.png" style="height:80px" alt="LinkedIn"/>
+</a>
 
-`<a href="#"><img src="./public/instagram.png"/></a>`
+<a href="https://discord.gg/9zRCUmUtA2">
+    <img src="./public/discord.png" style="height:80px" alt="Discord"/>
+</a>
+
+<a href="#">
+    <img src="./public/instagram.jpeg" style="height:80px" alt="Instagram"/>
+</a>
+
 
 <details>
    <summary>Table of Contents</summary>

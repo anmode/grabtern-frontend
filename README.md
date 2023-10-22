@@ -22,11 +22,6 @@ This is the frontend repository for Grabtern, a web application built with Next.
  </div>
  <br>
 
-
- 
-
-
-
 ## Social Links
 
 
@@ -67,11 +62,13 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Logo
 
-`<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">`Link to new Logo `</a>`
+Getting Started
 
-`<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>`
+[Link to New Logo](https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-## Getting Started
+<a href="https://www.grabtern.com">
+        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="100" height="100" alt="NewLogo">
+    </a>
 
 ### How To SetUp
 
@@ -124,7 +121,25 @@ This will start server
 
 ## 🧰 Tech Stack Used
 
-`<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">` `<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">` `<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">` `<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">` `<img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">`
+<a href="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="NewLogo">
+</a>
+
+<a href="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="NewLogo">
+</a>
+
+<a href="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
+<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
+</a>
+
+<a href="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+</a>
+
+<a href="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+<img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+</a>
 
 ---
 

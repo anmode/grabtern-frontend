@@ -22,13 +22,15 @@ This is the frontend repository for Grabtern, a web application built with Next.
  </div>
  <br>
 
+
+ 
+
+
+
 ## Social Links
 
-
 <p align="center">
-    <a href="https://www.grabtern.com">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="100" height="100" alt="NewLogo">
-    </a>
+    <a href="https://www.grabtern.com"><img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="25"></img></a>
     <a href="https://discord.gg/9zRCUmUtA2">
         <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/e77a3343-525c-497f-bc15-ea3e11b43207" width="100" height="100" alt="Discord">
     </a>

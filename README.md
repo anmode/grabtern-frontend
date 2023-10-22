@@ -18,9 +18,26 @@ This is the frontend repository for Grabtern, a web application built with Next.
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/anmode/grabtern-frontend)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/anmode/grabtern-frontend)
 
- </p>
+</p>
  </div>
  <br>
+
+## Social Links
+
+<p align="center">
+    <a href="https://www.grabtern.com">
+        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="100" height="100" alt="NewLogo">
+    </a>
+    <a href="https://discord.gg/9zRCUmUtA2">
+        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/e77a3343-525c-497f-bc15-ea3e11b43207" width="100" height="100" alt="Discord">
+    </a>
+    <a href="https://www.linkedin.com/company/grabtern/">
+        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/fd22f896-a9a6-4691-b1b4-b1171c5e1e9d" width="100" height="100" alt="LinkedIn">
+    </a>
+    <a href="#">
+        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/80c6f9fb-fbae-4f42-a1bb-22a017fe5e9b" width="100" height="100" alt="Instagram">
+    </a>
+</p>
 
 <details>
    <summary>Table of Contents</summary>
@@ -44,9 +61,9 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Logo
 
-<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Link to new Logo</a>
+`<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">`Link to new Logo `</a>`
 
-<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>
+`<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>`
 
 ## Getting Started
 
@@ -101,7 +118,7 @@ This will start server
 
 ## 🧰 Tech Stack Used
 
-<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+`<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">` `<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">` `<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">` `<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">` `<img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">`
 
 ---
 
@@ -136,7 +153,7 @@ Prettier is a code formatter that helps maintain consistent code style and forma
 
 Linting is the process of analyzing code for potential errors, bugs, and code style violations. It helps identify and highlight problematic code patterns, potential bugs, and adherence to coding standards.
 
-<b>"Prettier lint test" </b> refers to running a linter (such as ESLint) with the Prettier plugin or rules enabled. It means checking your code for both linting errors and code formatting inconsistencies according to Prettier's rules.
+`<b>`"Prettier lint test" `</b>` refers to running a linter (such as ESLint) with the Prettier plugin or rules enabled. It means checking your code for both linting errors and code formatting inconsistencies according to Prettier's rules.
 
 To enable automatic code formatting upon saving in Visual Studio Code, you can install the Prettier extension. This extension ensures that your code is consistently formatted and adheres to the defined style guidelines. Once installed, Prettier will format your code automatically whenever you save a file.
 

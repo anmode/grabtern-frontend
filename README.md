@@ -24,23 +24,10 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Social Links
 
-
-<a href="https://www.grabtern.com">
-    <img src="./public/icon-384x384.png" style="height:200px" alt="Grabtern Website"/>
-</a>
-
-<a href="https://www.linkedin.com/company/grabtern/">
-    <img src="./public/linkedin.png" style="height:80px" alt="LinkedIn"/>
-</a>
-
-<a href="https://discord.gg/9zRCUmUtA2">
-    <img src="./public/discord.png" style="height:80px" alt="Discord"/>
-</a>
-
-<a href="#">
-    <img src="./public/instagram.jpeg" style="height:80px" alt="Instagram"/>
-</a>
-
+[![NewLogo](https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826)](https://www.grabtern.com)
+[![discord](https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/e77a3343-525c-497f-bc15-ea3e11b43207)](https://discord.gg/9zRCUmUtA2)
+[![linkedin](https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/fd22f896-a9a6-4691-b1b4-b1171c5e1e9d)](https://www.linkedin.com/company/grabtern/)
+![instagram](https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/80c6f9fb-fbae-4f42-a1bb-22a017fe5e9b)
 
 <details>
    <summary>Table of Contents</summary>

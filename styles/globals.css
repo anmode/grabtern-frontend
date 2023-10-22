@@ -56,7 +56,7 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   overflow-x: hidden;
-  /* background-color: var(--base-200); */
+  background-color: var(--base-200);
 }
 
 .owl-carousel .owl-stage {

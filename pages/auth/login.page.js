@@ -186,8 +186,9 @@ function login() {
               <img src="/faviconn.png"></img>
               <h2>
                 {" "}
-                {entityType.charAt(0).toUpperCase() +
-                  entityType.slice(1)} Login{" "}
+                {entityType?.charAt(0).toUpperCase() +
+                  entityType?.slice(1)}{" "}
+                Login{" "}
               </h2>
             </div>
             <div className={styles.forminput}>
@@ -252,7 +253,9 @@ function login() {
             <div className={styles.linkdiv}>
               Don't have an account?
               <Link
-                href="/auth/register"
+                href={
+                  entityType == "user" ? "/auth/register" : "/mentorRegister"
+                }
                 className={styles.registration}
                 style={{ textDecoration: "none" }}
               >

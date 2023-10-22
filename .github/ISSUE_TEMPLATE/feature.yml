@@ -52,6 +52,7 @@ body:
       options:
         - GSSoC2023
         - Other
+        - No
     validations:
       required: true
   - type: checkboxes

@@ -8,7 +8,7 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
   const [data, setData] = useState(null);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const username = mentorData?.mentor_username;
-
+  const [isLoading, setIsLoading] = useState(false);
   // fetching session on load
   useEffect(() => {
     // Fetch session data only if data hasn't been fetched yet
@@ -31,12 +31,15 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateListedSession`;
       const response = await axios.put(url, data, { withCredentials: true });
       setSessions(response.data.updatedSessions);
       setSessionID(null);
+      setIsLoading(false);
       toast.success("Changes saved successfully.");
     } catch (error) {
+      setIsLoading(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -206,6 +209,7 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
                   text="Save Changes"
                   type="submit"
                   onClick={handleSubmit}
+                  loading={isLoading}
                 />
               </form>
             </div>

@@ -8,3 +8,5 @@ export { default as mentorImg } from './img/MentorImg.svg';
 export { default as comingSoon } from './img/comingSoon.png';
 export { default as userIcon } from './img/userIcon.png';
 export { default as support } from './img/support.gif';
+export { default as noSupport } from './img/noSupport.gif';
+export { default as chatSupport } from './img/chatSupport.gif';

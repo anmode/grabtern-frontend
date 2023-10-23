@@ -275,7 +275,7 @@ const Home = ({
                     )}
                     {card.session && (
                       <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
-                        {card.session.length > 0 ? (
+                        {card?.session?.type ? (
                           <div>
                             <h2 className="tw-font-semibold tw-text-md">
                               Title:{" "}
@@ -283,7 +283,7 @@ const Home = ({
                                 {card.session.title}
                               </span>
                             </h2>
-                            <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
+                            <div className="tw-flex tw-flex-col tw-items-start pl-4 tw-gap-1">
                               <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
                                 {card.session.type}
                               </p>

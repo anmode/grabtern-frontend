@@ -10,6 +10,22 @@ import { date } from "yup";
 import Link from "next/link";
 
 const SupportChat = () => {
+
+  const refChat = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (refChat.current && !refChat.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
+
   const {
     isMentorLoggedIn,
     setIsMentorLoggedIn,
@@ -67,7 +83,7 @@ const SupportChat = () => {
   return (
     <div className="tw-flex tw-z-[1000] tw-text-center tw-fixed tw-bottom-0 tw-right-0 tw-mr-8 tw-mb-32 tw-cursor-pointer">
       {isOpen ? (
-        <div className="tw-w-[280px] tw-h-[380px] tw-flex tw-flex-col tw-bg-cyan-200 tw-shadow-lg tw-rounded-md tw-outline-black tw-overflow-y-scroll tw-overflow-x-hidden tw-justify-between">
+        <div ref={refChat} className="tw-w-[280px] tw-h-[380px] tw-flex tw-flex-col tw-bg-cyan-200 tw-shadow-lg tw-rounded-md tw-outline-black tw-overflow-y-scroll tw-overflow-x-hidden tw-justify-between">
           {/* header part */}
           <div className="tw-flex tw-text-center tw-justify-between tw-w-full tw-items-center tw-top-0 tw-sticky tw-bg-cyan-200 tw-z-40">
             <div className="tw-flex tw-items-center tw-justify-center">
@@ -88,9 +104,8 @@ const SupportChat = () => {
           {/* body */}
 
           <div
-            className={`tw-flex tw-flex-col ${
-              isMentorLoggedIn || isUserLoggedIn ? "" : "tw-justify-center"
-            }`}
+            className={`tw-flex tw-flex-col ${isMentorLoggedIn || isUserLoggedIn ? "" : "tw-justify-center"
+              }`}
           >
             {isUserLoggedIn || isMentorLoggedIn ? (
               <div className="tw-flex tw-flex-col tw-h-[300px] tw-overflow-y-scroll tw-overflow-x-hidden tw-gap-1 tw-text-center tw-w-full">
@@ -112,11 +127,10 @@ const SupportChat = () => {
                 {messages.map((message, index) => (
                   <div
                     key={index}
-                    className={`tw-relative tw-flex tw-flex-col ${
-                      message.sender === "support"
+                    className={`tw-relative tw-flex tw-flex-col ${message.sender === "support"
                         ? "tw-text-left tw-justify-start"
                         : "tw-text-right tw-justify-end tw-items-end"
-                    } tw-gap-1`}
+                      } tw-gap-1`}
                   >
                     {message?.image && (
                       <Image
@@ -133,13 +147,11 @@ const SupportChat = () => {
 
                     {message?.text && (
                       <div
-                        className={`${
-                          message.text.length > 20
+                        className={`${message.text.length > 20
                             ? "tw-w-[200px] tw-bg-indigo-400"
                             : "tw-w-[100px] tw-bg-indigo-400"
-                        } tw-rounded-md tw-p-2 tw-m-1 tw-text-white tw-text-sm tw-break-words tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${
-                          isOpen ? "tw-opacity-100" : "tw-opacity-80"
-                        }`}
+                          } tw-rounded-md tw-p-2 tw-m-1 tw-text-white tw-text-sm tw-break-words tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${isOpen ? "tw-opacity-100" : "tw-opacity-80"
+                          }`}
                       >
                         {message?.text}
                       </div>
@@ -250,9 +262,8 @@ const SupportChat = () => {
       ) : (
         <button onClick={() => setIsOpen(true)}>
           <Image
-            className={`tw-rounded-full tw-bg-[#845ec2] hover:tw-bg-[#845ec0] tw-p-2 tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${
-              isOpen ? "tw-opacity-100" : "tw-opacity-80"
-            }`}
+            className={`tw-rounded-full tw-bg-[#845ec2] hover:tw-bg-[#845ec0] tw-p-2 tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${isOpen ? "tw-opacity-100" : "tw-opacity-80"
+              }`}
             title="support"
             src={support}
             alt="support"

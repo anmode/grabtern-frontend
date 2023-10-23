@@ -29,16 +29,16 @@ const Overlay = ({ callbackFunction, onDisappear }) => {
       }
     }, 1300);
 
-    google.accounts.id.initialize({
+    google?.accounts?.id?.initialize({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       callback: handleCallbackResponse,
     });
 
-    google.accounts.id.renderButton(
+    google?.accounts?.id?.renderButton(
       document.getElementById("googleSignInButton"),
       { theme: "outline", size: "large" },
     );
-    google.accounts.id.prompt();
+    google?.accounts?.id?.prompt();
   }, []);
   return (
     <div>

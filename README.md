@@ -118,7 +118,11 @@ This will start server
 
 ## 🧰 Tech Stack Used
 
-`<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">` `<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">` `<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">` `<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">` `<img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">`
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
+<img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+<img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
 
 ---
 
@@ -179,10 +183,20 @@ If you'd like to contribute to Grabtern Frontend:-
 ### Creating A Pull Request
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b <new_branch_name>`)
-3. Save your changes (`git add .`)
-4. Commit your Changes (`git commit -m 'Added some AmazingFeature'`)
-5. Push to the Branch (`git push origin <branch_name>`)
+2. Create your Feature Branch 
+  
+   `git checkout -b <new_branch_name>`
+
+3. Save your changes 
+
+   `git add .`
+4. Commit your Changes 
+   
+   `git commit -m 'Added some AmazingFeature'`
+
+5. Push to the Branch 
+
+   `git push origin <branch_name>`
 6. Open a Pull Request
 
 ---

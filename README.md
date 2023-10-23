@@ -29,18 +29,15 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Social Links
 
-<p align="center">
-    <a href="https://www.grabtern.com"><img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="25"></img></a>
-    <a href="https://discord.gg/9zRCUmUtA2">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/e77a3343-525c-497f-bc15-ea3e11b43207" width="100" height="100" alt="Discord">
-    </a>
-    <a href="https://www.linkedin.com/company/grabtern/">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/fd22f896-a9a6-4691-b1b4-b1171c5e1e9d" width="100" height="100" alt="LinkedIn">
-    </a>
-    <a href="#">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/80c6f9fb-fbae-4f42-a1bb-22a017fe5e9b" width="100" height="100" alt="Instagram">
-    </a>
-</p>
+[<img align="left" alt="grabtern.com" width="22px" src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" />][website]
+[<img align="left" alt="discord | Discord" width="22px" src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/fd22f896-a9a6-4691-b1b4-b1171c5e1e9d" />][discord]
+[<img align="left" alt="linkedin | LinkedIn" width="22px" src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/e77a3343-525c-497f-bc15-ea3e11b43207" />][linkedin]
+<br />
+
+
+[website]: https://www.grabtern.com
+[discord]: https://discord.gg/9zRCUmUtA2
+[linkedin]: https://www.linkedin.com/company/grabtern/
 
 <details>
    <summary>Table of Contents</summary>

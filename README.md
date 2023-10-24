@@ -24,8 +24,8 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Social Links
 <div align="center">
- <a href="https://www.grabtern.com">
-    <img src="https://www.grabtern.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.a3bd38dc.png&w=256&q=75" alt="Grabtern" width="120" height="120"/>
+  <a href="https://www.grabtern.com">
+    <img src="https://www.grabtern.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.a3bd38dc.png&w=256&q=75" alt="Grabtern" width="80" height="80"/>
   </a>
   <a href="https://discord.gg/9zRCUmUtA2">
     <img src="https://img.icons8.com/color/48/000000/discord-logo.png" alt="Discord" width="80" height="80"/>
@@ -34,7 +34,7 @@ This is the frontend repository for Grabtern, a web application built with Next.
     <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn" width="80" height="80"/>
   </a>
   <a href="#">
-    <img src="https://icons8.com/icon/Xy10Jcu1L2Su/instagram" alt="Instagram" width="80" height="80"/>
+    <img src="https://img.icons8.com/color/80/000000/instagram.png" alt="Instagram" width="80" height="80"/>
   </a>
 </div>
 

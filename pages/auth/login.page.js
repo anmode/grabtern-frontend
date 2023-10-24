@@ -84,6 +84,7 @@ function login() {
     }
     setIsLoading(false);
   };
+
   useEffect(() => {
     // Function to update the URL with the new entityType
     const updateEntityTypeInUrl = (newEntityType) => {
@@ -99,7 +100,7 @@ function login() {
 
     updateEntityTypeInUrl(entityType);
 
-    google.accounts.id.initialize({
+    window?.google?.accounts?.id.initialize({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       callback: (response) => handleCallbackResponse(response),
     });
@@ -119,11 +120,11 @@ function login() {
 
     const googleSignInButton = document.getElementById("googleSignInButton");
     if (googleSignInButton) {
-      google.accounts.id.renderButton(googleSignInButton, {
+      window?.google?.accounts?.id.renderButton(googleSignInButton, {
         theme: "outline",
         size: "large",
       });
-      google.accounts.id.prompt();
+      window?.google?.accounts?.id.prompt();
     }
   }, [isUserLoggedIn, isMentorLoggedIn, router]);
 

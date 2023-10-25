@@ -25,18 +25,18 @@ This is the frontend repository for Grabtern, a web application built with Next.
 ## Social Links
 
 <div align="center">
-    <a href="https://www.grabtern.com">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="100" height="100" alt="NewLogo">
-    </a>
-    <a href="https://discord.gg/9zRCUmUtA2">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/e77a3343-525c-497f-bc15-ea3e11b43207" width="100" height="100" alt="Discord">
-    </a>
-    <a href="https://www.linkedin.com/company/grabtern/">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/fd22f896-a9a6-4691-b1b4-b1171c5e1e9d" width="100" height="100" alt="LinkedIn">
-    </a>
-    <a href="#">
-        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/80c6f9fb-fbae-4f42-a1bb-22a017fe5e9b" width="100" height="100" alt="Instagram">
-    </a>
+  <a href="https://www.grabtern.com">
+    <img src="https://www.grabtern.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.a3bd38dc.png&w=256&q=75" alt="Grabtern" width="80" height="80"/>
+  </a>
+  <a href="https://discord.gg/9zRCUmUtA2">
+    <img src="https://img.icons8.com/color/48/000000/discord-logo.png" alt="Discord" width="80" height="80"/>
+  </a>
+  <a href="https://www.linkedin.com/company/grabtern/">
+    <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn" width="80" height="80"/>
+  </a>
+  <a href="#">
+    <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/80c6f9fb-fbae-4f42-a1bb-22a017fe5e9b" alt="Instagram" width="80" height="80"/>
+  </a>
 </div>
 
 <details>
@@ -61,11 +61,13 @@ This is the frontend repository for Grabtern, a web application built with Next.
 
 ## Logo
 
-`<a href="https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">`Link to new Logo `</a>`
+Getting Started
 
-`<img style="height: 50px; width: 50px" src="./public/NewLogo.png"/>`
+[Link to New Logo](https://www.canva.com/design/DAFlzVM_kfs/FJmsajDd_Kv2PgN0VF5UzQ/edit?utm_content=DAFlzVM_kfs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-## Getting Started
+<a href="https://www.grabtern.com">
+        <img src="https://github.com/Vidip-Ghosh/grabtern-frontend/assets/91741581/c34aa132-b417-4c0d-ace7-aa2aa48e3826" width="100" height="100" alt="NewLogo">
+    </a>
 
 ### How To SetUp
 
@@ -118,11 +120,25 @@ This will start server
 
 ## 🧰 Tech Stack Used
 
-<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
-<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
+<a href="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="NewLogo">
+</a>
+
+<a href="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="NewLogo">
+</a>
+
+<a href="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
 <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white">
+</a>
+
+<a href="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+</a>
+
+<a href="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
 <img src="https://img.shields.io/badge/GitHub%20CI/CD-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white">
+</a>
 
 ---
 
@@ -183,20 +199,22 @@ If you'd like to contribute to Grabtern Frontend:-
 ### Creating A Pull Request
 
 1. Fork the Project
-2. Create your Feature Branch 
-  
+2. Create your Feature Branch
+
    `git checkout -b <new_branch_name>`
 
-3. Save your changes 
+3. Save your changes
 
    `git add .`
-4. Commit your Changes 
-   
+
+4. Commit your Changes
+
    `git commit -m 'Added some AmazingFeature'`
 
-5. Push to the Branch 
+5. Push to the Branch
 
    `git push origin <branch_name>`
+
 6. Open a Pull Request
 
 ---

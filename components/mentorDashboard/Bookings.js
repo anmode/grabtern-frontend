@@ -84,18 +84,30 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
         <thead className="tw-bg-primary-100 tw-text-white tw-border tw-rounded-t tw-w-full">
           <tr className="tw-w-full">
             <th className="tw-p-2">Topic</th>
-            <th className="tw-p-2">Mentor</th>
-            <th className="tw-p-2">Day</th>
-            <th className="tw-p-2">Time</th>
+            <th className="tw-w-full tw-p-2">Mentor</th>
+            <th className="tw-w-full tw-p-2">Day</th>
+            <th className="tw-w-full tw-p-2">Time</th>
           </tr>
         </thead>
         <tbody>
-          <tr className="tw-bg-white tw-border tw-w-full tw-rounded-b">
-            <td className="tw-w-full p-2">1-1 mentorship</td>
-            <td className="tw-w-full p-2">Muhammad</td>
-            <td className="tw-w-full p-2">Tuesday</td>
-            <td className="tw-w-full p-2">03:00</td>
-          </tr>
+          {sessions ? (
+            sessions
+              .filter((session) =>
+                activeTab.toLocaleLowerCase() === "pending"
+                  ? session.isbooked
+                  : !session.isbooked,
+              )
+              .map((session, index) => (
+                <tr className="tw-bg-white tw-border tw-w-full tw-rounded-b">
+                  <td className="tw-w-full p-2">{session.sessionName}</td>
+                  <td className="tw-w-full p-2">{session.userName}</td>
+                  <td className="tw-w-full p-2">{session.sessionDay}</td>
+                  <td className="tw-w-full p-2">{session.sessionTime}</td>
+                </tr>
+              ))
+          ) : (
+            <Spinner />
+          )}
         </tbody>
       </table>
     </div>

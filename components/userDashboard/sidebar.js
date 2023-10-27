@@ -11,6 +11,7 @@ import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
 import styled from "styled-components";
+import { userIcon } from "../../public/assets";
 
 const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -39,12 +40,19 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const menuItem = [
     {
       title: "Profile",
-      icon: (
+      icon: user?.image ? (
         <Image
           src={user?.image}
           width={30}
           height={30}
-          className="tw-rounded-full"
+          className={`tw-rounded-full tw-bg-slate-300`}
+        />
+      ) : (
+        <Image
+          src={userIcon}
+          width={30}
+          height={30}
+          className={`tw-rounded-full tw-bg-slate-300`}
         />
       ),
       path: "profile",
@@ -224,7 +232,9 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         {/* For mobile devices max-w-512px */}
         <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4">
           <div className="tw-items-center max-[400px]:tw-hidden">
-            <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+            <Link href="/mentorList">
+              <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+            </Link>
           </div>
           <div
             className={`tw-w-full tw-flex tw-font-medium tw-p-2 tw-items-center tw-justify-center tw-gap-4 tw-py-4`}
@@ -235,7 +245,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer"
               >
                 <Link
-                  href={`/dashboard/mentor?tab=${val.path}`}
+                  href={`/dashboard/user?tab=${val.path}`}
                   className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
@@ -292,8 +302,10 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             </div>
             <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
               <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
-                <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
-                <span className="tw-font-semibold">Get more bookings</span>
+                <Link href="/mentorList">
+                  <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+                </Link>
+                <span className="tw-font-semibold">Book a session</span>
               </div>
             </div>
             <div

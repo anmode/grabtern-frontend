@@ -13,25 +13,28 @@ import FooterColumn from "./FooterColumn";
 import { FaCheckCircle } from "react-icons/fa";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const currentYear = new Date().getFullYear();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
         email,
       })
       .then((response) => {
-        console.log(response.data);
+        setIsLoading(false);
         setSubscriptionSuccess(true);
       })
       .catch((error) => {
+        setIsLoading(false);
         console.error(error);
       });
   };
 
-  const [email, setEmail] = useState("");
-  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
-  const currentYear = new Date().getFullYear();
   return (
     <footer className="tw-font-sans tw-bg-base-100 tw-px-5">
       <div className="tw-w-full tw-max-w-7xl tw-py-16 tw-mx-auto">
@@ -124,6 +127,7 @@ function Footer() {
                   type="submit"
                   onClick={handleSubmit}
                   className="tw-w-full md:tw-w-max"
+                  loading={isLoading}
                 />
               </form>
             )}

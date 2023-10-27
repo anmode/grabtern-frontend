@@ -47,8 +47,7 @@ function login() {
         withCredentials: true,
       });
 
-      console.log(res);
-
+      toast.info("redirecting to home page");
       if (entityType === "user") {
         const userData = {
           user_name: userObject.name,
@@ -75,7 +74,7 @@ function login() {
   };
 
   const handleErrorResponse = (error) => {
-    console.log(error);
+    console.error("Error in callback of google sign in ", error);
     if (
       error.response &&
       error.response.status >= 400 &&
@@ -85,6 +84,7 @@ function login() {
     }
     setIsLoading(false);
   };
+
   useEffect(() => {
     // Function to update the URL with the new entityType
     const updateEntityTypeInUrl = (newEntityType) => {
@@ -100,7 +100,7 @@ function login() {
 
     updateEntityTypeInUrl(entityType);
 
-    google.accounts.id.initialize({
+    window?.google?.accounts?.id.initialize({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       callback: (response) => handleCallbackResponse(response),
     });
@@ -120,17 +120,16 @@ function login() {
 
     const googleSignInButton = document.getElementById("googleSignInButton");
     if (googleSignInButton) {
-      google.accounts.id.renderButton(googleSignInButton, {
+      window?.google?.accounts?.id.renderButton(googleSignInButton, {
         theme: "outline",
         size: "large",
       });
-      google.accounts.id.prompt();
+      window?.google?.accounts?.id.prompt();
     }
   }, [isUserLoggedIn, isMentorLoggedIn, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("called", process.env.NEXT_PUBLIC_BACKEND_URL);
     setError("");
     try {
       setIsLoading(true);
@@ -188,8 +187,9 @@ function login() {
               <img src="/faviconn.png"></img>
               <h2>
                 {" "}
-                {entityType.charAt(0).toUpperCase() +
-                  entityType.slice(1)} Login{" "}
+                {entityType?.charAt(0).toUpperCase() +
+                  entityType?.slice(1)}{" "}
+                Login{" "}
               </h2>
             </div>
             <div className={styles.forminput}>
@@ -254,7 +254,9 @@ function login() {
             <div className={styles.linkdiv}>
               Don't have an account?
               <Link
-                href="/auth/register"
+                href={
+                  entityType == "user" ? "/auth/register" : "/mentorRegister"
+                }
                 className={styles.registration}
                 style={{ textDecoration: "none" }}
               >

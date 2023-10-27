@@ -69,7 +69,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
 
     setListDates(nextOccurrences);
-    console.log(listDates);
   }
 
   const convertBase64 = (file) => {
@@ -111,7 +110,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       const res = await axios.post(url, formData);
       return res.data.secure_url;
     } catch (error) {
-      console.log(error);
+      console.error("Error in uploading to cloudinary ", error);
       setLoading(false);
       toast.error("Sorry couldn't upload the image to our server", error);
     }
@@ -123,7 +122,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     if (!file) return;
     const base64 = await convertBase64(file);
     const imageClouindaryUrl = await uploadToCloudinary(base64);
-    console.log(imageClouindaryUrl);
     if (!imageClouindaryUrl) {
       setLoading(false);
       toast.error("Sorry couldn't upload the image to our server");
@@ -206,7 +204,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       if (response.data) {
         toast.success("You have successfully booked a session!");
         window.location.href = "/";
-        console.log(response.data);
         // Add any further logic or redirection based on the response
       } else {
         // Handle the case when the response does not contain expected 'data'
@@ -232,7 +229,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   };
 
   function splitTimeRange() {
-    // console.log(selectedDay);
     if (selectedDay.length < 1) {
       return;
     }
@@ -279,8 +275,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
         startTime.setMinutes(startTime.getMinutes() + 30);
         result.push(formatTime(startTime));
       }
-
-      // console.log(result);
 
       return result;
     }

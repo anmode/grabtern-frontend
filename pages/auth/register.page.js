@@ -35,18 +35,17 @@ function useRedirectIfAuthenticated() {
       const userObject = jwt_decode(response.credential);
       const userData = {
         user_name: userObject.name,
-        user_picture: userObject.picture,
+        user_image: userObject.picture,
         user_email: userObject.email,
       };
 
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gsignup`;
       try {
         const res = await axios.post(url, {
-          registerToken: encryptData(userData),
+          userData,
         });
 
-        console.log(res);
-        localStorage.setItem("userData", encryptData(userData));
+        localStorage.setItem("userData", JSON.stringify(userData));
         setIsUserLoggedIn(true);
         const redirectUrl = new URLSearchParams(window.location.search).get(
           "redirectUrl",
@@ -84,6 +83,7 @@ function useRedirectIfAuthenticated() {
         });
         google.accounts.id.prompt();
       } catch (error) {
+        toast.error("Google sign-up initialization failed.");
         console.error("Google sign-up initialization failed:", error);
       }
     };
@@ -290,7 +290,7 @@ function Register() {
               Login{" "}
             </button> */}
             <Link
-              href="/auth/login"
+              href="/auth/login?entityType=user"
               className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
             >

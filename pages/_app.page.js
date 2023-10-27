@@ -4,6 +4,7 @@ import { BreakpointProvider } from "react-socks";
 import Head from "next/head";
 import { AuthProvider } from "../context/AuthContext";
 import ScrollButton from "../components/basic/MoveToTop";
+import SupportChat from "../components/support/SupportChat";
 
 function addProductJsonLd() {
   return {
@@ -165,6 +166,7 @@ function MyApp({ Component, pageProps }) {
 
       <BreakpointProvider>
         <AuthProvider>
+          <SupportChat />
           <ScrollButton />
           <Component {...pageProps} />
         </AuthProvider>

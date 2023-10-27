@@ -8,6 +8,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 import ComingSoon from "../../components/basic/ComingSoon";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
+import { ToastContainer, toast } from "react-toastify";
 
 function userDashboard() {
   // loading and error state
@@ -48,6 +49,7 @@ function userDashboard() {
         const userData = response.data;
         setuser(userData);
       } catch (error) {
+        toast.error("Error fetching user data");
         console.error("Error fetching user data:", error);
       }
     };
@@ -100,6 +102,7 @@ function userDashboard() {
             <ComingSoon isSidebarOpen={isSidebarOpen} />
           )}
         </div>
+        <ToastContainer />
       </div>
     </>
   );

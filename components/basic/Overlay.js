@@ -24,22 +24,21 @@ const Overlay = ({ callbackFunction, onDisappear }) => {
     setInterval(() => {
       if (typeof window !== "undefined") {
         if (document.querySelector("#credential_picker_container") !== null) {
-          document.querySelector("#overlay").classList.add("show");
+          document.querySelector("#overlay")?.classList.add("show");
         }
       }
     }, 1300);
 
-    google.accounts.id.initialize({
-      client_id:
-        "1094459761-kbb3qbgafu8avkgfe9fk8f85fr5418a8.apps.googleusercontent.com",
+    window?.google?.accounts?.id?.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       callback: handleCallbackResponse,
     });
 
-    google.accounts.id.renderButton(
+    window?.google?.accounts?.id?.renderButton(
       document.getElementById("googleSignInButton"),
       { theme: "outline", size: "large" },
     );
-    google.accounts.id.prompt();
+    window?.google?.accounts?.id?.prompt();
   }, []);
   return (
     <div>

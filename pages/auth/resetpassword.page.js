@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import router from "next/router";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
 import Head from "next/head.js";
 import styles from "../../styles/form.module.css";
 import Button from "../../components/UI/Button/Button";
@@ -49,9 +48,7 @@ const ResetPassword = () => {
       };
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/resetPassword?entityType=${entityType}`,
-        {
-          token: encryptData(data),
-        },
+        data,
       );
       setIsLoading(false);
       toast.success(response.data.message);
@@ -158,24 +155,6 @@ const ResetPassword = () => {
                 />
               )}
             </div>
-            {/* <div className="form-input tw-pt-10 tw-pb-12">
-              <ButtonUI
-                text="Set Password"
-                className="tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2"
-                type="submit"
-              />
-            </div>
-            {isLoading && (
-              <img
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  border: "none",
-                }}
-                src="/assets/img/gif/Spinner.gif"
-                alt="loading..."
-              />
-            )} */}
             {isLoading ? (
               <div className="tw-relative tw-left-[200px]">
                 <EventLogin />

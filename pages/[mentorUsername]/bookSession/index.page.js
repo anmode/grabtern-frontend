@@ -15,24 +15,23 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     { day: "Saturday", startsAt: "09:00", endsAt: "21:00" },
     // { day: "Monday", startsAt: "09:00", endsAt: "21:00" },
   ];
+
   const [selectedDay, setSelectedDay] = useState("");
-  const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
   const [listDates, setListDates] = useState([]);
-  //User Info
-  const user = JSON.parse(localStorage.getItem("userData"));
-  const userName = user?.user_name;
-  // const userID = user?.user_id;
+  const [loading, setLoading] = useState(false);
 
-  function getDateByDayName() {
-    const targetDays =
-      mentorDetail.schedules.length !== 0
-        ? defaultSchedules.map((v) => v.day.toLowerCase())
-        : mentorDetail.schedules.length !== 0
-        ? mentorDetail.scheduleslistDays.map((v) => v.day.toLowerCase())
-        : [];
+  useEffect(() => {
+    if (localStorage.getItem("paymentIssuePopup") === "0") {
+      setPaymentIssuePopup(false);
+    }
+    getDateByDayName();
+  }, []);
+
+  const getDateByDayName = () => {
+    const targetDays = mentorDetail.schedules.map((v) => v.day.toLowerCase());
     const daysOfWeek = [
       "sunday",
       "monday",
@@ -42,77 +41,56 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       "friday",
       "saturday",
     ];
-    const currentDayIndex = new Date().getDay(); // 0 for Sunday, 1 for Monday, etc.
     const currentDate = new Date();
     const nextOccurrences = [];
 
-    if (!Array.isArray(targetDays) || targetDays.length === 0) {
-      return null; // Invalid input
-    }
+    if (targetDays.length === 0) return;
 
-    // Calculate the number of occurrences based on the length of targetDays array
-    const numberOfOccurrences = targetDays.length;
-
-    while (nextOccurrences.length < numberOfOccurrences) {
+    while (nextOccurrences.length < targetDays.length) {
       currentDate.setDate(currentDate.getDate() + 1);
       const dayIndex = currentDate.getDay();
 
       if (targetDays.includes(daysOfWeek[dayIndex])) {
-        // Check if the current day is in the targetDays array
-        // If yes, add it to the nextOccurrences array
         const options = { month: "short", day: "2-digit" };
         nextOccurrences.push(currentDate.toLocaleDateString("en-US", options));
-
-        // Increment the date by 7 days to move to the next occurrence in the next week
         currentDate.setDate(currentDate.getDate() + 6);
       }
     }
 
     setListDates(nextOccurrences);
-  }
+  };
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
 
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
+      fileReader.onload = () => resolve(fileReader.result);
+      fileReader.onerror = (error) => reject(error);
     });
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("paymentIssuePopup") === "0") {
-      setPaymentIssuePopup(false);
-    }
-    getDateByDayName();
-  });
-
   const uploadToCloudinary = async (imageSrc) => {
     if (!imageSrc) {
-      toast.error(
-        "Please select an image first before uploading to our server!",
-      );
+      toast.error("Please select an image before uploading.");
       return;
     }
-    const res = await fetch(imageSrc);
-    const blob = await res.blob();
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
+
     try {
+      const res = await fetch(imageSrc);
+      const blob = await res.blob();
+      const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
+
       const formData = new FormData();
       formData.append("file", blob);
       formData.append("upload_preset", "image_preset");
-      const res = await axios.post(url, formData);
-      return res.data.secure_url;
+
+      const response = await axios.post(url, formData);
+      return response.data.secure_url;
     } catch (error) {
-      console.error("Error in uploading to cloudinary ", error);
+      console.error("Error uploading to Cloudinary:", error);
+      toast.error("Failed to upload the image to our server");
       setLoading(false);
-      toast.error("Sorry couldn't upload the image to our server", error);
     }
   };
 
@@ -120,19 +98,27 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     setLoading(true);
     const file = e.target.files[0];
     if (!file) return;
-    const base64 = await convertBase64(file);
-    const imageClouindaryUrl = await uploadToCloudinary(base64);
-    if (!imageClouindaryUrl) {
+
+    try {
+      const base64 = await convertBase64(file);
+      const imageCloudinaryUrl = await uploadToCloudinary(base64);
+
+      if (!imageCloudinaryUrl) {
+        setLoading(false);
+        toast.error("Failed to upload the image to our server");
+        return;
+      }
+
+      bookedSession(imageCloudinaryUrl);
+    } catch (error) {
       setLoading(false);
-      toast.error("Sorry couldn't upload the image to our server");
-      return;
+      toast.error("An error occurred while processing the image.");
     }
-    bookedSession(imageClouindaryUrl);
   };
 
   const bookSessionPaymentStep = () => {
     if (!userName) {
-      toast.error("Please login as a user before booking a session!");
+      toast.error("Please log in as a user before booking a session.");
       setTimeout(() => {
         router.push(
           `/auth/login?entityType=user&redirectURL=${window.location.href}`,
@@ -141,13 +127,8 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       return;
     }
 
-    if (!selectedDay) {
-      toast.error("Please select day to book a session");
-      return;
-    }
-
-    if (!selectedTime) {
-      toast.error("Please select time to book a session");
+    if (!selectedDay || !selectedTime) {
+      toast.error("Please select a day and time to book a session.");
       return;
     }
 
@@ -161,19 +142,16 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   };
 
   const dayChangeActive = (e) => {
-    document.querySelectorAll(".bookSessionSchedules .day li").forEach((el) => {
-      el.classList.remove("active");
-    });
-
+    document
+      .querySelectorAll(".bookSessionSchedules .day li")
+      .forEach((el) => el.classList.remove("active"));
     e.target.classList.add("active");
   };
+
   const timeChangeActive = (e) => {
     document
       .querySelectorAll(".bookSessionSchedules .time li")
-      .forEach((el) => {
-        el.classList.remove("active");
-      });
-
+      .forEach((el) => el.classList.remove("active"));
     e.target.classList.add("active");
   };
 
@@ -181,7 +159,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     try {
       if (imageCloudinaryUrl === null) {
         setLoading(false);
-        toast.error("Upload transaction proof first to book a session!");
+        toast.error("Upload transaction proof first to book a session.");
         return;
       }
 
@@ -204,87 +182,52 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       if (response.data) {
         toast.success("You have successfully booked a session!");
         window.location.href = "/";
-        // Add any further logic or redirection based on the response
       } else {
-        // Handle the case when the response does not contain expected 'data'
         toast.error(
           "Error booking session: Unexpected response from the server.",
         );
       }
     } catch (error) {
       setLoading(false);
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
+      if (error.response?.data?.message) {
         toast.error(error.response.data.message);
         console.error("Error booking session:", error.response.data.message);
       } else {
         toast.error("Error booking session: An unexpected error occurred.");
         console.error("Error booking session:", error);
       }
-      // Handle error scenario
     }
   };
 
-  function splitTimeRange() {
-    if (selectedDay.length < 1) {
-      return;
-    }
-    if (mentorDetail.schedules.length === 0) {
-      const selectedSchedule = defaultSchedules.find(
-        (schedule) => schedule.day === selectedDay,
-      );
-      if (!selectedSchedule) {
-        return [];
-      }
+  const splitTimeRange = () => {
+    if (selectedDay.length < 1) return [];
 
-      const result = [];
-      const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
-      const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
+    const selectedSchedule = mentorDetail.schedules.find(
+      (schedule) => schedule.day === selectedDay,
+    );
 
+    if (!selectedSchedule) return [];
+
+    const result = [];
+    const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
+    const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
+    result.push(formatTime(startTime));
+
+    while (startTime < endTime) {
+      startTime.setMinutes(startTime.getMinutes() + 30);
       result.push(formatTime(startTime));
-
-      while (startTime < endTime) {
-        startTime.setMinutes(startTime.getMinutes() + 30);
-        result.push(formatTime(startTime));
-      }
-
-      return result;
-    } else if (mentorDetail.schedules.length !== 0) {
-      const selectedSchedule = mentorDetail.schedules.find(
-        (schedule) => schedule.day === selectedDay,
-      );
-      // const selectedSchedule = mentorDetail.schedules.find(
-      //   (schedule) => schedule.day === selectedDay,
-      // );
-      if (!selectedSchedule) {
-        return [];
-      }
-
-      const result = [];
-      const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
-      const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
-
-      // Add the initial time to the result array
-      result.push(formatTime(startTime));
-
-      // Increment the time by 30 minutes until it reaches the end time
-      while (startTime < endTime) {
-        startTime.setMinutes(startTime.getMinutes() + 30);
-        result.push(formatTime(startTime));
-      }
-
-      return result;
     }
-  }
 
-  function formatTime(time) {
+    return result;
+  };
+
+  const formatTime = (time) => {
     const hours = time.getHours().toString().padStart(2, "0");
     const minutes = time.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
-  }
+  };
+
+  const userName = JSON.parse(localStorage.getItem("userData"))?.user_name;
 
   return (
     <div>
@@ -293,7 +236,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
         className="container sessionContainer"
         style={{ marginTop: "100px" }}
       >
-        {paymentIssuePopup === true ? (
+        {paymentIssuePopup && (
           <div className="modal-overlay">
             <div className="modal-content">
               <div
@@ -307,13 +250,15 @@ function Index({ mentorDetail, bookSession, sessionID }) {
               </div>
               <br />
               <span className="flex">
-                <AiFillInfoCircle /> Currently payment gateway is on hold so we
-                have to do like this
+                <AiFillInfoCircle /> Currently, the payment gateway is on hold!
+                You will get a QR code and upload the pic/pdf of the
+                transaction. An automatic verification model will book your
+                session.
               </span>
             </div>
           </div>
-        ) : null}
-        {qrPopup ? (
+        )}
+        {qrPopup && (
           <div className="modal-overlay">
             <div className="modal-content">
               <div className="modal-close" onClick={() => setQrPopup(false)}>
@@ -328,15 +273,12 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                 <div className="fileUpload">
                   <ButtonUI text="Upload proof" />
                   <input type="file" onChange={(e) => handleImageChange(e)} />
-
-                  {loading === true ? (
-                    <img src="/assets/img/gif/Spinner.gif" />
-                  ) : null}
+                  {loading && <img src="/assets/img/gif/Spinner.gif" />}
                 </div>
               </div>
             </div>
           </div>
-        ) : null}
+        )}
         <h1>Let's book a session</h1>
 
         <div className="session">
@@ -351,7 +293,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             <div className="bookSesssionInfo">
               <h2>{bookSession.name}</h2>
               <h4>
-                <b>Book Dession type:</b> <p>{bookSession.type}</p>
+                <b>Book Session type:</b> <p>{bookSession.type}</p>
               </h4>
               <p className="description">
                 <b>Book Session description:</b>{" "}
@@ -361,31 +303,17 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             <div className="bookSessionSchedules">
               <b>Pick Day:</b>
               <ul className="day">
-                {mentorDetail.schedules.length !== 0
-                  ? defaultSchedules.map((schedule, index) => (
-                      <li
-                        onClick={(e) => {
-                          setSelectedDay(schedule.day);
-                          dayChangeActive(e);
-                        }}
-                      >
-                        <span>{listDates[index]}</span>
-                        {schedule.day}
-                      </li>
-                    ))
-                  : // : mentorDetail.schedules.length !== 0
-                    // ? mentorDetail.schedules.map((schedule, index) => (
-                    //     <li
-                    //       onClick={(e) => {
-                    //         setSelectedDay(schedule.day);
-                    //         dayChangeActive(e);
-                    //       }}
-                    //     >
-                    //       <span>{listDates[index]}</span>
-                    //       {schedule.day}
-                    //     </li>
-                    //   ))
-                    null}
+                {mentorDetail.schedules.map((schedule, index) => (
+                  <li
+                    onClick={(e) => {
+                      setSelectedDay(schedule.day);
+                      dayChangeActive(e);
+                    }}
+                  >
+                    <span>{listDates[index]}</span>
+                    {schedule.day}
+                  </li>
+                ))}
               </ul>
               <b>Pick Time:</b>
               <ul className="time">
@@ -405,13 +333,12 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             </div>
             <div className="bookSesssionPriceAndOrder">
               <div className="price">
-                <b>Book Session Price:</b>
-                {bookSession.price}
+                <b>Book Session Price:</b> {bookSession.price}
               </div>
               <div className="button">
                 <ButtonUI
                   text="Book Session Now"
-                  onClick={() => bookSessionPaymentStep()}
+                  onClick={bookSessionPaymentStep}
                 />
               </div>
             </div>
@@ -428,31 +355,29 @@ export const getServerSideProps = async (context) => {
   const sessionID = context.query.sessionID;
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorUsername}`;
   const { data: res } = await axios.get(url);
-  if (res.message === "Invalid link") {
+
+  if (res.message === "Invalid link" || !res.mentorDetail) {
     return {
       redirect: {
         permanent: false,
         destination: "/",
       },
-      props: {
-        mentorDetail: null,
-      },
     };
   }
+
   const bookSession = res.mentorDetail.sessions.find(
     (obj) => obj._id === sessionID,
   );
-  if (bookSession === undefined) {
+
+  if (!bookSession) {
     return {
       redirect: {
         permanent: false,
         destination: "/",
       },
-      props: {
-        mentorDetail: null,
-      },
     };
   }
+
   return {
     props: {
       mentorDetail: res.mentorDetail,

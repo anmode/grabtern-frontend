@@ -11,66 +11,67 @@ const Header = dynamic(() => import("../../../components/layout/Header"));
 
 function Index({ mentorDetail, bookSession, sessionID }) {
   const router = useRouter();
-  const defaultSchedules = [
-    { day: "Saturday", startsAt: "09:00", endsAt: "21:00" },
-    // { day: "Monday", startsAt: "09:00", endsAt: "21:00" },
-  ];
   const [selectedDay, setSelectedDay] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
   const [listDates, setListDates] = useState([]);
+  const [availableDays, setAvailableDays] = useState([]);
+
   //User Info
   const user = JSON.parse(localStorage.getItem("userData"));
   const userName = user?.user_name;
   // const userID = user?.user_id;
 
-  function getDateByDayName() {
-    const targetDays =
-      mentorDetail.schedules.length !== 0
-        ? defaultSchedules.map((v) => v.day.toLowerCase())
-        : mentorDetail.schedules.length !== 0
-        ? mentorDetail.scheduleslistDays.map((v) => v.day.toLowerCase())
-        : [];
-    const daysOfWeek = [
-      "sunday",
-      "monday",
-      "tuesday",
-      "wednesday",
-      "thursday",
-      "friday",
-      "saturday",
-    ];
-    const currentDayIndex = new Date().getDay(); // 0 for Sunday, 1 for Monday, etc.
-    const currentDate = new Date();
-    const nextOccurrences = [];
+  // TODO: Move it o constants/date folder
+  const daysOfWeek = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ] 
 
-    if (!Array.isArray(targetDays) || targetDays.length === 0) {
-      return null; // Invalid input
-    }
+  // TODO: Move it to utils/date file 
+  const findAvailableDays = (schedules = []) => {
+    const availableDays = new Array(7).fill(false);
+    schedules.map(schedule => {
+      availableDays[daysOfWeek.indexOf(schedule.day)] = true;
+    })
 
-    // Calculate the number of occurrences based on the length of targetDays array
-    const numberOfOccurrences = targetDays.length;
-
-    while (nextOccurrences.length < numberOfOccurrences) {
-      currentDate.setDate(currentDate.getDate() + 1);
-      const dayIndex = currentDate.getDay();
-
-      if (targetDays.includes(daysOfWeek[dayIndex])) {
-        // Check if the current day is in the targetDays array
-        // If yes, add it to the nextOccurrences array
-        const options = { month: "short", day: "2-digit" };
-        nextOccurrences.push(currentDate.toLocaleDateString("en-US", options));
-
-        // Increment the date by 7 days to move to the next occurrence in the next week
-        currentDate.setDate(currentDate.getDate() + 6);
-      }
-    }
-
-    setListDates(nextOccurrences);
+    return availableDays;
   }
 
+  // TODO: Move it to utils/date file 
+  const getDateByDayName = (availableDays, fromDate = new Date(), noOfNextDays = 5) => {
+    const result = [];
+    if(availableDays.length === 0) return result;
+
+    const currentDate = fromDate;
+    for (let i = 0; result.length < noOfNextDays; i++) {
+      const currentDay = new Date(currentDate).getDay();
+
+      if(availableDays[currentDay]){
+        result.push(new Date(currentDate));
+      }
+      
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return result;
+  }
+
+    // calculating available dates from mentor schedule
+  useEffect(()=> {
+    const availableDays = findAvailableDays(mentorDetail.schedules);
+    setAvailableDays(availableDays);
+    const nextDates = getDateByDayName(availableDays);
+    setListDates(nextDates);
+  },[]);
+
+  // TODO: MOve this to utils/image file
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -90,9 +91,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     if (localStorage.getItem("paymentIssuePopup") === "0") {
       setPaymentIssuePopup(false);
     }
-    getDateByDayName();
   });
 
+  // TODO: MOve this to utils/image file
   const uploadToCloudinary = async (imageSrc) => {
     if (!imageSrc) {
       toast.error(
@@ -116,6 +117,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
   };
 
+  // TODO: MOve this to utils/image file
   const handleImageChange = async (e) => {
     setLoading(true);
     const file = e.target.files[0];
@@ -280,6 +282,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
   }
 
+  // TODO: MOve to utils.date file
   function formatTime(time) {
     const hours = time.getHours().toString().padStart(2, "0");
     const minutes = time.getMinutes().toString().padStart(2, "0");
@@ -351,7 +354,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             <div className="bookSesssionInfo">
               <h2>{bookSession.name}</h2>
               <h4>
-                <b>Book Dession type:</b> <p>{bookSession.type}</p>
+                <b>Book Session type:</b> <p>{bookSession.type}</p>
               </h4>
               <p className="description">
                 <b>Book Session description:</b>{" "}
@@ -362,30 +365,31 @@ function Index({ mentorDetail, bookSession, sessionID }) {
               <b>Pick Day:</b>
               <ul className="day">
                 {mentorDetail.schedules.length !== 0
-                  ? defaultSchedules.map((schedule, index) => (
+                  ? listDates.map((date, index) => (
                       <li
+                        key={index}
                         onClick={(e) => {
-                          setSelectedDay(schedule.day);
+                          setSelectedDay(date.toString());
                           dayChangeActive(e);
                         }}
                       >
-                        <span>{listDates[index]}</span>
-                        {schedule.day}
+                        {date.toDateString()}
                       </li>
-                    ))
-                  : // : mentorDetail.schedules.length !== 0
-                    // ? mentorDetail.schedules.map((schedule, index) => (
-                    //     <li
-                    //       onClick={(e) => {
-                    //         setSelectedDay(schedule.day);
-                    //         dayChangeActive(e);
-                    //       }}
-                    //     >
-                    //       <span>{listDates[index]}</span>
-                    //       {schedule.day}
-                    //     </li>
-                    //   ))
+                    )) : 
                     null}
+                  <div
+                    className="tw-text-base-400 tw-underline tw-cursor-pointer tw-text-xs hover:tw-scale-90"
+                    onClick={()=> {
+                      const lastDate = new Date(listDates[listDates.length-1])
+                      const fromDate = new Date(lastDate);
+                      fromDate.setDate(lastDate.getDate() + 1);
+                      const dates = getDateByDayName(availableDays, fromDate);
+                      const newListDates = [...listDates, ...dates];
+                      setListDates(newListDates);
+                    }}
+                  >
+                    Load More
+                  </div>
               </ul>
               <b>Pick Time:</b>
               <ul className="time">

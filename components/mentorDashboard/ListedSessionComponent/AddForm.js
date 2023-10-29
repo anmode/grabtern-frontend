@@ -17,10 +17,23 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
   // on submit funxtion for add form
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if any of the form fields are empty
+    if (
+      !data.type ||
+      !data.name ||
+      !data.description ||
+      !data.duration ||
+      !data.price
+    ) {
+      toast.error("Please fill in all the required fields.");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addListedSession`;
-      const response = await axios.put(url, data, { withCredentials: true });
+      const response = await axios.post(url, data, { withCredentials: true });
       if (!response.data.sessions) {
         // Handle null session here
         toast.error("Session creation failed. Please check your input.");

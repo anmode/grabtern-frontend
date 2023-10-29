@@ -30,7 +30,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setIsLoading] = useState(false);
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -364,9 +364,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   gridColumn: "1/3",
                 }}
               />
-              {isLoading ? (
-                <Loader width="30px" />
-              ) : (
+              {!loader ? (
                 <button
                   style={{
                     width: "fit-content",
@@ -381,6 +379,8 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 >
                   Save changes
                 </button>
+              ) : (
+                <Loader width="30px" />
               )}
             </form>
           </div>

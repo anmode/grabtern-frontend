@@ -12,6 +12,7 @@ import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import Loader from "../../components/UI/Loader";
 
 const ResetPassword = () => {
   // initial state
@@ -22,7 +23,7 @@ const ResetPassword = () => {
 
   // states
   const { entityType, resetToken } = router.query;
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const { newPassword, confirmPassword } = formData;
 
@@ -40,7 +41,7 @@ const ResetPassword = () => {
     }
 
     try {
-      setIsLoading(true);
+      setLoader(true);
       const data = {
         resetToken: resetToken,
         newPassword: newPassword,
@@ -50,7 +51,7 @@ const ResetPassword = () => {
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/resetPassword?entityType=${entityType}`,
         data,
       );
-      setIsLoading(false);
+      setLoader(false);
       toast.success(response.data.message);
       // redirect to login page after successful passwp=ord reset
       toast.info("Redirecting to login page");
@@ -58,7 +59,7 @@ const ResetPassword = () => {
         router.push(`/auth/login?entityType=${entityType}`);
       }, 5000);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
@@ -155,11 +156,7 @@ const ResetPassword = () => {
                 />
               )}
             </div>
-            {isLoading ? (
-              <div className="tw-relative tw-left-[200px]">
-                <EventLogin />
-              </div>
-            ) : (
+            {!loader ? (
               <div className="tw-flex tw-justify-center  tw-h-11">
                 <Button
                   className=" tw-w-[450px]"
@@ -167,6 +164,8 @@ const ResetPassword = () => {
                   text="Set Password"
                 />
               </div>
+            ) : (
+              <Loader width="25px" />
             )}
           </div>
 

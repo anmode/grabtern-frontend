@@ -9,11 +9,12 @@ import ButtonUI from "../../components/UI/Button/Button";
 import Image from "next/image";
 import ForgotLogo from "../../public/Grabtern2.jpg";
 import Logo from "../../public/logo.png";
+import Loader from "../../components/UI/Loader";
 
 function ForgotPassword() {
   const router = useRouter();
   const { entity } = router.query; // 'entity' will contain the entity type ('user' or 'mentor')
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [email, setEmail] = useState("");
 
   const handleChange = (e) => {
@@ -23,14 +24,14 @@ function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email) {
-      setIsLoading(true);
+      setLoader(true);
 
       try {
         const url = new URL(window.location.href);
         const entityTypeFromUrl = url.searchParams.get("entityType");
         const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgotPassword?entityType=${entityTypeFromUrl}`;
         const { data } = await axios.post(backendUrl, { email: email });
-        setIsLoading(false);
+        setLoader(false);
         toast.success(
           "Please check your email for instructions to reset your password.",
         );
@@ -38,6 +39,7 @@ function ForgotPassword() {
           router.push("/");
         }, 5000);
       } catch (error) {
+        setLoader(false);
         if (
           error.response &&
           error.response.status >= 400 &&
@@ -45,7 +47,6 @@ function ForgotPassword() {
         ) {
           toast.error(error.response.data.message);
         }
-        setIsLoading(false);
       }
     }
   };
@@ -94,25 +95,18 @@ function ForgotPassword() {
               className="form-input tw-pt-8 tw-pb-8"
               // style={{ display: "flex", justifyContent: "center", width:"100%" }}
             >
-              <ButtonUI
-                text="Reset Password"
-                onClick={handleSubmit}
-                className={`tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2 ${
-                  email ? "!tw-cursor-pointer" : "!tw-cursor-not-allowed"
-                }`}
-              />
+              {!loader ? (
+                <ButtonUI
+                  text="Reset Password"
+                  onClick={handleSubmit}
+                  className={`tw-w-full tw-font-bold tw-rounded-md tw-px-3 tw-py-2 ${
+                    email ? "!tw-cursor-pointer" : "!tw-cursor-not-allowed"
+                  }`}
+                />
+              ) : (
+                <Loader width="25px" />
+              )}
             </div>
-            {isLoading && (
-              <img
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  border: "none",
-                }}
-                src="/assets/img/gif/Spinner.gif"
-                alt="loading..."
-              />
-            )}
           </div>
           <ToastContainer />
           <hr />

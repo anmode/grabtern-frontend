@@ -348,12 +348,21 @@ const Home = ({
             })}
           </div>
           <div className="tw-w-fit tw-mx-auto tw-my-8 tw-mb-20">
-            <button
-              onClick={() => setIsSidebarOpen(true)}
-              className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
-            >
-              View More
-            </button>
+            {!isSidebarOpen ? (
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+              >
+                View More
+              </button>
+            ) : (
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+              >
+                View Less
+              </button>
+            )}
           </div>
         </main>
       </section>

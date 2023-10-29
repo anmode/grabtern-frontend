@@ -18,6 +18,7 @@ function Sessions({ setLoadingState, setErrorState }) {
       setErrorState({ status: false });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
+
       setSessions(response.data);
       setLoadingState({ status: false });
     } catch (error) {
@@ -83,7 +84,7 @@ function Sessions({ setLoadingState, setErrorState }) {
               ))}
             </div>
           ) : (
-            <div className="tw-flex tw-justify-center tw-items-center tw-flex-wrap tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
+            <div className="tw-flex tw-justify-center tw-items-center tw-flex-wrap tw-pt-20 tw-pl-[200px] max-[990px]:tw-pl-[150px] max-[715px]:tw-pl-[100px] max-[512px]:tw-p-0 max-[512px]:tw-m-0">
               <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
                 <div className="tw-p-4 tw-bg-white  max-[512px]:tw-flex max-[512px]:tw-flex-col max-[512px]:tw-justify-start max-[512px]:tw-items-center tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
                   <h2 className="tw-text-center tw-font-medium tw-text-3xl tw-mt-5 tw-text-[#845ec2] max-[512px]:tw-items-center tw-flex">

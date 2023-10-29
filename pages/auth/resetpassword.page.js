@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import router from "next/router";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt.js";
 import Head from "next/head.js";
 import styles from "../../styles/form.module.css";
 import Button from "../../components/UI/Button/Button";
@@ -47,11 +46,10 @@ const ResetPassword = () => {
         newPassword: newPassword,
         confirmPassword: confirmPassword,
       };
+      console.log(data);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/resetPassword?entityType=${entityType}`,
-        {
-          token: encryptData(data),
-        },
+        data,
       );
       setIsLoading(false);
       toast.success(response.data.message);

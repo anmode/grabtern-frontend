@@ -14,13 +14,26 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(initialData);
 
-  // on submit funxtion for add form
+  // on submit function for the add form
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if any of the form fields are empty
+    if (
+      !data.type ||
+      !data.name ||
+      !data.description ||
+      !data.duration ||
+      !data.price
+    ) {
+      toast.error("Please fill in all the required fields.");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addListedSession`;
-      const response = await axios.put(url, data, { withCredentials: true });
+      const response = await axios.post(url, data, { withCredentials: true });
       if (!response.data.sessions) {
         // Handle null session here
         toast.error("Session creation failed. Please check your input.");
@@ -86,6 +99,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                       border: "2px solid rgb(220, 220, 220)",
                       paddingLeft: "35px",
                     }}
+                    required
                     className="mentorFormInput"
                     value={data.name}
                     placeholder="Enter Title (e.g., Resume Review)"
@@ -105,6 +119,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                       border: "2px solid rgb(220, 220, 220)",
                       paddingLeft: "35px",
                     }}
+                    required
                     value={data.price}
                     placeholder="Price in rupee (eg: 30)"
                     onChange={handleInputChange}
@@ -130,6 +145,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                       border: "2px solid rgb(220, 220, 220)",
                       paddingLeft: "35px",
                     }}
+                    required
                     value={data.type}
                     onChange={handleInputChange}
                   >
@@ -154,6 +170,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                       border: "2px solid rgb(220, 220, 220)",
                       paddingLeft: "35px",
                     }}
+                    required
                     value={data.duration}
                     placeholder="Enter Time in min ( eg: 50 )"
                     onChange={handleInputChange}
@@ -173,6 +190,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                     borderRadius: "5px",
                     border: "2px solid rgb(220, 220, 220)",
                   }}
+                  required
                   className="mentorFormInput"
                   value={data.description}
                   placeholder={data.description}

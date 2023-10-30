@@ -83,7 +83,7 @@ const SupportChat = () => {
     <>
       <div
         ref={refChat}
-        className="sm:tw-mr-8 tw-flex tw-z-[1000] tw-text-center tw-fixed tw-bottom-0 tw-right-0 sm:tw-mb-32 tw-cursor-pointer"
+        className="tw-flex tw-z-[1000] tw-text-center tw-fixed tw-bottom-32 md:tw-bottom-8 tw-right-8 tw-cursor-pointer"
       >
         {isOpen ? (
           <>
@@ -454,27 +454,7 @@ const SupportChat = () => {
         ) : (
           <>
             {/* For desktop devices */}
-            <button
-              onClick={() => setIsOpen(true)}
-              className="tw-hidden sm:tw-flex"
-            >
-              <Image
-                className={`tw-rounded-full tw-bg-[#845ec2] hover:tw-bg-[#845ec0] tw-p-2 tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${
-                  isOpen ? "tw-opacity-100" : "tw-opacity-80"
-                }`}
-                title="support"
-                src={support}
-                alt="support"
-                width={50}
-                height={50}
-              />
-            </button>
-
-            {/* For mobile devices */}
-            <button
-              onClick={() => setIsOpen(true)}
-              className="tw-flex sm:tw-hidden tw-mb-44 tw-mr-8"
-            >
+            <button onClick={() => setIsOpen(true)}>
               <Image
                 className={`tw-rounded-full tw-bg-[#845ec2] hover:tw-bg-[#845ec0] tw-p-2 tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${
                   isOpen ? "tw-opacity-100" : "tw-opacity-80"

@@ -219,23 +219,28 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   };
 
   function splitTimeRange() {
-    if (selectedDay.length < 1) return [];
+    if (!selectedDay) return [];
   
-    const selectedSchedule = mentorDetail.schedules.find(
-      (schedule) => schedule.day === selectedDay
+    const selectedSchedule = mentorDetail.schedules.filter(
+      (schedule) => schedule.day === daysOfWeek[new Date(selectedDay).getDay()]
     );
   
-    if (!selectedSchedule) return [];
+    if (selectedSchedule.length === 0) return [];
   
     const result = [];
-    const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
-    const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
-    result.push(formatTime(startTime));
-  
-    while (startTime < endTime) {
-      startTime.setMinutes(startTime.getMinutes() + 30);
+
+    selectedSchedule.forEach((schedule) => {
+      const startTime = new Date(`2000-01-01 ${schedule.startsAt}`);
+      const endTime = new Date(`2000-01-01 ${schedule.endsAt}`);
       result.push(formatTime(startTime));
-    }
+    
+      while (startTime < endTime) {
+        startTime.setMinutes(startTime.getMinutes() + 30);
+        result.push(formatTime(startTime));
+      }
+    })
+    
+    return result;
   }
 
   // TODO: MOve to utils.date file
@@ -353,6 +358,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   ? "Please select day"
                   : splitTimeRange().map((time) => (
                       <li
+                        key={time}
                         onClick={(e) => {
                           timeChangeActive(e);
                           setSelectedTime(time);

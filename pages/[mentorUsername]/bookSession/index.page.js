@@ -328,7 +328,8 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                           dayChangeActive(e);
                         }}
                       >
-                        {date.toDateString()}
+                        <span>{date.toLocaleDateString("en-US", {month: "short", day: "2-digit"})}</span>
+                        {daysOfWeek[date.getDay()]}
                       </li>
                     )) : 
                     null}

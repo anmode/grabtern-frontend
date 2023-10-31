@@ -22,7 +22,9 @@ function Banner({ isMentorLoggedIn }) {
                 </p>
                 <div className="tw-w-full tw-flex tw-items-center tw-justify-center lg:tw-justify-start tw-gap-2">
                   {loader == 1 ? (
-                    <Loader width="25px" />
+                    <div className="tw-ml-16">
+                      <Loader width="25px" />
+                    </div>
                   ) : (
                     <div onClick={() => setLoader(1)}>
                       <ButtonLink

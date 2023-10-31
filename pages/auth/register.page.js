@@ -266,7 +266,7 @@ function Register() {
           <div>
             <ToastContainer />
             <div>
-              {loader ? (
+              {!loader ? (
                 <div className="tw-flex tw-justify-center tw-h-11">
                   <Button
                     className="tw-w-[400px]"

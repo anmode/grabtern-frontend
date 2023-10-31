@@ -288,7 +288,7 @@ export default function MentorForm() {
             )}
             {/* prev next and submit buttons start */}
             <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
-              {formStep == 4 && !loader ? (
+              {!loader ? (
                 <button
                   type="submit"
                   aria-label="Register"

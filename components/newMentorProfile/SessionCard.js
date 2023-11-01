@@ -4,11 +4,13 @@ import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
 import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
 export default function SessionCard({
+  sessionID,
   type,
   name,
   description,
   duration,
   price,
+  handleDeleteBookSession,
   handleBookSession,
   text,
   path,
@@ -53,11 +55,20 @@ export default function SessionCard({
           </div>
         </div>
         {/* book session btn */}
-        <Button
-          className="tw-mt-1"
-          text={text ? text : "Book Session"}
-          onClick={handleClick}
-        />
+        <div className="tw-flex tw-items-center tw-gap-4">
+          {" "}
+          <Button
+            className="tw-mt-1"
+            text={text ? text : "Book Session"}
+            onClick={handleClick}
+          />
+          <Button
+            className="tw-mt-1"
+            variant="danger"
+            text="Delete"
+            onClick={() => handleDeleteBookSession(sessionID)}
+          />
+        </div>
       </div>
     </IconCard>
   );

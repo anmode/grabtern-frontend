@@ -13,3 +13,6 @@
 .btnSecondary {
   @apply tw-bg-base-300 tw-text-base-400;
 }
+.btnDanger {
+  @apply tw-bg-red-500 tw-text-white;
+}

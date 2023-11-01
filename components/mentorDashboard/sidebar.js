@@ -362,6 +362,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
+                  onClick={() => setIsMobileSidebarOpen(false)}
                   className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
@@ -429,6 +430,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   >
                     <Link
                       href={`/dashboard/mentor?tab=${val.path}`}
+                      onClick={() => setIsMobileSidebarOpen(false)}
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
@@ -453,6 +455,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   >
                     <Link
                       href={`/dashboard/mentor?tab=${val.path}`}
+                      onClick={() => setIsMobileSidebarOpen(false)}
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"

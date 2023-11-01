@@ -18,8 +18,30 @@ function Sessions({ setLoadingState, setErrorState }) {
       setErrorState({ status: false });
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/getListedSessions`;
       const response = await axios.get(url, { withCredentials: true });
-
       setSessions(response.data);
+      setLoadingState({ status: false });
+    } catch (error) {
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
+    }
+  };
+
+  const deleteSession = async function (sessionID) {
+    try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/deleteListedSession/${sessionID}`;
+      const response = await axios.delete(url, { withCredentials: true });
+
+      fetchData();
       setLoadingState({ status: false });
     } catch (error) {
       setLoadingState({ status: false });
@@ -70,6 +92,7 @@ function Sessions({ setLoadingState, setErrorState }) {
             <div className="tw-flex tw-gap-6 tw-flex-wrap">
               {sessions.map((card, index) => (
                 <SessionCard
+                  sessionID={card._id}
                   key={index}
                   type={card.type}
                   name={card.name}
@@ -77,6 +100,7 @@ function Sessions({ setLoadingState, setErrorState }) {
                   duration={card.duration}
                   price={card.price}
                   text="Edit Session"
+                  handleDeleteBookSession={deleteSession}
                   handleBookSession={() => {
                     setEditSessionID(card._id);
                   }}

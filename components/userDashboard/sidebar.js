@@ -246,6 +246,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               >
                 <Link
                   href={`/dashboard/user?tab=${val.path}`}
+                  onClick={() => setIsMobileSidebarOpen(false)}
                   className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
@@ -302,10 +303,16 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             </div>
             <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
               <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
-                <Link href="/mentorList">
-                  <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
+                <Link
+                  href="/dashboard/user?tab=bookings"
+                  className="tw-cursor-pointer tw-flex tw-items-center tw-gap-2"
+                  onClick={() => setIsMobileSidebarOpen(false)}
+                >
+                  <RxRocket className="tw-text-xl tw-text-black" />
+                  <span className="tw-font-semibold tw-text-black">
+                    Book a session
+                  </span>
                 </Link>
-                <span className="tw-font-semibold">Book a session</span>
               </div>
             </div>
             <div

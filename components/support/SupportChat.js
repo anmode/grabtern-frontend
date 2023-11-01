@@ -6,7 +6,6 @@ import { MdSend } from "react-icons/md";
 import { BiSolidImageAdd } from "react-icons/bi";
 import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
-import { date } from "yup";
 import Link from "next/link";
 
 const SupportChat = () => {

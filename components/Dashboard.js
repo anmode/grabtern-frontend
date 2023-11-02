@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { encryptData, decryptData } from "../hook/encryptDecrypt";
+import Loader from "../components/UI/Loader";
 
 function Dashboard({ mentorDetail }) {
   const [formData, setFormData] = useState(mentorDetail);
   const [msg, setMsg] = useState("");
   const [step, setStep] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [error, setError] = useState("");
   const [bookSession, setBookSession] = useState({
     sessionName: "",
@@ -119,6 +121,7 @@ function Dashboard({ mentorDetail }) {
       setFormData(formDataCopy);
       removeSessionId();
       // console.log(formData);
+      setLoader(true);
       const url = `${
         process.env.NEXT_PUBLIC_BACKEND_URL
       }/api/mentors/updateMentor/${
@@ -127,8 +130,10 @@ function Dashboard({ mentorDetail }) {
       const { data: res } = await axios.post(url, formData);
       alert(res);
       setModalOpen(false);
+      setLoader(false);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      console.error(error);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -433,18 +438,22 @@ function Dashboard({ mentorDetail }) {
                       {msg}
                     </div>
                   )}
-                  <button
-                    style={{
-                      width: "fit-content",
-                      padding: "15px 25px",
-                      backgroundColor: "black",
-                      cursor: "pointer",
-                    }}
-                    type="submit"
-                    className="mentorFormButotn"
-                  >
-                    Save changes
-                  </button>
+                  {!loader ? (
+                    <button
+                      style={{
+                        width: "fit-content",
+                        padding: "15px 25px",
+                        backgroundColor: "black",
+                        cursor: "pointer",
+                      }}
+                      type="submit"
+                      className="mentorFormButotn"
+                    >
+                      Save changes
+                    </button>
+                  ) : (
+                    <Loader width="25px" />
+                  )}
                 </>
               ) : (
                 <>

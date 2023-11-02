@@ -3,7 +3,7 @@ import { ButtonLink } from "../UI";
 import Loader from "../UI/Loader";
 
 function Banner({ isMentorLoggedIn }) {
-  const [isLoading, setIsLoading] = useState(0);
+  const [loader, setLoader] = useState(0);
   return (
     <div className="tw-min-h-screen tw-w-full tw-overflow-hidden">
       <div className="tw-min-h-screen tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-items-center tw-px-4">
@@ -21,10 +21,12 @@ function Banner({ isMentorLoggedIn }) {
                   intern.
                 </p>
                 <div className="tw-w-full tw-flex tw-items-center tw-justify-center lg:tw-justify-start tw-gap-2">
-                  {isLoading == 1 ? (
-                    <Loader width="25px" />
+                  {loader == 1 ? (
+                    <div className="tw-ml-16">
+                      <Loader width="25px" />
+                    </div>
                   ) : (
-                    <div onClick={() => setIsLoading(1)}>
+                    <div onClick={() => setLoader(1)}>
                       <ButtonLink
                         href="/mentorList"
                         text="Find Mentor"
@@ -32,10 +34,10 @@ function Banner({ isMentorLoggedIn }) {
                       />
                     </div>
                   )}
-                  {isLoading == 2 ? (
+                  {loader == 2 ? (
                     <Loader width="25px" />
                   ) : isMentorLoggedIn ? (
-                    <div onClick={() => setIsLoading(2)}>
+                    <div onClick={() => setLoader(2)}>
                       <ButtonLink
                         href="/dashboard/mentor"
                         text="Dashboard"
@@ -44,7 +46,7 @@ function Banner({ isMentorLoggedIn }) {
                       />
                     </div>
                   ) : (
-                    <div onClick={() => setIsLoading(2)}>
+                    <div onClick={() => setLoader(2)}>
                       <ButtonLink
                         href="/mentorRegister"
                         text="Be a Mentor"

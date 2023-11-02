@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function Loader({ width }) {
+function Loader({ width = "25px" }) {
   return (
     //place the image of the div
-    <div className={`tw-flex tw-items-center tw-justify-center`}>
+    <div className={`tw-flex tw-justify-center tw-items-center`}>
       <img width={width} src="/spinner.gif" alt="loading..." />
     </div>
   );

@@ -23,7 +23,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     linkedin: "",
   };
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   // for validator
   const validator = useRef(new SimpleReactValidator());
@@ -53,18 +53,18 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   // handleSubmit
   const handleSubmit = async () => {
     try {
-      setIsLoading(true);
+      setLoader(true);
       console.log(formData);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegisterWithMagicUrl`;
       const res = await axios.post(url, formData);
-      setIsLoading(false);
+      setLoader(false);
       toast.success(res.data.message);
       setFormData(initialState);
       setTimeout(() => {
         router.push("/");
       }, 2000);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -200,7 +200,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
             "!tw-px-10 !tw-py-5",
           )}
           onSubmit={onSubmit}
-          disabled={isLoading}
+          disabled={loader}
         >
           {/* inputs */}
           {inputs.map((input) => (
@@ -215,7 +215,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
               "tw-col-start-1 tw-col-span-2 tw-mt-2",
             )}
             onClick={onSubmit}
-            disabled={isLoading}
+            disabled={loader}
           >
             Register
           </button>

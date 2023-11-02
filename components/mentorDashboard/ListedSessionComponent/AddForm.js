@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Button } from "../../UI";
+import Loader from "../../UI/Loader";
 
 const AddSessionComponent = ({ setSessions, setAddSession }) => {
   const initialData = {
@@ -11,7 +12,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
     duration: "",
     price: "",
   };
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [data, setData] = useState(initialData);
 
   // on submit funxtion for add form
@@ -31,7 +32,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
     }
 
     try {
-      setIsLoading(true);
+      setLoader(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addListedSession`;
       const response = await axios.post(url, data, { withCredentials: true });
       if (!response.data.sessions) {
@@ -42,9 +43,9 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
         setAddSession(false);
         toast.success("New Session added successfully.");
       }
-      setIsLoading(false);
+      setLoader(false);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -66,7 +67,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
     }));
   };
 
-  useEffect(() => {}, [isLoading]);
+  useEffect(() => {}, [loader]);
 
   return (
     <>
@@ -211,12 +212,15 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                 }}
               />
 
-              <Button
-                text="Add Session"
-                type="submit"
-                onClick={handleSubmit}
-                loading={isLoading}
-              />
+              {!loader ? (
+                <Button
+                  text="Add Session"
+                  type="submit"
+                  onClick={handleSubmit}
+                />
+              ) : (
+                <Loader />
+              )}
             </form>
           </div>
         </div>

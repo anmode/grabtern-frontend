@@ -1,5 +1,5 @@
 .main {
-  background-color: #f1f5f9;
+  background-color: var(--base-200);
 }
 #both {
   display: flex;
@@ -14,11 +14,11 @@
   height: 480px;
   /* margin-right: 15px; */
   padding: 30px 30px 30px 30px;
-  background-color: white;
+  background-color: var(--base-100);
   /* width: 650px; */
   font: sans-serif;
   border-radius: 5px;
-  border: 2px solid whitesmoke;
+  border: 2px solid var(--base-300);
 }
 .flexx {
   display: flex;
@@ -28,9 +28,6 @@
 }
 .fgroup {
   margin: 3px;
-  box-shadow:
-    rgb(230, 221, 233) 1px 1px 5px 0px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 /* .csection {
   padding: 10px 50px 50px 62px;
@@ -100,7 +97,7 @@
   /* margin-right: 15px; */
   max-width: fit-content;
   /* margin-left: 200px; */
-  color: whitesmoke;
+  color: var(--base-300);
   border-radius: 5px;
   background: #845ec2;
   /* background-color: rgb(192, 84, 255); */
@@ -154,7 +151,7 @@
 }
 
 .boxedbtn:hover span {
-  color: whitesmoke !important;
+  color: var(--base-300) !important;
 }
 
 /* Media Queries */
@@ -299,12 +296,12 @@
   }
 
   .contactinfo {
-    color: whitesmoke;
+    color: var(--base-300);
     padding: 10px;
   }
 
   .contactinfo__icon {
-    color: whitesmoke;
+    color: var(--base-300);
     padding-right: 10px;
   }
 }

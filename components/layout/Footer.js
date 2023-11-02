@@ -91,7 +91,7 @@ function Footer() {
           />
         </div>
       </div>
-      <hr />
+      <hr className="tw-border-base-300" />
       {/* subscribe and socials */}
       <div className="tw-w-full tw-max-w-7xl tw-mx-auto tw-px-4">
         <div className="tw-py-8 tw-flex tw-items-center tw-flex-col md:tw-flex-row md:tw-justify-between">

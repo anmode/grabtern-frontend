@@ -1,24 +1,27 @@
 import React from "react";
-import { ProfileCard, IconLink, ButtonLink } from "./UI";
-import { RiLinkedinLine, RiTwitterLine } from "react-icons/ri";
 
 const blogCard = ({ blog, link }) => {
   return (
-    <ProfileCard
-      image={blog.image}
-      heading={blog.name}
-      subheading={blog.createdAt}
-      body={blog.description}
-      intent="bg"
-      size="lg"
-      direction="col"
-      rounded="lg"
-      align="center"
-    >
-      <div className="tw-px-2 tw-w-full tw-flex tw-justify-between tw-items-center">
-        <ButtonLink text="See blog detail" href={link} size="sm" />
+    <div className="tw-rounded-lg tw-shadow-lg tw-bg-white">
+      <img
+        src={blog.image}
+        alt="Blog Image"
+        className="tw-rounded-t-lg tw-w-full"
+      />
+      <div className="tw-p-4 tw-flex tw-flex-col tw-gap-4">
+        <h2 className="tw-text-2xl tw-font-semibold">{blog.name}</h2>
+        <p className="tw-text-gray-600 tw-text-sm">
+          Published on {blog.createdAt}
+        </p>
+        <p className="tw-text-gray-700 tw-text-base">{blog.description}</p>
+        <a
+          href={`/blogDetail/${blog.blogDetailId}`}
+          className="tw-bg-sky-500 tw-text-white tw-py-3 tw-px-6 tw-rounded-xl tw-w-fit"
+        >
+          Read More
+        </a>
       </div>
-    </ProfileCard>
+    </div>
   );
 };
 export default blogCard;

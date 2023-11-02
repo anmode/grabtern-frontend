@@ -9,6 +9,12 @@ const withPWA = require("next-pwa")({
 module.exports = withPWA({
   reactStrictMode: true,
   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
     domains: ["res.cloudinary.com", "lh3.googleusercontent.com"],
   },
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],

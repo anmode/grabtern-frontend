@@ -15,6 +15,7 @@ const Footer = dynamic(() => import("../../components/layout/Footer"));
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
 import { useAuth } from "../../context/AuthContext";
+import Loader from "../../components/UI/Loader";
 
 function login() {
   const router = useRouter();
@@ -28,7 +29,7 @@ function login() {
   const [error, setError] = useState("");
   const [entityType, setEntityType] = useState("user");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
@@ -82,7 +83,7 @@ function login() {
     ) {
       toast.error(error.response.data.message);
     }
-    setIsLoading(false);
+    setLoader(false);
   };
 
   useEffect(() => {
@@ -132,12 +133,12 @@ function login() {
     e.preventDefault();
     setError("");
     try {
-      setIsLoading(true);
+      setLoader(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
       const { data: res } = await axios.post(url, formData, {
         withCredentials: true,
       });
-      setIsLoading(false);
+      setLoader(false);
 
       if (entityType === "user") {
         setIsUserLoggedIn(true);
@@ -147,6 +148,7 @@ function login() {
         localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
       }
     } catch (error) {
+      setLoader(false);
       handleErrorResponse(error);
     }
   };
@@ -226,11 +228,7 @@ function login() {
             <div>
               <ToastContainer />
               <div>
-                {isLoading ? (
-                  <div className="tw-relative tw-left-[160px]">
-                    <EventLogin />
-                  </div>
-                ) : (
+                {!loader ? (
                   <div className="tw-flex tw-justify-center  tw-h-11">
                     <Button
                       className=" tw-w-[400px]"
@@ -238,6 +236,8 @@ function login() {
                       text="Login"
                     />
                   </div>
+                ) : (
+                  <Loader width="25px" />
                 )}
               </div>
             </div>

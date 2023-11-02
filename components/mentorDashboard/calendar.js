@@ -4,7 +4,7 @@ import axios from "axios";
 import { BsTrash3Fill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Loader from "../loader";
+import Loader from "../UI/Loader";
 
 const Calender = ({ setLoadingState, setErrorState }) => {
   const [showDefault, setShowDefault] = useState(false);
@@ -14,7 +14,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
   const [meetLink, setMeetLink] = useState("");
   const [checkedDays, setCheckedDays] = useState([]);
   const [key, setKey] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const weekdays = [
     "monday",
@@ -139,7 +139,7 @@ const Calender = ({ setLoadingState, setErrorState }) => {
   };
 
   const updateSchedules = async () => {
-    setIsLoading(true);
+    setLoader(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateSchedules`;
       console.log(listSchedules);
@@ -158,9 +158,9 @@ const Calender = ({ setLoadingState, setErrorState }) => {
       } else {
         toast.error("Sorry! Couldn't update");
       }
-      setIsLoading(false);
+      setLoader(false);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       toast.error("An error occurred while updating schedules.");
     }
   };
@@ -369,15 +369,15 @@ const Calender = ({ setLoadingState, setErrorState }) => {
                 <div className="tw-flex tw-justify-between tw-gap-4 tw-w-full">
                   <h2 className="tw-font-semibold tw-text-lg">Default</h2>
                   <div className="tw-flex tw-gap-4">
-                    {isLoading ? (
-                      <Loader />
-                    ) : (
+                    {!loader ? (
                       <button
                         className=" tw-bg-black tw-ease-in-out tw-duration-200 tw-transition-all tw-text-center tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-gray-700 tw-font-semibold tw-text-base"
                         onClick={() => updateSchedules()}
                       >
                         Save
                       </button>
+                    ) : (
+                      <Loader />
                     )}
                     <button
                       onClick={() => setShowDefault(false)}

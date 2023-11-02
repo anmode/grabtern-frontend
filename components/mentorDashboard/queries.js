@@ -5,8 +5,10 @@ import { CiShoppingTag } from "react-icons/ci";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import Loader from "../UI/Loader";
 
 const Queries = ({ setLoadingState, setErrorState }) => {
+  const [loader, setLoader] = useState(false);
   const [pendingQueries, setPendingQueries] = useState([]);
   const [answeredQueries, setAnsweredQueries] = useState([]);
   //   const [currentAnswer, setCurrentAnswer] = useState("");
@@ -66,6 +68,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
       // console.log(description);
       const ticketId = generateRandomId();
       // Create a new ticket with the generated ticket ID
+      setLoader(true);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/create`,
         {
@@ -88,7 +91,9 @@ const Queries = ({ setLoadingState, setErrorState }) => {
         toast.error("Error creating ticket");
         console.log("Error creating ticket");
       }
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       toast.error("Error creating ticket");
       console.error("Error creating ticket:", error);
     }
@@ -98,6 +103,7 @@ const Queries = ({ setLoadingState, setErrorState }) => {
   const handleUpdateQuery = async (queryId) => {
     try {
       console.log(queryId);
+      setLoader(true);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/query/update`,
         { id: queryId },
@@ -114,7 +120,9 @@ const Queries = ({ setLoadingState, setErrorState }) => {
         toast.error("Error updating query");
         // Handle error
       }
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       toast.error("Error updating query");
       console.error("Error updating query:", error);
       // Handle error
@@ -175,12 +183,15 @@ const Queries = ({ setLoadingState, setErrorState }) => {
           Generated Tickets
         </p>
 
-        {isTicketFormVisible && (
-          <TicketForm
-            setIsTicketFormVisible={setIsTicketFormVisible}
-            onSubmit={handleTicketFormSubmit}
-          />
-        )}
+        {isTicketFormVisible &&
+          (!loader ? (
+            <TicketForm
+              setIsTicketFormVisible={setIsTicketFormVisible}
+              onSubmit={handleTicketFormSubmit}
+            />
+          ) : (
+            <Loader />
+          ))}
 
         {currentView === "Pending" && (
           <div className="tw-flex tw-flex-wrap tw-justify-center tw-items-center md:tw-justify-start md:tw-items-start">
@@ -201,13 +212,17 @@ const Queries = ({ setLoadingState, setErrorState }) => {
                     <p>
                       <strong>Status:</strong> {query.status}
                     </p>
-                    <button
-                      className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
-                      onClick={() => handleUpdateQuery(query.id)}
-                    >
-                      {/* Button to mark a query answered and send it to the answered queries section (yet to be implemented) */}
-                      Mark as answered
-                    </button>
+                    {!loader ? (
+                      <button
+                        className="tw-font-semibold tw-text-white tw-bg-primary-100 tw-p-2 tw-rounded-md hover:tw-bg-primary-200 tw-duration-200 tw-ease-in-out tw-transition-all"
+                        onClick={() => handleUpdateQuery(query.id)}
+                      >
+                        {/* Button to mark a query answered and send it to the answered queries section (yet to be implemented) */}
+                        Mark as answered
+                      </button>
+                    ) : (
+                      <Loader />
+                    )}
                   </div>
                 </div>
               ))

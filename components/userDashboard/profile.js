@@ -66,7 +66,7 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!formData.fullName || !formData.email) {
+    if (!formData.fullName || !formData.email) {
       toast.error("Please fill all the fields");
       return;
     }

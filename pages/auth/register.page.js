@@ -132,7 +132,12 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!data.fullName || !data.email || !data.password || !data.confirmPassword) {
+    if (
+      !data.fullName ||
+      !data.email ||
+      !data.password ||
+      !data.confirmPassword
+    ) {
       return toast.error("Please fill all the fields!");
     }
 

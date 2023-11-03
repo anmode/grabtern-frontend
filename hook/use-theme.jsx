@@ -25,7 +25,7 @@ const ThemeContext = createContext(initialState);
 export default function ThemeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(
     typeof window !== "undefined" &&
-      JSON.parse(localStorage.getItem("darkMode") || "true")
+      JSON.parse(localStorage.getItem("darkMode") || "false")
       ? true
       : false,
   );

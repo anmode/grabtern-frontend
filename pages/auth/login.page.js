@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/form.module.css";
@@ -132,6 +132,10 @@ function login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    if (!formData.email || !formData.password) {
+      setError("Please fill all the fields");
+      return;
+    }
     try {
       setLoader(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
@@ -231,7 +235,7 @@ function login() {
                 {!loader ? (
                   <div className="tw-flex tw-justify-center  tw-h-11">
                     <Button
-                      className=" tw-w-[400px]"
+                      className=" tw-w-[400px] tw-font-semibold"
                       onClick={handleSubmit}
                       text="Login"
                     />

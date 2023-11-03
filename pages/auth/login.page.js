@@ -134,6 +134,9 @@ function login() {
     setError("");
     if (!formData.email || !formData.password) {
       setError("Please fill all the fields");
+      setTimeout(() => {
+        setError("");
+      }, 5000);
       return;
     }
     try {

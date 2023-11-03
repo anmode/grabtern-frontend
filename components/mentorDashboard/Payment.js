@@ -51,6 +51,16 @@ const Payments = ({ setLoadingState, setErrorState }) => {
   // edit details function
   const editDetails = async (formData) => {
     setLoader(true);
+    if (
+      !formData.name ||
+      !formData.accountNo ||
+      !formData.ifscCode ||
+      !formData.nameOfBank
+    ) {
+      toast.error("Please fill all the details");
+      setLoader(false);
+      return;
+    }
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateAccountDetails/`;
     try {
       const response = await axios.put(
@@ -80,6 +90,16 @@ const Payments = ({ setLoadingState, setErrorState }) => {
   // add details function
   const addDetails = async (formData) => {
     setLoader(true);
+    if (
+      !formData.name ||
+      !formData.accountNo ||
+      !formData.ifscCode ||
+      !formData.nameOfBank
+    ) {
+      toast.error("Please fill all the details");
+      setLoader(false);
+      return;
+    }
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addAccountDetails/`;
     try {
       const response = await axios.post(

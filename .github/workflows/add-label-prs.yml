@@ -17,14 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Add 'gssoc23' Label to PRs
+      - name: Add 'GrabSwagKit' Label to PRs
         uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
             const prNumber = context.payload.pull_request.number;
-            const label = 'gssoc23';
+            const label = 'GrabSwagKit';
 
             const addLabelParams = {
                 owner: owner,
@@ -35,4 +35,4 @@ jobs:
 
             await github.issues.addLabels(addLabelParams);
 
-            console.log(`Added the 'gssoc23' label to PR #${prNumber}.`);
+            console.log(`Added the 'GrabSwagKit' label to PR #${prNumber}.`);

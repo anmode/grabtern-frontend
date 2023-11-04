@@ -170,7 +170,10 @@ function Register() {
       <div className={styles.Registerform}>
         <form className="form-default" onSubmit={handleSubmit}>
           <div className={styles.heading}>
-            <img src="/Grabtern2.png" class="small-image"></img>
+            <img
+              src="/Grabtern2.png"
+              className="small-image dark:tw-invert"
+            ></img>
             <h2>Hey, hello 👋</h2>
           </div>
           {/* <p >
@@ -297,7 +300,9 @@ function Register() {
             </Link>
           </div>
           <div className={styles.google}>
-            <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
+            <h3 style={{ color: "var(--base-500)", alignSelf: "center" }}>
+              Or
+            </h3>
           </div>
           <div
             id="signUpDiv"

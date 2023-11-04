@@ -135,7 +135,7 @@ function PersonDetails({
 
       {/* bio section start */}
       <div style={{ gridColumn: "1/3" }} className="div">
-        <label className="label" htmlFor="description">
+        <label className="label tw-text-base-500" htmlFor="description">
           DESCRIPTION
         </label>
         {validator.current.message(
@@ -148,7 +148,7 @@ function PersonDetails({
           rows="7"
           name="description"
           id="description"
-          className="mentorFormInput"
+          className="mentorFormInput tw-text-base-500"
           onChange={(e) => handleChange(e)}
           placeholder="I've done my Bacherlor's from IIT Delhi. I have been working as SDE-I for past 1 years at microsoft..."
           required

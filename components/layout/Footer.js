@@ -50,7 +50,7 @@ function Footer() {
                   width={140}
                   height={90}
                   alt="Grabtern"
-                  className="tw-sm:mx-60 tw-md:mx-0 tw-bg-clip-content"
+                  className="tw-sm:mx-60 dark:tw-invert tw-md:mx-0 tw-bg-clip-content"
                 />
               </a>
             </div>

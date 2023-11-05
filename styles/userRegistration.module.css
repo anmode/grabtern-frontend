@@ -30,7 +30,7 @@
   top: 50%;
   width: 180px;
   height: 1px;
-  background-color: #000;
+  background-color: var(--base-500);
 }
 
 .google h3::before {
@@ -62,10 +62,10 @@
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   height: min-content;
-  background-color: white;
+  background-color: var(--base-100);
 }
 .Registerform h2 {
-  color: #000;
+  color: var(--base-500);
   font-size: 30px;
   margin: 0;
   text-align: center;
@@ -89,16 +89,17 @@
   width: 100%;
   font-size: 18px;
   border: none;
-  color: #9e9e9e;
+  background: none;
+  color: var(--base-400);
 }
 .Registerform .forminput input::placeholder {
-  color: #9e9e9e;
+  color: var(--base-400);
 }
 
 .linkdiv {
   display: flex;
   justify-content: center;
-  color: #000;
+  color: var(--base-500);
   margin-top: 20px;
   text-align: center;
 }
@@ -118,7 +119,7 @@
     top: 50%;
     width: 135px;
     height: 1px;
-    background-color: #000;
+    background-color: var(--base-500);
   }
   .google h3::before {
     left: -140px;

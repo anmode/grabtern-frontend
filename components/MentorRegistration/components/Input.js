@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useState } from "react";
 
 function Input({
@@ -20,7 +21,7 @@ function Input({
 
   return (
     <div className={`div ${divClassName}`}>
-      <label className="label uppercase" htmlFor={name}>
+      <label className="label uppercase tw-text-base-500" htmlFor={name}>
         {label}
       </label>
       {validator.current.message(name, value, validation)}
@@ -52,7 +53,7 @@ function Input({
                 handleChange(e);
               }}
               value={!isSelect && value != defaultValue ? "" : value}
-              className={className}
+              className={clsx("!tw-text-base-500", className)}
               {...rest}
             >
               {options.map((option, index) => (
@@ -66,7 +67,7 @@ function Input({
                 id={name}
                 type={type}
                 name={name}
-                className={className}
+                className={clsx("tw-text-base-500", className)}
                 onChange={(e) => handleChange(e)}
                 placeholder={placeholder}
                 value={value}
@@ -80,7 +81,7 @@ function Input({
           id={name}
           type={type}
           name={name}
-          className={className}
+          className={clsx("tw-text-base-500", className)}
           onChange={(e) => handleChange(e)}
           placeholder={placeholder}
           value={value}

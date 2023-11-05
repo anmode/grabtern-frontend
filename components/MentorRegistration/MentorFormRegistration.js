@@ -305,7 +305,7 @@ export default function MentorForm() {
                 <button
                   type="button"
                   aria-label="Back"
-                  className="mentorFormButton tw-bg-slate-400"
+                  className="mentorFormButton tw-bg-base-400"
                   onClick={prevStep}
                 >
                   Back

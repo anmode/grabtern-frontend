@@ -271,7 +271,9 @@ function login() {
               </Link>
             </div>
             <div className={styles.google}>
-              <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
+              <h3 style={{ color: "var(--base-500)", alignSelf: "center" }}>
+                Or
+              </h3>
             </div>
             <div
               id="googleSignInButton"

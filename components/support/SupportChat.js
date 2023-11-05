@@ -87,12 +87,12 @@ const SupportChat = () => {
       >
         {isOpen ? (
           <>
-            <div className="sm:tw-flex tw-w-[280px] tw-h-[380px] tw-hidden tw-flex-col tw-bg-cyan-200 tw-shadow-lg tw-rounded-md tw-outline-black tw-overflow-y-scroll tw-overflow-x-hidden tw-justify-between">
+            <div className="sm:tw-flex tw-w-[280px] tw-h-[380px] tw-hidden tw-flex-col tw-bg-cyan-200 dark:tw-bg-cyan-900 tw-shadow-lg tw-rounded-md tw-outline-black tw-overflow-y-scroll tw-overflow-x-hidden tw-justify-between">
               {/* header part */}
-              <div className="tw-flex tw-text-center tw-justify-between tw-w-full tw-items-center tw-top-0 tw-sticky tw-bg-cyan-200 tw-z-40">
+              <div className="tw-flex tw-text-center tw-justify-between tw-w-full tw-items-center tw-top-0 tw-sticky tw-bg-cyan-200 dark:tw-bg-cyan-900 tw-z-40">
                 <div className="tw-flex tw-items-center tw-justify-center">
                   <Image src={logo} alt="logo" width={55} height={55} />
-                  <h1 className="tw-text-md tw-font-bold tw-text-cyan-700">
+                  <h1 className="tw-text-md tw-font-bold tw-text-cyan-700 dark:tw-text-cyan-400">
                     Support
                   </h1>
                   <p className="tw-ml-2">
@@ -185,11 +185,11 @@ const SupportChat = () => {
                     </h1>
                     <Link
                       href={"/contact"}
-                      className="tw-font-semibold tw-no-underline hover:tw-text-indigo-400"
+                      className="tw-font-semibold tw-text-base-500 tw-no-underline hover:tw-text-indigo-400"
                     >
                       Contact Us
                     </Link>
-                    <p>OR</p>
+                    <p className="tw-text-base-400">OR</p>
                     <h2>
                       Please{" "}
                       <Link
@@ -206,7 +206,7 @@ const SupportChat = () => {
                 {/* form */}
                 <form
                   onSubmit={handleTextSubmit}
-                  className="tw-flex tw-flex-col tw-m-2 tw-sticky tw-bottom-0  tw-gap-2 tw-text-center tw-justify-between tw-w-full tw-items-start tw-top-0 tw-bg-cyan-200  tw-z-40"
+                  className="tw-flex tw-flex-col tw-m-2 tw-sticky tw-bottom-0  tw-gap-2 tw-text-center tw-justify-between tw-w-full tw-items-start tw-top-0 tw-bg-cyan-200 dark:tw-bg-cyan-900 tw-z-40"
                 >
                   {imagePreview && (
                     <div

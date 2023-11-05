@@ -9,9 +9,7 @@ import { useRouter } from "next/router";
 import ComingSoon from "../../components/basic/ComingSoon";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
 import { ToastContainer, toast } from "react-toastify";
-import Image from "next/image";
-import { useTour } from "@reactour/tour";
-import logo from "../../public/logo.png";
+import { UserDashboardTour } from "./dashboardTour";
 
 function userDashboard() {
   // loading and error state
@@ -60,77 +58,7 @@ function userDashboard() {
     fetchUser();
   }, []);
 
-  //guided tour
-
-  const { setSteps, setCurrentStep, setIsOpen } = useTour();
-
-  useEffect(() => {
-    setCurrentStep(0);
-    const tour = localStorage.getItem("tour");
-    if (tour) return;
-    setIsOpen(true);
-    setSteps([
-      {
-        selector: "#homepage",
-        content: (
-          <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <Image src={logo} width={60} height={60} />
-            </div>
-            <p className="tw-text-black">Welcome to the user dashboard</p>
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <span className="tw-font-bold tw-text-xl">GrabTern</span>
-            </div>
-          </div>
-        ),
-      },
-      {
-        selector: "#sidebar",
-        content:
-          "This is the sidebar. You can navigate to different pages here.",
-      },
-      {
-        selector: "#toggle",
-        content: "Click on the toggle button to open or close the sidebar.",
-      },
-      {
-        selector: "#profile",
-        content: "This is your profile. You can edit your profile here.",
-      },
-      {
-        selector: "#home",
-        content: "This is the home page. You are currently at this page.",
-      },
-      {
-        selector: "#bookings",
-        content: "This is the bookings page. You can view your bookings here.",
-      },
-      {
-        selector: "#notifications",
-        content:
-          "This is the notifications page. You can view your notifications here.",
-      },
-      {
-        selector: "#logout",
-        content: "Click here to logout.",
-      },
-      {
-        selector: "#homepage",
-        content: (
-          <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <Image src={logo} width={60} height={60} />
-            </div>
-            <p className="tw-text-black">Have a great time</p>
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <span className="tw-font-bold tw-text-xl">GrabTern</span>
-            </div>
-          </div>
-        ),
-      },
-    ]);
-    localStorage.setItem("tour", "false");
-  }, []);
+  UserDashboardTour();
 
   return (
     <>

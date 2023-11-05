@@ -57,18 +57,18 @@ function ForgotPassword() {
         <title>GrabTern | Forgot Password</title>
       </Head>
       {/* <Header navbarBackground={true} /> */}
-      <div className="tw-flex  tw-items-center tw-pt-2">
+      <div className="tw-flex tw-text-base-500 tw-items-center tw-pt-2">
         <Image className="" src={Logo} alt="icon" width={50} height={50} />
         <div className="tw-font-inter tw-font-bold tw-text-xl ">GrabTern</div>
       </div>
       <main className="tw-flex tw-justify-center tw-items-center">
         <form>
-          <div className="">
+          <div className="tw-text-base-500">
             <div className="tw-pb-5 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">
               Forgot your <br />
               password?
             </div>
-            <div className="tw-pb-5 tw-font-inter tw-font-medium tw-text-base">
+            <div className="tw-pb-5 tw-text-base-400 tw-font-inter tw-font-medium tw-text-base">
               To reset your password, please enter the email address of your
               <br />
               GrabTern account.
@@ -88,7 +88,7 @@ function ForgotPassword() {
                 placeholder="Email"
                 onChange={handleChange}
                 value={email}
-                className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
+                className="tw-rounded-md tw-bg-base-200 tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
             </div>
             <div

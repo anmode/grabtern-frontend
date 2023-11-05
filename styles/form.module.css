@@ -1,5 +1,5 @@
 .mainContainer {
-  background-color: white;
+  background-color: var(--base-100);
   display: flex;
   flex-direction: column;
 }
@@ -26,8 +26,8 @@
 .btnn {
   width: auto;
   height: 2.5rem;
-  color: black;
-  background-color: #f1f5f9;
+  color: var(--base-500);
+  background-color: var(--base-200);
   border: 0;
   padding: 0.5rem 1.5rem;
   outline: none;
@@ -45,7 +45,7 @@
 }
 .btnnActive {
   /* Styles for the activated button here */
-  color: white;
+  color: #fff;
   background-color: #845ec2;
 }
 .btnnContainer {
@@ -74,7 +74,9 @@
   top: 50%;
   width: 195px; /* Adjust the width of the lines as needed */
   height: 1px;
-  background-color: #000; /* You can change this color to your preference */
+  background-color: var(
+    --base-500
+  ); /* You can change this color to your preference */
 }
 
 .google h3::before {
@@ -102,15 +104,14 @@
   margin: 90px auto 20px;
   width: 480px;
   padding: 12px 45px 12px 45px;
-  color: whitesmoke;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   height: min-content;
-  background-color: white;
+  background-color: var(--base-100);
 }
 
 .loginform h2 {
-  color: #000;
+  color: var(--base-500);
   font-size: 30px;
   margin: 0;
   text-align: center;
@@ -124,7 +125,7 @@
 .loginform .forminput label {
   font-size: 18px;
   font-weight: 600;
-  color: #000;
+  color: var(--base-500);
 }
 .loginform .forminput input {
   outline: none;
@@ -136,10 +137,11 @@
   background: transparent;
   font-size: 18px;
   border: none;
-  color: gray;
+  color: var(--base-400);
 }
 .loginform .forminput input::placeholder {
-  color: gray;
+  color: var(--base-400);
+  opacity: 0.8;
 }
 .loginform .forminput input[type="submit"] {
   background: linear-gradient(
@@ -160,7 +162,6 @@
   transition: 0.4s;
 }
 .loginform .forminput input[type="submit"]:hover {
-  background: #000;
   background: #a35cff;
 }
 
@@ -173,7 +174,7 @@
   margin-top: 25px !important;
 }
 .loginform .forget:hover {
-  color: gray;
+  color: var(--base-400);
 }
 .loginform .registration {
   display: block;
@@ -188,17 +189,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000;
+  color: var(--base-500);
 }
 .loginform .registration:hover {
-  color: gray;
+  color: var(--base-400);
 }
 
 .eye {
   width: 10%;
   padding-left: 6px;
   padding-right: 4px;
-  color: #6b7280;
+  color: var(--base-400);
   margin-top: 0.2rem;
 }
 
@@ -210,7 +211,7 @@
 /* Hover state */
 .btnn:hover {
   background-color: #6b21a8;
-  color: white;
+  color: #fff;
 }
 
 @media (max-width: 575px) {
@@ -234,7 +235,9 @@
     top: 50%;
     width: 135px; /* Adjust the width of the lines as needed */
     height: 1px;
-    background-color: #000; /* You can change this color to your preference */
+    background-color: var(
+      --base-500
+    ); /* You can change this color to your preference */
   }
   .google h3::before {
     left: -140px; /* Adjust the left position to place the line on the left side */

@@ -157,19 +157,21 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     <div
       className={clsx(
         "tw-z-[2] tw-fixed -tw-bottom-0 tw-right-5",
-        "tw-max-w-[450px] tw-border",
-        "tw-shadow-xl tw-bg-[white] tw-rounded-xl",
+        "tw-max-w-[450px] tw-border tw-border-base-300 tw-text-base-500",
+        "tw-shadow-xl tw-bg-base-100 tw-rounded-xl",
       )}
     >
       {/* header */}
       <div
         className={clsx(
           "tw-flex tw-justify-between tw-items-center ",
-          "tw-px-10 tw-py-5 tw-border-bottom",
+          "tw-px-10 tw-py-5 tw-border-bottom tw-border-base-300",
           "tw-border-b-2",
         )}
       >
-        <p className="tw-text-lg tw-font-medium">Register Using Magic Url</p>
+        <p className="tw-text-lg tw-font-medium tw-text-base-500">
+          Register Using Magic Url
+        </p>
         <div onClick={toggleMagicUrlPopup} className="tw-cursor-pointer">
           {isOpen ? (
             <MdKeyboardArrowDown className="tw-text-2xl" />

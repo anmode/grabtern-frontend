@@ -5,6 +5,7 @@ import Head from "next/head";
 import { AuthProvider } from "../context/AuthContext";
 import ScrollButton from "../components/basic/MoveToTop";
 import SupportChat from "../components/support/SupportChat";
+import ThemeProvider from "../hook/use-theme";
 
 function addProductJsonLd() {
   return {
@@ -166,9 +167,11 @@ function MyApp({ Component, pageProps }) {
 
       <BreakpointProvider>
         <AuthProvider>
-          <SupportChat />
-          <ScrollButton />
-          <Component {...pageProps} />
+          <ThemeProvider>
+            <SupportChat />
+            <ScrollButton />
+            <Component {...pageProps} />
+          </ThemeProvider>
         </AuthProvider>
       </BreakpointProvider>
     </>

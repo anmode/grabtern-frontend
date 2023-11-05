@@ -209,7 +209,8 @@ function Contact() {
                                 padding: "10px",
                                 fontSize: "16px",
                                 borderRadius: "5px",
-                                border: "2px solid #e5e7eb",
+                                border: "2px solid var(--base-300)",
+                                color: "var(--base-400)",
                                 outline: "none",
                                 resize: "vertical",
                               }}
@@ -241,7 +242,8 @@ function Contact() {
                                 padding: "10px",
                                 fontSize: "16px",
                                 borderRadius: "5px",
-                                border: "2px solid #e5e7eb",
+                                border: "2px solid var(--base-300)",
+                                color: "var(--base-400)",
                                 outline: "none",
                               }}
                               aria-required="true"
@@ -272,7 +274,8 @@ function Contact() {
                                 padding: "10px",
                                 fontSize: "16px",
                                 borderRadius: "5px",
-                                border: "2px solid #e5e7eb",
+                                border: "2px solid var(--base-300)",
+                                color: "var(--base-400)",
                                 outline: "none",
                               }}
                               aria-required="true"
@@ -303,7 +306,8 @@ function Contact() {
                                 padding: "10px",
                                 fontSize: "16px",
                                 borderRadius: "5px",
-                                border: "2px solid #e5e7eb",
+                                border: "2px solid var(--base-300)",
+                                color: "var(--base-400)",
                                 outline: "none",
                               }}
                               aria-required="true"

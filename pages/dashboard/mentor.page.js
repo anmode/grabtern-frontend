@@ -163,6 +163,8 @@ function MentorDashboard() {
         ),
       },
     ]);
+
+    localStorage.setItem("mentorTour", true);
   }, []);
 
   if (!isMentorLoggedIn) {

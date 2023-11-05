@@ -132,6 +132,15 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (
+      !data.fullName ||
+      !data.email ||
+      !data.password ||
+      !data.confirmPassword
+    ) {
+      return toast.error("Please fill all the fields!");
+    }
+
     if (data.password !== data.confirmPassword) {
       return toast.error("Passwords do not match!");
     }
@@ -269,9 +278,9 @@ function Register() {
               {!loader ? (
                 <div className="tw-flex tw-justify-center tw-h-11">
                   <Button
-                    className="tw-w-[400px]"
+                    className="tw-w-[400px] tw-font-semibold"
                     onClick={handleSubmit}
-                    text="Registration"
+                    text="Register"
                   />
                 </div>
               ) : (

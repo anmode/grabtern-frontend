@@ -19,6 +19,9 @@ const ComingSoon = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email) {
+      return toast.error("Please enter your email");
+    }
     setLoader(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
@@ -26,15 +29,16 @@ const ComingSoon = () => {
       })
       .then((response) => {
         setSubscriptionSuccess(true);
-        setLoader(false);
       })
       .catch((error) => {
         console.log(error.response);
-        setLoader(false);
         setTimeout(() => {
           toast.error(error.response.data.error);
         }, 2000);
         window.location.reload();
+      })
+      .finally(() => {
+        setLoader(false);
       });
   };
 

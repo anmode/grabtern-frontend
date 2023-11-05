@@ -89,6 +89,18 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !formData.name ||
+      !formData.username ||
+      !formData.email ||
+      !formData.mobile ||
+      !formData.internAt ||
+      !formData.currentStatus ||
+      !formData.description
+    ) {
+      toast.error("Please fill all the fields");
+      return;
+    }
     setLoader(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;

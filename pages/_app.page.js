@@ -182,11 +182,11 @@ function MyApp({ Component, pageProps }) {
               }),
             }}
           >
-          <ThemeProvider>
-            <SupportChat />
-            <ScrollButton />
-            <Component {...pageProps} />
-          </ThemeProvider
+            <ThemeProvider>
+              <SupportChat />
+              <ScrollButton />
+              <Component {...pageProps} />
+            </ThemeProvider>
           </TourProvider>
         </AuthProvider>
       </BreakpointProvider>

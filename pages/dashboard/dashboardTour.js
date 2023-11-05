@@ -18,7 +18,7 @@ function UserDashboardTour() {
             <div className="tw-flex tw-justify-center tw-items-center">
               <Image src={logo} width={60} height={60} />
             </div>
-            <p className="tw-text-black">Welcome to the user dashboard</p>
+            <p>Welcome to the user dashboard</p>
             <div className="tw-flex tw-justify-center tw-items-center">
               <span className="tw-font-bold tw-text-xl">GrabTern</span>
             </div>

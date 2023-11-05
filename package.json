@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^2.0.18",
     "@mui/material": "^5.14.4",
+    "@reactour/tour": "^3.6.1",
     "antd": "^5.4.5",
     "clsx": "^1.2.1",
     "crypto-js": "^4.1.1",

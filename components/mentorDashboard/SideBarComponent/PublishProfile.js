@@ -87,6 +87,7 @@ const PublishProfile = ({ isSidebarOpen, className }) => {
       className={`tw-group tw-p-4 tw-flex tw-justify-center ${
         isSidebarOpen && "tw-gap-4"
       } ${className} tw-items-center tw-mt-10 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-bg-white tw-cursor-pointer`}
+      id="publishProfile"
     >
       <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
       <span

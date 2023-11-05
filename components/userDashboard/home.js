@@ -105,6 +105,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
               <p
                 className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
                 onClick={handleLogout}
+                id="logout"
               >
                 <h2 className="tw-font-semibold tw-text-white">Log&nbsp;out</h2>
                 <Image
@@ -126,6 +127,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
             <div
               title="Notifications"
               className="tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out hover:tw-bg-primary-200 tw-bg-primary-100 tw-justify-center tw-items-center tw-relative tw-p-2 tw-rounded-md"
+              id="notifications"
             >
               {Notification || mobileNotification ? (
                 <MdOutlineNotificationsNone

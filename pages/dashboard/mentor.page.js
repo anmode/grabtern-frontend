@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MentorDashboardTour } from "./dashboardTour";
 
 function MentorDashboard() {
   // loading and error state
@@ -50,6 +51,8 @@ function MentorDashboard() {
     }
   }, [window.location.search, history]);
 
+  MentorDashboardTour();
+
   if (!isMentorLoggedIn) {
     return null;
   }
@@ -57,7 +60,7 @@ function MentorDashboard() {
   return (
     <>
       <ToastContainer />
-      <div className="tw-flex tw-w-full">
+      <div className="tw-flex tw-w-full" id="mentorHome">
         <Sidebar
           mentor={mentor}
           isSidebarOpen={isSidebarOpen}

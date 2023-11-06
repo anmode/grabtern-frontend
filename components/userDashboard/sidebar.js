@@ -239,8 +239,14 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 
       <div className="md:tw-hidden w-full">
         {/* For mobile devices max-w-512px */}
-        <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4" id="mobileNav">
-          <div className="tw-items-center max-[400px]:tw-hidden" id="mobileFindMentors">
+        <aside
+          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4"
+          id="mobileNav"
+        >
+          <div
+            className="tw-items-center max-[400px]:tw-hidden"
+            id="mobileFindMentors"
+          >
             <Link href="/mentorList">
               <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
             </Link>

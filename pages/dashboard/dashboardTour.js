@@ -2,76 +2,148 @@ import React, { useState, useEffect } from "react";
 import { useTour } from "@reactour/tour";
 import Image from "next/image";
 import logo from "../../public/logo.png";
+import { set } from "lodash";
 
 function UserDashboardTour() {
+  const desktopSteps = [
+    {
+      selector: "#homepage",
+      content: (
+        <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <Image src={logo} width={60} height={60} />
+          </div>
+          <p>Welcome to the user dashboard</p>
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <span className="tw-font-bold tw-text-xl">GrabTern</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      selector: "#sidebar",
+      content: "This is the sidebar. You can navigate to different pages here.",
+    },
+    {
+      selector: "#toggle",
+      content: "Click on the toggle button to open or close the sidebar.",
+    },
+    {
+      selector: "#profile",
+      content: "This is your profile. You can edit your profile here.",
+    },
+    {
+      selector: "#home",
+      content: "This is the home page. You are currently at this page.",
+    },
+    {
+      selector: "#bookings",
+      content: "This is the bookings page. You can view your bookings here.",
+    },
+    {
+      selector: "#notifications",
+      content:
+        "This is the notifications page. You can view your notifications here.",
+    },
+    {
+      selector: "#logout",
+      content: "Click here to logout.",
+    },
+    {
+      selector: "#homepage",
+      content: (
+        <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <Image src={logo} width={60} height={60} />
+          </div>
+          <p className="tw-text-black">Have a great time</p>
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <span className="tw-font-bold tw-text-xl">GrabTern</span>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const mobileSteps = [
+    {
+      selector: "#homepage",
+      content: (
+        <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <Image src={logo} width={60} height={60} />
+          </div>
+          <p>Welcome to the user dashboard</p>
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <span className="tw-font-bold tw-text-xl">GrabTern</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      selector: "#mobileNav",
+      content: "This is the navigation bar.",
+    },
+    {
+      selector: "#mobileFindMentors",
+      content: "You can find mentors here.",
+    },
+    {
+      selector: "#mobileProfile",
+      content: "This is your profile. You can edit your profile here.",
+    },
+    {
+      selector: "#mobileHome",
+      content: "This is the home page.",
+    },
+    {
+      selector: "#mobileBookings",
+      content: "This is the bookings page. You can view your bookings here.",
+    },
+    {
+      selector: "#mobileMenu",
+      content: "Click here to open the menu.",
+    },
+    {
+      selector: "#notifications",
+      content:
+        "This is the notifications page. You can view your notifications here.",
+    },
+    {
+      selector: "#logout",
+      content: "Click here to logout.",
+    },
+    {
+      selector: "#homepage",
+      content: (
+        <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <Image src={logo} width={60} height={60} />
+          </div>
+          <p className="tw-text-black">Have a great time</p>
+          <div className="tw-flex tw-justify-center tw-items-center">
+            <span className="tw-font-bold tw-text-xl">GrabTern</span>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
   const { setIsOpen, setSteps, setCurrentStep } = useTour();
   useEffect(() => {
     setCurrentStep(0);
     const userTour = localStorage.getItem("userTour");
     if (userTour) return;
     setIsOpen(true);
-    setSteps([
-      {
-        selector: "#homepage",
-        content: (
-          <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <Image src={logo} width={60} height={60} />
-            </div>
-            <p>Welcome to the user dashboard</p>
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <span className="tw-font-bold tw-text-xl">GrabTern</span>
-            </div>
-          </div>
-        ),
-      },
-      {
-        selector: "#sidebar",
-        content:
-          "This is the sidebar. You can navigate to different pages here.",
-      },
-      {
-        selector: "#toggle",
-        content: "Click on the toggle button to open or close the sidebar.",
-      },
-      {
-        selector: "#profile",
-        content: "This is your profile. You can edit your profile here.",
-      },
-      {
-        selector: "#home",
-        content: "This is the home page. You are currently at this page.",
-      },
-      {
-        selector: "#bookings",
-        content: "This is the bookings page. You can view your bookings here.",
-      },
-      {
-        selector: "#notifications",
-        content:
-          "This is the notifications page. You can view your notifications here.",
-      },
-      {
-        selector: "#logout",
-        content: "Click here to logout.",
-      },
-      {
-        selector: "#homepage",
-        content: (
-          <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <Image src={logo} width={60} height={60} />
-            </div>
-            <p className="tw-text-black">Have a great time</p>
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <span className="tw-font-bold tw-text-xl">GrabTern</span>
-            </div>
-          </div>
-        ),
-      },
-    ]);
+    if (window.innerWidth > 768) {
+      setSteps(desktopSteps);
+    } else {
+      setSteps(mobileSteps);
+    }
     localStorage.setItem("userTour", "true");
   }, []);
+
+  // console.log(window.innerWidth);
 }
 
 function MentorDashboardTour() {

@@ -61,11 +61,12 @@ export default function SessionCard({
             onClick={handleClick}
           />
           {handleDeleteSession && (
-            <Button
-              className="tw-mt-1 tw-bg-red-700"
-              text="Delete Session"
+            <button
               onClick={handleDeleteSession}
-            />
+              className="tw-bg-red-500 tw-rounded-md px-2 tw-mt-1 tw-text-white tw-font-medium tw-text-sm tw-py-1 hover:tw-bg-red-600 hover:tw-scale-[.98] tw-transition-all tw-duration-100 tw-ease-in-out"
+            >
+              Delete Session
+            </button>
           )}
         </div>
       </div>

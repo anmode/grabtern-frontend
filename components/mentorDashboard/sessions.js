@@ -38,9 +38,19 @@ function Sessions({ setLoadingState, setErrorState }) {
     try {
       setLoadingState({ status: true });
       setErrorState({ status: false });
+  
+      // Show a confirmation dialog
+      const confirmed = window.confirm("Are you sure you want to delete this session?");
+      
+      if (!confirmed) {
+        // User canceled the deletion
+        setLoadingState({ status: false });
+        return;
+      }
+  
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/deleteListedSession/${sessionID}`;
       const response = await axios.delete(url, { withCredentials: true });
-
+  
       fetchData();
       setLoadingState({ status: false });
     } catch (error) {
@@ -56,6 +66,7 @@ function Sessions({ setLoadingState, setErrorState }) {
       }
     }
   };
+  
 
   // fetching all sessions on load
   useEffect(() => {

@@ -4,6 +4,10 @@ import Spinner from "../../basic/spinner";
 import { toast } from "react-toastify";
 import { Button } from "../../UI";
 import Loader from "../../UI/Loader";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { MdSubtitles } from "react-icons/md";
+import { BiRupee, BiSolidTimer } from "react-icons/bi";
+import { GiTalk } from "react-icons/gi";
 
 const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
   const [data, setData] = useState(null);
@@ -68,6 +72,9 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
         <div className="tw-flex tw-justify-center tw-items-center tw-pb-[5rem] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
           <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
             <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+              <button title="cancel" onClick={() => setSessionID(null)}>
+                <AiFillCloseCircle className="tw-text-[30px] tw-text-slate-700" />
+              </button>
               <h2 className="tw-pb-[2rem] tw-text-gray-600 tw-font-semibold tw-text-4xl tw-text-center tw-font-sans ">
                 Edit your session details
               </h2>
@@ -99,6 +106,7 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
                       placeholder={data.name}
                       onChange={handleInputChange}
                     />
+                    <MdSubtitles className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                   </div>
                   <div>
                     <label htmlFor="price">PRICE</label>
@@ -117,6 +125,7 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
                       placeholder={data.price}
                       onChange={handleInputChange}
                     />
+                    <BiRupee className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                   </div>
                 </div>
 
@@ -146,6 +155,7 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
                       placeholder={data.type}
                       onChange={handleInputChange}
                     />
+                    <GiTalk className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                     {/* <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" /> */}
                   </div>
                   <div>
@@ -166,6 +176,7 @@ const EditSessionComponent = ({ sessionID, setSessionID, setSessions }) => {
                       placeholder={data.duration}
                       onChange={handleInputChange}
                     />
+                    <BiSolidTimer className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                     {/* <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" /> */}
                   </div>
                 </div>

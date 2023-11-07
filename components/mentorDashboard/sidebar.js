@@ -384,7 +384,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
-                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
+                  className={`tw-flex tw-text-center tw-flex-col tw-gap-1 tw-flex-wrap ${
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""

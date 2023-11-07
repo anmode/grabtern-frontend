@@ -40,6 +40,42 @@ function Sessions({ setLoadingState, setErrorState }) {
     fetchData();
   }, []);
 
+  const deleteSession = async function (sessionID) {
+    try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
+      console.log(sessionID);
+      // Show a confirmation dialog
+      const confirmed = window.confirm(
+        "Are you sure you want to delete this session?",
+      );
+      console.log(confirmed);
+
+      if (!confirmed) {
+        // User canceled the deletion
+        setLoadingState({ status: false });
+        return;
+      }
+
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/deleteListedSession/${sessionID}`;
+      const response = await axios.delete(url, { withCredentials: true });
+
+      fetchData();
+      setLoadingState({ status: false });
+    } catch (error) {
+      setLoadingState({ status: false });
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setErrorState({ status: true, message: error.response.data.message });
+      } else {
+        setErrorState({ status: true });
+      }
+    }
+  };
+
   return (
     <>
       <main className="tw-p-12 tw-flex tw-flex-col max-[708px]:tw-justify-center max-[708px]:tw-items-center tw-mt-[2rem]">
@@ -77,6 +113,9 @@ function Sessions({ setLoadingState, setErrorState }) {
                   duration={card.duration}
                   price={card.price}
                   text="Edit Session"
+                  handleDeleteSession={() => {
+                    deleteSession(card._id);
+                  }}
                   handleBookSession={() => {
                     setEditSessionID(card._id);
                   }}

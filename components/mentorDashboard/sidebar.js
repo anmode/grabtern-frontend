@@ -62,56 +62,67 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
         />
       ),
       path: "profile",
+      id: "mentorProfile",
     },
     {
       title: "Home",
       icon: <AiOutlineHome />,
       path: "",
+      id: "mentorHomepage",
     },
     {
       title: "Bookings",
       icon: <LuPhoneCall />,
       path: "bookings",
+      id: "mentorBookings",
     },
     {
       title: "Sessions",
       icon: <BiTime />,
       path: "sessions",
+      id: "mentorSessions",
     },
     {
       title: "Priority DM",
       icon: <BiMessageRoundedDots />,
       path: "queries",
+      id: "mentorQueries",
     },
     {
       title: "Calendar",
       icon: <BiCalendar />,
       path: "calendar",
+      id: "mentorCalendar",
     },
     {
       title: "Services",
       icon: <PiBookOpenText />,
       path: "services",
+      id: "mentorServices",
     },
     {
       title: "Payments",
       icon: <MdPayment />,
       path: "payments",
+      id: "mentorPayments",
     },
     {
       title: "What's New",
       icon: <IoMdNotificationsOutline />,
       path: "new",
+      id: "mentorWhatsNew",
     },
     {
       title: "Invite & Earn",
       icon: <CgMailOpen />,
       path: "referral",
+      id: "mentorReferral",
     },
     {
       title: "Rewards",
       icon: <BiGift />,
       path: "rewards",
+      id: "mentorRewards",
     },
   ];
 
@@ -257,6 +268,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
           className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
+          id="mentorSidebar"
         >
           <div className="tw-h-screen tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
@@ -280,6 +292,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                   ? "tw-justify-start tw-gap-4"
                   : "tw-justify-center"
               } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
+              id="mentorSidebarToggle"
             >
               <div
                 className={`${
@@ -322,6 +335,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                 <HoverListItem
                   key={key}
                   className="tw-group tw-cursor-pointer hoverList"
+                  id={val.id}
                 >
                   <Link
                     href={`/dashboard/mentor?tab=${val.path}`}

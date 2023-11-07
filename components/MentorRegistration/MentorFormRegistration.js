@@ -11,6 +11,7 @@ import ScheduleDetails from "./components/ScheduleDetails";
 import SessionDetails from "./components/SessionDetails";
 import "react-toastify/dist/ReactToastify.css";
 import MagicUrlPopUp from "./components/MagicUrlPopUp";
+import Loader from "../UI/Loader";
 
 export default function MentorForm() {
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function MentorForm() {
     priceSession: "",
   });
   const [formStep, setFormStep] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
 
@@ -106,17 +107,17 @@ export default function MentorForm() {
     e.preventDefault();
     setError("");
     try {
-      setIsLoading(true);
+      setLoader(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegister`;
       console.log(error);
       const { data: res } = await axios.post(url, formData);
-      setIsLoading(false);
+      setLoader(false);
       toast.success("Registered successfully");
       setTimeout(() => {
         router.push("/");
       }, 2000);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       console.log(error);
       if (
         error.response &&
@@ -287,20 +288,24 @@ export default function MentorForm() {
             )}
             {/* prev next and submit buttons start */}
             <div className="tw-flex tw-items-center tw-justify-between flex tw-flex-row-reverse tw-col-span-2">
-              <button
-                type="submit"
-                aria-label="Register"
-                className="mentorFormButton theme-button-color"
-                onClick={formStep == 4 ? onSubmit : nextStep}
-              >
-                {formStep == 4 ? "Register" : "Next"}
-              </button>
+              {!loader ? (
+                <button
+                  type="submit"
+                  aria-label="Register"
+                  className="mentorFormButton theme-button-color"
+                  onClick={formStep == 4 ? onSubmit : nextStep}
+                >
+                  {formStep == 4 ? "Register" : "Next"}
+                </button>
+              ) : (
+                <Loader width="25px" />
+              )}
 
               {formStep != 1 && (
                 <button
                   type="button"
                   aria-label="Back"
-                  className="mentorFormButton tw-bg-slate-400"
+                  className="mentorFormButton tw-bg-base-400"
                   onClick={prevStep}
                 >
                   Back
@@ -312,15 +317,6 @@ export default function MentorForm() {
             {/* toast and loading container start */}
             <div>
               <ToastContainer />
-              <div data-testid="loading-spinner">
-                {isLoading && (
-                  <img
-                    style={{ width: "50px", height: "50px" }}
-                    src="/assets/img/gif/Spinner.gif"
-                    alt="...jljk"
-                  />
-                )}
-              </div>
             </div>
             {/* toast and loading container end */}
 

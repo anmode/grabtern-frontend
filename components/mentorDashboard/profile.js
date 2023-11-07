@@ -30,7 +30,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   // normal input onChange function
   const handleChange = (e) => {
@@ -89,7 +89,19 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (
+      !formData.name ||
+      !formData.username ||
+      !formData.email ||
+      !formData.mobile ||
+      !formData.internAt ||
+      !formData.currentStatus ||
+      !formData.description
+    ) {
+      toast.error("Please fill all the fields");
+      return;
+    }
+    setLoader(true);
     try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateprofile`;
 
@@ -101,10 +113,10 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
       setFormData(response.data);
       setMentor(response.data);
       saveToLocalStorage(response.data);
-      setIsLoading(false);
+      setLoader(false);
       toast.success("Changes Saved Successfully");
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -364,9 +376,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   gridColumn: "1/3",
                 }}
               />
-              {isLoading ? (
-                <Loader width="30px" />
-              ) : (
+              {!loader ? (
                 <button
                   style={{
                     width: "fit-content",
@@ -381,6 +391,8 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 >
                   Save changes
                 </button>
+              ) : (
+                <Loader width="30px" />
               )}
             </form>
           </div>

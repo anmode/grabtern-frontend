@@ -163,6 +163,7 @@ const Home = ({
               <p
                 className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
                 onClick={handleLogout}
+                id="mentorLogout"
               >
                 <h2 className="tw-font-semibold tw-text-white">Log out</h2>
                 <Image
@@ -188,6 +189,7 @@ const Home = ({
             <div
               title="Notifications"
               className="tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out hover:tw-bg-primary-200 tw-bg-primary-100 tw-justify-center tw-items-center tw-relative tw-p-2 tw-rounded-md"
+              id="mentorNotifications"
             >
               {Notification || mobileNotification ? (
                 <MdOutlineNotificationsNone
@@ -348,12 +350,21 @@ const Home = ({
             })}
           </div>
           <div className="tw-w-fit tw-mx-auto tw-my-8 tw-mb-20">
-            <button
-              onClick={() => setIsSidebarOpen(true)}
-              className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
-            >
-              View More
-            </button>
+            {!isSidebarOpen ? (
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+              >
+                View More
+              </button>
+            ) : (
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+              >
+                View Less
+              </button>
+            )}
           </div>
         </main>
       </section>

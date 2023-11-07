@@ -12,6 +12,7 @@ import Logo from "../../public/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import Loader from "../../components/UI/Loader";
 
 const ResetPassword = () => {
   // initial state
@@ -22,7 +23,7 @@ const ResetPassword = () => {
 
   // states
   const { entityType, resetToken } = router.query;
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const { newPassword, confirmPassword } = formData;
 
@@ -40,7 +41,7 @@ const ResetPassword = () => {
     }
 
     try {
-      setIsLoading(true);
+      setLoader(true);
       const data = {
         resetToken: resetToken,
         newPassword: newPassword,
@@ -50,7 +51,7 @@ const ResetPassword = () => {
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/resetPassword?entityType=${entityType}`,
         data,
       );
-      setIsLoading(false);
+      setLoader(false);
       toast.success(response.data.message);
       // redirect to login page after successful passwp=ord reset
       toast.info("Redirecting to login page");
@@ -58,7 +59,8 @@ const ResetPassword = () => {
         router.push(`/auth/login?entityType=${entityType}`);
       }, 5000);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
+      console.log({ error });
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
@@ -84,17 +86,17 @@ const ResetPassword = () => {
       <Head>
         <title>GrabTern | Reset Password</title>
       </Head>
-      <div className="tw-flex  tw-items-center tw-pt-2">
+      <div className="tw-flex tw-text-base-500  tw-items-center tw-pt-2">
         <Image className="" src={Logo} alt="icon" width={50} height={50} />
         <div className="tw-font-inter tw-font-bold tw-text-xl ">GrabTern</div>
       </div>
-      <main className="tw-flex tw-justify-center tw-items-center">
+      <main className="tw-flex tw-justify-center tw-text-base-500 tw-items-center">
         <form onSubmit={handleResetPassword} className={styles.resetForm}>
           <div className="">
             <div className="tw-pb-12 tw-font-inter tw-font-semibold tw-text-5xl tw-leading-relaxed">
               Set your password
             </div>
-            <div className="tw-pb-7 tw-font-inter tw-font-medium tw-text-base">
+            <div className="tw-pb-7 tw-font-inter tw-text-base-400 tw-font-medium tw-text-base">
               Please enter a new password for your GrabTern account.
             </div>
             <div className="">
@@ -112,7 +114,7 @@ const ResetPassword = () => {
                 required
                 value={newPassword}
                 onChange={onChange}
-                className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
+                className="tw-rounded-md tw-border-2 tw-bg-base-300 tw-text-base-500 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
               {viewPassword ? (
                 <FiEye
@@ -141,7 +143,7 @@ const ResetPassword = () => {
                 required
                 value={confirmPassword}
                 onChange={onChange}
-                className="tw-rounded-md tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
+                className="tw-rounded-md  tw-bg-base-300 tw-text-base-500 tw-border-2 tw-border-base-300 tw-px-3 tw-py-2 tw-pr-20 tw-w-full"
               />
               {viewPassword ? (
                 <FiEye
@@ -155,18 +157,16 @@ const ResetPassword = () => {
                 />
               )}
             </div>
-            {isLoading ? (
-              <div className="tw-relative tw-left-[200px]">
-                <EventLogin />
-              </div>
-            ) : (
-              <div className="tw-flex tw-justify-center  tw-h-11">
+            {!loader ? (
+              <div className="tw-flex tw-justify-center my-3 tw-h-11">
                 <Button
                   className=" tw-w-[450px]"
                   onClick={handleResetPassword}
                   text="Set Password"
                 />
               </div>
+            ) : (
+              <Loader width="25px" className="my-3" />
             )}
           </div>
 

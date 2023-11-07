@@ -4,6 +4,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import ProfileImageInput from "../basic/ProfileImageInput";
+import Loader from "../UI/Loader";
 
 function Profile({ setLoadingState, setErrorState, user, setUser }) {
   const initialFormData = {
@@ -12,6 +13,7 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
     image: user?.image || "",
   };
 
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
 
   // function to fetch user profile
@@ -64,9 +66,14 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
   // form submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.fullName || !formData.email) {
+      toast.error("Please fill all the fields");
+      return;
+    }
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/profile/update`;
+      setLoader(true);
 
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/profile/update`;
       const response = await axios.put(
         url,
         { ...formData },
@@ -76,7 +83,9 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
       setUser(response.data);
       saveToLocalStorage(response.data);
       toast.success("Changes Saved Successfully");
+      setLoader(false);
     } catch (error) {
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -183,20 +192,24 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                   gridColumn: "1/3",
                 }}
               />
-              <button
-                style={{
-                  width: "fit-content",
-                  padding: "15px 25px",
-                  cursor: "pointer",
-                  marginTop: "-50px",
-                  marginLeft: "5px",
-                }}
-                type="submit"
-                className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
-                onClick={handleSubmit}
-              >
-                Save changes
-              </button>
+              {!loader ? (
+                <button
+                  style={{
+                    width: "fit-content",
+                    padding: "15px 25px",
+                    cursor: "pointer",
+                    marginTop: "-50px",
+                    marginLeft: "5px",
+                  }}
+                  type="submit"
+                  className="tw-text-white max-[512px]:tw-mb-20 tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200"
+                  onClick={handleSubmit}
+                >
+                  Save changes
+                </button>
+              ) : (
+                <Loader />
+              )}
             </form>
           </div>
         </div>

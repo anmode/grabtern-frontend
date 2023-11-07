@@ -4,11 +4,12 @@ import Link from "next/link";
 // import DropdownCard from "./LoginDropdown";
 // import { AiOutlineSearch } from "react-icons/ai";
 import UserProfile from "./UserProfile";
-import { SunIcon } from "@heroicons/react/24/solid";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import logo from "../../public/logo.png";
 import { useAuth } from "../../context/AuthContext";
 import { ButtonLink } from "../UI";
 import clsx from "clsx";
+import { useTheme } from "../../hook/use-theme";
 
 function Header() {
   const {
@@ -23,6 +24,7 @@ function Header() {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
   const dropdownRef = useRef();
+  const { isDarkMode, toggle: toggleTheme } = useTheme();
 
   useEffect(() => {
     if (userData?.user_name) {
@@ -46,6 +48,8 @@ function Header() {
     };
   }, []);
 
+  const Icon = !isDarkMode ? MoonIcon : SunIcon;
+
   const handleOutsideClick = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setToggleDropdown(false);
@@ -64,9 +68,9 @@ function Header() {
       className={clsx(
         "tw-w-full tw-px-4 tw-mb-0",
         scrollY
-          ? "tw-bg-white tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-black dark:tw-bg-muted-900 tw-transition-all tw-duration-300"
-          : "tw-bg-base-200 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 dark:tw-bg-muted-900 tw-text-black",
-        toggleDropdown ? "tw-bg-white" : "tw-base-200",
+          ? "tw-bg-base-100 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-base-500 tw-transition-all tw-duration-300"
+          : "tw-bg-base-200 tw-transition-all tw-duration-300 tw-fixed tw-w-full tw-z-20 tw-top-0 tw-left-0 tw-text-base-500",
+        toggleDropdown ? "tw-bg-base-100" : "tw-base-200",
       )}
     >
       <nav className="tw-w-full tw-max-w-7xl tw-mx-auto tw-flex tw-justify-between tw-items-center">
@@ -125,7 +129,10 @@ function Header() {
             )}
 
             {/* <DarkModeToggle /> */}
-            <SunIcon className="tw-h-9 tw-bg-white tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer" />
+            <Icon
+              className="tw-h-9 tw-bg-base-100 tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer"
+              onClick={toggleTheme}
+            />
 
             {/* <DropdownCard
             isUserLoggedIn={isUserLoggedIn}
@@ -155,28 +162,28 @@ function Header() {
               <ion-icon name={toggleDropdown ? "close" : "menu"}></ion-icon>
             </div>
             {toggleDropdown && (
-              <div className="tw-absolute tw-left-0 tw-top-full tw-w-full tw-mt-0 tw-p-6 tw-rounded-lg tw-bg-white tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
+              <div className="tw-absolute tw-left-0 tw-top-full tw-w-full tw-mt-0 tw-p-6 tw-rounded-lg tw-bg-base-100 tw-flex tw-flex-col tw-gap-5 tw-justify-center tw-items-center tw-text-sm tw-font-semibold tw-pb-5">
                 <Link
                   href="/"
-                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400  hover:tw-text-base-500 tw-font-medium"
                 >
                   Home
                 </Link>
                 <Link
                   href="/mentors"
-                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500   hover:tw-text-gray-500 tw-font-medium"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400   hover:tw-text-base-500 tw-font-medium"
                 >
                   Mentor
                 </Link>
                 <Link
                   href="/community"
-                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400  hover:tw-text-base-500 tw-font-medium"
                 >
                   Community
                 </Link>
                 <Link
                   href="/contact"
-                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400  hover:tw-text-base-500 tw-font-medium"
                 >
                   Contact
                 </Link>
@@ -185,14 +192,17 @@ function Header() {
                 {!(isUserLoggedIn || isMentorLoggedIn) && (
                   <Link
                     href="/auth/login?entityType=user"
-                    className="tw-text-xl tw-p-2 tw-font-inter tw-text-gray-500  hover:tw-text-gray-500 tw-font-medium"
+                    className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400  hover:tw-text-base-500 tw-font-medium"
                   >
                     Sign In
                   </Link>
                 )}
 
                 {/* theme icon */}
-                <SunIcon className="tw-h-10 tw-bg-white tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer" />
+                <Icon
+                  className="tw-h-10 tw-bg-base-100 tw-rounded-2xl tw-px-0.5 tw-w-9 tw-text-yellow-400 tw-cursor-pointer"
+                  onClick={toggleTheme}
+                />
 
                 {/* show signup button if user not loggedin */}
                 {!(isUserLoggedIn || isMentorLoggedIn) && (

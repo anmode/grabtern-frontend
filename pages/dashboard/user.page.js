@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import ComingSoon from "../../components/basic/ComingSoon";
 import PreLoader from "../../components/mentorDashboard/PreLoader";
 import { ToastContainer, toast } from "react-toastify";
+import { UserDashboardTour } from "./dashboardTour";
 
 function userDashboard() {
   // loading and error state
@@ -57,9 +58,11 @@ function userDashboard() {
     fetchUser();
   }, []);
 
+  UserDashboardTour();
+
   return (
     <>
-      <div className="tw-flex tw-w-full">
+      <div className="tw-flex tw-w-full" id="homepage">
         <Sidebar
           user={user}
           isSidebarOpen={isSidebarOpen}

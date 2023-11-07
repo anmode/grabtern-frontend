@@ -14,7 +14,7 @@ import Loader from "../UI/Loader";
 const Payments = ({ setLoadingState, setErrorState }) => {
   // const [formData, setFormData] = useState(initialFormData);
   const [account, setAccount] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [editForm, setEditForm] = useState(false);
   const [addForm, setAddForm] = useState(false);
   const router = useRouter();
@@ -50,7 +50,17 @@ const Payments = ({ setLoadingState, setErrorState }) => {
 
   // edit details function
   const editDetails = async (formData) => {
-    setIsLoading(true);
+    setLoader(true);
+    if (
+      !formData.name ||
+      !formData.accountNo ||
+      !formData.ifscCode ||
+      !formData.nameOfBank
+    ) {
+      toast.error("Please fill all the details");
+      setLoader(false);
+      return;
+    }
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/updateAccountDetails/`;
     try {
       const response = await axios.put(
@@ -61,10 +71,10 @@ const Payments = ({ setLoadingState, setErrorState }) => {
       const data = await response.data;
       setAccount(data);
       setEditForm(false);
-      setIsLoading(false);
+      setLoader(false);
       toast.success("Changes Saved Successfully");
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -79,7 +89,17 @@ const Payments = ({ setLoadingState, setErrorState }) => {
 
   // add details function
   const addDetails = async (formData) => {
-    setIsLoading(true);
+    setLoader(true);
+    if (
+      !formData.name ||
+      !formData.accountNo ||
+      !formData.ifscCode ||
+      !formData.nameOfBank
+    ) {
+      toast.error("Please fill all the details");
+      setLoader(false);
+      return;
+    }
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/addAccountDetails/`;
     try {
       const response = await axios.post(
@@ -90,10 +110,10 @@ const Payments = ({ setLoadingState, setErrorState }) => {
       const data = await response.data;
       setAccount(data);
       setAddForm(false);
-      setIsLoading(false);
+      setLoader(false);
       toast.success("Account added sucessfully");
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -132,15 +152,15 @@ const Payments = ({ setLoadingState, setErrorState }) => {
                   <p className="tw-my-5">
                     It seems like you have not added your account yet!
                   </p>
-                  {isLoading ? (
-                    <Loader width="20px" />
-                  ) : (
+                  {!loader ? (
                     <Button
                       text="Add Account"
                       onClick={() => {
                         setAddForm(true);
                       }}
                     />
+                  ) : (
+                    <Loader width="20px" />
                   )}
                 </div>
               </div>
@@ -158,7 +178,7 @@ const Payments = ({ setLoadingState, setErrorState }) => {
               }}
               buttonText="Save Changes"
               handleSubmit={editDetails}
-              Loading={isLoading}
+              Loading={loader}
             />
           ) : (
             <div className="tw-flex tw-justify-center tw-items-center tw-p-4">

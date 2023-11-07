@@ -86,6 +86,7 @@ export default function Home() {
 
   const userData = JSON.parse(localStorage.getItem("userData"));
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
+  console.log("rendering home page");
   return (
     <div>
       {(localStorage.getItem("mentorData") !== null ||

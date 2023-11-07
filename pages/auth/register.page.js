@@ -13,6 +13,7 @@ import { decryptData, encryptData } from "../../hook/encryptDecrypt";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import Button from "../../components/UI/Button/Button";
+import Loader from "../../components/UI/Loader";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
@@ -106,7 +107,7 @@ function Register() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const [isConPasswordVisible, setIsConPasswordVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
@@ -131,15 +132,24 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (
+      !data.fullName ||
+      !data.email ||
+      !data.password ||
+      !data.confirmPassword
+    ) {
+      return toast.error("Please fill all the fields!");
+    }
+
     if (data.password !== data.confirmPassword) {
       return toast.error("Passwords do not match!");
     }
 
     try {
-      setIsLoading(true);
+      setLoader(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/userRegister`;
       await axios.post(url, data);
-      setIsLoading(false);
+      setLoader(false);
       toast.success(
         "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
       );
@@ -147,7 +157,7 @@ function Register() {
         router.push("/");
       }, 5000);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (error.response && error.response.status >= 400) {
         toast.error(error.response.data.message);
       } else {
@@ -169,7 +179,10 @@ function Register() {
       <div className={styles.Registerform}>
         <form className="form-default" onSubmit={handleSubmit}>
           <div className={styles.heading}>
-            <img src="/Grabtern2.png" class="small-image"></img>
+            <img
+              src="/Grabtern2.png"
+              className="small-image dark:tw-invert"
+            ></img>
             <h2>Hey, hello 👋</h2>
           </div>
           {/* <p >
@@ -265,18 +278,16 @@ function Register() {
           <div>
             <ToastContainer />
             <div>
-              {isLoading ? (
-                <div className="tw-relative tw-left-[160px]">
-                  <EventLogin />
-                </div>
-              ) : (
+              {!loader ? (
                 <div className="tw-flex tw-justify-center tw-h-11">
                   <Button
-                    className="tw-w-[400px]"
+                    className="tw-w-[400px] tw-font-semibold"
                     onClick={handleSubmit}
-                    text="Registration"
+                    text="Register"
                   />
                 </div>
+              ) : (
+                <Loader />
               )}
             </div>
           </div>
@@ -298,7 +309,9 @@ function Register() {
             </Link>
           </div>
           <div className={styles.google}>
-            <h3 style={{ color: "black", alignSelf: "center" }}>Or</h3>
+            <h3 style={{ color: "var(--base-500)", alignSelf: "center" }}>
+              Or
+            </h3>
           </div>
           <div
             id="signUpDiv"

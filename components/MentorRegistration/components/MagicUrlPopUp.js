@@ -23,7 +23,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     linkedin: "",
   };
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   // for validator
   const validator = useRef(new SimpleReactValidator());
@@ -53,18 +53,18 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
   // handleSubmit
   const handleSubmit = async () => {
     try {
-      setIsLoading(true);
+      setLoader(true);
       console.log(formData);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorRegisterWithMagicUrl`;
       const res = await axios.post(url, formData);
-      setIsLoading(false);
+      setLoader(false);
       toast.success(res.data.message);
       setFormData(initialState);
       setTimeout(() => {
         router.push("/");
       }, 2000);
     } catch (error) {
-      setIsLoading(false);
+      setLoader(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -157,19 +157,21 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     <div
       className={clsx(
         "tw-z-[2] tw-fixed -tw-bottom-0 tw-right-5",
-        "tw-max-w-[450px] tw-border",
-        "tw-shadow-xl tw-bg-[white] tw-rounded-xl",
+        "tw-max-w-[450px] tw-border tw-border-base-300 tw-text-base-500",
+        "tw-shadow-xl tw-bg-base-100 tw-rounded-xl",
       )}
     >
       {/* header */}
       <div
         className={clsx(
           "tw-flex tw-justify-between tw-items-center ",
-          "tw-px-10 tw-py-5 tw-border-bottom",
+          "tw-px-10 tw-py-5 tw-border-bottom tw-border-base-300",
           "tw-border-b-2",
         )}
       >
-        <p className="tw-text-lg tw-font-medium">Register Using Magic Url</p>
+        <p className="tw-text-lg tw-font-medium tw-text-base-500">
+          Register Using Magic Url
+        </p>
         <div onClick={toggleMagicUrlPopup} className="tw-cursor-pointer">
           {isOpen ? (
             <MdKeyboardArrowDown className="tw-text-2xl" />
@@ -200,7 +202,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
             "!tw-px-10 !tw-py-5",
           )}
           onSubmit={onSubmit}
-          disabled={isLoading}
+          disabled={loader}
         >
           {/* inputs */}
           {inputs.map((input) => (
@@ -215,7 +217,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
               "tw-col-start-1 tw-col-span-2 tw-mt-2",
             )}
             onClick={onSubmit}
-            disabled={isLoading}
+            disabled={loader}
           >
             Register
           </button>

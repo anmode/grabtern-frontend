@@ -56,16 +56,19 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         />
       ),
       path: "profile",
+      id: "profile",
     },
     {
       title: "Home",
       icon: <AiOutlineHome />,
       path: "",
+      id: "home",
     },
     {
       title: "Bookings",
       icon: <LuPhoneCall />,
       path: "bookings",
+      id: "bookings",
     },
   ];
 
@@ -137,6 +140,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
+          id="sidebar"
         >
           <div className="tw-h-screen tw-px-3 tw-py-4 tw-overflow-y-auto">
             <div
@@ -159,6 +163,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                   ? "tw-justify-start tw-gap-4"
                   : "tw-justify-center"
               } tw-items-center tw-mt-6 tw-rounded-md tw-transition-all tw-duration-150 tw-ease-in-out tw-cursor-pointer`}
+              id="toggle"
             >
               <div
                 className={`${
@@ -201,6 +206,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 <HoverListItem
                   key={key}
                   className="tw-group tw-cursor-pointer hoverList"
+                  id={val.id}
                 >
                   <Link
                     href={`/dashboard/user?tab=${val.path}`}

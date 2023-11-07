@@ -11,26 +11,28 @@ import {
 } from "react-icons/ri";
 import FooterColumn from "./FooterColumn";
 import { FaCheckCircle } from "react-icons/fa";
+import Loader from "../UI/Loader";
 
 function Footer() {
   const [email, setEmail] = useState("");
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [width, setWidth] = useState("25px");
   const currentYear = new Date().getFullYear();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setLoader(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
         email,
       })
       .then((response) => {
-        setIsLoading(false);
+        setLoader(false);
         setSubscriptionSuccess(true);
       })
       .catch((error) => {
-        setIsLoading(false);
+        setLoader(false);
         console.error(error);
       });
   };
@@ -48,7 +50,7 @@ function Footer() {
                   width={140}
                   height={90}
                   alt="Grabtern"
-                  className="tw-sm:mx-60 tw-md:mx-0 tw-bg-clip-content"
+                  className="tw-sm:mx-60 dark:tw-invert tw-md:mx-0 tw-bg-clip-content"
                 />
               </a>
             </div>
@@ -91,7 +93,7 @@ function Footer() {
           />
         </div>
       </div>
-      <hr />
+      <hr className="tw-border-base-300" />
       {/* subscribe and socials */}
       <div className="tw-w-full tw-max-w-7xl tw-mx-auto tw-px-4">
         <div className="tw-py-8 tw-flex tw-items-center tw-flex-col md:tw-flex-row md:tw-justify-between">
@@ -122,13 +124,16 @@ function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <Button
-                  text="Subscribe"
-                  type="submit"
-                  onClick={handleSubmit}
-                  className="tw-w-full md:tw-w-max"
-                  loading={isLoading}
-                />
+                {!loader ? (
+                  <Button
+                    text="Subscribe"
+                    type="submit"
+                    onClick={handleSubmit}
+                    className="tw-w-full md:tw-w-max"
+                  />
+                ) : (
+                  <Loader width="25px" />
+                )}
               </form>
             )}
           </div>

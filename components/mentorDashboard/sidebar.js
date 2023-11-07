@@ -459,6 +459,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
                           : "hover:tw-text-gray-900"
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg hover:tw-text-gray-900`}
+                      onClick={() => setIsMobileSidebarOpen(false)}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">
@@ -483,6 +484,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
                           : "hover:tw-text-gray-900"
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      onClick={() => setIsMobileSidebarOpen(false)}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">

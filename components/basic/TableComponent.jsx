@@ -11,7 +11,7 @@ const TableComponent = ({ sessions, activeTab }) => {
   // console.log(completedSessions);
 
   useEffect(() => {
-    if (activeTab.toLocaleLowerCase() === "pending") {
+    if (activeTab?.toLocaleLowerCase() === "pending") {
       setData(pendingSessions);
     } else {
       setData(completedSessions);

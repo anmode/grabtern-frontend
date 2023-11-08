@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Spinner from "../basic/spinner";
+import TableComponent from "../basic/TableComponent";
 
 const Bookings = ({ setLoadingState, setErrorState }) => {
   const [activeTab, setActiveTab] = useState("Pending");
@@ -81,7 +82,13 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
 
       {/* sessions list */}
       <div className="tw-mt-8">
-        <ul className="tw-bg-primary-100 tw-text-white  tw-flex tw-items-center tw-gap-6 tw-p-6 tw-border tw-border-b-0 tw-rounded-t">
+        {sessions ? (
+          <TableComponent sessions={sessions} activeTab={activeTab} />
+        ) : (
+          <Spinner />
+        )}
+
+        {/* <ul className="tw-bg-primary-100 tw-text-white  tw-flex tw-items-center tw-gap-6 tw-p-6 tw-border tw-border-b-0 tw-rounded-t">
           <li className="tw-hidden min-[540px]:tw-inline">Topic</li>
           <li className="min-[540px]:tw-hidden">Session List</li>
           <li className="tw-hidden sm:tw-inline">Mentee</li>
@@ -132,7 +139,7 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
           ) : (
             <Spinner />
           )}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

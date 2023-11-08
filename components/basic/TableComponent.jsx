@@ -44,16 +44,16 @@ const TableComponent = ({ sessions, activeTab }) => {
     useTable({ columns, data });
 
   return (
-    <div className="tw-flex">
-      <div className="tw-overflow-y-scroll">
+    <div className="tw-flex tw-flex-wrap tw-w-screen">
+      <div className="tw-overflow-y-scroll tw-flex-wrap">
         <table
-          className="tw-w-full tw-border-collapse tw-border tw-border-gray-200 tw-rounded-md tw-table-auto tw-min-w-full max-[468px]:tw-text-sm"
+          className="tw-w-full tw-border-collapse tw-border tw-border-gray-200 tw-rounded-md tw-table-auto tw-min-w-full max-[468px]:tw-text-sm tw-flex-wrap"
           {...getTableProps()}
         >
-          <thead className="tw-flex tw-bg-[#845ec2] tw-text-white ">
+          <thead className="tw-flex tw-bg-[#845ec2] tw-text-white tw-flex-wrap">
             {headerGroups.map((headerGroup) => (
               <tr
-                className="tw-flex tw-w-full tw-justify-between tw-items-center tw-gap-10 tw-p-[6px]"
+                className="tw-flex tw-w-[80vw] tw-justify-between tw-items-center md:tw-gap-10 max-sm:tw-gap-8 md:tw-py-[6px]"
                 {...headerGroup.getHeaderGroupProps()}
               >
                 {headerGroup.headers.map((column) => (
@@ -72,7 +72,7 @@ const TableComponent = ({ sessions, activeTab }) => {
               prepareRow(row);
               return (
                 <tr
-                  className="tw-flex tw-w-full tw-justify-between tw-items-center tw-gap-14 max-[568px]:tw-gap-2 tw-py-[6px] tw-border-b tw-border-gray-200"
+                  className="tw-flex tw-w-full tw-justify-between tw-items-center md:tw-gap-14 tw-py-[6px] tw-border-b tw-border-gray-200 max-sm:tw-p-1"
                   {...row.getRowProps}
                 >
                   {row.cells.map((cell) => (

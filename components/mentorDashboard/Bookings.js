@@ -56,7 +56,7 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
   }, []);
 
   return (
-    <div className="tw-p-8 tw-py-12 tw-w-full">
+    <div className="md:tw-p-8 tw-p-[10px] tw-py-12 tw-w-full">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
       </h1>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, IconCard } from "../UI";
 import { FaUsers, FaVideo, FaMessage } from "react-icons/fa";
 import { RiCoinsFill, RiTimeFill } from "react-icons/ri";
@@ -10,6 +10,7 @@ export default function SessionCard({
   duration,
   price,
   handleBookSession,
+  handleDeleteSession,
   text,
   path,
 }) {
@@ -53,11 +54,21 @@ export default function SessionCard({
           </div>
         </div>
         {/* book session btn */}
-        <Button
-          className="tw-mt-1"
-          text={text ? text : "Book Session"}
-          onClick={handleClick}
-        />
+        <div className="tw-flex tw-gap-2">
+          <Button
+            className="tw-mt-1"
+            text={text ? text : "Book Session"}
+            onClick={handleClick}
+          />
+          {handleDeleteSession && (
+            <button
+              onClick={handleDeleteSession}
+              className="tw-bg-red-500 tw-rounded-md px-2 tw-mt-1 tw-text-white tw-font-medium tw-text-sm tw-py-1 hover:tw-bg-red-600 hover:tw-scale-[.98] tw-transition-all tw-duration-100 tw-ease-in-out"
+            >
+              Delete Session
+            </button>
+          )}
+        </div>
       </div>
     </IconCard>
   );

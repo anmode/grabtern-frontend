@@ -138,21 +138,25 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
         />
       ),
       path: "profile",
+      id: "mobileMentorProfile",
     },
     {
       title: "Home",
       icon: <AiOutlineHome />,
       path: "",
+      id: "mobileMentorHome",
     },
     {
       title: "Bookings",
       icon: <LuPhoneCall />,
       path: "bookings",
+      id: "mobileMentorBookings",
     },
     {
       title: "Priority DM",
       icon: <BiMessageRoundedDots />,
       path: "queries",
+      id: "mobileMentorQueries",
     },
   ];
 
@@ -364,7 +368,10 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       </div>
 
       <div className="md:tw-hidden w-full">
-        <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4">
+        <aside
+          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4"
+          id="mobileNavbarMentor"
+        >
           <PublishProfile isSidebarOpen={false} className="!tw-mt-0 " />
           <div
             className={`tw-w-full tw-flex tw-font-medium tw-p-2 tw-items-center tw-justify-center tw-gap-4 tw-py-4`}
@@ -373,10 +380,11 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               <HoverListItem
                 key={key}
                 className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer"
+                id={val.id}
               >
                 <Link
                   href={`/dashboard/mentor?tab=${val.path}`}
-                  className={`tw-flex tw-flex-col tw-gap-1 tw-flex-wrap ${
+                  className={`tw-flex tw-text-center tw-flex-col tw-gap-1 tw-flex-wrap ${
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
@@ -390,7 +398,10 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               </HoverListItem>
             ))}
           </div>
-          <div className="tw-flex tw-justify-center tw-items-center">
+          <div
+            className="tw-flex tw-justify-center tw-items-center"
+            id="mobileMentorMenu"
+          >
             {/* a button for expanding the remaining buttons */}
             <button className="tw-flex tw-flex-col tw-gap-1 tw-justify-center tw-items-center">
               {
@@ -448,6 +459,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
                           : "hover:tw-text-gray-900"
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg hover:tw-text-gray-900`}
+                      onClick={() => setIsMobileSidebarOpen(false)}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">
@@ -472,6 +484,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
                           : "hover:tw-text-gray-900"
                       } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                      onClick={() => setIsMobileSidebarOpen(false)}
                     >
                       <span className="tw-text-xl">{val.icon}</span>
                       <span className="tw-text-sm tw-text-center">

@@ -3,6 +3,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Button } from "../../UI";
 import Loader from "../../UI/Loader";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { MdSubtitles } from "react-icons/md";
+import { BiRupee, BiSolidTimer } from "react-icons/bi";
+import { GiTalk } from "react-icons/gi";
 
 const AddSessionComponent = ({ setSessions, setAddSession }) => {
   const initialData = {
@@ -74,6 +78,9 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
       <div className="tw-flex tw-justify-center tw-items-center tw-pb-[5rem] tw-flex-wrap max-[512px]:tw-p-0 max-[512px]:tw-m-0">
         <div className="tw-w-[800px] flex tw-flex-wrap max-[990px]:tw-w-[500px] max-[715px]:tw-w-[400px]">
           <div className="tw-p-4 tw-bg-white tw-shadow-xl max-[512px]:tw-w-screen max-[512px]:tw-h-screen max-[512px]:tw-overflow-y-auto max-[512px]:tw-p-10">
+            <button title="cancel" onClick={() => setAddSession(false)}>
+              <AiFillCloseCircle className="tw-text-[30px] tw-text-slate-700" />
+            </button>
             <h2 className="tw-pb-[2rem] tw-text-gray-600 tw-font-semibold tw-text-4xl tw-text-center tw-font-sans ">
               Add New Session
             </h2>
@@ -105,6 +112,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                     placeholder="Enter Title (e.g., Resume Review)"
                     onChange={handleInputChange}
                   />
+                  <MdSubtitles className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                 </div>
                 <div>
                   <label htmlFor="price">PRICE</label>
@@ -123,6 +131,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                     placeholder="Price in rupee (eg: 30)"
                     onChange={handleInputChange}
                   />
+                  <BiRupee className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                 </div>
               </div>
 
@@ -153,6 +162,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                     <option value="text">Text Query</option>
                     <option value="other">Other</option>
                   </select>
+                  <GiTalk className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                 </div>
                 <div>
                   <label for="time">TIME</label>
@@ -172,6 +182,7 @@ const AddSessionComponent = ({ setSessions, setAddSession }) => {
                     placeholder="Enter Time in min ( eg: 50 )"
                     onChange={handleInputChange}
                   />
+                  <BiSolidTimer className="tw-relative tw-bottom-10 tw-left-2 tw-text-2xl" />
                   {/* <BiSolidPhone className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-2xl" /> */}
                 </div>
               </div>

@@ -473,7 +473,7 @@ const SupportChat = () => {
             {/* For mobile devices */}
             <button
               onClick={() => setIsOpen(true)}
-              className="tw-flex sm:tw-hidden tw-mb-44 tw-mr-8"
+              className="tw-flex sm:tw-hidden tw-relative tw-bottom-32 tw-right-5"
             >
               <Image
                 className={`tw-rounded-full tw-bg-[#845ec2] hover:tw-bg-[#845ec0] tw-p-2 tw-shadow-lg tw-opacity-80 hover:tw-opacity-100 ${

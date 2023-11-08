@@ -84,16 +84,19 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         />
       ),
       path: "profile",
+      id: "mobileProfile",
     },
     {
       title: "Home",
       icon: <AiOutlineHome />,
       path: "",
+      id: "mobileHome",
     },
     {
       title: "Bookings",
       icon: <LuPhoneCall />,
       path: "bookings",
+      id: "mobileBookings",
     },
   ];
 
@@ -236,8 +239,14 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 
       <div className="md:tw-hidden w-full">
         {/* For mobile devices max-w-512px */}
-        <aside className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4">
-          <div className="tw-items-center max-[400px]:tw-hidden">
+        <aside
+          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4"
+          id="mobileNav"
+        >
+          <div
+            className="tw-items-center max-[400px]:tw-hidden"
+            id="mobileFindMentors"
+          >
             <Link href="/mentorList">
               <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
             </Link>
@@ -249,6 +258,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               <HoverListItem
                 key={key}
                 className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-cursor-pointer"
+                id={val.id}
               >
                 <Link
                   href={`/dashboard/user?tab=${val.path}`}
@@ -266,7 +276,10 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               </HoverListItem>
             ))}
           </div>
-          <div className="tw-flex tw-justify-center tw-items-center">
+          <div
+            className="tw-flex tw-justify-center tw-items-center"
+            id="mobileMenu"
+          >
             {/* a button for expanding the remaining buttons */}
             <button className="tw-flex tw-flex-col tw-gap-1 tw-justify-center tw-items-center">
               {

@@ -5,10 +5,10 @@ const TableComponent = ({ sessions, activeTab }) => {
   const [data, setData] = useState([]);
 
   const pendingSessions = sessions.filter((session) => session.isBooked);
-  // console.log(pendingSessions);
+  // console.log(pendingSessions);  debugging purpose
 
   const completedSessions = sessions.filter((session) => !session.isBooked);
-  // console.log(completedSessions);
+  // console.log(completedSessions);  debugging purpose
 
   useEffect(() => {
     if (activeTab?.toLocaleLowerCase() === "pending") {
@@ -44,52 +44,50 @@ const TableComponent = ({ sessions, activeTab }) => {
     useTable({ columns, data });
 
   return (
-    <div className="tw-flex tw-flex-wrap tw-w-screen">
-      <div className="tw-overflow-y-scroll tw-flex-wrap">
-        <table
-          className="tw-w-full tw-border-collapse tw-border tw-border-gray-200 tw-rounded-md tw-table-auto tw-min-w-full max-[468px]:tw-text-sm tw-flex-wrap"
-          {...getTableProps()}
-        >
-          <thead className="tw-flex tw-bg-[#845ec2] tw-text-white tw-flex-wrap">
-            {headerGroups.map((headerGroup) => (
-              <tr
-                className="tw-flex tw-w-[80vw] tw-justify-between tw-items-center md:tw-gap-10 max-sm:tw-gap-8 md:tw-py-[6px]"
-                {...headerGroup.getHeaderGroupProps()}
+    <table
+      {...getTableProps()}
+      className="tw-border-collapse tw-w-full tw-bg-slate-200 tw-rounded-sm"
+    >
+      {/* header */}
+      <thead>
+        {headerGroups.map((headerGroup) => (
+          <tr
+            className="tw-bg-indigo-500 tw-rounded-sm"
+            {...headerGroup.getHeaderGroupProps()}
+          >
+            {headerGroup.headers.map((column) => (
+              <th
+                className="tw-p-3 max-[366px]:tw-p-1 tw-text-white tw-font-normal max-[366px]:tw-text-md"
+                {...column.getHeaderProps()}
               >
-                {headerGroup.headers.map((column) => (
-                  <th
-                    className="tw-p-2 tw-text-left"
-                    {...column.getHeaderProps()}
-                  >
-                    {column.render("Header")}
-                  </th>
-                ))}
-              </tr>
+                {column.render("Header")}
+              </th>
             ))}
-          </thead>
-          <tbody className="tw-flex tw-flex-col" {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr
-                  className="tw-flex tw-w-full tw-justify-between tw-items-center md:tw-gap-14 tw-py-[6px] tw-border-b tw-border-gray-200 max-sm:tw-p-1"
-                  {...row.getRowProps}
-                >
-                  {row.cells.map((cell) => (
-                    <td
-                      className="tw-p-2 tw-text-left"
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          </tr>
+        ))}
+      </thead>
+
+      {/* body */}
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map((cell) => {
+                return (
+                  <td
+                    className="tw-p-3 max-[366px]:tw-p-1 tw-text-gray-500 tw-text-md max-[366px]:tw-text-sm"
+                    {...cell.getCellProps()}
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 

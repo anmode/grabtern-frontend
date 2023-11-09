@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import Loader from "../../UI/Loader";
 import styles from "../../../styles/queries.module.css";
 
-const TicketForm = ({ setIsTicketFormVisible, onSubmit }) => {
+const TicketForm = ({ setIsTicketFormVisible, onSubmit, loading = false }) => {
   // const [ticketId, setTicketId] = useState("");
   const [description, setDescription] = useState("");
+  const [loader, setLoader] = useState(loading);
   // const [status, setStatus] = useState(true); //True for pending, False for completed
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
+
+  useEffect(() => {
+    setLoader(loading);
+  }, [loading]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,12 +57,16 @@ const TicketForm = ({ setIsTicketFormVisible, onSubmit }) => {
           onChange={handleDescriptionChange}
           required
         />
-        <button
-          className="tw-bg-primary-100 tw-p-2 tw-rounded-md tw-font-semibold tw-text-white hover:tw-bg-primary-200 tw-transition-all tw-ease-in-out tw-duration-150"
-          type="submit"
-        >
-          Submit Ticket
-        </button>
+        {!loader ? (
+          <button
+            className="tw-bg-primary-100 tw-p-2 tw-rounded-md tw-font-semibold tw-text-white hover:tw-bg-primary-200 tw-transition-all tw-ease-in-out tw-duration-150"
+            type="submit"
+          >
+            Submit Ticket
+          </button>
+        ) : (
+          <Loader />
+        )}
       </div>
     </form>
   );

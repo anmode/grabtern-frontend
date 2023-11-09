@@ -52,7 +52,7 @@ const TableComponent = ({ sessions, activeTab }) => {
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr
-            className="tw-bg-indigo-500 tw-rounded-sm"
+            className="tw-bg-[#845ec2] tw-rounded-sm"
             {...headerGroup.getHeaderGroupProps()}
           >
             {headerGroup.headers.map((column) => (

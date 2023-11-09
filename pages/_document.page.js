@@ -38,6 +38,7 @@ export default function Document() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6172950963478417"
           crossOrigin="anonymous"
         ></script>
+        <script src="/scripts/no-flash.js" async />
       </Head>
       <body>
         <AuthProvider />

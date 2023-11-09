@@ -2,6 +2,7 @@ import axios from "axios";
 import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import TableComponent from "../basic/TableComponent";
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
@@ -54,7 +55,7 @@ const Bookings = () => {
       </div>
 
       {/* pending and completed tab */}
-      <nav>
+      <nav className="tw-mb-6">
         <ul className="tw-flex tw-gap-8 tw-border-b-2">
           {tabs.map((tab, index) => (
             <li
@@ -78,7 +79,14 @@ const Bookings = () => {
       )}
 
       {/* sessions list */}
-      <div className="tw-mt-8 tw-w-full">
+
+      {sessions ? (
+        <TableComponent tableHeadings={tableHeadings} sessions={sessions} />
+      ) : (
+        <Spinner />
+      )}
+
+      {/* <div className="tw-mt-8 tw-w-full">
         <ul className="tw-bg-primary-100 tw-text-white tw-flex tw-gap-8 tw-items-center tw-w-full tw-py-4 tw-px-8">
           <li className="tw-hidden min-[540px]:tw-inline">Topic</li>
           <li className="min-[540px]:tw-hidden">Session List</li>
@@ -127,7 +135,7 @@ const Bookings = () => {
               </li>
             ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -369,7 +369,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
 
       <div className="md:tw-hidden w-full">
         <aside
-          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4"
+          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-base-500 tw-z-40 tw-bg-base-300 tw-w-full tw-px-4"
           id="mobileNavbarMentor"
         >
           <PublishProfile isSidebarOpen={false} className="!tw-mt-0 " />
@@ -406,7 +406,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
             <button className="tw-flex tw-flex-col tw-gap-1 tw-justify-center tw-items-center">
               {
                 <AiOutlineMenu
-                  className="tw-text-2xl tw-text-gray-900"
+                  className="tw-text-2xl "
                   onClick={() => setIsMobileSidebarOpen(true)}
                 />
               }
@@ -427,7 +427,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
             <div className="tw-flex tw-justify-end tw-items-center tw-p-4">
               <button className="tw-flex tw-justify-center tw-items-center">
                 <AiOutlineClose
-                  className="tw-text-4xl tw-text-gray-900"
+                  className="tw-text-4xl "
                   onClick={() => setIsMobileSidebarOpen(false)}
                 />
               </button>
@@ -436,7 +436,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
               <Link
                 href="/"
                 onClick={() => setIsMobileSidebarOpen(false)}
-                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-xl"
+                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-xl tw-text-base-500"
               >
                 GrabTern
               </Link>
@@ -457,8 +457,8 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
                       className={`tw-flex tw-flex-wrap ${
                         currentPage === val.path
                           ? "tw-bg-primary-100 tw-text-white hover:tw-text-white"
-                          : "hover:tw-text-gray-900"
-                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg hover:tw-text-gray-900`}
+                          : ""
+                      } tw-p-2 tw-gap-5 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-rounded-lg`}
                       onClick={() => setIsMobileSidebarOpen(false)}
                     >
                       <span className="tw-text-xl">{val.icon}</span>

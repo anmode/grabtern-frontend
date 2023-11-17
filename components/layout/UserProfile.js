@@ -124,7 +124,7 @@ function UserProfile() {
           >
             <Link
               href={dashboardRoute}
-              className="tw-p-2 tw-pb-1 hover:tw-text-primary-100 tw-border-b tw-font-normal"
+              className="tw-p-2 tw-pb-1 hover:tw-text-primary-100 tw-border-b tw-border-base-300 tw-font-normal"
             >
               Dashboard
             </Link>

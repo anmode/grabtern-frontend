@@ -65,14 +65,14 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           src={user?.image}
           width={100}
           height={100}
-          className={`tw-rounded-full tw-bg-slate-300`}
+          className={`tw-rounded-full tw-bg-base-300`}
         />
       ) : (
         <Image
           src={userIcon}
           width={100}
           height={100}
-          className={`tw-rounded-full tw-bg-slate-300 tw-p-3`}
+          className={`tw-rounded-full tw-bg-base-300 tw-p-3`}
         />
       ),
       path: "profile",
@@ -80,7 +80,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
     },
     {
       name: "Bookings",
-      icon: <BiTime className="tw-w-20 tw-h-20 tw-text-slate-600" />,
+      icon: <BiTime className="tw-w-20 tw-h-20 tw-text-base-500" />,
       path: "bookings",
       heading: "View Bookings",
     },
@@ -179,7 +179,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           </div>
         )}
 
-        <hr className="tw-h-px  tw-my-5 tw-bg-gray-300 tw-border-0 tw-dark:bg-gray-700" />
+        <hr className="tw-h-px  tw-my-5 tw-bg-base-300 tw-border-0 tw-dark:bg-gray-700" />
 
         <main className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-p-8">
           <p className="tw-flex tw-justify-start tw-items-center tw-text-center tw-text-lg tw-font-medium">
@@ -188,7 +188,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col">
             {cards.map((card) => {
               return (
-                <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-white max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
+                <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-base-100 max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                     {card.icon}
                   </div>
@@ -209,7 +209,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           <div className="tw-mt-[3rem] -tw-ml-[8rem] tw-pl-28 tw-mb-[5rem] tw-flex tw-justify-center tw-w-[250px] tw-items-center">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="tw-rounded-full tw-bg-gray-200 tw-border-2 tw-border-x-violet-200 tw-border-y-violet-300 hover:tw-bg-gray-300 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
+              className="tw-rounded-full tw-bg-base-200 hover:tw-text-white tw-text-base-500 tw-border-2 tw-border-x-primary-100 tw-border-y-primary-200 hover:tw-bg-primary-100 tw-py-3 tw-px-6 tw-text-center tw-text-base tw-font-semibold "
             >
               View More
             </button>

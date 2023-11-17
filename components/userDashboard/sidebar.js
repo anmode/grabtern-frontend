@@ -45,14 +45,14 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           src={user?.image}
           width={30}
           height={30}
-          className={`tw-rounded-full tw-bg-slate-300`}
+          className={`tw-rounded-full tw-bg-base-400`}
         />
       ) : (
         <Image
           src={userIcon}
           width={30}
           height={30}
-          className={`tw-rounded-full tw-bg-slate-300`}
+          className={`tw-rounded-full tw-bg-base-400`}
         />
       ),
       path: "profile",
@@ -136,11 +136,11 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <>
-      <div className="max-md:tw-hidden">
+      <div className="max-md:tw-hidden tw-text-base-500">
         {/* For laptops and tablets  */}
         <aside
           ref={refOne}
-          className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-gray-200 ${
+          className={`tw-fixed max-md:tw-pt-6 tw-top-0 tw-z-40 tw-h-screen tw-ease-in-out tw-duration-300 tw-bg-base-300 ${
             isSidebarOpen ? "tw-translate-x-0" : "-tw-translate-x-1"
           }`}
           id="sidebar"
@@ -177,7 +177,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               >
                 {isSidebarOpen ? (
                   <label
-                    className="tw-relative tw-top-1 tw-font-semibold tw-text-slate-700 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
+                    className="tw-relative tw-top-1 tw-font-semibold tw-text-base-400 tw-text-center tw-items-center tw-justify-center tw-flex tw-cursor-pointer"
                     for="toggle"
                   >
                     Collapse
@@ -219,7 +219,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                       currentPage === val.path
                         ? "tw-bg-primary-100 tw-text-white"
                         : ""
-                    } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                    } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-white tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-rounded-lg`}
                   >
                     <span>{val.icon}</span>
                     <span
@@ -240,7 +240,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
       <div className="md:tw-hidden w-full">
         {/* For mobile devices max-w-512px */}
         <aside
-          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-text-black tw-z-40 tw-bg-gray-200 tw-w-full tw-px-4"
+          className="tw-fixed tw-flex tw-items-center tw-bottom-0 tw-left-0 tw-right-0 tw-z-40 tw-bg-base-300 tw-w-full tw-px-4 tw-text-base-500"
           id="mobileNav"
         >
           <div
@@ -266,7 +266,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                     currentPage === val.path
                       ? "tw-bg-primary-100 tw-text-white"
                       : ""
-                  } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-text-gray-900 tw-rounded-lg`}
+                  } tw-p-2 hover:tw-bg-primary-100 group-hover:tw-text-primary-100 tw-transition-all tw-text-xl tw-duration-150 tw-ease-in-out tw-items-center tw-rounded-lg`}
                 >
                   <span>{val.icon}</span>
                   <span className="tw-text-xs max-[350px]:tw-hidden">
@@ -284,7 +284,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             <button className="tw-flex tw-flex-col tw-gap-1 tw-justify-center tw-items-center">
               {
                 <AiOutlineMenu
-                  className="tw-text-2xl tw-text-gray-900"
+                  className="tw-text-2xl"
                   onClick={() => setIsMobileSidebarOpen(true)}
                 />
               }
@@ -296,7 +296,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         {/* Modal for opening menu */}
         <div>
           <div
-            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-gray-200 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${
+            className={`tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-overflow-auto tw-bottom-0 tw-bg-base-300 tw-z-50 tw-transition-all tw-duration-300 tw-ease-in-out ${
               isMobileSidebarOpen
                 ? "tw-opacity-100"
                 : "tw-opacity-0 tw-pointer-events-none"
@@ -305,7 +305,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             <div className="tw-flex tw-justify-end tw-items-center tw-p-4">
               <button className="tw-flex tw-justify-center tw-items-center">
                 <AiOutlineClose
-                  className="tw-text-4xl tw-text-gray-900"
+                  className="tw-text-4xl tw-text-base-500"
                   onClick={() => setIsMobileSidebarOpen(false)}
                 />
               </button>
@@ -314,7 +314,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               <Link
                 href="/"
                 onClick={() => setIsMobileSidebarOpen(false)}
-                className="hover:text-primary-200 tw-font-inter tw-font-bold tw-text-xl"
+                className="hover:text-primary-100 tw-text-base-500 tw-font-inter tw-font-bold tw-text-xl"
               >
                 GrabTern
               </Link>

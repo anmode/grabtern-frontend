@@ -102,8 +102,8 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
       <ToastContainer />
       <div className="tw-pb-[5rem] tw-flex tw-justify-center tw-items-center tw-pt-20 tw-w-full">
         <div className="tw-w-full flex tw-flex-wrap">
-          <div className="tw-border tw-border-base-300 tw-rounded-md tw-p-4 tw-bg-white">
-            <h2 className="tw-text-gray-600 tw-text-4xl text-center tw-font-sans ">
+          <div className="tw-border tw-border-base-300 tw-rounded-md tw-p-4 tw-bg-base-100">
+            <h2 className="tw-text-base-500 tw-text-4xl text-center tw-font-sans ">
               Edit Your Profile
             </h2>
             <form
@@ -132,7 +132,7 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                       width: "90%",
                       borderRadius: "5px",
                       border: "none",
-                      border: "2px solid rgb(220, 220, 220)",
+                      border: "2px solid var(--base-300)",
                       paddingLeft: "35px",
                     }}
                     className="mentorFormInput"
@@ -140,7 +140,7 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                     value={formData.fullName}
                     onChange={(e) => handleChange(e)}
                   />
-                  <FaUserAlt className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
+                  <FaUserAlt className="tw-relative tw-text-base-500 tw-bottom-10 tw-left-2 tw-text-xl" />
                 </div>
               </div>
               <div
@@ -162,16 +162,16 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                       width: "90%",
                       borderRadius: "5px",
                       border: "none",
-                      border: "2px solid rgb(220, 220, 220)",
+                      border: "2px solid var(--base-300)",
                       background: "white",
                       paddingLeft: "35px",
-                      backgroundColor: "#f1f1f1",
+                      backgroundColor: "var(--base-400)",
                     }}
                     placeholder={user?.email}
                     readOnly
                     value={formData.email}
                   />
-                  <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
+                  <MdEmail className="tw-relative tw-text-base-500 tw-bottom-10 tw-left-2 tw-text-xl" />
                 </div>
               </div>
               <div>

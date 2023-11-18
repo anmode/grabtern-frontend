@@ -17,6 +17,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
   const [listDates, setListDates] = useState([]);
   const [availableDays, setAvailableDays] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   //User Info
   const user = JSON.parse(localStorage.getItem("userData"));
@@ -116,7 +117,10 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const handleImageChange = async (e) => {
     setLoading(true);
     const file = e.target.files[0];
-    if (!file) return;
+    if (!file) {
+      setLoading(false);
+      return;
+    }
 
     try {
       const base64 = await convertBase64(file);

@@ -33,43 +33,47 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     "thursday",
     "friday",
     "saturday",
-  ] 
+  ];
 
-  // TODO: Move it to utils/date file 
+  // TODO: Move it to utils/date file
   const findAvailableDays = (schedules = []) => {
     const availableDays = new Array(7).fill(false);
-    schedules.map(schedule => {
+    schedules.map((schedule) => {
       availableDays[daysOfWeek.indexOf(schedule.day)] = true;
-    })
+    });
 
     return availableDays;
-  }
+  };
 
-  // TODO: Move it to utils/date file 
-  const getDateByDayName = (availableDays, fromDate = new Date(), noOfNextDays = 5) => {
+  // TODO: Move it to utils/date file
+  const getDateByDayName = (
+    availableDays,
+    fromDate = new Date(),
+    noOfNextDays = 5,
+  ) => {
     const result = [];
-    if(availableDays.length === 0) return result;
+    if (availableDays.length === 0) return result;
 
     const currentDate = fromDate;
     for (let i = 0; result.length < noOfNextDays; i++) {
       const currentDay = new Date(currentDate).getDay();
 
-      if(availableDays[currentDay]){
+      if (availableDays[currentDay]) {
         result.push(new Date(currentDate));
       }
-      
+
       currentDate.setDate(currentDate.getDate() + 1);
     }
     return result;
-  }
+  };
 
-    // calculating available dates from mentor schedule
-  useEffect(()=> {
+  // calculating available dates from mentor schedule
+  useEffect(() => {
     const availableDays = findAvailableDays(mentorDetail.schedules);
     setAvailableDays(availableDays);
     const nextDates = getDateByDayName(availableDays);
     setListDates(nextDates);
-  },[]);
+  }, []);
 
   // TODO: MOve this to utils/image file
   const convertBase64 = (file) => {
@@ -224,26 +228,26 @@ function Index({ mentorDetail, bookSession, sessionID }) {
 
   function splitTimeRange() {
     if (!selectedDay) return [];
-  
+
     const selectedSchedule = mentorDetail.schedules.filter(
-      (schedule) => schedule.day === daysOfWeek[new Date(selectedDay).getDay()]
+      (schedule) => schedule.day === daysOfWeek[new Date(selectedDay).getDay()],
     );
-  
+
     if (selectedSchedule.length === 0) return [];
-  
+
     const result = [];
 
     selectedSchedule.forEach((schedule) => {
       const startTime = new Date(`2000-01-01 ${schedule.startsAt}`);
       const endTime = new Date(`2000-01-01 ${schedule.endsAt}`);
       result.push(formatTime(startTime));
-    
+
       while (startTime < endTime) {
         startTime.setMinutes(startTime.getMinutes() + 30);
         result.push(formatTime(startTime));
       }
-    })
-    
+    });
+
     return result;
   }
 
@@ -337,24 +341,29 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                           dayChangeActive(e);
                         }}
                       >
-                        <span>{date.toLocaleDateString("en-US", {month: "short", day: "2-digit"})}</span>
+                        <span>
+                          {date.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "2-digit",
+                          })}
+                        </span>
                         {daysOfWeek[date.getDay()]}
                       </li>
-                    )) : 
-                    null}
-                  <div
-                    className="tw-text-base-400 tw-underline tw-cursor-pointer tw-text-xs hover:tw-scale-90"
-                    onClick={()=> {
-                      const lastDate = new Date(listDates[listDates.length-1])
-                      const fromDate = new Date(lastDate);
-                      fromDate.setDate(lastDate.getDate() + 1);
-                      const dates = getDateByDayName(availableDays, fromDate);
-                      const newListDates = [...listDates, ...dates];
-                      setListDates(newListDates);
-                    }}
-                  >
-                    Load More
-                  </div>
+                    ))
+                  : null}
+                <div
+                  className="tw-text-base-400 tw-underline tw-cursor-pointer tw-text-xs hover:tw-scale-90"
+                  onClick={() => {
+                    const lastDate = new Date(listDates[listDates.length - 1]);
+                    const fromDate = new Date(lastDate);
+                    fromDate.setDate(lastDate.getDate() + 1);
+                    const dates = getDateByDayName(availableDays, fromDate);
+                    const newListDates = [...listDates, ...dates];
+                    setListDates(newListDates);
+                  }}
+                >
+                  Load More
+                </div>
               </ul>
               <b>Pick Time:</b>
               <ul className="time">

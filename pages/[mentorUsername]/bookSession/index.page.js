@@ -11,55 +11,67 @@ const Header = dynamic(() => import("../../../components/layout/Header"));
 
 function Index({ mentorDetail, bookSession, sessionID }) {
   const router = useRouter();
-  const defaultSchedules = [
-    { day: "Saturday", startsAt: "09:00", endsAt: "21:00" },
-    // { day: "Monday", startsAt: "09:00", endsAt: "21:00" },
-  ];
-
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [qrPopup, setQrPopup] = useState(false);
   const [paymentIssuePopup, setPaymentIssuePopup] = useState(true);
   const [listDates, setListDates] = useState([]);
+  const [availableDays, setAvailableDays] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("paymentIssuePopup") === "0") {
-      setPaymentIssuePopup(false);
-    }
-    getDateByDayName();
-  }, []);
+  //User Info
+  const user = JSON.parse(localStorage.getItem("userData"));
+  const userName = user?.user_name;
+  // const userID = user?.user_id;
 
-  const getDateByDayName = () => {
-    const targetDays = mentorDetail.schedules.map((v) => v.day.toLowerCase());
-    const daysOfWeek = [
-      "sunday",
-      "monday",
-      "tuesday",
-      "wednesday",
-      "thursday",
-      "friday",
-      "saturday",
-    ];
-    const currentDate = new Date();
-    const nextOccurrences = [];
+  // TODO: Move it o constants/date folder
+  const daysOfWeek = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ] 
 
-    if (targetDays.length === 0) return;
+  // TODO: Move it to utils/date file 
+  const findAvailableDays = (schedules = []) => {
+    const availableDays = new Array(7).fill(false);
+    schedules.map(schedule => {
+      availableDays[daysOfWeek.indexOf(schedule.day)] = true;
+    })
 
-    while (nextOccurrences.length < targetDays.length) {
-      currentDate.setDate(currentDate.getDate() + 1);
-      const dayIndex = currentDate.getDay();
+    return availableDays;
+  }
 
-      if (targetDays.includes(daysOfWeek[dayIndex])) {
-        const options = { month: "short", day: "2-digit" };
-        nextOccurrences.push(currentDate.toLocaleDateString("en-US", options));
-        currentDate.setDate(currentDate.getDate() + 6);
+  // TODO: Move it to utils/date file 
+  const getDateByDayName = (availableDays, fromDate = new Date(), noOfNextDays = 5) => {
+    const result = [];
+    if(availableDays.length === 0) return result;
+
+    const currentDate = fromDate;
+    for (let i = 0; result.length < noOfNextDays; i++) {
+      const currentDay = new Date(currentDate).getDay();
+
+      if(availableDays[currentDay]){
+        result.push(new Date(currentDate));
       }
+      
+      currentDate.setDate(currentDate.getDate() + 1);
     }
+    return result;
+  }
 
-    setListDates(nextOccurrences);
-  };
+    // calculating available dates from mentor schedule
+  useEffect(()=> {
+    const availableDays = findAvailableDays(mentorDetail.schedules);
+    setAvailableDays(availableDays);
+    const nextDates = getDateByDayName(availableDays);
+    setListDates(nextDates);
+  },[]);
 
+  // TODO: MOve this to utils/image file
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -70,6 +82,13 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     });
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("paymentIssuePopup") === "0") {
+      setPaymentIssuePopup(false);
+    }
+  });
+
+  // TODO: MOve this to utils/image file
   const uploadToCloudinary = async (imageSrc) => {
     if (!imageSrc) {
       toast.error("Please select an image before uploading.");
@@ -94,10 +113,14 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
   };
 
+  // TODO: MOve this to utils/image file
   const handleImageChange = async (e) => {
     setLoading(true);
     const file = e.target.files[0];
-    if (!file) return;
+    if (!file) {
+      setLoading(false);
+      return;
+    }
 
     try {
       const base64 = await convertBase64(file);
@@ -199,35 +222,37 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
   };
 
-  const splitTimeRange = () => {
-    if (selectedDay.length < 1) return [];
-
-    const selectedSchedule = mentorDetail.schedules.find(
-      (schedule) => schedule.day === selectedDay,
+  function splitTimeRange() {
+    if (!selectedDay) return [];
+  
+    const selectedSchedule = mentorDetail.schedules.filter(
+      (schedule) => schedule.day === daysOfWeek[new Date(selectedDay).getDay()]
     );
-
-    if (!selectedSchedule) return [];
-
+  
+    if (selectedSchedule.length === 0) return [];
+  
     const result = [];
-    const startTime = new Date(`2000-01-01 ${selectedSchedule.startsAt}`);
-    const endTime = new Date(`2000-01-01 ${selectedSchedule.endsAt}`);
-    result.push(formatTime(startTime));
 
-    while (startTime < endTime) {
-      startTime.setMinutes(startTime.getMinutes() + 30);
+    selectedSchedule.forEach((schedule) => {
+      const startTime = new Date(`2000-01-01 ${schedule.startsAt}`);
+      const endTime = new Date(`2000-01-01 ${schedule.endsAt}`);
       result.push(formatTime(startTime));
-    }
-
+    
+      while (startTime < endTime) {
+        startTime.setMinutes(startTime.getMinutes() + 30);
+        result.push(formatTime(startTime));
+      }
+    })
+    
     return result;
-  };
+  }
 
-  const formatTime = (time) => {
+  // TODO: MOve to utils.date file
+  function formatTime(time) {
     const hours = time.getHours().toString().padStart(2, "0");
     const minutes = time.getMinutes().toString().padStart(2, "0");
     return `${hours}:${minutes}`;
-  };
-
-  const userName = JSON.parse(localStorage.getItem("userData"))?.user_name;
+  }
 
   return (
     <div>
@@ -303,17 +328,33 @@ function Index({ mentorDetail, bookSession, sessionID }) {
             <div className="bookSessionSchedules">
               <b>Pick Day:</b>
               <ul className="day">
-                {mentorDetail.schedules.map((schedule, index) => (
-                  <li
-                    onClick={(e) => {
-                      setSelectedDay(schedule.day);
-                      dayChangeActive(e);
+                {mentorDetail.schedules.length !== 0
+                  ? listDates.map((date, index) => (
+                      <li
+                        key={index}
+                        onClick={(e) => {
+                          setSelectedDay(date.toString());
+                          dayChangeActive(e);
+                        }}
+                      >
+                        <span>{date.toLocaleDateString("en-US", {month: "short", day: "2-digit"})}</span>
+                        {daysOfWeek[date.getDay()]}
+                      </li>
+                    )) : 
+                    null}
+                  <div
+                    className="tw-text-base-400 tw-underline tw-cursor-pointer tw-text-xs hover:tw-scale-90"
+                    onClick={()=> {
+                      const lastDate = new Date(listDates[listDates.length-1])
+                      const fromDate = new Date(lastDate);
+                      fromDate.setDate(lastDate.getDate() + 1);
+                      const dates = getDateByDayName(availableDays, fromDate);
+                      const newListDates = [...listDates, ...dates];
+                      setListDates(newListDates);
                     }}
                   >
-                    <span>{listDates[index]}</span>
-                    {schedule.day}
-                  </li>
-                ))}
+                    Load More
+                  </div>
               </ul>
               <b>Pick Time:</b>
               <ul className="time">
@@ -321,6 +362,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   ? "Please select day"
                   : splitTimeRange().map((time) => (
                       <li
+                        key={time}
                         onClick={(e) => {
                           timeChangeActive(e);
                           setSelectedTime(time);

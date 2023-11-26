@@ -80,6 +80,17 @@ body {
   background-color: var(--base-200);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--base-400) !important;
+}
+
 gi.owl-carousel .owl-stage {
   display: flex;
 }

@@ -81,7 +81,7 @@ const Bookings = () => {
       {/* sessions list */}
 
       {sessions ? (
-        <TableComponent tableHeadings={tableHeadings} sessions={sessions} />
+        <TableComponent tableHeadings={tableHeadings} sessions={sessions} activeTab={activeTab}/>
       ) : (
         <Spinner />
       )}

@@ -4,10 +4,10 @@ import { useTable } from "react-table";
 const TableComponent = ({ sessions, activeTab }) => {
   const [data, setData] = useState([]);
 
-  const pendingSessions = sessions.filter((session) => session.isBooked);
+  const pendingSessions = sessions.filter((session) => session.isbooked);
   // console.log(pendingSessions);  debugging purpose
 
-  const completedSessions = sessions.filter((session) => !session.isBooked);
+  const completedSessions = sessions.filter((session) => !session.isbooked);
   // console.log(completedSessions);  debugging purpose
 
   useEffect(() => {

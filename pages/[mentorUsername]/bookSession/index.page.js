@@ -168,20 +168,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     alert("Successfully copied!");
   };
 
-  const dayChangeActive = (e) => {
-    document
-      .querySelectorAll(".bookSessionSchedules .day li")
-      .forEach((el) => el.classList.remove("active"));
-    e.target.classList.add("active");
-  };
-
-  const timeChangeActive = (e) => {
-    document
-      .querySelectorAll(".bookSessionSchedules .time li")
-      .forEach((el) => el.classList.remove("active"));
-    e.target.classList.add("active");
-  };
-
   const bookedSession = async (imageCloudinaryUrl) => {
     try {
       if (imageCloudinaryUrl === null) {
@@ -193,7 +179,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       const requestData = {
         mentorUsername: mentorDetail.username,
         sessionID: bookSession._id,
-        sessionDay: selectedDay,
+        sessionDay: new Date(selectedDay).toDateString(),
         sessionTime: selectedTime,
         paymentProof: imageCloudinaryUrl,
       };
@@ -336,9 +322,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   ? listDates.map((date, index) => (
                       <li
                         key={index}
-                        onClick={(e) => {
+                        className={selectedDay === date.toString() ? 'active' : ''}
+                        onClick={() => {
                           setSelectedDay(date.toString());
-                          dayChangeActive(e);
                         }}
                       >
                         <span>
@@ -372,8 +358,8 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   : splitTimeRange().map((time) => (
                       <li
                         key={time}
-                        onClick={(e) => {
-                          timeChangeActive(e);
+                        className={selectedTime == time ? 'active' : ''}
+                        onClick={() => {
                           setSelectedTime(time);
                         }}
                       >

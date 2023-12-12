@@ -8,6 +8,7 @@ import {
   RiInstagramFill,
   RiGithubFill,
   RiTwitterFill,
+  RiDiscordFill,
 } from "react-icons/ri";
 import FooterColumn from "./FooterColumn";
 import { FaCheckCircle } from "react-icons/fa";
@@ -156,7 +157,7 @@ function Footer() {
               variant="secondary"
             />
             <IconLink
-              href="#"
+              href="https://www.instagram.com/grabtern.guide/"
               aria-label="Follow us on Instagram"
               title="Instagram (External Link)"
               rel="noopener noreferrer"
@@ -164,7 +165,7 @@ function Footer() {
               variant="secondary"
             />
             <IconLink
-              href="#"
+              href="https://www.linkedin.com/company/grabtern/"
               aria-label="Follow us on Linkedin"
               title="Linkedin (External Link)"
               rel="noopener noreferrer"
@@ -177,6 +178,14 @@ function Footer() {
               title="Github (External Link)"
               rel="noopener noreferrer"
               Icon={RiGithubFill}
+              variant="secondary"
+            />
+             <IconLink
+              href="https://discord.gg/9zRCUmUtA2"
+              aria-label="Join The Server On Discord"
+              title="Discord (External Link)"
+              rel="noopener noreferrer"
+              Icon={RiDiscordFill}
               variant="secondary"
             />
           </div>

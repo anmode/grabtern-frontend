@@ -19,15 +19,30 @@ function Footer() {
   const [loader, setLoader] = useState(false);
   const [width, setWidth] = useState("25px");
   const currentYear = new Date().getFullYear();
+  const [showalert, setshowalert] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Checking for a valid Email Address
+    if (email.length === 0) {
+      setshowalert("Field is required");
+      return;
+    }
+    //email validation
+    if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+      setshowalert("Please enter a valid email address");
+      return;
+    }
+
     setLoader(true);
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/newsletter/subscribe`, {
         email,
       })
       .then((response) => {
+        const data = response.status()
+        console.log(data);
         setLoader(false);
         setSubscriptionSuccess(true);
       })
@@ -108,28 +123,37 @@ function Footer() {
               </div>
             ) : (
               <form
-                className="md:tw-flex md:tw-items-center"
+                className="md:tw-flex "
                 onClick={handleSubmit}
               >
                 <label htmlFor="email" className="tw-sr-only">
                   Please provide your email address to subscribe to our
                   newsletter
                 </label>
-                <Input
-                  name="email"
-                  type="email"
-                  id="email"
-                  placeholder="Email Address"
-                  className="tw-w-full tw-mb-4 md:tw-mb-0 md:tw-mr-2 "
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <div className="tw-mb-3   md:tw-mb-0 md:tw-mr-2">
+                  <Input
+                    name="email"
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    className="tw-w-full md:tw-mb-0 md:tw-mr-2 "
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {showalert.length > 0 ? (
+                    <h3 className="tw-text-red-400 tw-text-[2vh] tw-font-semibold tw-mt-[1vh] tw-ml-[1vh]">
+                      {showalert}
+                    </h3>
+                  ) : (
+                    ""
+                  )}
+                </div>
                 {!loader ? (
                   <Button
                     text="Subscribe"
                     type="submit"
                     onClick={handleSubmit}
-                    className="tw-w-full md:tw-w-max"
+                    className="tw-w-full md:tw-w-max tw-h-fit"
                   />
                 ) : (
                   <Loader width="25px" />

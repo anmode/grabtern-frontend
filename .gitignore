@@ -53,3 +53,7 @@ yarn.lock
 # Ignore all files with .tmp extension
 *.tmp
 *.map
+
+#Github Files
+.gitpod.yml
+sitemap*.xml

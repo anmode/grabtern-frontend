@@ -42,7 +42,7 @@ function Footer() {
         email,
       })
       .then((response) => {
-        const data = response.status()
+        const data = response.status();
         console.log(data);
         setLoader(false);
         setSubscriptionSuccess(true);
@@ -123,10 +123,7 @@ function Footer() {
                 </p>
               </div>
             ) : (
-              <form
-                className="md:tw-flex "
-                onClick={handleSubmit}
-              >
+              <form className="md:tw-flex " onClick={handleSubmit}>
                 <label htmlFor="email" className="tw-sr-only">
                   Please provide your email address to subscribe to our
                   newsletter

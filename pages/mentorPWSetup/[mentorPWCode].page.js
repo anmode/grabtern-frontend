@@ -1,8 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const Header = dynamic(() => import("../../components/layout/Header"));
-const MentorFormSetupPW = dynamic(() =>
-  import("../../components/MentorFormSetupPW"),
+const MentorFormSetupPW = dynamic(
+  () => import("../../components/MentorFormSetupPW"),
 );
 const Footer = dynamic(() => import("../../components/layout/Footer"));
 import axios from "axios";

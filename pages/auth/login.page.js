@@ -133,7 +133,7 @@ function login() {
     e.preventDefault();
     setError("");
     if (!formData.email || !formData.password) {
-      setError("Please fill all the fields");
+      toast.error("Please fill all the fields!");
       setTimeout(() => {
         setError("");
       }, 5000);

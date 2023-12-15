@@ -138,7 +138,8 @@ function Register() {
       !data.password ||
       !data.confirmPassword
     ) {
-      return toast.error("Please fill all the fields!");
+      toast.error("Please fill all the fields!");
+      return;
     }
 
     if (data.password !== data.confirmPassword) {
@@ -175,21 +176,21 @@ function Register() {
 
   return (
     <>
-      <Header navbarBackground={true} />
+      <Header navbarBackground={true} />{" "}
       <div className={styles.Registerform}>
         <form className="form-default" onSubmit={handleSubmit}>
           <div className={styles.heading}>
             <img
               src="/Grabtern2.png"
               className="small-image dark:tw-invert"
-            ></img>
-            <h2>Hey, hello 👋</h2>
-          </div>
+            ></img>{" "}
+            <h2> Hey, hello👋 </h2>{" "}
+          </div>{" "}
           {/* <p >
-          The faster you fill up, the faster you get a internship
-          </p> */}
+                      The faster you fill up, the faster you get a internship
+                      </p> */}{" "}
           <div className={styles.forminput}>
-            <label htmlFor="name">Full name</label>
+            <label htmlFor="name"> Full name </label>{" "}
             <div className={styles.Input}>
               <input
                 type="text"
@@ -198,12 +199,11 @@ function Register() {
                 placeholder="Full name"
                 onChange={handleChange}
                 value={data.fullName}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
           </div>
-
           <div className={styles.forminput}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email"> Email </label>{" "}
             <div className={styles.Input}>
               <input
                 type="email"
@@ -212,12 +212,11 @@ function Register() {
                 placeholder="Email"
                 onChange={handleChange}
                 value={data.email}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
           </div>
-
           <div className={styles.forminput}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password"> Password </label>{" "}
             <div className={styles.Input}>
               {" "}
               <input
@@ -233,13 +232,12 @@ function Register() {
                 className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-10"
                 onClick={togglePasswordVisibility}
               >
-                {isPasswordVisible ? <Visibillity /> : <VisibillityOff />}
-              </div>
-            </div>
+                {isPasswordVisible ? <Visibillity /> : <VisibillityOff />}{" "}
+              </div>{" "}
+            </div>{" "}
           </div>
-
           <div className={styles.forminput}>
-            <label htmlFor="password">Confirm Password</label>
+            <label htmlFor="password"> Confirm Password </label>{" "}
             <div className={styles.Input}>
               {" "}
               <input
@@ -255,29 +253,28 @@ function Register() {
                 className="tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-px-4 tw-text-gray-600 tw-top-10"
                 onClick={toggleConPasswordVisibility}
               >
-                {isConPasswordVisible ? <Visibillity /> : <VisibillityOff />}
-              </div>
-            </div>
-          </div>
+                {isConPasswordVisible ? <Visibillity /> : <VisibillityOff />}{" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
           <ToastContainer />
-
           {/* <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
 
-            <input
-              type="submit"
-              name="submit"
-              disabled={!isValidValues}
-              className={`${
-                isValidValues ? "tw-cursor-pointer" : "tw-cursor-not-allowed"
-              }`}
-              value="Register"
-              style={{ textAlign: "center", width: "100%" }}
-            />
-          </div> */}
-
+                        <input
+                          type="submit"
+                          name="submit"
+                          disabled={!isValidValues}
+                          className={`${
+                            isValidValues ? "tw-cursor-pointer" : "tw-cursor-not-allowed"
+                          }`}
+                          value="Register"
+                          style={{ textAlign: "center", width: "100%" }}
+                        />
+                      </div> */}
           <div>
             <ToastContainer />
             <div>
+              {" "}
               {!loader ? (
                 <div className="tw-flex tw-justify-center tw-h-11">
                   <Button
@@ -288,38 +285,38 @@ function Register() {
                 </div>
               ) : (
                 <Loader />
-              )}
-            </div>
-          </div>
+              )}{" "}
+            </div>{" "}
+          </div>{" "}
           <div className={styles.linkdiv}>
-            Already have an account?
+            Already have an account ?{" "}
             {/* <button
-              className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
-              style={{ textDecoration: "none" }}
-              onClick={router.push("/auth/login")}
-            >
-              Login{" "}
-            </button> */}
+                          className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
+                          style={{ textDecoration: "none" }}
+                          onClick={router.push("/auth/login")}
+                        >
+                          Login{" "}
+                        </button> */}{" "}
             <Link
               href="/auth/login?entityType=user"
               className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
             >
               Login{" "}
-            </Link>
-          </div>
+            </Link>{" "}
+          </div>{" "}
           <div className={styles.google}>
             <h3 style={{ color: "var(--base-500)", alignSelf: "center" }}>
-              Or
-            </h3>
-          </div>
+              Or{" "}
+            </h3>{" "}
+          </div>{" "}
           <div
             id="signUpDiv"
             style={{ alignSelf: "center" }}
             className={styles.googlelogin}
-          ></div>
-        </form>
-      </div>
+          ></div>{" "}
+        </form>{" "}
+      </div>{" "}
     </>
   );
 }

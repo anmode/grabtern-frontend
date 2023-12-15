@@ -322,7 +322,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   ? listDates.map((date, index) => (
                       <li
                         key={index}
-                        className={selectedDay === date.toString() ? 'active' : ''}
+                        className={
+                          selectedDay === date.toString() ? "active" : ""
+                        }
                         onClick={() => {
                           setSelectedDay(date.toString());
                         }}
@@ -358,7 +360,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   : splitTimeRange().map((time) => (
                       <li
                         key={time}
-                        className={selectedTime == time ? 'active' : ''}
+                        className={selectedTime == time ? "active" : ""}
                         onClick={() => {
                           setSelectedTime(time);
                         }}

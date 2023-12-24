@@ -16,10 +16,12 @@ const verifyOrder = async (orderDetails) => {
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/payment/verifyOrder`,
       orderDetails,
     );
-    if (response.status == 200) console.log("Payment has been verified");
-    else console.log("Payment could not be verified");
+    if (response.status == 200) {
+      // Add UI to show payment has been verified.
+      console.log("Payment has been verified");
+    } else console.error("Payment could not be verified");
   } catch (err) {
-    console.error("payment could not be verified due to the error: ", err);
+    console.error("payment could not be verified due to an error: ", err);
   }
 };
 
@@ -40,7 +42,7 @@ const createRazorpayObject = async (sessionDetails) => {
     order_id: id,
     handler: function (response) {
       verifyOrder(response);
-      alert("This step of Payment Succeeded");
+      alert("This step of Payment Succeeded"); // remove this alert after adding UI
     },
     prefill: {
       //user information need to be added here using login info of user
@@ -78,6 +80,6 @@ export const getRazorpayObject = async (sessionDetails) => {
 export const razorpay_object = async (e, sessionDetails) => {
   e.preventDefault();
   const razorpayObject = await getRazorpayObject(sessionDetails);
-  // Use razorpayObject here
+
   razorpayObject.open();
 };

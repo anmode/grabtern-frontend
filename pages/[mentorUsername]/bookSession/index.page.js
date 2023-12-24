@@ -161,7 +161,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
 
     // setQrPopup(true);
-    console.log("book session price", bookSession.price);
     razorpay_object(e, bookSession);
   };
 

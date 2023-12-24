@@ -141,7 +141,7 @@ function MyApp({ Component, pageProps }) {
           nomodule
           src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js"
         ></script>
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script> 
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         {/* <script src="https://accounts.google.com/gsi/client" async defer ></script> */}
       </Head>
 

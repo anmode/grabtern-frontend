@@ -4,16 +4,15 @@ import { useTable } from "react-table";
 const TableComponent = ({ sessions, activeTab }) => {
   const [data, setData] = useState([]);
 
-  const pendingSessions = sessions.filter((session) => session.isbooked);
-  const completedSessions = sessions.filter((session) => !session.isbooked);
-
   useEffect(() => {
+    let filteredSessions = [];
     if (activeTab?.toLocaleLowerCase() === "pending") {
-      setData(pendingSessions);
+      filteredSessions = sessions.filter((session) => session.isbooked);
     } else {
-      setData(completedSessions);
+      filteredSessions = sessions.filter((session) => !session.isbooked);
     }
-  }, [activeTab, pendingSessions, completedSessions]);
+    setData(filteredSessions);
+  }, [activeTab, sessions]);
 
   const columns = useMemo(
     () => [

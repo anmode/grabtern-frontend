@@ -5,10 +5,7 @@ const TableComponent = ({ sessions, activeTab }) => {
   const [data, setData] = useState([]);
 
   const pendingSessions = sessions.filter((session) => session.isbooked);
-  // console.log(pendingSessions);  debugging purpose
-
   const completedSessions = sessions.filter((session) => !session.isbooked);
-  // console.log(completedSessions);  debugging purpose
 
   useEffect(() => {
     if (activeTab?.toLocaleLowerCase() === "pending") {
@@ -16,7 +13,7 @@ const TableComponent = ({ sessions, activeTab }) => {
     } else {
       setData(completedSessions);
     }
-  }, [activeTab]);
+  }, [activeTab, pendingSessions, completedSessions]);
 
   const columns = useMemo(
     () => [
@@ -29,15 +26,15 @@ const TableComponent = ({ sessions, activeTab }) => {
         accessor: "userName",
       },
       {
-        Header: "Day",
-        accessor: "sessionDay",
+        Header: "Date",
+        accessor: "sessionDate",
       },
       {
         Header: "Time",
         accessor: "sessionTime",
       },
     ],
-    [],
+    [], // Empty dependency array, as columns won't change during the component lifecycle
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -73,16 +70,14 @@ const TableComponent = ({ sessions, activeTab }) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    className="tw-p-3 max-[366px]:tw-p-1 tw-text-gray-500 tw-text-md max-[366px]:tw-text-sm"
-                    {...cell.getCellProps()}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
+              {row.cells.map((cell) => (
+                <td
+                  className="tw-p-3 max-[366px]:tw-p-1 tw-text-gray-500 tw-text-md max-[366px]:tw-text-sm"
+                  {...cell.getCellProps()}
+                >
+                  {cell.render("Cell")}
+                </td>
+              ))}
             </tr>
           );
         })}

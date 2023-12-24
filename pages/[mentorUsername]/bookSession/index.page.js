@@ -179,7 +179,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       const requestData = {
         mentorUsername: mentorDetail.username,
         sessionID: bookSession._id,
-        sessionDay: new Date(selectedDay).toDateString(),
+        sessionDate: new Date(selectedDay).toDateString(),
         sessionTime: selectedTime,
         paymentProof: imageCloudinaryUrl,
       };
@@ -322,7 +322,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   ? listDates.map((date, index) => (
                       <li
                         key={index}
-                        className={selectedDay === date.toString() ? 'active' : ''}
+                        className={
+                          selectedDay === date.toString() ? "active" : ""
+                        }
                         onClick={() => {
                           setSelectedDay(date.toString());
                         }}
@@ -358,7 +360,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
                   : splitTimeRange().map((time) => (
                       <li
                         key={time}
-                        className={selectedTime == time ? 'active' : ''}
+                        className={selectedTime == time ? "active" : ""}
                         onClick={() => {
                           setSelectedTime(time);
                         }}

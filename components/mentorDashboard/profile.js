@@ -220,11 +220,14 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                       border: "2px solid rgb(220, 220, 220)",
                       background: "white",
                       paddingLeft: "35px",
+                      backgroundColor: "#f1f1f1",
                     }}
                     // placeholder="e.g. peterparker4321#gmail.com"
                     placeholder={mentorDetail?.email}
                     // readOnly
                     value={formData.email}
+                    readOnly
+                    title="This field is not editable"
                   />
                   <MdEmail className="tw-relative tw-text-slate-800 tw-bottom-10 tw-left-2 tw-text-xl" />
                 </div>

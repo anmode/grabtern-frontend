@@ -35,7 +35,7 @@ function Mentor() {
         <section className="tw-flex max-[990px]:tw-flex-col max-[990px]:tw-justify-center tw-items-center tw-mt-36 max-[990px]:tw-mt-48 tw-justify-between tw-px-28 tw-gap-10 max-[637px]:tw-mt-28">
           <div className="max-[990px]:tw-flex-wrap max-[990px]:tw-items-center  max-[990px]:tw-text-center tw-flex tw-flex-col tw-items-start tw-gap-2 tw-relative tw-bottom-4">
             <h1 className="tw-font-bold tw-text-5xl max-[637px]:tw-text-3xl ">
-              Build your Community and Monetize💰 your XP
+              Build your Community and Monetize💰
             </h1>
             <p className="tw-text-lg tw-mt-5 tw-font-semibold max-[637px]:tw-text-sm">
               Create and share Learning Content of your niche. Start building

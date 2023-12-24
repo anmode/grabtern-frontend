@@ -2,10 +2,30 @@ import { useState, useEffect } from "react";
 import { RxRocket } from "react-icons/rx";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { logout } from "../../layout/UserProfile";
+import { useRouter } from "next/router";
+import { useAuth } from "../../../context/AuthContext";
 
 const PublishProfile = ({ isSidebarOpen, className }) => {
   const [isPublished, setIsPublished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const { setIsMentorLoggedIn, setIsUserLoggedIn } = useAuth();
+
+  async function handleLogout() {
+    const success = await logout(router);
+    if (success) {
+      localStorage.clear();
+      setIsMentorLoggedIn(false);
+      setIsUserLoggedIn(false);
+
+      if (router.pathname === "/") {
+        router.reload();
+      } else {
+        router.push("/");
+      }
+    }
+  }
 
   const Publish = async () => {
     setIsLoading(true);
@@ -60,7 +80,10 @@ const PublishProfile = ({ isSidebarOpen, className }) => {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      if (
+      console.log(error.response.status);
+      if (error.response.status === 401) {
+        handleLogout();
+      } else if (
         error.response &&
         error.response.status >= 400 &&
         error.response.status <= 500

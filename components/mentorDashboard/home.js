@@ -29,14 +29,13 @@ const Home = ({
 
   async function handleLogout() {
     const success = await logout(router);
-
     if (success) {
       localStorage.clear();
       setIsMentorLoggedIn(false);
       setIsUserLoggedIn(false);
 
       if (router.pathname === "/") {
-        router.reload(); // You can use router.reload() instead of window.location.reload()
+        router.reload();
       } else {
         router.push("/");
       }
@@ -56,7 +55,10 @@ const Home = ({
         setLoadingState({ status: false });
       } catch (error) {
         setLoadingState({ status: false });
-        if (
+        console.log(error.response.status);
+        if (error.response.status === 401) {
+          handleLogout();
+        } else if (
           error.response &&
           error.response.status >= 400 &&
           error.response.status <= 500
@@ -67,6 +69,7 @@ const Home = ({
         }
       }
     };
+
     getMentor();
   }, []);
 

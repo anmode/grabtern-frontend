@@ -26,7 +26,6 @@ define(['exports'], (function (exports) { 'use strict';
         groupCollapsed: `#3498db`,
         groupEnd: null // No colored prefix on groupEnd
       };
-
       const print = function (method, args) {
         if (self.__WB_DISABLE_DEV_LOGS) {
           return;
@@ -1739,7 +1738,6 @@ define(['exports'], (function (exports) { 'use strict';
               params: this.params // eslint-disable-line
             }));
           }
-
           this._cacheKeys[key] = effectiveRequest;
         }
         return this._cacheKeys[key];
@@ -2455,4 +2453,4 @@ define(['exports'], (function (exports) { 'use strict';
     exports.registerRoute = registerRoute;
 
 }));
-//# sourceMappingURL=workbox-8f0e986c.js.map
+//# sourceMappingURL=workbox-e43f5367.js.map

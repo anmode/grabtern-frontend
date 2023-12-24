@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 import ButtonUI from "../../../components/UI/Button/Button";
 import { useRouter } from "next/router";
+import { razorpay_object } from "../../../hook/razorpay";
 
 const Header = dynamic(() => import("../../../components/layout/Header"));
 
@@ -143,7 +144,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
   };
 
-  const bookSessionPaymentStep = () => {
+  const bookSessionPaymentStep = (e) => {
     if (!userName) {
       toast.error("Please log in as a user before booking a session.");
       setTimeout(() => {
@@ -159,7 +160,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
       return;
     }
 
-    setQrPopup(true);
+    // setQrPopup(true);
+    console.log("book session price",bookSession.price);
+    razorpay_object(e,bookSession); 
   };
 
   const handleCopy = () => {
@@ -374,7 +377,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
               <div className="price">
                 <b>Book Session Price:</b> {bookSession.price}
               </div>
-              <div className="button">
+              <div id="pay-button" className="button">
                 <ButtonUI
                   text="Book Session Now"
                   onClick={bookSessionPaymentStep}

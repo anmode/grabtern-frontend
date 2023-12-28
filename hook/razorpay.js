@@ -10,22 +10,84 @@ const loadRazorpayScript = () => {
   });
 };
 
-const verifyOrder = async (orderDetails) => {
+const createCustomEvent = (message, number) => {
+  return document.dispatchEvent(
+    new CustomEvent("razorpay", {
+      detail: {
+        status: number,
+        message: message,
+      },
+    }),
+  );
+};
+
+const bookedSession = async (
+  paymentProof,
+  sessionDetails,
+  mentorDetail,
+  selectedDay,
+  selectedTime,
+) => {
+  console.log("payment proof", paymentProof);
   try {
+    const requestData = {
+      mentorUsername: mentorDetail.username,
+      sessionID: sessionDetails._id,
+      sessionDate: new Date(selectedDay).toDateString(),
+      sessionTime: selectedTime,
+      paymentProof: paymentProof,
+    };
+
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/payment/verifyOrder`,
-      orderDetails,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
+      requestData,
+      { withCredentials: true },
     );
-    if (response.status == 200) {
-      // Add UI to show payment has been verified.
-      console.log("Payment has been verified");
-    } else console.error("Payment could not be verified");
-  } catch (err) {
-    console.error("payment could not be verified due to an error: ", err);
+
+    console.log("response", response);
+
+    if (response.data) {
+      console.log("You have successfully booked a session!");
+      // window.location.href = "/";
+    } else {
+      console.error(
+        "Error booking session: Unexpected response from the server.",
+      );
+    }
+  } catch (error) {
+    if (error.response?.data?.message) {
+      // toast.error(error.response.data.message);
+      console.error("Error booking session:", error.response.data.message);
+    } else {
+      // toast.error("Error booking session: An unexpected error occurred.");
+      console.error("Error booking session:", error);
+    }
   }
 };
 
-const createRazorpayObject = async (sessionDetails) => {
+// const verifyOrder = async (orderDetails, sessionDetails, mentorDetail, selectedDay, selectedTime) => {
+//   try {
+//     const response = await axios.post(
+//       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/payment/verifyOrder`,
+//       orderDetails,
+//     );
+//     if (response.status == 200) {
+//       // createCustomEvent('Payment has been verified', 0);
+//       bookedSession(sessionDetails, mentorDetail, selectedDay, selectedTime, orderDetails)
+//     } else {
+//       createCustomEvent('Payment could not be verified', 1);
+//     }
+//   } catch (err) {
+//     createCustomEvent('Payment could not be verified', 1);
+//   }
+// };
+
+const createRazorpayObject = async (
+  sessionDetails,
+  mentorDetail,
+  selectedDay,
+  selectedTime,
+) => {
   const response = await axios.post(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/payment/createOrder`,
     sessionDetails,
@@ -40,9 +102,14 @@ const createRazorpayObject = async (sessionDetails) => {
     image:
       "https://th.bing.com/th/id/OIP.cs4xLIcOvEpEa8xYyPjzfwAAAA?rs=1&pid=ImgDetMain",
     order_id: id,
-    handler: function (response) {
-      verifyOrder(response);
-      alert("This step of Payment Succeeded"); // remove this alert after adding UI
+    handler: function (paymentProof) {
+      bookedSession(
+        paymentProof,
+        sessionDetails,
+        mentorDetail,
+        selectedDay,
+        selectedTime,
+      );
     },
     prefill: {
       //user information need to be added here using login info of user
@@ -58,7 +125,8 @@ const createRazorpayObject = async (sessionDetails) => {
   const razorpayObject = new Razorpay(options);
 
   razorpayObject.on("payment.failed", function (response) {
-    alert("This step of Payment Failed");
+    // createCustomEvent('Payment failed', 1);
+    alert("Payment failed");
   });
 
   return razorpayObject;
@@ -66,20 +134,40 @@ const createRazorpayObject = async (sessionDetails) => {
 
 let razorpayObjectPromise;
 
-export const getRazorpayObject = async (sessionDetails) => {
+export const getRazorpayObject = async (
+  sessionDetails,
+  mentorDetail,
+  selectedDay,
+  selectedTime,
+) => {
   if (!razorpayObjectPromise) {
     // Load the script and create the Razorpay object only once
     razorpayObjectPromise = loadRazorpayScript().then(() =>
-      createRazorpayObject(sessionDetails),
+      createRazorpayObject(
+        sessionDetails,
+        mentorDetail,
+        selectedDay,
+        selectedTime,
+      ),
     );
   }
 
   return razorpayObjectPromise;
 };
 
-export const razorpay_object = async (e, sessionDetails) => {
+export const razorpay_object = async (
+  e,
+  sessionDetails,
+  mentorDetail,
+  selectedDay,
+  selectedTime,
+) => {
   e.preventDefault();
-  const razorpayObject = await getRazorpayObject(sessionDetails);
-
+  const razorpayObject = await getRazorpayObject(
+    sessionDetails,
+    mentorDetail,
+    selectedDay,
+    selectedTime,
+  );
   razorpayObject.open();
 };

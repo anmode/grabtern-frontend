@@ -19,7 +19,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const [listDates, setListDates] = useState([]);
   const [availableDays, setAvailableDays] = useState([]);
   const [loading, setLoading] = useState(false);
-
   //User Info
   const user = JSON.parse(localStorage.getItem("userData"));
   const userName = user?.user_name;
@@ -87,11 +86,33 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     });
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("paymentIssuePopup") === "0") {
-      setPaymentIssuePopup(false);
+  const showToast = (status, message) => {
+    if (status === 2) {
+      toast.success(message);
+    } else if (status === 1) {
+      toast.error(message);
     }
+  };
+  const [paymentStatus, setPaymentStatus] = useState({
+    status: 0,
+    message: "",
   });
+  const updatePaymentStatus = (e) => {
+    setPaymentStatus({ status: e.detail.status, status: e.detail.message });
+  };
+  const status = document.addEventListener("razorpay", updatePaymentStatus);
+  useEffect(() => {
+    const handleRazorpay = (e) => {
+      showToast(e.detail.status, e.detail.message);
+    };
+    document.addEventListener("razorpay", handleRazorpay);
+  }, []);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("paymentIssuePopup") === "0") {
+  //     setPaymentIssuePopup(false);
+  //   }
+  // });
 
   // TODO: MOve this to utils/image file
   const uploadToCloudinary = async (imageSrc) => {
@@ -119,30 +140,30 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   };
 
   // TODO: MOve this to utils/image file
-  const handleImageChange = async (e) => {
-    setLoading(true);
-    const file = e.target.files[0];
-    if (!file) {
-      setLoading(false);
-      return;
-    }
+  // const handleImageChange = async (e) => {
+  //   setLoading(true);
+  //   const file = e.target.files[0];
+  //   if (!file) {
+  //     setLoading(false);
+  //     return;
+  //   }
 
-    try {
-      const base64 = await convertBase64(file);
-      const imageCloudinaryUrl = await uploadToCloudinary(base64);
+  //   try {
+  //     const base64 = await convertBase64(file);
+  //     const imageCloudinaryUrl = await uploadToCloudinary(base64);
 
-      if (!imageCloudinaryUrl) {
-        setLoading(false);
-        toast.error("Failed to upload the image to our server");
-        return;
-      }
+  //     if (!imageCloudinaryUrl) {
+  //       setLoading(false);
+  //       toast.error("Failed to upload the image to our server");
+  //       return;
+  //     }
 
-      bookedSession(imageCloudinaryUrl);
-    } catch (error) {
-      setLoading(false);
-      toast.error("An error occurred while processing the image.");
-    }
-  };
+  //     bookedSession(imageCloudinaryUrl);
+  //   } catch (error) {
+  //     setLoading(false);
+  //     toast.error("An error occurred while processing the image.");
+  //   }
+  // };
 
   const bookSessionPaymentStep = (e) => {
     if (!userName) {
@@ -161,23 +182,17 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     }
 
     // setQrPopup(true);
-    razorpay_object(e, bookSession);
+    razorpay_object(e, bookSession, mentorDetail, selectedDay, selectedTime);
   };
 
-  const handleCopy = () => {
-    const paymentDetails = "9368086395@paytm";
-    navigator.clipboard.writeText(paymentDetails);
-    alert("Successfully copied!");
-  };
+  // const handleCopy = () => {
+  //   const paymentDetails = "9368086395@paytm";
+  //   navigator.clipboard.writeText(paymentDetails);
+  //   alert("Successfully copied!");
+  // };
 
-  const bookedSession = async (imageCloudinaryUrl) => {
+  const bookedSession = async () => {
     try {
-      if (imageCloudinaryUrl === null) {
-        setLoading(false);
-        toast.error("Upload transaction proof first to book a session.");
-        return;
-      }
-
       const requestData = {
         mentorUsername: mentorDetail.username,
         sessionID: bookSession._id,
@@ -253,6 +268,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
         className="container sessionContainer"
         style={{ marginTop: "100px" }}
       >
+        {/* Keep this method in case razorpay faces some issue 
         {paymentIssuePopup && (
           <div className="modal-overlay">
             <div className="modal-content">
@@ -274,7 +290,7 @@ function Index({ mentorDetail, bookSession, sessionID }) {
               </span>
             </div>
           </div>
-        )}
+        )} 
         {qrPopup && (
           <div className="modal-overlay">
             <div className="modal-content">
@@ -295,7 +311,8 @@ function Index({ mentorDetail, bookSession, sessionID }) {
               </div>
             </div>
           </div>
-        )}
+        )} 
+        */}
         <h1>Let's book a session</h1>
 
         <div className="session">

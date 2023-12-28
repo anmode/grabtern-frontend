@@ -6,11 +6,11 @@ import {
   RiFacebookFill,
   RiLinkedinFill,
   RiInstagramFill,
-  RiGithubFill,
-  RiTwitterFill,
+  RiGithubFill
 } from "react-icons/ri";
 import FooterColumn from "./FooterColumn";
 import { FaCheckCircle } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import Loader from "../UI/Loader";
 
 function Footer() {
@@ -174,7 +174,7 @@ function Footer() {
               aria-label="Follow us on Twitter"
               title="Twitter (External Link)"
               rel="noopener noreferrer"
-              Icon={RiTwitterFill}
+              Icon={FaXTwitter}
               variant="secondary"
             />
             <IconLink

@@ -11,6 +11,10 @@ export default function Document() {
           src="https://accounts.google.com/gsi/client"
           strategy="beforeInteractive"
         ></Script>
+        <Script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          strategy="beforeInteractive"
+        ></Script>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 

@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -48,7 +50,10 @@ const bookedSession = async (
 
     if (response.data) {
       console.log("You have successfully booked a session!");
-      // window.location.href = "/";
+      toast.success("You have successfully booked a session!");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } else {
       console.error(
         "Error booking session: Unexpected response from the server.",
@@ -56,31 +61,20 @@ const bookedSession = async (
     }
   } catch (error) {
     if (error.response?.data?.message) {
-      // toast.error(error.response.data.message);
       console.error("Error booking session:", error.response.data.message);
+      toast.error(error.response.data.message);
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } else {
-      // toast.error("Error booking session: An unexpected error occurred.");
       console.error("Error booking session:", error);
+      toast.error("Error booking session: An unexpected error occurred.");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     }
   }
 };
-
-// const verifyOrder = async (orderDetails, sessionDetails, mentorDetail, selectedDay, selectedTime) => {
-//   try {
-//     const response = await axios.post(
-//       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/payment/verifyOrder`,
-//       orderDetails,
-//     );
-//     if (response.status == 200) {
-//       // createCustomEvent('Payment has been verified', 0);
-//       bookedSession(sessionDetails, mentorDetail, selectedDay, selectedTime, orderDetails)
-//     } else {
-//       createCustomEvent('Payment could not be verified', 1);
-//     }
-//   } catch (err) {
-//     createCustomEvent('Payment could not be verified', 1);
-//   }
-// };
 
 const createRazorpayObject = async (
   sessionDetails,
@@ -93,6 +87,7 @@ const createRazorpayObject = async (
     sessionDetails,
   );
   const { id, amount, currency, notes } = response.data;
+
   const options = {
     key: "rzp_test_T6Il7sPWsuqEPB",
     amount: amount,
@@ -103,13 +98,16 @@ const createRazorpayObject = async (
       "https://th.bing.com/th/id/OIP.cs4xLIcOvEpEa8xYyPjzfwAAAA?rs=1&pid=ImgDetMain",
     order_id: id,
     handler: function (paymentProof) {
-      bookedSession(
-        paymentProof,
-        sessionDetails,
-        mentorDetail,
-        selectedDay,
-        selectedTime,
-      );
+      // Wrap the location change inside a setTimeout
+      setTimeout(() => {
+        bookedSession(
+          paymentProof,
+          sessionDetails,
+          mentorDetail,
+          selectedDay,
+          selectedTime,
+        );
+      }, 100); // Need to adjust the delay (we have to reduce it)
     },
     prefill: {
       //user information need to be added here using login info of user
@@ -122,6 +120,7 @@ const createRazorpayObject = async (
       color: "#2300a3",
     },
   };
+
   const razorpayObject = new Razorpay(options);
 
   razorpayObject.on("payment.failed", function (response) {

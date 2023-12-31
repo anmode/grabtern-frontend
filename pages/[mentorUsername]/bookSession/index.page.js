@@ -75,17 +75,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     setListDates(nextDates);
   }, []);
 
-  // TODO: MOve this to utils/image file
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => resolve(fileReader.result);
-      fileReader.onerror = (error) => reject(error);
-    });
-  };
-
   const showToast = (status, message) => {
     if (status === 2) {
       toast.success(message);
@@ -108,126 +97,89 @@ function Index({ mentorDetail, bookSession, sessionID }) {
     document.addEventListener("razorpay", handleRazorpay);
   }, []);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("paymentIssuePopup") === "0") {
-  //     setPaymentIssuePopup(false);
-  //   }
-  // });
-
-  // TODO: MOve this to utils/image file
-  const uploadToCloudinary = async (imageSrc) => {
-    if (!imageSrc) {
-      toast.error("Please select an image before uploading.");
-      return;
-    }
-
+  const bookSessionPaymentStep = async (e) => {
     try {
-      const res = await fetch(imageSrc);
-      const blob = await res.blob();
-      const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
+      if (!userName) {
+        toast.error("Please log in as a user before booking a session.");
+        setTimeout(() => {
+          router.push(
+            `/auth/login?entityType=user&redirectURL=${window.location.href}`,
+          );
+        }, 2000);
+        return;
+      }
 
-      const formData = new FormData();
-      formData.append("file", blob);
-      formData.append("upload_preset", "image_preset");
+      if (!selectedDay || !selectedTime) {
+        toast.error("Please select a day and time to book a session.");
+        return;
+      }
 
-      const response = await axios.post(url, formData);
-      return response.data.secure_url;
-    } catch (error) {
-      console.error("Error uploading to Cloudinary:", error);
-      toast.error("Failed to upload the image to our server");
-      setLoading(false);
-    }
-  };
-
-  // TODO: MOve this to utils/image file
-  // const handleImageChange = async (e) => {
-  //   setLoading(true);
-  //   const file = e.target.files[0];
-  //   if (!file) {
-  //     setLoading(false);
-  //     return;
-  //   }
-
-  //   try {
-  //     const base64 = await convertBase64(file);
-  //     const imageCloudinaryUrl = await uploadToCloudinary(base64);
-
-  //     if (!imageCloudinaryUrl) {
-  //       setLoading(false);
-  //       toast.error("Failed to upload the image to our server");
-  //       return;
-  //     }
-
-  //     bookedSession(imageCloudinaryUrl);
-  //   } catch (error) {
-  //     setLoading(false);
-  //     toast.error("An error occurred while processing the image.");
-  //   }
-  // };
-
-  const bookSessionPaymentStep = (e) => {
-    if (!userName) {
-      toast.error("Please log in as a user before booking a session.");
-      setTimeout(() => {
-        router.push(
-          `/auth/login?entityType=user&redirectURL=${window.location.href}`,
-        );
-      }, 2000);
-      return;
-    }
-
-    if (!selectedDay || !selectedTime) {
-      toast.error("Please select a day and time to book a session.");
-      return;
-    }
-
-    // setQrPopup(true);
-    razorpay_object(e, bookSession, mentorDetail, selectedDay, selectedTime);
-  };
-
-  // const handleCopy = () => {
-  //   const paymentDetails = "9368086395@paytm";
-  //   navigator.clipboard.writeText(paymentDetails);
-  //   alert("Successfully copied!");
-  // };
-
-  const bookedSession = async () => {
-    try {
-      const requestData = {
-        mentorUsername: mentorDetail.username,
-        sessionID: bookSession._id,
-        sessionDate: new Date(selectedDay).toDateString(),
-        sessionTime: selectedTime,
-        paymentProof: imageCloudinaryUrl,
-      };
-
+      // Check session availability
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-        requestData,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail/checkAvailability`,
+        {
+          mentorUsername: mentorDetail.username,
+          sessionID: bookSession._id,
+          sessionDate: new Date(selectedDay).toDateString(),
+          sessionTime: selectedTime,
+        },
         { withCredentials: true },
       );
 
-      setLoading(false);
+      console.log("Response:", response.data);
 
-      if (response.data) {
-        toast.success("You have successfully booked a session!");
-        window.location.href = "/";
-      } else {
-        toast.error(
-          "Error booking session: Unexpected response from the server.",
-        );
+      if (response.status !== 200) {
+        console.error("Error checking session availability:", response.data);
+        toast.error(`${response.data.message}`);
+        return;
       }
+
+      // Session is available, proceed to Razorpay payment
+      razorpay_object(e, bookSession, mentorDetail, selectedDay, selectedTime);
     } catch (error) {
-      setLoading(false);
-      if (error.response?.data?.message) {
-        toast.error(error.response.data.message);
-        console.error("Error booking session:", error.response.data.message);
-      } else {
-        toast.error("Error booking session: An unexpected error occurred.");
-        console.error("Error booking session:", error);
-      }
+      console.error("Error checking session availability:", error);
+      toast.error(error.response?.data || "An unexpected error occurred.");
     }
   };
+
+  // TODO: We do not find a way to use this function in razorpay.js... Neet to work on it
+  // const bookedSession = async () => {
+  //   try {
+  //     const requestData = {
+  //       mentorUsername: mentorDetail.username,
+  //       sessionID: bookSession._id,
+  //       sessionDate: new Date(selectedDay).toDateString(),
+  //       sessionTime: selectedTime,
+  //       paymentProof: imageCloudinaryUrl,
+  //     };
+
+  //     const response = await axios.post(
+  //       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
+  //       requestData,
+  //       { withCredentials: true },
+  //     );
+
+  //     setLoading(false);
+
+  //     if (response.data) {
+  //       toast.success("You have successfully booked a session!");
+  //       window.location.href = "/";
+  //     } else {
+  //       toast.error(
+  //         "Error booking session: Unexpected response from the server.",
+  //       );
+  //     }
+  //   } catch (error) {
+  //     setLoading(false);
+  //     if (error.response?.data?.message) {
+  //       toast.error(error.response.data.message);
+  //       console.error("Error booking session:", error.response.data.message);
+  //     } else {
+  //       toast.error("Error booking session: An unexpected error occurred.");
+  //       console.error("Error booking session:", error);
+  //     }
+  //   }
+  // };
 
   function splitTimeRange() {
     if (!selectedDay) return [];
@@ -268,51 +220,6 @@ function Index({ mentorDetail, bookSession, sessionID }) {
         className="container sessionContainer"
         style={{ marginTop: "100px" }}
       >
-        {/* Keep this method in case razorpay faces some issue 
-        {paymentIssuePopup && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <div
-                className="modal-close"
-                onClick={() => {
-                  localStorage.setItem("paymentIssuePopup", "0");
-                  setPaymentIssuePopup(false);
-                }}
-              >
-                <AiFillCloseCircle />
-              </div>
-              <br />
-              <span className="flex">
-                <AiFillInfoCircle /> Currently, the payment gateway is on hold!
-                You will get a QR code and upload the pic/pdf of the
-                transaction. An automatic verification model will book your
-                session.
-              </span>
-            </div>
-          </div>
-        )} 
-        {qrPopup && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <div className="modal-close" onClick={() => setQrPopup(false)}>
-                <AiFillCloseCircle />
-              </div>
-              <img src="/assets/img/QR.png" alt="QR" className="w-96 h-96" />
-              <span className="p-3">
-                <b>UPI ID</b>: 9368086395@paytm
-              </span>
-              <div className="buttons">
-                <ButtonUI text="Copy" onClick={handleCopy} />
-                <div className="fileUpload">
-                  <ButtonUI text="Upload proof" />
-                  <input type="file" onChange={(e) => handleImageChange(e)} />
-                  {loading && <img src="/assets/img/gif/Spinner.gif" />}
-                </div>
-              </div>
-            </div>
-          </div>
-        )} 
-        */}
         <h1>Let's book a session</h1>
 
         <div className="session">

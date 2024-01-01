@@ -131,6 +131,8 @@ function login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectURL = urlParams.get("redirectURL");
     setError("");
     if (!formData.email || !formData.password) {
       setError("Please fill all the fields");
@@ -150,9 +152,11 @@ function login() {
       if (entityType === "user") {
         setIsUserLoggedIn(true);
         localStorage.setItem("userData", JSON.stringify(res.userData));
+        router.replace(redirectURL || "/");
       } else if (entityType === "mentor") {
         setIsMentorLoggedIn(true);
         localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
+        router.replace(redirectURL || "/");
       }
     } catch (error) {
       setLoader(false);

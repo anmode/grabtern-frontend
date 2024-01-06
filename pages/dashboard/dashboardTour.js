@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useTour } from "@reactour/tour";
 import Image from "next/image";
 import logo from "../../public/logo.png";
@@ -131,17 +132,48 @@ function UserDashboardTour() {
 
   const { setIsOpen, setSteps, setCurrentStep } = useTour();
   useEffect(() => {
-    setCurrentStep(0);
-    const userTour = localStorage.getItem("userTour");
-    if (userTour) return;
-    setIsOpen(true);
-    if (window.innerWidth > 768) {
-      setSteps(desktopSteps);
-    } else {
-      setSteps(mobileSteps);
-    }
-    localStorage.setItem("userTour", "true");
+    const fetchVisitedStatus = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/flags/isVisitedDashboard`,
+          {
+            withCredentials: true,
+          },
+        );
+        const isVisitedDashboard = response.data.isVisitedDashboard;
+        console.log(isVisitedDashboard);
+
+        if (!isVisitedDashboard) {
+          // User has not visited the dashboard, show the tour
+          setCurrentStep(0);
+          setIsOpen(true);
+
+          if (window.innerWidth > 768) {
+            setSteps(desktopSteps);
+          } else {
+            setSteps(mobileSteps);
+          }
+
+          // Set the status to visited in the backend
+          await axios.put(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/flags/setIsVisitedDashboard`,
+            {
+              isVisitedDashboard: true,
+            },
+            {
+              withCredentials: true,
+            },
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching or updating visited status:", error);
+      }
+    };
+
+    fetchVisitedStatus();
   }, []);
+
+  return null;
 }
 
 function MentorDashboardTour() {
@@ -313,16 +345,45 @@ function MentorDashboardTour() {
   ];
 
   useEffect(() => {
-    setCurrentStep(0);
-    const mentorTour = localStorage.getItem("mentorTour");
-    if (mentorTour) return;
-    setIsOpen(true);
-    if (window.innerWidth > 768) {
-      setSteps(desktopSteps);
-    } else {
-      setSteps(mobileSteps);
-    }
-    localStorage.setItem("mentorTour", true);
+    const fetchVisitedStatus = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/flags/isVisitedDashboard`,
+          {
+            withCredentials: true,
+          },
+        );
+        const isVisitedDashboard = response.data.isVisitedDashboard;
+        console.log(isVisitedDashboard);
+
+        if (!isVisitedDashboard) {
+          // User has not visited the dashboard, show the tour
+          setCurrentStep(0);
+          setIsOpen(true);
+
+          if (window.innerWidth > 768) {
+            setSteps(desktopSteps);
+          } else {
+            setSteps(mobileSteps);
+          }
+
+          // Set the status to visited in the backend
+          await axios.put(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/flags/setIsVisitedDashboard`,
+            {
+              isVisitedDashboard: true,
+            },
+            {
+              withCredentials: true,
+            },
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching or updating visited status:", error);
+      }
+    };
+
+    fetchVisitedStatus();
   }, []);
 }
 

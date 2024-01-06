@@ -165,7 +165,7 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                       border: "2px solid var(--base-300)",
                       background: "white",
                       paddingLeft: "35px",
-                      backgroundColor: "var(--base-400)",
+                      backgroundColor: "#f1f1f1",
                     }}
                     placeholder={user?.email}
                     readOnly

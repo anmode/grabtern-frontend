@@ -72,7 +72,11 @@ const Bookings = ({ setLoadingState, setErrorState }) => {
       {/* sessions list */}
       <div className="tw-mt-8">
         {sessions ? (
-          <TableComponent sessions={sessions} activeTab={activeTab} />
+          <TableComponent
+            sessions={sessions}
+            activeTab={activeTab}
+            isMentor={true}
+          />
         ) : (
           <Spinner />
         )}

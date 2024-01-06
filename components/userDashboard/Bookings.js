@@ -9,8 +9,6 @@ const Bookings = () => {
 
   const tabs = ["Pending", "Completed"];
 
-  const tableHeadings = ["Topic", "Mentor", "Day", "Time"];
-
   // session state
   const [sessions, setSessions] = useState([]);
 
@@ -27,6 +25,7 @@ const Bookings = () => {
           withCredentials: true,
         },
       );
+      console.log(response.data);
       setSessions(response.data);
     } catch (error) {
       setError(error.response.data.message);
@@ -55,7 +54,7 @@ const Bookings = () => {
       </div>
 
       {/* pending and completed tab */}
-      <nav className="tw-mb-6">
+      <nav>
         <ul className="tw-flex tw-gap-8 tw-border-b-2">
           {tabs.map((tab, index) => (
             <li
@@ -82,64 +81,13 @@ const Bookings = () => {
 
       {sessions ? (
         <TableComponent
-          tableHeadings={tableHeadings}
           sessions={sessions}
           activeTab={activeTab}
+          isMentor={false}
         />
       ) : (
         <Spinner />
       )}
-
-      {/* <div className="tw-mt-8 tw-w-full">
-        <ul className="tw-bg-primary-100 tw-text-white tw-flex tw-gap-8 tw-items-center tw-w-full tw-py-4 tw-px-8">
-          <li className="tw-hidden min-[540px]:tw-inline">Topic</li>
-          <li className="min-[540px]:tw-hidden">Session List</li>
-          <li className="tw-hidden sm:tw-inline">Mentor</li>
-          <div className="tw-hidden md:tw-grid md:tw-justify-between md:tw-grid-cols-[5rem_5rem]">
-            <li>Day</li>
-            <li className="tw-text-right">Time</li>
-          </div>
-          <li className="tw-hidden min-[540px]:tw-inline tw-text-right md:tw-hidden">
-            Mentoring On
-          </li>
-        </ul>
-        <ul className="tw-bg-white tw-border tw-rounded-b">
-          {sessions
-            .filter((session) =>
-              activeTab.toLocaleLowerCase() === "pending"
-                ? session.isbooked
-                : !session.isbooked,
-            )
-            .map((session, index) => (
-              <li
-                key={index}
-                className="min-[540px]:tw-grid min-[540px]:tw-grid-cols-[auto_7rem] min-[540px]:tw-justify-between sm:tw-justify-normal tw-p-4 sm:tw-grid-cols-[auto_8rem] md:tw-grid-cols-[auto_13rem] tw-text-base-400 tw-border-b last:tw-border-b-0 tw-gap-6"
-              >
-                <div className="sm:tw-grid min-[540px]:tw-grid-cols-[auto_8rem] sm:tw-grid-cols-[auto_8rem] tw-gap-6">
-                  <p className="tw-font-medium">{session.sessionName}</p>
-                  <p className="tw-capitalize sm:tw-hidden">
-                    Mentor • {session.userName}
-                  </p>
-                  <p className="tw-capitalize tw-hidden sm:tw-block">
-                    {session.userName}
-                  </p>
-                </div>
-                <div>
-                  <div className="md:tw-grid tw-hidden md:tw-grid-cols-[5rem_5rem] md:tw-justify-between">
-                    <p className="tw-capitalize">{session.sessionDay}</p>
-                    <p className="tw-uppercase tw-text-right">
-                      {session.sessionTime}
-                    </p>
-                  </div>
-                  <p className="tw-capitalize min-[540px]:tw-text-right md:tw-hidden">
-                    {session.sessionDay.substring(0, 3)},&nbsp;
-                    {session.sessionTime}
-                  </p>
-                </div>
-              </li>
-            ))}
-        </ul>
-      </div> */}
     </div>
   );
 };

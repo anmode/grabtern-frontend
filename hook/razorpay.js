@@ -89,7 +89,7 @@ const createRazorpayObject = async (
   const { id, amount, currency, notes } = response.data;
 
   const options = {
-    key: "rzp_test_T6Il7sPWsuqEPB",
+    key: "rzp_live_kjkPNFxArUYNj0",
     amount: amount,
     currency: "INR",
     name: "Grabtern",

@@ -63,11 +63,13 @@ function Contact() {
     e.preventDefault();
 
     handleSubmit;
-
+    const NameRegex = /^[a-zA-Z\s]+$/;
     if (values.message === "") {
       showToast("Please enter a message!");
     } else if (values.name === "") {
       showToast("Please enter a name!");
+    } else if (!NameRegex.test(values.name)) {
+      showToast("Please enter a valid name");
     } else if (values.email === "") {
       showToast("Please enter a email!");
     } else if (values.subject === "") {

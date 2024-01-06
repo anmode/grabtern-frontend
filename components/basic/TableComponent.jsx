@@ -1,16 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useTable } from "react-table";
 
-const TableComponent = ({ sessions, activeTab }) => {
+const TableComponent = ({ isMentor, sessions, activeTab }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    let filteredSessions = [];
-    if (activeTab?.toLocaleLowerCase() === "pending") {
-      filteredSessions = sessions.filter((session) => session.isbooked);
-    } else {
-      filteredSessions = sessions.filter((session) => !session.isbooked);
-    }
+    const filteredSessions = sessions.filter(
+      (session) =>
+        (activeTab?.toLocaleLowerCase() === "pending" && session.isbooked) ||
+        (activeTab?.toLocaleLowerCase() !== "pending" && !session.isbooked),
+    );
     setData(filteredSessions);
   }, [activeTab, sessions]);
 
@@ -21,8 +20,8 @@ const TableComponent = ({ sessions, activeTab }) => {
         accessor: "sessionName",
       },
       {
-        Header: "Mentee",
-        accessor: "userName",
+        Header: isMentor ? "Mentee" : "Mentor",
+        accessor: isMentor ? "userName" : "mentorName",
       },
       {
         Header: "Date",
@@ -33,7 +32,7 @@ const TableComponent = ({ sessions, activeTab }) => {
         accessor: "sessionTime",
       },
     ],
-    [], // Empty dependency array, as columns won't change during the component lifecycle
+    [isMentor],
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

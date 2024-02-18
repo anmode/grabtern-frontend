@@ -208,7 +208,7 @@ function Footer() {
       <div className="tw-bg-base-200 tw-px-5 tw-py-4">
         <div className="tw-w-full tw-max-w-7xl tw-mx-auto">
           <p className="tw-text-base-400 tw-text-sm tw-text-center tw-font-sans">
-            Copyright &copy; {currentYear} All rights reserved | Grabtern.com
+            Copyright &copy; {currentYear} All rights reserved | grabtern.in
           </p>
         </div>
       </div>

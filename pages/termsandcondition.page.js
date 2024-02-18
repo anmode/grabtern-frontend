@@ -29,7 +29,7 @@ function scrap() {
             <b className="tw-text-[#845ec2]">"Company," "we," "us," "our"</b>),
             a company registered in India at Kishanpur tirah, Aligarh, Aligarh,
             Uttar Pradesh 202002. We operate the website
-            https://www.grabtern.com/ (the "
+            https://www.grabtern.in/ (the "
             <b className="tw-text-[#845ec2]">Site</b>"), as well as any other
             related products and services that refer or link to these legal
             terms (the "<b className="tw-text-[#845ec2]">Legal Terms</b>")
@@ -596,7 +596,7 @@ function scrap() {
               10. PRIVACY POLICY
             </div>
             We care about data privacy and security. Please review our Privacy
-            Policy: https://www.grabtern.com/privacy. By using the Services, you
+            Policy: https://www.grabtern.in/privacy. By using the Services, you
             agree to be bound by our Privacy Policy, which is incorporated into
             these Legal Terms. Please be advised the Services are hosted in
             India. If you access the Services from any other region of the world

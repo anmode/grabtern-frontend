@@ -31,9 +31,9 @@ function privacy() {
             Visit our website at{" "}
             <a
               className="hover:tw-text-[#5C18E1] tw-text-[18px] tw-font-medium"
-              href="https://www.grabtern.com"
+              href="https://www.grabtern.in"
             >
-              https://www.grabtern.com
+              https://www.grabtern.in
             </a>
             , or any website of ours that links to this privacy notice Engage
             with us in other related ways, including any sales, marketing, or

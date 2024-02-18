@@ -18,25 +18,25 @@ function addProductJsonLd() {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://www.grabtern.com",
+          item: "https://www.grabtern.in",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Internships",
-          item: "https://grabtern.com/internships",
+          item: "https://grabtern.in/internships",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "About",
-          item: "https://grabtern.com/about",
+          item: "https://grabtern.in/about",
         },
         {
           "@type": "ListItem",
           position: 4,
           name: "Contact",
-          item: "https://grabtern.com/contact",
+          item: "https://grabtern.in/contact",
         },
       ],
     },
@@ -66,12 +66,12 @@ function MyApp({ Component, pageProps }) {
           name="robots"
           content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
-        <link rel="canonical" href="https://grabtern.com/" />
+        <link rel="canonical" href="https://grabtern.in/" />
         <link
           rel="alternate"
           type="application/rss+xml"
           title="Emupedia"
-          href="https://grabtern.com/feed.xml"
+          href="https://grabtern.in/feed.xml"
         />
         <meta name="language" content="en" />
         <meta name="revisit-after" content="7 days" />
@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }) {
           name="keywords"
           content="Grabtern, Intern, GSoc, MLH, Amazon ML Summer Intern, Outreachy, GrabTern, Mentorship, Mentored Internship, Mentor-Guided Internship, Experienced Mentors, Dedicated Mentors, Mentorship Program, Mentor Support, Mentorship Opportunities, Mentorship Platform."
         />
-        <link rel="canonical" href="https://grabtern.com/" />
+        <link rel="canonical" href="https://grabtern.in/" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="theme-color" content="#0000" />
         <meta name="msapplication-navbutton-color" content="#0000" />
@@ -108,7 +108,7 @@ function MyApp({ Component, pageProps }) {
           name="og:video"
           content="https://raw.githubusercontent.com/anmode/grabtern-frontend/develop/public/video.mp4"
         />
-        <meta property="og:url" content="https://grabtern.com/" />
+        <meta property="og:url" content="https://grabtern.in/" />
         <meta property="og:site_name" content="GrabTern" />
         <meta
           name="og:title"
@@ -122,7 +122,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:card" content="/NewLogo.png" />
         <meta name="twitter:site" content="@grabtern" />
         <meta name="twitter:image" content="/NewLogo.png" />
-        <meta property="twitter:url" content="https://www.grabtern.com/" />
+        <meta property="twitter:url" content="https://www.grabtern.in/" />
         <meta property="twitter:title" content="Grabtern" />
         <meta
           property="twitter:description"

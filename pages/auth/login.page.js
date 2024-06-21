@@ -40,39 +40,66 @@ function login() {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
-  const handleCallbackResponse = async (response) => {
-    try {
-      const userObject = jwt_decode(response.credential);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, userObject, {
-        withCredentials: true,
-      });
+  useEffect(() => {
+    const handleCallbackResponse = async (response) => {
+      try {
+        const userObject = jwt_decode(response.credential);
+        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
+        const { data: res } = await axios.post(url, userObject, {
+          withCredentials: true,
+        });
 
-      toast.info("redirecting to home page");
-      if (entityType === "user") {
-        const userData = {
-          user_name: userObject.name,
-          user_image: res.user_image,
-          user_email: userObject.email,
-          user_id: res.user_id,
-        };
-        setIsUserLoggedIn(true);
-        localStorage.setItem("userData", JSON.stringify(userData));
-      } else if (entityType === "mentor") {
-        const mentorData = {
-          mentor_username: res.mentor_username,
-          mentor_name: res.mentor_name,
-          mentor_image: res.mentor_image,
-        };
-        setIsMentorLoggedIn(true);
-        toast.success(res.message);
-        localStorage.setItem("mentorData", JSON.stringify(mentorData));
+        toast.info("redirecting to home page");
+        if (entityType === "user") {
+          const userData = {
+            user_name: userObject.name,
+            user_image: res.user_image,
+            user_email: userObject.email,
+            user_id: res.user_id,
+          };
+          setIsUserLoggedIn(true);
+          localStorage.setItem("userData", JSON.stringify(userData));
+        } else if (entityType === "mentor") {
+          const mentorData = {
+            mentor_username: res.mentor_username,
+            mentor_name: res.mentor_name,
+            mentor_image: res.mentor_image,
+          };
+          setIsMentorLoggedIn(true);
+          toast.success(res.message);
+          localStorage.setItem("mentorData", JSON.stringify(mentorData));
+        }
+        router.push("/");
+      } catch (error) {
+        handleErrorResponse(error);
       }
-      router.push("/");
-    } catch (error) {
-      handleErrorResponse(error);
-    }
-  };
+    };
+
+    const initGoogleSignUp = () => {
+      try {
+        google.accounts.id.initialize({
+          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+          callback: handleCallbackResponse,
+          context: "signip",
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("googleSignInButton"),
+          {
+            theme: "outline",
+            size: "large",
+            text: "signin_with",
+            shape: "pill",
+          },
+        );
+        google.accounts.id.prompt();
+      } catch (error) {
+        toast.error("Google sign-up initialization failed.");
+        console.error("Google sign-up initialization failed:", error);
+      }
+    };
+
+    initGoogleSignUp();
+  }, [router]);
 
   const handleErrorResponse = (error) => {
     console.error("Error in callback of google sign in ", error);
@@ -118,15 +145,6 @@ function login() {
     }
 
     setEntityType(entityTypeFromUrl);
-
-    const googleSignInButton = document.getElementById("googleSignInButton");
-    if (googleSignInButton) {
-      window?.google?.accounts?.id.renderButton(googleSignInButton, {
-        theme: "outline",
-        size: "large",
-      });
-      window?.google?.accounts?.id.prompt();
-    }
   }, [isUserLoggedIn, isMentorLoggedIn, router]);
 
   const handleSubmit = async (e) => {

@@ -47,7 +47,7 @@ function useRedirectIfAuthenticated() {
         localStorage.setItem("userData", JSON.stringify(userData));
         setIsUserLoggedIn(true);
         const redirectUrl = new URLSearchParams(window.location.search).get(
-          "redirectUrl"
+          "redirectUrl",
         );
         setTimeout(() => {
           router.push(redirectUrl || "/");
@@ -60,7 +60,7 @@ function useRedirectIfAuthenticated() {
         }
         if (error.response && error.response.status === 202) {
           toast.warning(
-            "Registration successful, but there was an issue sending the verification email. Please contact support."
+            "Registration successful, but there was an issue sending the verification email. Please contact support.",
           );
         }
       }
@@ -73,13 +73,16 @@ function useRedirectIfAuthenticated() {
           callback: handleCallBackResponse,
           context: "signup",
         });
-        window.google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
-          theme: "outline",
-          size: "large",
-          text: "signup_with",
-          shape: "pill",
-          "data-use_fedcm_for_prompt": "true",
-        });
+        window.google.accounts.id.renderButton(
+          document.getElementById("signUpDiv"),
+          {
+            theme: "outline",
+            size: "large",
+            text: "signup_with",
+            shape: "pill",
+            "data-use_fedcm_for_prompt": "true",
+          },
+        );
         window.google.accounts.id.prompt();
       }
     };
@@ -143,7 +146,12 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!data.fullName || !data.email || !data.password || !data.confirmPassword) {
+    if (
+      !data.fullName ||
+      !data.email ||
+      !data.password ||
+      !data.confirmPassword
+    ) {
       return toast.error("Please fill all the fields!");
     }
 
@@ -157,7 +165,7 @@ function Register() {
       await axios.post(url, data);
       setLoader(false);
       toast.success(
-        "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account."
+        "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
       );
       setTimeout(() => {
         router.push("/");
@@ -168,12 +176,12 @@ function Register() {
         toast.error(error.response.data.message);
       } else {
         toast.error(
-          "An error occurred during registration. Please try again later."
+          "An error occurred during registration. Please try again later.",
         );
       }
       if (error.response && error.response.status === 202) {
         toast.warning(
-          "Registration successful, but there was an issue sending the verification email. Please contact support."
+          "Registration successful, but there was an issue sending the verification email. Please contact support.",
         );
       }
     }
@@ -185,7 +193,10 @@ function Register() {
       <div className={styles.Registerform}>
         <form className="form-default" onSubmit={handleSubmit}>
           <div className={styles.heading}>
-            <img src="/Grabtern2.png" className="small-image dark:tw-invert"></img>
+            <img
+              src="/Grabtern2.png"
+              className="small-image dark:tw-invert"
+            ></img>
             <h2>Hey, hello 👋</h2>
           </div>
           <div className={styles.forminput}>

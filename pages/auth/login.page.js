@@ -60,7 +60,7 @@ function login() {
         setIsUserLoggedIn(true);
         localStorage.setItem("userData", JSON.stringify(userData));
       } else if (entityTypeFromUrl === "mentor") {
-        console.log('Anmol',res);
+        console.log("Anmol", res);
         const mentorData = {
           mentor_username: res.mentor_username,
           mentor_name: res.mentor_name,

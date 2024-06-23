@@ -4,14 +4,12 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/form.module.css";
 import Button from "../../components/UI/Button/Button";
-import EventLogin from "../../components/eventLogin/EventLogin";
 const Header = dynamic(() => import("../../components/layout/Header"));
-const Footer = dynamic(() => import("../../components/layout/Footer"));
 import Visibillity from "../../public/assets/Visibillity.jsx";
 import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
 import { useAuth } from "../../context/AuthContext";
@@ -31,6 +29,7 @@ function login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const googleInitialized = useRef(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,66 +39,84 @@ function login() {
     setIsPasswordVisible((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    const handleCallbackResponse = async (response) => {
-      try {
-        const userObject = jwt_decode(response.credential);
-        const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
-        const { data: res } = await axios.post(url, userObject, {
-          withCredentials: true,
-        });
+  const handleCallbackResponse = async (response) => {
+    try {
+      const userObject = jwt_decode(response.credential);
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
+      const { data: res } = await axios.post(url, userObject, {
+        withCredentials: true,
+      });
 
-        toast.info("redirecting to home page");
-        if (entityType === "user") {
-          const userData = {
-            user_name: userObject.name,
-            user_image: res.user_image,
-            user_email: userObject.email,
-            user_id: res.user_id,
-          };
-          setIsUserLoggedIn(true);
-          localStorage.setItem("userData", JSON.stringify(userData));
-        } else if (entityType === "mentor") {
-          const mentorData = {
-            mentor_username: res.mentor_username,
-            mentor_name: res.mentor_name,
-            mentor_image: res.mentor_image,
-          };
-          setIsMentorLoggedIn(true);
-          toast.success(res.message);
-          localStorage.setItem("mentorData", JSON.stringify(mentorData));
-        }
-        router.push("/");
-      } catch (error) {
-        handleErrorResponse(error);
+      toast.info("Redirecting to home page");
+      if (entityType === "user") {
+        const userData = {
+          user_name: userObject.name,
+          user_image: res.user_image,
+          user_email: userObject.email,
+          user_id: res.user_id,
+        };
+        setIsUserLoggedIn(true);
+        localStorage.setItem("userData", JSON.stringify(userData));
+      } else if (entityType === "mentor") {
+        const mentorData = {
+          mentor_username: res.mentor_username,
+          mentor_name: res.mentor_name,
+          mentor_image: res.mentor_image,
+        };
+        setIsMentorLoggedIn(true);
+        toast.success(res.message);
+        localStorage.setItem("mentorData", JSON.stringify(mentorData));
       }
-    };
+      router.push("/");
+    } catch (error) {
+      handleErrorResponse(error);
+    }
+  };
 
-    const initGoogleSignUp = () => {
-      try {
-        google.accounts.id.initialize({
+  const initGoogleSignUp = () => {
+    if (googleInitialized.current) return;
+    googleInitialized.current = true;
+
+    try {
+      if (window.google && window.google.accounts) {
+        window.google.accounts.id.initialize({
           client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
           callback: handleCallbackResponse,
           context: "signup",
         });
-        google.accounts.id.renderButton(
+        window.google.accounts.id.renderButton(
           document.getElementById("googleSignInButton"),
           {
             theme: "outline",
             size: "large",
             text: "signin_with",
             shape: "pill",
-          },
+          }
         );
-        google.accounts.id.prompt();
-      } catch (error) {
-        toast.error("Google sign-up initialization failed.");
-        console.error("Google sign-up initialization failed:", error);
+        window.google.accounts.id.prompt();
       }
-    };
+    } catch (error) {
+      toast.error("Google sign-up initialization failed.");
+      console.error("Google sign-up initialization failed:", error);
+    }
+  };
 
-    initGoogleSignUp();
-  }, [router]);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = initGoogleSignUp;
+    script.onerror = () => {
+      toast.error("Failed to load Google sign-up script.");
+      console.error("Failed to load Google sign-up script.");
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const handleErrorResponse = (error) => {
     console.error("Error in callback of google sign in ", error);
@@ -122,17 +139,12 @@ function login() {
         undefined,
         {
           shallow: true,
-        },
+        }
       );
     };
 
     updateEntityTypeInUrl(entityType);
-
-    window?.google?.accounts?.id.initialize({
-      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      callback: (response) => handleCallbackResponse(response),
-    });
-  }, [entityType]);
+  }, [entityType, router]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -181,6 +193,7 @@ function login() {
       handleErrorResponse(error);
     }
   };
+
   return (
     <>
       <Head>
@@ -215,7 +228,7 @@ function login() {
         <div>
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>
-              <img src="/faviconn.png"></img>
+              <img src="/faviconn.png" alt="Logo" />
               <h2>
                 {" "}
                 {entityType?.charAt(0).toUpperCase() +
@@ -258,9 +271,9 @@ function login() {
               <ToastContainer />
               <div>
                 {!loader ? (
-                  <div className="tw-flex tw-justify-center  tw-h-11">
+                  <div className="tw-flex tw-justify-center tw-h-11">
                     <Button
-                      className=" tw-w-[400px] tw-font-semibold"
+                      className="tw-w-[400px] tw-font-semibold"
                       onClick={handleSubmit}
                       text="Login"
                     />
@@ -284,7 +297,7 @@ function login() {
               Don't have an account?
               <Link
                 href={
-                  entityType == "user" ? "/auth/register" : "/mentorRegister"
+                  entityType === "user" ? "/auth/register" : "/mentorRegister"
                 }
                 className={styles.registration}
                 style={{ textDecoration: "none" }}

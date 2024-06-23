@@ -42,13 +42,15 @@ function login() {
   const handleCallbackResponse = async (response) => {
     try {
       const userObject = jwt_decode(response.credential);
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityType}`;
+      const urlParams = new URLSearchParams(window.location.search);
+      const entityTypeFromUrl = urlParams.get("entityType");
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityTypeFromUrl}`;
       const { data: res } = await axios.post(url, userObject, {
         withCredentials: true,
       });
 
       toast.info("Redirecting to home page");
-      if (entityType === "user") {
+      if (entityTypeFromUrl === "user") {
         const userData = {
           user_name: userObject.name,
           user_image: res.user_image,
@@ -57,7 +59,8 @@ function login() {
         };
         setIsUserLoggedIn(true);
         localStorage.setItem("userData", JSON.stringify(userData));
-      } else if (entityType === "mentor") {
+      } else if (entityTypeFromUrl === "mentor") {
+        console.log("Anmol", res);
         const mentorData = {
           mentor_username: res.mentor_username,
           mentor_name: res.mentor_name,
@@ -81,7 +84,7 @@ function login() {
       if (window.google && window.google.accounts) {
         window.google.accounts.id.initialize({
           client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-          callback: handleCallbackResponse,
+          callback: (response) => handleCallbackResponse(response),
           context: "signup",
         });
         window.google.accounts.id.renderButton(
@@ -91,7 +94,7 @@ function login() {
             size: "large",
             text: "signin_with",
             shape: "pill",
-          }
+          },
         );
         window.google.accounts.id.prompt();
       }
@@ -116,7 +119,7 @@ function login() {
     return () => {
       document.head.removeChild(script);
     };
-  }, []);
+  }, [entityType]);
 
   const handleErrorResponse = (error) => {
     console.error("Error in callback of google sign in ", error);
@@ -139,7 +142,7 @@ function login() {
         undefined,
         {
           shallow: true,
-        }
+        },
       );
     };
 

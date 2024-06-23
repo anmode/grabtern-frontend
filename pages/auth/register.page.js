@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import EventLogin from "../../components/eventLogin/EventLogin";
 import Visibillity from "../../public/assets/Visibillity";
 import VisibillityOff from "../../public/assets/VisibillityOff";
@@ -25,7 +25,6 @@ function useRedirectIfAuthenticated() {
 
   useEffect(() => {
     const handleCallBackResponse = async (response) => {
-      // Redirect based on login status only if mentor or user is logged in
       if (isMentorLoggedIn || isUserLoggedIn) {
         const urlParams = new URLSearchParams(window.location.search);
         const redirectURL = urlParams.get("redirectURL");
@@ -53,7 +52,6 @@ function useRedirectIfAuthenticated() {
         setTimeout(() => {
           router.push(redirectUrl || "/");
         }, 2000);
-        // router.push(redirectUrl || "/");
       } catch (error) {
         if (error.response && error.response.status >= 400) {
           toast.error(error.response.data.message);
@@ -69,28 +67,45 @@ function useRedirectIfAuthenticated() {
     };
 
     const initGoogleSignUp = () => {
-      try {
-        google.accounts.id.initialize({
+      if (window.google && window.google.accounts) {
+        window.google.accounts.id.initialize({
           client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
           callback: handleCallBackResponse,
           context: "signup",
         });
-        google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
-          theme: "outline",
-          size: "large",
-          text: "signup_with",
-          shape: "pill",
-          "data-use_fedcm_for_prompt": "true",
-        });
-        google.accounts.id.prompt();
-      } catch (error) {
-        toast.error("Google sign-up initialization failed.");
-        console.error("Google sign-up initialization failed:", error);
+        window.google.accounts.id.renderButton(
+          document.getElementById("signUpDiv"),
+          {
+            theme: "outline",
+            size: "large",
+            text: "signup_with",
+            shape: "pill",
+            "data-use_fedcm_for_prompt": "true",
+          },
+        );
+        window.google.accounts.id.prompt();
       }
     };
 
-    initGoogleSignUp();
-  }, [router]);
+    const loadGoogleScript = () => {
+      const script = document.createElement("script");
+      script.src = "https://accounts.google.com/gsi/client";
+      script.async = true;
+      script.defer = true;
+      script.onload = initGoogleSignUp;
+      script.onerror = () => {
+        toast.error("Failed to load Google sign-up script.");
+        console.error("Failed to load Google sign-up script.");
+      };
+      document.head.appendChild(script);
+
+      return () => {
+        document.head.removeChild(script);
+      };
+    };
+
+    loadGoogleScript();
+  }, [router, isMentorLoggedIn, isUserLoggedIn, setIsUserLoggedIn]);
 }
 
 function Register() {
@@ -105,7 +120,6 @@ function Register() {
   });
   const [isValidValues, setIsValidValues] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
   const [isConPasswordVisible, setIsConPasswordVisible] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -185,9 +199,6 @@ function Register() {
             ></img>
             <h2>Hey, hello 👋</h2>
           </div>
-          {/* <p >
-          The faster you fill up, the faster you get a internship
-          </p> */}
           <div className={styles.forminput}>
             <label htmlFor="name">Full name</label>
             <div className={styles.Input}>
@@ -219,7 +230,6 @@ function Register() {
           <div className={styles.forminput}>
             <label htmlFor="password">Password</label>
             <div className={styles.Input}>
-              {" "}
               <input
                 type={isPasswordVisible ? "text" : "password"}
                 name="password"
@@ -241,7 +251,6 @@ function Register() {
           <div className={styles.forminput}>
             <label htmlFor="password">Confirm Password</label>
             <div className={styles.Input}>
-              {" "}
               <input
                 type={isConPasswordVisible ? "text" : "password"}
                 name="confirmPassword"
@@ -260,21 +269,6 @@ function Register() {
             </div>
           </div>
           <ToastContainer />
-
-          {/* <div className="md:tw-w-auto tw-h-10 tw-text-white tw-bg-[#845ec2] tw-border-0 tw-py-2 tw-px-6 focus:tw-outline-none hover:tw-bg-[#6b21a8] tw-rounded-lg tw-font-semibold flex items-center justify-center">
-
-            <input
-              type="submit"
-              name="submit"
-              disabled={!isValidValues}
-              className={`${
-                isValidValues ? "tw-cursor-pointer" : "tw-cursor-not-allowed"
-              }`}
-              value="Register"
-              style={{ textAlign: "center", width: "100%" }}
-            />
-          </div> */}
-
           <div>
             <ToastContainer />
             <div>
@@ -293,19 +287,12 @@ function Register() {
           </div>
           <div className={styles.linkdiv}>
             Already have an account?
-            {/* <button
-              className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
-              style={{ textDecoration: "none" }}
-              onClick={router.push("/auth/login")}
-            >
-              Login{" "}
-            </button> */}
             <Link
               href="/auth/login?entityType=user"
               className="tw-ml-0 md:tw-ml-2 tw-mt-[1px] hover:tw-text-gray-400 tw-text-blue-700"
               style={{ textDecoration: "none" }}
             >
-              Login{" "}
+              Login
             </Link>
           </div>
           <div className={styles.google}>

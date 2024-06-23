@@ -9,7 +9,6 @@ import styles from "../../styles/userRegistration.module.css";
 import jwt_decode from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { decryptData, encryptData } from "../../hook/encryptDecrypt";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import Button from "../../components/UI/Button/Button";
@@ -81,6 +80,7 @@ function useRedirectIfAuthenticated() {
           size: "large",
           text: "signup_with",
           shape: "pill",
+          "data-use_fedcm_for_prompt": "true",
         });
         google.accounts.id.prompt();
       } catch (error) {

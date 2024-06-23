@@ -144,7 +144,7 @@ function login() {
     };
 
     updateEntityTypeInUrl(entityType);
-  }, [entityType, router]);
+  }, [entityType]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);

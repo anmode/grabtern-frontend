@@ -80,7 +80,7 @@ function login() {
         google.accounts.id.initialize({
           client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
           callback: handleCallbackResponse,
-          context: "signip",
+          context: "signup",
         });
         google.accounts.id.renderButton(
           document.getElementById("googleSignInButton"),

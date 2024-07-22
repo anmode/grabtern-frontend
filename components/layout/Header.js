@@ -113,6 +113,9 @@ function Header() {
             <Link href="/community" className="hover:tw-text-primary-100">
               Community
             </Link>
+            <Link href="/career" className="hover:tw-text-primary-100">
+              Career
+            </Link>
             <Link href="/contact" className="hover:tw-text-primary-100">
               Contact
             </Link>
@@ -180,6 +183,12 @@ function Header() {
                   className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400  hover:tw-text-base-500 tw-font-medium"
                 >
                   Community
+                </Link>
+                <Link
+                  href="/career"
+                  className="tw-text-xl tw-p-2 tw-font-inter tw-text-base-400   hover:tw-text-base-500 tw-font-medium"
+                >
+                  Career
                 </Link>
                 <Link
                   href="/contact"

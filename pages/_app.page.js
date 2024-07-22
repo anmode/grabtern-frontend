@@ -7,6 +7,7 @@ import ScrollButton from "../components/basic/MoveToTop";
 import SupportChat from "../components/support/SupportChat";
 import { TourProvider } from "@reactour/tour";
 import ThemeProvider from "../hook/use-theme";
+import { JobProvider } from "../context/JobContext";
 
 function addProductJsonLd() {
   return {
@@ -168,6 +169,7 @@ function MyApp({ Component, pageProps }) {
       )}
 
       <BreakpointProvider>
+      <JobProvider>
         <AuthProvider>
           <TourProvider
             steps={[]}
@@ -190,6 +192,7 @@ function MyApp({ Component, pageProps }) {
             </ThemeProvider>
           </TourProvider>
         </AuthProvider>
+        </JobProvider>
       </BreakpointProvider>
     </>
   );

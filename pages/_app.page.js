@@ -169,29 +169,29 @@ function MyApp({ Component, pageProps }) {
       )}
 
       <BreakpointProvider>
-      <JobProvider>
-        <AuthProvider>
-          <TourProvider
-            steps={[]}
-            styles={{
-              popover: (base) => ({
-                ...base,
-                borderRadius: 10,
-                background: "#fff",
-                color: "#000",
-                width: 400,
-                fontSize: 16,
-                marginLeft: 20,
-              }),
-            }}
-          >
-            <ThemeProvider>
-              <SupportChat />
-              <ScrollButton />
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </TourProvider>
-        </AuthProvider>
+        <JobProvider>
+          <AuthProvider>
+            <TourProvider
+              steps={[]}
+              styles={{
+                popover: (base) => ({
+                  ...base,
+                  borderRadius: 10,
+                  background: "#fff",
+                  color: "#000",
+                  width: 400,
+                  fontSize: 16,
+                  marginLeft: 20,
+                }),
+              }}
+            >
+              <ThemeProvider>
+                <SupportChat />
+                <ScrollButton />
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </TourProvider>
+          </AuthProvider>
         </JobProvider>
       </BreakpointProvider>
     </>

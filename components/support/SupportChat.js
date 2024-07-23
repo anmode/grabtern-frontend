@@ -17,7 +17,7 @@ const SupportChat = () => {
       setIsOpen(false);
     }
   };
-
+ 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
     return () => {
@@ -271,9 +271,10 @@ const SupportChat = () => {
             </div>
 
             {/* for Mobile devices */}
-            <div className="sm:tw-hidden tw-w-screen tw-h-screen tw-flex tw-flex-col tw-bg-cyan-200 tw-overflow-y-scroll tw-overflow-x-hidden tw-justify-between tw-cursor-auto">
+            <div className="sm:tw-hidden tw-mb-24 mob_mode tw-mx-4 tw-flex tw-flex-col tw-items-end ">
+            <div className="sm:tw-hidden tw-mb-1.5 tw-rounded-md tw-flex tw-flex-col tw-bg-cyan-200 tw-overflow-y-scroll tw-overflow-x-hidden tw-justify-between tw-cursor-auto">
               {/* header */}
-              <div className="tw-py-6 tw-flex tw-text-center tw-justify-between tw-w-full tw-items-center tw-top-0 tw-sticky tw-bg-cyan-200 tw-z-40">
+              <div className="tw-py-3.5 tw-flex tw-text-center tw-justify-between tw-w-full tw-items-center tw-top-0 tw-sticky tw-bg-cyan-200 tw-z-40">
                 <div className="tw-flex tw-items-center tw-justify-center">
                   <Image src={logo} alt="logo" width={55} height={55} />
                   <h1 className="tw-text-md tw-font-bold tw-text-cyan-700">
@@ -283,10 +284,7 @@ const SupportChat = () => {
                 <p className="tw-text-center tw-items-center tw-flex tw-justify-center tw-mr-9">
                   {userData?.user_name || mentorData?.mentor_name}
                 </p>
-                <AiOutlineClose
-                  onClick={() => setIsOpen(false)}
-                  className="tw-w-6 tw-h-6 tw-relative tw-text-red-500 hover:tw-text-red-600 tw-ease-in-out tw-transition-all tw-mr-4"
-                />
+                
               </div>
 
               {/* body */}
@@ -296,7 +294,7 @@ const SupportChat = () => {
                 }`}
               >
                 {isUserLoggedIn || isMentorLoggedIn ? (
-                  <div className="tw-flex tw-flex-col tw-overflow-y-scroll tw-overflow-x-hidden tw-gap-1 tw-text-center tw-w-full">
+                  <div className="tw-flex tw-flex-col tw-mr-3 tw-h-[300px] tw-overflow-y-scroll tw-overflow-x-hidden tw-gap-1 tw-text-center tw-w-full">
                     {messages.length === 0 && (
                       <div className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-gap-3">
                         <Image
@@ -449,7 +447,15 @@ const SupportChat = () => {
                     </div>
                   ))}
               </form>
+              
             </div>
+
+            <button  className="tw-flex tw-bg-primary-100 tw-items-center tw-justify-center tw-w-10 tw-h-10  tw-text-white tw-rounded-full tw-focus:outline-none"  onClick={() => setIsOpen(false)}>
+             <span className="tw-text-xl">✖</span>
+              </button>
+            </div>
+
+            
           </>
         ) : (
           <>

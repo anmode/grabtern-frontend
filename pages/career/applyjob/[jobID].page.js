@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 function JobApplicationForm() {
   const router = useRouter();
   const { jobDetails, particularJob, setParticularJob } = useJobContext();
-  const { jobID } = router.query; // Get jobID from the query parameters
+  const { jobID } = router.query;
   const [captcha, setCaptcha] = useState("");
   const [captchaError, setCaptchaError] = useState("");
 
@@ -64,7 +64,7 @@ function JobApplicationForm() {
       setCaptchaError("");
       try {
         const response = await fetch(
-          "http://localhost:8000/api/jobApplication/submit",
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/submit`,
           {
             method: "POST",
             headers: {
@@ -72,8 +72,8 @@ function JobApplicationForm() {
             },
             body: JSON.stringify({
               ...formData,
-              jobID: particularJob?.jobid, // Assuming jobid is available in particularJob
-              jobTitle: particularJob?.title, // Assuming title is available in particularJob
+              jobID: particularJob?.jobid,
+              jobTitle: particularJob?.title,
             }),
           },
         );
@@ -111,7 +111,6 @@ function JobApplicationForm() {
   };
 
   useEffect(() => {
-    // Check if jobDetails is an array before using find
     if (Array.isArray(jobDetails) && jobID) {
       const selectedJob = jobDetails.find(
         (job) => job.jobid === parseInt(jobID),
@@ -123,7 +122,7 @@ function JobApplicationForm() {
   }, [jobID, jobDetails]);
 
   return (
-    <>
+    <div classname="tw-bg-[#f1f5f9]">
       <div className="tw-bg-[#845ec2] tw-text-white tw-p-6 tw-text-center">
         <h1 className="tw-text-3xl tw-text-white tw-font-bold">
           {particularJob?.title}
@@ -131,7 +130,10 @@ function JobApplicationForm() {
         <div className="tw-flex tw-text-black tw-justify-center tw-gap-4 tw-mt-2 tw-text-lg">
           <span>FULL-TIME</span>
           <span>{particularJob?.city}</span>
-          <span>{particularJob?.experience}</span>
+          <span>
+            {particularJob?.experience}
+            {particularJob?.experience === "1" ? " year" : " years"}
+          </span>
         </div>
       </div>
       <div className="tw-p-6 tw-max-w-screen-md tw-mx-auto tw-bg-gray-100 tw-rounded-lg tw-shadow-lg">
@@ -451,7 +453,6 @@ function JobApplicationForm() {
             </label>
           </div>
 
-          {/* <button type="submit" className="tw-w-full bg-[#845ec2]-500 text-white py-2 px-4 rounded-lg hover:bg-[#845ec2]-600 transition duration-300">Apply Now</button> */}
           <Button
             text="Apply Now"
             variant="Primary"
@@ -461,7 +462,7 @@ function JobApplicationForm() {
         </form>
       </div>
       <ToastContainer />
-    </>
+    </div>
   );
 }
 

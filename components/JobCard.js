@@ -9,11 +9,11 @@ const JobCard = ({ job }) => {
   const handleApply = () => {
     setParticularJob(job);
     router.push(`/career/applyjob/${job.jobid}`);
-    // window.location.reload(); // This will refresh the new page
+    // window.location.reload();
   };
 
   return (
-    <div className="tw-job-card tw-border-2 tw-border-purple-700 tw-p-4 tw-rounded-lg tw-min-h-[360px] tw-w-[340px] tw-m-4 tw-shadow-lg tw-relative">
+    <div className=" tw-border-2 tw-p-4 tw-rounded-xl tw-min-h-[360px] tw-w-[340px] tw-m-4 tw-shadow-lg tw-relative">
       <div className="tw-flex tw-justify-between tw-items-center tw-mb-2">
         <p className="tw-text-sm tw-font-bold tw-text-black">
           {job.country} | {job.city}
@@ -30,15 +30,15 @@ const JobCard = ({ job }) => {
       <h2 className="tw-text-xl tw-font-bold tw-text-blue-700 tw-mb-2 tw-mt-4">
         {job.title}
       </h2>
-      <p className="tw-text-base tw-font-normal tw-text-black tw-mb-1">
+      <p className="tw-text-base tw-font-normal tw-text-black tw-mb-1 tw-text-left">
         <span className="tw-font-medium">Business Area: </span>
         <span className="tw-font-bold">{job.businessArea}</span>
       </p>
-      <p className="tw-text-base tw-font-normal tw-text-black tw-mb-1">
+      <p className="tw-text-base tw-font-normal tw-text-black tw-mb-1 tw-text-left">
         <span className="tw-font-medium">Years of Experience: </span>
         <span className="tw-font-bold">{job.experience}</span>
       </p>
-      <p className="tw-text-base tw-font-normal tw-text-black tw-mb-1">
+      <p className="tw-text-base tw-font-normal tw-text-black tw-mb-1 tw-text-left">
         <span className="tw-font-medium">Skills: </span>
         <span className="tw-font-bold">{job.skills.join(", ")}</span>
       </p>

@@ -45,7 +45,6 @@ function userDashboard() {
     fetchUser();
   }, []);
 
-
   useEffect(() => {
     // Function to handle user data from URL
     const checkUserData = async () => {
@@ -59,7 +58,7 @@ function userDashboard() {
         user_picture: params.get("user_picture"),
       };
 
-      if (userData) {
+      if (userData.user_email) {
         localStorage.setItem("userData", JSON.stringify(userData));
         setUser(userData);
         setIsUserLoggedIn(true);

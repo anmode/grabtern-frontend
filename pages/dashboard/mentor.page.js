@@ -27,15 +27,12 @@ function MentorDashboard() {
   const [component, setComponent] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [mentor, setMentor] = useState({});
-  const {
-    isMentorLoggedIn,
-    setIsMentorLoggedIn,
-  } = useAuth();
+  const { isMentorLoggedIn, setIsMentorLoggedIn } = useAuth();
 
   const router = useRouter();
 
   useEffect(() => {
-    const checkUserData = async () => {
+    const checkMentorData = async () => {
       const search = window.location.search;
       const params = new URLSearchParams(search);
 
@@ -46,14 +43,14 @@ function MentorDashboard() {
         mentor_username: params.get("mentor_username"),
       };
 
-      if (mentorData) {
-        localStorage.setItem("userData", JSON.stringify(mentorData));
-        setUser(mentorData);
+      if (mentorData.mentor_email) {
+        localStorage.setItem("mentorData", JSON.stringify(mentorData));
+        setMentor(mentorData);
         setIsMentorLoggedIn(true);
       } else {
         const storedMentorData = JSON.parse(localStorage.getItem("mentorData"));
         if (storedMentorData) {
-          setUser(storedMentorData);
+          setMentor(storedMentorData);
           setIsMentorLoggedIn(true);
         } else {
           router.push("/auth/login?entityType=mentor");
@@ -61,7 +58,7 @@ function MentorDashboard() {
       }
     };
 
-    checkUserData();
+    checkMentorData();
   }, [router, setIsMentorLoggedIn]);
 
   useEffect(() => {

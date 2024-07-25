@@ -14,10 +14,7 @@ import { useAuth } from "../../context/AuthContext";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
-  const {
-    isMentorLoggedIn,
-    isUserLoggedIn,
-  } = useAuth();
+  const { isMentorLoggedIn, isUserLoggedIn } = useAuth();
 
   useEffect(() => {
     if (isMentorLoggedIn || isUserLoggedIn) {
@@ -85,7 +82,7 @@ function Register() {
       await axios.post(url, data);
       setLoader(false);
       toast.success(
-        "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account."
+        "Registration successful! An email has been sent to your email address. Please check your inbox to verify your account.",
       );
       setTimeout(() => {
         router.push("/");
@@ -96,12 +93,12 @@ function Register() {
         toast.error(error.response.data.message);
       } else {
         toast.error(
-          "An error occurred during registration. Please try again later."
+          "An error occurred during registration. Please try again later.",
         );
       }
       if (error.response && error.response.status === 202) {
         toast.warning(
-          "Registration successful, but there was an issue sending the verification email. Please contact support."
+          "Registration successful, but there was an issue sending the verification email. Please contact support.",
         );
       }
     }

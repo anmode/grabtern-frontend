@@ -1,22 +1,22 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import styles from '../../styles/form.module.css';
-import Button from '../../components/UI/Button/Button';
-import dynamic from 'next/dynamic';
-import Loader from '../../components/UI/Loader';
-import axios from 'axios';
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styles from "../../styles/form.module.css";
+import Button from "../../components/UI/Button/Button";
+import dynamic from "next/dynamic";
+import Loader from "../../components/UI/Loader";
+import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
-const Header = dynamic(() => import('../../components/layout/Header'));
+const Header = dynamic(() => import("../../components/layout/Header"));
 
 function Login() {
   const router = useRouter();
-  const [error, setError] = useState('');
-  const [entityType, setEntityType] = useState('user');
+  const [error, setError] = useState("");
+  const [entityType, setEntityType] = useState("user");
   const [loader, setLoader] = useState(false);
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [toastDisplayed, setToastDisplayed] = useState(false);
   const {
     isMentorLoggedIn,
@@ -29,15 +29,18 @@ function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-
   useEffect(() => {
     const updateEntityTypeInUrl = (newEntityType) => {
       const queryParams = new URLSearchParams(window.location.search);
-      queryParams.set('entityType', newEntityType);
+      queryParams.set("entityType", newEntityType);
       const queryString = queryParams.toString();
-      window.history.replaceState(null, '', `${router.pathname}?${queryString}`);
+      window.history.replaceState(
+        null,
+        "",
+        `${router.pathname}?${queryString}`,
+      );
     };
-  
+
     updateEntityTypeInUrl(entityType);
   }, [entityType]);
 
@@ -45,23 +48,24 @@ function Login() {
     const { redirectURL, entityType: entityTypeFromUrl, error } = router.query;
 
     if ((isMentorLoggedIn || isUserLoggedIn) && !toastDisplayed) {
-      router.replace(redirectURL || '/');
+      router.replace(redirectURL || "/");
       return;
     }
 
-    setEntityType(entityTypeFromUrl || 'user');
-    
+    setEntityType(entityTypeFromUrl || "user");
+
     if (error && !toastDisplayed) {
       const errorMessages = {
-        invalid_state: 'Invalid state parameter.',
-        invalid_entity_type: 'Invalid entity type.',
-        mentor_not_verified: 'You are not Verfied as Mentor, Notification is send to grabtern Team',
-        user_not_found: 'User not found.',
-        oauth_failed: 'OAuth authentication failed.',
-        internal_error: 'Internal server error.',
+        invalid_state: "Invalid state parameter.",
+        invalid_entity_type: "Invalid entity type.",
+        mentor_not_verified:
+          "You are not Verfied as Mentor, Notification is send to grabtern Team",
+        user_not_found: "User not found.",
+        oauth_failed: "OAuth authentication failed.",
+        internal_error: "Internal server error.",
       };
 
-      const errorMessage = errorMessages[error] || 'An unknown error occurred.';
+      const errorMessage = errorMessages[error] || "An unknown error occurred.";
       setError(errorMessage);
       toast.error(errorMessage);
       setToastDisplayed(true);
@@ -70,11 +74,11 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     if (!formData.email || !formData.password) {
-      setError('Please fill all the fields');
+      setError("Please fill all the fields");
       setTimeout(() => {
-        setError('');
+        setError("");
       }, 5000);
       return;
     }
@@ -86,19 +90,19 @@ function Login() {
       });
       setLoader(false);
 
-      if (entityType === 'user') {
-        localStorage.setItem('userData', JSON.stringify(res.userData));
+      if (entityType === "user") {
+        localStorage.setItem("userData", JSON.stringify(res.userData));
         setIsUserLoggedIn(true);
-        router.replace('/');
-      } else if (entityType === 'mentor') {
-        localStorage.setItem('mentorData', JSON.stringify(res.mentorData));
+        router.replace("/");
+      } else if (entityType === "mentor") {
+        localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
         setIsMentorLoggedIn(true);
-        router.replace('/');
+        router.replace("/");
       }
     } catch (error) {
       setLoader(false);
-      setError('Login failed. Please try again.');
-      toast.error('Login failed. Please try again.');
+      setError("Login failed. Please try again.");
+      toast.error("Login failed. Please try again.");
     }
   };
 
@@ -112,14 +116,18 @@ function Login() {
       <div className={styles.loginform}>
         <div className={styles.btnnContainer}>
           <button
-            className={`${styles.btnn} ${entityType === 'user' ? styles.btnnActive : ''} ${styles.user}`}
-            onClick={() => setEntityType('user')}
+            className={`${styles.btnn} ${
+              entityType === "user" ? styles.btnnActive : ""
+            } ${styles.user}`}
+            onClick={() => setEntityType("user")}
           >
             User Login
           </button>
           <button
-            className={`${styles.btnn} ${entityType === 'mentor' ? styles.btnnActive : ''} ${styles.mentor}`}
-            onClick={() => setEntityType('mentor')}
+            className={`${styles.btnn} ${
+              entityType === "mentor" ? styles.btnnActive : ""
+            } ${styles.mentor}`}
+            onClick={() => setEntityType("mentor")}
           >
             Mentor Login
           </button>
@@ -129,7 +137,10 @@ function Login() {
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>
               <img src="/faviconn.png" alt="Logo" />
-              <h2>{entityType?.charAt(0).toUpperCase() + entityType?.slice(1)} Login</h2>
+              <h2>
+                {entityType?.charAt(0).toUpperCase() + entityType?.slice(1)}{" "}
+                Login
+              </h2>
             </div>
             <div className={styles.forminput}>
               <label htmlFor="email">Email</label>
@@ -174,10 +185,7 @@ function Login() {
               </div>
             </div>
             <div>
-              <button 
-                type="button" 
-                onClick={handleGoogleSignIn}
-              >
+              <button type="button" onClick={handleGoogleSignIn}>
                 Sign in with Google
               </button>
             </div>

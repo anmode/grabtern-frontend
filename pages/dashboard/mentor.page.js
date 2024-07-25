@@ -40,7 +40,7 @@ function MentorDashboard() {
       const search = window.location.search;
       const params = new URLSearchParams(search);
 
-      const mentorData = {,
+      const mentorData = {
         mentor_name: params.get("mentor_name"),
         mentor_email: params.get("mentor_email"),
         mentor_picture: params.get("mentor_picture"),

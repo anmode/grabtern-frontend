@@ -35,7 +35,6 @@ function MentorDashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    // Function to handle user data from URL
     const checkUserData = async () => {
       const search = window.location.search;
       const params = new URLSearchParams(search);

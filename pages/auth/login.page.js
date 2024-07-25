@@ -1,22 +1,23 @@
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState, useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import styles from "../../styles/form.module.css";
-import Button from "../../components/UI/Button/Button";
-const Header = dynamic(() => import("../../components/layout/Header"));
-import Visibillity from "../../public/assets/Visibillity.jsx";
-import VisibillityOff from "../../public/assets/VisibillityOff.jsx";
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styles from '../../styles/form.module.css';
+import Button from '../../components/UI/Button/Button';
+import dynamic from 'next/dynamic';
+import Loader from '../../components/UI/Loader';
+import axios from 'axios';
 import { useAuth } from "../../context/AuthContext";
-import Loader from "../../components/UI/Loader";
 
-function login() {
+const Header = dynamic(() => import('../../components/layout/Header'));
+
+function Login() {
   const router = useRouter();
+  const [error, setError] = useState('');
+  const [entityType, setEntityType] = useState('user');
+  const [loader, setLoader] = useState(false);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [toastDisplayed, setToastDisplayed] = useState(false);
   const {
     isMentorLoggedIn,
     setIsMentorLoggedIn,
@@ -24,153 +25,56 @@ function login() {
     setIsUserLoggedIn,
   } = useAuth();
 
-  const [error, setError] = useState("");
-  const [entityType, setEntityType] = useState("user");
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [loader, setLoader] = useState(false);
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const googleInitialized = useRef(false);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const togglePasswordVisibility = () => {
-    setIsPasswordVisible((prevState) => !prevState);
-  };
-
-  const handleCallbackResponse = async (response) => {
-    try {
-      const userObject = jwt_decode(response.credential);
-      const urlParams = new URLSearchParams(window.location.search);
-      const entityTypeFromUrl = urlParams.get("entityType");
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/glogin?entityType=${entityTypeFromUrl}`;
-      const { data: res } = await axios.post(url, userObject, {
-        withCredentials: true,
-      });
-
-      toast.info("Redirecting to home page");
-      if (entityTypeFromUrl === "user") {
-        const userData = {
-          user_name: userObject.name,
-          user_image: res.user_image,
-          user_email: userObject.email,
-          user_id: res.user_id,
-        };
-        setIsUserLoggedIn(true);
-        localStorage.setItem("userData", JSON.stringify(userData));
-      } else if (entityTypeFromUrl === "mentor") {
-        console.log("Anmol", res);
-        const mentorData = {
-          mentor_username: res.mentor_username,
-          mentor_name: res.mentor_name,
-          mentor_image: res.mentor_image,
-        };
-        setIsMentorLoggedIn(true);
-        toast.success(res.message);
-        localStorage.setItem("mentorData", JSON.stringify(mentorData));
-      }
-      router.push("/");
-    } catch (error) {
-      handleErrorResponse(error);
-    }
-  };
-
-  const initGoogleSignUp = () => {
-    if (googleInitialized.current) return;
-    googleInitialized.current = true;
-
-    try {
-      if (window.google && window.google.accounts) {
-        window.google.accounts.id.initialize({
-          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-          callback: (response) => handleCallbackResponse(response),
-          context: "signup",
-        });
-        window.google.accounts.id.renderButton(
-          document.getElementById("googleSignInButton"),
-          {
-            theme: "outline",
-            size: "large",
-            text: "signin_with",
-            shape: "pill",
-          },
-        );
-        window.google.accounts.id.prompt();
-      }
-    } catch (error) {
-      toast.error("Google sign-up initialization failed.");
-      console.error("Google sign-up initialization failed:", error);
-    }
-  };
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    script.async = true;
-    script.defer = true;
-    script.onload = initGoogleSignUp;
-    script.onerror = () => {
-      toast.error("Failed to load Google sign-up script.");
-      console.error("Failed to load Google sign-up script.");
-    };
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, [entityType]);
-
-  const handleErrorResponse = (error) => {
-    console.error("Error in callback of google sign in ", error);
-    if (
-      error.response &&
-      error.response.status >= 400 &&
-      error.response.status <= 500
-    ) {
-      toast.error(error.response.data.message);
-    }
-    setLoader(false);
-  };
-
-  useEffect(() => {
-    // Function to update the URL with the new entityType
     const updateEntityTypeInUrl = (newEntityType) => {
-      const queryParams = { ...router.query, entityType: newEntityType };
-      router.push(
-        { pathname: router.pathname, query: queryParams },
-        undefined,
-        {
-          shallow: true,
-        },
-      );
+      const queryParams = new URLSearchParams(window.location.search);
+      queryParams.set('entityType', newEntityType);
+      const queryString = queryParams.toString();
+      window.history.replaceState(null, '', `${router.pathname}?${queryString}`);
     };
-
+  
     updateEntityTypeInUrl(entityType);
   }, [entityType]);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectURL = urlParams.get("redirectURL");
-    const entityTypeFromUrl = urlParams.get("entityType");
+    const { redirectURL, entityType: entityTypeFromUrl, error } = router.query;
 
-    if (isMentorLoggedIn || isUserLoggedIn) {
-      router.replace(redirectURL || "/");
+    if ((isMentorLoggedIn || isUserLoggedIn) && !toastDisplayed) {
+      router.replace(redirectURL || '/');
       return;
     }
 
-    setEntityType(entityTypeFromUrl);
-  }, [isUserLoggedIn, isMentorLoggedIn, router]);
+    setEntityType(entityTypeFromUrl || 'user');
+    
+    if (error && !toastDisplayed) {
+      const errorMessages = {
+        invalid_state: 'Invalid state parameter.',
+        invalid_entity_type: 'Invalid entity type.',
+        mentor_not_verified: 'You are not Verfied as Mentor, Notification is send to grabtern Team',
+        user_not_found: 'User not found.',
+        oauth_failed: 'OAuth authentication failed.',
+        internal_error: 'Internal server error.',
+      };
+
+      const errorMessage = errorMessages[error] || 'An unknown error occurred.';
+      setError(errorMessage);
+      toast.error(errorMessage);
+      setToastDisplayed(true);
+    }
+  }, [isUserLoggedIn, isMentorLoggedIn, router, toastDisplayed]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectURL = urlParams.get("redirectURL");
-    setError("");
+    setError('');
     if (!formData.email || !formData.password) {
-      setError("Please fill all the fields");
+      setError('Please fill all the fields');
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
       return;
     }
@@ -182,47 +86,40 @@ function login() {
       });
       setLoader(false);
 
-      if (entityType === "user") {
+      if (entityType === 'user') {
+        localStorage.setItem('userData', JSON.stringify(res.userData));
         setIsUserLoggedIn(true);
-        localStorage.setItem("userData", JSON.stringify(res.userData));
-        router.replace(redirectURL || "/");
-      } else if (entityType === "mentor") {
+        router.replace('/');
+      } else if (entityType === 'mentor') {
+        localStorage.setItem('mentorData', JSON.stringify(res.mentorData));
         setIsMentorLoggedIn(true);
-        localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
-        router.replace(redirectURL || "/");
+        router.replace('/');
       }
     } catch (error) {
       setLoader(false);
-      handleErrorResponse(error);
+      setError('Login failed. Please try again.');
+      toast.error('Login failed. Please try again.');
     }
+  };
+
+  const handleGoogleSignIn = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignin?entityType=${entityType}`;
   };
 
   return (
     <>
-      <Head>
-        <title>GrabTern | Mentors Login Here</title>
-      </Head>
-
       <Header navbarBackground={true} />
       <div className={styles.loginform}>
         <div className={styles.btnnContainer}>
           <button
-            className={`${styles.btnn} ${
-              entityType === "user" ? styles.btnnActive : ""
-            } ${styles.user}`}
-            onClick={() => {
-              setEntityType("user");
-            }}
+            className={`${styles.btnn} ${entityType === 'user' ? styles.btnnActive : ''} ${styles.user}`}
+            onClick={() => setEntityType('user')}
           >
             User Login
           </button>
           <button
-            className={`${styles.btnn} ${
-              entityType === "mentor" ? styles.btnnActive : ""
-            } ${styles.mentor}`}
-            onClick={() => {
-              setEntityType("mentor");
-            }}
+            className={`${styles.btnn} ${entityType === 'mentor' ? styles.btnnActive : ''} ${styles.mentor}`}
+            onClick={() => setEntityType('mentor')}
           >
             Mentor Login
           </button>
@@ -232,12 +129,7 @@ function login() {
           <form className="form-default" onSubmit={handleSubmit}>
             <div className={styles.headingg}>
               <img src="/faviconn.png" alt="Logo" />
-              <h2>
-                {" "}
-                {entityType?.charAt(0).toUpperCase() +
-                  entityType?.slice(1)}{" "}
-                Login{" "}
-              </h2>
+              <h2>{entityType?.charAt(0).toUpperCase() + entityType?.slice(1)} Login</h2>
             </div>
             <div className={styles.forminput}>
               <label htmlFor="email">Email</label>
@@ -255,21 +147,16 @@ function login() {
             <div className={styles.forminput}>
               <label htmlFor="password">Password</label>
               <div className={styles.Input}>
-                {" "}
                 <input
-                  type={isPasswordVisible ? "text" : "password"}
+                  type="password"
                   name="password"
                   placeholder="Password"
                   required
                   onChange={handleChange}
                   value={formData.password}
                 />
-                <div className={styles.eye} onClick={togglePasswordVisibility}>
-                  {isPasswordVisible ? <Visibillity /> : <VisibillityOff />}
-                </div>
               </div>
             </div>
-
             <div>
               <ToastContainer />
               <div>
@@ -286,38 +173,14 @@ function login() {
                 )}
               </div>
             </div>
-
-            <ToastContainer />
-            {error && <div style={{ color: "red" }}>{error}</div>}
-            <Link
-              href={`/auth/forgotpass?entityType=${entityType}`}
-              className={styles.forget}
-              style={{ marginTop: 10, marginBottom: 10 }}
-            >
-              Forgot Password?
-            </Link>
-            <div className={styles.linkdiv}>
-              Don't have an account?
-              <Link
-                href={
-                  entityType === "user" ? "/auth/register" : "/mentorRegister"
-                }
-                className={styles.registration}
-                style={{ textDecoration: "none" }}
+            <div>
+              <button 
+                type="button" 
+                onClick={handleGoogleSignIn}
               >
-                Register here
-              </Link>
+                Sign in with Google
+              </button>
             </div>
-            <div className={styles.google}>
-              <h3 style={{ color: "var(--base-500)", alignSelf: "center" }}>
-                Or
-              </h3>
-            </div>
-            <div
-              id="googleSignInButton"
-              style={{ alignSelf: "center" }}
-              className={styles.google2}
-            ></div>
           </form>
         </div>
       </div>
@@ -325,4 +188,4 @@ function login() {
   );
 }
 
-export default login;
+export default Login;

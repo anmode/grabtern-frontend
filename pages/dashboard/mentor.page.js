@@ -30,26 +30,47 @@ function MentorDashboard() {
   const {
     isMentorLoggedIn,
     setIsMentorLoggedIn,
-    isUserLoggedIn,
-    setIsUserLoggedIn,
   } = useAuth();
 
   const router = useRouter();
 
   useEffect(() => {
+    // Function to handle user data from URL
+    const checkUserData = async () => {
+      const search = window.location.search;
+      const params = new URLSearchParams(search);
+
+      const mentorData = {,
+        mentor_name: params.get("mentor_name"),
+        mentor_email: params.get("mentor_email"),
+        mentor_picture: params.get("mentor_picture"),
+        mentor_username: params.get("mentor_username"),
+      };
+
+      if (mentorData) {
+        localStorage.setItem("userData", JSON.stringify(mentorData));
+        setUser(mentorData);
+        setIsMentorLoggedIn(true);
+      } else {
+        const storedMentorData = JSON.parse(localStorage.getItem("mentorData"));
+        if (storedMentorData) {
+          setUser(storedMentorData);
+          setIsMentorLoggedIn(true);
+        } else {
+          router.push("/auth/login?entityType=mentor");
+        }
+      }
+    };
+
+    checkUserData();
+  }, [router, setIsMentorLoggedIn]);
+
+  useEffect(() => {
+    // Handle query parameters for setting the component
     const search = window.location.search;
     const params = new URLSearchParams(search);
     setComponent(params.get("tab") || "");
-
-    const mentorData = localStorage.getItem("mentorData");
-
-    if (mentorData) {
-      setMentor(mentorData);
-      setIsMentorLoggedIn(true); // Set mentorLoggedIn to true
-    } else {
-      router.push("/auth/login?entityType=mentor");
-    }
-  }, [window.location.search, history]);
+  }, [window.location.search]);
 
   MentorDashboardTour();
 

@@ -122,12 +122,12 @@ function JobApplicationForm() {
   }, [jobID, jobDetails]);
 
   return (
-    <div classname="tw-bg-[#f1f5f9]">
-      <div className="tw-bg-[#845ec2] tw-text-white tw-p-6 tw-text-center">
-        <h1 className="tw-text-3xl tw-text-white tw-font-bold">
+    <div classname="tw-font-sans tw-bg-[#f1f5f9]">
+      <div className="tw-font-sans tw-bg-[#845ec2] tw-text-white tw-p-6 tw-text-center">
+        <h1 className="tw-font-sans tw-text-3xl tw-text-white tw-font-bold">
           {particularJob?.title}
         </h1>
-        <div className="tw-flex tw-text-black tw-justify-center tw-gap-4 tw-mt-2 tw-text-lg">
+        <div className="tw-font-sans tw-flex tw-text-black tw-justify-center tw-gap-4 tw-mt-2 tw-text-lg">
           <span>FULL-TIME</span>
           <span>{particularJob?.city}</span>
           <span>
@@ -136,21 +136,21 @@ function JobApplicationForm() {
           </span>
         </div>
       </div>
-      <div className="tw-p-6 tw-max-w-screen-md tw-mx-auto tw-bg-gray-100 tw-rounded-lg tw-shadow-lg">
+      <div className="tw-font-sans tw-p-6 tw-max-w-screen-md tw-mx-auto tw-bg-gray-100 tw-rounded-lg tw-shadow-lg">
         <button
           onClick={() => router.push("/career")}
-          className="tw-text-[#845ec2] tw-hover:underline"
+          className="tw-font-sans tw-text-[#845ec2] tw-hover:underline"
         >
           <span>&larr;</span> Back to all job openings
         </button>
-        <h2 className="tw-text-xl tw-text-gray-800 tw-font-semibold tw-mt-2">
+        <h2 className="tw-font-sans tw-text-xl tw-text-gray-800 tw-font-semibold tw-mt-2">
           Apply for this job
         </h2>
-        <form className="tw-mt-4" onSubmit={handleSubmit}>
-          <div className="tw-mb-4">
+        <form className="tw-font-sans tw-mt-4" onSubmit={handleSubmit}>
+          <div className="tw-font-sans tw-mb-4">
             <label
               htmlFor="resume"
-              className="tw-block tw-text-[#845ec2]-500 tw-mb-1 tw-cursor-pointer"
+              className="tw-font-sans tw-block tw-text-[#845ec2]-500 tw-mb-1 tw-cursor-pointer"
             >
               Upload resume
             </label>
@@ -160,15 +160,15 @@ function JobApplicationForm() {
               name="resume"
               value={formData.resume}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               placeholder="Upload your resume"
             />
           </div>
 
-          <div className="tw-mb-4">
+          <div className="tw-font-sans tw-mb-4">
             <label
               htmlFor="firstName"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               First Name *
             </label>
@@ -178,7 +178,7 @@ function JobApplicationForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               required
             />
           </div>
@@ -186,7 +186,7 @@ function JobApplicationForm() {
           <div className="tw-mb-4">
             <label
               htmlFor="middleName"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Middle Name
             </label>
@@ -196,14 +196,14 @@ function JobApplicationForm() {
               name="middleName"
               value={formData.middleName}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
             />
           </div>
 
           <div className="tw-mb-4">
             <label
               htmlFor="lastName"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Last Name *
             </label>
@@ -213,7 +213,7 @@ function JobApplicationForm() {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               required
             />
           </div>
@@ -221,7 +221,7 @@ function JobApplicationForm() {
           <div className="tw-mb-4">
             <label
               htmlFor="email"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Email *
             </label>
@@ -231,7 +231,7 @@ function JobApplicationForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               required
             />
           </div>
@@ -239,7 +239,7 @@ function JobApplicationForm() {
           <div className="tw-mb-4">
             <label
               htmlFor="mobilePhone"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Mobile Phone *
             </label>
@@ -249,7 +249,7 @@ function JobApplicationForm() {
               name="mobilePhone"
               value={formData.mobilePhone}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               required
               placeholder="9894795499"
             />
@@ -257,17 +257,17 @@ function JobApplicationForm() {
 
           <div className="tw-mb-4 tw-flex tw-flex-wrap gap-4">
             <div className="tw-w-full tw-sm:w-1/2">
-              <label className="tw-block tw-text-gray-700 tw-mb-1">
+              <label className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1">
                 Experience
               </label>
-              <div className="tw-flex tw-gap-4">
+              <div className="tw-font-sans tw-flex tw-gap-4">
                 <input
                   type="number"
                   id="experienceYears"
                   name="experienceYears"
                   value={formData.experienceYears}
                   onChange={handleChange}
-                  className="tw-w-full tw-px-3 py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+                  className="tw-font-sans tw-w-full tw-px-3 py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                   placeholder="Years"
                 />
                 <input
@@ -276,16 +276,16 @@ function JobApplicationForm() {
                   name="experienceMonths"
                   value={formData.experienceMonths}
                   onChange={handleChange}
-                  className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+                  className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                   placeholder="Months"
                 />
               </div>
             </div>
 
-            <div className="tw-w-full tw-sm:w-1/2">
+            <div className="tw-font-sans tw-w-full tw-sm:w-1/2">
               <label
                 htmlFor="currentSalary"
-                className="tw-block tw-text-gray-700 tw-mb-1"
+                className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
               >
                 Current Salary(LPA)
               </label>
@@ -295,17 +295,17 @@ function JobApplicationForm() {
                 name="currentSalary"
                 value={formData.currentSalary}
                 onChange={handleChange}
-                className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+                className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                 placeholder="2"
               />
             </div>
           </div>
 
-          <div className="tw-mb-4 tw-flex tw-flex-wrap tw-gap-4">
-            <div className="tw-w-full tw-sm:w-1/2">
+          <div className="tw-font-sans tw-mb-4 tw-flex tw-flex-wrap tw-gap-4">
+            <div className="tw-font-sans tw-w-full tw-sm:w-1/2">
               <label
                 htmlFor="expectedSalary"
-                className="tw-block tw-text-gray-700 tw-mb-1"
+                className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
               >
                 Expected Salary(LPA)
               </label>
@@ -315,15 +315,15 @@ function JobApplicationForm() {
                 name="expectedSalary"
                 value={formData.expectedSalary}
                 onChange={handleChange}
-                className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+                className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                 placeholder="3"
               />
             </div>
 
-            <div className="tw-w-full tw-sm:w-1/2">
+            <div className="tw-font-sans tw-w-full tw-sm:w-1/2">
               <label
                 htmlFor="availableToJoin"
-                className="tw-block tw-text-gray-700 tw-mb-1"
+                className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
               >
                 Available To Join (in days)
               </label>
@@ -333,16 +333,16 @@ function JobApplicationForm() {
                 name="availableToJoin"
                 value={formData.availableToJoin}
                 onChange={handleChange}
-                className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+                className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                 placeholder="7"
               />
             </div>
           </div>
 
-          <div className="tw-mb-4">
+          <div className="tw-font-sans tw-mb-4">
             <label
               htmlFor="currentLocation"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Current Location
             </label>
@@ -352,15 +352,15 @@ function JobApplicationForm() {
               name="currentLocation"
               value={formData.currentLocation}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               placeholder="Aligarh"
             />
           </div>
 
-          <div className="tw-mb-4">
+          <div className="tw-font-sans tw-mb-4">
             <label
               htmlFor="notes"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Notes
             </label>
@@ -369,17 +369,17 @@ function JobApplicationForm() {
               name="notes"
               value={formData.notes}
               onChange={handleChange}
-              className="tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               placeholder="Enter any additional notes"
             ></textarea>
           </div>
 
-          <div className="tw-mb-4">
-            <label className="tw-block tw-text-gray-700 tw-mb-1">
+          <div className="tw-font-sans tw-mb-4">
+            <label className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1">
               Ready for assessment*
             </label>
-            <div className="tw-flex tw-gap-4 tw-items-center">
-              <label className="tw-flex tw-items-center">
+            <div className="tw-font-sans tw-flex tw-gap-4 tw-items-center">
+              <label className="tw-font-sans tw-flex tw-items-center">
                 <input
                   type="radio"
                   name="rfa"
@@ -387,11 +387,11 @@ function JobApplicationForm() {
                   checked={formData.rfa === "yes"}
                   onChange={handleChange}
                   required
-                  className="tw-form-radio tw-text-[#845ec2]-500 focus:tw-ring-2 focus:tw-ring-[#845ec2]-500 focus:tw-ring-opacity-50"
+                  className="tw-font-sans tw-form-radio tw-text-[#845ec2]-500 focus:tw-ring-2 focus:tw-ring-[#845ec2]-500 focus:tw-ring-opacity-50"
                 />
-                <span className="tw-ml-2">Yes</span>
+                <span className="tw-font-sans tw-ml-2">Yes</span>
               </label>
-              <label className="tw-flex tw-items-center">
+              <label className="tw-font-sans tw-flex tw-items-center">
                 <input
                   type="radio"
                   name="rfa"
@@ -399,44 +399,46 @@ function JobApplicationForm() {
                   checked={formData.rfa === "no"}
                   onChange={handleChange}
                   required
-                  className="tw-form-radio tw-text-[#845ec2]-500 focus:tw-ring-2 focus:tw-ring-[#845ec2]-500 focus:tw-ring-opacity-50"
+                  className="tw-font-sans tw-form-radio tw-text-[#845ec2]-500 focus:tw-ring-2 focus:tw-ring-[#845ec2]-500 focus:tw-ring-opacity-50"
                 />
-                <span className="tw-ml-2">No</span>
+                <span className="tw-font-sans tw-ml-2">No</span>
               </label>
             </div>
           </div>
 
-          <div className="tw-mb-4 tw-flex tw-items-center">
+          <div className="tw-font-sans tw-mb-4 tw-flex tw-items-center">
             <label
               htmlFor="captcha"
-              className="tw-block tw-text-gray-700 tw-mb-1"
+              className="tw-font-sans tw-block tw-text-gray-700 tw-mb-1"
             >
               Captcha:{" "}
-              <span className="tw-px-2 tw-py-1 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-white">
+              <span className="tw-font-sans tw-px-2 tw-py-1 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-white">
                 {captcha}
               </span>
             </label>
-            <div className="tw-ml-auto tw-flex tw-gap-2 tw-items-center">
+            <div className="tw-font-sans tw-ml-auto tw-flex tw-gap-2 tw-items-center">
               <input
                 type="text"
                 id="captcha"
                 name="captcha"
                 value={formData.captcha}
                 onChange={handleChange}
-                className="tw-w-40 tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
+                className="tw-font-sans tw-w-40 tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               />
               <button
                 type="button"
                 onClick={() => setCaptcha(generateCaptcha())}
-                className="tw-text-[#845ec2]-500 tw-hover:underline"
+                className="tw-font-sans tw-text-[#845ec2]-500 tw-hover:underline"
               >
                 ↻ Regenerate Captcha
               </button>
             </div>
-            {captchaError && <p className="tw-text-red-500">{captchaError}</p>}
+            {captchaError && (
+              <p className="tw-font-sans tw-text-red-500">{captchaError}</p>
+            )}
           </div>
 
-          <div className="tw-mb-4 tw-flex tw-items-start">
+          <div className="tw-font-sans tw-mb-4 tw-flex tw-items-start">
             <input
               type="checkbox"
               id="consent"
@@ -444,9 +446,12 @@ function JobApplicationForm() {
               checked={formData.consent}
               onChange={handleChange}
               required
-              className="tw-form-checkbox tw-text-[#845ec2]-500"
+              className="tw-font-sans tw-form-checkbox tw-text-[#845ec2]-500"
             />
-            <label htmlFor="consent" className="tw-ml-2 tw-text-gray-700">
+            <label
+              htmlFor="consent"
+              className="tw-font-sans tw-ml-2 tw-text-gray-700"
+            >
               By applying you hereby accept the data processing terms under the
               Privacy Policy and give consent to processing of the data as part
               of this job application.
@@ -457,7 +462,7 @@ function JobApplicationForm() {
             text="Apply Now"
             variant="Primary"
             type="submit"
-            className="tw-w-full tw-bg-[#845ec2]-500 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg tw-hover:bg-[#845ec2]-600 tw-transition tw-duration-300"
+            className="tw-font-sans tw-w-full tw-bg-[#845ec2]-500 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg tw-hover:bg-[#845ec2]-600 tw-transition tw-duration-300"
           />
         </form>
       </div>

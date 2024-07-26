@@ -31,7 +31,7 @@ const Career = () => {
               ))}
             </div>
           ) : (
-            <div className="tw-p-4 tw-bg-white tw-rounded-lg tw-shadow-md">
+            <div className="tw-p-4 tw-bg-[#f1f5f9] tw-rounded-lg tw-pt-15">
               <h2 className="tw-font-sans text-2xl font-semibold text-gray-800 mb-2">
                 No Job Vacancies Available
               </h2>

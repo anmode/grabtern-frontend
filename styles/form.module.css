@@ -1,6 +1,3 @@
-/* #__next{
-  position: relative;
-} */
 .mainContainer {
   background-color: var(--base-100);
   display: flex;
@@ -112,19 +109,13 @@
 }
 .loginform {
   margin: 150px auto 20px;
-  width: 100%; /*Changed from 480px to 100% for responsiveness */
-  max-width: 480px; /*Added max-width to ensure it doesn't exceed the original width */
-  padding: 12px 20px; /*Adjusted padding for better fit on smaller screens */
-  /* box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2); */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   height: min-content;
   background-color: var(--base-100);
-
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -50px 0 0 -50px; */
 }
 
 .loginform h2 {
@@ -234,7 +225,7 @@
 @media (max-width: 575px) {
   .loginform {
     width: 90%;
-    padding: 12px 20px; /* Adjusted padding for smaller screens */
+    padding: 12px 20px;
     margin: 102px auto 20px;
   }
   .loginform h2 {
@@ -242,7 +233,7 @@
   }
   .user,
   .mentor {
-    font-size: 3.5vw; /* for clear visibility of the letters*/
+    font-size: 3.5vw;
     font-weight: bolder;
   }
 
@@ -265,12 +256,12 @@
   }
   .btnn {
     width: 100%;
-    padding: 10px 25px; /* for better visibility of the btn text in sm screens*/
+    padding: 10px 25px;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .loginform {
-    margin: 113px auto 20px; /* for centering the div */
+    margin: 113px auto 20px;
   }
 }
 

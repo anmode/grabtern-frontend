@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import Loader from "../../components/UI/Loader";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
+import errorCodes from "../../config/errorCodes";
 
 const Header = dynamic(() => import("../../components/layout/Header"));
 
@@ -18,12 +19,7 @@ function Login() {
   const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [toastDisplayed, setToastDisplayed] = useState(false);
-  const {
-    isMentorLoggedIn,
-    setIsMentorLoggedIn,
-    isUserLoggedIn,
-    setIsUserLoggedIn,
-  } = useAuth();
+  const { isMentorLoggedIn, isUserLoggedIn } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,17 +51,7 @@ function Login() {
     setEntityType(entityTypeFromUrl || "user");
 
     if (error && !toastDisplayed) {
-      const errorMessages = {
-        invalid_state: "Invalid state parameter.",
-        invalid_entity_type: "Invalid entity type.",
-        mentor_not_verified:
-          "You are not Verfied as Mentor, Notification is send to grabtern Team",
-        user_not_found: "User not found.",
-        oauth_failed: "OAuth authentication failed.",
-        internal_error: "Internal server error.",
-      };
-
-      const errorMessage = errorMessages[error] || "An unknown error occurred.";
+      const errorMessage = errorCodes[error] || "An unknown error occurred.";
       setError(errorMessage);
       toast.error(errorMessage);
       setToastDisplayed(true);
@@ -85,24 +71,23 @@ function Login() {
     try {
       setLoader(true);
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login?entityType=${entityType}`;
-      const { data: res } = await axios.post(url, formData, {
+      const response = await axios.post(url, formData, {
         withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       setLoader(false);
-
-      if (entityType === "user") {
-        localStorage.setItem("userData", JSON.stringify(res.userData));
-        setIsUserLoggedIn(true);
-        router.replace("/");
-      } else if (entityType === "mentor") {
-        localStorage.setItem("mentorData", JSON.stringify(res.mentorData));
-        setIsMentorLoggedIn(true);
-        router.replace("/");
+      if (response.data.redirectUrl) {
+        window.location.href = response.data.redirectUrl;
       }
     } catch (error) {
       setLoader(false);
-      setError("Login failed. Please try again.");
-      toast.error("Login failed. Please try again.");
+      const errorMessage =
+        errorCodes[error.response.data.error] ||
+        "Login failed. Please try again.";
+      setError(errorMessage);
+      toast.error(errorMessage);
     }
   };
 

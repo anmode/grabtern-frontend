@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import axios from "axios";
 
 const JobContext = createContext();
 
@@ -8,11 +9,14 @@ export const JobProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchJobsData = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobspost/jobsVacancy`,
-      );
-      const data = await response.json();
-      setJobDetails(data);
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobspost/fetchJobs`,
+        );
+        setJobDetails(response.data);
+      } catch (error) {
+        console.error("Error fetching job data:", error);
+      }
     };
     fetchJobsData();
   }, []);

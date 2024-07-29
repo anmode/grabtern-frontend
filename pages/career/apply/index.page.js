@@ -4,6 +4,8 @@ import { useJobContext } from "../../../context/JobContext";
 import Button from "../../../components/UI/Button/Button";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import AsyncSelect from "react-select/async";
 
 function JobApplicationForm() {
   const router = useRouter();
@@ -11,6 +13,43 @@ function JobApplicationForm() {
   const { jobID } = router.query;
   const [captcha, setCaptcha] = useState("");
   const [captchaError, setCaptchaError] = useState("");
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      width: "100%",
+      border: state.isFocused ? "1px solid #d1d5db" : "1px solid #d1d5db",
+      borderRadius: "0.375rem",
+      backgroundColor: "#f3f4f6",
+      color: "#374151",
+      fontFamily: "sans-serif",
+      boxShadow: state.isFocused ? "0 0 0 1px #d1d5db" : "none",
+      outline: "none",
+      "&:hover": {
+        border: state.isFocused ? "1px solid #d1d5db" : "1px solid #d1d5db",
+      },
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#374151",
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "#9ca3af",
+      fontFamily: "sans-serif",
+    }),
+    menu: (provided) => ({
+      ...provided,
+      width: "100%",
+      backgroundColor: "#f3f4f6",
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: "#374151",
+      fontFamily: "sans-serif",
+      backgroundColor: state.isFocused ? "#e5e7eb" : "#f3f4f6",
+    }),
+  };
 
   const [formData, setFormData] = useState({
     resume: "",
@@ -57,61 +96,81 @@ function JobApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.captcha !== captcha) {
+
+    if (String(formData.captcha) !== String(captcha)) {
       setCaptchaError("Incorrect captcha. Please try again.");
       setCaptcha(generateCaptcha());
-    } else {
-      setCaptchaError("");
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/submit`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              ...formData,
-              jobID: particularJob?.jobid,
-              jobTitle: particularJob?.title,
-            }),
-          },
-        );
+      return;
+    }
 
-        const data = await response.json();
-        if (response.ok) {
-          toast.success("Form submitted successfully!");
-          setFormData({
-            resume: "",
-            firstName: "",
-            middleName: "",
-            lastName: "",
-            email: "",
-            mobilePhone: "",
-            experienceYears: "",
-            experienceMonths: "",
-            currentSalary: "",
-            expectedSalary: "",
-            availableToJoin: "",
-            currentLocation: "",
-            notes: "",
-            rfa: "",
-            linkedin: "",
-            portfolio: "",
-            github: "",
-            consent: false,
-          });
-        } else {
-          toast.error(`Error submitting form: ${data.message}`);
-        }
-      } catch (error) {
-        toast.error("Network error, please try again later.");
+    setCaptchaError("");
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/submit`,
+        {
+          ...formData,
+          jobID: particularJob?.jobid,
+          jobTitle: particularJob?.title,
+        },
+      );
+
+      if (response.status === 200) {
+        setFormData({
+          resume: "",
+          firstName: "",
+          middleName: "",
+          lastName: "",
+          email: "",
+          mobilePhone: "",
+          experienceYears: "",
+          experienceMonths: "",
+          currentSalary: "",
+          expectedSalary: "",
+          availableToJoin: "",
+          currentLocation: "",
+          notes: "",
+          rfa: "",
+          linkedin: "",
+          portfolio: "",
+          github: "",
+          consent: false,
+        });
+        router.push("/career/thank-you");
+      } else {
+        const errorMessage = response.data.message || "Unknown error occurred";
+        toast.error(`Error submitting form: ${errorMessage}`);
       }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Network error, please try again later.");
+    }
+  };
+
+  const fetchLocation = async (inputValue) => {
+    const options = {
+      method: "GET",
+      url: `https://api.geoapify.com/v1/geocode/autocomplete?text=${inputValue}&apiKey=${process.env.NEXT_PUBLIC_LOCATION_APIKEY}`,
+    };
+
+    try {
+      const response = await axios.request(options);
+      return response.data.features.map((feature) => {
+        const { city, postcode, state, country } = feature.properties;
+        const parts = [city, postcode, state, country].filter(Boolean);
+        const label = parts.join(" , ");
+        return {
+          value: feature.properties,
+          label,
+        };
+      });
+    } catch (error) {
+      console.error("Error fetching location suggestions:", error);
+      return [];
     }
   };
 
   useEffect(() => {
-    if (Array.isArray(jobDetails) && jobID) {
+    if (jobDetails.length > 0 && jobID) {
       const selectedJob = jobDetails.find(
         (job) => job.jobid === parseInt(jobID),
       );
@@ -127,7 +186,7 @@ function JobApplicationForm() {
         <h1 className="tw-font-sans tw-text-3xl tw-text-white tw-font-bold">
           {particularJob?.title}
         </h1>
-        <div className="tw-font-sans tw-flex tw-text-black tw-justify-center tw-gap-4 tw-mt-2 tw-text-lg">
+        <div className="tw-font-sans tw-flex tw-text-white tw-justify-center tw-gap-4 tw-mt-2 tw-text-lg">
           <span>FULL-TIME</span>
           <span>{particularJob?.city}</span>
           <span>
@@ -150,9 +209,9 @@ function JobApplicationForm() {
           <div className="tw-font-sans tw-mb-4">
             <label
               htmlFor="resume"
-              className="tw-font-sans tw-block tw-text-[#845ec2]-500 tw-mb-1 tw-cursor-pointer"
+              className="tw-font-sans  tw-block tw-text-[#845ec2]-500 tw-mb-1 tw-cursor-pointer"
             >
-              Upload resume
+              Upload resume *
             </label>
             <input
               type="text"
@@ -162,6 +221,11 @@ function JobApplicationForm() {
               onChange={handleChange}
               className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               placeholder="Upload your resume"
+              style={{
+                color: "#1f2937",
+                "::placeholder": { color: "#374151" },
+              }}
+              required
             />
           </div>
 
@@ -249,9 +313,18 @@ function JobApplicationForm() {
               name="mobilePhone"
               value={formData.mobilePhone}
               onChange={handleChange}
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               required
               placeholder="9894795499"
+              style={{
+                color: "#1f2937",
+                "::placeholder": { color: "#374151" },
+              }}
             />
           </div>
 
@@ -269,6 +342,10 @@ function JobApplicationForm() {
                   onChange={handleChange}
                   className="tw-font-sans tw-w-full tw-px-3 py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                   placeholder="Years"
+                  style={{
+                    color: "#1f2937",
+                    "::placeholder": { color: "#374151" },
+                  }}
                 />
                 <input
                   type="number"
@@ -278,6 +355,10 @@ function JobApplicationForm() {
                   onChange={handleChange}
                   className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                   placeholder="Months"
+                  style={{
+                    color: "#1f2937",
+                    "::placeholder": { color: "#374151" },
+                  }}
                 />
               </div>
             </div>
@@ -297,6 +378,10 @@ function JobApplicationForm() {
                 onChange={handleChange}
                 className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                 placeholder="2"
+                style={{
+                  color: "#1f2937",
+                  "::placeholder": { color: "#374151" },
+                }}
               />
             </div>
           </div>
@@ -317,6 +402,10 @@ function JobApplicationForm() {
                 onChange={handleChange}
                 className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                 placeholder="3"
+                style={{
+                  color: "#1f2937",
+                  "::placeholder": { color: "#374151" },
+                }}
               />
             </div>
 
@@ -335,6 +424,10 @@ function JobApplicationForm() {
                 onChange={handleChange}
                 className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
                 placeholder="7"
+                style={{
+                  color: "#1f2937",
+                  "::placeholder": { color: "#374151" },
+                }}
               />
             </div>
           </div>
@@ -346,14 +439,18 @@ function JobApplicationForm() {
             >
               Current Location
             </label>
-            <input
-              type="text"
+            <AsyncSelect
               id="currentLocation"
               name="currentLocation"
-              value={formData.currentLocation}
-              onChange={handleChange}
-              className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
-              placeholder="Aligarh"
+              loadOptions={fetchLocation}
+              onChange={(selectedOption) =>
+                setFormData({
+                  ...formData,
+                  currentLocation: selectedOption ? selectedOption.label : "",
+                })
+              }
+              placeholder="Select your location"
+              styles={customStyles}
             />
           </div>
 
@@ -371,6 +468,10 @@ function JobApplicationForm() {
               onChange={handleChange}
               className="tw-font-sans tw-w-full tw-px-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg tw-bg-gray-100 tw-text-gray-800"
               placeholder="Enter any additional notes"
+              style={{
+                color: "#1f2937",
+                "::placeholder": { color: "#374151" },
+              }}
             ></textarea>
           </div>
 

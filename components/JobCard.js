@@ -8,8 +8,7 @@ const JobCard = ({ job }) => {
 
   const handleApply = () => {
     setParticularJob(job);
-    router.push(`/career/applyjob/${job.jobid}`);
-    // window.location.reload();
+    router.push(`/career/apply?jobID=${job.jobid}`);
   };
 
   return (

@@ -78,8 +78,8 @@ function Login() {
         },
       });
       setLoader(false);
-      if (response.data.redirectUrl) {
-        window.location.href = response.data.redirectUrl;
+      if (response.data.redirectURL) {
+        window.location.href = response.data.redirectURL;
       }
     } catch (error) {
       setLoader(false);
@@ -92,7 +92,8 @@ function Login() {
   };
 
   const handleGoogleSignIn = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignin?entityType=${entityType}`;
+    const { redirectURL } = router.query || {};
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignin?entityType=${entityType}&redirectURL=${redirectURL}`;
   };
 
   return (

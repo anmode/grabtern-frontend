@@ -43,15 +43,23 @@ function MentorDashboard() {
         mentor_username: params.get("mentor_username"),
       };
 
+      const redirectURL = params.get("redirectURL");
+
       if (mentorData.mentor_email) {
         localStorage.setItem("mentorData", JSON.stringify(mentorData));
         setMentor(mentorData);
         setIsMentorLoggedIn(true);
+        if (redirectURL) {
+          router.replace(redirectURL);
+        }
       } else {
         const storedMentorData = JSON.parse(localStorage.getItem("mentorData"));
         if (storedMentorData) {
           setMentor(storedMentorData);
           setIsMentorLoggedIn(true);
+          if (redirectURL) {
+            router.replace(redirectURL);
+          }
         } else {
           router.push("/auth/login?entityType=mentor");
         }

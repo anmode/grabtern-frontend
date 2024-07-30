@@ -58,15 +58,23 @@ function userDashboard() {
         user_picture: params.get("user_picture"),
       };
 
+      const redirectURL = params.get("redirectURL");
+
       if (userData.user_email) {
         localStorage.setItem("userData", JSON.stringify(userData));
         setUser(userData);
         setIsUserLoggedIn(true);
+        if (redirectURL) {
+          router.push(redirectURL);
+        }
       } else {
         const storedUserData = JSON.parse(localStorage.getItem("userData"));
         if (storedUserData) {
           setUser(storedUserData);
           setIsUserLoggedIn(true);
+          if (redirectURL) {
+            router.push(redirectURL);
+          }
         } else {
           router.push("/auth/login?entityType=user");
         }

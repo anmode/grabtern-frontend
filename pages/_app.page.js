@@ -7,6 +7,7 @@ import ScrollButton from "../components/basic/MoveToTop";
 import SupportChat from "../components/support/SupportChat";
 import { TourProvider } from "@reactour/tour";
 import ThemeProvider from "../hook/use-theme";
+import { JobProvider } from "../context/JobContext";
 
 function addProductJsonLd() {
   return {
@@ -168,28 +169,30 @@ function MyApp({ Component, pageProps }) {
       )}
 
       <BreakpointProvider>
-        <AuthProvider>
-          <TourProvider
-            steps={[]}
-            styles={{
-              popover: (base) => ({
-                ...base,
-                borderRadius: 10,
-                background: "#fff",
-                color: "#000",
-                width: 400,
-                fontSize: 16,
-                marginLeft: 20,
-              }),
-            }}
-          >
-            <ThemeProvider>
-              <SupportChat />
-              <ScrollButton />
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </TourProvider>
-        </AuthProvider>
+        <JobProvider>
+          <AuthProvider>
+            <TourProvider
+              steps={[]}
+              styles={{
+                popover: (base) => ({
+                  ...base,
+                  borderRadius: 10,
+                  background: "#fff",
+                  color: "#000",
+                  width: 400,
+                  fontSize: 16,
+                  marginLeft: 20,
+                }),
+              }}
+            >
+              <ThemeProvider>
+                <SupportChat />
+                <ScrollButton />
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </TourProvider>
+          </AuthProvider>
+        </JobProvider>
       </BreakpointProvider>
     </>
   );

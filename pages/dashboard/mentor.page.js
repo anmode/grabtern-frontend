@@ -27,29 +27,54 @@ function MentorDashboard() {
   const [component, setComponent] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [mentor, setMentor] = useState({});
-  const {
-    isMentorLoggedIn,
-    setIsMentorLoggedIn,
-    isUserLoggedIn,
-    setIsUserLoggedIn,
-  } = useAuth();
+  const { isMentorLoggedIn, setIsMentorLoggedIn } = useAuth();
 
   const router = useRouter();
 
   useEffect(() => {
+    const checkMentorData = async () => {
+      const search = window.location.search;
+      const params = new URLSearchParams(search);
+
+      const mentorData = {
+        mentor_name: params.get("mentor_name"),
+        mentor_email: params.get("mentor_email"),
+        mentor_picture: params.get("mentor_picture"),
+        mentor_username: params.get("mentor_username"),
+      };
+
+      const redirectURL = params.get("redirectURL");
+
+      if (mentorData.mentor_email) {
+        localStorage.setItem("mentorData", JSON.stringify(mentorData));
+        setMentor(mentorData);
+        setIsMentorLoggedIn(true);
+        if (redirectURL) {
+          router.replace(redirectURL);
+        }
+      } else {
+        const storedMentorData = JSON.parse(localStorage.getItem("mentorData"));
+        if (storedMentorData) {
+          setMentor(storedMentorData);
+          setIsMentorLoggedIn(true);
+          if (redirectURL) {
+            router.replace(redirectURL);
+          }
+        } else {
+          router.push("/auth/login?entityType=mentor");
+        }
+      }
+    };
+
+    checkMentorData();
+  }, [router, setIsMentorLoggedIn]);
+
+  useEffect(() => {
+    // Handle query parameters for setting the component
     const search = window.location.search;
     const params = new URLSearchParams(search);
     setComponent(params.get("tab") || "");
-
-    const mentorData = localStorage.getItem("mentorData");
-
-    if (mentorData) {
-      setMentor(mentorData);
-      setIsMentorLoggedIn(true); // Set mentorLoggedIn to true
-    } else {
-      router.push("/auth/login?entityType=mentor");
-    }
-  }, [window.location.search, history]);
+  }, [window.location.search]);
 
   MentorDashboardTour();
 

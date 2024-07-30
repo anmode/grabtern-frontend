@@ -99,7 +99,7 @@ const Home = ({
       icon: (
         <Image
           src={
-            !mentor.image
+            !mentor?.image
               ? "/assets/img/icon/no-profile-picture.webp"
               : mentor.image
           }
@@ -110,8 +110,8 @@ const Home = ({
       ),
       path: "profile",
       socials: {
-        linkedin: mentor.social?.linkedin,
-        twitter: mentor.social?.twitter,
+        linkedin: mentor?.social?.linkedin,
+        twitter: mentor?.social?.twitter,
       },
       heading: "Edit Profile",
     },
@@ -152,7 +152,7 @@ const Home = ({
           className={`tw-items-center tw-p-8 tw-flex tw-justify-between tw-flex-wrap tw-gap-4`}
         >
           <h1 className="tw-text-4xl tw-font-bold">
-            Welcome <span>{mentor.name?.split(" ")[0]}</span>!
+            Welcome <span>{mentor?.name?.split(" ")[0]}</span>!
           </h1>{" "}
           {/*  Mentor = MENTOR's NAME */}
           <div
@@ -171,7 +171,7 @@ const Home = ({
                 <h2 className="tw-font-semibold tw-text-white">Log out</h2>
                 <Image
                   src={
-                    !mentor.image
+                    !mentor?.image
                       ? "/assets/img/icon/no-profile-picture.webp"
                       : mentor.image
                   }
@@ -182,7 +182,11 @@ const Home = ({
                 />
               </p>
             ) : (
-              <p className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center">
+              <p
+                className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
+                onClick={handleLogout}
+                id="mentorLogout"
+              >
                 <h2 className="tw-font-semibold tw-text-white">Mentor</h2>
                 <BiSolidUser className="tw-w-7 tw-h-7 tw-text-[#FBEAFF]" />
               </p>

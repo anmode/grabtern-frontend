@@ -1,111 +1,28 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState, useRef } from "react";
-import EventLogin from "../../components/eventLogin/EventLogin";
-import Visibillity from "../../public/assets/Visibillity";
-import VisibillityOff from "../../public/assets/VisibillityOff";
+import { useEffect, useState } from "react";
 import Header from "../../components/layout/Header";
 import styles from "../../styles/userRegistration.module.css";
-import jwt_decode from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import Button from "../../components/UI/Button/Button";
 import Loader from "../../components/UI/Loader";
+import Visibillity from "../../public/assets/Visibillity";
+import VisibillityOff from "../../public/assets/VisibillityOff";
+import { useAuth } from "../../context/AuthContext";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
-  const {
-    isMentorLoggedIn,
-    setIsMentorLoggedIn,
-    isUserLoggedIn,
-    setIsUserLoggedIn,
-  } = useAuth();
+  const { isMentorLoggedIn, isUserLoggedIn } = useAuth();
 
   useEffect(() => {
-    const handleCallBackResponse = async (response) => {
-      if (isMentorLoggedIn || isUserLoggedIn) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const redirectURL = urlParams.get("redirectURL");
-        router.replace(redirectURL || "/");
-      }
-
-      const userObject = jwt_decode(response.credential);
-      const userData = {
-        user_name: userObject.name,
-        user_image: userObject.picture,
-        user_email: userObject.email,
-      };
-
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/gsignup`;
-      try {
-        const res = await axios.post(url, {
-          userData,
-        });
-
-        localStorage.setItem("userData", JSON.stringify(userData));
-        setIsUserLoggedIn(true);
-        const redirectUrl = new URLSearchParams(window.location.search).get(
-          "redirectUrl",
-        );
-        setTimeout(() => {
-          router.push(redirectUrl || "/");
-        }, 2000);
-      } catch (error) {
-        if (error.response && error.response.status >= 400) {
-          toast.error(error.response.data.message);
-        } else {
-          toast.error("Failed to sign up. Please try again later.");
-        }
-        if (error.response && error.response.status === 202) {
-          toast.warning(
-            "Registration successful, but there was an issue sending the verification email. Please contact support.",
-          );
-        }
-      }
-    };
-
-    const initGoogleSignUp = () => {
-      if (window.google && window.google.accounts) {
-        window.google.accounts.id.initialize({
-          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-          callback: handleCallBackResponse,
-          context: "signup",
-        });
-        window.google.accounts.id.renderButton(
-          document.getElementById("signUpDiv"),
-          {
-            theme: "outline",
-            size: "large",
-            text: "signup_with",
-            shape: "pill",
-            "data-use_fedcm_for_prompt": "true",
-          },
-        );
-        window.google.accounts.id.prompt();
-      }
-    };
-
-    const loadGoogleScript = () => {
-      const script = document.createElement("script");
-      script.src = "https://accounts.google.com/gsi/client";
-      script.async = true;
-      script.defer = true;
-      script.onload = initGoogleSignUp;
-      script.onerror = () => {
-        toast.error("Failed to load Google sign-up script.");
-        console.error("Failed to load Google sign-up script.");
-      };
-      document.head.appendChild(script);
-
-      return () => {
-        document.head.removeChild(script);
-      };
-    };
-
-    loadGoogleScript();
-  }, [router, isMentorLoggedIn, isUserLoggedIn, setIsUserLoggedIn]);
+    if (isMentorLoggedIn || isUserLoggedIn) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectURL = urlParams.get("redirectURL");
+      router.replace(redirectURL || "/");
+    }
+  }, [router, isMentorLoggedIn, isUserLoggedIn]);
 }
 
 function Register() {
@@ -187,6 +104,10 @@ function Register() {
     }
   };
 
+  const handleGoogleSignUp = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignup`;
+  };
+
   return (
     <>
       <Header navbarBackground={true} />
@@ -196,7 +117,8 @@ function Register() {
             <img
               src="/Grabtern2.png"
               className="small-image dark:tw-invert"
-            ></img>
+              alt="Logo"
+            />
             <h2>Hey, hello 👋</h2>
           </div>
           <div className={styles.forminput}>
@@ -270,20 +192,17 @@ function Register() {
           </div>
           <ToastContainer />
           <div>
-            <ToastContainer />
-            <div>
-              {!loader ? (
-                <div className="tw-flex tw-justify-center tw-h-11">
-                  <Button
-                    className="tw-w-[400px] tw-font-semibold"
-                    onClick={handleSubmit}
-                    text="Register"
-                  />
-                </div>
-              ) : (
-                <Loader />
-              )}
-            </div>
+            {!loader ? (
+              <div className="tw-flex tw-justify-center tw-h-11">
+                <Button
+                  className="tw-w-[400px] tw-font-semibold"
+                  onClick={handleSubmit}
+                  text="Register"
+                />
+              </div>
+            ) : (
+              <Loader />
+            )}
           </div>
           <div className={styles.linkdiv}>
             Already have an account?
@@ -300,11 +219,15 @@ function Register() {
               Or
             </h3>
           </div>
-          <div
-            id="signUpDiv"
-            style={{ alignSelf: "center" }}
-            className={styles.googlelogin}
-          ></div>
+          <div className={styles.googlelogin}>
+            <button
+              type="button"
+              onClick={handleGoogleSignUp}
+              className="tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-rounded"
+            >
+              Sign up with Google
+            </button>
+          </div>
         </form>
       </div>
     </>

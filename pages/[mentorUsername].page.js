@@ -51,7 +51,7 @@ function Index({ mentorDetail }) {
   //   const { email, name, username } = mentorDetail;
 
   //   if (isUserLoggedIn) {
-  //     sessionStorage.removeItem("redirectUrl");
+  //     sessionStorage.removeItem("redirectURL");
   //     handleBookSession(
   //       sessionName,
   //       email,
@@ -60,8 +60,8 @@ function Index({ mentorDetail }) {
   //       priceSession,
   //     );
   //   } else {
-  //     const redirectUrl = window.location.href;
-  //     sessionStorage.setItem("redirectUrl", redirectUrl);
+  //     const redirectURL = window.location.href;
+  //     sessionStorage.setItem("redirectURL", redirectURL);
   //     router.push(`/userAuth#login`);
   //   }
   // };

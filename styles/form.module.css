@@ -2,13 +2,18 @@
   background-color: var(--base-100);
   display: flex;
   flex-direction: column;
+  position: relative;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
+
 .headingg {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 .headingg img {
   width: 3.5rem;
@@ -49,7 +54,8 @@
   background-color: #845ec2;
 }
 .btnnContainer {
-  margin: 10%;
+  margin: 10px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: center;
 }
@@ -61,7 +67,8 @@
 .google {
   display: flex;
   flex-direction: column;
-  margin: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .google h3 {
   position: relative;
@@ -101,10 +108,11 @@
   display: flex;
 }
 .loginform {
-  margin: 90px auto 20px;
-  width: 480px;
-  padding: 12px 45px 12px 45px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  margin: 150px auto 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   height: min-content;
   background-color: var(--base-100);
@@ -217,15 +225,15 @@
 @media (max-width: 575px) {
   .loginform {
     width: 90%;
-    padding: 30px 40px 15px 40px;
-    margin: 100px auto 0 auto;
+    padding: 12px 20px;
+    margin: 102px auto 20px;
   }
   .loginform h2 {
     font-size: 27px;
   }
   .user,
   .mentor {
-    font-size: 2.6vw;
+    font-size: 3.5vw;
     font-weight: bolder;
   }
 
@@ -248,8 +256,15 @@
   }
   .btnn {
     width: 100%;
+    padding: 10px 25px;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .loginform {
+    margin: 113px auto 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .spinner {
     position: relative;

@@ -1,8 +1,10 @@
 name: Changelog
+
 on:
   push:
     branches:
       - main
+      - develop
 
 jobs:
   changelog:
@@ -19,8 +21,8 @@ jobs:
           output-file: "false"
 
       - name: Create Release
+        if: ${{ github.ref == 'refs/heads/main' && steps.changelog.outputs.skipped == 'false' }}
         uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

@@ -9,6 +9,7 @@ on:
 
 jobs:
   add-labels:
+    if: false
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -24,7 +25,7 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const prNumber = context.payload.pull_request.number;
-            const label = 'GrabSwagKit';
+            const label = 'GrabS';
 
             const addLabelParams = {
                 owner: owner,

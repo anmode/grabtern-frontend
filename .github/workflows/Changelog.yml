@@ -4,28 +4,39 @@ on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   changelog:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Conventional Changelog Action
+      - name: Generate Changelog
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: conventional-changelog-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-file: "false"
+          output-file: CHANGELOG.md
+          preset: angular # You can choose a preset or configure your own
 
       - name: Create Release
-        if: ${{ github.ref == 'refs/heads/main' && steps.changelog.outputs.skipped == 'false' }}
+        if: ${{ github.ref == 'refs/heads/main' && steps.changelog.outputs.changes != '' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          body: |
+            ### Changelog
+            $(cat CHANGELOG.md) # Include the generated changelog here
+
+      - name: Commit Changelog
+        if: ${{ steps.changelog.outputs.changes != '' }}
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'GitHub Actions'
+          author_email: 'actions@github.com'
+          message: 'Update changelog'

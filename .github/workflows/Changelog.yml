@@ -37,6 +37,6 @@ jobs:
         if: ${{ steps.changelog.outputs.changes != '' }}
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: "GitHub Actions"
-          author_email: "actions@github.com"
-          message: "Update changelog"
+          author_name: 'GitHub Actions'
+          author_email: 'actions@github.com'
+          message: 'Update changelog'

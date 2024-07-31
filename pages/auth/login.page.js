@@ -93,7 +93,13 @@ function Login() {
 
   const handleGoogleSignIn = () => {
     const { redirectURL } = router.query || {};
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignin?entityType=${entityType}&redirectURL=${redirectURL}`;
+    let url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignin?entityType=${entityType}`;
+
+    if (redirectURL) {
+      url += `&redirectURL=${encodeURIComponent(redirectURL)}`;
+    }
+
+    window.location.href = url;
   };
 
   return (

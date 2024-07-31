@@ -59,21 +59,22 @@ function userDashboard() {
       };
 
       const redirectURL = params.get("redirectURL");
+      const decodedURL = decodeURIComponent(redirectURL);
 
       if (userData.user_email) {
         localStorage.setItem("userData", JSON.stringify(userData));
         setUser(userData);
         setIsUserLoggedIn(true);
-        if (redirectURL) {
-          router.push(redirectURL);
+        if (decodedURL != "null") {
+          router.push(decodedURL);
         }
       } else {
         const storedUserData = JSON.parse(localStorage.getItem("userData"));
         if (storedUserData) {
           setUser(storedUserData);
           setIsUserLoggedIn(true);
-          if (redirectURL) {
-            router.push(redirectURL);
+          if (decodedURL != "null") {
+            router.push(decodedURL);
           }
         } else {
           router.push("/auth/login?entityType=user");

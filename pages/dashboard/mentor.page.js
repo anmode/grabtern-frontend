@@ -44,21 +44,22 @@ function MentorDashboard() {
       };
 
       const redirectURL = params.get("redirectURL");
+      const decodedURL = decodeURIComponent(redirectURL);
 
       if (mentorData.mentor_email) {
         localStorage.setItem("mentorData", JSON.stringify(mentorData));
         setMentor(mentorData);
         setIsMentorLoggedIn(true);
-        if (redirectURL) {
-          router.replace(redirectURL);
+        if (decodedURL != "null") {
+          router.replace(decodedURL);
         }
       } else {
         const storedMentorData = JSON.parse(localStorage.getItem("mentorData"));
         if (storedMentorData) {
           setMentor(storedMentorData);
           setIsMentorLoggedIn(true);
-          if (redirectURL) {
-            router.replace(redirectURL);
+          if (decodedURL != "null") {
+            router.replace(decodedURL);
           }
         } else {
           router.push("/auth/login?entityType=mentor");

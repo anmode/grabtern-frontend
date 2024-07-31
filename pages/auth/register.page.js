@@ -105,7 +105,14 @@ function Register() {
   };
 
   const handleGoogleSignUp = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignup`;
+    const { redirectURL } = router.query || {};
+    let url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignup`;
+
+    if (redirectURL) {
+      url += `&redirectURL=${encodeURIComponent(redirectURL)}`;
+    }
+
+    window.location.href = url;
   };
 
   return (

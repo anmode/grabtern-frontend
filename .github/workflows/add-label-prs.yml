@@ -9,7 +9,7 @@ on:
 
 jobs:
   add-labels:
-    if: false 
+    if: false
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write

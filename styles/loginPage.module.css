@@ -49,7 +49,6 @@
   border-bottom-right-radius: 2rem;
 }
 .btnnActive {
-  /* Styles for the activated button here */
   color: #fff;
   background-color: #845ec2;
 }
@@ -66,9 +65,10 @@
 
 .google {
   display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 10%;
 }
 .google h3 {
   position: relative;
@@ -79,19 +79,17 @@
   content: "";
   position: absolute;
   top: 50%;
-  width: 195px; /* Adjust the width of the lines as needed */
+  width: 195px;
   height: 1px;
-  background-color: var(
-    --base-500
-  ); /* You can change this color to your preference */
+  background-color: var(--base-500);
 }
 
 .google h3::before {
-  left: -200px; /* Adjust the left position to place the line on the left side */
+  left: -200px;
 }
 
 .google h3::after {
-  right: -200px; /* Adjust the right position to place the line on the right side */
+  right: -200px;
 }
 .google2 {
   display: flex;
@@ -211,12 +209,10 @@
   margin-top: 0.2rem;
 }
 
-/* Focus state */
 .btnn:focus {
   outline: none;
 }
 
-/* Hover state */
 .btnn:hover {
   background-color: #6b21a8;
   color: #fff;
@@ -241,18 +237,16 @@
   .google h3::after {
     content: "";
     top: 50%;
-    width: 135px; /* Adjust the width of the lines as needed */
+    width: 135px;
     height: 1px;
-    background-color: var(
-      --base-500
-    ); /* You can change this color to your preference */
+    background-color: var(--base-500);
   }
   .google h3::before {
-    left: -140px; /* Adjust the left position to place the line on the left side */
+    left: -140px;
   }
 
   .google h3::after {
-    right: -140px; /* Adjust the right position to place the line on the right side */
+    right: -140px;
   }
   .btnn {
     width: 100%;

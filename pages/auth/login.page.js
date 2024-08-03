@@ -2,13 +2,15 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "../../styles/form.module.css";
+import styles from "../../styles/loginPage.module.css";
 import Button from "../../components/UI/Button/Button";
 import dynamic from "next/dynamic";
 import Loader from "../../components/UI/Loader";
 import axios from "axios";
+import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import errorCodes from "../../config/errorCodes";
+import GoogleBtn from "../../components/UI/GoogleBtn/GoogleBtn";
 
 const Header = dynamic(() => import("../../components/layout/Header"));
 
@@ -176,10 +178,35 @@ function Login() {
                 )}
               </div>
             </div>
-            <div>
-              <button type="button" onClick={handleGoogleSignIn}>
-                Sign in with Google
-              </button>
+            <Link
+              href={`/auth/forgotpass?entityType=${entityType}`}
+              className={styles.forget}
+              style={{ marginTop: 10, marginBottom: 10 }}
+            >
+              Forgot Password?
+            </Link>
+            <div className={styles.linkdiv}>
+              Don't have an account?
+              <Link
+                href={
+                  entityType === "user" ? "/auth/register" : "/mentorRegister"
+                }
+                className={styles.registration}
+                style={{ textDecoration: "none" }}
+              >
+                Register here
+              </Link>
+            </div>
+            <div className={styles.google}>
+              <h3 style={{ color: "var(--base-500)", alignSelf: "center" }}>
+                Or
+              </h3>
+            </div>
+            <div className={styles.google}>
+              <GoogleBtn
+                onClick={handleGoogleSignIn}
+                text="Sign in with Google"
+              />
             </div>
           </form>
         </div>

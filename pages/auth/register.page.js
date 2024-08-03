@@ -11,6 +11,7 @@ import Loader from "../../components/UI/Loader";
 import Visibillity from "../../public/assets/Visibillity";
 import VisibillityOff from "../../public/assets/VisibillityOff";
 import { useAuth } from "../../context/AuthContext";
+import GoogleBtn from "../../components/UI/GoogleBtn/GoogleBtn";
 
 function useRedirectIfAuthenticated() {
   const router = useRouter();
@@ -227,13 +228,10 @@ function Register() {
             </h3>
           </div>
           <div className={styles.googlelogin}>
-            <button
-              type="button"
+            <GoogleBtn
               onClick={handleGoogleSignUp}
-              className="tw-bg-blue-500 tw-text-white tw-py-2 tw-px-4 tw-rounded"
-            >
-              Sign up with Google
-            </button>
+              text="Sign up with Google"
+            />
           </div>
         </form>
       </div>

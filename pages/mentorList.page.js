@@ -56,21 +56,25 @@ function Mentors() {
             />
           </div>
           {/* mentors cards */}
-          <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
-            {isLoading ? (
+          {isLoading ? (
+            <div className="tw-flex tw-justify-center tw-items-center tw-h-64">
               <MainLoader />
-            ) : filteredMentors.length === 0 ? (
-              <div className="tw-text-black tw-text-xl ">
-                <h1>No match found</h1>
-              </div>
-            ) : (
-              filteredMentors.map((mentor) => (
-                <a href={`/${mentor.username}`} key={mentor._id}>
-                  <MentorCard mentor={mentor} link={`/${mentor.username}`} />
-                </a>
-              ))
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+              {filteredMentors.length === 0 ? (
+                <div className="tw-text-black tw-text-xl tw-col-span-full tw-text-center">
+                  <h1>No match found</h1>
+                </div>
+              ) : (
+                filteredMentors.map((mentor) => (
+                  <a href={`/${mentor.username}`} key={mentor._id}>
+                    <MentorCard mentor={mentor} link={`/${mentor.username}`} />
+                  </a>
+                ))
+              )}
+            </div>
+          )}
         </Section>
         <ToastContainer />
       </main>

@@ -100,11 +100,9 @@ function Index({ mentorDetail, bookSession, sessionID }) {
   const bookSessionPaymentStep = async (e) => {
     try {
       if (!userName) {
-        toast.error("Please log in as a user before booking a session.");
+        toast.info("Redirecting to Register/Login");
         setTimeout(() => {
-          router.push(
-            `/auth/login?entityType=user&redirectURL=${window.location.href}`,
-          );
+          router.push(`/auth/register?&redirectURL=${window.location.href}`);
         }, 2000);
         return;
       }

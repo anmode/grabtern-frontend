@@ -110,7 +110,7 @@ function Register() {
     let url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/gsignup`;
 
     if (redirectURL) {
-      url += `&redirectURL=${encodeURIComponent(redirectURL)}`;
+      url += `?redirectURL=${encodeURIComponent(redirectURL)}`;
     }
 
     window.location.href = url;

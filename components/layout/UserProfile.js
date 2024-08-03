@@ -83,9 +83,11 @@ function UserProfile() {
   );
   // console.log(decryptedData);
   //Get the profile picture URL based on login status
-  const userProfilePicture = isUserLoggedIn ? decryptedData?.user_image : null;
+  const userProfilePicture = isUserLoggedIn
+    ? decryptedData?.user_picture
+    : null;
   const mentorProfilePicture = isMentorLoggedIn
-    ? decryptedData?.mentor_image
+    ? decryptedData?.mentor_picture
     : null;
 
   return (

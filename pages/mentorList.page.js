@@ -6,6 +6,7 @@ import { useApi } from "../hook/useAPi";
 import { Section, Input } from "../components/UI";
 import Loader from "../components/loader";
 import { ToastContainer, toast } from "react-toastify";
+import MainLoader from "../components/UI/MainLoader";
 
 const Header = dynamic(() => import("../components/layout/Header"));
 const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
@@ -57,7 +58,7 @@ function Mentors() {
           {/* mentors cards */}
           <div className="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
             {isLoading ? (
-              <Loader />
+              <MainLoader />
             ) : filteredMentors.length === 0 ? (
               <div className="tw-text-black tw-text-xl ">
                 <h1>No match found</h1>

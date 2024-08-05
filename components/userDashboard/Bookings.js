@@ -15,18 +15,55 @@ const Bookings = () => {
   // error state
   const [error, setError] = useState("");
 
+  //Duumydata for testing 
+  // dummy data
+  const dummySessions = [
+    {
+      sessionName: "React Basics",
+      userName: "John Doe",
+      mentorName: "Jane Smith",
+      sessionDate: "2024-08-05",
+      sessionTime: "10:00 AM",
+      isbooked: true,
+    },
+    {
+      sessionName: "Advanced JavaScript",
+      userName: "Alice Johnson",
+      mentorName: "Bob Brown",
+      sessionDate: "2024-08-06",
+      sessionTime: "2:00 PM",
+      isbooked: false,
+    },
+    {
+      sessionName: "Python for Data Science",
+      userName: "Charlie Davis",
+      mentorName: "Eva Green",
+      sessionDate: "2024-08-07",
+      sessionTime: "1:00 PM",
+      isbooked: true,
+    },
+    {
+      sessionName: "Introduction to SQL",
+      userName: "Daniel Lee",
+      mentorName: "Mary Wilson",
+      sessionDate: "2024-08-08",
+      sessionTime: "3:00 PM",
+      isbooked: false,
+    },
+  ];
   // function to fetch session
   const fetchSession = async () => {
     try {
       setError("");
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
-        {
-          withCredentials: true,
-        },
-      );
-      console.log(response.data);
-      setSessions(response.data);
+      // const response = await axios.get(
+      //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
+      //   {
+      //     withCredentials: true,
+      //   },
+      // );
+      // console.log(response.data);
+      // setSessions(response.data);
+      setSessions(dummySessions);
     } catch (error) {
       setError(error.response.data.message);
     }

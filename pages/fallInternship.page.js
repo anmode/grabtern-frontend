@@ -29,15 +29,22 @@ const Payment = () => {
           <meta name="description" content="Pay for the Grabtern internship" />
         </Head>
         <main className="p-8 bg-white shadow-lg rounded-lg max-w-md w-full mx-4 sm:mx-6 lg:mx-8">
-          <p className="text-gray-700 mb-6 text-center">
-            This internship offers a valuable opportunity for those without
-            prior work experience to gain practical knowledge and skills. You
-            will work on the live product grabtern.in, mirroring the environment
-            of a product-based company. This includes full development-based
-            architecture, working with AWS EC2 instances, and managing a DevOps
-            pipeline. The fee for this 3-month journey is charged to cover
-            operational expenditures.
-          </p>
+        <p className="text-gray-700 mb-6 text-center">
+  <strong className="block mb-2">Why This Internship?</strong>
+  <ul className="list-disc list-inside mb-6">
+    <li className="mb-2">Gain hands-on experience by working directly on our live product, grabtern.in.</li>
+    <li className="mb-2">Work in a real-world environment that mirrors a product-based company.</li>
+    <li className="mb-2">Engage with advanced technologies including full development-based architecture, AWS EC2 instances, and a sophisticated DevOps pipeline.</li>
+    <li className="mb-2">Build your resume with practical skills and experiences that enhance your career prospects.</li>
+  </ul>
+  <strong className="block mb-2">Why Is There a Fee?</strong>
+  <ul className="list-disc list-inside mb-6">
+    <li className="mb-2">The fee covers essential operational expenditures to provide you with the best tools and resources.</li>
+    <li className="mb-2">This investment supports the quality of the internship experience and ensures you receive valuable and up-to-date industry insights.</li>
+  </ul>
+</p>
+
+
           <div className="flex justify-center">
             <div
               className="razorpay-embed-btn"

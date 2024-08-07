@@ -3,6 +3,7 @@ import axios from "axios";
 import Sidebar from "../../components/userDashboard/sidebar";
 import Profile from "../../components/userDashboard/profile";
 import Bookings from "../../components/userDashboard/Bookings";
+import Application from "../../components/userDashboard/application";
 import Home from "../../components/userDashboard/home";
 import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
@@ -133,6 +134,15 @@ function userDashboard() {
               isSidebarOpen={isSidebarOpen}
               setLoadingState={setLoadingState}
               setErrorState={setErrorState}
+            />
+          )}
+          {component === "application" && (
+            <Application
+              isSidebarOpen={isSidebarOpen}
+              setLoadingState={setLoadingState}
+              setErrorState={setErrorState}
+              user={user}
+              setUser={setUser}
             />
           )}
           {["services", "new", "referral", "rewards"].includes(component) && (

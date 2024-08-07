@@ -7,6 +7,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { RxRocket } from "react-icons/rx";
 import { LuPhoneCall } from "react-icons/lu";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { VscGist } from "react-icons/vsc";
 import { CgSearchFound } from "react-icons/cg";
 import Logo from "../../public/assets/img/favicon1.ico";
 import Image from "next/image";
@@ -70,6 +71,12 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
       path: "bookings",
       id: "bookings",
     },
+    {
+      title: "Application",
+      icon: <VscGist />,
+      path: "application",
+      id: "application",
+    },
   ];
 
   const mobileItem = [
@@ -97,6 +104,12 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
       icon: <LuPhoneCall />,
       path: "bookings",
       id: "mobileBookings",
+    },
+    {
+      title: "Application",
+      icon: <VscGist />,
+      path: "application",
+      id: "mobileApplication",
     },
   ];
 

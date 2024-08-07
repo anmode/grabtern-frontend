@@ -70,6 +70,7 @@ function JobApplicationForm() {
     portfolio: "",
     github: "",
     consent: false,
+    dateSubmitted: "",
   });
 
   const generateCaptcha = () => {
@@ -104,11 +105,13 @@ function JobApplicationForm() {
     }
 
     setCaptchaError("");
+    const currentDate = new Date().toISOString();
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/submit`,
         {
           ...formData,
+          dateSubmitted: currentDate,
           jobID: particularJob?.jobid,
           jobTitle: particularJob?.title,
         },
@@ -134,6 +137,7 @@ function JobApplicationForm() {
           portfolio: "",
           github: "",
           consent: false,
+          dateSubmitted: "",
         });
         router.push("/career/thank-you");
       } else {
@@ -313,8 +317,14 @@ function JobApplicationForm() {
               name="mobilePhone"
               value={formData.mobilePhone}
               onChange={handleChange}
-              onKeyPress={(event) => {
-                if (!/[0-9]/.test(event.key)) {
+              onKeyDown={(event) => {
+                if (
+                  !/[0-9]/.test(event.key) &&
+                  event.key !== "Backspace" &&
+                  event.key !== "Delete" &&
+                  event.key !== "ArrowLeft" &&
+                  event.key !== "ArrowRight"
+                ) {
                   event.preventDefault();
                 }
               }}

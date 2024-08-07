@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Button from "../../components/UI/Button/Button";
 
 const ThankYouPage = () => {
+  const router = useRouter();
+
   const handleGoHome = () => {
     router.push("/career");
   };

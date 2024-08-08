@@ -21,8 +21,6 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
   const router = useRouter();
-  console.log(user);
-  console.log("look up")
   async function handleLogout() {
     const success = await logout(router);
 
@@ -52,8 +50,6 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
         setMobileNotification(false);
       }
     };
-    // console.log(user);
-
     document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
@@ -108,7 +104,11 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
                 : "tw-ml-0 tw-ease-in-out"
             }`}
           >
-            <ButtonLink text="Find Mentors" href="/mentorList" variant="outline" />
+            <ButtonLink
+              text="Find Mentors"
+              href="/mentorList"
+              variant="outline"
+            />
             {user ? (
               <p
                 className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
@@ -286,7 +286,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
                     )}
                   </div>
                   <div className="tw-p-2 tw-text-center tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
-                    <Link href={`/dashboard/mentor?tab=${card.path}`}>
+                    <Link href={`/dashboard/user?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>
                   </div>

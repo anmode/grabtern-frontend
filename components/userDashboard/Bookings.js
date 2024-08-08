@@ -15,55 +15,17 @@ const Bookings = () => {
   // error state
   const [error, setError] = useState("");
 
-  //Duumydata for testing 
-  // dummy data
-  const dummySessions = [
-    {
-      sessionName: "React Basics",
-      userName: "John Doe",
-      mentorName: "Jane Smith",
-      sessionDate: "2024-08-05",
-      sessionTime: "10:00 AM",
-      isbooked: true,
-    },
-    {
-      sessionName: "Advanced JavaScript",
-      userName: "Alice Johnson",
-      mentorName: "Bob Brown",
-      sessionDate: "2024-08-06",
-      sessionTime: "2:00 PM",
-      isbooked: false,
-    },
-    {
-      sessionName: "Python for Data Science",
-      userName: "Charlie Davis",
-      mentorName: "Eva Green",
-      sessionDate: "2024-08-07",
-      sessionTime: "1:00 PM",
-      isbooked: true,
-    },
-    {
-      sessionName: "Introduction to SQL",
-      userName: "Daniel Lee",
-      mentorName: "Mary Wilson",
-      sessionDate: "2024-08-08",
-      sessionTime: "3:00 PM",
-      isbooked: false,
-    },
-  ];
   // function to fetch session
   const fetchSession = async () => {
     try {
       setError("");
-      // const response = await axios.get(
-      //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
-      //   {
-      //     withCredentials: true,
-      //   },
-      // );
-      // console.log(response.data);
-      // setSessions(response.data);
-      setSessions(dummySessions);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dashboard/get/bookings`,
+        {
+          withCredentials: true,
+        },
+      );
+      setSessions(response.data);
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -75,7 +37,7 @@ const Bookings = () => {
   }, []);
 
   return (
-    <div className="tw-p-8 tw-w-full">
+    <div className="tw-p-3 md:tw-p-8 tw-w-full">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
       </h1>
@@ -92,7 +54,7 @@ const Bookings = () => {
 
       {/* pending and completed tab */}
       <nav>
-        <ul className="tw-flex tw-gap-8 tw-border-b-2">
+        <ul className="tw-flex tw-gap-8 tw-border-b-2 tw-pb-1.5">
           {tabs.map((tab, index) => (
             <li
               key={index}

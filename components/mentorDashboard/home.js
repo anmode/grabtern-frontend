@@ -12,8 +12,6 @@ import {
 } from "react-icons/md";
 import { logout } from "../layout/UserProfile";
 import { useAuth } from "../../context/AuthContext";
-import DashboardCard from "../UI/Card/DashBoardCard";
-
 
 const Home = ({
   isSidebarOpen,
@@ -28,8 +26,7 @@ const Home = ({
   const [mobileNotification, setMobileNotification] = useState(false);
   const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const router = useRouter();
-  console.log(mentor);
-  console.log("look up");
+
   async function handleLogout() {
     const success = await logout(router);
     if (success) {
@@ -260,7 +257,6 @@ const Home = ({
           </p>
           <div className="tw-flex-wrap tw-mt-10 tw-flex tw-gap-10 max-[762px]:tw-justify-center max-[762px]:tw-items-center max-[600px]:tw-flex-col tw-px-8">
             {cards.map((card) => {
-              console.log(card)
               return (
                 <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-base-100 max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">

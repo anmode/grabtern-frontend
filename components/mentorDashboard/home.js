@@ -24,7 +24,6 @@ const Home = ({
   const { setIsMentorLoggedIn, setIsUserLoggedIn } = useAuth();
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const router = useRouter();
 
   async function handleLogout() {
@@ -48,7 +47,7 @@ const Home = ({
         setLoadingState({ status: true });
         setErrorState({ status: false });
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentorData?.mentor_username}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentor.username}`,
           { withCredentials: true },
         );
         setMentor(res.data.mentorDetail);

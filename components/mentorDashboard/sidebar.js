@@ -28,7 +28,6 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const refOne = useRef(null);
 
   //detects if clicked on outside of element for smaller devices
@@ -52,9 +51,9 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       icon: (
         <Image
           src={
-            !mentorData?.mentor_image
+            !mentor?.image
               ? "/assets/img/icon/no-profile-picture.webp"
-              : mentorData?.mentor_image
+              : mentor?.image
           }
           width={30}
           height={30}
@@ -131,7 +130,7 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       title: "Profile",
       icon: (
         <Image
-          src={mentorData?.mentor_image}
+          src={mentor?.image}
           width={30}
           height={30}
           className="tw-rounded-full"
@@ -171,9 +170,9 @@ const Sidebar = ({ mentor, isSidebarOpen, setIsSidebarOpen }) => {
       icon: (
         <Image
           src={
-            !mentorData?.mentor_image
+            !mentor?.image
               ? "/assets/img/icon/no-profile-picture.webp"
-              : mentorData?.mentor_image
+              : mentor?.image
           }
           width={30}
           height={30}

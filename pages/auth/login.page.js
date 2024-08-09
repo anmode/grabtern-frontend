@@ -85,9 +85,12 @@ function Login() {
       }
     } catch (error) {
       setLoader(false);
-      const errorMessage =
-        errorCodes[error.response.data.error] ||
-        "Login failed. Please try again.";
+      // const errorMessage =
+      //   errorCodes[error.response.data.error] ||
+      //   "Login failed. Please try again.";
+        const errorMessage = error.response && error.response.data
+  ? errorCodes[error.response.data.error] || "Login failed. Please try again."
+  : "Login failed. Please try again.";
       setError(errorMessage);
       toast.error(errorMessage);
     }

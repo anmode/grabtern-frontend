@@ -5,7 +5,7 @@ import TabsWithTable from "../../components/basic/TabsWithTable";
 const Application = ({ user }) => {
   const [applications, setApplications] = useState([]);
   const [error, setError] = useState("");
-  const userEmail = user.user_email;
+  const userEmail = user.email;
 
   const fetchApplications = async () => {
     try {
@@ -63,7 +63,6 @@ const Application = ({ user }) => {
         additional information. In this case, you will receive a notification
         with instructions. Thank you for your interest in joining our team!
       </p>
-
       <TabsWithTable
         tabs={["Active", "Inactive"]}
         headers={[

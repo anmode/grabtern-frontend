@@ -7,7 +7,7 @@ const TabsWithTable = ({ tabs, headers, data, filterFunction, formatDate }) => {
   return (
     <div className="tw-p-8 tw-w-full">
       <Tabs>
-        <TabList className="tw-flex tw-gap-8 tw-border-b-2">
+        <TabList className="tw-flex tw-gap-8 tw-border-b-2 tw-pb-1.5">
           {tabs.map((tab, index) => (
             <Tab
               key={index}

@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-// import styles from "../styles/LoginDropdown.module.css";
-import router from "next/router";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
-// import styles from "../../styles/LoginDropdown.module.css";
-import { encryptData, decryptData } from "../../hook/encryptDecrypt";
+import { mentorLogout, userLogout } from "../basic/logout";
 
 const DropdownCard = () => {
   const [loginOption, setLoginOption] = useState(false);
@@ -16,26 +12,12 @@ const DropdownCard = () => {
     setIsUserLoggedIn,
   } = useAuth();
 
-  const userData = decryptData(localStorage.getItem("userData"));
-  const mentorData = decryptData(localStorage.getItem("mentorData"));
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const mentorData = JSON.parse(localStorage.getItem("mentorData"));
   const dropdownRef = useRef(null);
 
   const handleLoginClick = () => {
     setLoginOption(!loginOption);
-  };
-
-  const mentorlogout = () => {
-    localStorage.clear();
-    setIsMentorLoggedIn(false);
-    router.push("/");
-    window.location.reload();
-  };
-
-  const userlogout = () => {
-    localStorage.clear();
-    setIsUserLoggedIn(false);
-    router.push("/");
-    window.location.reload();
   };
 
   const handleOutsideClick = (event) => {
@@ -96,9 +78,9 @@ const DropdownCard = () => {
                 href="#"
                 onClick={() => {
                   if (isMentorLoggedIn) {
-                    mentorlogout();
+                    mentorLogout(setIsMentorLoggedIn);
                   } else {
-                    userlogout();
+                    userLogout(setIsUserLoggedIn);
                   }
                 }}
               >

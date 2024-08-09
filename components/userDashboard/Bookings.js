@@ -1,4 +1,5 @@
 import axios from "axios";
+import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import TabsWithTable from "../../components/basic/TabsWithTable";
@@ -55,7 +56,7 @@ const Bookings = () => {
   ]);
 
   return (
-    <div className="tw-p-8 tw-w-full">
+    <div className="tw-p-3 md:tw-p-8 tw-w-full">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4 lg:tw-mb-8">
         Your sessions
       </h1>

@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
-import "tailwindcss/tailwind.css";
+import TabsWithTable from "../../components/basic/TabsWithTable";
 
 const Application = ({ user }) => {
-  const [activeTab, setActiveTab] = useState("Active");
-  const tabs = ["Active", "Inactive"];
   const [applications, setApplications] = useState([]);
   const [error, setError] = useState("");
   const userEmail = user.user_email;
@@ -20,14 +16,7 @@ const Application = ({ user }) => {
           withCredentials: true,
         },
       );
-
-      if (Array.isArray(response.data)) {
-        setApplications(response.data);
-      } else if (response.data) {
-        setApplications([response.data]);
-      } else {
-        setApplications([]);
-      }
+      setApplications(response.data || []);
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred");
     }
@@ -46,6 +35,23 @@ const Application = ({ user }) => {
     return `${day} ${month} ${year}`;
   };
 
+  const filterFunction = (application, activeTab) => {
+    if (activeTab === "Active") {
+      return (
+        application[4] === "under review" || application[4] === "In Process"
+      );
+    }
+    return application[4] === "Rejected" || application[4] === "Selected";
+  };
+
+  const applicationData = applications.map((app) => [
+    app.jobID,
+    app.jobTitle,
+    <span className="tw-font-sans tw-text-[#845ec2]">Submitted</span>, // Apply purple color
+    app.dateSubmitted,
+    app.applicationAction,
+  ]);
+
   return (
     <div className="tw-p-8 tw-w-full">
       <h1 className="tw-font-sans tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4 lg:tw-mb-8">
@@ -58,86 +64,19 @@ const Application = ({ user }) => {
         with instructions. Thank you for your interest in joining our team!
       </p>
 
-      <Tabs>
-        <TabList className="tw-flex tw-gap-8 tw-border-b-2">
-          {tabs.map((tab, index) => (
-            <Tab
-              key={index}
-              className={`hover:tw-cursor-pointer tw-relative tw-bottom-[2px] tw-pb-1 tw-bg-[#f1f5f9] ${
-                activeTab === tab
-                  ? "tw-text-primary-100 tw-font-semibold tw-border-b-2 tw-border-b-primary-100 tw-bg-[#f1f5f9]"
-                  : "tw-text-base-400 tw-bg-[#f1f5f9]"
-              }`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </Tab>
-          ))}
-        </TabList>
-
-        {tabs.map((tab, index) => (
-          <TabPanel key={index}>
-            {error && (
-              <p className="tw-text-red-500 tw-text-center tw-mt-8">{error}</p>
-            )}
-            <div className="tw-overflow-x-auto">
-              <table className="tw-w-full tw-table-auto tw-border-collapse">
-                <thead>
-                  <tr className="tw-bg-[#845ec2]">
-                    <th className="tw-font-sans tw-text-white tw-font-normal tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                      Job Id
-                    </th>
-                    <th className="tw-font-sans tw-text-white tw-font-normal tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                      Job Title
-                    </th>
-                    <th className="tw-font-sans tw-text-white tw-font-normal tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                      Application Status
-                    </th>
-                    <th className="tw-font-sans tw-text-white tw-font-normal tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                      Date Submitted
-                    </th>
-                    <th className="tw-font-sans tw-text-white tw-font-normal tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                      Action
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {applications.length > 0 &&
-                    applications
-                      .filter((app) =>
-                        activeTab === "Active"
-                          ? app.applicationAction === "under review" ||
-                            app.applicationAction === "In Process"
-                          : app.applicationAction === "Rejected" ||
-                            app.applicationAction === "Selected",
-                      )
-                      .map((application, index) => (
-                        <tr key={index} className="tw-bg-white">
-                          <td className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                            {application.jobID}
-                          </td>
-                          <td className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                            {application.jobTitle}
-                          </td>
-                          <td className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                            <span className="tw-font-sans tw-text-[#845ec2] tw-font-bold">
-                              Submitted
-                            </span>
-                          </td>
-                          <td className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                            {formatDate(application.dateSubmitted)}
-                          </td>
-                          <td className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300">
-                            {application.applicationAction}
-                          </td>
-                        </tr>
-                      ))}
-                </tbody>
-              </table>
-            </div>
-          </TabPanel>
-        ))}
-      </Tabs>
+      <TabsWithTable
+        tabs={["Active", "Inactive"]}
+        headers={[
+          "Job Id",
+          "Job Title",
+          "Application Status",
+          "Date Submitted",
+          "Action",
+        ]}
+        data={applicationData}
+        filterFunction={filterFunction}
+        formatDate={formatDate}
+      />
     </div>
   );
 };

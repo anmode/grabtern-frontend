@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useJobContext } from "../context/JobContext";
+import Loader from "./UI/Loader";
 
 const JobCard = ({ job }) => {
   const { setParticularJob } = useJobContext();
+  const [loader, setLoader] = useState(false);
   const router = useRouter();
 
   const handleApply = () => {
+    setLoader(true);
     setParticularJob(job);
     router.push(`/career/apply?jobID=${job.jobid}`);
   };
@@ -18,13 +21,20 @@ const JobCard = ({ job }) => {
           {job.country} | {job.city}
         </p>
         <div>
-          <button
-            onClick={handleApply}
-            className="tw-bg-[#845ec2] tw-font-sans tw-text-white tw-border-none tw-py-2 tw-px-4 tw-rounded-md tw-flex tw-items-center"
-          >
-            Apply{" "}
-            <span className="tw-bg-[#845ec2] tw-ml-2 tw-font-sans">&rarr;</span>
-          </button>
+          {loader ? (
+            <Loader width="20px" />
+          ) : (
+            <button
+              onClick={handleApply}
+              className="tw-bg-[#845ec2] tw-font-sans tw-text-white tw-border-none tw-py-2 tw-px-4 tw-rounded-md tw-flex tw-items-center tw-relative tw-disabled:tw-opacity-50"
+              disabled={loader}
+            >
+              Apply{" "}
+              <span className="tw-bg-[#845ec2] tw-ml-2 tw-font-sans">
+                &rarr;
+              </span>
+            </button>
+          )}
         </div>
       </div>
       <h2 className="tw-font-sans tw-text-xl tw-font-bold tw-text-[#845ec2] tw-mb-2 tw-mt-4">

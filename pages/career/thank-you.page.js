@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Button from "../../components/UI/Button/Button";
+import Loader from "../../components/UI/Loader";
 
 const ThankYouPage = () => {
   const router = useRouter();
+  const [loader, setLoader] = useState(false);
 
   const handleGoHome = () => {
+    setLoader(true);
     router.push("/career");
   };
 
@@ -19,12 +22,16 @@ const ThankYouPage = () => {
           Your application has been successfully submitted. We will review it
           and get back to you soon.
         </p>
-        <Button
-          text="Browse all jobs"
-          variant="Primary"
-          onClick={handleGoHome}
-          className="tw-w-full tw-font-sans "
-        />
+        {loader ? (
+          <Loader width="20px" />
+        ) : (
+          <Button
+            text="Browse all jobs"
+            variant="Primary"
+            onClick={handleGoHome}
+            className="tw-w-full tw-font-sans "
+          />
+        )}
       </div>
     </div>
   );

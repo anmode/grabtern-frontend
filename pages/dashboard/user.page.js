@@ -73,60 +73,60 @@ function UserDashboard() {
   UserDashboardTour();
 
   return (
-      <div className="tw-flex tw-w-full" id="homepage">
-        <Sidebar
-          user={user}
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-        />
-        <div
-          className={`tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center ${
-            isSidebarOpen
-              ? "tw-transition-all tw-ease-in-out md:tw-ml-[176px]"
-              : "tw-duration-200 tw-transition-all tw-ease-in-out md:tw-ml-[70px]"
-          }`}
-        >
-          {(loadingState.status || errorState.status) && (
-            <PreLoader loadingState={loadingState} errorState={errorState} />
-          )}
-          {component === "" && (
-            <Home
-              setIsSidebarOpen={setIsSidebarOpen}
-              isSidebarOpen={isSidebarOpen}
-              user={user}
-            />
-          )}
-          {component === "profile" && (
-            <Profile
-              isSidebarOpen={isSidebarOpen}
-              setLoadingState={setLoadingState}
-              setErrorState={setErrorState}
-              user={user}
-              setUser={setUser}
-            />
-          )}
-          {component === "bookings" && (
-            <Bookings
-              isSidebarOpen={isSidebarOpen}
-              setLoadingState={setLoadingState}
-              setErrorState={setErrorState}
-            />
-          )}
-          {component === "application" && (
-            <Application
-              isSidebarOpen={isSidebarOpen}
-              setLoadingState={setLoadingState}
-              setErrorState={setErrorState}
-              user={user}
-              setUser={setUser}
-            />
-          )}
-          {["services", "new", "referral", "rewards"].includes(component) && (
-            <ComingSoon isSidebarOpen={isSidebarOpen} />
-          )}
-        </div>
-        <ToastContainer />
+    <div className="tw-flex tw-w-full" id="homepage">
+      <Sidebar
+        user={user}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+      <div
+        className={`tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center ${
+          isSidebarOpen
+            ? "tw-transition-all tw-ease-in-out md:tw-ml-[176px]"
+            : "tw-duration-200 tw-transition-all tw-ease-in-out md:tw-ml-[70px]"
+        }`}
+      >
+        {(loadingState.status || errorState.status) && (
+          <PreLoader loadingState={loadingState} errorState={errorState} />
+        )}
+        {component === "" && (
+          <Home
+            setIsSidebarOpen={setIsSidebarOpen}
+            isSidebarOpen={isSidebarOpen}
+            user={user}
+          />
+        )}
+        {component === "profile" && (
+          <Profile
+            isSidebarOpen={isSidebarOpen}
+            setLoadingState={setLoadingState}
+            setErrorState={setErrorState}
+            user={user}
+            setUser={setUser}
+          />
+        )}
+        {component === "bookings" && (
+          <Bookings
+            isSidebarOpen={isSidebarOpen}
+            setLoadingState={setLoadingState}
+            setErrorState={setErrorState}
+          />
+        )}
+        {component === "application" && (
+          <Application
+            isSidebarOpen={isSidebarOpen}
+            setLoadingState={setLoadingState}
+            setErrorState={setErrorState}
+            user={user}
+            setUser={setUser}
+          />
+        )}
+        {["services", "new", "referral", "rewards"].includes(component) && (
+          <ComingSoon isSidebarOpen={isSidebarOpen} />
+        )}
       </div>
+      <ToastContainer />
+    </div>
   );
 }
 

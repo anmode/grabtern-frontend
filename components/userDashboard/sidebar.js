@@ -75,12 +75,19 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const mobileItem = [
     {
       title: "Profile",
-      icon: (
+      icon: user?.image ? (
         <Image
           src={user?.image}
           width={30}
           height={30}
-          className="tw-rounded-full"
+          className="tw-rounded-full tw-bg-base-400"
+        />
+      ) : (
+        <Image
+          src={userIcon}
+          width={30}
+          height={30}
+          className={`tw-rounded-full tw-bg-base-400`}
         />
       ),
       path: "profile",

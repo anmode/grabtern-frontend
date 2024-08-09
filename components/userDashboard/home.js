@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import ButtonLink from "../UI/Links/ButtonLink";
 import { useRouter } from "next/router";
 import { BiSolidUser, BiTime, BiCalendar } from "react-icons/bi";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
@@ -13,13 +14,13 @@ import {
 } from "react-icons/md";
 import { logout } from "../layout/UserProfile";
 import { useAuth } from "../../context/AuthContext";
+import { FaGithub } from "react-icons/fa";
 
 const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
   const { setIsMentorLoggedIn, setIsUserLoggedIn } = useAuth();
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
   const router = useRouter();
-
   async function handleLogout() {
     const success = await logout(router);
 
@@ -49,8 +50,6 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
         setMobileNotification(false);
       }
     };
-    // console.log(user);
-
     document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
@@ -75,6 +74,10 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           className={`tw-rounded-full tw-bg-base-300 tw-p-3`}
         />
       ),
+      socials: {
+        linkedin: user?.social?.linkedin,
+        github: user?.social?.twitter,
+      },
       path: "profile",
       heading: "Edit Profile",
     },
@@ -101,6 +104,11 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
                 : "tw-ml-0 tw-ease-in-out"
             }`}
           >
+            <ButtonLink
+              text="Find Mentors"
+              href="/mentorList"
+              variant="outline"
+            />
             {user ? (
               <p
                 className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
@@ -191,13 +199,93 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
                 <div className="tw-w-[300px] tw-flex-wrap tw-border tw-border-base-300  tw-gap-2 tw-p-6 tw-flex tw-justify-around tw-items-center tw-rounded-lg tw-bg-base-100 max-[752px]:tw-w-[500px] max-[686px]:tw-w-[400px] max-[512px]:tw-w-[300px]">
                   <div className="tw-justify-center tw-items-center tw-flex tw-flex-col tw-gap-2 tw-w-full">
                     {card.icon}
+                    <h2 className="tw-font-semibold tw-text-xl">{card.name}</h2>
+                    {card.socials && (
+                      <div className="tw-flex tw-gap-8 tw-mt-2">
+                        <a
+                          href={card.socials?.linkedin}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="tw-cursor-pointer hover:tw-scale-110 tw-ease-in-out tw-transition-all tw-duration-100"
+                        >
+                          <BsLinkedin className="tw-w-6 tw-h-6 tw-text-[#0072b1]" />
+                        </a>
+                        <a
+                          href={card.socials?.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="tw-cursor-pointer hover:tw-scale-110 tw-ease-in-out tw-transition-all tw-duration-100"
+                        >
+                          <FaGithub className="tw-w-6 tw-h-6 tw-text-[#1D9BF0]" />
+                        </a>
+                      </div>
+                    )}
+                    {card.session && (
+                      <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
+                        {card?.session?.type ? (
+                          <div>
+                            <h2 className="tw-font-semibold tw-text-md">
+                              Title:{" "}
+                              <span className="tw-text-sm tw-text-primary-200">
+                                {card.session.title}
+                              </span>
+                            </h2>
+                            <div className="tw-flex tw-flex-col tw-items-start pl-4 tw-gap-1">
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.session.type}
+                              </p>
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.session.duration} minutes
+                              </p>
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.session.desc}
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          <h2>No Session found</h2>
+                        )}
+                      </div>
+                    )}
+                    {card.schedule && (
+                      <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
+                        {card.schedule?.day?.length > 0 ? (
+                          <div className="tw-flex tw-flex-col tw-items-center tw-justify-center">
+                            <h2 className="tw-font-semibold tw-text-md">
+                              Day:{" "}
+                              <span className="tw-text-sm tw-text-primary-200">
+                                {card.schedule.day}
+                              </span>
+                            </h2>
+                            <div className="tw-flex tw-flex-col tw-items-center tw-gap-1">
+                              <p className="tw-text-sm tw-font-semibold tw-flex tw-gap-2  tw-items-center tw-justify-center tw-text-primary-200">
+                                <span>
+                                  <BiTime className="tw-text-slate-900 tw-text-xl" />
+                                </span>
+                                {card.schedule.start} - {card.schedule.end}
+                              </p>
+                              <p className="tw-text-sm tw-font-semibold tw-text-primary-200">
+                                {card.schedule.timezone}
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          <h2>No Schedule found</h2>
+                        )}
+                      </div>
+                    )}
+                    {card.payment && (
+                      <div className="tw-flex tw-flex-col tw-gap-2 tw-items-center tw-justify-center">
+                        <h2 className="tw-font-semibold tw-text-md">
+                          Payment:{" "}
+                          <span className="tw-text-sm tw-text-primary-200">
+                            {card.payment}
+                          </span>
+                        </h2>
+                      </div>
+                    )}
                   </div>
-                  <div className="tw-flex tw-flex-col tw-gap-2 tw-w-full">
-                    <h2 className="tw-text-2xl tw-font-semibold tw-text-center">
-                      {card.name}
-                    </h2>
-                  </div>
-                  <div className="tw-p-2 tw-text-center tw-relative tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
+                  <div className="tw-p-2 tw-text-center tw-rounded-md tw-font-semibold tw-transition-all tw-duration-150 tw-cursor-pointer tw-ease-in-out tw-w-full tw-bg-primary-100 hover:tw-bg-primary-200">
                     <Link href={`/dashboard/user?tab=${card.path}`}>
                       <p className="tw-text-white">{card.heading}</p>
                     </Link>

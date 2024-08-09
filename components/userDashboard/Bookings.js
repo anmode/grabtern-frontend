@@ -25,7 +25,6 @@ const Bookings = () => {
           withCredentials: true,
         },
       );
-      console.log(response.data);
       setSessions(response.data);
     } catch (error) {
       setError(error.response.data.message);
@@ -38,7 +37,7 @@ const Bookings = () => {
   }, []);
 
   return (
-    <div className="tw-p-8 tw-w-full">
+    <div className="tw-p-3 md:tw-p-8 tw-w-full">
       <h1 className="tw-text-2xl sm:tw-text-3xl lg:tw-text-4xl tw-font-semibold tw-mb-4  lg:tw-mb-8">
         Your sessions
       </h1>
@@ -55,7 +54,7 @@ const Bookings = () => {
 
       {/* pending and completed tab */}
       <nav>
-        <ul className="tw-flex tw-gap-8 tw-border-b-2">
+        <ul className="tw-flex tw-gap-8 tw-border-b-2 tw-pb-1.5">
           {tabs.map((tab, index) => (
             <li
               key={index}

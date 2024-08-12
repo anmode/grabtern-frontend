@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
-const TabsWithTable = ({ tabs, headers, data, filterFunction, formatDate }) => {
+const Table = ({ tabs, headers, data, filterFunction, formatDate }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
@@ -43,25 +43,27 @@ const TabsWithTable = ({ tabs, headers, data, filterFunction, formatDate }) => {
                   {data.length > 0 ? (
                     data
                       .filter((item) => filterFunction(item, activeTab))
-                      .map((row, index) => (
-                        <tr key={index} className="tw-bg-white">
-                          {row.map((cell, idx) => (
-                            <td
-                              key={idx}
-                              className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300"
-                            >
-                              {headers[idx] === "Date Submitted"
-                                ? formatDate(cell)
-                                : cell}
-                            </td>
-                          ))}
-                        </tr>
-                      ))
+                      .map((row, index) => {
+                        return (
+                          <tr key={index} className="tw-bg-white">
+                            {headers.map((header, idx) => (
+                              <td
+                                key={idx}
+                                className="tw-font-sans tw-px-4 tw-py-2 tw-border tw-border-gray-300"
+                              >
+                                {header === "Date Submitted"
+                                  ? formatDate(row.datesubmitted)
+                                  : row[header.toLowerCase().replace(" ", "")]}
+                              </td>
+                            ))}
+                          </tr>
+                        );
+                      })
                   ) : (
                     <tr>
                       <td
                         colSpan={headers.length}
-                        className="tw-font-sans tw-text-red-500 tw-px-4 tw-py-2  tw-text-center"
+                        className="tw-font-sans tw-text-red-500 tw-px-4 tw-py-2 tw-text-center"
                       >
                         Data not found
                       </td>
@@ -77,4 +79,4 @@ const TabsWithTable = ({ tabs, headers, data, filterFunction, formatDate }) => {
   );
 };
 
-export default TabsWithTable;
+export default Table;

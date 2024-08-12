@@ -1,15 +1,14 @@
 import axios from "axios";
-import { set } from "js-cookie";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import TabsWithTable from "../../components/basic/TabsWithTable";
+import { useRouter } from "next/router";
+import Table from "../../components/basic/Table";
 import Loader from "../../components/UI/Loader";
 
 const Bookings = () => {
   const [activeTab, setActiveTab] = useState("Pending");
-
   const tabs = ["Pending", "Completed"];
   const [sessions, setSessions] = useState([]);
+  const router = useRouter();
   const [error, setError] = useState("");
   const [loader, setLoader] = useState(false);
 
@@ -41,19 +40,22 @@ const Bookings = () => {
     return `${day} ${month} ${year}`;
   };
 
-  const filterFunction = (session, activeTab) => {
+  // Filter sessions based on the active tab and format data for the table
+  const sessionData = sessions
+    .filter((session) => filterFunction(session, activeTab))
+    .map((session) => ({
+      topic: session.sessionName,
+      mentor: session.mentorName,
+      date: formatDate(session.sessionDate),
+      time: session.sessionTime,
+    }));
+
+  const filterFunction = (session) => {
     return (
       (activeTab.toLowerCase() === "pending" && session.isbooked) ||
       (activeTab.toLowerCase() === "completed" && !session.isbooked)
     );
   };
-
-  const sessionData = sessions.map((session) => [
-    session.sessionName,
-    session.mentorName,
-    session.sessionDate,
-    session.sessionTime,
-  ]);
 
   return (
     <div className="tw-p-3 md:tw-p-8 tw-w-full">
@@ -63,10 +65,13 @@ const Bookings = () => {
 
       <div className="tw-flex tw-items-center tw-gap-4 tw-mb-8">
         <p className="tw-text-base-500 tw-font-semibold">Find mentors</p>
-        <Link href="/mentorList">
+        <div>
           {!loader ? (
             <button
-              onClick={() => setLoader(true)}
+              onClick={() => {
+                setLoader(true);
+                router.push("/mentorList");
+              }}
               className="tw-bg-primary-100 tw-text-white tw-p-2 tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-duration-150 tw-ease-in-out"
             >
               here
@@ -74,11 +79,11 @@ const Bookings = () => {
           ) : (
             <Loader width="25px" />
           )}
-        </Link>
+        </div>
       </div>
 
       {
-        <TabsWithTable
+        <Table
           tabs={tabs}
           headers={["Topic", "Mentor", "Date", "Time"]}
           data={sessionData}

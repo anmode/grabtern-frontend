@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import TabsWithTable from "../../components/basic/TabsWithTable";
+import Table from "../../components/basic/Table";
 
-const Application = ({ user }) => {
+const Application = () => {
   const [applications, setApplications] = useState([]);
   const [error, setError] = useState("");
-  const userEmail = user.email;
 
   const fetchApplications = async () => {
     try {
       setError("");
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/email/${userEmail}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/fetchdata`,
         {
           withCredentials: true,
         },
@@ -24,7 +23,7 @@ const Application = ({ user }) => {
 
   useEffect(() => {
     fetchApplications();
-  }, [userEmail]);
+  }, []);
 
   const formatDate = (isoDate) => {
     if (!isoDate) return "...";
@@ -38,19 +37,24 @@ const Application = ({ user }) => {
   const filterFunction = (application, activeTab) => {
     if (activeTab === "Active") {
       return (
-        application[4] === "under review" || application[4] === "In Process"
+        application.action === "under review" ||
+        application.action === "In Process"
       );
     }
-    return application[4] === "Rejected" || application[4] === "Selected";
+    return (
+      application.action === "Rejected" || application.action === "Selected"
+    );
   };
 
-  const applicationData = applications.map((app) => [
-    app.jobID,
-    app.jobTitle,
-    <span className="tw-font-sans tw-text-[#845ec2]">Submitted</span>, // Apply purple color
-    app.dateSubmitted,
-    app.applicationAction,
-  ]);
+  const applicationData = applications.map((app) => ({
+    jobid: app.jobID,
+    jobtitle: app.jobTitle,
+    applicationstatus: (
+      <span className="tw-font-sans tw-text-[#845ec2]">Submitted</span>
+    ),
+    datesubmitted: app.dateSubmitted,
+    action: app.applicationAction,
+  }));
 
   return (
     <div className="tw-p-8 tw-w-full">
@@ -63,7 +67,8 @@ const Application = ({ user }) => {
         additional information. In this case, you will receive a notification
         with instructions. Thank you for your interest in joining our team!
       </p>
-      <TabsWithTable
+
+      <Table
         tabs={["Active", "Inactive"]}
         headers={[
           "Job Id",

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Sidebar from "../../components/mentorDashboard/sidebar";
 import Profile from "../../components/mentorDashboard/profile";
 import Sessions from "../../components/mentorDashboard/sessions";
@@ -16,7 +17,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { MentorDashboardTour } from "./dashboardTour";
 
 function MentorDashboard() {
-  // loading and error state
   const initialState = {
     status: false,
     message: "",
@@ -33,37 +33,52 @@ function MentorDashboard() {
 
   useEffect(() => {
     const checkMentorData = async () => {
-      const search = window.location.search;
-      const params = new URLSearchParams(search);
+      try {
+        const search = window.location.search;
+        const params = new URLSearchParams(search);
 
-      const mentorData = {
-        mentor_name: params.get("mentor_name"),
-        mentor_email: params.get("mentor_email"),
-        mentor_picture: params.get("mentor_picture"),
-        mentor_username: params.get("mentor_username"),
-      };
+        const redirectURL = params.get("redirectURL");
+        const decodedURL = redirectURL ? decodeURIComponent(redirectURL) : null;
 
-      const redirectURL = params.get("redirectURL");
-      const decodedURL = decodeURIComponent(redirectURL);
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail`,
+          { withCredentials: true },
+        );
 
-      if (mentorData.mentor_email) {
-        localStorage.setItem("mentorData", JSON.stringify(mentorData));
-        setMentor(mentorData);
-        setIsMentorLoggedIn(true);
-        if (decodedURL != "null") {
-          router.replace(decodedURL);
-        }
-      } else {
-        const storedMentorData = JSON.parse(localStorage.getItem("mentorData"));
-        if (storedMentorData) {
-          setMentor(storedMentorData);
+        const mentorData = res.data.mentorDetail;
+
+        if (mentorData && mentorData.email) {
+          const localStorageMentorData = {
+            mentor_picture: mentorData.image,
+            mentor_email: mentorData.email,
+            mentor_name: mentorData.name,
+          };
+          localStorage.setItem(
+            "mentorData",
+            JSON.stringify(localStorageMentorData),
+          );
+          setMentor(mentorData);
           setIsMentorLoggedIn(true);
-          if (decodedURL != "null") {
+          if (decodedURL) {
             router.replace(decodedURL);
           }
         } else {
-          router.push("/auth/login?entityType=mentor");
+          const storedMentorData = JSON.parse(
+            localStorage.getItem("mentorData"),
+          );
+          if (storedMentorData) {
+            setMentor(storedMentorData);
+            setIsMentorLoggedIn(true);
+            if (decodedURL) {
+              router.replace(decodedURL);
+            }
+          } else {
+            router.push("/auth/login?entityType=mentor");
+          }
         }
+      } catch (error) {
+        console.error("Error fetching mentor data:", error);
+        router.push("/auth/login?entityType=mentor");
       }
     };
 

@@ -14,14 +14,17 @@ import {
 } from "react-icons/md";
 import { logout } from "../layout/UserProfile";
 import { useAuth } from "../../context/AuthContext";
+import Loader from "../../components/UI/Loader";
 import { FaGithub } from "react-icons/fa";
 
 const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
   const { setIsMentorLoggedIn, setIsUserLoggedIn } = useAuth();
   const [Notification, setNotification] = useState(false);
   const [mobileNotification, setMobileNotification] = useState(false);
+  const [loader, setLoader] = useState(false);
   const router = useRouter();
   async function handleLogout() {
+    setLoader(true);
     const success = await logout(router);
 
     if (success) {
@@ -110,19 +113,27 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
               variant="outline"
             />
             {user ? (
-              <p
-                className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
-                onClick={handleLogout}
-                id="logout"
-              >
-                <h2 className="tw-font-semibold tw-text-white">Log&nbsp;out</h2>
-                <Image
-                  src={user?.image || userIcon}
-                  alt="Picture of the user"
-                  width={30}
-                  height={30}
-                  className="tw-rounded-full"
-                />
+              <p>
+                {loader ? (
+                  <Loader width="30px" />
+                ) : (
+                  <p
+                    className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center"
+                    onClick={handleLogout}
+                    id="logout"
+                  >
+                    <h2 className="tw-font-semibold tw-text-white">
+                      Log&nbsp;out
+                    </h2>
+                    <Image
+                      src={user?.image || userIcon}
+                      alt="Picture of the user"
+                      width={30}
+                      height={30}
+                      className="tw-rounded-full"
+                    />
+                  </p>
+                )}
               </p>
             ) : (
               <p className="tw-flex tw-justify-center tw-gap-2 tw-bg-primary-100 hover:tw-bg-primary-200 tw-cursor-pointer tw-transition-all tw-duration-200 tw-ease-in-out tw-p-2 tw-rounded-md tw-items-center">

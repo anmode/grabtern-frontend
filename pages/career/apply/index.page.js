@@ -6,12 +6,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import AsyncSelect from "react-select/async";
+import Loader from "../../../components/UI/Loader";
 
 function JobApplicationForm() {
   const router = useRouter();
   const { jobDetails, particularJob, setParticularJob } = useJobContext();
   const { jobID } = router.query;
   const [captcha, setCaptcha] = useState("");
+  const [loader, setLoader] = useState(false);
   const [captchaError, setCaptchaError] = useState("");
 
   const customStyles = {
@@ -70,6 +72,7 @@ function JobApplicationForm() {
     portfolio: "",
     github: "",
     consent: false,
+    dateSubmitted: "",
   });
 
   const generateCaptcha = () => {
@@ -96,19 +99,24 @@ function JobApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
 
     if (String(formData.captcha) !== String(captcha)) {
       setCaptchaError("Incorrect captcha. Please try again.");
       setCaptcha(generateCaptcha());
+      setLoader(false);
+
       return;
     }
 
     setCaptchaError("");
+    const currentDate = new Date().toISOString();
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobApplication/submit`,
         {
           ...formData,
+          dateSubmitted: currentDate,
           jobID: particularJob?.jobid,
           jobTitle: particularJob?.title,
         },
@@ -134,13 +142,16 @@ function JobApplicationForm() {
           portfolio: "",
           github: "",
           consent: false,
+          dateSubmitted: "",
         });
         router.push("/career/thank-you");
       } else {
+        setLoader(false);
         const errorMessage = response.data.message || "Unknown error occurred";
         toast.error(`Error submitting form: ${errorMessage}`);
       }
     } catch (error) {
+      setLoader(false);
       console.error("Submission error:", error);
       toast.error("Network error, please try again later.");
     }
@@ -313,8 +324,14 @@ function JobApplicationForm() {
               name="mobilePhone"
               value={formData.mobilePhone}
               onChange={handleChange}
-              onKeyPress={(event) => {
-                if (!/[0-9]/.test(event.key)) {
+              onKeyDown={(event) => {
+                if (
+                  !/[0-9]/.test(event.key) &&
+                  event.key !== "Backspace" &&
+                  event.key !== "Delete" &&
+                  event.key !== "ArrowLeft" &&
+                  event.key !== "ArrowRight"
+                ) {
                   event.preventDefault();
                 }
               }}
@@ -558,13 +575,16 @@ function JobApplicationForm() {
               of this job application.
             </label>
           </div>
-
-          <Button
-            text="Apply Now"
-            variant="Primary"
-            type="submit"
-            className="tw-font-sans tw-w-full tw-bg-[#845ec2]-500 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg tw-hover:bg-[#845ec2]-600 tw-transition tw-duration-300"
-          />
+          {loader ? (
+            <Loader width="20px" />
+          ) : (
+            <Button
+              text="Apply Now"
+              variant="Primary"
+              type="submit"
+              className="tw-font-sans tw-w-full tw-bg-[#845ec2]-500 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg tw-hover:bg-[#845ec2]-600 tw-transition tw-duration-300"
+            />
+          )}
         </form>
       </div>
       <ToastContainer />

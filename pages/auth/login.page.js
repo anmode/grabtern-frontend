@@ -85,13 +85,16 @@ function Login() {
       }
     } catch (error) {
       setLoader(false);
+      // const errorMessage =
+      //   errorCodes[error.response.data.error] ||
+      //   "Login failed. Please try again.";
       const errorMessage =
         errorCodes[error.response.data.error] ||
         "Login failed. Please try again.";
       if (error.response.data.error === "user_not_found") {
         router.push("/auth/register");
       } else if (error.response.data.error === "mentor_not_found") {
-        router.push("//mentor/register");
+        router.push("/mentor/register");
       }
       setError(errorMessage);
       toast.error(errorMessage);

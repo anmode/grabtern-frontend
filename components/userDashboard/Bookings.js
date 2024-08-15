@@ -45,7 +45,7 @@ const Bookings = () => {
       {/* Find mentors */}
       <div className="tw-flex tw-items-center tw-gap-4 tw-mb-8">
         <p className="tw-text-base-500 tw-font-semibold">Find mentors</p>
-        <Link href="/mentorList">
+        <Link href="/mentor/list">
           <button className="tw-bg-primary-100 tw-text-white tw-p-2 tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-duration-150 tw-ease-in-out">
             here
           </button>

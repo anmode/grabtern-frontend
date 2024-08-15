@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 const Header = React.lazy(() => import("../components/layout/Header"));
 import axios from "axios";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import SessionCard from "../components/newMentorProfile/SessionCard";
 import SharePageModal from "../components/mentorProfile/components/SharePageModal";
@@ -40,83 +39,7 @@ const testimonialOptions = {
 };
 
 function Index({ mentorDetail }) {
-  const [error, setError] = useState("");
-  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const [selectedSession, setSelectedSession] = useState("");
-  const [carousel, setCarousel] = useState(true);
-
-  // const handleClick = (mentordata) => {
-  //   const { sessionName, sessionMeetingDuration, priceSession } = mentordata;
-  //   const { email, name, username } = mentorDetail;
-
-  //   if (isUserLoggedIn) {
-  //     sessionStorage.removeItem("redirectURL");
-  //     handleBookSession(
-  //       sessionName,
-  //       email,
-  //       name,
-  //       sessionMeetingDuration,
-  //       priceSession,
-  //     );
-  //   } else {
-  //     const redirectURL = window.location.href;
-  //     sessionStorage.setItem("redirectURL", redirectURL);
-  //     router.push(`/userAuth#login`);
-  //   }
-  // };
-
-  // const sendMail = async (data) => {
-  //   try {
-  //     setIsLoading(true);
-  //     const res = await axios.post(
-  //       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/bookSessionMail`,
-  //       data,
-  //     );
-  //     setIsLoading(false);
-  //     setModalPopup(false);
-  //     toast.success(
-  //       "Your session has been booked! Check your inbox for payment details.",
-  //     ); // Success toast
-  //   } catch (error) {
-  //     setIsLoading(false);
-  //     if (error.response && error.response.status === 400) {
-  //       toast.error("You have already booked this session"); // Error toast
-  //     } else if (error.response && error.response.status === 405) {
-  //       toast.error("You are not allowed to book your own session"); // Error toast
-  //     } else {
-  //       console.error("Error sending mail:", error);
-  //       toast.error("Facing any problem? Email Us"); // Error toast
-  //     }
-  //   }
-  // };
-
-  // const handleBookSession = async (
-  //   sessionName,
-  //   mentorEmail,
-  //   mentorName,
-  //   sessionTime,
-  //   sessionPrice,
-  // ) => {
-  //   const userEmail = userData.user_email;
-  //   const userName = userData.user_name;
-  //   const data = {
-  //     sessionName,
-  //     mentorEmail,
-  //     userEmail,
-  //     mentorEmail,
-  //     userName,
-  //     mentorName,
-  //     sessionTime,
-  //     sessionPrice,
-  //   };
-
-  //   try {
-  //     await sendMail(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <>

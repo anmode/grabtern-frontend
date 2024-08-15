@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { LuSearch } from "react-icons/lu";
-import MentorCard from "../components/mentor";
-import { useApi } from "../hook/useAPi";
-import { Section, Input } from "../components/UI";
-import Loader from "../components/loader";
+import MentorCard from "../../components/mentor";
+import { useApi } from "../../hook/useAPi";
+import { Section, Input } from "../../components/UI";
 import { ToastContainer, toast } from "react-toastify";
-import MainLoader from "../components/UI/MainLoader";
+import MainLoader from "../../components/UI/MainLoader";
 
-const Header = dynamic(() => import("../components/layout/Header"));
-const SimpleBanner = dynamic(() => import("../components/basic/SimpleBanner"));
+const Header = dynamic(() => import("../../components/layout/Header"));
 
 function Mentors() {
   const [query, setQuery] = useState("");

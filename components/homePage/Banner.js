@@ -28,7 +28,7 @@ function Banner({ isMentorLoggedIn }) {
                   ) : (
                     <div onClick={() => setLoader(1)}>
                       <ButtonLink
-                        href="/mentorList"
+                        href="/mentor/list"
                         text="Find Mentor"
                         className="tw-min-w-[130px]"
                       />
@@ -48,7 +48,7 @@ function Banner({ isMentorLoggedIn }) {
                   ) : (
                     <div onClick={() => setLoader(2)}>
                       <ButtonLink
-                        href="/mentorRegister"
+                        href="//mentor/register"
                         text="Be a Mentor"
                         variant="outline"
                         className="tw-min-w-[130px]"

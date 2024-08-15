@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +26,7 @@ const Home = ({
   const [mobileNotification, setMobileNotification] = useState(false);
   const router = useRouter();
 
-  async function handleLogout() {
+  const handleLogout = useCallback(async () => {
     const success = await logout(router);
     if (success) {
       localStorage.clear();
@@ -39,38 +39,41 @@ const Home = ({
         router.push("/");
       }
     }
-  }
+  }, [router, setIsMentorLoggedIn, setIsUserLoggedIn]);
+
+  const fetchMentorDetails = useCallback(async () => {
+    if (!mentor.username) return; // Early exit if no username
+
+    try {
+      setLoadingState({ status: true });
+      setErrorState({ status: false });
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentor.username}`,
+        { withCredentials: true },
+      );
+      setMentor(res.data.mentorDetail);
+    } catch (error) {
+      setErrorState({
+        status: true,
+        message: error.response?.data.message || "An error occurred",
+      });
+      if (error.response?.status === 401) {
+        handleLogout();
+      }
+    } finally {
+      setLoadingState({ status: false });
+    }
+  }, [
+    mentor.username,
+    setMentor,
+    setLoadingState,
+    setErrorState,
+    handleLogout,
+  ]);
 
   useEffect(() => {
-    const getMentor = async () => {
-      try {
-        setLoadingState({ status: true });
-        setErrorState({ status: false });
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentor.username}`,
-          { withCredentials: true },
-        );
-        setMentor(res.data.mentorDetail);
-        setLoadingState({ status: false });
-      } catch (error) {
-        setLoadingState({ status: false });
-        console.log(error.response.status);
-        if (error.response.status === 401) {
-          handleLogout();
-        } else if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          setErrorState({ status: true, message: error.response.data.message });
-        } else {
-          setErrorState({ status: true });
-        }
-      }
-    };
-
-    getMentor();
-  }, []);
+    fetchMentorDetails();
+  }, [fetchMentorDetails]);
 
   const reference = useRef(null);
 

@@ -171,12 +171,14 @@ export default function MentorForm() {
       <MagicUrlPopUp
         isOpen={margicUrlPopup}
         setIsOpen={setMagicUrlPopup}
-        intialData={
-          (formData.username,
-          formData.email,
-          formData.mobile,
-          formData.social.linkedin)
-        }
+        initialData={{
+          username: formData.username,
+          email: formData.email,
+          mobile: formData.mobile,
+          linkedin: formData.social.linkedin,
+          image: formData.image,
+          name: formData.name,
+        }}
       />
       <div className="mentorFormRegisration">
         <Overlay
@@ -334,7 +336,7 @@ export default function MentorForm() {
               Facing difficulties?{" "}
               <a
                 className="tw-underline tw-decoration-[1.5px] hover:tw-opacity-80"
-                href="/mentorRegisterSendCV"
+                href="//mentor/registerSendCV"
               >
                 Send your CV/Resume to us!
               </a>

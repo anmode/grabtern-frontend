@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import Input from "./Input";
 import axios from "axios";
@@ -8,28 +8,29 @@ import clsx from "clsx";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { checkUserNameAvailability } from "../services/userAvailabilityService.js";
 import debounce from "lodash.debounce";
+import ProfileImageInput from "../../basic/ProfileImageInput";
 
-const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
+const MagicUrlPopUp = ({ isOpen, setIsOpen, initialData }) => {
   const router = useRouter();
   // state for unique userName
   const initialIsUnique = { status: "", message: "" };
   const [isUnique, setIsUnique] = useState(initialIsUnique);
 
-  // for form state
-  const initialState = {
-    username: "",
-    email: "",
-    mobile: "",
-    linkedin: "",
-  };
-  const [formData, setFormData] = useState(initialState);
+  // Initialize formData state with initialData
+  const [formData, setFormData] = useState({
+    username: initialData?.username || "",
+    email: initialData?.email || "",
+    mobile: initialData?.mobile || "",
+    linkedin: initialData?.linkedin || "",
+    image: initialData?.image || "",
+  });
   const [loader, setLoader] = useState(false);
 
   // for validator
   const validator = useRef(new SimpleReactValidator());
   const [, forceUpdate] = useState();
 
-  // toogle magic url popup
+  // Toggle magic URL popup
   const toggleMagicUrlPopup = () => {
     setIsOpen(!isOpen);
   };
@@ -41,16 +42,31 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
 
   const onChange = (e) => {
     const { name, value } = e.target;
-
-    // Update formData with the new value
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-
     if (name === "username") {
       debouncedUsernameCheck(value);
     }
   };
 
-  // handleSubmit
+  const handleUploadImageChange = (imgUrl) => {
+    setFormData((prevData) => ({ ...prevData, image: imgUrl }));
+  };
+
+  useEffect(() => {
+    console.log("Initial Data Updated:", initialData);
+    // Update formData if initialData changes
+    setFormData((prevData) => ({
+      ...prevData,
+      username: initialData?.username || prevData.username,
+      email: initialData?.email || prevData.email,
+      mobile: initialData?.mobile || prevData.mobile,
+      linkedin: initialData?.linkedin || prevData.linkedin,
+      image: initialData?.image || prevData.image,
+      name: initialData?.name || prevData.name,
+    }));
+  }, [initialData]);
+
+  // Handle submit
   const handleSubmit = async () => {
     try {
       setLoader(true);
@@ -59,7 +75,14 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       const res = await axios.post(url, formData);
       setLoader(false);
       toast.success(res.data.message);
-      setFormData(initialState);
+      setFormData({
+        username: "",
+        email: "",
+        mobile: "",
+        linkedin: "",
+        image: "",
+        name: "",
+      });
       setTimeout(() => {
         router.push("/");
       }, 2000);
@@ -75,7 +98,6 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     }
   };
 
-  // submit function
   const onSubmit = (e) => {
     e.preventDefault();
     if (validator.current.allValid()) {
@@ -88,11 +110,10 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
     }
   };
 
-  // inputs
   const inputs = [
     {
       label: "username",
-      type: "username",
+      type: "text",
       name: "username",
       id: "username",
       onChange: onChange,
@@ -102,19 +123,6 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       value: formData.username,
       validator: validator,
       validation: "required|alpha_num_dash",
-    },
-    {
-      label: "email",
-      type: "email",
-      name: "email",
-      id: "email",
-      onChange: onChange,
-      divClassName: "tw-col-start-1 tw-col-span-2",
-      placeholder: "e.g. peterparker4321@gmail.com",
-      required: true,
-      value: formData.email,
-      validator: validator,
-      validation: "required|email",
     },
     {
       label: "mobile",
@@ -128,6 +136,19 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
       value: formData.mobile,
       validator: validator,
       validation: "required|phone",
+    },
+    {
+      label: "email",
+      type: "email",
+      name: "email",
+      id: "email",
+      onChange: onChange,
+      divClassName: "tw-col-start-1 tw-col-span-2",
+      placeholder: "e.g. peterparker4321@gmail.com",
+      required: true,
+      value: formData.email,
+      validator: validator,
+      validation: "required|email",
     },
     {
       label: "linkedIn Username",
@@ -161,7 +182,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
         "tw-shadow-xl tw-bg-base-100 tw-rounded-xl",
       )}
     >
-      {/* header */}
+      {/* Header */}
       <div
         className={clsx(
           "tw-flex tw-justify-between tw-items-center ",
@@ -181,19 +202,23 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
         </div>
       </div>
 
-      {/* user name avialability info start*/}
+      {/* Google Sign-In button */}
+      <div style={{ gridColumn: "1/3" }}>
+        <div id="googleSignInButton2"></div>
+      </div>
+
+      {/* User Name Availability Info */}
       <p
         className={clsx(
           "tw-text-sm tw-text-right tw-capitalize",
-          isUnique.status == true && ["tw-text-green-500"],
-          isUnique.status == false && ["tw-text-red-500"],
+          isUnique.status === true && ["tw-text-green-500"],
+          isUnique.status === false && ["tw-text-red-500"],
         )}
       >
         {isUnique.message}
       </p>
-      {/* user name avialability info end*/}
 
-      {/* form */}
+      {/* Form */}
       <div className={clsx("tw-overflow-hidden", !isOpen && "tw-h-0")}>
         <form
           className={clsx(
@@ -204,11 +229,18 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen }) => {
           onSubmit={onSubmit}
           disabled={loader}
         >
-          {/* inputs */}
+          {/* Profile Image Input */}
+          <ProfileImageInput
+            image={formData.image}
+            setImage={handleUploadImageChange}
+            className="mentorUploudPhoto tw-col-start-1 tw-col-span-2"
+          />
+
+          {/* Inputs */}
           {inputs.map((input) => (
             <Input {...input} key={input.name} />
           ))}
-          {/* register button */}
+          {/* Register Button */}
           <button
             type="submit"
             className={clsx(

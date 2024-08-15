@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import ProfileImageInput from "../basic/ProfileImageInput";
 import Loader from "../UI/Loader";
@@ -11,6 +15,10 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
     name: user?.fullName || "",
     email: user?.email || "",
     image: user?.image || "",
+    discord: user?.social?.discord || "",
+    linkedin: user?.social?.linkedin || "",
+    github: user?.social?.github || "",
+    instagram: user?.social?.instagram || "",
   };
 
   const [loader, setLoader] = useState(false);
@@ -122,6 +130,7 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                   flexDirection: "row",
                   justifyContent: "space-around",
                 }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
               >
                 <div>
                   <label for="name">NAME</label>
@@ -142,14 +151,6 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                   />
                   <FaUserAlt className="tw-text-lg tw-relative tw-text-base-500 tw-bottom-9 tw-left-2 md:tw-text-xl" />
                 </div>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-around",
-                }}
-              >
                 <div>
                   <label for="email">EMAIL</label>
 
@@ -172,6 +173,100 @@ function Profile({ setLoadingState, setErrorState, user, setUser }) {
                     value={formData.email}
                   />
                   <MdEmail className="tw-text-lg tw-relative tw-text-base-500 tw-bottom-9 tw-left-2 md:tw-text-xl" />
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
+              >
+                <div>
+                  <label for="linkedin">LINKEDIN</label>
+                  <input
+                    type="text"
+                    name="linkedin"
+                    style={{
+                      width: "90%",
+                      borderRadius: "5px",
+                      border: "none",
+                      border: "2px solid var(--base-300)",
+                      paddingLeft: "35px",
+                    }}
+                    className="mentorFormInput"
+                    placeholder={user?.social?.linkedin}
+                    value={formData.linkedin}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <FaLinkedinIn className="tw-text-lg tw-relative tw-text-base-500 tw-bottom-9 tw-left-2 md:tw-text-xl" />
+                </div>
+                <div>
+                  <label for="github">GITHUB</label>
+                  <input
+                    type="text"
+                    name="github"
+                    style={{
+                      width: "90%",
+                      borderRadius: "5px",
+                      border: "none",
+                      border: "2px solid var(--base-300)",
+                      paddingLeft: "35px",
+                    }}
+                    className="mentorFormInput"
+                    placeholder={user?.social?.github}
+                    value={formData.github}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <FaGithub className="tw-text-lg tw-relative tw-text-base-500 tw-bottom-9 tw-left-2 md:tw-text-xl" />
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
+              >
+                <div>
+                  <label for="discord">DISCORD</label>
+                  <input
+                    type="text"
+                    name="discord"
+                    style={{
+                      width: "90%",
+                      borderRadius: "5px",
+                      border: "none",
+                      border: "2px solid var(--base-300)",
+                      paddingLeft: "35px",
+                    }}
+                    className="mentorFormInput"
+                    placeholder={user?.social?.discord}
+                    value={formData.discord}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <FaDiscord className="tw-text-lg tw-relative tw-text-base-500 tw-bottom-9 tw-left-2 md:tw-text-xl" />
+                </div>
+                <div>
+                  <label for="instagram">INSTAGRAM</label>
+                  <input
+                    type="text"
+                    name="instagram"
+                    style={{
+                      width: "90%",
+                      borderRadius: "5px",
+                      border: "none",
+                      border: "2px solid var(--base-300)",
+                      paddingLeft: "35px",
+                    }}
+                    className="mentorFormInput"
+                    placeholder={user?.social?.instagram}
+                    value={formData.instagram}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <FaInstagram className="tw-text-lg tw-relative tw-text-base-500 tw-bottom-9 tw-left-2 md:tw-text-xl" />
                 </div>
               </div>
               <div>

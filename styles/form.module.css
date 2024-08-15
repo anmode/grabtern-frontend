@@ -1,0 +1,263 @@
+.mainContainer {
+  background-color: var(--base-100);
+  display: flex;
+  flex-direction: column;
+}
+.headingg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+.headingg img {
+  width: 3.5rem;
+  height: 3.5rem;
+  aspect-ratio: 1/1;
+  margin-top: -0.25rem;
+}
+.btnnContainer {
+  text-align: center;
+}
+.btnn input {
+  padding: 0;
+  margin-left: 43%;
+}
+.btnn {
+  width: auto;
+  height: 2.5rem;
+  color: var(--base-500);
+  background-color: var(--base-200);
+  border: 0;
+  padding: 0.5rem 1.5rem;
+  outline: none;
+  font-weight: 600;
+}
+.user {
+  padding-left: 2.2rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+.mentor {
+  padding-left: 1.3rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+.btnnActive {
+  /* Styles for the activated button here */
+  color: #fff;
+  background-color: #845ec2;
+}
+.btnnContainer {
+  margin: 10%;
+  display: flex;
+  justify-content: center;
+}
+.loginInput {
+  text-align: center;
+  padding-left: 43%;
+}
+
+.google {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+.google h3 {
+  position: relative;
+}
+
+.google h3::before,
+.google h3::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 195px; /* Adjust the width of the lines as needed */
+  height: 1px;
+  background-color: var(
+    --base-500
+  ); /* You can change this color to your preference */
+}
+
+.google h3::before {
+  left: -200px; /* Adjust the left position to place the line on the left side */
+}
+
+.google h3::after {
+  right: -200px; /* Adjust the right position to place the line on the right side */
+}
+.google2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+.Input {
+  border: 2px solid #845ec2;
+  border-radius: 9px;
+  padding-left: 10px;
+  margin-bottom: 6%;
+  display: flex;
+}
+.loginform {
+  margin: 90px auto 20px;
+  width: 480px;
+  padding: 12px 45px 12px 45px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: min-content;
+  background-color: var(--base-100);
+}
+
+.loginform h2 {
+  color: var(--base-500);
+  font-size: 30px;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.loginform .forminput {
+  position: relative;
+  margin: 2vh 0;
+}
+.loginform .forminput label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--base-500);
+}
+.loginform .forminput input {
+  outline: none;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: transparent;
+  font-size: 18px;
+  border: none;
+  color: var(--base-400);
+}
+.loginform .forminput input::placeholder {
+  color: var(--base-400);
+  opacity: 0.8;
+}
+.loginform .forminput input[type="submit"] {
+  background: linear-gradient(
+    to top,
+    rgb(83, 116, 255) 0%,
+    rgb(127, 102, 255) 40%,
+    rgb(187, 85, 255) 95%,
+    rgb(192, 84, 255) 100%
+  );
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  line-height: 1;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+.loginform .forminput input[type="submit"]:hover {
+  background: #a35cff;
+}
+
+.loginform .forget {
+  display: block;
+  color: #656eff;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 25px !important;
+}
+.loginform .forget:hover {
+  color: var(--base-400);
+}
+.loginform .registration {
+  display: block;
+  margin-left: 2%;
+  color: #656eff;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+.linkdiv {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--base-500);
+}
+.loginform .registration:hover {
+  color: var(--base-400);
+}
+
+.eye {
+  width: 10%;
+  padding-left: 6px;
+  padding-right: 4px;
+  color: var(--base-400);
+  margin-top: 0.2rem;
+}
+
+/* Focus state */
+.btnn:focus {
+  outline: none;
+}
+
+/* Hover state */
+.btnn:hover {
+  background-color: #6b21a8;
+  color: #fff;
+}
+
+@media (max-width: 575px) {
+  .loginform {
+    width: 90%;
+    padding: 30px 40px 15px 40px;
+    margin: 100px auto 0 auto;
+  }
+  .loginform h2 {
+    font-size: 27px;
+  }
+  .user,
+  .mentor {
+    font-size: 2.6vw;
+    font-weight: bolder;
+  }
+
+  .google h3::before,
+  .google h3::after {
+    content: "";
+    top: 50%;
+    width: 135px; /* Adjust the width of the lines as needed */
+    height: 1px;
+    background-color: var(
+      --base-500
+    ); /* You can change this color to your preference */
+  }
+  .google h3::before {
+    left: -140px; /* Adjust the left position to place the line on the left side */
+  }
+
+  .google h3::after {
+    right: -140px; /* Adjust the right position to place the line on the right side */
+  }
+  .btnn {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .spinner {
+    position: relative;
+    right: 50px;
+  }
+
+  .resetForm {
+    margin: 20px;
+    width: 336px;
+  }
+}

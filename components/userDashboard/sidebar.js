@@ -267,7 +267,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             className="tw-items-center max-[400px]:tw-hidden"
             id="mobileFindMentors"
           >
-            <Link href="/mentorList">
+            <Link href="/mentor/list">
               <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
             </Link>
           </div>
@@ -341,7 +341,7 @@ const Sidebar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             </div>
             <div className="tw-flex tw-justify-center tw-items-center tw-mt-8">
               <div className="tw-flex tw-justify-center tw-items-center tw-gap-4 tw-bg-white tw-p-3 tw-rounded-lg">
-                <Link href="/mentorList">
+                <Link href="/mentor/list">
                   <RxRocket className="group-hover:tw-text-primary-100 tw-text-xl" />
                 </Link>
                 <span className="tw-font-semibold">Book a session</span>

@@ -44,7 +44,7 @@ function Mentor() {
             </p>
 
             <button className="tw-bg-primary-100 tw-p-6 tw-transition-all tw-duration-200 max-[990px]:tw-max-w-full tw-ease-in-out tw-mt-6 hover:tw-bg-primary-200 tw-rounded-md max-[637px]:tw-w-[300px] tw-w-[200px]">
-              <Link href="/mentorRegister">
+              <Link href="//mentor/register">
                 <h3 className="tw-text-white tw-font-bold">Be a mentor</h3>
               </Link>
             </button>

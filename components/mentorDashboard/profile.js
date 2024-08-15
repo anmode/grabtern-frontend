@@ -154,6 +154,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   flexDirection: "row",
                   justifyContent: "space-around",
                 }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
               >
                 <div>
                   <label for="name">NAME</label>
@@ -204,6 +205,7 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                   flexDirection: "row",
                   justifyContent: "space-around",
                 }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
               >
                 <div>
                   <label for="email">EMAIL</label>
@@ -254,7 +256,10 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 </div>
               </div>
               {/* intern at and current status */}
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div
+                style={{ display: "flex", flexDirection: "row" }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
+              >
                 <div>
                   <label for="internAt">Intern At</label>
 
@@ -298,7 +303,10 @@ function Profile({ mentorDetail, setMentor, setLoadingState, setErrorState }) {
                 </div>
               </div>
               {/* linked in and twitter */}
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div
+                style={{ display: "flex", flexDirection: "row" }}
+                className="tw-flex-wrap md:tw-flex-nowrap"
+              >
                 <div>
                   <label for="linkedin">LINKEDIN</label>
 

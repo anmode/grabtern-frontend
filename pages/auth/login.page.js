@@ -89,10 +89,13 @@ function Login() {
       //   errorCodes[error.response.data.error] ||
       //   "Login failed. Please try again.";
       const errorMessage =
-        error.response && error.response.data
-          ? errorCodes[error.response.data.error] ||
-            "Login failed. Please try again."
-          : "Login failed. Please try again.";
+        errorCodes[error.response.data.error] ||
+        "Login failed. Please try again.";
+      if (error.response.data.error === "user_not_found") {
+        router.push("/auth/register");
+      } else if (error.response.data.error === "mentor_not_found") {
+        router.push("/mentor/register");
+      }
       setError(errorMessage);
       toast.error(errorMessage);
     }
@@ -194,7 +197,7 @@ function Login() {
               Don't have an account?
               <Link
                 href={
-                  entityType === "user" ? "/auth/register" : "/mentorRegister"
+                  entityType === "user" ? "/auth/register" : "//mentor/register"
                 }
                 className={styles.registration}
                 style={{ textDecoration: "none" }}

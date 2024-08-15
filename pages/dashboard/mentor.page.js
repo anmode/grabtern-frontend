@@ -39,6 +39,7 @@ function MentorDashboard() {
 
         const redirectURL = params.get("redirectURL");
         const decodedURL = redirectURL ? decodeURIComponent(redirectURL) : null;
+        console.log("Hello", decodedURL);
 
         const res = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail`,
@@ -59,7 +60,7 @@ function MentorDashboard() {
           );
           setMentor(mentorData);
           setIsMentorLoggedIn(true);
-          if (decodedURL) {
+          if (decodedURL && !decodedURL.includes("null")) {
             router.replace(decodedURL);
           }
         } else {
@@ -69,7 +70,7 @@ function MentorDashboard() {
           if (storedMentorData) {
             setMentor(storedMentorData);
             setIsMentorLoggedIn(true);
-            if (decodedURL) {
+            if (decodedURL && !decodedURL.includes("null")) {
               router.replace(decodedURL);
             }
           } else {

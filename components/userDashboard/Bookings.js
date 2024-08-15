@@ -69,7 +69,7 @@ const Bookings = () => {
             <button
               onClick={() => {
                 setLoader(true);
-                router.push("/mentorList");
+                router.push("/mentor/list");
               }}
               className="tw-bg-primary-100 tw-text-white tw-p-2 tw-rounded-md tw-font-semibold hover:tw-bg-primary-200 tw-duration-150 tw-ease-in-out"
             >

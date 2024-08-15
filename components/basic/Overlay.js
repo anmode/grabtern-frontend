@@ -41,6 +41,12 @@ const Overlay = ({ callbackFunction, onDisappear }) => {
         { theme: "outline", size: "large" },
       );
 
+      // Render Google Sign-In button for magic URL
+      window.google.accounts.id.renderButton(
+        document.getElementById("googleSignInButton2"),
+        { theme: "outline", size: "large" },
+      );
+
       // Prompt Google Sign-In
       window.google.accounts.id.prompt();
     };

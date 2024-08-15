@@ -109,7 +109,7 @@ const Home = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
           >
             <ButtonLink
               text="Find Mentors"
-              href="/mentorList"
+              href="/mentor/list"
               variant="outline"
             />
             {user ? (

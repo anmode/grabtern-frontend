@@ -23,6 +23,7 @@ const MagicUrlPopUp = ({ isOpen, setIsOpen, initialData }) => {
     mobile: initialData?.mobile || "",
     linkedin: initialData?.linkedin || "",
     image: initialData?.image || "",
+    name: initialData?.name || "",
   });
   const [loader, setLoader] = useState(false);
 

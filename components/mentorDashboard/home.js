@@ -48,7 +48,7 @@ const Home = ({
       setLoadingState({ status: true });
       setErrorState({ status: false });
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail/${mentor.username}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mentors/mentorDetail`,
         { withCredentials: true },
       );
       setMentor(res.data.mentorDetail);

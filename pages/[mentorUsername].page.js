@@ -40,6 +40,7 @@ const testimonialOptions = {
 
 function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
+  const [carousel, setCarousel] = useState(true);
 
   return (
     <>

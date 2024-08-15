@@ -39,6 +39,12 @@ const Bookings = () => {
     const year = date.getFullYear();
     return `${day} ${month} ${year}`;
   };
+  const filterFunction = (session, activeTab) => {
+    return (
+      (activeTab.toLowerCase() === "pending" && session.isbooked) ||
+      (activeTab.toLowerCase() === "completed" && !session.isbooked)
+    );
+  };
 
   // Filter sessions based on the active tab and format data for the table
   const sessionData = sessions
@@ -49,13 +55,6 @@ const Bookings = () => {
       date: formatDate(session.sessionDate),
       time: session.sessionTime,
     }));
-
-  const filterFunction = (session) => {
-    return (
-      (activeTab.toLowerCase() === "pending" && session.isbooked) ||
-      (activeTab.toLowerCase() === "completed" && !session.isbooked)
-    );
-  };
 
   return (
     <div className="tw-p-3 md:tw-p-8 tw-w-full">

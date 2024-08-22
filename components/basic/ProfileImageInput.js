@@ -77,9 +77,7 @@ function ProfileImageInput({ image, setImage, className }) {
         />
         {/* image input with label */}
         <div>
-          <label
-            htmlFor="mentorProfile"
-          >
+          <label htmlFor="mentorProfile">
             {!image ? "Upload Image" : "Change Image"}
           </label>
           <input

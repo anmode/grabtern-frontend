@@ -78,7 +78,7 @@ function ProfileImageInput({ image, setImage, className }) {
         {/* image input with label */}
         <div>
           <label
-            htmlFor="mentorProfileone"
+            htmlFor="mentorProfileOne"
             className="mentorFormButton theme-button-color !tw-font-medium"
           >
             {!image ? "Upload Image" : "Change Image"}
@@ -86,7 +86,7 @@ function ProfileImageInput({ image, setImage, className }) {
           <input
             type="file"
             accept="image/*"
-            id="mentorProfileone"
+            id="mentorProfileOne"
             className="mentorFormInput"
             name="mentorProfileImage"
             hidden

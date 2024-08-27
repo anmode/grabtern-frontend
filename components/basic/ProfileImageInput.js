@@ -77,15 +77,19 @@ function ProfileImageInput({ image, setImage, className }) {
         />
         {/* image input with label */}
         <div>
-          <label htmlFor="mentorProfile">
+          <label
+            htmlFor="mentorProfileone"
+            className="mentorFormButton theme-button-color !tw-font-medium"
+          >
             {!image ? "Upload Image" : "Change Image"}
           </label>
           <input
             type="file"
             accept="image/*"
-            id="mentorProfile"
+            id="mentorProfileone"
             className="mentorFormInput"
             name="mentorProfileImage"
+            hidden
             onChange={(e) => handleImageChange(e)}
             required
             aria-label="Upload your image"

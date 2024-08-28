@@ -78,7 +78,7 @@ function ProfileImageInput({ image, setImage, className }) {
         {/* image input with label */}
         <div>
           <label
-            htmlFor="mentorProfile"
+            htmlFor="mentorProfileOne"
             className="mentorFormButton theme-button-color !tw-font-medium"
           >
             {!image ? "Upload Image" : "Change Image"}
@@ -86,11 +86,11 @@ function ProfileImageInput({ image, setImage, className }) {
           <input
             type="file"
             accept="image/*"
-            id="mentorProfile"
+            id="mentorProfileOne"
             className="mentorFormInput"
             name="mentorProfileImage"
-            onChange={(e) => handleImageChange(e)}
             hidden
+            onChange={(e) => handleImageChange(e)}
             required
             aria-label="Upload your image"
             aria-required="true"

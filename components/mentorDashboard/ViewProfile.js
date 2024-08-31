@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Testimonial } from "../homePage";
 import MentorAbout from "../newMentorProfile/mentorAbout";
 import { Section } from "../UI";
+import PublishProfile from "./SideBarComponent/PublishProfile";
 
 const OwlCarousel = dynamic(import("react-owl-carousel"), {
   ssr: false,
@@ -41,13 +42,34 @@ const testimonialOptions = {
 function Index({ mentorDetail }) {
   const [showModal, setShowModal] = useState(false);
   const [carousel, setCarousel] = useState(true);
-
+  console.log(mentorDetail.username);
   return (
     <>
       <React.Suspense fallback={<div>Loading...</div>}>
         <h1 className="tw-text-2xl tw-mt-6 font-semibold tw-p-0">
           Preview of your profile
         </h1>
+        <div className="tw-flex tw-gap-3 tw-w-full">
+          <input
+            type="text"
+            name="username"
+            style={{
+              width: "300px",
+              padding: "5px",
+              marginLeft: "20px",
+
+              backgroundColor: "#f0f0f0",
+              color: "#999999",
+              border: "1px solid #cccccc",
+              opacity: 0.9,
+            }}
+            placeholder="http:www.grabtern.com"
+            value={`http://localhost:3000/${mentorDetail.username}`}
+            readOnly
+            title="This field is not editable"
+          />
+          <PublishProfile isSidebarOpen={true} className="!tw-mt-0 " />
+        </div>
         {/* Mentor Page */}
         <main className="tw-pt-4">
           <div className="align-div">
